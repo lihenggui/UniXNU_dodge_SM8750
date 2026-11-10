@@ -1,0 +1,47 @@
+{
+  "result": "SOURCE_PROBE_AND_HOST_TESTS_PASS",
+  "target": "arm64-apple-ios16.0",
+  "source_revision": "f5017376415268fd39dcf0b3fd68a94661cee078",
+  "soc_revision": "669bceeaadc298e085f33d393c941eaca9e2c08c",
+  "source_sha256": "b6fb207e8d89d70bc3ab22df9b9dae2bf30a1499a22b2e868999baf6114c6933",
+  "native_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "archive": "build/cph2653-ufs-probe/libNativeUfsProbe.a",
+  "archive_sha256": "9c754b81902fa49b6f638aa71a1af23932ff8dfec5f791a3793074d99558b870",
+  "object_sha256": "e5c192c115a368d62b1650284a1e7e8088a644067f670109fb4390191c5a4cef",
+  "probe_only": true,
+  "read_only": true,
+  "diagnostic_partition_selector": "unixnu",
+  "partition_created": false,
+  "public_native_imports_matched_by_name": 212,
+  "link_time_source_runtime_dependencies": [
+    {
+      "name": "___ubsan_handle_add_overflow_minimal",
+      "va": "0xfffffff0079e6fb4",
+      "trap": "0x1206",
+      "body_sha256": "421d97b2d7a9376ab3d733199219b3d51e7b9c6400c4b3d971e792a89f72472e"
+    }
+  ],
+  "requires_native_static_link": true,
+  "original_storage_family_imports": 0,
+  "root_publication_built": false,
+  "host_suites_passed": [
+    "Sm8750",
+    "LunDiscovery",
+    "RootCommands",
+    "RootDiagnostics",
+    "RootLayout",
+    "SmmuTakeover",
+    "RootWindowRead",
+    "TransferPoll"
+  ],
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "host_log_sha256": "1ae62c8d376b6a0494cca4997d220cdd94fd05ea2874b94df3f064461877753b",
+  "selected_in_default_kernel": false,
+  "mmio_executed": false,
+  "storage_family_abi_qualified": false,
+  "hardware_tested": false,
+  "scope": "Independent native-source probe archive and production read-only controller/queue/DMA/root-parser host tests. No hardware access, kernel activation, physical partition or iPhone root publication."
+}

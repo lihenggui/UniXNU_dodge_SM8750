@@ -1,0 +1,51 @@
+Backport the APFS import from Apple public XNU xnu-10063.141.1.
+Source: d8b80295118ef25ac3a784134bcf95cd8e88109f/bsd/vfs/vfs_subr.c
+Retain the normal mount-list lookup and reject a mismatched operations table.
+
+diff --git a/bsd/sys/mount.h b/bsd/sys/mount.h
+index 097bcfb..af5c687 100644
+--- a/bsd/sys/mount.h
++++ b/bsd/sys/mount.h
+@@ -1279,6 +1279,8 @@ void    vfs_getnewfsid(struct mount *mp);
+  *  @return Mountpoint if found, else NULL.  Note unmounting mountpoints can be returned.
+  */
+ mount_t vfs_getvfs(fsid_t *fsid);
++/* Filesystem lookup restricted to the caller's expected operations table. */
++mount_t vfs_getvfs_with_vfsops(fsid_t *fsid, const struct vfsops *ops);
+ 
+ /*!
+  *  @function vfs_mountedon
+diff --git a/bsd/vfs/vfs_subr.c b/bsd/vfs/vfs_subr.c
+index a1fc29b..edc465f 100644
+--- a/bsd/vfs/vfs_subr.c
++++ b/bsd/vfs/vfs_subr.c
+@@ -1951,6 +1951,17 @@ vfs_getvfs_locked(fsid_t *fsid)
+ 	return mount_list_lookupby_fsid(fsid, 1, 0);
+ }
+ 
++struct mount *
++vfs_getvfs_with_vfsops(fsid_t *fsid, const struct vfsops * const ops)
++{
++	mount_t mp = mount_list_lookupby_fsid(fsid, 0, 0);
++
++	if (mp != NULL && mp->mnt_op != ops) {
++		mp = NULL;
++	}
++	return mp;
++}
++
+ struct mount *
+ vfs_getvfs_by_mntonname(char *path)
+ {
+diff --git a/config/BSDKernel.exports b/config/BSDKernel.exports
+index 9aa98ba..69ba025 100644
+--- a/config/BSDKernel.exports
++++ b/config/BSDKernel.exports
+@@ -673,6 +673,7 @@ _vfs_fsremove
+ _vfs_get_notify_attributes
+ _vfs_getnewfsid
+ _vfs_getvfs
++_vfs_getvfs_with_vfsops
+ _vfs_init_io_attributes
+ _vfs_ioattr
+ _vfs_isforce

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "device": "OnePlus 13 CPH2653 / dodge",
+  "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "compatible": "synaptics,tcm-spi-hbp",
+  "spmi_registers": {
+    "cnfg": {
+      "base": "0xc42d000",
+      "bytes": 16384
+    },
+    "core": {
+      "base": "0xc400000",
+      "bytes": 12288
+    },
+    "chnls": {
+      "base": "0xc500000",
+      "bytes": 4194304
+    },
+    "obsrvr": {
+      "base": "0xc440000",
+      "bytes": 524288
+    },
+    "intr": {
+      "base": "0xc4c0000",
+      "bytes": 65536
+    }
+  },
+  "avdd": {
+    "controller": "/soc/qcom,spmi@c42d000/qcom,pm8550vs@9/pinctrl@8800",
+    "gpio": 3,
+    "raw_gpio_flags": 1,
+    "ppid": "0x98a",
+    "physical_on_level": 1,
+    "level_source": "synaptics,power-on-state consumed by raw gpio_direction_output in the matching HBP driver",
+    "policy": "validate existing VIN/normal mux/CMOS strength/no DTEST, preload output, initialize input or disabled GPIO, preserve input-enable and electrical fields; no invented rail voltage or drive policy"
+  },
+  "vdd": {
+    "resource": "ldob4",
+    "millivolts": 1800,
+    "expected_vrm_address": "0x40800",
+    "runtime_cmd_db_match_required": true
+  },
+  "reset_active_ms": 10,
+  "reset_delay_ms": 80,
+  "power_delay_ms": 200,
+  "keys": {
+    "pon_ppid": "0x013",
+    "power_bit": 128,
+    "volume_up_bit": 64,
+    "volume_down_ppid": "0x18d",
+    "volume_down_active_low": true,
+    "debounce_ms": 32
+  },
+  "register_reference_files": [
+    {
+      "path": ".cache/input-reference/hbp_power.c",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/tp/hbp/hbp/hbp_power.c",
+      "sha256": "0d1819ee7a4fb0f6dec20e85d590e5ad25cb44c1e1d008389aa1dfaf4a08e0e4"
+    },
+    {
+      "path": ".cache/input-reference/hbp_power.h",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/tp/hbp/hbp/hbp_power.h",
+      "sha256": "9d99ce9c792ca5af9691689db779eb6df74d1a666a30e2b1eae631914bb9a5fe"
+    },
+    {
+      "path": ".cache/input-reference/hbp_platform.c",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/tp/hbp/hbp/utils/platform.c",
+      "sha256": "fcb6cb3edf86629cbada7958a63bacb5af11a5922e814842a41181b6e61fdcca"
+    },
+    {
+      "path": ".cache/input-reference/s3910.c",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/tp/hbp/hbp/chips/synaptics/s3910/syna_tcm2.c",
+      "sha256": "9daa12bd26b280fcd885217fd41cebd9a092cf7049dc781dcab99df108337d10"
+    },
+    {
+      "path": ".cache/input-reference/spmi-gpio.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/v6.12/drivers/pinctrl/qcom/pinctrl-spmi-gpio.c",
+      "sha256": "5b410d9972e1d3ac1ff99002e6d74db21397ea552beee00b9c2d3c9f486415bc"
+    },
+    {
+      "path": ".cache/input-reference/spmi-pmic-arb.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/v6.12/drivers/spmi/spmi-pmic-arb.c",
+      "sha256": "37913bfb3d7678bbb87f4f4ab6445d1910bd6d1259c7f6a45ce3970a62c7c0f2"
+    },
+    {
+      "path": ".cache/input-reference/s3910-platform-spi.c",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/touchpanel/synaptics_hbp/syna_tcm2_platform_spi.c",
+      "sha256": "5319a808d5d08c8fb5606acfc85a29201085131845804465dc8177a2363cfda6"
+    },
+    {
+      "path": ".cache/input-reference/s3910-platform.h",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/touchpanel/synaptics_hbp/syna_tcm2_platform.h",
+      "sha256": "2811889c31d2e6ccef1e462d166cc19e1b66e9f7a9bc0aa090da382a47fb7a17"
+    }
+  ],
+  "reference_only_policy": {
+    "cs_delay_units": 50,
+    "edge_pixels": 48,
+    "vdd_vrm_address_requires_runtime_lookup": true
+  },
+  "gpio_cold_initialization_qualified": false,
+  "hardware_tested": false
+}

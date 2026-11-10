@@ -1,0 +1,500 @@
+{
+  "result": "IOS16_INIT_CONTEXT_DATA_MOUNT_AND_ORIGINAL_IPHONE_STRICT_PRELINK_PASS",
+  "builder_sha256": "0e90cf5b25338c3c94c43541eaa97c57e8f983f82673dbfa1c8d1923432be38a",
+  "source_sha256": {
+    "scripts/build_data_mount_prelink.py": "0e90cf5b25338c3c94c43541eaa97c57e8f983f82673dbfa1c8d1923432be38a",
+    "scripts/build_data_mount_source.py": "5609a54fb9ca5b10903058ad04af7d1f94809f5b2c4e2301e636b41492bfcd98",
+    "scripts/build_data_source.py": "e6dd5a74deb5884fbf8646266faf91592873ccd8a3f7f314ab86ce5b20ccbcdc",
+    "scripts/build_data_startup.py": "453ec8465a31e7f4a2371fe63f1b959f56d57abfdb8496d195ff122f75d6c9af",
+    "scripts/build_input_prelink.py": "d9227262bb2579a581fbf1649c200b1dc0a9f86c9fea22cc8c043e342a667df0",
+    "scripts/build_ufs_prelink.py": "69c2fa86f9d51b3b8363abbecaf458deab3721b2c88fbe52840d67f98f53bfac",
+    "scripts/build_gpu_graphics_prelink.py": "ad5f6636a1761297a6936467b1140134ba934c86ea7de4c128f5546f26995293",
+    "profiles/os/ios-16.7.16-20H392/profile.toml": "e3dbb5af9583405c62ce1e41dbe6ab0378dfb63f4ff7c9654c2dffa9091c6043",
+    "profiles/os/ios-16.7.16-20H392/input-prelink.json": "04686f0d95e68a5f6e769af30053f51f44623f820ee035390ed03377d8987a3d",
+    "profiles/os/ios-16.7.16-20H392/security-init.json": "f621e8196e923045d38a44040ddf543fe27c9a91838e9799e853a097655cf2fd",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/kits/XnuPrelink/emit_prelink.py": "49bb83cbf670307b1c11d080e384b620f608398db2f51545ba4d63f440bc12cb",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/kits/XnuPrelink/native_prelink.py": "5bd80b8c63deec29b747c28253e02308a56d5f8cdb37c9d315e7c8af7012d017",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/scripts/seal-source-crypto-kernel.py": "b8f304c8d88ffa3f49277f407d1aa72734944cacd59c58d010609744af24c0a3",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/scripts/kernel_target.py": "f2351aebc029a69673ead76e1a0b49845fd940e285da82cd693a89084991c4bf",
+    "sources/UniXNU/drivers/DarwinBoot/Test/test-kernel-parser.py": "92be15ff6060ee1cd98e7feb8a021f1ebed477189375140dfc3ac8371f9b48d7"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-data-mount-native.json": "cad94d45f1aa1a3b3c877a479d6bc833a0fa646f7aa31d9150f11c3b0e6b096a"
+  },
+  "artifacts": {
+    "build/ios16-apfs-mount-prelink/mach.data-mount.sealed": "3358bd94f165f893d061ff05b01141db8fbb124b0eefff081c4667effbadd168",
+    "build/ios16-apfs-mount-prelink/kernel.macho": "81f6e6da769fcd3666da0af07d1b69e878064dbb7abccf2490d65d8e66b6da91",
+    "build/ios16-apfs-mount-prelink/emission.json": "24d431b2ebb65ab52c22b5ea4e2c31a78a7ed039c6ad99910e18a9aacf4433dc",
+    "build/ios16-apfs-mount-prelink/mach.data-mount.sealed.crypto-hmac.json": "97ffe9b35fe6c33da6aca0872881404879ff82523f46cfdbdfb036133389c9c1",
+    "build/ios16-apfs-mount-prelink/kernel.macho.crypto-hmac.json": "9c2e5dcf6523d96cf259b12e6be2da5dccdaa10ef6563d82fa3617700bab4706"
+  },
+  "candidate": "build/ios16-apfs-mount-prelink/kernel.macho",
+  "candidate_sha256": "81f6e6da769fcd3666da0af07d1b69e878064dbb7abccf2490d65d8e66b6da91",
+  "components": [
+    "com.apple.driver.AppleARMPlatform",
+    "com.apple.driver.AppleAudioClockLibs",
+    "com.apple.driver.AppleEffaceableStorage",
+    "com.apple.driver.AppleIISController",
+    "com.apple.driver.AppleM2ScalerCSCDriver",
+    "com.apple.driver.AppleMobileFileIntegrity",
+    "com.apple.driver.ApplePMGR",
+    "com.apple.driver.IODARTFamily",
+    "com.apple.filesystems.apfs",
+    "com.apple.iokit.CoreAnalyticsFamily",
+    "com.apple.iokit.IOAVFamily",
+    "com.apple.iokit.IOAudio2Family",
+    "com.apple.iokit.IOCECFamily",
+    "com.apple.iokit.IOCryptoAcceleratorFamily",
+    "com.apple.iokit.IOGPUFamily",
+    "com.apple.iokit.IOHDCPFamily",
+    "com.apple.iokit.IOHIDFamily",
+    "com.apple.iokit.IOMobileGraphicsFamily",
+    "com.apple.iokit.IOReportFamily",
+    "com.apple.iokit.IOSlowAdaptiveClockingFamily",
+    "com.apple.iokit.IOStorageFamily",
+    "com.apple.iokit.IOSurface",
+    "com.apple.kec.Libm",
+    "com.apple.kec.corecrypto",
+    "com.apple.kext.AppleMatch",
+    "com.apple.kext.CoreTrust",
+    "com.apple.security.AppleImage4",
+    "com.apple.security.sandbox"
+  ],
+  "kernel_interfaces": [
+    "com.apple.kpi.bsd",
+    "com.apple.kpi.dsep",
+    "com.apple.kpi.iokit",
+    "com.apple.kpi.libkern",
+    "com.apple.kpi.mach",
+    "com.apple.kpi.private",
+    "com.apple.kpi.unsupported"
+  ],
+  "pointer_sites_read_back": 63889,
+  "original_executable_segments": [
+    {
+      "component": "com.apple.driver.AppleARMPlatform",
+      "address": "0xfffffff0045ef000",
+      "bytes": 230100,
+      "sha256": "247b8b77815f8c87b43290e52a6b3888053cb3763a60bf21a004cd65b341388b"
+    },
+    {
+      "component": "com.apple.driver.AppleAudioClockLibs",
+      "address": "0xfffffff004941000",
+      "bytes": 1752,
+      "sha256": "bdafd9a2ed24d3151f1119859cd74bf5d99fd4af7afd4e74610985bc11c57008"
+    },
+    {
+      "component": "com.apple.driver.AppleEffaceableStorage",
+      "address": "0xfffffff0050bd000",
+      "bytes": 17360,
+      "sha256": "2e7b3402cdb22319fa82544ab66a9a211799f3e970c5a66f53d3867270ae0d57"
+    },
+    {
+      "component": "com.apple.driver.AppleIISController",
+      "address": "0xfffffff00494c000",
+      "bytes": 20644,
+      "sha256": "20a95cd71e2c81feb6d48230a83cdd7fe382a1396db6a02f14c5deb293f12fab"
+    },
+    {
+      "component": "com.apple.driver.AppleM2ScalerCSCDriver",
+      "address": "0xfffffff004b0f000",
+      "bytes": 398888,
+      "sha256": "617686e11f04636afa2989519498bef94349d6d2ed4e2b693a74994b4cecff62"
+    },
+    {
+      "component": "com.apple.driver.AppleMobileFileIntegrity",
+      "address": "0xfffffff0046fb000",
+      "bytes": 120712,
+      "sha256": "6cbea28deab02a2b848dfac28f11c3c00745b55e7b2a896bac3cf9a600a4c7b1"
+    },
+    {
+      "component": "com.apple.driver.ApplePMGR",
+      "address": "0xfffffff004657000",
+      "bytes": 232428,
+      "sha256": "74ac53a277da51806f323e8c7d765d4ce9baa443adf4e513be2cff52a245db0e"
+    },
+    {
+      "component": "com.apple.driver.IODARTFamily",
+      "address": "0xfffffff004afe000",
+      "bytes": 66696,
+      "sha256": "8cc7ebf550bd7735985b5de8890e3079816842d2ec29d95646f20d553d6ad021"
+    },
+    {
+      "component": "com.apple.filesystems.apfs",
+      "address": "0xfffffff00515f000",
+      "bytes": 1050376,
+      "sha256": "ebc47d686c6917c7fb154a0b2e2ed19e3d6a277d994d1395b02d3214142577cc"
+    },
+    {
+      "component": "com.apple.iokit.CoreAnalyticsFamily",
+      "address": "0xfffffff004650000",
+      "bytes": 25108,
+      "sha256": "29d73b6c2a37d9eb40712b9413db0790e7fe0122f202341852f7725e24b9ee1f"
+    },
+    {
+      "component": "com.apple.iokit.IOAVFamily",
+      "address": "0xfffffff004b91000",
+      "bytes": 381580,
+      "sha256": "e80383975371f1552b9abab64476c4e530c49f1e43c187944b3728c3e7d9d506"
+    },
+    {
+      "component": "com.apple.iokit.IOAudio2Family",
+      "address": "0xfffffff004952000",
+      "bytes": 16788,
+      "sha256": "eed290eec9f3d05a362826ad559ba494ab71e48baf746a85d5586267822a7fd4"
+    },
+    {
+      "component": "com.apple.iokit.IOCECFamily",
+      "address": "0xfffffff004b8f000",
+      "bytes": 6364,
+      "sha256": "f440e646781cc39a6f6f21cfaec088cfb030a38af19e37e6c69c99860eb6f0f8"
+    },
+    {
+      "component": "com.apple.iokit.IOCryptoAcceleratorFamily",
+      "address": "0xfffffff0046d9000",
+      "bytes": 10852,
+      "sha256": "87758ce6148f662f31e20fb7a2ec645f90f3697084db0b04331f6b44036a06fb"
+    },
+    {
+      "component": "com.apple.iokit.IOGPUFamily",
+      "address": "0xfffffff005b2b000",
+      "bytes": 153788,
+      "sha256": "34aea2cba7f617ae031c37411027b34380c68bbe1e1a17d6abbf3bbabcc777cf"
+    },
+    {
+      "component": "com.apple.iokit.IOHDCPFamily",
+      "address": "0xfffffff004b7f000",
+      "bytes": 48448,
+      "sha256": "cce46cc1281541a02de180e05e53f03b5b927c6f4688dc7078624e26b7da1800"
+    },
+    {
+      "component": "com.apple.iokit.IOHIDFamily",
+      "address": "0xfffffff004719000",
+      "bytes": 276644,
+      "sha256": "bb044497e1fe4153f33094011868beb000378a744109c890af9a8d63fa7d3145"
+    },
+    {
+      "component": "com.apple.iokit.IOMobileGraphicsFamily",
+      "address": "0xfffffff004bf3000",
+      "bytes": 214340,
+      "sha256": "03e4c4d80e4f9c78d4ad03366cd3f1d5894d054ae53cdf06b1a43c81a2eab1cd"
+    },
+    {
+      "component": "com.apple.iokit.IOReportFamily",
+      "address": "0xfffffff0045ec000",
+      "bytes": 8496,
+      "sha256": "6dc8734b81f576c22bd9fd78a686b29b46ba5cac4bff0957a489c001ffbc08d1"
+    },
+    {
+      "component": "com.apple.iokit.IOSlowAdaptiveClockingFamily",
+      "address": "0xfffffff0045d4000",
+      "bytes": 8972,
+      "sha256": "e9c3a7337345297aa9282bdd5bda52c0a3ac39a997fb2c9de5ff0952cc39294b"
+    },
+    {
+      "component": "com.apple.iokit.IOStorageFamily",
+      "address": "0xfffffff0045d7000",
+      "bytes": 83976,
+      "sha256": "4c9e7e8f12306986dc124e9e2cd4f9126fa7dc61e89155d973767b88a0d5ce6f"
+    },
+    {
+      "component": "com.apple.iokit.IOSurface",
+      "address": "0xfffffff004a44000",
+      "bytes": 145604,
+      "sha256": "201b4452233e5471fe88fb7a69e0e3c37a17df3d8eead51e2698ca663ef09bae"
+    },
+    {
+      "component": "com.apple.kec.Libm",
+      "address": "0xfffffff004b8b000",
+      "bytes": 14820,
+      "sha256": "4d56a6e6b3faf6d5a745cabc904ed6eea6f8872c80040c7e4074c15601f5151a"
+    },
+    {
+      "component": "com.apple.kec.corecrypto",
+      "address": "0xfffffff004690000",
+      "bytes": 297788,
+      "sha256": "0da4ca3127ef4ef272b776b932e8bb97855878845034ea1a2d58bb1f5fd6ddd9"
+    },
+    {
+      "component": "com.apple.kext.AppleMatch",
+      "address": "0xfffffff005260000",
+      "bytes": 7928,
+      "sha256": "11eb44b13b917ca2fe80984cc6309e819b8ef597cc9ef9601e96473af0d7fbd4"
+    },
+    {
+      "component": "com.apple.kext.CoreTrust",
+      "address": "0xfffffff0046dc000",
+      "bytes": 31736,
+      "sha256": "ffc005c8163fc83206f3b87720b512a3c7b438d64fa37fece7f437429fdaaa51"
+    },
+    {
+      "component": "com.apple.security.AppleImage4",
+      "address": "0xfffffff0046e4000",
+      "bytes": 90524,
+      "sha256": "1ad058c1e525926c1e5f99b80ee59a05e2ec96c5a9c4663f3e5196f43656099b"
+    },
+    {
+      "component": "com.apple.security.sandbox",
+      "address": "0xfffffff0054b9000",
+      "bytes": 177728,
+      "sha256": "ded8921e103c6597598c3d6b9d505748e096fb77936625d84f5dddde8ead47ca"
+    }
+  ],
+  "original_aliases": [
+    {
+      "symbol": "__ZN15IOAcceleratorES10gMetaClassE",
+      "address": "0xfffffff006bb6448",
+      "component": "com.apple.iokit.IOGPUFamily",
+      "kind": "metadata"
+    },
+    {
+      "symbol": "__ZN15IOAcceleratorESC2EPK11OSMetaClass",
+      "address": "0xfffffff005b45228",
+      "component": "com.apple.iokit.IOGPUFamily",
+      "kind": "function"
+    },
+    {
+      "symbol": "__ZN15IOAcceleratorESD2Ev",
+      "address": "0xfffffff005b4526c",
+      "component": "com.apple.iokit.IOGPUFamily",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_complete_current",
+      "address": "0xfffffff004c1ace4",
+      "component": "com.apple.iokit.IOMobileGraphicsFamily",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_refresh_notify",
+      "address": "0xfffffff004c1b838",
+      "component": "com.apple.iokit.IOMobileGraphicsFamily",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_allocation",
+      "address": "0xfffffff004a4e834",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_bytes_per_element",
+      "address": "0xfffffff004a4e814",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_element_height",
+      "address": "0xfffffff004a4e824",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_element_width",
+      "address": "0xfffffff004a4e81c",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_format",
+      "address": "0xfffffff004a4e7e4",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_height",
+      "address": "0xfffffff004a4e7fc",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_offset",
+      "address": "0xfffffff004a4e804",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_planes",
+      "address": "0xfffffff004a4e82c",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_region",
+      "address": "0xfffffff004a4e844",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_stride",
+      "address": "0xfffffff004a4e80c",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_tile_format",
+      "address": "0xfffffff004a50528",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_tile_mode",
+      "address": "0xfffffff004a54ad4",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_width",
+      "address": "0xfffffff004a4e7f4",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_submit_default_packet",
+      "address": "0xfffffff004c14930",
+      "component": "com.apple.iokit.IOMobileGraphicsFamily",
+      "kind": "function"
+    },
+    {
+      "symbol": "_native_iphone_surface_id",
+      "address": "0xfffffff004a4e7ec",
+      "component": "com.apple.iokit.IOSurface",
+      "kind": "function"
+    }
+  ],
+  "native_source_entries_preserved": 91,
+  "early_security_entries_read_back": 2,
+  "original_aliases_read_back": 208,
+  "original_storage_aliases_read_back": 12,
+  "concrete_display_vtable_entries_read_back": 338,
+  "concrete_storage_vtable_entries_read_back": 190,
+  "original_display_parent_words_read_back": 340,
+  "original_storage_parent_words_read_back": 192,
+  "actual_iobsd_hook_read_back": {
+    "address": "0xfffffff0079a6f6c",
+    "bytes": 80,
+    "sha256": "b2da1b0f291ef1f22008d463c658ea67dfc80666a8d7ba8872409ed8c3633c29",
+    "queue_call_order": [
+      "0xfffffff0079a6f80",
+      "0xfffffff0079a6f84",
+      "0xfffffff0079a6f88",
+      "0xfffffff0079a6f8c"
+    ],
+    "call_targets": [
+      "IOBSD publication",
+      "system scheduler",
+      "Data scheduler",
+      "input scheduler"
+    ]
+  },
+  "concrete_input_vtable_entries_read_back": 207,
+  "original_hid_parent_words_read_back": 209,
+  "original_hid_aliases_read_back": 53,
+  "concrete_edge_vtable_entries_read_back": 219,
+  "original_event_driver_parent_words_read_back": 221,
+  "original_event_aliases_read_back": 71,
+  "embedded_spi_firmware_bytes_read_back": 2141,
+  "embedded_spi_firmware_sha256": "3ea1a3aa89bd68e76491e3a2a55f46ba674cf4f96f11b1eb10a46c5fe853951e",
+  "combined_source_objects": 87,
+  "combined_original_aliases": 332,
+  "ramblock_instance_bytes": 352,
+  "ramblock_vtable_entries_read_back": 190,
+  "actual_iobsd_hook": {
+    "address": "0xfffffff0079a6f6c",
+    "bytes": 80,
+    "sha256": "b2da1b0f291ef1f22008d463c658ea67dfc80666a8d7ba8872409ed8c3633c29",
+    "queue_call_order": [
+      "0xfffffff0079a6f80",
+      "0xfffffff0079a6f84",
+      "0xfffffff0079a6f88",
+      "0xfffffff0079a6f8c"
+    ],
+    "call_targets": [
+      "IOBSD publication",
+      "system scheduler",
+      "Data scheduler",
+      "input scheduler"
+    ]
+  },
+  "actual_init_hook": {
+    "address": "0xfffffff00773da64",
+    "bytes": 632,
+    "sha256": "e982c63960bfc19df7e6f2cf4412ab968ec950d7ff42434a22525b05e34f727f",
+    "scratch_allocate_calls": [
+      "0xfffffff00773dab4"
+    ],
+    "data_boot_call": "0xfffffff00773dac4",
+    "load_init_path_calls": [
+      "0xfffffff00773db74",
+      "0xfffffff00773dbbc",
+      "0xfffffff00773dc00",
+      "0xfffffff00773dc64"
+    ],
+    "default_mount_enabled": false
+  },
+  "negative_controls": [
+    {
+      "case": "pointer",
+      "result": "REJECTED",
+      "check": "Pointer readback differs at 0xfffffff005ca4a48"
+    },
+    {
+      "case": "original-code",
+      "result": "REJECTED",
+      "check": "Original executable readback differs: com.apple.iokit.IOMobileGraphicsFamily"
+    },
+    {
+      "case": "post-field",
+      "result": "REJECTED",
+      "check": "POST field does not match actual native instructions"
+    },
+    {
+      "case": "native-code",
+      "result": "REJECTED",
+      "check": "POST field does not match actual native instructions"
+    },
+    {
+      "case": "absolute-alias",
+      "result": "REJECTED",
+      "check": "Original alias symbol differs: _native_iphone_surface_id"
+    },
+    {
+      "case": "RamBlock-table",
+      "result": "REJECTED",
+      "reason": "RamBlock concrete pointers changed"
+    },
+    {
+      "case": "BSD-Data-call",
+      "result": "REJECTED",
+      "reason": "Data startup publication/system/Data/input queue order changed"
+    },
+    {
+      "case": "_dodge_data_mount_for_init-RET",
+      "result": "REJECTED",
+      "reason": "POST field does not match actual native instructions"
+    },
+    {
+      "case": "_dodge_apfs_mount_syscall-RET",
+      "result": "REJECTED",
+      "reason": "POST field does not match actual native instructions"
+    },
+    {
+      "case": "init-Data-call-NOP",
+      "result": "REJECTED",
+      "reason": "Init scratch/Data/launchd call order differs"
+    }
+  ],
+  "darwinboot_production_parser": "PASS",
+  "source_crypto_post_verified": true,
+  "strict_no_undefined": true,
+  "source_data_default_enabled": false,
+  "source_data_mount_default_enabled": false,
+  "init_boot_call_site_wired": true,
+  "ramblock_metadata_registered_or_started": false,
+  "original_apfs_data_mount_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "phone_operations": "none",
+  "scope": "Separate 87-object source/original candidate adds a default-off init-context Data mount API with a verified init call site and preserves actual system/Data/input IOBSD queue ordering, exact component/pointer/code and concrete/parent-table readback. POST and production-loader parser pass. No original Data mount, hardware start or writable iOS runtime qualification."
+}

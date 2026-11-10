@@ -1,0 +1,64 @@
+--- a/DarwinBootPkg/Driver/DarwinBoot.c
++++ b/DarwinBootPkg/Driver/DarwinBoot.c
+@@ -16,6 +16,7 @@
+ #include "BootVideo.h"
+ #include "PackedRamdisk.h"
+ #include "WindowSize.h"
++#include "DodgeBootEntropy.h"
+ 
+ #define WINDOW_SIZE  SIZE_256MB
+ #define BLOCK_SIZE   SIZE_2MB
+@@ -582,6 +583,7 @@
+   BOOLEAN                         RamdiskPacked;
+   BOOLEAN                         KeepPacked;
+   UINTN                           TrustCacheOffset;
++  UINTN                           EntropyOffset;
+   UINT64                          TrustCacheAddress;
+   UINTN                           AddonOffset;
+   UINT64                          AddonAddress;
+@@ -621,6 +623,8 @@
+       CommandLine[Index] = (CHAR8)Request->BootArgs[Index];
+     }
+   }
++  EntropyOffset = MAX_UINTN;
++  TreeAddress = 0;
+   Root = NULL;
+   Image = NULL;
+   Tree = NULL;
+@@ -752,6 +756,8 @@
+   Args->DeviceTreeLength = (UINT32)TreeSize;
+   CopyMem (Args->CommandLine, CommandLine, sizeof (CommandLine));
+   CopyMem ((VOID *)(UINTN)TreeAddress, Tree, TreeSize);
++  Status = DodgeBootRefreshEntropy ((VOID *)(UINTN)TreeAddress, TreeSize, &EntropyOffset);
++  if (Status != EFI_SUCCESS) { goto Fail; }
+   if (Request->Ramdisk != NULL) {
+     if (KeepPacked) { CopyMem ((VOID *)(UINTN)RamdiskAddress, Request->Ramdisk, Request->RamdiskSize); }
+     else { CopyRamdisk ((VOID *)(UINTN)RamdiskAddress, Request->Ramdisk, Request->RamdiskSize, RamdiskPacked); }
+@@ -826,6 +832,9 @@
+   CpuDeadLoop ();
+   return EFI_ABORTED;
+ Fail:
++  if ((Address != 0) && (EntropyOffset != MAX_UINTN)) {
++    DodgeBootEntropyErase ((VOID *)(UINTN)(TreeAddress + EntropyOffset), DODGE_BOOT_ENTROPY_BYTES);
++  }
+   if (Root != NULL) { Root->Close (Root); }
+   if (Image != NULL) { FreePool (Image); }
+   if (Tree != NULL) { FreePool (Tree); }
+--- a/DarwinBootPkg/Driver/DarwinBoot.inf
++++ b/DarwinBootPkg/Driver/DarwinBoot.inf
+@@ -10,6 +10,7 @@
+ [Sources]
+   DarwinBoot.c
+   PackedRamdisk.h
++  DodgeBootEntropy.h
+   BootArgs.h
+   BootVideo.h
+   DiagFont.h
+@@ -34,6 +35,7 @@
+   gEfiSimpleFileSystemProtocolGuid ## CONSUMES
+   gEfiLoadedImageProtocolGuid ## CONSUMES
+   gEfiGraphicsOutputProtocolGuid ## CONSUMES
++  gEfiRngProtocolGuid ## CONSUMES
+ 
+ [Guids]
+   gEfiFileInfoGuid

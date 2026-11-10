@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "target": "arm64-apple-ios16.0",
+  "typed_pointer": "accepted",
+  "void_wildcard": "accepted",
+  "wrong_pointer": "rejected",
+  "non_pointer": "rejected",
+  "uio_byte_capacity": 72,
+  "uio_alignment": 8,
+  "source_sha256": {
+    "osfmk/kern/kalloc.h": "fef74dede34bac1b4c10bafaad4661026e1d4df59c2765d80505a39431f51e81",
+    "bsd/sys/uio_internal.h": "e9ed70b09e80f0d5cba980b9e7025f840ac6b6f7e4f616f004a4393746765821"
+  },
+  "scope": "Production source macros/structures compiled for ARM64, including a negative type check; no hardware runtime."
+}

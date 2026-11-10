@@ -1,0 +1,936 @@
+{
+  "result": "IOS16_ACTUAL_DATA_STARTUP_AND_DATA_PATHS_ARM64_PASS",
+  "builder_sha256": "d9069b1328b511066b84a5d8a7da80ebbf19ce3f90ecc4086ee7bc4662b81a5f",
+  "source_sha256": {
+    "scripts/check_data_startup_kernel.py": "d9069b1328b511066b84a5d8a7da80ebbf19ce3f90ecc4086ee7bc4662b81a5f",
+    "scripts/check_data_kernel.py": "e63106198779bec1089a66f90925213611f311bb8f726c4a48e3ca9afb882e39",
+    "drivers/DodgeStorage/DodgeDataLate.cpp": "0808881794d9cca80290edb218cca167ab1d04429d5dfd5abc1b938257917426",
+    "drivers/DodgeStorage/DodgeDataLate.h": "cb24acc3af548e9059c1055b9ec0cdc3adedf5846b0b2295e33565d6c6922f5f"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-data-startup-prelink.json": "6f4deaf35a3bb398feef90a613d94b9567e2c19dbbc0be8fad6b2ee1445f0752",
+    "reports/ios16-data-kernel.json": "c65a014332cbf39e77b2e92fa315822a3bd665ecebb44fed032491ac8af45eb8",
+    "reports/ios16-data-startup.json": "c515635f4d7ab7d6aea87345b3b4952bb1f2530c58140d90167ec6216347bcc9"
+  },
+  "artifacts": {
+    "build/cph2653-data-startup-kernel/abi/DataLateLayout.o": "56148442a9a4240657853a15cf7b2a94dc85e338810478003a847f6a18a13f7a",
+    "build/cph2653-data-startup-kernel/cpu-cases.json": "7f960d15cd866efbb22d75f07f890eaa652ca905441c7d3de0393d6d0c7b5584"
+  },
+  "candidate": "build/cph2653-data-startup-prelink/kernel.macho",
+  "candidate_sha256": "2dd49342fc3cc52e948c7649aa848399a901c4f7a5b4ef3a735ce99c985a3b50",
+  "case_count": 43,
+  "scheduler_case_count": 13,
+  "data_case_count": 30,
+  "scheduling_cases": [
+    {
+      "case": "default-disabled",
+      "result": "PASS",
+      "starter_calls": 0,
+      "sleeps": 0,
+      "owned_releases": 0,
+      "phase": 0,
+      "attempts": 0,
+      "explicit_peers": [
+        "_PE_parse_boot_argn",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "_dodge_input_schedule",
+        "_dodge_system_schedule",
+        "_thread_call_allocate_with_options"
+      ]
+    },
+    {
+      "case": "data-success",
+      "result": "PASS",
+      "starter_calls": 1,
+      "sleeps": 0,
+      "owned_releases": 1,
+      "phase": 3,
+      "attempts": 1,
+      "explicit_peers": [
+        "_PE_parse_boot_argn",
+        "__ZN9IOService11getPlatformEv",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK9IOService10isInactiveEv",
+        "__ZNK9IOService11getProviderEv",
+        "_current_thread",
+        "_dodge_input_schedule",
+        "_dodge_ramblock_start",
+        "_dodge_ramblock_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    },
+    {
+      "case": "thread-failure",
+      "result": "PASS",
+      "starter_calls": 0,
+      "sleeps": 0,
+      "owned_releases": 0,
+      "phase": 0,
+      "attempts": 0,
+      "explicit_peers": [
+        "_PE_parse_boot_argn",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "_dodge_input_schedule",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options"
+      ]
+    },
+    {
+      "case": "thread-retry",
+      "result": "PASS",
+      "starter_calls": 1,
+      "sleeps": 0,
+      "owned_releases": 1,
+      "phase": 3,
+      "attempts": 1,
+      "explicit_peers": [
+        "_PE_parse_boot_argn",
+        "__ZN9IOService11getPlatformEv",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK9IOService10isInactiveEv",
+        "__ZNK9IOService11getProviderEv",
+        "_current_thread",
+        "_dodge_input_schedule",
+        "_dodge_ramblock_start",
+        "_dodge_ramblock_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    },
+    {
+      "case": "missing-root",
+      "result": "PASS",
+      "starter_calls": 0,
+      "sleeps": 999,
+      "owned_releases": 0,
+      "phase": 3,
+      "attempts": 1000,
+      "explicit_peers": [
+        "_IOSleep",
+        "_PE_parse_boot_argn",
+        "__ZN9IOService11getPlatformEv",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "_current_thread",
+        "_dodge_input_schedule",
+        "_dodge_ramblock_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    },
+    {
+      "case": "wait-storage",
+      "result": "PASS",
+      "starter_calls": 1,
+      "sleeps": 2,
+      "owned_releases": 1,
+      "phase": 3,
+      "attempts": 3,
+      "explicit_peers": [
+        "_IOSleep",
+        "_PE_parse_boot_argn",
+        "__ZN9IOService11getPlatformEv",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK9IOService10isInactiveEv",
+        "__ZNK9IOService11getProviderEv",
+        "_current_thread",
+        "_dodge_input_schedule",
+        "_dodge_ramblock_start",
+        "_dodge_ramblock_status",
+        "_dodge_system_late_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    },
+    {
+      "case": "wait-graphics",
+      "result": "PASS",
+      "starter_calls": 1,
+      "sleeps": 3,
+      "owned_releases": 1,
+      "phase": 3,
+      "attempts": 4,
+      "explicit_peers": [
+        "_IOSleep",
+        "_PE_parse_boot_argn",
+        "__ZN9IOService11getPlatformEv",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK9IOService10isInactiveEv",
+        "__ZNK9IOService11getProviderEv",
+        "_current_thread",
+        "_dodge_graphics_late_status",
+        "_dodge_input_schedule",
+        "_dodge_ramblock_start",
+        "_dodge_ramblock_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    },
+    {
+      "case": "busy-then-success",
+      "result": "PASS",
+      "starter_calls": 3,
+      "sleeps": 2,
+      "owned_releases": 1,
+      "phase": 3,
+      "attempts": 3,
+      "explicit_peers": [
+        "_IOSleep",
+        "_PE_parse_boot_argn",
+        "__ZN9IOService11getPlatformEv",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK9IOService10isInactiveEv",
+        "__ZNK9IOService11getProviderEv",
+        "_current_thread",
+        "_dodge_input_schedule",
+        "_dodge_ramblock_start",
+        "_dodge_ramblock_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    },
+    {
+      "case": "sticky-init-failure",
+      "result": "PASS",
+      "starter_calls": 1,
+      "sleeps": 0,
+      "owned_releases": 0,
+      "phase": 3,
+      "attempts": 1,
+      "explicit_peers": [
+        "_PE_parse_boot_argn",
+        "__ZN9IOService11getPlatformEv",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "__ZNK9IOService10isInactiveEv",
+        "__ZNK9IOService11getProviderEv",
+        "_current_thread",
+        "_dodge_input_schedule",
+        "_dodge_ramblock_start",
+        "_dodge_ramblock_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    },
+    {
+      "case": "error-owned-driver",
+      "result": "PASS",
+      "starter_calls": 1,
+      "sleeps": 0,
+      "owned_releases": 1,
+      "phase": 3,
+      "attempts": 1,
+      "explicit_peers": [
+        "_PE_parse_boot_argn",
+        "__ZN9IOService11getPlatformEv",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK9IOService10isInactiveEv",
+        "__ZNK9IOService11getProviderEv",
+        "_current_thread",
+        "_dodge_input_schedule",
+        "_dodge_ramblock_start",
+        "_dodge_ramblock_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    },
+    {
+      "case": "success-null-driver",
+      "result": "PASS",
+      "starter_calls": 1,
+      "sleeps": 0,
+      "owned_releases": 0,
+      "phase": 3,
+      "attempts": 1,
+      "explicit_peers": [
+        "_PE_parse_boot_argn",
+        "__ZN9IOService11getPlatformEv",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "__ZNK9IOService10isInactiveEv",
+        "__ZNK9IOService11getProviderEv",
+        "_current_thread",
+        "_dodge_input_schedule",
+        "_dodge_ramblock_start",
+        "_dodge_ramblock_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    },
+    {
+      "case": "start-timeout",
+      "result": "PASS",
+      "starter_calls": 1000,
+      "sleeps": 999,
+      "owned_releases": 0,
+      "phase": 3,
+      "attempts": 1000,
+      "explicit_peers": [
+        "_IOSleep",
+        "_PE_parse_boot_argn",
+        "__ZN9IOService11getPlatformEv",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "__ZNK9IOService10isInactiveEv",
+        "__ZNK9IOService11getProviderEv",
+        "_current_thread",
+        "_dodge_input_schedule",
+        "_dodge_ramblock_start",
+        "_dodge_ramblock_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    },
+    {
+      "case": "earlier-timeout",
+      "result": "PASS",
+      "starter_calls": 0,
+      "sleeps": 999,
+      "owned_releases": 0,
+      "phase": 3,
+      "attempts": 1000,
+      "explicit_peers": [
+        "_IOSleep",
+        "_PE_parse_boot_argn",
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "_current_thread",
+        "_dodge_input_schedule",
+        "_dodge_system_late_status",
+        "_dodge_system_schedule",
+        "_kernel_thread_start",
+        "_thread_call_allocate_with_options",
+        "_thread_deallocate",
+        "_thread_terminate"
+      ]
+    }
+  ],
+  "data_cases": [
+    {
+      "case": "null-buffer",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "null-completion",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "null-action",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "zero-count",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "block-at-end",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "count-overflow",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "short-buffer",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "__ZNK18IOMemoryDescriptor9getLengthEv"
+      ]
+    },
+    {
+      "case": "bad-direction",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv"
+      ]
+    },
+    {
+      "case": "no-gate",
+      "result": "PASS",
+      "return": "0xe00002d8",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv"
+      ]
+    },
+    {
+      "case": "offline",
+      "result": "PASS",
+      "return": "0xe00002d8",
+      "completions": [],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "read-seed",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "read-hole",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "read-cross-page",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          1536
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "write-existing",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "write-hole",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 1,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "_IOMalloc_internal",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "write-cross-page",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          1536
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 2,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "_IOMalloc_internal",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "write-last-sector",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 1,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "_IOMalloc_internal",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "allocate-failure",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          3758097085,
+          0
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "_IOMalloc_internal",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "allocate-partial",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          3758097085,
+          4096
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 1,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "_IOMalloc_internal",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "short-read",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          3758097098,
+          29
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "short-write",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          3758097098,
+          29
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "big-read",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "big-write-no-store",
+      "result": "PASS",
+      "return": "0xe00002d8",
+      "completions": [],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "sticky-direct-failure",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          3758097098,
+          0
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "dense-read",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "dense-write",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "source-original-native-C1-D1",
+      "result": "PASS",
+      "original_parent_C2_D2_executed": true,
+      "original_storage_init_executed": false,
+      "init_peers": [],
+      "instance_bytes": 352,
+      "visited": [
+        "__ZN14NativeRamBlockC1Ev",
+        "original-storage.C2",
+        "original-storage.C2-import",
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2",
+        "__ZNK14NativeRamBlock12getMetaClassEv",
+        "__ZN14NativeRamBlockD1Ev",
+        "original-storage.D2",
+        "original-storage.D2-import",
+        "IOService.D2",
+        "IORegistryEntry.D2",
+        "OSObject.D2",
+        "OSMetaClassBase.D2"
+      ],
+      "explicit_peer": "OSMetaClass::instanceConstructed accounting; native parent init and registry property only for init cases"
+    },
+    {
+      "case": "init-parent-failure",
+      "result": "PASS",
+      "original_parent_C2_D2_executed": true,
+      "original_storage_init_executed": true,
+      "init_peers": [
+        "native-parent-init-peer"
+      ],
+      "instance_bytes": 352,
+      "visited": [
+        "__ZN14NativeRamBlockC1Ev",
+        "original-storage.C2",
+        "original-storage.C2-import",
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2",
+        "__ZNK14NativeRamBlock12getMetaClassEv",
+        "original-storage.init",
+        "__ZN14NativeRamBlockD1Ev",
+        "original-storage.D2",
+        "original-storage.D2-import",
+        "IOService.D2",
+        "IORegistryEntry.D2",
+        "OSObject.D2",
+        "OSMetaClassBase.D2"
+      ],
+      "explicit_peer": "OSMetaClass::instanceConstructed accounting; native parent init and registry property only for init cases"
+    },
+    {
+      "case": "init-property-failure",
+      "result": "PASS",
+      "original_parent_C2_D2_executed": true,
+      "original_storage_init_executed": true,
+      "init_peers": [
+        "native-parent-init-peer",
+        "registry-string-property-peer"
+      ],
+      "instance_bytes": 352,
+      "visited": [
+        "__ZN14NativeRamBlockC1Ev",
+        "original-storage.C2",
+        "original-storage.C2-import",
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2",
+        "__ZNK14NativeRamBlock12getMetaClassEv",
+        "original-storage.init",
+        "__ZN14NativeRamBlockD1Ev",
+        "original-storage.D2",
+        "original-storage.D2-import",
+        "IOService.D2",
+        "IORegistryEntry.D2",
+        "OSObject.D2",
+        "OSMetaClassBase.D2"
+      ],
+      "explicit_peer": "OSMetaClass::instanceConstructed accounting; native parent init and registry property only for init cases"
+    },
+    {
+      "case": "init-success",
+      "result": "PASS",
+      "original_parent_C2_D2_executed": true,
+      "original_storage_init_executed": true,
+      "init_peers": [
+        "native-parent-init-peer",
+        "registry-string-property-peer"
+      ],
+      "instance_bytes": 352,
+      "visited": [
+        "__ZN14NativeRamBlockC1Ev",
+        "original-storage.C2",
+        "original-storage.C2-import",
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2",
+        "__ZNK14NativeRamBlock12getMetaClassEv",
+        "original-storage.init",
+        "__ZN14NativeRamBlockD1Ev",
+        "original-storage.D2",
+        "original-storage.D2-import",
+        "IOService.D2",
+        "IORegistryEntry.D2",
+        "OSObject.D2",
+        "OSMetaClassBase.D2"
+      ],
+      "explicit_peer": "OSMetaClass::instanceConstructed accounting; native parent init and registry property only for init cases"
+    }
+  ],
+  "native_status_layout": {
+    "data_bytes": 16,
+    "data_phase": 0,
+    "data_last": 4,
+    "data_attempts": 8,
+    "data_started": 12,
+    "system_bytes": 20,
+    "system_phase": 0,
+    "graphics_bytes": 16,
+    "graphics_phase": 0,
+    "ram_bytes": 16,
+    "ram_phase": 0,
+    "ram_start": 4,
+    "ram_pin": 12,
+    "ram_retained": 14,
+    "data_cold": 0,
+    "data_queued": 1,
+    "data_finished": 3,
+    "system_finished": 3,
+    "graphics_finished": 3,
+    "ram_ready": 2,
+    "ram_start_failed": 3,
+    "success": 0,
+    "not_ready": 3758097112,
+    "busy": 3758097109,
+    "error": 3758097084,
+    "not_permitted": 3758097122
+  },
+  "negative_controls": [
+    {
+      "case": "actual-BSD-Data-call-NOP",
+      "result": "REJECTED",
+      "reason": "Actual IOBSD Data queue ordering changed"
+    }
+  ],
+  "actual_iobsd_and_data_scheduler_executed": true,
+  "data_starter_implementation_is_a_peer_in_scheduler_cases": true,
+  "original_apfs_data_mount_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "phone_operations": "none",
+  "scope": "Actual 84-object prelinked IOBSD/Data scheduler and bounded worker, with explicit system/input scheduler, IOKit/thread and Data-starter peers. The existing 30 Data I/O/C1/D1/original-init CPU paths are rerun against this exact new candidate. No complete registry/APFS/phone runtime qualification."
+}

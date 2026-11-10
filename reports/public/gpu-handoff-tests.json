@@ -1,0 +1,41 @@
+{
+  "result": "GPU_HANDOFF_AND_TARGET_BOARD_HOST_TESTS_PASS",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "source_revisions": {
+    "oneplus13t_reference": "ad022a2a3a2e0c71c340361392d30d424c66b4d2",
+    "pagani_reference": "f5017376415268fd39dcf0b3fd68a94661cee078",
+    "sm8750": "669bceeaadc298e085f33d393c941eaca9e2c08c",
+    "a830_backend_reference": "1baf6d3a1d0f133d284f8b8844cc98bf5aff1bbe"
+  },
+  "target_board_source_sha256": "59b2c6bce813348021f9ac8e4222c3af9ff6fdaf90eece191ce2cb5aff4267e1",
+  "optional_call_overlay": {
+    "patch": {
+      "path": "patches/oneplus13/0004-static-presenter-optional-calls.patch",
+      "sha256": "c6906493db3bc93105d6e239ee859dc16852121b9cea8e1c0b786a856afde728",
+      "source_key": "pagani_reference",
+      "source_revision": "f5017376415268fd39dcf0b3fd68a94661cee078",
+      "files": [
+        "NativeGOPPresenter.cpp",
+        "NativeGpuTrace.h"
+      ]
+    },
+    "helper_sha256": "9ff7904efbec1c7363909155a051b62f218dbd7106fc60d2957dad2ec55de714",
+    "stage": ".cache/gpu-work/kernel-optional/presenter",
+    "patched_source_sha256": {
+      "NativeGOPPresenter.cpp": "a1346a8a6b08116d22eeacfd74e9505e96b997d329255645705a2acb53eb0d9b",
+      "NativeGpuTrace.h": "0cc9535ed64cf98b0e2935b06612b4af2d4d1f145501b58f6cc3829ccaa26f97"
+    }
+  },
+  "optional_call_helper_sha256": "9ff7904efbec1c7363909155a051b62f218dbd7106fc60d2957dad2ec55de714",
+  "test_scripts": {
+    "test-gpu-presenter.py": "9eb046393e3b283677a43f203ac7dadd08b714d4a0541833b7b32f7b1f504aee",
+    "test-gpu-smmu.py": "b71bb00e68ac97c94ff0a77cb09e5cc185f176c28d2b494f70dd9b9a79a54850"
+  },
+  "log": "build/cph2653-gpu-handoff-tests/tests.log",
+  "log_sha256": "2f774c864e91cc203aabe1bead1e46e54af5a42b598398db987ac1efc821a6e3",
+  "hardware_tested": false,
+  "scope": "Actual presenter methods and target board SMMU/status code over software allocation/MMIO peers."
+}

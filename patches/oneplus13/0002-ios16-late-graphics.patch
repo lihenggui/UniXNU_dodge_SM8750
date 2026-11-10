@@ -1,0 +1,16 @@
+--- a/iokit/bsddev/IOKitBSDInit.cpp
++++ b/iokit/bsddev/IOKitBSDInit.cpp
+@@ -106,10 +106,13 @@
+ thread_call_t corefile_open_call = NULL;
+ #endif
+ 
++extern "C" IOReturn dodge_graphics_schedule(void);
++
+ kern_return_t
+ IOKitBSDInit( void )
+ {
+ 	IOService::publishResource("IOBSD");
++	(void)dodge_graphics_schedule();
+ 
+ #if IOPOLLED_COREFILE
+ 	corefile_open_call = thread_call_allocate_with_options(IOOpenPolledCoreFile, NULL, THREAD_CALL_PRIORITY_KERNEL, THREAD_CALL_OPTIONS_ONCE);

@@ -1,0 +1,78 @@
+--- a/drivers/DodgeDisplay/DodgeDisplayFrontend.cpp
++++ b/drivers/DodgeDisplay/DodgeDisplayFrontend.cpp
+@@ -71,7 +71,9 @@
+ }
+ static bool gpuReady(DodgeDisplayFrontend *front,DodgeFrontendEntry &entry) {
+     if(entry.gpuInvalid)return false;
+-    if(!front->requiresAdreno || entry.gpuPassed)return true;
++    // A completed historical fence does not establish current GPU health.
++    // IOSurface can grant this reader after its upstream writer failed.
++    if(!front->requiresAdreno)return true;
+     DodgeAdrenoTimeline snapshot={};
+     if(!dodge_adreno_display_timeline(&snapshot) || !snapshot.epoch)return false;
+     const uint32_t submitted=snapshot.submitted,retired=snapshot.retired;
+@@ -87,6 +89,16 @@
+     // A regressing timeline is not evidence that the old work completed.
+     if(submitted<entry.gpuTarget || retired<entry.gpuTarget)return false;
+     entry.gpuPassed=true;return true;
++}
++static bool gpuCurrent(const DodgeDisplayFrontend *front,const DodgeFrontendEntry &entry) {
++    if(!front->requiresAdreno)return true;
++    if(entry.gpuInvalid || !entry.gpuCaptured || !entry.gpuPassed)return false;
++    DodgeAdrenoTimeline snapshot={};
++    // Admission remains read-only and nonblocking. This samples the
++    // locked backend after backing/map callbacks and before retirement.
++    return dodge_adreno_display_timeline(&snapshot) && snapshot.epoch==entry.gpuEpoch &&
++        snapshot.retired<=snapshot.submitted && snapshot.submitted>=entry.gpuSubmitted &&
++        snapshot.retired>=entry.gpuRetired && snapshot.retired>=entry.gpuTarget;
+ }
+ static void fired(OSObject *owner,IOTimerEventSource *sender) {
+     auto *front=static_cast<DodgeDisplayFrontend *>(sender->getRefcon());
+@@ -174,7 +186,7 @@
+ static bool admitted(IOService *display,IOMFBSwapIORequest *request,void *cookie) {
+     auto *front=static_cast<DodgeDisplayFrontend *>(cookie);
+     return gated(front) && live(front) && display==front->display && front->active && front->active->inflight &&
+-        front->active->request==request && (!front->requiresAdreno || front->active->gpuPassed) && matches(front,*front->active,true);
++        front->active->request==request && gpuCurrent(front,*front->active) && matches(front,*front->active,true);
+ }
+ 
+ static void observed(IOService *display,IOMFBSwapIORequest *request,IOReturn status,void *cookie) {
+@@ -184,6 +196,9 @@
+         front->active=nullptr;entry->inflight=false;front->last=status;
+         if(status==kIOReturnSuccess) {++front->retired;clearEntry(*entry);}
+         else if(front->draining || !pendingContains(front,request))clearEntry(*entry);
++        else if(front->requiresAdreno && !gpuReady(front,*entry)) {
++            front->last=entry->gpuInvalid?kIOReturnAborted:retry(front);
++        }
+         // Never spin on an unchanged failed head. A later family kick may
+         // retry it; successful retirement can progress the next queued frame.
+         if(status==kIOReturnSuccess && !front->draining)dodge_display_frontend_kick(front);
+@@ -314,12 +329,17 @@
+         if(!live(front) || !matches(front,*entry,true) || !IPhone16Swap::canActivatePending(front->display,request)) {
+             result=kIOReturnAborted;break;
+         }
++        if(!gpuReady(front,*entry)) {result=entry->gpuInvalid?kIOReturnAborted:retry(front);break;}
+         const uint64_t generation=entry->generation;
+         front->active=entry;entry->inflight=true;retainFrontend(front);
+         result=dodge_gpu_swap_bridge_offer(front->bridge,request,entry->backing,true);
+         if(front->active==entry && entry->used && entry->generation==generation && result!=kIOReturnSuccess) {
+             // Input/allocation refusals do not deliver a bridge observer.
+             front->active=nullptr;entry->inflight=false;releaseFrontend(front);
++        }
++        if(result!=kIOReturnSuccess && live(front) && entry->used && entry->generation==generation &&
++           !entry->inflight && front->requiresAdreno && !gpuReady(front,*entry)) {
++            result=entry->gpuInvalid?kIOReturnAborted:(front->waiting?kIOReturnBusy:retry(front));
+         }
+     } while(front->rekick && !front->active && !front->draining);
+     front->last=result;front->kicking=false;releaseFrontend(front);return result;
+@@ -349,7 +369,9 @@
+         slot->building=false;
+         if(!slot->inflight && (!slot->request || result!=kIOReturnSuccess || !pendingContains(front,slot->request)))clearEntry(*slot);
+     }
+-    ++front->submitted;front->last=result;return result;
++    // Queue acceptance must not overwrite a synchronous display refusal
++    // or a producer retry reported by the actual enqueue-time kick.
++    ++front->submitted;if(result!=kIOReturnSuccess)front->last=result;return result;
+ }
+ 
+ IOReturn dodge_display_frontend_submit(DodgeDisplayFrontend *front,const void *packet,unsigned bytes,void *submitter) {

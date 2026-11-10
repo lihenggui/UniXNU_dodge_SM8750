@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "module": "com.apple.kec.corecrypto",
+  "module_version": "12.0",
+  "module_record_version": "1.0.0d1",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "module_bytes": 788012,
+  "compiler_layout": {
+    "kmod_bytes": 196,
+    "kmod_info_version": 8,
+    "kmod_name": 16,
+    "kmod_version": 80,
+    "kmod_address": 156,
+    "kmod_size": 164,
+    "kmod_start": 180,
+    "kmod_stop": 188,
+    "crypto_bytes": 448,
+    "crypto_ccdigest_init_fn": 0,
+    "crypto_ccmd5_di": 32,
+    "crypto_ccsha256_di": 48,
+    "crypto_ccrng_fn": 296,
+    "crypto_random_generate_fn": 320,
+    "crypto_random_kmem_init_fn": 344,
+    "crypto_digest_ctx_size_fn": 352,
+    "prng_bytes": 48,
+    "prng_init": 0,
+    "prng_initgen": 8,
+    "prng_reseed": 16,
+    "prng_refresh": 24,
+    "prng_generate": 32,
+    "prng_init_with_getentropy": 40,
+    "sysctl_stage": 15,
+    "early_boot_stage": 16
+  },
+  "slide": "-0x1000000",
+  "original_bindings": {
+    "_dodge_original_crypto_kmod": "0xfffffff007a0b800",
+    "_dodge_original_crypto_header": "0xfffffff004dfc480",
+    "_dodge_original_crypto_entry": "0xfffffff0056d892c",
+    "_dodge_original_crypto_real_entry": "0xfffffff0056d5f3c",
+    "_dodge_original_crypto_entry_slot": "0xfffffff007a0b8c8",
+    "_dodge_original_crypto_functions": "0xfffffff006ca8550",
+    "_dodge_original_crypto_prng_context": "0xfffffff007a0faa0"
+  },
+  "linked_bindings": {
+    "_dodge_original_crypto_kmod": "0xfffffff006a0b800",
+    "_dodge_original_crypto_header": "0xfffffff003dfc480",
+    "_dodge_original_crypto_entry": "0xfffffff0046d892c",
+    "_dodge_original_crypto_real_entry": "0xfffffff0046d5f3c",
+    "_dodge_original_crypto_entry_slot": "0xfffffff006a0b8c8",
+    "_dodge_original_crypto_functions": "0xfffffff005ca8550",
+    "_dodge_original_crypto_prng_context": "0xfffffff006a0faa0"
+  },
+  "prng_functions": {
+    "address": "0xfffffff006ca8520",
+    "bytes": 48,
+    "sha256": "6f0715b605ef266e75d17f47dca2278486cd300d5284429b6ed7fbcc309cc86b",
+    "pointers": [
+      "0xfffffff0056bad40",
+      "0xfffffff0056d551c",
+      "0xfffffff0056be4b0",
+      "0xfffffff0056919cc",
+      "0xfffffff0056b9074",
+      "0xfffffff0056baf20"
+    ]
+  },
+  "registration": {
+    "prng_call": "0xfffffff0056d6688",
+    "prng_stub": "0xfffffff0056d8ae8",
+    "crypto_call": "0xfffffff0056d69d0",
+    "crypto_stub": "0xfffffff0056d8af4",
+    "prng_precedes_crypto_table": true
+  },
+  "blocks": {
+    "packed_kmod": {
+      "address": "0xfffffff007a0b800",
+      "bytes": 196,
+      "sha256": "a4633b4bea638ae9054571bab1b641fcc3e365e2caaa3127d2d35509ab25478f"
+    },
+    "start_wrapper": {
+      "address": "0xfffffff0056d892c",
+      "bytes": 28,
+      "sha256": "a30a7d89075597164d23beee07f931c2ae69f99199f5043c2cb03e0b26167c02"
+    },
+    "real_entry": {
+      "address": "0xfffffff0056d5f3c",
+      "bytes": 3212,
+      "sha256": "27555795331da771d0a8a338ecbb365340a15654f89bca615ff11b7f27fc65bb"
+    },
+    "prng_registration": {
+      "address": "0xfffffff0056d6664",
+      "bytes": 40,
+      "sha256": "87ec60f935179f1f1f41efacfaa66598097560b2df3cec83f747f1eb6017154c"
+    },
+    "crypto_registration": {
+      "address": "0xfffffff0056d6694",
+      "bytes": 832,
+      "sha256": "ea4d6e19c59523dd48d686afdf9b800f855c314746863fcabfa6c30490b22d10"
+    }
+  },
+  "existing_candidate": "build/ios16-apfs-mount-prelink/kernel.macho",
+  "existing_candidate_sha256": "81f6e6da769fcd3666da0af07d1b69e878064dbb7abccf2490d65d8e66b6da91",
+  "existing_candidate_record_rebasing_verified": true,
+  "original_crypto_post_executed": false,
+  "original_cpp_initializer_count": 0,
+  "complete_crypto_table_abi_qualified": false,
+  "appended_digest_hmac_kpis_qualified": false,
+  "hardware_tested": false
+}

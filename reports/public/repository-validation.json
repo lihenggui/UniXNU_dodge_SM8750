@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "checks": [
+    "check_only_preserves_original",
+    "patch_applies_to_pinned_source_and_matches_candidate",
+    "second_apply_is_idempotent",
+    "unknown_memory_table_rejected_without_changes",
+    "wrong_upstream_revision_rejected_without_changes",
+    "captured_dtb_memory_check_before_fail",
+    "captured_dtb_memory_check_after_pass",
+    "python_syntax"
+  ],
+  "network_access": "none",
+  "phone_access": "none",
+  "uefi_build": "not_completed",
+  "uefi_boot": "not_tested",
+  "ios_boot": "not_tested"
+}

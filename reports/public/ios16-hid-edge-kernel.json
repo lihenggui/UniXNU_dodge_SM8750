@@ -1,0 +1,681 @@
+{
+  "result": "IOS16_PRELINKED_SOURCE_EDGE_DRIVER_AND_ORIGINAL_EVENT_ACCESSOR_CPU_PASS",
+  "builder_sha256": "d650220cd13b71b2cb7aaa4aba9241d48ed174c56601db072d12e586dfa3f235",
+  "source_sha256": {
+    "scripts/check_hid_edge_kernel.py": "d650220cd13b71b2cb7aaa4aba9241d48ed174c56601db072d12e586dfa3f235",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "drivers/DodgeInput/DodgeHidEventDriver.cpp": "43d44bb262e21692698451cef86354fa3f8dc8cca163bdb0f06c1f3a9d4c37a2",
+    "drivers/DodgeInput/DodgeHidEdgePolicy.h": "09c3b17fc2c696621017d8201d009535824cf137a820871a856937e628d888c0",
+    "profiles/os/ios-16.7.16-20H392/input/OriginalHidEventABI.h": "956fa7b0d4a5be2ab443b99995b3e34fe938a1d360283a93661533b694e3dfaf",
+    "profiles/os/ios-16.7.16-20H392/hid-event-interface.json": "cc64aba4b3b000a0db9e8dbbf8c1327c24ab216d61942f6e17e45edf79de6198"
+  },
+  "source_report_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
+  "prelink_report_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+  "candidate": "build/cph2653-input-prelink/kernel.macho",
+  "candidate_sha256": "be0b18ce8c30d2b9a257477aadb51795dcd7165523520e19372998c7688c3b7e",
+  "case_count": 40,
+  "cases": [
+    {
+      "case": "left-sequence",
+      "result": "PASS",
+      "source_instructions_visited": 343,
+      "original_instructions_visited": 178,
+      "forwarded_masks": [
+        [
+          2147485700,
+          2050
+        ],
+        [
+          2052,
+          2052
+        ],
+        [
+          2052,
+          2050
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "right",
+      "result": "PASS",
+      "source_instructions_visited": 335,
+      "original_instructions_visited": 178,
+      "forwarded_masks": [
+        [
+          2147485700,
+          2050
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "top",
+      "result": "PASS",
+      "source_instructions_visited": 335,
+      "original_instructions_visited": 178,
+      "forwarded_masks": [
+        [
+          2147485700,
+          2050
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "bottom",
+      "result": "PASS",
+      "source_instructions_visited": 335,
+      "original_instructions_visited": 178,
+      "forwarded_masks": [
+        [
+          2147485700,
+          2050
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "exact-inner-boundary",
+      "result": "PASS",
+      "source_instructions_visited": 311,
+      "original_instructions_visited": 138,
+      "forwarded_masks": [
+        [
+          2147483652,
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "ten-contacts",
+      "result": "PASS",
+      "source_instructions_visited": 346,
+      "original_instructions_visited": 178,
+      "forwarded_masks": [
+        [
+          2147485700,
+          2050,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "duplicate-id",
+      "result": "PASS",
+      "source_instructions_visited": 267,
+      "original_instructions_visited": 138,
+      "forwarded_masks": [
+        [
+          2147483652,
+          2,
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "invalid-coordinate",
+      "result": "PASS",
+      "source_instructions_visited": 258,
+      "original_instructions_visited": 138,
+      "forwarded_masks": [
+        [
+          2147483652,
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "invalid-id",
+      "result": "PASS",
+      "source_instructions_visited": 258,
+      "original_instructions_visited": 138,
+      "forwarded_masks": [
+        [
+          2147483652,
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "too-many",
+      "result": "PASS",
+      "source_instructions_visited": 168,
+      "original_instructions_visited": 44,
+      "forwarded_masks": [
+        [
+          2147483652,
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "changing-count",
+      "result": "PASS",
+      "source_instructions_visited": 202,
+      "original_instructions_visited": 44,
+      "forwarded_masks": [
+        [
+          2147483652,
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "unknown-child",
+      "result": "PASS",
+      "source_instructions_visited": 194,
+      "original_instructions_visited": 44,
+      "forwarded_masks": [
+        [
+          2147483652,
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "wrong-type",
+      "result": "PASS",
+      "source_instructions_visited": 133,
+      "original_instructions_visited": 42,
+      "forwarded_masks": [
+        [
+          2147483652,
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "standalone-finger",
+      "result": "PASS",
+      "source_instructions_visited": 285,
+      "original_instructions_visited": 180,
+      "forwarded_masks": [
+        [
+          2050
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "empty-hand",
+      "result": "PASS",
+      "source_instructions_visited": 166,
+      "original_instructions_visited": 90,
+      "forwarded_masks": [
+        [
+          2
+        ]
+      ],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "not-ready",
+      "result": "PASS",
+      "source_instructions_visited": 16,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "null-event",
+      "result": "PASS",
+      "source_instructions_visited": 2,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "inactive",
+      "result": "PASS",
+      "source_instructions_visited": 21,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "init-success",
+      "result": "PASS",
+      "source_instructions_visited": 37,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 1,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 1,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "init-failure",
+      "result": "PASS",
+      "source_instructions_visited": 37,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 1,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 1,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "init-repeat",
+      "result": "PASS",
+      "source_instructions_visited": 42,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 1,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 1,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "init-duplicate-object",
+      "result": "PASS",
+      "source_instructions_visited": 46,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 1,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 1,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "free-never-initialized",
+      "result": "PASS",
+      "source_instructions_visited": 6,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "start-success",
+      "result": "PASS",
+      "source_instructions_visited": 110,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 1,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 1
+    },
+    {
+      "case": "start-parent-failure",
+      "result": "PASS",
+      "source_instructions_visited": 113,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 1,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 1
+    },
+    {
+      "case": "start-no-loop",
+      "result": "PASS",
+      "source_instructions_visited": 49,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 1
+    },
+    {
+      "case": "start-bad-geometry",
+      "result": "PASS",
+      "source_instructions_visited": 74,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 1
+    },
+    {
+      "case": "start-before-init",
+      "result": "PASS",
+      "source_instructions_visited": 25,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "start-null",
+      "result": "PASS",
+      "source_instructions_visited": 27,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "stop-disables-dispatch",
+      "result": "PASS",
+      "source_instructions_visited": 22,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "constructor-destructor",
+      "result": "PASS",
+      "source_instructions_visited": 64,
+      "original_instructions_visited": 24,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 0,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "prepare-success",
+      "result": "PASS",
+      "source_instructions_visited": 100,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 1,
+      "source_metadata_constructors": 1,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "prepare-load-failure",
+      "result": "PASS",
+      "source_instructions_visited": 27,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 1,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "prepare-parent-missing",
+      "result": "PASS",
+      "source_instructions_visited": 50,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 1,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "prepare-parent-wrong",
+      "result": "PASS",
+      "source_instructions_visited": 51,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 1,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "prepare-parent-size",
+      "result": "PASS",
+      "source_instructions_visited": 55,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 1,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "prepare-pre-failure",
+      "result": "PASS",
+      "source_instructions_visited": 64,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 1,
+      "source_metadata_constructors": 0,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "prepare-post-failure",
+      "result": "PASS",
+      "source_instructions_visited": 82,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 1,
+      "source_metadata_constructors": 1,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "prepare-class-missing",
+      "result": "PASS",
+      "source_instructions_visited": 98,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 1,
+      "source_metadata_constructors": 1,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    },
+    {
+      "case": "prepare-repeat",
+      "result": "PASS",
+      "source_instructions_visited": 105,
+      "original_instructions_visited": 0,
+      "forwarded_masks": [],
+      "parent_init_peers": 0,
+      "parent_start_peers": 0,
+      "kext_load_calls": 1,
+      "source_metadata_constructors": 1,
+      "permanent_init_reference": 0,
+      "permanent_provider_reference": 0
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "source-edge-dispatch-removed",
+      "result": "REJECTED",
+      "check": "Source edge omitted or repeated original forwarding"
+    },
+    {
+      "case": "source-original-init-pin-removed",
+      "result": "REJECTED",
+      "check": "Source event instance was not pinned before original init"
+    },
+    {
+      "case": "original-event-driver-null-expansion-free",
+      "result": "REJECTED",
+      "fault_address": "0x18",
+      "scope": "Deliberately invalid fixture, not a real kernel allocation failure; actual original free reads null expansion before native cleanup."
+    }
+  ],
+  "compiler_derived_layout": {
+    "instance_bytes": 552,
+    "edges": 264,
+    "loop": 528,
+    "providerPin": 536,
+    "initAttempted": 544,
+    "startAttempted": 545,
+    "ready": 546,
+    "edge_x": 256,
+    "edge_y": 260,
+    "video_bytes": 144,
+    "video_width": 16,
+    "video_height": 24,
+    "video_rotate": 128,
+    "digitizer_type": 32,
+    "video_width_bytes": 8,
+    "video_height_bytes": 8
+  },
+  "reference_object": "build/ios16-hid-edge-abi/DodgeHidEventDriver.o",
+  "reference_object_sha256": "b42904e6ba05ef400b9fcb6e39d1586c5ee2f9c1645dae0fe631eeedc69b5622",
+  "cpu_cases": "build/cph2653-input-prelink/edge-cpu-cases.json",
+  "cpu_cases_sha256": "acad79790c95563c9a4c5b768e4bac998bcff9ca4813f1ceeef2848e4b7dac92",
+  "source_annotation_text_identical_to_production": true,
+  "actual_original_event_getters_setter_and_default_driver_dispatch_executed": true,
+  "unsafe_original_event_free_null_expansion_confirmed": true,
+  "original_parent_init_start_stop_and_final_event_service_dispatch_are_peers": true,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Actual concrete source class init/start/stop/dispatch, transactional bounded edge annotation, original event getters/setter/default driver dispatch and source/original/native C1/D1 chain. IOKit gate/array/registry/refcount/video/accounting and original parent init/start/stop/final event-service dispatch are peers. No complete original driver lifecycle, matching/client ordering, physical touch, kernel runtime or UI qualification."
+}

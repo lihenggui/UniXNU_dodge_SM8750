@@ -1,0 +1,190 @@
+{
+  "result": "IOS16_TYPED_EVENT_ORIGINAL_GETTER_SETTER_AND_DRIVER_DISPATCH_CPU_PASS",
+  "cases": [
+    {
+      "case": "type-virtual-dispatch",
+      "result": "PASS"
+    },
+    {
+      "case": "index-virtual-dispatch",
+      "result": "PASS"
+    },
+    {
+      "case": "mask-virtual-dispatch",
+      "result": "PASS"
+    },
+    {
+      "case": "touch-virtual-dispatch",
+      "result": "PASS"
+    },
+    {
+      "case": "index-0",
+      "result": "PASS",
+      "value": 0
+    },
+    {
+      "case": "index-1",
+      "result": "PASS",
+      "value": 1
+    },
+    {
+      "case": "index-9",
+      "result": "PASS",
+      "value": 9
+    },
+    {
+      "case": "index-255",
+      "result": "PASS",
+      "value": 255
+    },
+    {
+      "case": "index-4294967295",
+      "result": "PASS",
+      "value": 4294967295
+    },
+    {
+      "case": "fixed-xy--2147483648",
+      "result": "PASS",
+      "value": -2147483648
+    },
+    {
+      "case": "fixed-xy--65536",
+      "result": "PASS",
+      "value": -65536
+    },
+    {
+      "case": "fixed-xy--1",
+      "result": "PASS",
+      "value": -1
+    },
+    {
+      "case": "fixed-xy-0",
+      "result": "PASS",
+      "value": 0
+    },
+    {
+      "case": "fixed-xy-1",
+      "result": "PASS",
+      "value": 1
+    },
+    {
+      "case": "fixed-xy-32768",
+      "result": "PASS",
+      "value": 32768
+    },
+    {
+      "case": "fixed-xy-65536",
+      "result": "PASS",
+      "value": 65536
+    },
+    {
+      "case": "fixed-xy-2147483647",
+      "result": "PASS",
+      "value": 2147483647
+    },
+    {
+      "case": "set-mask-0x0",
+      "result": "PASS",
+      "mask": 0
+    },
+    {
+      "case": "set-mask-0x2",
+      "result": "PASS",
+      "mask": 2
+    },
+    {
+      "case": "set-mask-0x800",
+      "result": "PASS",
+      "mask": 2048
+    },
+    {
+      "case": "set-mask-0x842",
+      "result": "PASS",
+      "mask": 2114
+    },
+    {
+      "case": "set-mask-0x80000000",
+      "result": "PASS",
+      "mask": 2147483648
+    },
+    {
+      "case": "set-mask-0xffffffff",
+      "result": "PASS",
+      "mask": 4294967295
+    },
+    {
+      "case": "touch-False",
+      "result": "PASS"
+    },
+    {
+      "case": "touch-True",
+      "result": "PASS"
+    },
+    {
+      "case": "children-0x0",
+      "result": "PASS",
+      "pointer": "0x0"
+    },
+    {
+      "case": "children-0xfffffff076543210",
+      "result": "PASS",
+      "pointer": "0xfffffff076543210"
+    },
+    {
+      "case": "wrong-event-type-empty",
+      "result": "PASS"
+    },
+    {
+      "case": "driver-dispatch-0x0",
+      "result": "PASS",
+      "options": 0
+    },
+    {
+      "case": "driver-dispatch-0x1",
+      "result": "PASS",
+      "options": 1
+    },
+    {
+      "case": "driver-dispatch-0x80000001",
+      "result": "PASS",
+      "options": 2147483649
+    },
+    {
+      "case": "driver-dispatch-0xffffffff",
+      "result": "PASS",
+      "options": 4294967295
+    }
+  ],
+  "case_count": 32,
+  "original_instructions_visited": 178,
+  "original_driver_dispatch_with_empty_auxiliary_collection": true,
+  "parent_service_dispatch_is_peer": true,
+  "builder_sha256": "43fdcc91124b6f4adb7581c4e71c1d1a73332cf5b10cdb7933b64499faffc08f",
+  "source_sha256": {
+    "scripts/check_hid_event_kernel.py": "43fdcc91124b6f4adb7581c4e71c1d1a73332cf5b10cdb7933b64499faffc08f",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "scripts/check_hid_parser.py": "ebd5f2cc7f91132554badc1b722d08d6a4db8db4db100edebe7a8a079536d779",
+    "profiles/os/ios-16.7.16-20H392/input/OriginalHidEventABI.h": "956fa7b0d4a5be2ab443b99995b3e34fe938a1d360283a93661533b694e3dfaf",
+    "profiles/os/ios-16.7.16-20H392/hid-event-interface.json": "cc64aba4b3b000a0db9e8dbbf8c1327c24ab216d61942f6e17e45edf79de6198"
+  },
+  "interface_report_sha256": "5a1f716e1413c17fa436dd6c6da8d94849e39a8eb1a1e459a3ebf74cf6faffca",
+  "prelink_report_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+  "candidate": "build/cph2653-input-prelink/kernel.macho",
+  "candidate_sha256": "be0b18ce8c30d2b9a257477aadb51795dcd7165523520e19372998c7688c3b7e",
+  "negative_controls": [
+    {
+      "case": "integer-slot-replaced-with-event-getter",
+      "result": "REJECTED",
+      "check": "Actual typed event integer slot/dataflow differs"
+    }
+  ],
+  "reference_object": "build/ios16-hid-event-cpu/HidEventCalls.o",
+  "reference_object_sha256": "6ecd12a90d2272b99eca6a94f9738ae4d35126d27ab5551c72bb4438eeeb5276",
+  "cpu_cases": "build/ios16-hid-event-cpu/cpu-cases.json",
+  "cpu_cases_sha256": "21a1214760fae406364d9a141c018355b83923f58f513c5d6da27d01ec7bbdf8",
+  "original_instructions_unchanged": true,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "edge_gesture_implementation_installed": false,
+  "scope": "Actual iPhone original event getType/getEvent/getIntegerValue/getFixedValue/setIntegerValue/getChildren and default event-driver dispatch bodies, called through actual bounded C++ ARM64 virtual probes with fixture canaries and compiler-derived public payload offsets. Driver auxiliary collection is empty and final parent event-service dispatch is an explicit peer. No event factory, full driver init/start/stop, matching, event consumer/UI, edge injection or hardware qualification."
+}

@@ -1,0 +1,797 @@
+{
+  "result": "IOS16_ORIGINAL_IPHONE_HID_DESCRIPTOR_PARSER_AND_NATIVE_REPORT_CPU_PASS",
+  "builder_sha256": "ebd5f2cc7f91132554badc1b722d08d6a4db8db4db100edebe7a8a079536d779",
+  "source_sha256": {
+    "scripts/check_hid_parser.py": "ebd5f2cc7f91132554badc1b722d08d6a4db8db4db100edebe7a8a079536d779",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "scripts/check_ios16_swap.py": "f5d5dbf33f9e217386f1ab970f0b5ddcafa12b1aed54b7e89841d112ec1fb215",
+    "sources/IOHIDFamily-ios16/IOHIDFamily/IOHIDDescriptorParserPrivate.h": "1628ca974d0b598b2cc1ae06c5b4826c5d3118080e4042f475f18c00008549d8",
+    "sources/IOHIDFamily-ios16/IOHIDSystem/IOKit/hidsystem/IOHIDDescriptorParser.h": "20db440aede1c6a350f3ca7aaf5cc02c89c8e6b51053eeac63ae2a5af94be974",
+    "sources/UniXNU-Pagani-Drivers/drivers/PaganiInput/Reports.h": "2c3eec41d9108b7741ce66f3fe681f8794bc5913ba1eb41541d31c9fe65bbf31",
+    "sources/UniXNU-Pagani-Drivers/drivers/PaganiInput/S3910.h": "41a73e2619820a9239559bc4324ddb001d7be1f4f8b56bddb117371844dce99b",
+    "sources/UniXNU-Pagani-Drivers/drivers/PaganiInput/S3910.c": "08f077408f77d12a46a4a1f55cf23fc80f796a87be054dbf64f7d5b99d6242b8",
+    "sources/iphoneos-sdk/iPhoneOS16.5.sdk/usr/include/TargetConditionals.h": "5696695811408ae61b2a98527480d4e0db74a685ff99c60b467cf12fc37d7f6b"
+  },
+  "source_report_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
+  "prelink_report_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+  "candidate": "build/cph2653-input-prelink/kernel.macho",
+  "candidate_sha256": "be0b18ce8c30d2b9a257477aadb51795dcd7165523520e19372998c7688c3b7e",
+  "case_count": 12,
+  "report_case_count": 52,
+  "cases": [
+    {
+      "case": "touch-valid",
+      "result": "PASS",
+      "descriptor_bytes": 621,
+      "report_bits": {
+        "0": 0,
+        "3": 496
+      },
+      "allocations": [
+        [
+          "alloc",
+          "typed",
+          128
+        ],
+        [
+          "alloc",
+          "data",
+          8104
+        ],
+        [
+          "free",
+          "data",
+          8104
+        ],
+        [
+          "free",
+          "typed",
+          128
+        ]
+      ],
+      "report_cases": [
+        {
+          "case": "empty",
+          "result": "PASS",
+          "active": 0,
+          "reported_with_lifts": 0,
+          "report_sha256": "2da3d734f52c3d164f73bcfc78319736c30b9cc7f8d6aba79fbfcc83ae6e6212"
+        },
+        {
+          "case": "finger-down",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 1,
+          "report_sha256": "7289804152763e1e1957c0c7a3b8f3e9fc5cb0046ad57f7044631b50d687ab77"
+        },
+        {
+          "case": "nonzero-id",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 1,
+          "report_sha256": "e5ccb6c0f4d1418f3b97450609b0f2be844b13b40386caa9ce0c770004a2dd91"
+        },
+        {
+          "case": "move",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 1,
+          "report_sha256": "56dc47649c5e1ab10c329f0891c49e850a39de07404cc091b912936a5526ad8e"
+        },
+        {
+          "case": "maximum",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 1,
+          "report_sha256": "c1dcbb8c6f2c59a7413dcd8a3cd6833b78ff454155f6091275681c0541ee78c6"
+        },
+        {
+          "case": "glove",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 1,
+          "report_sha256": "952b6ecef54aa0fc4685068f142deddfc3ac9d2db75364ed57f58386f8acac88"
+        },
+        {
+          "case": "palm",
+          "result": "PASS",
+          "active": 0,
+          "reported_with_lifts": 0,
+          "report_sha256": "2da3d734f52c3d164f73bcfc78319736c30b9cc7f8d6aba79fbfcc83ae6e6212"
+        },
+        {
+          "case": "ten-contacts",
+          "result": "PASS",
+          "active": 10,
+          "reported_with_lifts": 10,
+          "report_sha256": "0ec965409dfe91227efc2a5061cbcde1217750e30586d19529030ca805b23a63"
+        },
+        {
+          "case": "lift",
+          "result": "PASS",
+          "active": 0,
+          "reported_with_lifts": 1,
+          "report_sha256": "771900aa4902730459e133efd545aa27fb99914866bebfe14e1a242addb7c5d3"
+        },
+        {
+          "case": "after-lift",
+          "result": "PASS",
+          "active": 0,
+          "reported_with_lifts": 0,
+          "report_sha256": "2da3d734f52c3d164f73bcfc78319736c30b9cc7f8d6aba79fbfcc83ae6e6212"
+        },
+        {
+          "case": "simultaneous-lift-and-down",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 2,
+          "report_sha256": "222630767e900fc4fc7b8b33b88b06f990eab553299a33115fd3fdae33122be8"
+        },
+        {
+          "case": "ten-lifts",
+          "result": "PASS",
+          "active": 0,
+          "reported_with_lifts": 10,
+          "report_sha256": "594012e9626c07acde58230ccfc717fa26c3c1d1e309a34a181822277adf8bfb"
+        },
+        {
+          "case": "duplicate-id",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        },
+        {
+          "case": "id-out-of-range",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        },
+        {
+          "case": "x-out-of-range",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        },
+        {
+          "case": "y-out-of-range",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        },
+        {
+          "case": "short-frame",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        },
+        {
+          "case": "too-many",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        }
+      ],
+      "original_instructions_visited": 652,
+      "native_instructions_visited": 116,
+      "close_freed_all_allocations": true
+    },
+    {
+      "case": "buttons-valid",
+      "result": "PASS",
+      "descriptor_bytes": 73,
+      "report_bits": {
+        "0": 0,
+        "1": 72,
+        "2": 16
+      },
+      "allocations": [
+        [
+          "alloc",
+          "typed",
+          128
+        ],
+        [
+          "alloc",
+          "data",
+          792
+        ],
+        [
+          "free",
+          "data",
+          792
+        ],
+        [
+          "free",
+          "typed",
+          128
+        ]
+      ],
+      "report_cases": [
+        {
+          "case": "consumer-mask-0",
+          "result": "PASS",
+          "report": "0200",
+          "pressed_usages": []
+        },
+        {
+          "case": "consumer-mask-2",
+          "result": "PASS",
+          "report": "0202",
+          "pressed_usages": [
+            [
+              12,
+              48
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-4",
+          "result": "PASS",
+          "report": "0204",
+          "pressed_usages": [
+            [
+              12,
+              233
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-6",
+          "result": "PASS",
+          "report": "0206",
+          "pressed_usages": [
+            [
+              12,
+              48
+            ],
+            [
+              12,
+              233
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-8",
+          "result": "PASS",
+          "report": "0208",
+          "pressed_usages": [
+            [
+              12,
+              234
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-10",
+          "result": "PASS",
+          "report": "020a",
+          "pressed_usages": [
+            [
+              12,
+              48
+            ],
+            [
+              12,
+              234
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-12",
+          "result": "PASS",
+          "report": "020c",
+          "pressed_usages": [
+            [
+              12,
+              233
+            ],
+            [
+              12,
+              234
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-14",
+          "result": "PASS",
+          "report": "020e",
+          "pressed_usages": [
+            [
+              12,
+              48
+            ],
+            [
+              12,
+              233
+            ],
+            [
+              12,
+              234
+            ]
+          ]
+        }
+      ],
+      "original_instructions_visited": 723,
+      "native_instructions_visited": 0,
+      "close_freed_all_allocations": true
+    },
+    {
+      "case": "touch-strict",
+      "result": "PASS",
+      "descriptor_bytes": 621,
+      "report_bits": {
+        "0": 0,
+        "3": 496
+      },
+      "allocations": [
+        [
+          "alloc",
+          "typed",
+          128
+        ],
+        [
+          "alloc",
+          "data",
+          8104
+        ],
+        [
+          "free",
+          "data",
+          8104
+        ],
+        [
+          "free",
+          "typed",
+          128
+        ]
+      ],
+      "report_cases": [
+        {
+          "case": "empty",
+          "result": "PASS",
+          "active": 0,
+          "reported_with_lifts": 0,
+          "report_sha256": "2da3d734f52c3d164f73bcfc78319736c30b9cc7f8d6aba79fbfcc83ae6e6212"
+        },
+        {
+          "case": "finger-down",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 1,
+          "report_sha256": "7289804152763e1e1957c0c7a3b8f3e9fc5cb0046ad57f7044631b50d687ab77"
+        },
+        {
+          "case": "nonzero-id",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 1,
+          "report_sha256": "e5ccb6c0f4d1418f3b97450609b0f2be844b13b40386caa9ce0c770004a2dd91"
+        },
+        {
+          "case": "move",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 1,
+          "report_sha256": "56dc47649c5e1ab10c329f0891c49e850a39de07404cc091b912936a5526ad8e"
+        },
+        {
+          "case": "maximum",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 1,
+          "report_sha256": "c1dcbb8c6f2c59a7413dcd8a3cd6833b78ff454155f6091275681c0541ee78c6"
+        },
+        {
+          "case": "glove",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 1,
+          "report_sha256": "952b6ecef54aa0fc4685068f142deddfc3ac9d2db75364ed57f58386f8acac88"
+        },
+        {
+          "case": "palm",
+          "result": "PASS",
+          "active": 0,
+          "reported_with_lifts": 0,
+          "report_sha256": "2da3d734f52c3d164f73bcfc78319736c30b9cc7f8d6aba79fbfcc83ae6e6212"
+        },
+        {
+          "case": "ten-contacts",
+          "result": "PASS",
+          "active": 10,
+          "reported_with_lifts": 10,
+          "report_sha256": "0ec965409dfe91227efc2a5061cbcde1217750e30586d19529030ca805b23a63"
+        },
+        {
+          "case": "lift",
+          "result": "PASS",
+          "active": 0,
+          "reported_with_lifts": 1,
+          "report_sha256": "771900aa4902730459e133efd545aa27fb99914866bebfe14e1a242addb7c5d3"
+        },
+        {
+          "case": "after-lift",
+          "result": "PASS",
+          "active": 0,
+          "reported_with_lifts": 0,
+          "report_sha256": "2da3d734f52c3d164f73bcfc78319736c30b9cc7f8d6aba79fbfcc83ae6e6212"
+        },
+        {
+          "case": "simultaneous-lift-and-down",
+          "result": "PASS",
+          "active": 1,
+          "reported_with_lifts": 2,
+          "report_sha256": "222630767e900fc4fc7b8b33b88b06f990eab553299a33115fd3fdae33122be8"
+        },
+        {
+          "case": "ten-lifts",
+          "result": "PASS",
+          "active": 0,
+          "reported_with_lifts": 10,
+          "report_sha256": "594012e9626c07acde58230ccfc717fa26c3c1d1e309a34a181822277adf8bfb"
+        },
+        {
+          "case": "duplicate-id",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        },
+        {
+          "case": "id-out-of-range",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        },
+        {
+          "case": "x-out-of-range",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        },
+        {
+          "case": "y-out-of-range",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        },
+        {
+          "case": "short-frame",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        },
+        {
+          "case": "too-many",
+          "result": "PASS",
+          "return": -71,
+          "output_unchanged": true
+        }
+      ],
+      "original_instructions_visited": 652,
+      "native_instructions_visited": 116,
+      "close_freed_all_allocations": true
+    },
+    {
+      "case": "buttons-strict",
+      "result": "PASS",
+      "descriptor_bytes": 73,
+      "report_bits": {
+        "0": 0,
+        "1": 72,
+        "2": 16
+      },
+      "allocations": [
+        [
+          "alloc",
+          "typed",
+          128
+        ],
+        [
+          "alloc",
+          "data",
+          792
+        ],
+        [
+          "free",
+          "data",
+          792
+        ],
+        [
+          "free",
+          "typed",
+          128
+        ]
+      ],
+      "report_cases": [
+        {
+          "case": "consumer-mask-0",
+          "result": "PASS",
+          "report": "0200",
+          "pressed_usages": []
+        },
+        {
+          "case": "consumer-mask-2",
+          "result": "PASS",
+          "report": "0202",
+          "pressed_usages": [
+            [
+              12,
+              48
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-4",
+          "result": "PASS",
+          "report": "0204",
+          "pressed_usages": [
+            [
+              12,
+              233
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-6",
+          "result": "PASS",
+          "report": "0206",
+          "pressed_usages": [
+            [
+              12,
+              48
+            ],
+            [
+              12,
+              233
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-8",
+          "result": "PASS",
+          "report": "0208",
+          "pressed_usages": [
+            [
+              12,
+              234
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-10",
+          "result": "PASS",
+          "report": "020a",
+          "pressed_usages": [
+            [
+              12,
+              48
+            ],
+            [
+              12,
+              234
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-12",
+          "result": "PASS",
+          "report": "020c",
+          "pressed_usages": [
+            [
+              12,
+              233
+            ],
+            [
+              12,
+              234
+            ]
+          ]
+        },
+        {
+          "case": "consumer-mask-14",
+          "result": "PASS",
+          "report": "020e",
+          "pressed_usages": [
+            [
+              12,
+              48
+            ],
+            [
+              12,
+              233
+            ],
+            [
+              12,
+              234
+            ]
+          ]
+        }
+      ],
+      "original_instructions_visited": 723,
+      "native_instructions_visited": 0,
+      "close_freed_all_allocations": true
+    },
+    {
+      "case": "touch-null-descriptor",
+      "result": "PASS",
+      "return": -13939,
+      "allocations": [],
+      "original_instructions_visited": 31,
+      "failure_allocations_freed": true
+    },
+    {
+      "case": "touch-null-result",
+      "result": "PASS",
+      "return": -13939,
+      "allocations": [],
+      "original_instructions_visited": 33,
+      "failure_allocations_freed": true
+    },
+    {
+      "case": "touch-empty",
+      "result": "PASS",
+      "return": -13944,
+      "allocations": [
+        [
+          "alloc",
+          "typed",
+          128
+        ],
+        [
+          "free",
+          "typed",
+          128
+        ]
+      ],
+      "original_instructions_visited": 109,
+      "failure_allocations_freed": true
+    },
+    {
+      "case": "touch-truncated-item",
+      "result": "PASS",
+      "return": -13944,
+      "allocations": [
+        [
+          "alloc",
+          "typed",
+          128
+        ],
+        [
+          "free",
+          "typed",
+          128
+        ]
+      ],
+      "original_instructions_visited": 127,
+      "failure_allocations_freed": true
+    },
+    {
+      "case": "touch-fail-typed-allocation",
+      "result": "PASS",
+      "return": -13937,
+      "allocations": [
+        [
+          "allocation-failure",
+          "typed",
+          128
+        ]
+      ],
+      "original_instructions_visited": 42,
+      "failure_allocations_freed": true
+    },
+    {
+      "case": "touch-fail-data-allocation",
+      "result": "PASS",
+      "return": -13937,
+      "allocations": [
+        [
+          "alloc",
+          "typed",
+          128
+        ],
+        [
+          "allocation-failure",
+          "data",
+          8104
+        ],
+        [
+          "free",
+          "typed",
+          128
+        ]
+      ],
+      "original_instructions_visited": 256,
+      "failure_allocations_freed": true
+    },
+    {
+      "case": "touch-close-null",
+      "result": "PASS",
+      "return": -13939,
+      "original_instructions_visited": 9
+    },
+    {
+      "case": "touch-close-invalid",
+      "result": "PASS",
+      "return": -13944,
+      "original_instructions_visited": 14
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "changed-touch-report-id",
+      "result": "REJECTED",
+      "check": "Original parser report IDs/bit extents differ: {0: 0, 4: 496}"
+    }
+  ],
+  "compiler_derived_layout": {
+    "preparsed_bytes": 128,
+    "preparsed_hidTypeIfValid": 0,
+    "preparsed_collections": 8,
+    "preparsed_collectionCount": 16,
+    "preparsed_reportItems": 24,
+    "preparsed_reportItemCount": 32,
+    "preparsed_reports": 40,
+    "preparsed_reportCount": 48,
+    "preparsed_usageItems": 56,
+    "preparsed_usageItemCount": 64,
+    "preparsed_rawMemPtr": 104,
+    "preparsed_flags": 112,
+    "preparsed_numBytesAllocated": 120,
+    "report_bytes": 16,
+    "report_reportID": 0,
+    "report_inputBitCount": 4,
+    "report_outputBitCount": 8,
+    "report_featureBitCount": 12,
+    "item_bytes": 104,
+    "item_reportType": 0,
+    "item_startBit": 64,
+    "item_parent": 68,
+    "item_dataModes": 72,
+    "item_firstUsageItem": 76,
+    "item_usageItemCount": 80,
+    "usage_bytes": 20,
+    "usage_isRange": 0,
+    "usage_usagePage": 4,
+    "usage_usage": 8,
+    "usage_usageMinimum": 12,
+    "usage_usageMaximum": 16,
+    "collection_bytes": 40,
+    "collection_data": 0,
+    "collection_usagePage": 4,
+    "collection_firstUsageItem": 8,
+    "collection_usageItemCount": 12,
+    "collection_parent": 24,
+    "collection_children": 28,
+    "collection_firstChild": 32,
+    "collection_nextSibling": 36,
+    "global_usagePage": 8,
+    "global_logicalMinimum": 12,
+    "global_logicalMaximum": 16,
+    "global_reportSize": 40,
+    "global_reportID": 48,
+    "global_reportCount": 52,
+    "touch_descriptor_bytes": 621,
+    "buttons_descriptor_bytes": 73,
+    "frame_bytes": 60,
+    "contact_bytes": 6,
+    "contact_x": 0,
+    "contact_y": 2,
+    "contact_active": 4
+  },
+  "reference_object": "build/ios16-input-hid-parser-abi/DodgeHidParserLayout.o",
+  "reference_object_sha256": "8661d3364771fa261f30540f2008e9f8bfe6cd250f0361a4dde3aa0184c8d1db",
+  "cpu_cases": "build/cph2653-input-prelink/hid-parser-cpu-cases.json",
+  "cpu_cases_sha256": "ec05cb71448b79ac554d39f633b3e4d1e5a8bd365c37833d9fcde34027b3dae9",
+  "original_parser_instructions_unchanged": true,
+  "original_hid_open_and_close_executed": true,
+  "actual_native_touch_decode_and_hid_report_executed": true,
+  "allocation_failures_cleaned_without_leak": true,
+  "strict_owned_memory_bounds_and_canaries": true,
+  "full_original_device_start_executed": false,
+  "original_element_report_dispatch_executed": false,
+  "event_driver_matching_qualified": false,
+  "allocator_and_memory_imports_are_peers": true,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Unchanged actual iPhone IOHIDFamily C HID open/count/parse/close ARM64 bodies from the current combined prelink, with real iPhone-SDK/public-C compiler layouts, original instruction readback, live allocation bounds and explicit allocator/memory peers. Native S3910 decode/report bytes checked using original parsed usage/bit/limit metadata; consumer mapping checked from original parser metadata. No complete IOHIDDevice start, element report dispatch, private EventDriver, matching, UI or hardware qualification."
+}

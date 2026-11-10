@@ -1,0 +1,121 @@
+{
+  "result": "A830_REAL_IR3_NIR_AND_SPIRV_HOST_CHECK_PASS",
+  "host_binary": "build/a830-shader-compiler-host/src/freedreno/ir3/adreno_compiler_probe",
+  "host_binary_sha256": "3218e731e915f241035877fd08c503f20dd31c67f2029008f19c07ae2ba936ea",
+  "source_sha256": "583cdfe71deab449ebc87d1b0062f33c5760f754d1724e1e292e3d86af76cce8",
+  "mesa_revision": "85fda3b36405bcaea8bffc64aa4f2651dc90770d",
+  "production_mesa_patches": [
+    {
+      "path": "sources/UniXNU/patches/mesa/freedreno-tools-nir.patch",
+      "sha256": "77e966b6e9a725892d10889a4d8deeefb03a32ae3a007904868132e56350191f"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/ir3-darwin-build-id.patch",
+      "sha256": "be3ca7840a16cb7696d8d7e67195c8d097cf0e38a3b5011edc674a5aed9c6975"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/ir3-portable-asm-roundtrip.patch",
+      "sha256": "bfc5552bc2bd6e1668d75773cce7bf62fd19065e6281bf7da49f9ddfc2e79339"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/offline-adreno-compiler-probe.patch",
+      "sha256": "b7d7a113beb5ef99edea24858d906194d4b4755c987520545ad2f7f3136bb4fb"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-darwin-kmd.patch",
+      "sha256": "da264be322fd914ead493fd24f056213d368c49ff800b79d980e68bc686971c6"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-graphics-cache-feedback.patch",
+      "sha256": "07f397e38d9acfb0085db4c19567c84fd8a3bcd63d6fd05192857abfbde5aed2"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-empty-scissor.patch",
+      "sha256": "dec657626dcd8e8d3f1447e44574f31e4afb8c90b6ebf7d589ba10ee0f8b6461"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-builtin-shader-pack.patch",
+      "sha256": "3c606dc99643c3ca3e4736c5783348cd85cbff3fbc55161e53226ab459f34473"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-host-import-images.patch",
+      "sha256": "8bc141db41848a59b16493b4ca8a359e0f18f1cad5f14147ff18d15f79c0c3c4"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-render-mode-for-attachment-memory.patch",
+      "sha256": "853c6f507b542e8e2d3c8314be0b69b485cde68709272cb9a46268c82a28d42a"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-gmem-mutable-swap.patch",
+      "sha256": "92fe61c73cad117c5d98040eee4aafe95c3863407688f00a443b67a19706bfd1"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-current-queue-priorities.patch",
+      "sha256": "25a64d842b26336b052720ababd5fa00ef4c6507351e5b75f51492b768593588"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-frame-diagnostics.patch",
+      "sha256": "5eb8dda6e381f10fa48b62a9a497fb74a8b08c7999dea5468585c9848b2af966"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-transient-attachments-in-gmem.patch",
+      "sha256": "89159ee0c7a24bff3c62c63f9d838711e184438ae630ff0893ec4d275fadafd8"
+    }
+  ],
+  "production_source_id": "dd5ff74cdb23861b05aaf10a56941d1f6232e8b0d07d84ed62a3ad013da34156",
+  "compiler_assertions_enabled": true,
+  "machine_code_disasm_reassembly_checked": true,
+  "roundtrip_ignores_padding_nops": true,
+  "invalid_stage_refused_without_outputs": true,
+  "resource_spirv_refused_without_guessing_pipeline_layout": true,
+  "full_vulkan_descriptor_pipeline_tested": false,
+  "host_c_compiler": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "chip_id": "0x44050001",
+  "generation": 8,
+  "cases": [
+    {
+      "stage": "cs",
+      "binary": "build/a830-shader-compiler-host/cs.bin",
+      "binary_sha256": "f74b3ea47645f6dee406c9d4fef9edf6da4fac1c6e148f6e05048dae67c08e8a",
+      "disassembly": "build/a830-shader-compiler-host/cs.asm",
+      "disassembly_sha256": "c14fd6d42ddc4a312b6b5537abeab06d081e8ded5d8eb04bcc3ed9fdcf198c94",
+      "bytes": 256
+    },
+    {
+      "stage": "vs",
+      "binary": "build/a830-shader-compiler-host/vs.bin",
+      "binary_sha256": "504f4c62e00e5ac7c0eef67dd93aa50a794213a7f9169f6d2a9f6293e497d5a7",
+      "disassembly": "build/a830-shader-compiler-host/vs.asm",
+      "disassembly_sha256": "256c0395267625c3b77215575e7a5a9640a1b152151a0290847a187f6b0c5fe4",
+      "bytes": 128
+    },
+    {
+      "stage": "fs",
+      "binary": "build/a830-shader-compiler-host/fs.bin",
+      "binary_sha256": "524e6346831bc5ba4b0646e7c457768072572b6c25b8e7feef52f4ed8a9b3e97",
+      "disassembly": "build/a830-shader-compiler-host/fs.asm",
+      "disassembly_sha256": "099e846f1bf64e6b4172229487b547c0196af3d1a48b8a294710e77e85c6b843",
+      "bytes": 128
+    }
+  ],
+  "translated_spirv_cases": [
+    {
+      "input_spirv": "build/cph2653-metal-translation-tests/render-colored-1.spv",
+      "input_sha256": "5a85814f27463b01f61cc1afbfccc5cf846ba23909ed13a6e54afb82fd142543",
+      "stage": "fs",
+      "binary": "build/a830-shader-compiler-host/air-fragment.bin",
+      "binary_sha256": "e4577b84bd3ef5a34ca8fdec77434e8cbe5dbe32c275f7f47046e6e3bdbc60bf",
+      "disassembly": "build/a830-shader-compiler-host/air-fragment.asm",
+      "disassembly_sha256": "1327fa1149481c087765754dcfe83e5ff7d2be31f27aa261035aabe97a69e4fa",
+      "bytes": 128
+    }
+  ],
+  "inputs": "Three owned synthetic NIR programs and one actual AIR-derived SPIR-V fragment; no original Apple framework shaders",
+  "host_link_command_sha256": "690b873c7232921c3bb775aec121be627a3e69cfd8d7c6ddc350d5c105bac283",
+  "shader_cache_disabled": true,
+  "gpu_device_created": false,
+  "gpu_execution": false,
+  "hardware_tested": false,
+  "vulkan_loader_or_drm_linked": false,
+  "scope": "Actual production Mesa NIR/IR3 source emits and disassembles A830 machine code on a Linux CPU host. No GPU device, submission, pixels or physical capability observation."
+}

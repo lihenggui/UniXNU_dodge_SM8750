@@ -1,0 +1,142 @@
+{
+  "result": "IOS16_MAPPED_RESOURCE_LIFETIME_SANITIZER_PASS",
+  "overlay_pin": {
+    "base": ".cache/gpu-work/kernel-display-timeline/backend",
+    "path": "patches/oneplus13/0013-adreno-hold-mapped-resources.patch",
+    "sha256": "17857a1617dd1a2408bba2717b2e9fa11d466d23028fc5ed336ca68491fd3f3a",
+    "implementation": "drivers/DodgeGpu/DodgeMappedLease.inc",
+    "implementation_sha256": "596dac2eb95cb2011bcfe17b9f8316c9a37db3b8d545f8acecb4865b5617b014",
+    "base_sha256": {
+      "NativeAdrenoVm.h": "fe1db135e2384e86890d0b81e99b3b5e388c565e85a784559a4486b34926af0f",
+      "NativeAdrenoVm.cpp": "4d20ad7727b00bdb451e0b716f586f7c15974df9a9eba83f33cbf16c7bb9d14c",
+      "NativeAdrenoSubmit.h": "e4f927730345de1f1e35336e72bcb160995ccd7daf12c12336cf86cc67d3b5cd",
+      "NativeAdrenoSubmit.cpp": "ee32cefcdc458dc92d558c858c5cd2d35599fe86b8b6170af8e7ddd9a92ea6f7",
+      "NativeAdrenoUserClient.h": "9b210d0cd583bfc1443ad8f4da7dc0cbc2476a989c1845adf37e23142de21f08",
+      "NativeAdrenoUserClient.cpp": "565bdd2da2b23f9c0e8ee16657b1d1672e38341db7a12b50939e294a65606e5d",
+      "NativeAdrenoPublish.cpp": "5850cd2c824c957726c47b5cd855286cd976e80ecdb6a33869ef161a1d7b3b93"
+    },
+    "output_sha256": {
+      "NativeAdrenoVm.h": "8f4b071c1c706b9e7a332b29454923f31fd349fed477c1aab31acf53319f52af",
+      "NativeAdrenoVm.cpp": "bde78ebfd6342ae0c1fa34e4aba4d209cd5ccd31719e8ef0e8f79afc324e188b",
+      "NativeAdrenoSubmit.h": "8df97dc3774d472cd274e97107d00bcbeb0240327c84fd3a45884afbf217b60d",
+      "NativeAdrenoSubmit.cpp": "72f97add35be5c4d7aea4c7e74c7e24255cac40c1629287e0b2cef5d729a790b",
+      "NativeAdrenoUserClient.h": "7448c6ba4d0368f1e3448bfa11e93ccf2cc24d9caaa5881b5d8fbd6dddc9ca23",
+      "NativeAdrenoUserClient.cpp": "574600cb0025719465239468f287bca9ce207f925704540eb804f5752f54fae9",
+      "NativeAdrenoPublish.cpp": "d554b11ca25079cb6a026b2610d24d95ea5f58665f505f8bfef55fbdf82fa5dc"
+    },
+    "default_selected": false,
+    "hardware_qualified": false,
+    "wait": "drivers/DodgeGpu/DodgeMapWait.inc",
+    "wait_sha256": "5796d82fc13a482bbf5ede166824827d5b474697fa407520d82e86c73f4c9484"
+  },
+  "source_sha256": {
+    "scripts/check_mapped_lease_host.py": "22648f262a585c985f2a24f57f828cc0c52c7d625f4bc9fc0909b962d5aa30e7",
+    "scripts/mapped_lease_overlay.py": "fc0ae98893a6a10b386f63e5aea9aaff2fbaca99c34abfba19cbb65e3c553e8b",
+    "drivers/DodgeGpu/DodgeMappedLease.inc": "596dac2eb95cb2011bcfe17b9f8316c9a37db3b8d545f8acecb4865b5617b014",
+    "drivers/DodgeGpu/DodgeMapWait.inc": "5796d82fc13a482bbf5ede166824827d5b474697fa407520d82e86c73f4c9484",
+    "patches/oneplus13/0013-adreno-hold-mapped-resources.patch": "17857a1617dd1a2408bba2717b2e9fa11d466d23028fc5ed336ca68491fd3f3a",
+    "tests/DodgeMappedLeaseTest.cpp": "54ef1b3cb4bd28c67865dbffba828bb7a06b2bd948f076586a1320d0cbf0fdbf",
+    "tests/DodgeMapWaitTest.cpp": "0ddd2192fe8c975e6951ba7f0d610d9ed5cb56fbb61b97130450708ffa8f940a",
+    ".cache/gpu-work/kernel-display-timeline/backend/tests/XnuMemoryFixture.h": "623604f14c79e58f7d26e9d5c1ab1dca496df4b64572c08493370e232b5181cd",
+    ".cache/gpu-work/kernel-display-timeline/backend/tests/test_vm.cpp": "a767c3f4c0cf2a45647c1d2cffd4632a2417e26966b4e4e5d9b8fbfd8382d11e",
+    ".cache/gpu-work/kernel-display-timeline/backend/tests/test_submit.cpp": "eb7b40abe2efb16f253565164d7134cb962467cf86b94adc26325d0d1501eec5",
+    ".cache/gpu-work/kernel-display-timeline/backend/tests/test_userclient.cpp": "3b2965737e22738b24ceeb91ff5e2d372a82f5f8531ca63aa257b97f69b1bf48",
+    "sources/UniXNU/kits/ArmSmmu4K/ArmSmmu4KContext.c": "fb993f53ef899b9969a71311b61b5dbe9446c515d7a6e6ad7d4840796eb1b6a3",
+    "sources/UniXNU/kits/ArmSmmu4K/ArmSmmu4KProgram.c": "93df000cefafd06cc46a24f0079a08dda312a74c7f35f901f255efc74e6919ee",
+    "sources/UniXNU/kits/ArmSmmu4K/ArmSmmu4KLive.c": "de3d7a55c92f825dfa7fe512f84fc146facabcee26af5eb4fdd85898ea1daafa",
+    "sources/UniXNU/kits/ArmSmmu4K/ArmSmmu4KStreams.c": "359610de6974c1885b4b7bbf72e6b321a013e1cc44200e1a8f566d09722c009a",
+    "sources/UniXNU/kits/AdrenoPM4/AdrenoPM4.c": "c4b0227859a1e771c5f349524b718b08444f518ef960bfa4b50f6fd4ab30ad2f"
+  },
+  "artifacts": {
+    "build/cph2653-mapped-lease-wait/host/fixture/XnuMemoryFixture.h": "623604f14c79e58f7d26e9d5c1ab1dca496df4b64572c08493370e232b5181cd",
+    "build/cph2653-mapped-lease-wait/host/fixture/test_vm.cpp": "a767c3f4c0cf2a45647c1d2cffd4632a2417e26966b4e4e5d9b8fbfd8382d11e",
+    "build/cph2653-mapped-lease-wait/host/fixture/test_submit.cpp": "2cd4be5139fc0a55354996da3754fd4be8f90e6314b1513dab530048c0433448",
+    "build/cph2653-mapped-lease-wait/host/fixture/test_userclient.cpp": "dae628d53fa27b8c4d022a9c95bc9025e1eddaebb4bcdc612b7da82ef18305cb",
+    "build/cph2653-mapped-lease-wait/host/bootarg-peer.cpp": "09e687905e4efe0d9cae77dd7bc968cbbf874eaf126e71daedbe1b87c48b59a5",
+    "build/cph2653-mapped-lease-wait/host/vm": "f2c268f6cc7b9637e96f6a57ffbbd4ad2b66602dd309cc8f93a21442f30dc87d",
+    "build/cph2653-mapped-lease-wait/host/vm.log": "18ca101501994a6c469a735846e7a1ddaf0e272e6467456ab3370e84b63d8a26",
+    "build/cph2653-mapped-lease-wait/host/submit": "c816521422ad4b2dc48930afd0c42bebbe5ee3bdb0cc01aa05f20722afbcc6da",
+    "build/cph2653-mapped-lease-wait/host/submit.log": "d938c5946077d5a63951e772821c777f876096d23513054cc960ca0fe8500ac0",
+    "build/cph2653-mapped-lease-wait/host/userclient": "ee92a506ad5d920b7047788c479ed244ab799afbe4f0648ec7169375900ab259",
+    "build/cph2653-mapped-lease-wait/host/userclient.log": "9343f0cc4b45d36e67bc8f0918b1fc8bf2af34e1f161dad5639439992e02ef42",
+    "build/cph2653-mapped-lease-wait/host/mapped": "0fc9219457108bb66eb4824f6ce2afabcce573fe60d132a04384f8aa3d717913",
+    "build/cph2653-mapped-lease-wait/host/mapped.log": "6efcdbfb1a3ede9024b925812c23696ac2449ec6a75cb47701177980030ff903",
+    "build/cph2653-mapped-lease-wait/host/map-wait": "82c08141bcb524507fd72436f2c819d9102ddb933b6407dabf2c9bbd10645539",
+    "build/cph2653-mapped-lease-wait/host/map-wait.log": "711ec5189b299d4ba7e0681b7cef4eb6a0017492f23d7c15177694145a00a269",
+    "build/cph2653-mapped-lease-wait/host/historical-IB-only-hold.log": "07d29f8932ce04832d5e55df050d6e8060d96afe538f51470d441791c859d93f",
+    "build/cph2653-mapped-lease-wait/host/skip-write-acquisition.log": "a6fb30182484ed6ac592a3f7c6d9b6616c830b48758b6edb9cd52a6d06e11a4e",
+    "build/cph2653-mapped-lease-wait/host/allow-late-mapping.log": "75103e4b9e9bc7bba528cecaff89c6801ed164280ff18123d47854ac801a22de",
+    "build/cph2653-mapped-lease-wait/host/zero-fence-treated-as-complete.log": "93a92c5817b9484a2d402ee84219813cda8e2d99609ae31359c7456aec4236c0",
+    "build/cph2653-mapped-lease-wait/host/wait-no-retry.log": "979f646e24587d41677380cd49b1772c3a90b68be084dfd90e3e96b81e6c9fa3",
+    "build/cph2653-mapped-lease-wait/host/compile-commands.json": "e039e6b6a7861b6739cb093c1a95cbee3ca04c678249173f9fba66c873bcdba1",
+    "build/cph2653-mapped-lease-wait/source/NativeAdrenoVm.h": "8f4b071c1c706b9e7a332b29454923f31fd349fed477c1aab31acf53319f52af",
+    "build/cph2653-mapped-lease-wait/source/NativeAdrenoVm.cpp": "bde78ebfd6342ae0c1fa34e4aba4d209cd5ccd31719e8ef0e8f79afc324e188b",
+    "build/cph2653-mapped-lease-wait/source/NativeAdrenoSubmit.h": "8df97dc3774d472cd274e97107d00bcbeb0240327c84fd3a45884afbf217b60d",
+    "build/cph2653-mapped-lease-wait/source/NativeAdrenoSubmit.cpp": "72f97add35be5c4d7aea4c7e74c7e24255cac40c1629287e0b2cef5d729a790b",
+    "build/cph2653-mapped-lease-wait/source/NativeAdrenoUserClient.h": "7448c6ba4d0368f1e3448bfa11e93ccf2cc24d9caaa5881b5d8fbd6dddc9ca23",
+    "build/cph2653-mapped-lease-wait/source/NativeAdrenoUserClient.cpp": "574600cb0025719465239468f287bca9ce207f925704540eb804f5752f54fae9",
+    "build/cph2653-mapped-lease-wait/source/NativeAdrenoPublish.cpp": "d554b11ca25079cb6a026b2610d24d95ea5f58665f505f8bfef55fbdf82fa5dc",
+    "build/cph2653-mapped-lease-wait/source/DodgeMappedLease.inc": "596dac2eb95cb2011bcfe17b9f8316c9a37db3b8d545f8acecb4865b5617b014",
+    "build/cph2653-mapped-lease-wait/source/DodgeMapWait.inc": "5796d82fc13a482bbf5ede166824827d5b474697fa407520d82e86c73f4c9484"
+  },
+  "regression_cases": 16,
+  "bounded_map_wait_cases": 12,
+  "existing_suites": [
+    "vm",
+    "submit",
+    "userclient"
+  ],
+  "source_controls": [
+    {
+      "case": "historical-IB-only-hold",
+      "result": "REJECTED",
+      "returncode": 1,
+      "log": "build/cph2653-mapped-lease-wait/host/historical-IB-only-hold.log"
+    },
+    {
+      "case": "skip-write-acquisition",
+      "result": "REJECTED",
+      "returncode": 1,
+      "log": "build/cph2653-mapped-lease-wait/host/skip-write-acquisition.log"
+    },
+    {
+      "case": "allow-late-mapping",
+      "result": "REJECTED",
+      "returncode": 1,
+      "log": "build/cph2653-mapped-lease-wait/host/allow-late-mapping.log"
+    },
+    {
+      "case": "zero-fence-treated-as-complete",
+      "result": "REJECTED",
+      "returncode": 1,
+      "log": "build/cph2653-mapped-lease-wait/host/zero-fence-treated-as-complete.log"
+    },
+    {
+      "case": "wait-no-retry",
+      "result": "REJECTED",
+      "returncode": 1,
+      "log": "build/cph2653-mapped-lease-wait/host/wait-no-retry.log"
+    }
+  ],
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "leak_detection": false,
+  "compiler_jobs": 4,
+  "fixture_updates": [
+    "test-only 1 MiB aperture for 160 resources",
+    "explicit return for renamed main",
+    "pinned VM hang counter and recoverable-client expectations",
+    "shared-VM client teardown waits for the other client job"
+  ],
+  "new_mapping_waits_for_all_vm_jobs": true,
+  "cache_failure_keeps_complete_lease": true,
+  "unknown_publication_zero_fence_never_retires": true,
+  "indirect_resource_use_proven_from_IBs": false,
+  "iosurface_producer_connected": false,
+  "physical_cache_or_reset_qualified": false,
+  "hardware_tested": false,
+  "all_ios_port_code_complete": false,
+  "scope": "Actual pinned memory/VM/ring/submit code with a reviewed seven-file overlay. Sixteen resource regressions, twelve bounded map-wait integration cases and three existing suites use bounded allocation, cache, CP and SMMU peers. A larger test-only aperture permits 160 targets. Historical IB-only holding, missing acquisition, late mapping, zero-fence retirement and missing map retry are rejected. The actual wait helper and user-client map/fence code retry pending maps outside fixture locks with time/poll bounds, while duplicate maps and other failures return directly. The existing wire ABI lacks resource access/IOSurface identities; all current mappings are conservatively held per job. This does not provide IOSurface producer notification or qualify physical cache exclusion/reset/iOS boot."
+}

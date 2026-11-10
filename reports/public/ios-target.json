@@ -1,0 +1,66 @@
+{
+  "source": "https://updates.cdn-apple.com/2025FallFCS/fullrestores/122-77006/1158E502-D76D-4226-AA06-ED5E30CD1111/iPhone10,3,iPhone10,6_16.7.16_20H392_Restore.ipsw",
+  "product_version": "16.7.16",
+  "build": "20H392",
+  "products": [
+    "iPhone10,6",
+    "iPhone10,3"
+  ],
+  "device_class": "d22ap",
+  "chip_id": "0x8015",
+  "board_id": "0x06",
+  "build_manifest_sha256": "2d1452103a2f5ad71cb78d94454977fc70632472201980a468c247fba14b10b7",
+  "unixnu_revision": "3fa5ff5f409398c0555a9561d6437ce5d4c3b3b7",
+  "components": {
+    "KernelCache": {
+      "member": "kernelcache.release.iphone10b",
+      "bytes": 18204358,
+      "compressed_bytes": 18176350,
+      "sha256": "2d6a13d040aaf87cec09bb6906d43e9bd8cea951e43d1aa1cd62707dfdc5aaec"
+    },
+    "DeviceTree": {
+      "member": "Firmware/all_flash/DeviceTree.d22ap.im4p",
+      "bytes": 33719,
+      "compressed_bytes": 33720,
+      "sha256": "480e8b0888949b4128b7aa2cd254497581c69e1bafa596a760b2fa955a8a6368"
+    },
+    "StaticTrustCache": {
+      "member": "Firmware/087-86698-044.dmg.trustcache",
+      "bytes": 66289,
+      "compressed_bytes": 59922,
+      "sha256": "63e01c03b31e1532a5581a24865490673f0b5c297b0199fe0095637c6100ef4b"
+    },
+    "Cryptex1,SystemTrustCache": {
+      "member": "Firmware/087-86593-047.dmg.trustcache",
+      "bytes": 1511,
+      "compressed_bytes": 1421,
+      "sha256": "9cc478fe3525e2683b5b9ea1eea0851eaebebdab21d206556233400e59d2e361"
+    },
+    "OS": {
+      "member": "087-86698-044.dmg",
+      "bytes": 4730814044,
+      "compressed_bytes": 4730814044,
+      "sha256": "80f426d5b8fca8552f95be427434f1911dbb4c2c6d28aad94f2426ddd0c92483"
+    },
+    "Cryptex1,SystemOS": {
+      "member": "087-86593-047.dmg",
+      "bytes": 2743074816,
+      "compressed_bytes": 1097727251,
+      "sha256": "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849"
+    },
+    "Cryptex1,AppOS": {
+      "member": "087-86715-047.dmg",
+      "bytes": 10485760,
+      "compressed_bytes": 2381197,
+      "sha256": "391f2df322c3172b021b2874f6da5c3e78b70b3df8f502e1a4af2b1d715c4608"
+    }
+  },
+  "kernelcache": {
+    "sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+    "bytes": 50937856,
+    "version_string": "Darwin Kernel Version 22.6.0: Tue Jul  2 20:47:35 PDT 2024; root:xnu-8796.142.1.703.8~1/RELEASE_ARM64_T8015",
+    "architecture": "arm64",
+    "macho_header": "cffaedfe0c000001000000000200000019000000d01200000100200000000000"
+  },
+  "scope": "Verified original iPhone inputs only; not a built or booted OnePlus kernel."
+}

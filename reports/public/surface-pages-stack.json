@@ -1,0 +1,120 @@
+{
+  "result": "CPH2653_ISOLATED_SURFACE_IMPORT_PAGE_ASSOCIATION_ROUTE_PASS",
+  "builder_sha256": "81205fcb72aca46457e851145e8d567df677a2d45975c0888e7282373b4d3a4a",
+  "stages": {
+    "source": {
+      "report": "reports/ios16-surface-pages-source.json",
+      "sha256": "8ad5f49f91627e1934c7b4559710859fd06d3fb6e4185e3125e9e2cb66f8d7f7",
+      "builder": "scripts/build_surface_pages.py",
+      "builder_sha256": "52810c453ed7846203109b2fed98b05a05e3daf8d6e8aa50fcbaa38fea1da19e"
+    },
+    "prelink": {
+      "report": "reports/ios16-surface-pages-prelink.json",
+      "sha256": "c2985f01a9b0df811788bf824f400e0c3921848c42510efa0eb2225cfb611a7c",
+      "builder": "scripts/build_surface_pages_prelink.py",
+      "builder_sha256": "f7e32ac0f4141bdf14c95df8f00ab64830e3329bdc8ba5931c61090f256257b8"
+    },
+    "kernel": {
+      "report": "reports/ios16-surface-pages-kernel.json",
+      "sha256": "d9fc1981409a852ea5d4a5e2cd582a54aed36fe498c454d606a47061e137a8e1",
+      "builder": "scripts/check_surface_pages_kernel.py",
+      "builder_sha256": "48595da472f3927f6c580e0c4481e8b6449cc737b2c0ddcff23409542aa73ee8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "build/cph2653-surface-pages/native/DodgeSurfacePages.o",
+      "sha256": "693edb5a5e7097309552734dc6bb9ba32d2501ee7e2530a0d8d5c8af5b2387e1"
+    },
+    {
+      "path": "build/cph2653-surface-pages/surface-pages-bindings.o",
+      "sha256": "8f7db0b8f40c284be1c16b3a421390293053da3a0e9188fe64b0fa3199bb60bc"
+    },
+    {
+      "path": "build/cph2653-surface-pages/libDodgeSurfacePages.a",
+      "sha256": "ff396bbe150314445fafa1f1b87bf0c09183641da6e9da31c4d1d4d7e3fdf24a"
+    },
+    {
+      "path": "build/cph2653-surface-pages/native/compile-commands.json",
+      "sha256": "f5372b87b901fdc1b40325f9d595df8d4a4c563b0a9342b4bce1c6a862ebfb43"
+    },
+    {
+      "path": "build/cph2653-surface-pages/mach.surface-pages",
+      "sha256": "6073db161b8d04036ce93847bad270a25d22e6ed560e015b8008242512ba9421"
+    },
+    {
+      "path": "build/cph2653-surface-pages/link-command.json",
+      "sha256": "f36b6e77cb28fb07d48dc206d14d1b613c1e9ecef1e0052776e8a3570854bada"
+    },
+    {
+      "path": "build/cph2653-surface-pages/host/pages-test",
+      "sha256": "c885a3a33de07d89a570fa4625f5208aaef7697134771b0663f587988577bef8"
+    },
+    {
+      "path": "build/cph2653-surface-pages/host/pages-tests.log",
+      "sha256": "12b14028627758eb65ec14fe86c965b6ce341c2ccd28b3228e06287604fc27b1"
+    },
+    {
+      "path": "reports/ios16-surface-pages-source.json",
+      "sha256": "8ad5f49f91627e1934c7b4559710859fd06d3fb6e4185e3125e9e2cb66f8d7f7"
+    },
+    {
+      "path": "build/cph2653-surface-pages-prelink/kernel.macho",
+      "sha256": "4ee2c911086d27b213e16056dbdcfa9753ed3ae12eeed6d2d595bd644f9a2387"
+    },
+    {
+      "path": "build/cph2653-surface-pages-prelink/emission.json",
+      "sha256": "83f1a6721f5849a781d340def6710289a6669a0517d96fb663f8707b041a9a1b"
+    },
+    {
+      "path": "reports/ios16-surface-pages-prelink.json",
+      "sha256": "c2985f01a9b0df811788bf824f400e0c3921848c42510efa0eb2225cfb611a7c"
+    },
+    {
+      "path": "build/cph2653-surface-pages-kernel/pages-layout.o",
+      "sha256": "693edb5a5e7097309552734dc6bb9ba32d2501ee7e2530a0d8d5c8af5b2387e1"
+    },
+    {
+      "path": "build/cph2653-surface-pages-kernel/pages-layout.log",
+      "sha256": "bf6a6f7e91319ab20f0f8defb0b4bc812fac1bb1c406669cb8eb0c1a97aeb2c8"
+    },
+    {
+      "path": "build/cph2653-surface-pages-kernel/cpu-cases.json",
+      "sha256": "5a02e24747f37644c3e210d353044b649d8066c850420b6a434f2fdd65258781"
+    },
+    {
+      "path": "reports/ios16-surface-pages-kernel.json",
+      "sha256": "d9fc1981409a852ea5d4a5e2cd582a54aed36fe498c454d606a47061e137a8e1"
+    }
+  ],
+  "host_cases": 35,
+  "host_source_rejection_controls": 4,
+  "new_native_association_cases": 25,
+  "existing_ARM64_regression_cases": 149,
+  "linked_kernel_cpu_paths": 174,
+  "new_kernel_instruction_rejection_controls": 5,
+  "combined_source_objects": 94,
+  "native_source_entries": 102,
+  "original_aliases": 343,
+  "original_components": 28,
+  "original_interfaces": 7,
+  "original_pointer_readbacks": 63889,
+  "candidate": "build/cph2653-surface-pages-prelink/kernel.macho",
+  "candidate_sha256": "4ee2c911086d27b213e16056dbdcfa9753ed3ae12eeed6d2d595bd644f9a2387",
+  "kernel_owned_descriptor_import_page_association_implemented": true,
+  "real_native_memory_and_VM_job_references_executed": true,
+  "real_native_descriptor_and_original_surface_references_executed": true,
+  "owned_descriptor_required_from_original_component_serialization": true,
+  "descriptor_prepare_complete_physical_segments_and_type_checks_are_peers": true,
+  "source_descriptor_acquisition_and_backing_mutation_serialization_qualified": false,
+  "GPU_user_client_association_connected": false,
+  "iosurface_producer_connected": false,
+  "physical_cache_visibility_or_reset_qualified": false,
+  "default_artifacts_selected_or_replaced": false,
+  "new_boot_image_built": false,
+  "phone_operations": "none",
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "The kernel-only adapter binds an already-owned exact original surface descriptor to every imported GPU page, retains/prepares its own descriptor reference, holds the real native resource and balances original surface ownership. Mismatches and observed replacement refuse association; job/mapping holds defer unprepare; complete failure retains and quarantines both owners. Thirty-five sanitizer cases and 25 actual linked paths plus 149 retained regressions pass. Acquiring the original owned descriptor, backing mutation/check-to-submit serialization, GPU user-client and producer callback/cancel/completion integration, physical cache/reset and full iOS runtime remain incomplete. No public feature bit, user ABI or new development boot image is introduced."
+}

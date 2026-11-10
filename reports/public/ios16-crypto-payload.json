@@ -1,0 +1,136 @@
+{
+  "result": "IOS16_ORIGINAL_CRYPTO_PACKED_DATA_AND_CONTAINER_READBACK_PASS",
+  "builder_sha256": "4e7baa1461f7277f71a901dbee6ec9dbe453b0e064c09229b84ab19cdf4614a4",
+  "source_sha256": {
+    "scripts/build_crypto_payload.py": "4e7baa1461f7277f71a901dbee6ec9dbe453b0e064c09229b84ab19cdf4614a4",
+    "scripts/build_data_payload.py": "e5b3272ca67d056fb62f86e82c602e18139e008aca15129e96cf2712807d4696",
+    "scripts/prepare_device_tree.py": "e8215e5b9e79724354f8d18dcd03cb82116ec7007c096217b6c6eafbe90ebfc6",
+    "scripts/prepare_data_image.py": "9fef596a896352617d0cb68a6deb5979c28868281fcec94e65992e6c185f476d",
+    "board.toml": "fbd0228458405ff70d7703e993d70305e0582d65ace814af4e196d00975d0f9b",
+    "profiles/os/ios-16.7.16-20H392/gpu-prelink.json": "eeb742dfd5ede60ca2d1869e2b04dfef79b905689ac0f9e8bbec85c9a9ba06f7",
+    "sources/UniXNU/scripts/unixnu/bootimg.py": "ebfc1856d7b0ed40df92cdaa491888e39c19d8d275018b65e7c7fe2b218c5289",
+    "sources/UniXNU/scripts/unixnu/payload.py": "f2c630238496020c7fc7e01a83bdfc66a167ba6e550da363861bf1956e0d8a85",
+    "sources/UniXNU/drivers/DarwinBoot/DarwinBootPkg/Driver/DarwinBoot.c": "4fd5b08848b4ca6af6bea534eefac4e04a5aa5a6175efe516bafadebf8dd31da",
+    "sources/UniXNU/drivers/DarwinBoot/DarwinBootPkg/Driver/PackedRamdisk.h": "8b3a326062baee88a179274e92df05a3a07792d25ef84daa23b71aa47b4a2326",
+    "sources/UniXNU/drivers/DarwinBoot/DarwinBootPkg/Driver/WindowSize.h": "6f78303c54252eae722be7c9b33869e4e8251ee3569736511790170d499b58cb",
+    "uefi/Mu-Silicium/BootShim/BootShim.S": "ad1037dd5db2ceb66b9b714ec9821335f6a375b38b3242ea1f57c2a966f39e14",
+    "uefi/Mu-Silicium/Resources/Configs/dodge.toml": "f96c6e166eceea767ff0c7c2a9105b647f1f540364f70894a97eef26de752035",
+    "uefi/Mu-Silicium/Resources/Scripts/mkbootimg.py": "55037fd1a6d6cd861add76c2083d5d4321373bf714acae3f6a40deb004c27d47",
+    "uefi/Mu-Silicium/Resources/DTBs/dodge.dtb": "b6044e472020b26e5304173291afea80f5ebe4e2ccf48dadfe985cee2a52e90a"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-crypto-prelink.json": "dfcaf6e82393b60841a205babd39830b423304982693a441d44d83bd78328e62",
+    "reports/ios16-crypto-kernel.json": "6373f4eeb61a165416d4b4f1f9af4ca39b5950b166c1fa3a5d60cbc8a8ae7f05",
+    "reports/ios16-data-volatile-image.json": "9d9907c749e3870f71f9944176331f76efd0392207afda3160141cf97f33bf37",
+    "reports/native-payload.json": "02ab73bffb6af491b496f47e326d394501dc388657f4473e4827af6cf5bdd3b5",
+    "reports/uefi-build.json": "ff91576bea37b95841f0ebc6ab9b4cfdbbb887fad03957fbbfade7a660b8e06c"
+  },
+  "artifacts": {
+    "build/cph2653-crypto-bringup/payload.img": "2ed8a2ea779edb6dba82df4363143d00ed9e68a02f0bb5f4d28b9f54cf0fc9ae",
+    "build/cph2653-crypto-bringup/boot.img": "44bbe15b05fdc22fe6ed7a39a150ea8bee8499fdd73e577af0b2d5cfc39d5be3",
+    "build/cph2653-crypto-bringup/boot.json": "6423866c746614798c8abacefb1352c981683dc23f0428d08fbdc1712925b91c",
+    "build/cph2653-crypto-bringup/kernel.macho.adt": "c3080f76340ceda373d2e56caa9c0514007f6cfea666cfa63f7155a3cd22ee27",
+    "build/cph2653-crypto-bringup/loader-parser.c": "2a53ccb696c0928af16804c09c6595d1610e761974e3e09795e3896800841e1b",
+    "build/cph2653-crypto-bringup/loader-parser.so": "f5a6513cba8f9a2cbf22fb9ff8cad03b87e153bfc6f788a9a79af26d74109897"
+  },
+  "candidate": "build/cph2653-crypto-prelink/kernel.macho",
+  "candidate_sha256": "3315aae02eeea2b79a7340793c3cd0296fe385202de2d26ad1949707abdceee0",
+  "boot_image": "build/cph2653-crypto-bringup/boot.img",
+  "boot_image_sha256": "44bbe15b05fdc22fe6ed7a39a150ea8bee8499fdd73e577af0b2d5cfc39d5be3",
+  "boot_image_bytes": 170557440,
+  "payload": "build/cph2653-crypto-bringup/payload.img",
+  "payload_sha256": "2ed8a2ea779edb6dba82df4363143d00ed9e68a02f0bb5f4d28b9f54cf0fc9ae",
+  "packed_seed": "build/ios16-data-apfs-volatile/data.dbr",
+  "packed_seed_bytes": 721024,
+  "logical_data_bytes": 2147483648,
+  "adt_sha256": "c3080f76340ceda373d2e56caa9c0514007f6cfea666cfa63f7155a3cd22ee27",
+  "menu_sha256": "094b96466480bfc15b8f34ab39375677ef98bf1b8d08014cf7e331d819c960c6",
+  "kernel_args": "-v serial=0 debug=0x14e cpus=1",
+  "linked_source_objects": 89,
+  "native_source_entries": 97,
+  "original_components": 28,
+  "original_interfaces": 7,
+  "actual_loader_adt_and_packed_parsers_passed": true,
+  "loader_keeps_packed_input": true,
+  "loader_dense_2GiB_allocation_required": false,
+  "all_original_adt_values_preserved": true,
+  "negative_controls": [
+    {
+      "case": "seed-short-header",
+      "result": "REJECTED"
+    },
+    {
+      "case": "seed-short-payload",
+      "result": "REJECTED"
+    },
+    {
+      "case": "seed-trailing-data",
+      "result": "REJECTED"
+    },
+    {
+      "case": "seed-version",
+      "result": "REJECTED"
+    },
+    {
+      "case": "seed-page-size",
+      "result": "REJECTED"
+    },
+    {
+      "case": "seed-zero-logical",
+      "result": "REJECTED"
+    },
+    {
+      "case": "seed-wrong-capacity",
+      "result": "REJECTED"
+    },
+    {
+      "case": "seed-count",
+      "result": "REJECTED"
+    },
+    {
+      "case": "seed-offset-alignment",
+      "result": "REJECTED"
+    },
+    {
+      "case": "seed-empty-extent",
+      "result": "REJECTED"
+    },
+    {
+      "case": "adt-truncated",
+      "result": "REJECTED"
+    },
+    {
+      "case": "adt-placeholder-length",
+      "result": "REJECTED"
+    },
+    {
+      "case": "adt-nonzero-placeholder",
+      "result": "REJECTED"
+    },
+    {
+      "case": "adt-duplicate-reservation",
+      "result": "REJECTED"
+    },
+    {
+      "case": "adt-raw-packed-conflict",
+      "result": "REJECTED"
+    }
+  ],
+  "boot_header_version": 4,
+  "source_data_default_enabled": false,
+  "source_data_mount_default_enabled": false,
+  "init_boot_call_site_wired": true,
+  "source_data_startup_and_payload_wired": true,
+  "original_userspace_included": false,
+  "original_root_windows_included": false,
+  "private_platform_seed_disclosed": false,
+  "original_apfs_data_mount_qualified": false,
+  "original_crypto_post_executed": false,
+  "original_crypto_runtime_qualified": false,
+  "single_original_crypto_owner_wired": true,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "phone_operations": "none",
+  "scope": "Separate 89-object original-crypto/Data/original-component kernel, exact packed 2 GiB seed, preserved iPhone ADT plus zero PackedRAMDisk placeholder, existing firmware, FAT and Android v4 development container. Actual production C ADT/packed parsers and encoded copy primitive, FAT file reads and complete Android container readback pass. The single original crypto owner replaces the independent source provider in this isolated candidate. Original POST/runtime remain unqualified. Data startup and init-context mounting remain default-off; original Data mount, userspace/root boot, physical loader allocation, IOKit registry and phone runtime are not qualified."
+}

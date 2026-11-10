@@ -1,0 +1,65 @@
+--- a/osfmk/prng/prng_random.c
++++ b/osfmk/prng/prng_random.c
+@@ -431,24 +431,18 @@
+ extern kern_return_t corecrypto_kext_start(kmod_info_t *, void *);
+ SECURITY_READ_ONLY_LATE(kern_return_t) source_corecrypto14_status = KERN_FAILURE;
+ 
++#include "DodgeCryptoBootstrap.h"
++
++int dodge_crypto_prng_ready(void) { return prng_ready; }
++int dodge_crypto_prng_matches(const void *context) { return prng_ready && prng_ctx == context; }
++
+ static void
+ source_corecrypto14_bootstrap(void)
+ {
+-	static kmod_info_t info = {
+-		.info_version = KMOD_INFO_VERSION,
+-		.name = "source-corecrypto14-evaluation",
+-		.version = "14.0",
+-	};
+-	uint32_t mode = 0;
+-
+-	if (PE_parse_boot_argn("fips_mode", &mode, sizeof(mode)) && mode != 0) {
+-		panic("source corecrypto verification requires complete default POST");
+-	}
+-	info.address = (vm_address_t)&_mh_execute_header;
+-	source_corecrypto14_status = corecrypto_kext_start(&info, NULL);
++	source_corecrypto14_status = dodge_crypto_bootstrap();
+ 	if (source_corecrypto14_status != KERN_SUCCESS) {
+-		panic("source corecrypto initialization failed: %d", source_corecrypto14_status);
+-	}
+-}
+-STARTUP(EARLY_BOOT, STARTUP_RANK_FIRST, source_corecrypto14_bootstrap);
++		panic("original corecrypto initialization failed: %d", source_corecrypto14_status);
++	}
++}
++STARTUP(SYSCTL, STARTUP_RANK_LAST, source_corecrypto14_bootstrap);
+ #endif
+--- a/libkern/c++/OSKext.cpp
++++ b/libkern/c++/OSKext.cpp
+@@ -79,6 +79,9 @@
+ extern "C" __attribute__((used)) const uint32_t native_prelink_security_init_version = 1;
+ #endif
+ #include <libkern/c++/OSLib.h>
++#if defined(XNU_SOURCE_CORECRYPTO14)
++#include "DodgeCryptoBootstrap.h"
++#endif
+ 
+ #include <IOKit/IOLib.h>
+ #include <IOKit/IOCatalogue.h>
+@@ -8288,7 +8291,14 @@
+ 	OSKextLogKextInfo(this, kmod_info->address, kmod_info->size, firehose_tracepoint_code_load);
+ 	result = OSRuntimeInitializeCPP(this);
+ 	if (result == KERN_SUCCESS) {
+-		result = startfunc(kmod_info, kmodStartData);
++#if defined(XNU_SOURCE_CORECRYPTO14)
++		if (dodge_crypto_is_original(kmod_info)) {
++			result = dodge_crypto_start_once(kmod_info, kmodStartData);
++		} else
++#endif
++		{
++			result = startfunc(kmod_info, kmodStartData);
++		}
+ 	}
+ 
+ 	/* An explicitly linked security initializer must run with its real

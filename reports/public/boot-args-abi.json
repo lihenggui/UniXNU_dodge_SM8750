@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "xnu_revision": "1b191cb58250d0705d8a51287127505aa4bc0789",
+  "apple_header_sha256": "efdfec46319cb147297682a8faebe02873f845261b57f7511ab8e15c13ef3439",
+  "loader_header_sha256": "e870307657437022162e798d071f67ad393f514d512e9667d2b2b36eaa7ff241",
+  "command_line_bytes": 608,
+  "boot_args_bytes": 736,
+  "boot_flags_offset": 720,
+  "memory_size_actual_offset": 728,
+  "compared_field_count": 13,
+  "newer_layout_negative_control": "rejected",
+  "unknown_layout_negative_control": "rejected",
+  "scope": "Host compilation of production loader and actual Apple structure; no hardware handoff."
+}

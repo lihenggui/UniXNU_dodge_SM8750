@@ -1,0 +1,171 @@
+diff --git a/Silicon/Silicium/SiliciumPkg/Drivers/SimpleFbDxe/SimpleFb.c b/Silicon/Silicium/SiliciumPkg/Drivers/SimpleFbDxe/SimpleFb.c
+index 7264cf3e..2c655f35 100644
+--- a/Silicon/Silicium/SiliciumPkg/Drivers/SimpleFbDxe/SimpleFb.c
++++ b/Silicon/Silicium/SiliciumPkg/Drivers/SimpleFbDxe/SimpleFb.c
+@@ -22,8 +22,20 @@ FrameBufferQueryMode (
+ {
+   EFI_STATUS Status;
+ 
++  if (SizeOfInfo == NULL || Info == NULL) {
++    return EFI_INVALID_PARAMETER;
++  }
++  *SizeOfInfo = 0;
++  *Info = NULL;
++  if (This == NULL || This->Mode == NULL || This->Mode->Info == NULL) {
++    return EFI_INVALID_PARAMETER;
++  }
++  if (ModeNumber != 0) {
++    return EFI_UNSUPPORTED;
++  }
++
+   // Allocate Memory
+-  Status = gBS->AllocatePool (EfiBootServicesData, sizeof (EFI_GRAPHICS_OUTPUT_MODE_INFORMATION), (VOID *)Info);
++  Status = gBS->AllocatePool (EfiBootServicesData, sizeof (EFI_GRAPHICS_OUTPUT_MODE_INFORMATION), (VOID **)Info);
+   if (EFI_ERROR (Status)) {
+     return Status;
+   }
+@@ -32,11 +44,7 @@ FrameBufferQueryMode (
+   *SizeOfInfo = sizeof (EFI_GRAPHICS_OUTPUT_MODE_INFORMATION);
+ 
+   // Pass Frame Buffer Infos
+-  (*Info)->Version              = This->Mode->Info->Version;
+-  (*Info)->HorizontalResolution = This->Mode->Info->HorizontalResolution;
+-  (*Info)->VerticalResolution   = This->Mode->Info->VerticalResolution;
+-  (*Info)->PixelFormat          = This->Mode->Info->PixelFormat;
+-  (*Info)->PixelsPerScanLine    = This->Mode->Info->PixelsPerScanLine;
++  CopyMem (*Info, This->Mode->Info, sizeof (**Info));
+ 
+   return EFI_SUCCESS;
+ }
+@@ -46,7 +54,10 @@ FrameBufferSetMode (
+   IN EFI_GRAPHICS_OUTPUT_PROTOCOL *This,
+   IN UINT32                        ModeNumber)
+ {
+-  return EFI_SUCCESS;
++  if (This == NULL || This->Mode == NULL || This->Mode->Info == NULL) {
++    return EFI_INVALID_PARAMETER;
++  }
++  return ModeNumber == 0 ? EFI_SUCCESS : EFI_UNSUPPORTED;
+ }
+ 
+ EFI_STATUS
+@@ -91,11 +102,27 @@ GetFrameBufferInfos (
+   OUT UINT32               *Height,
+   OUT UINT32               *ColorDepth)
+ {
+-  EFI_MEMORY_REGION_DESCRIPTOR FrameBufferRegion;
++  EFI_MEMORY_REGION_DESCRIPTOR FrameBufferRegion = {0};
++  EFI_STATUS                   Status;
++  UINT32                       ModeWidth;
++  UINT32                       ModeHeight;
++  UINT32                       ModeDepth;
++  UINT64                       Bytes;
++
++  if (BaseAddress == NULL || Width == NULL || Height == NULL || ColorDepth == NULL) {
++    return EFI_INVALID_PARAMETER;
++  }
++  *BaseAddress = 0;
++  *Width = *Height = *ColorDepth = 0;
+ 
+   // Locate "Display Reserved" Memory Region
+-  LocateMemoryRegionByName ("Display Reserved", &FrameBufferRegion);
+-  LocateMemoryRegionByName ("Display_Reserved", &FrameBufferRegion);
++  Status = LocateMemoryRegionByName ("Display Reserved", &FrameBufferRegion);
++  if (Status == EFI_NOT_FOUND) {
++    Status = LocateMemoryRegionByName ("Display_Reserved", &FrameBufferRegion);
++  }
++  if (EFI_ERROR (Status)) {
++    return Status;
++  }
+ 
+   // Verify Frame Buffer Region
+   if (!FrameBufferRegion.Address) {
+@@ -104,20 +131,26 @@ GetFrameBufferInfos (
+   }
+ 
+   // Get Frame Buffer Details
+-  *Width      = FixedPcdGet32 (PcdFrameBufferWidth);
+-  *Height     = FixedPcdGet32 (PcdFrameBufferHeight);
+-  *ColorDepth = FixedPcdGet32 (PcdFrameBufferColorDepth);
++  ModeWidth  = FixedPcdGet32 (PcdFrameBufferWidth);
++  ModeHeight = FixedPcdGet32 (PcdFrameBufferHeight);
++  ModeDepth  = FixedPcdGet32 (PcdFrameBufferColorDepth);
+ 
+   // Verify Frame Buffer Resolution
+-  if (*Width < 640 || *Height < 475) {
+-    DEBUG ((EFI_D_ERROR, "Frame Buffer Resolution is too Small!\n"));
+-    DEBUG ((EFI_D_ERROR, "Minimal Supported Resolution = 640x475\n"));
+-
++  if (ModeWidth < 640 || ModeHeight < 475 || ModeWidth > 16384 || ModeHeight > 16384 ||
++      (ModeDepth != 16 && ModeDepth != 24 && ModeDepth != 32)) {
+     return EFI_UNSUPPORTED;
+   }
++  Bytes = (UINT64)ModeWidth * ModeHeight * (ModeDepth / 8);
++  if ((FrameBufferRegion.Address & 3) != 0 || Bytes > FrameBufferRegion.Length ||
++      FrameBufferRegion.Address > MAX_UINT64 - FrameBufferRegion.Length) {
++    return EFI_COMPROMISED_DATA;
++  }
+ 
+   // Pass Frame Buffer Address
+   *BaseAddress = FrameBufferRegion.Address;
++  *Width = ModeWidth;
++  *Height = ModeHeight;
++  *ColorDepth = ModeDepth;
+ 
+   return EFI_SUCCESS;
+ }
+@@ -166,7 +199,7 @@ SetFrameBufferModeDetails (
+ 
+   // Set Frame Buffer Range
+   mFrameBuffer.Mode->FrameBufferBase = BaseAddress;
+-  mFrameBuffer.Mode->FrameBufferSize = Width * Height * (ColorDepth / 8);
++  mFrameBuffer.Mode->FrameBufferSize = (UINTN)Width * Height * (ColorDepth / 8);
+ 
+   // Set Mode Info Version
+   mFrameBuffer.Mode->Info->Version = 0;
+@@ -215,7 +248,10 @@ CreateFrameBufferConfig (IN EFI_PHYSICAL_ADDRESS BaseAddress)
+   STATIC UINTN FrameBufferConfigurationSize = 0;
+ 
+   // Get Frame Buffer Configuration Size
+-  FrameBufferBltConfigure ((VOID *)(UINTN)BaseAddress, mFrameBuffer.Mode->Info, FrameBufferConfiguration, &FrameBufferConfigurationSize);
++  Status = FrameBufferBltConfigure ((VOID *)(UINTN)BaseAddress, mFrameBuffer.Mode->Info, NULL, &FrameBufferConfigurationSize);
++  if (Status != EFI_BUFFER_TOO_SMALL || FrameBufferConfigurationSize == 0) {
++    return EFI_ERROR (Status) ? Status : EFI_COMPROMISED_DATA;
++  }
+ 
+   // Allocate Memory
+   FrameBufferConfiguration = AllocatePool (FrameBufferConfigurationSize);
+@@ -237,19 +273,19 @@ CreateFrameBufferConfig (IN EFI_PHYSICAL_ADDRESS BaseAddress)
+ VOID
+ FreeMemoryBuffers ()
+ {
+-  // Free Buffer
+-  if (mFrameBuffer.Mode->Info != NULL) {
+-    gBS->FreePool (mFrameBuffer.Mode->Info);
+-  }
+-
+   // Free Buffer
+   if (mFrameBuffer.Mode != NULL) {
++    if (mFrameBuffer.Mode->Info != NULL) {
++      gBS->FreePool (mFrameBuffer.Mode->Info);
++    }
+     gBS->FreePool (mFrameBuffer.Mode);
++    mFrameBuffer.Mode = NULL;
+   }
+ 
+   // Free Buffer
+   if (FrameBufferConfiguration != NULL) {
+     FreePool (FrameBufferConfiguration);
++    FrameBufferConfiguration = NULL;
+   }
+ }
+ 
+@@ -293,7 +329,7 @@ RegisterFrameBuffer (
+   Status = gBS->InstallMultipleProtocolInterfaces (&ImageHandle, &gEfiDevicePathProtocolGuid, &DisplayDevicePath, &gEfiGraphicsOutputProtocolGuid, &mFrameBuffer, NULL);
+   if (EFI_ERROR (Status)) {
+     DEBUG ((EFI_D_ERROR, "Failed to Register GOP Protocol!\n"));
+-    ASSERT_EFI_ERROR (Status);
++    goto cleanup;
+   }
+ 
+   return EFI_SUCCESS;

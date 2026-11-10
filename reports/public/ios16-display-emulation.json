@@ -1,0 +1,468 @@
+{
+  "result": "IOS16_DISPLAY_FOURTEEN_METHOD_ARM64_EMULATION_PASS",
+  "emulator": "Unicorn 2.1.4",
+  "builder_sha256": "0dd113d8477d9ab97d63e91a5abfcd6af068204d86d1838e7ec1e0270f6f4e0b",
+  "interface_report_sha256": "50a9773997035ce5645d871b2ddb4c21c2d68d872815786bdf2e80d88f61bcc7",
+  "native_probe_sha256": "d4935cdc7259dc82bce2008ee9baba19d517d137a512a0601dcea0844ec96723",
+  "interface_contract_sha256": "a1a41166d5d06e860569817a545e1ebaadad3f734baf2e1aef2bf2d2fb3399ab",
+  "backend_contract_sha256": "c191fafdd284df220bcc2ddcd9487a3e6d40a9a34f3308812351bf3e178f2f26",
+  "backend_emulator_sha256": "15cf0f8d6520666fb6f3b813405dcc2488de07d96e3a68949f1a34bdaed9169c",
+  "backend_cases": [
+    {
+      "case": "backend211-arguments-0",
+      "result": "PASS",
+      "slot": 211,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 1,
+      "report_helper_peers": [],
+      "instructions": 8,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend212-arguments-1",
+      "result": "PASS",
+      "slot": 212,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 1,
+      "report_helper_peers": [],
+      "instructions": 8,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend242-arguments-2",
+      "result": "PASS",
+      "slot": 242,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 6,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend292-arguments-3",
+      "result": "PASS",
+      "slot": 292,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 1,
+      "report_helper_peers": [],
+      "instructions": 8,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend292-arguments-4",
+      "result": "PASS",
+      "slot": 292,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 1,
+      "report_helper_peers": [],
+      "instructions": 8,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend293-arguments-5",
+      "result": "PASS",
+      "slot": 293,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 1,
+      "report_helper_peers": [],
+      "instructions": 11,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend322-arguments-6",
+      "result": "PASS",
+      "slot": 322,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 4,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend211-zero-arguments",
+      "result": "PASS",
+      "slot": 211,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 1,
+      "report_helper_peers": [],
+      "instructions": 8,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend212-zero-arguments",
+      "result": "PASS",
+      "slot": 212,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 1,
+      "report_helper_peers": [],
+      "instructions": 8,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend293-null-node",
+      "result": "PASS",
+      "slot": 293,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 6,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend293-zero-node-word",
+      "result": "PASS",
+      "slot": 293,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 8,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend329-raw-byte-0",
+      "result": "PASS",
+      "slot": 329,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 6,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend329-raw-byte-1",
+      "result": "PASS",
+      "slot": 329,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 6,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend329-raw-byte-2",
+      "result": "PASS",
+      "slot": 329,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 6,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend329-raw-byte-255",
+      "result": "PASS",
+      "slot": 329,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 6,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend321-no-output-empty-ring",
+      "result": "PASS",
+      "slot": 321,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [
+        "0xfffffff005ccf6d8"
+      ],
+      "instructions": 51,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend321-bounded-output-empty-ring",
+      "result": "PASS",
+      "slot": 321,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [
+        "0xfffffff005ccf6d8"
+      ],
+      "instructions": 55,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend321-missing-count",
+      "result": "PASS",
+      "slot": 321,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [
+        "0xfffffff005ccf6d8",
+        "0xfffffff005ce108c"
+      ],
+      "instructions": 54,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend321-zero-capacity",
+      "result": "PASS",
+      "slot": 321,
+      "unchanged_original_body_executed": true,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [
+        "0xfffffff005ccf6d8",
+        "0xfffffff005ce108c"
+      ],
+      "instructions": 55,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend211-sparse-wrong-slot",
+      "result": "REJECTED",
+      "slot": 211,
+      "unchanged_original_body_executed": false,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 3,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend212-sparse-wrong-slot",
+      "result": "REJECTED",
+      "slot": 212,
+      "unchanged_original_body_executed": false,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 3,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend242-sparse-wrong-slot",
+      "result": "REJECTED",
+      "slot": 242,
+      "unchanged_original_body_executed": false,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 3,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend292-sparse-wrong-slot",
+      "result": "REJECTED",
+      "slot": 292,
+      "unchanged_original_body_executed": false,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 3,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend293-sparse-wrong-slot",
+      "result": "REJECTED",
+      "slot": 293,
+      "unchanged_original_body_executed": false,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 3,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend321-sparse-wrong-slot",
+      "result": "REJECTED",
+      "slot": 321,
+      "unchanged_original_body_executed": false,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 3,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend322-sparse-wrong-slot",
+      "result": "REJECTED",
+      "slot": 322,
+      "unchanged_original_body_executed": false,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 3,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    },
+    {
+      "case": "backend329-sparse-wrong-slot",
+      "result": "REJECTED",
+      "slot": 329,
+      "unchanged_original_body_executed": false,
+      "controller_peer_calls": 0,
+      "report_helper_peers": [],
+      "instructions": 3,
+      "stock_instance_bytes": 7896,
+      "original_hardware_accesses": 0
+    }
+  ],
+  "qualified_virtual_dispatch_slots": [
+    178,
+    211,
+    212,
+    242,
+    246,
+    274,
+    276,
+    281,
+    282,
+    292,
+    293,
+    321,
+    322,
+    329
+  ],
+  "total_case_count": 45,
+  "original_getter_sha256": "9281b91dafd5c88bce502428114888d579b560dba4fc2b6ab501d5acb591e1c6",
+  "original_hardware_body_sha256": "c84f57bf67beee2228046e91e6689e39adfb90338833f1bfba13e2f059634160",
+  "cases": [
+    {
+      "case": "dimensions-null-0-0",
+      "result": "PASS",
+      "instructions": 31,
+      "memory_accesses": 17
+    },
+    {
+      "case": "dimensions-null-0-1",
+      "result": "PASS",
+      "instructions": 25,
+      "memory_accesses": 13
+    },
+    {
+      "case": "dimensions-null-1-0",
+      "result": "PASS",
+      "instructions": 25,
+      "memory_accesses": 13
+    },
+    {
+      "case": "dimensions-null-1-1",
+      "result": "PASS",
+      "instructions": 19,
+      "memory_accesses": 9
+    },
+    {
+      "case": "hardware-original-refusal",
+      "result": "PASS",
+      "instructions": 9,
+      "memory_accesses": 3
+    },
+    {
+      "case": "dimensions-wrong-slot-249",
+      "result": "REJECTED",
+      "error": "Invalid memory fetch (UC_ERR_FETCH_UNMAPPED)"
+    },
+    {
+      "case": "hardware-wrong-slot-288",
+      "result": "REJECTED",
+      "error": "Invalid memory fetch (UC_ERR_FETCH_UNMAPPED)"
+    },
+    {
+      "case": "packet-register-peer-0x0",
+      "result": "PASS",
+      "original_hook_body_executed": false,
+      "register_callee_peer": true,
+      "instructions": 4
+    },
+    {
+      "case": "packet-register-peer-0xe00002c7",
+      "result": "PASS",
+      "original_hook_body_executed": false,
+      "register_callee_peer": true,
+      "instructions": 4
+    },
+    {
+      "case": "validate-original-leaf",
+      "result": "PASS",
+      "original_hook_body_executed": true,
+      "register_callee_peer": false,
+      "instructions": 10
+    },
+    {
+      "case": "validate-original-leaf-null",
+      "result": "PASS",
+      "original_hook_body_executed": true,
+      "register_callee_peer": false,
+      "instructions": 10
+    },
+    {
+      "case": "validate-register-peer-0x1",
+      "result": "PASS",
+      "original_hook_body_executed": false,
+      "register_callee_peer": true,
+      "instructions": 4
+    },
+    {
+      "case": "kick-original-leaf",
+      "result": "PASS",
+      "original_hook_body_executed": true,
+      "register_callee_peer": false,
+      "instructions": 7
+    },
+    {
+      "case": "complete-register-peer-0x0",
+      "result": "PASS",
+      "original_hook_body_executed": false,
+      "register_callee_peer": true,
+      "instructions": 4
+    },
+    {
+      "case": "packet-sparse-wrong-slot",
+      "result": "REJECTED",
+      "original_hook_body_executed": false,
+      "register_callee_peer": true,
+      "instructions": 3
+    },
+    {
+      "case": "kick-sparse-wrong-slot",
+      "result": "REJECTED",
+      "original_hook_body_executed": false,
+      "register_callee_peer": true,
+      "instructions": 3
+    },
+    {
+      "case": "complete-sparse-wrong-slot",
+      "result": "REJECTED",
+      "original_hook_body_executed": false,
+      "register_callee_peer": true,
+      "instructions": 3
+    },
+    {
+      "case": "validate-sparse-wrong-slot",
+      "result": "REJECTED",
+      "original_hook_body_executed": false,
+      "register_callee_peer": true,
+      "instructions": 3
+    }
+  ],
+  "original_method_bytes_changed": false,
+  "fixture_own_probe_changed_for_negative_controls": true,
+  "negative_controls_use_sparse_fixture_table": true,
+  "wrong_os_original_vtables_executed": false,
+  "real_iokit_instance_constructed": false,
+  "full_kernel_or_ios_executed": false,
+  "stock_controller_is_peer": true,
+  "stock_report_helpers_are_peers": true,
+  "original_full_report_or_controller_implementation_executed": false,
+  "hardware_tested": false,
+  "scope": "Actual native ARM64 virtual-call code reaches unchanged original dimension, hardware-refusal, kick/no-op and validation/false leaves over a synthetic bounded object/table/stack. Packet/complete/validation-success callees are explicit register peers. Eight additional native probes execute unchanged stock controller forwarders, scalar leaves and bounded/empty report paths. Stock controller and report prelude/logging are explicit peers over a separate 7896-byte stock fixture. Slot 243 arguments and operation/status semantics remain unclassified; no original hardware, full request lifecycle or display operation is claimed."
+}

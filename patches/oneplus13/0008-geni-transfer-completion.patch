@@ -1,0 +1,156 @@
+--- a/GeniSpi.c
++++ b/GeniSpi.c
+@@ -113,7 +113,9 @@
+     if (s->use_dma) {
+         // geni_se_select_dma_mode: drop the FIFO interrupt sources and switch the engine to its DMA master.
+         irq_clear(s);
+-        wr(s, SE_GENI_M_IRQ_EN, rd(s, SE_GENI_M_IRQ_EN) & ~(GENI_M_CMD_DONE | GENI_M_TX_FIFO_WATERMARK | GENI_M_RX_FIFO_WATERMARK | GENI_M_RX_FIFO_LAST));
++        // Poll command completion as well as both data channels. DMA_DONE
++        // alone does not establish that the SPI command released the wire.
++        wr(s, SE_GENI_M_IRQ_EN, (rd(s, SE_GENI_M_IRQ_EN) & ~(GENI_M_TX_FIFO_WATERMARK | GENI_M_RX_FIFO_WATERMARK | GENI_M_RX_FIFO_LAST)) | GENI_M_CMD_DONE);
+         wr(s, SE_GENI_DMA_MODE_EN, rd(s, SE_GENI_DMA_MODE_EN) | GENI_DMA_MODE_EN);
+     }
+     if (s->poll_only == 1) wr(s, SE_IRQ_EN, 0);     // status registers stay pollable; no unhandled interrupt reaches the GIC
+@@ -173,19 +175,24 @@
+     return 1;
+ }
+ 
+-static void handle_rx(struct geni_spi *s, struct xfer *x) {
++static int handle_rx(struct geni_spi *s, struct xfer *x) {
+     unsigned bpw = bytes_per_word(s);
+     uint32_t st = rd(s, SE_GENI_RX_FIFO_STATUS);
+-    size_t bytes = (size_t)(st & GENI_RX_WC_MASK) * bpw;
++    unsigned words = st & GENI_RX_WC_MASK;
++    // Validate before subtracting a partial last word or reading any data.
++    // In particular, LAST_VALID with zero words must never underflow size_t.
++    if (words > s->info.tx_fifo_depth) return GENI_ERR_IO;
++    size_t bytes = (size_t)words * bpw;
+     if (st & GENI_RX_LAST) {
+         unsigned valid = (st >> GENI_RX_LAST_VALID_SHIFT) & GENI_RX_LAST_VALID_MASK;
+-        if (valid && valid < 4) bytes -= bpw - valid;
++        if (valid && (!words || valid > bpw)) return GENI_ERR_IO;
++        if (valid && valid < bpw) bytes -= bpw - valid;
+     }
+     if (!x->rx) {
+         for (size_t i = 0; i < (bytes + bpw - 1) / bpw; i++) (void)rd(s, SE_GENI_RX_FIFOn);
+-        return;
+-    }
+-    if (x->rx_rem < bytes) bytes = x->rx_rem;
++        return 0;
++    }
++    if (x->rx_rem < bytes) return GENI_ERR_IO;
+     uint8_t *p = x->rx + (x->len - x->rx_rem);
+     size_t i = 0;
+     while (i < bytes) {
+@@ -194,6 +201,7 @@
+         for (size_t j = 0; j < n; j++) p[i++] = (uint8_t)(word >> (8 * j));
+     }
+     x->rx_rem -= bytes;
++    return 0;
+ }
+ 
+ static int wait_bit(struct geni_spi *s, uint32_t bit) {
+@@ -208,12 +216,40 @@
+     return GENI_ERR_TIMEOUT;
+ }
+ 
+-static void recover(struct geni_spi *s) {
++static int wait_inactive(struct geni_spi *s) {
++    for (unsigned n = 0; n < s->poll_limit; n++) {
++        if (!(rd(s, SE_GENI_STATUS) & (GENI_STATUS_M_ACTIVE | (1u << 12)))) return 0;
++        if (s->se.delay_us) s->se.delay_us(s->se.ctx, 1);
++    }
++    return GENI_ERR_TIMEOUT;
++}
++
++static int recover(struct geni_spi *s) {
+     wr(s, SE_GENI_TX_WATERMARK_REG, 0);
++    wr(s, SE_GENI_M_IRQ_CLEAR, GENI_M_CMD_CANCEL_DONE | GENI_M_CMD_ABORT_DONE);
+     wr(s, SE_GENI_M_CMD_CTRL_REG, GENI_M_CMD_CANCEL);
+-    if (wait_bit(s, GENI_M_CMD_CANCEL_DONE | GENI_M_CMD_DONE) == 0) return;
++    if (wait_bit(s, GENI_M_CMD_CANCEL_DONE | GENI_M_CMD_DONE) == 0 && wait_inactive(s) == 0) return 0;
+     wr(s, SE_GENI_M_CMD_CTRL_REG, GENI_M_CMD_ABORT);
+-    (void)wait_bit(s, GENI_M_CMD_ABORT_DONE | GENI_M_CMD_DONE);
++    if (wait_bit(s, GENI_M_CMD_ABORT_DONE | GENI_M_CMD_DONE) == 0) return wait_inactive(s);
++    return GENI_ERR_TIMEOUT;
++}
++
++static int reset_dma_channel(struct geni_spi *s, int rx) {
++    uint32_t stat = rx ? SE_DMA_RX_IRQ_STAT : SE_DMA_TX_IRQ_STAT;
++    uint32_t clear = rx ? SE_DMA_RX_IRQ_CLR : SE_DMA_TX_IRQ_CLR;
++    uint32_t enable = rx ? SE_DMA_RX_IRQ_EN_SET : SE_DMA_TX_IRQ_EN_SET;
++    uint32_t reset = rx ? SE_DMA_RX_FSM_RST : SE_DMA_TX_FSM_RST;
++    wr(s, clear, GENI_DMA_RESET_DONE);
++    wr(s, enable, GENI_DMA_RESET_DONE);
++    wr(s, reset, 1);
++    for (unsigned n = 0; n < s->poll_limit; n++) {
++        if (rd(s, stat) & GENI_DMA_RESET_DONE) {
++            wr(s, clear, GENI_DMA_RESET_DONE);
++            return 0;
++        }
++        if (s->se.delay_us) s->se.delay_us(s->se.ctx, 1);
++    }
++    return GENI_ERR_TIMEOUT;
+ }
+ 
+ static int transfer_dma(struct geni_spi *s, const uint8_t *tx, uint8_t *rx, size_t len, int keep_cs) {
+@@ -254,7 +290,7 @@
+         wr(s, SE_DMA_TX_ATTR, GENI_DMA_TX_ATTR_EOT_BUF);
+         wr(s, SE_DMA_TX_LEN, (uint32_t)len);
+     }
+-    int tx_done = !tx, rx_done = !rx, status = GENI_ERR_TIMEOUT;
++    int tx_done = !tx, rx_done = !rx, command_done = 0, status = GENI_ERR_TIMEOUT;
+     for (unsigned n = 0; n < s->poll_limit; n++) {
+         uint32_t ts = tx ? rd(s, SE_DMA_TX_IRQ_STAT) : 0, rs = rx ? rd(s, SE_DMA_RX_IRQ_STAT) : 0;
+         uint32_t ms = rd(s, SE_GENI_M_IRQ_STATUS);
+@@ -264,7 +300,8 @@
+         if ((ts & GENI_DMA_AHB_ERR) || (rs & GENI_DMA_AHB_ERR) || (ms & GENI_M_ERRORS)) { status = GENI_ERR_IO; break; }
+         if (ts & GENI_DMA_DONE) tx_done = 1;
+         if (rs & GENI_DMA_DONE) rx_done = 1;
+-        if (tx_done && rx_done) { status = 0; break; }
++        if (ms & GENI_M_CMD_DONE) command_done = 1;
++        if (tx_done && rx_done && command_done && !(rd(s, SE_GENI_STATUS) & (GENI_STATUS_M_ACTIVE | (1u << 12)))) { status = 0; break; }
+         if (s->se.delay_us) s->se.delay_us(s->se.ctx, 1);
+     }
+     s->last_tx_in = tx ? rd(s, SE_DMA_TX_LEN_IN) : 0;
+@@ -286,9 +323,12 @@
+     s->snap_txfs = rd(s, SE_GENI_TX_FIFO_STATUS);
+     s->snap_rxfs = rd(s, SE_GENI_RX_FIFO_STATUS);
+     s->snap_valid = 1;
+-    recover(s);
+-    wr(s, SE_DMA_TX_FSM_RST, 1);
+-    wr(s, SE_DMA_RX_FSM_RST, 1);
++    // Do not reset a channel behind a command that failed to cancel/abort.
++    // The device wrapper latches this transfer failure and pins all resources.
++    if (recover(s) == 0) {
++        if (tx && reset_dma_channel(s, 0)) return status;
++        if (rx) (void)reset_dma_channel(s, 1);
++    }
+     return status;
+ }
+ 
+@@ -325,13 +365,21 @@
+             status = GENI_ERR_IO;
+             break;
+         }
+-        if (st & (GENI_M_RX_FIFO_WATERMARK | GENI_M_RX_FIFO_LAST)) handle_rx(s, &x);
++        if ((st & (GENI_M_RX_FIFO_WATERMARK | GENI_M_RX_FIFO_LAST)) && handle_rx(s, &x)) {
++            status = GENI_ERR_IO;
++            break;
++        }
+         if ((st & GENI_M_TX_FIFO_WATERMARK) && tx) handle_tx(s, &x);
+         if (st & GENI_M_CMD_DONE) {
+-            if (rx && x.rx_rem) handle_rx(s, &x);
++            if (rx && x.rx_rem && handle_rx(s, &x)) {
++                status = GENI_ERR_IO;
++                break;
++            }
+             status = (x.tx_rem || x.rx_rem) ? GENI_ERR_IO : 0;
+             if (x.tx_rem) wr(s, SE_GENI_TX_WATERMARK_REG, 0);
+-            return status;
++            if (!status) status = wait_inactive(s);
++            if (!status) return 0;
++            break;
+         }
+     }
+     s->snap_dma_tx = rd(s, SE_DMA_TX_IRQ_STAT);

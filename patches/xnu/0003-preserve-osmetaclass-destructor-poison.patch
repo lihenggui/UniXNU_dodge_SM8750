@@ -1,0 +1,17 @@
+diff --git a/libkern/c++/OSMetaClass.cpp b/libkern/c++/OSMetaClass.cpp
+--- a/libkern/c++/OSMetaClass.cpp
++++ b/libkern/c++/OSMetaClass.cpp
+@@ -365,9 +365,10 @@
+ *********************************************************************/
+ OSMetaClassBase::~OSMetaClassBase()
+ {
+-	void ** thisVTable;
+-
+-	thisVTable = (void **) this;
++	/* Preserve the invalid-object marker with newer optimizers. */
++	void * volatile * thisVTable;
++
++	thisVTable = (void * volatile *) this;
+ 	*thisVTable = (void *) -1UL;
+ }
+ 

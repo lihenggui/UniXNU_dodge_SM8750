@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "packet_bytes": 1132,
+  "packet_slot": 178,
+  "packet_entry": {
+    "address": "0xfffffff005c14930",
+    "bytes": 5628,
+    "sha256": "674fbb71c08b92833eccf03017c0049d23f6f7797593b689e8962d10dc7ce8ae"
+  },
+  "packet_callsite": {
+    "address": "0xfffffff005bfde54",
+    "bytes": 28,
+    "sha256": "7e297d7f79cf10f1bb2f9fc2cf0a6e8a00ab2aab6c3280cde49058ab8bd3f2ba"
+  },
+  "packet_prototype": "int32_t (self, const packet *, opaque submitter)",
+  "packet_size_check": {
+    "address": "0xfffffff005bfddd0",
+    "bytes": 8,
+    "sha256": "3fbaf59cea9fb97774519de6401776e6310fee95eaae92340f449ea119b25cc4"
+  },
+  "validation_slot": 282,
+  "submit_kick_slot": 276,
+  "surface_id_leaf": {
+    "address": "0xfffffff005a4e7ec",
+    "bytes": 8,
+    "sha256": "3bd3b1d8b6ab2c04c0413bebd37e2e8ad1ccbe0b9ecfaf21d58d998e01648454"
+  },
+  "surface_id_word_offset": 12,
+  "maximum_reserved_requests": 16,
+  "accepted_packet": "Unmodified SwapBegin + layer-0 full-frame SetLayer defaults only",
+  "all_other_packet_bytes_required_zero": true,
+  "original_request_builder_body_executed": false,
+  "full_family_lifecycle_qualified": false
+}

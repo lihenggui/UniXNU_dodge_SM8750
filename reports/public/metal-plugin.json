@@ -1,0 +1,45 @@
+{
+  "result": "IOS16_METAL_PLUGIN_CROSS_BUILD_PASS",
+  "target": "arm64-apple-ios16.0",
+  "a740_replay_disabled": true,
+  "sp_topology": 6,
+  "sp_topology_is_active_measurement": false,
+  "shader_fixtures": {
+    "smoke_fill.comp": {
+      "glsl_sha256": "5bb908d398b6553790b167dd7dd78b7ab5865816c9f127856eebf6a30ce16931",
+      "spirv_sha256": "94dc94766902a6465d07b9722ffaf55d4ab64bffec0e3d57a6b0525a0b6d1353"
+    },
+    "smoke_triangle.frag": {
+      "glsl_sha256": "ce531f1b3679267823a0e587372e9f42445c0d6c2c767f3e531105f9d2ce9e0f",
+      "spirv_sha256": "7e06d00a1590c5029e243253d8fb42cf3ab51638e3a83b744a687903e9b5263a"
+    },
+    "smoke_triangle.vert": {
+      "glsl_sha256": "a4e37afa9e9065e556c5ea79dc0119e6621bebe39749aae83279bce9d15ab8de",
+      "spirv_sha256": "3b1f7b1d48144a6c32b7f4e94ef76989cbf08aa2ef83d789148d5c8e74342ddc"
+    }
+  },
+  "object_sha256": {
+    "NativeAdrenoMetalPlugin.o": "9f60cc2ab98d270a8b1b1959bde70f3279e500d532510e85069e9db062918e57",
+    "NativeBridgeMetalFrontend.o": "bb7271cdb679771053a2d1fc9f72d32bcd459b78b09b748f0367b14f7f2cba9a",
+    "NativeAdrenoProbeDaemon.o": "b4ce16b5b0c6e59f7445669d91fdf87f5011d78cc48f5dbb2a75701c6de6894a",
+    "NativeOsLogExport.o": "ab5465aacc42e8d56b9b6a763a4ab5c1f54099f2cec504ce4f866919d14eb74a",
+    "AdrenoPM4.o": "af66a0fd75f9f05e5bdd430c3bef76f445803a13b20186f6903781863f7f6277"
+  },
+  "frontend_revision": "403e69e990871be939a15632cf619af6c8eb60a9",
+  "ios16_interface_patches": [
+    {
+      "path": "patches/adreno-metal/0001-ios16-public-metal-interface.patch",
+      "sha256": "147d6b15b1d95b6c249d80117f43e252ac2d2987524dae38565d59f17aef1848"
+    }
+  ],
+  "sdk_scope": "iOS 16.5 cross-build headers/stubs; runtime private ABI is not qualified.",
+  "hardware_tested": false,
+  "linked": true,
+  "bundle": "build/cph2653-metal-plugin/NativeAdrenoMetal.bundle",
+  "executable_sha256": "972bb592046fd475ae9adc050977d4c2cce0a3679e216bd4eef49542cdf53005",
+  "rust_bridge_sha256": "2e281b434aca34d1785cb0919c71601fcb74b8e5c61c04c9c24a4ba318b009a2",
+  "turnip_sha256": "8e68998d9b1e67ee2bfd716a02ce20c5244822e66aeff312feb3a78136eaab45",
+  "daemon_sha256": "f85d8ddb4048dd201554ee1437de7a34cebbbef395d8ae2451cb5577e37f6b42",
+  "original_discovery_abi_qualified": false,
+  "code_signature_independently_verified": false
+}

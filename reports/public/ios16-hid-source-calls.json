@@ -1,0 +1,219 @@
+{
+  "result": "IOS16_ORIGINAL_HID_REPORT_AND_SOURCE_OVERRIDE_CALLERS_CPU_PASS",
+  "builder_sha256": "0ab2643b3b2da39b7ce2f376ae57ac2cac3348361fa5499d0a53765ef78a709c",
+  "source_sha256": {
+    "scripts/check_hid_source_calls.py": "0ab2643b3b2da39b7ce2f376ae57ac2cac3348361fa5499d0a53765ef78a709c",
+    "scripts/prepare_hid_source_interface.py": "2743b8240c4140c738c32651c439fc456b189bc7927f5472aa6284505e7cea89",
+    "scripts/check_ios16_swap.py": "f5d5dbf33f9e217386f1ab970f0b5ddcafa12b1aed54b7e89841d112ec1fb215"
+  },
+  "interface_report_sha256": "ff9f20c4d1fd6a3b6349d83cb0281110318d79fb9bd1f61d674271b2e18d7ed5",
+  "case_count": 16,
+  "cases": [
+    {
+      "case": "report-not-ready",
+      "result": "PASS",
+      "events": [
+        "uptime-peer"
+      ],
+      "complete_original_report_wrapper": true,
+      "bounded_original_start_or_property_block": false,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "report-input",
+      "result": "PASS",
+      "events": [
+        "uptime-peer",
+        "gate-enter-peer",
+        "slot-197-report-peer",
+        "gate-leave-peer"
+      ],
+      "complete_original_report_wrapper": true,
+      "bounded_original_start_or_property_block": false,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "report-output",
+      "result": "PASS",
+      "events": [
+        "uptime-peer",
+        "gate-enter-peer",
+        "slot-197-report-peer",
+        "gate-leave-peer"
+      ],
+      "complete_original_report_wrapper": true,
+      "bounded_original_start_or_property_block": false,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "report-feature",
+      "result": "PASS",
+      "events": [
+        "uptime-peer",
+        "gate-enter-peer",
+        "slot-197-report-peer",
+        "gate-leave-peer"
+      ],
+      "complete_original_report_wrapper": true,
+      "bounded_original_start_or_property_block": false,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "report-high-options",
+      "result": "PASS",
+      "events": [
+        "uptime-peer",
+        "gate-enter-peer",
+        "slot-197-report-peer",
+        "gate-leave-peer"
+      ],
+      "complete_original_report_wrapper": true,
+      "bounded_original_start_or_property_block": false,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "report-submission-error",
+      "result": "PASS",
+      "events": [
+        "uptime-peer",
+        "gate-enter-peer",
+        "slot-197-report-peer",
+        "gate-leave-peer"
+      ],
+      "complete_original_report_wrapper": true,
+      "bounded_original_start_or_property_block": false,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "report-timestamp-high",
+      "result": "PASS",
+      "events": [
+        "uptime-peer",
+        "gate-enter-peer",
+        "slot-197-report-peer",
+        "gate-leave-peer"
+      ],
+      "complete_original_report_wrapper": true,
+      "bounded_original_start_or_property_block": false,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "report-null-forwarding",
+      "result": "PASS",
+      "events": [
+        "uptime-peer",
+        "gate-enter-peer",
+        "slot-197-report-peer",
+        "gate-leave-peer"
+      ],
+      "complete_original_report_wrapper": true,
+      "bounded_original_start_or_property_block": false,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "descriptor-handle-start-false",
+      "result": "PASS",
+      "events": [
+        "handle-start-peer"
+      ],
+      "complete_original_report_wrapper": false,
+      "bounded_original_start_or_property_block": true,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "descriptor-error",
+      "result": "PASS",
+      "events": [
+        "handle-start-peer",
+        "new-descriptor-peer"
+      ],
+      "complete_original_report_wrapper": false,
+      "bounded_original_start_or_property_block": true,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "descriptor-null-output",
+      "result": "PASS",
+      "events": [
+        "handle-start-peer",
+        "new-descriptor-peer"
+      ],
+      "complete_original_report_wrapper": false,
+      "bounded_original_start_or_property_block": true,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "descriptor-success",
+      "result": "PASS",
+      "events": [
+        "handle-start-peer",
+        "new-descriptor-peer"
+      ],
+      "complete_original_report_wrapper": false,
+      "bounded_original_start_or_property_block": true,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "transport-null",
+      "result": "PASS",
+      "events": [
+        "property-getter-peer"
+      ],
+      "complete_original_report_wrapper": false,
+      "bounded_original_start_or_property_block": true,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "transport-string",
+      "result": "PASS",
+      "events": [
+        "property-getter-peer"
+      ],
+      "complete_original_report_wrapper": false,
+      "bounded_original_start_or_property_block": true,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "product-null",
+      "result": "PASS",
+      "events": [
+        "property-getter-peer"
+      ],
+      "complete_original_report_wrapper": false,
+      "bounded_original_start_or_property_block": true,
+      "original_iokit_and_gate_implementation_executed": false
+    },
+    {
+      "case": "product-string",
+      "result": "PASS",
+      "events": [
+        "property-getter-peer"
+      ],
+      "complete_original_report_wrapper": false,
+      "bounded_original_start_or_property_block": true,
+      "original_iokit_and_gate_implementation_executed": false
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "wrong-dispatch",
+      "result": "REJECTED",
+      "check": "Unqualified HID implementation reached"
+    },
+    {
+      "case": "output-alias",
+      "result": "REJECTED",
+      "check": "Original HID caller changed object storage"
+    }
+  ],
+  "cpu_cases": "build/ios16-hid-source-interface/cpu-cases.json",
+  "cpu_cases_sha256": "392356498f2da9d42d0582c357ba9263164486a759a8612269455bd1a18ad78d",
+  "original_report_wrapper_body_executed": true,
+  "original_start_and_property_bounded_blocks_executed": true,
+  "clock_command_gate_descriptor_and_final_report_are_peers": true,
+  "complete_original_start_or_hid_parser_executed": false,
+  "actual_hid_service_or_ui_execution": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Eight full unchanged original handleReport wrapper paths and eight bounded original descriptor/property caller blocks. Checks self/output pointers, timestamp/report/type/options, original ready guard, gate order and return status. Clock, gate operations, source callbacks and slot-197 implementation are explicit peers; no original full start, parser or HID service executes."
+}

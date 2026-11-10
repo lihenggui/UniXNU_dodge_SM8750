@@ -1,0 +1,534 @@
+{
+  "result": "IOS16_ORIGINAL_SWAP_COMPLETION_CALL_AND_BOUNDED_BODY_PASS",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "builder_sha256": "c7b7873d96d3cd4b6bd2b9230285fbb22028db36531d3cf9303235efc145a8b2",
+  "contract": "profiles/os/ios-16.7.16-20H392/display-completion.json",
+  "contract_sha256": "0f8aab7ca6b38ad60e5eea3d5fb49a1b8eb943f9bc6db2b590540798f4a0c255",
+  "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacySwapCompletionABI.h",
+  "header_sha256": "d92f93dcd20eebbc53714dc5776894230fb89b1a1759308516aebf4b5393e06a",
+  "queue_header_sha256": "c94511515c3989b470fcce568cfaa349216a8ae5111718ab65030ce42d383ce4",
+  "native_probe": "build/ios16-swap-completion/completion.o",
+  "native_probe_sha256": "8f25037bf9279061b79669a998cd5cc638e900b85e9a02817b705b09b0e7e988",
+  "archive": "build/ios16-swap-completion/libIPhone16SwapCompletion.a",
+  "archive_sha256": "dfcd7b5537e9d0c77c66e42fb69aa992fd8a41d741aa443554d287e1bc0deab2",
+  "slide": -16777216,
+  "binding_address": "0xfffffff004c1ace4",
+  "arm64_call_cases": [
+    {
+      "case": "current-A",
+      "call_dispatched": true,
+      "result": "PASS"
+    },
+    {
+      "case": "current-B",
+      "call_dispatched": true,
+      "result": "PASS"
+    },
+    {
+      "case": "null-display",
+      "call_dispatched": false,
+      "result": "PASS"
+    },
+    {
+      "case": "null-expected",
+      "call_dispatched": false,
+      "result": "PASS"
+    },
+    {
+      "case": "no-current",
+      "call_dispatched": false,
+      "result": "PASS"
+    },
+    {
+      "case": "different-current",
+      "call_dispatched": false,
+      "result": "PASS"
+    },
+    {
+      "case": "hold-request",
+      "call_dispatched": true,
+      "virtual_slot": 4,
+      "result": "PASS"
+    },
+    {
+      "case": "hold-null",
+      "call_dispatched": false,
+      "virtual_slot": 4,
+      "result": "PASS"
+    },
+    {
+      "case": "drop-request",
+      "call_dispatched": true,
+      "virtual_slot": 5,
+      "result": "PASS"
+    },
+    {
+      "case": "drop-null",
+      "call_dispatched": false,
+      "virtual_slot": 5,
+      "result": "PASS"
+    }
+  ],
+  "arm64_body_cases": [
+    {
+      "case": "normal",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 541,
+      "memory_writes": 86
+    },
+    {
+      "case": "no-surface-code-path",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 511,
+      "memory_writes": 82
+    },
+    {
+      "case": "cancelled-code-path",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 413,
+      "memory_writes": 63
+    },
+    {
+      "case": "options-five",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 515,
+      "memory_writes": 83
+    },
+    {
+      "case": "options-fifteen",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 531,
+      "memory_writes": 85
+    },
+    {
+      "case": "background-word",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 547,
+      "memory_writes": 87
+    },
+    {
+      "case": "mode-two",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 549,
+      "memory_writes": 86
+    },
+    {
+      "case": "mode-one",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 543,
+      "memory_writes": 86
+    },
+    {
+      "case": "state-change",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "state-notify",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 556,
+      "memory_writes": 87
+    },
+    {
+      "case": "trace-four-surfaces-bounded-to-three",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "timestamp",
+        "trace-combine",
+        "debug-trace",
+        "debug-trace",
+        "debug-trace",
+        "debug-trace",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 648,
+      "memory_writes": 91
+    },
+    {
+      "case": "backend-unsupported-return-ignored",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "trace-end"
+      ],
+      "instructions": 541,
+      "memory_writes": 86
+    },
+    {
+      "case": "pending-action",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": true,
+      "release_clear_wakeup_order": [
+        "release-peer",
+        "wakeup-peer",
+        "after-completion"
+      ],
+      "original_notification_helper_executed": true,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "backend-report",
+        "surface-selector",
+        "surface-word-a",
+        "surface-word-b",
+        "surface-selector",
+        "surface-selector",
+        "surface-selector",
+        "timestamp",
+        "surface-commit",
+        "request-release",
+        "gate-wakeup",
+        "pending-action",
+        "trace-end"
+      ],
+      "instructions": 548,
+      "memory_writes": 86
+    },
+    {
+      "case": "raw-wrapper-no-current",
+      "result": "PASS",
+      "native_guard_admitted": true,
+      "raw_wrapper_entry": true,
+      "unchanged_full_body_executed": true,
+      "original_tail_executed": false,
+      "release_clear_wakeup_order": [
+        "after-completion"
+      ],
+      "original_notification_helper_executed": false,
+      "helper_or_lifetime_peers": [
+        "trace-begin",
+        "trace-end"
+      ],
+      "instructions": 103,
+      "memory_writes": 26
+    },
+    {
+      "case": "guard-mismatched-current",
+      "result": "PASS",
+      "native_guard_admitted": false,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": false,
+      "original_tail_executed": false,
+      "release_clear_wakeup_order": [],
+      "original_notification_helper_executed": false,
+      "helper_or_lifetime_peers": [],
+      "instructions": 9,
+      "memory_writes": 0
+    },
+    {
+      "case": "guard-null-display",
+      "result": "PASS",
+      "native_guard_admitted": false,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": false,
+      "original_tail_executed": false,
+      "release_clear_wakeup_order": [],
+      "original_notification_helper_executed": false,
+      "helper_or_lifetime_peers": [],
+      "instructions": 4,
+      "memory_writes": 0
+    },
+    {
+      "case": "guard-null-expected",
+      "result": "PASS",
+      "native_guard_admitted": false,
+      "raw_wrapper_entry": false,
+      "unchanged_full_body_executed": false,
+      "original_tail_executed": false,
+      "release_clear_wakeup_order": [],
+      "original_notification_helper_executed": false,
+      "helper_or_lifetime_peers": [],
+      "instructions": 5,
+      "memory_writes": 0
+    }
+  ],
+  "bounded_body_case_count": 16,
+  "full_body_paths_executed": 13,
+  "tail_paths_executed": 12,
+  "body_emulator_sha256": "ff2d7e35cd3b9a41f3934389c2adceba59ab2cf379041e472907227770d315c5",
+  "unicorn_version": "2.1.4",
+  "archive_member_readback": true,
+  "native_original_request_refcount_slots_match": true,
+  "actual_request_refcount_operations_executed": false,
+  "original_wrapper_bytes_changed": false,
+  "original_completion_body_executed": true,
+  "original_notification_and_mode_helpers_executed": true,
+  "original_request_release_and_gate_are_peers": true,
+  "original_surface_commit_is_peer": true,
+  "original_release_clear_wakeup_instructions_executed": true,
+  "actual_original_retirement_lifetime_qualified": false,
+  "request_released": false,
+  "gate_wakeup_executed": false,
+  "fence_signalled": false,
+  "full_display_provider_complete": false,
+  "default_kernel_selected": false,
+  "hardware_tested": false,
+  "scope": "Exact original wrapper/calling convention and native guarded call/refcount probes. Additional bounded CPU cases execute the unchanged full completion body, empty-client notification, mode/statistics helpers and release/current-clear/wakeup instruction order. Trace, surface commit, backend report, timestamp, request release and gate wakeup use explicit peers. No original reference decrement, destruction, surface fence, gate implementation, full lifecycle or hardware is executed or qualified."
+}

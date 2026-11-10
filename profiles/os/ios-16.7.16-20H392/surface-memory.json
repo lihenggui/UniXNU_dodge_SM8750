@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "bindings": {
+    "_native_iphone_surface_memory": "0xfffffff005a4e724"
+  },
+  "blocks": {
+    "descriptor": {
+      "address": "0xfffffff005a4e724",
+      "bytes": 8,
+      "sha256": "095bb56e13b6dfde16ade0b592279392884c282a7c7810cb58472b839de552de"
+    },
+    "same_descriptor_getter": {
+      "address": "0xfffffff005a4e71c",
+      "bytes": 8,
+      "sha256": "095bb56e13b6dfde16ade0b592279392884c282a7c7810cb58472b839de552de"
+    },
+    "surface_descriptor_set": {
+      "address": "0xfffffff005a4e568",
+      "bytes": 88,
+      "sha256": "4f42cc1e416edd2b2e14d6ddfb8232f93d472a3cac4bbd1baec13786a27427b5"
+    },
+    "region_subrange": {
+      "address": "0xfffffff005a4bf74",
+      "bytes": 104,
+      "sha256": "540af4a65700d04a58948389c690bb3567cf4cffc3aaddab841d918de50245b6"
+    },
+    "client_mapping_descriptor": {
+      "address": "0xfffffff005a55400",
+      "bytes": 36,
+      "sha256": "9baf6107142d167d06e264cc79bd907a0af651cb890b2a365f4e8448d4d00c2b"
+    },
+    "client_resource_descriptor": {
+      "address": "0xfffffff005a5617c",
+      "bytes": 16,
+      "sha256": "1fb7cd0fbb0e07c3b7387b09896132f44cf784b3d046dd9bdc2eeb0ec41755de"
+    },
+    "wired_right_prepare": {
+      "address": "0xfffffff005a66dc0",
+      "bytes": 96,
+      "sha256": "8e781b4a1c4c4975569e0b688188798f30d96a185e94d9a9bbeef1cf40513caa"
+    },
+    "wired_right_complete": {
+      "address": "0xfffffff005a66e20",
+      "bytes": 84,
+      "sha256": "8bb3563b071df73ac38bb56d97005ce8eeedac02164d4ed4b4ea9a20d93899ef"
+    }
+  },
+  "surface_descriptor_field": 56,
+  "surface_region_field": 48,
+  "getter_retains": false,
+  "getter_locks": false,
+  "descriptor_virtual_slots": {
+    "direction": 21,
+    "length": 22,
+    "physical_segment": 19,
+    "prepare": 27,
+    "complete": 28
+  },
+  "descriptor_source_for_gpu_import_acquired_automatically": false,
+  "all_original_backing_mutation_serialization_qualified": false
+}

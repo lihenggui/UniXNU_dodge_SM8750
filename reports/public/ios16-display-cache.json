@@ -1,0 +1,201 @@
+{
+  "result": "IOS16_DISPLAY_CACHE_READONLY_EXTRACTION_AND_INTEGRITY_PASS",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "builder_sha256": "d2712227a3953994daa438f8c72a1bed6a52ea703c6189fe89b5b701dd888d79",
+  "extractor_source_sha256": "f90a9edb0b7fa9dc43cf75073ef155c11ef3f57a37ef41378f1d568482dfff45",
+  "extractor": ".toolchains/apfs-readonly/apfs-extract",
+  "extractor_sha256": "a64fd2535cc4bbe93f128948dad4c25a9940b75b7d4643146a9a83895c599cb3",
+  "reader_source": {
+    "repository": "https://github.com/sgan81/apfs-fuse",
+    "revision": "66b86bd525e8cb90f9012543be89b1f092b75cf3",
+    "path": "sources/apfs-fuse",
+    "lzfse_submodule": "e634ca58b4821d9f3d560cdc6df5dec02ffc93fd",
+    "scope": "host-only read-only image extraction; not the kernel APFS implementation"
+  },
+  "compression_headers": {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/bzip2/libbz2-dev_1.0.8-5ubuntu0.1_amd64.deb",
+    "path": ".cache/libbz2-dev_1.0.8-5ubuntu0.1_amd64.deb",
+    "sha256": "7a6d810e55b250945d2dbb5f45d59551b2d50aa7ce140b6eda0928dd76ac9320"
+  },
+  "cache_format": {
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/dyld/c8a445f88f9fc1713db34674e79b00e30723e79d/cache-builder/dyld_cache_format.h",
+    "revision": "c8a445f88f9fc1713db34674e79b00e30723e79d",
+    "tag": "dyld-1042.1",
+    "path": ".cache/dyld-1042.1-cache-format.h",
+    "sha256": "b7861b7d0511946ebc067702b4b67a8bc77209b1bf35dd494240726e4cc628bb"
+  },
+  "derived_format_offsets": {
+    "mappingOffset": 16,
+    "mappingCount": 20,
+    "codeSignatureOffset": 40,
+    "codeSignatureSize": 48,
+    "localSymbolsOffset": 72,
+    "localSymbolsSize": 80,
+    "uuid": 88,
+    "sharedRegionStart": 224,
+    "mappingWithSlideOffset": 312,
+    "subCacheArrayOffset": 392,
+    "subCacheArrayCount": 396,
+    "symbolFileUUID": 400,
+    "imagesOffset": 448,
+    "imagesCount": 452,
+    "image_info_bytes": 32,
+    "subcache_entry_bytes": 56,
+    "local_entry_bytes": 16
+  },
+  "source_image": "build/ios16-volumes/SystemOS.raw",
+  "source_image_sha256": "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849",
+  "framework": {
+    "index": 378,
+    "address": 7233216512,
+    "path": "/System/Library/PrivateFrameworks/IOMobileFramebuffer.framework/IOMobileFramebuffer"
+  },
+  "cache_files": [
+    {
+      "path": "build/ios16-display-cache/dyld_shared_cache_arm64",
+      "bytes": 393216,
+      "sha256": "76874e8375252ee643011ff8063f0cce12355f05cf5f9897a34e5679667a65aa",
+      "uuid": "8f970452c9e33e88b114feb1864bc9e0",
+      "mappings": [
+        {
+          "address": 6442450944,
+          "bytes": 376832,
+          "fileoff": 0,
+          "maxprot": 5,
+          "initprot": 5
+        }
+      ],
+      "code_directories": [
+        {
+          "slot": 0,
+          "hash_block_bytes": 16384,
+          "code_slots": 23,
+          "cdhash": "2e6af99c2bbd9042f6b658b58739b6265cb3c46d"
+        }
+      ],
+      "changed_4k_piece_controls": [
+        0,
+        4096,
+        8192,
+        12288
+      ]
+    },
+    {
+      "path": "build/ios16-display-cache/dyld_shared_cache_arm64.13",
+      "bytes": 107970560,
+      "sha256": "6340141bab750b7ab8a8f4e5d77ad2d9da15dde79d8a4d84182d51d49a660734",
+      "uuid": "12f76ff051173e55957009c10f2f6bb3",
+      "mappings": [
+        {
+          "address": 7135019008,
+          "bytes": 107757568,
+          "fileoff": 0,
+          "maxprot": 5,
+          "initprot": 5
+        }
+      ],
+      "code_directories": [
+        {
+          "slot": 0,
+          "hash_block_bytes": 16384,
+          "code_slots": 6577,
+          "cdhash": "5e13d0be77a9f43bc78ad5d320105a62a768f03a"
+        }
+      ],
+      "changed_4k_piece_controls": [
+        0,
+        4096,
+        8192,
+        12288
+      ]
+    },
+    {
+      "path": "build/ios16-display-cache/dyld_shared_cache_arm64.symbols",
+      "bytes": 592101376,
+      "sha256": "e763b0eadab7aaa283e3075fc4ebcd9e824d35c834101e4dd99554265126b308",
+      "uuid": "51ccba451fc23f19aed047050bdf009a",
+      "mappings": [
+        {
+          "address": 9309159424,
+          "bytes": 16384,
+          "fileoff": 0,
+          "maxprot": 5,
+          "initprot": 5
+        }
+      ],
+      "code_directories": [
+        {
+          "slot": 0,
+          "hash_block_bytes": 16384,
+          "code_slots": 36068,
+          "cdhash": "4775552f865b6683fe7886db6c0d203d3901505d"
+        }
+      ],
+      "changed_4k_piece_controls": [
+        0,
+        4096,
+        8192,
+        12288
+      ]
+    },
+    {
+      "path": "build/ios16-display-cache/dyld_shared_cache_arm64.27.dylddata",
+      "bytes": 187105280,
+      "sha256": "56ea7d32a488a66ca6e21a253997b5980e3225dae8bfbe8ef4efe356033656f1",
+      "uuid": "07058ec474213a43b25eec4254f216d7",
+      "mappings": [
+        {
+          "address": 7877984256,
+          "bytes": 376832,
+          "fileoff": 0,
+          "maxprot": 5,
+          "initprot": 5
+        },
+        {
+          "address": 7878361088,
+          "bytes": 87752704,
+          "fileoff": 376832,
+          "maxprot": 3,
+          "initprot": 1
+        },
+        {
+          "address": 7999668224,
+          "bytes": 98500608,
+          "fileoff": 88129536,
+          "maxprot": 3,
+          "initprot": 3
+        },
+        {
+          "address": 8131723264,
+          "bytes": 98304,
+          "fileoff": 186630144,
+          "maxprot": 1,
+          "initprot": 1
+        }
+      ],
+      "code_directories": [
+        {
+          "slot": 0,
+          "hash_block_bytes": 16384,
+          "code_slots": 11397,
+          "cdhash": "17a42a0621e9ea1c020a88dcc1c5b12535b15c9a"
+        }
+      ],
+      "changed_4k_piece_controls": [
+        0,
+        4096,
+        8192,
+        12288
+      ]
+    }
+  ],
+  "source_open_mode": "O_RDONLY",
+  "filesystem_mounted": false,
+  "block_devices_opened": false,
+  "cache_bytes_modified": false,
+  "apple_cms_authentication_verified": false,
+  "kernel_apfs_or_dyld_executed": false,
+  "hardware_tested": false,
+  "scope": "Original display cache and local symbols extracted through read-only APFS library calls from the pinned regular iPhone image. UUID tables and every embedded SHA-256 code slot, plus corruption controls, are checked. This is file provenance/integrity evidence, not Apple CMS trust, kernel APFS operation or userspace execution."
+}

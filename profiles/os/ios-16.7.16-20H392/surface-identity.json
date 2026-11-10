@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "bindings": {
+    "_native_iphone_surface_copy_for_task": "0xfffffff005a59e04"
+  },
+  "blocks": {
+    "copy_for_task": {
+      "address": "0xfffffff005a59e04",
+      "bytes": 160,
+      "sha256": "8eb74363c4e1eeb58fad039f1434bbb7c1fe5fe50057dec416ac1bfe365f4816"
+    },
+    "authorize": {
+      "address": "0xfffffff005a59b14",
+      "bytes": 752,
+      "sha256": "07b04af0253a67b565a788566d66e7e92bfe3de976d19f8cf6e27afdd07a81d2"
+    },
+    "copy_task_client": {
+      "address": "0xfffffff005a59ea4",
+      "bytes": 204,
+      "sha256": "b012d8610c2008bb01209dcd470416e266e8c5ff4eefa2a8fb1538bf7ad6ffda"
+    },
+    "client_has_surface": {
+      "address": "0xfffffff005a612b8",
+      "bytes": 36,
+      "sha256": "f7e2d6b7186a48ae3a6f73b170cd5d60083a974ac0e570646e700a0a06a7003f"
+    },
+    "client_surface_entry": {
+      "address": "0xfffffff005a60d80",
+      "bytes": 240,
+      "sha256": "b60e3e6c7a725e7bfda378f23b23edf0afce3a8ca1dc64ba15e21f2ae9291f59"
+    },
+    "root_singleton": {
+      "address": "0xfffffff005a58700",
+      "bytes": 12,
+      "sha256": "fcc8cc6d732fa04fc268a721670235d2faa24262db5ee9acfea07d0e16c766a7"
+    },
+    "surface_try_retain": {
+      "address": "0xfffffff005a4c2dc",
+      "bytes": 8,
+      "sha256": "db95aca38b4abee57e7b6e61a5034f76bd7a9d41400b10671f4a8b81a7a9e526"
+    },
+    "surface_retain": {
+      "address": "0xfffffff005a4c2e4",
+      "bytes": 8,
+      "sha256": "32b553342ec3ab7f642318bdefb12a1b07a56fea41bf863597f084e06d13fa69"
+    },
+    "surface_release": {
+      "address": "0xfffffff005a4c2ec",
+      "bytes": 72,
+      "sha256": "857f2e619bf076925aba7729a8990f4ba596e7b2a548d2f976390f0d780e8a3d"
+    },
+    "atomic_retain": {
+      "address": "0xfffffff005a66464",
+      "bytes": 20,
+      "sha256": "b9a4a16eb14f6f60a20b84c6b79cf44d62d1d8adf52a6bd47df8f2260254ec5a"
+    },
+    "retain_guard": {
+      "address": "0xfffffff005a66478",
+      "bytes": 40,
+      "sha256": "a5003bf670995723aac08b12426aff94c13df5e2a580b15aea6995fbdea25d76"
+    },
+    "atomic_try_retain": {
+      "address": "0xfffffff005a664a0",
+      "bytes": 108,
+      "sha256": "4905137e83bf1e17553bbb11d7f6217ba2de16a37e5dc0eb9425458a55683e52"
+    },
+    "atomic_release": {
+      "address": "0xfffffff005a6650c",
+      "bytes": 204,
+      "sha256": "95f94621586c4f02cd6eeac748422fa21ecc4d94d8c65af97b8bc7f6603592bf"
+    },
+    "surface_constructor": {
+      "address": "0xfffffff005a472a4",
+      "bytes": 128,
+      "sha256": "bfb4f048a62a568ffbc51ecd9f1cc5de2e1d219a9f5caacbe9a4f6c8087326e6"
+    },
+    "root_metadata_constructor": {
+      "address": "0xfffffff005a5ca04",
+      "bytes": 80,
+      "sha256": "08f511b063f718ecded2073976562c59db969e60a1752398ef763634f8f6f101"
+    },
+    "userclient_metadata_constructor": {
+      "address": "0xfffffff005a61f84",
+      "bytes": 60,
+      "sha256": "2ec64d7a4dcbda7f0328f37c5be03b41d7584ca7a0373fb016e43c3826c14591"
+    },
+    "display_lookup_callsite": {
+      "address": "0xfffffff005c152f8",
+      "bytes": 80,
+      "sha256": "4b75ce2a588004de40debe8e1b09287965f278ec4a7c1df24579e30295e8ed7a"
+    },
+    "display_lookup_import": {
+      "address": "0xfffffff005c26eb4",
+      "bytes": 12,
+      "sha256": "1cfea8dd5cc8897683c2a02c1552a00ffc64e8eb8af6b4ad77e4dae160bbcc63"
+    },
+    "display_current_task_import": {
+      "address": "0xfffffff005c2746c",
+      "bytes": 12,
+      "sha256": "136148ad1e5195ba704f21dc788fa8dc1ddc97ddbaad110baae1c071b719683d"
+    }
+  },
+  "surface_vptr": "0xfffffff006d86040",
+  "root_singleton_global": "0xfffffff007a1e6c8",
+  "root_bytes": 1136,
+  "userclient_bytes": 312,
+  "surface_bytes": 1168,
+  "client_entry_bytes": 152,
+  "surface_layout": {
+    "id": 12,
+    "root": 40,
+    "owner_task": 112,
+    "restricted": 867,
+    "references": 1000
+  },
+  "root_layout": {
+    "surface_table": 192,
+    "surface_count": 200,
+    "surface_lock": 280,
+    "policy_flags": 404,
+    "client_lock": 984,
+    "client_count": 992,
+    "next_cache": 1000,
+    "cache_task_0": 1008,
+    "cache_client_0": 1016,
+    "cache_task_1": 1024,
+    "cache_client_1": 1032,
+    "client_pairs": 1048
+  },
+  "userclient_layout": {
+    "lock": 216,
+    "entry_table": 256,
+    "entry_count": 264,
+    "task": 272
+  },
+  "client_entry_layout": {
+    "task": 16,
+    "surface": 64
+  },
+  "successful_lookup_owns_reference": true,
+  "original_authorization_may_allow_global_sharing": true,
+  "lookup_holds_backing_stable_after_return": false,
+  "producer_registered_by_lookup": false
+}

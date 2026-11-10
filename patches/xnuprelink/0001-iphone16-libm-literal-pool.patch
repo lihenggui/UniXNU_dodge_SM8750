@@ -1,0 +1,31 @@
+diff --git a/README.md b/README.md
+index 86e2510..839f6e9 100644
+--- a/README.md
++++ b/README.md
+@@ -23,6 +23,13 @@ data precede their kext ranges as required by XNU's `arm_vm_init`.
+ `fileset_segmented.py` applies native split-segment v2 records, rebuilds root
+ fixups and function starts, and recomputes corecrypto's HMAC over relocated
+ code. Segment collisions and unsupported relocation kinds stop emission.
++
++The static-prelink instruction inventory also recognizes the complete 1,228-byte
++Libm coefficient pool from iPhone10,3 / iOS 16.7.16 (20H392), by its full SHA256.
++Its boundary ends before the following function; data references and the absence
++of direct branches into the range are checked in the device repository. Changing
++the bytes removes this classification. This does not qualify register dataflow,
++binary layouts, initialization order or runtime behavior.
+ Adapters that call retained kext code use a native `BTI c; B` stub and an
+ `N_ABS` symbol named `<stub>.original` at the fixed collection target. The
+ linker emits no split-segment record for this branch. The emitter therefore
+diff --git a/emit_prelink.py b/emit_prelink.py
+index 0c104a6..cf4507b 100644
+--- a/emit_prelink.py
++++ b/emit_prelink.py
+@@ -19,6 +19,8 @@ ADLER32_VECTOR_DIGEST = '48bdf8e57f8647f2ef3cfda5b500209c4be9b5742632db0ff3614ac
+ MATH_LITERAL_POOLS = (
+     ('00000000004a87c0f039fafe422e8640', 2160, '1a5eb119b57d453a6123eb839b259b96f2ff4f687fc8aabfdcf965ded106df81'),
+     ('0000807f0000f042db0f493f00008039', 1248, '92c7b2f87685a1e7a92cad6e7d408fdbc03bd67d1207b6579214040f413b2161'),
++    # iPhone10,3 / 20H392: ends before the next function, not the older pool's extent.
++    ('0000807f0000004100008040db0f493f', 1228, '73df5b757c53532583e3686b7d93df11ec1f5dd8c201d05502654a7812cc385f'),
+     ('1f2003d500000000001018c00ee52615', 2188, 'c103ce1f2e204bbbfcc2069de79758b0ea399e5e7b39b2b8337cbf3d3f7f960a'),
+     ('0000c1c00000807fff799f501344d33f', 1088, '22b9e038ad1cbdef1265a71f9213354287637a561eaa52f9ec25f90d10bd0a7c'),
+     ('0000c1c00000807f0000000084aec68f', 212, '43ef8598a507444b21d8a2abbe4065554baaa3b6a29dbe390465cc0ba0dfbe28'),

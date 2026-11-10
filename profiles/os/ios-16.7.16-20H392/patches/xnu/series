@@ -1,0 +1,5 @@
+# Original-component prelink integration rebased against Darwin 22.
+xnu-8796.141.3-security-init.patch
+xnu-8796.141.3-sparse-index.patch
+xnu-8796.141.3-typed-delete-and-uio-alignment.patch
+xnu-8796.141.3-vfs-getvfs-with-vfsops.patch

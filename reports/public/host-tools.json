@@ -1,0 +1,25 @@
+{
+  "result": "PASS",
+  "unifdef_revision": "99d17074b9ba66cc9da2ce60fb29c6b1beb0370a",
+  "executable_sha256": "0e5fdadd7f8fb7a50d1ae3a6bf37d7a9d44fa3d62dc11158e8265a66b15951c0",
+  "version": "Version: unifdef-2.12 ",
+  "darwin22_header_regressions": [
+    {
+      "source": "libkern/libkern/c++/OSEndianTypes.h",
+      "result": "PASS"
+    },
+    {
+      "source": "bsd/net/pfvar.h",
+      "result": "PASS"
+    }
+  ],
+  "scope": "Actual preprocessing of published XNU headers; host only.",
+  "iig_port_revision": "ea6d147d668ca15d490da638012243fcd705f30d",
+  "iig_executable_sha256": "1f6954b6ed96943f88f3ca44b8f8fe89f4f9345fad42b1fef3cf14198baf9566",
+  "iig_default_regressions": {
+    "checked": 213,
+    "failed": 0,
+    "log": "analysis/iig-regressions.log",
+    "log_sha256": "d3a846c9a242b688443ebcf3e7e41e76dff2ff2e24717caf3737e3ca97d2f57b"
+  }
+}

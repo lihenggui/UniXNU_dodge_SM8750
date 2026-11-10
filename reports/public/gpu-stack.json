@@ -1,0 +1,430 @@
+{
+  "result": "CPH2653_IOS16_GPU_OFFLINE_SOURCE_CANDIDATE_PASS",
+  "target": "OnePlus 13 CPH2653 / iPhone iOS 16.7.16 / 20H392",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "kernel_candidate_objects": 54,
+  "stages": {
+    "a830-backend": {
+      "report": "reports/a830-backend.json",
+      "result": "NATIVE_A830_BACKEND_ARCHIVE_PASS",
+      "report_sha256": "5376bc837c313104834f6dddcb8cc00fc414fab1cbfac3baedb922f12709b2e2"
+    },
+    "a830-backend-tests": {
+      "report": "reports/a830-backend-tests.json",
+      "result": "A830_BACKEND_HOST_TESTS_PASS",
+      "report_sha256": "1f74ba838ffa8809b773a91ccc729596d680858f71581ff8c9212bd8d5dc8ec6"
+    },
+    "ios16-graphics-abi": {
+      "report": "reports/ios16-graphics-abi.json",
+      "result": "IOACCELERATOR_BASE_STATIC_AUDIT_PASS",
+      "report_sha256": "535683833dc7e926efabc964efc5234943a878f3c20985fcfe21ce72305b9eaf"
+    },
+    "ios16-display-abi": {
+      "report": "reports/ios16-display-abi.json",
+      "result": "IOS16_ORIGINAL_DISPLAY_STATIC_AUDIT_PASS",
+      "report_sha256": "0a7dbbf93552072f9afd30cbca5d1be99d34b7ce1c7a26a0ff5bdaeec5ffbe2d"
+    },
+    "ios16-display-interface": {
+      "report": "reports/ios16-display-interface.json",
+      "result": "IOS16_PARTIAL_DISPLAY_SOURCE_INTERFACE_PASS",
+      "report_sha256": "50a9773997035ce5645d871b2ddb4c21c2d68d872815786bdf2e80d88f61bcc7"
+    },
+    "ios16-display-emulation": {
+      "report": "reports/ios16-display-emulation.json",
+      "result": "IOS16_DISPLAY_FOURTEEN_METHOD_ARM64_EMULATION_PASS",
+      "report_sha256": "7cc293536bb2d23e12f0c1923acf65a985aabd86395ceccfe22fde37c54e13fe"
+    },
+    "ios16-display-subclass": {
+      "report": "reports/ios16-display-subclass.json",
+      "result": "IOS16_NATIVE_LEGACY_SUBCLASS_LAYOUT_BINDINGS_AND_BOUNDED_LIFETIME_PASS",
+      "report_sha256": "f4f059aa13c271f45f828b7bb6c4fc2c153d2fd76cf1848b110c4d75da64ec43"
+    },
+    "ios16-display-lifecycle": {
+      "report": "reports/ios16-display-lifecycle.json",
+      "result": "IPHONE16_ORIGINAL_DISPLAY_LIFECYCLE_CPU_PASS",
+      "report_sha256": "06416bd6a72a4723d8822db4677be5ea86605577ee8381b4fb95a5810dc49083"
+    },
+    "ios16-display-swap": {
+      "report": "reports/ios16-display-swap.json",
+      "result": "IOS16_DISPLAY_SWAP_NATIVE_AND_ORIGINAL_ARM64_CHECK_PASS",
+      "report_sha256": "ed2e8f361c09903e9096d0051c1c17155aaa812bdcc9fd0a356b715acc1d2794"
+    },
+    "ios16-swap-completion": {
+      "report": "reports/ios16-swap-completion.json",
+      "result": "IOS16_ORIGINAL_SWAP_COMPLETION_CALL_AND_BOUNDED_BODY_PASS",
+      "report_sha256": "59b1b457b4470330eaddb4022f73b1a56f965146633130b486d2cc175481a857"
+    },
+    "ios16-refresh-interface": {
+      "report": "reports/ios16-refresh-interface.json",
+      "result": "IOS16_ORIGINAL_REFRESH_SENDER_ARM64_CHECK_PASS",
+      "report_sha256": "e1a943b75307a07455487b2b43294c4f88bac060d454a3b054076c4eb92a1c46"
+    },
+    "ios16-request-fields": {
+      "report": "reports/ios16-request-fields.json",
+      "result": "IOS16_REQUEST_FIELDS_NATIVE_AND_ORIGINAL_BLOCKS_PASS",
+      "report_sha256": "4e615312487c478d64608ec11844a0389c3c9c703b46c1d12e832997b20c16c4"
+    },
+    "ios16-producer": {
+      "report": "reports/ios16-producer.json",
+      "result": "IOS16_PRODUCER_REGISTRATION_CALLBACK_AND_NATIVE_GUARD_PASS",
+      "report_sha256": "4eb711ad03991b765d056b03017341950877c7d29ddd8e030002da566f2633cf"
+    },
+    "ios16-display-cache": {
+      "report": "reports/ios16-display-cache.json",
+      "result": "IOS16_DISPLAY_CACHE_READONLY_EXTRACTION_AND_INTEGRITY_PASS",
+      "report_sha256": "50c9d66e5e8a3ed3e05a78fe586afc58fc0e6461b854bd40a1479b44d67454d9"
+    },
+    "ios16-display-userland": {
+      "report": "reports/ios16-display-userland.json",
+      "result": "IOS16_ORIGINAL_DISPLAY_SWAP_SETTERS_ARM64_PASS",
+      "report_sha256": "a0654e8087779a5617f07dbe9ae20835bbec267928c79d09c530478634d0b12b"
+    },
+    "ios16-display-frontend": {
+      "report": "reports/ios16-display-frontend.json",
+      "result": "DARWIN22_BOUNDED_IPHONE_DISPLAY_FRONTEND_CANDIDATE_PASS",
+      "report_sha256": "ce5d0df0227000188863305e759a91ff86eed630f8bada68ec1efaff6727fd83"
+    },
+    "ios16-display-service": {
+      "report": "reports/ios16-display-service.json",
+      "result": "IOS16_CONCRETE_GOP_DISPLAY_SOURCE_AND_GATED_LIFECYCLE_PASS",
+      "report_sha256": "f02c15124a1a0f722409f79c00ec554b4e10952b358157dfff73341db50f0c97"
+    },
+    "ios16-backend-discovery": {
+      "report": "reports/ios16-backend-discovery.json",
+      "result": "IOS16_STOCK_BACKEND_CLASS_AND_LIMITED_LEAF_AUDIT_PASS",
+      "report_sha256": "cb6303519547a28306719fc9cf80e16d5fcf037551400b69559819a1eb2f48b3"
+    },
+    "ios16-software-refresh": {
+      "report": "reports/ios16-software-refresh.json",
+      "result": "DARWIN22_SOFTWARE_REFRESH_SOURCE_CANDIDATE_PASS",
+      "report_sha256": "8af2f16f32fd5dd1a0f321885bb72683a2163b9a9b7c56f1882ed6ded64ed2c1"
+    },
+    "ios16-surface-interface": {
+      "report": "reports/ios16-surface-interface.json",
+      "result": "IOS16_SURFACE_BINDINGS_NATIVE_AND_ORIGINAL_ARM64_CHECK_PASS",
+      "report_sha256": "47d1ec7ce9c6658d65b4d9d58bb8a391838d8f8dbbe2c0080060b3b59823d867"
+    },
+    "ios16-surface-backing": {
+      "report": "reports/ios16-surface-backing.json",
+      "result": "IOS16_SURFACE_BACKING_SOURCE_CANDIDATE_PASS",
+      "report_sha256": "75ced10fd2d20ebb34f19ce35555ced9522475254fc17bc88bfe2686d61c97b6"
+    },
+    "ios16-diagnostic-console": {
+      "report": "reports/ios16-diagnostic-console.json",
+      "result": "DARWIN22_POST_VM_DIAGNOSTIC_CONSOLE_BUILD_PASS",
+      "report_sha256": "b554cf17cfc4740f90a1af139372ec3c3b0592cc717ac3a584175d54977caebf"
+    },
+    "ios16-gpu-swap-bridge": {
+      "report": "reports/ios16-gpu-swap-bridge.json",
+      "result": "DARWIN22_GPU_SWAP_BRIDGE_SOURCE_CANDIDATE_PASS",
+      "report_sha256": "24cfff4069d94d3a2e1f6f479014d4c111f089570ccb999a9aa0262b7c4ffbd2"
+    },
+    "gpu-firmware": {
+      "report": "reports/gpu-firmware.json",
+      "result": "CPH2653_GPU_FIRMWARE_STATIC_BUILD_PASS",
+      "report_sha256": "060164769192d66e5226ef1d64343c91d67fe54b9d5afc6d092a15a7c06c1e6a"
+    },
+    "gpu-policy": {
+      "report": "reports/gpu-policy.json",
+      "result": "CPH2653_GPU_POLICY_SOURCE_BUILD_PASS",
+      "report_sha256": "7a6161cf02a4c770b0284e2c6e0c999d773d6e1d335c69ce91d2bb17637aedaf"
+    },
+    "gpu-board-candidate": {
+      "report": "reports/gpu-board-candidate.json",
+      "result": "CPH2653_GPU_BOARD_SOURCE_CANDIDATE_PASS",
+      "report_sha256": "cc6cbfbe24bef1b2ff07eecce7344f9e2372d730767b5ce42a6f2489a94fd4d8"
+    },
+    "gpu-handoff-tests": {
+      "report": "reports/gpu-handoff-tests.json",
+      "result": "GPU_HANDOFF_AND_TARGET_BOARD_HOST_TESTS_PASS",
+      "report_sha256": "3bfaf491f5f9fd85cbf8a8687f76cd8b69d5e744d93423a5ab84c8cb3026ea28"
+    },
+    "gmu-firmware-tests": {
+      "report": "reports/gmu-firmware-tests.json",
+      "result": "TARGET_GMU_FIRMWARE_HOST_TEST_PASS",
+      "report_sha256": "b75bd7c53dbf002e7efde3eb8cf5be3c72c3920fd28293cb1c02c06babc8c710"
+    },
+    "gpu-kernel-candidate": {
+      "report": "reports/gpu-kernel-candidate.json",
+      "result": "CPH2653_A830_COMBINED_SOURCE_CANDIDATE_PASS",
+      "report_sha256": "11ede36c55f9e8bd60d02d7696eed748694fbb2cd3310dca697829a1a032484c"
+    },
+    "gpu-link-probe": {
+      "report": "reports/gpu-link-probe.json",
+      "result": "GPU_ISOLATED_NATIVE_AND_RELOCATABLE_LINK_PASS",
+      "report_sha256": "1acf07872954bf3b5ba58f6d2ed6493a809f134db7f022c48841c6b8a06c5499"
+    },
+    "adreno-display-timeline": {
+      "report": "reports/adreno-display-timeline.json",
+      "result": "A830_COHERENT_DISPLAY_TIMELINE_NATIVE_CPU_PASS",
+      "report_sha256": "4c9d0daa0bb7eaa318e021bf4813601bb492346688ca836445a8a2d965fc85ad"
+    },
+    "gpu-graphics-prelink": {
+      "report": "reports/gpu-graphics-prelink.json",
+      "result": "GPU_ORIGINAL_IPHONE_GRAPHICS_STRICT_PRELINK_PASS",
+      "report_sha256": "1f6703015db72e86c03cb3f514109e5309f6a4df2ef9d42c372bc5dfad0e041a"
+    },
+    "metal-rust-bridge": {
+      "report": "reports/metal-rust-bridge.json",
+      "result": "IOS16_METAL_RUST_BRIDGE_CROSS_BUILD_PASS",
+      "report_sha256": "0245dc9b0e3992cdfd9f4fdafe7471203d693ab5d4a81cf3ea4ab9663ab02ac5"
+    },
+    "turnip-ios16": {
+      "report": "reports/turnip-ios16.json",
+      "result": "IOS16_TURNIP_CROSS_BUILD_PASS",
+      "report_sha256": "3d0b9aefb28a33ec4a9f1106d9a3e0ee2228c765645dbaa674d640debc1d6ee0"
+    },
+    "metal-plugin": {
+      "report": "reports/metal-plugin.json",
+      "result": "IOS16_METAL_PLUGIN_CROSS_BUILD_PASS",
+      "report_sha256": "55e8521701292a2397a7ed0b8431f3bab6b2897e97754b8d9e427ffee586fe24"
+    },
+    "gpu-userspace": {
+      "report": "reports/gpu-userspace.json",
+      "result": "IOS16_GPU_USERSPACE_BINARY_READBACK_PASS",
+      "report_sha256": "f8022af4595eb1e30ef86dcfb58801e6726676affe8a581d8136e251b3d7fec2"
+    },
+    "metal-translation-tests": {
+      "report": "reports/metal-translation-tests.json",
+      "result": "PRODUCTION_METAL_TRANSLATION_HOST_CHECK_PASS",
+      "report_sha256": "0b63055417c92a62677c017667efb9dfc2530a0f4761d0e6119d25f81816a59e"
+    },
+    "a830-shader-compiler": {
+      "report": "reports/a830-shader-compiler.json",
+      "result": "A830_REAL_IR3_NIR_AND_SPIRV_HOST_CHECK_PASS",
+      "report_sha256": "32cce2e1bbee596ba5c033f435acdeaeec4d4ee07c2583fb32681f855b3170fa"
+    },
+    "ios16-graphics-lifecycle": {
+      "report": "reports/ios16-graphics-lifecycle.json",
+      "result": "IOS16_ORIGINAL_GRAPHICS_MODULE_PREPARATION_AND_ATTACHMENT_SOURCE_PASS",
+      "report_sha256": "0a256f560e8f77127e09a84066e033cac91ea02d4cb30dfa8d02219172cd66a4"
+    },
+    "ios16-gop-provider": {
+      "report": "reports/ios16-gop-provider.json",
+      "result": "IOS16_REAL_CLASS_GOP_PROVIDER_SOURCE_AND_OWNERSHIP_PASS",
+      "report_sha256": "abdcce6181e7ba3b8feb6191edcccb1f3ba7d7f4695e70ebf15f39536f408517"
+    },
+    "ios16-graphics-late": {
+      "report": "reports/ios16-graphics-late.json",
+      "result": "IOS16_OPT_IN_IOBSD_GRAPHICS_WORKER_AND_ISOLATED_NATIVE_OVERLAY_PASS",
+      "report_sha256": "5bba30412c84536a155845df37ea497c04815f9abf3aca808715a158d21f1f03"
+    },
+    "ios16-display-kernel": {
+      "report": "reports/ios16-display-kernel.json",
+      "result": "IOS16_CONCRETE_DISPLAY_FULL_NATIVE_KERNEL_LINK_PASS",
+      "report_sha256": "1d256d5592b1281d194ee03b305744a2cd6ea4258e5f8e5337fc13757ccaada4"
+    },
+    "ios16-display-prelink": {
+      "report": "reports/ios16-display-prelink.json",
+      "result": "IOS16_CONCRETE_DISPLAY_AND_ORIGINAL_GRAPHICS_STRICT_PRELINK_PASS",
+      "report_sha256": "6f92eab86f87a553eab8d330fabfd6985de105b825b16a0f449076a6aeaff820"
+    },
+    "ios16-display-kernel-lifecycle": {
+      "report": "reports/ios16-display-kernel-lifecycle.json",
+      "result": "IOS16_LINKED_CONCRETE_AND_FULL_ORIGINAL_DISPLAY_LIFECYCLE_CPU_PASS",
+      "report_sha256": "e93e2cfc7ad8632f42746f69436d5e2f06065a3fa58305bace86bfa6e1227f3c"
+    },
+    "ios16-gop-provider-kernel": {
+      "report": "reports/ios16-gop-provider-kernel.json",
+      "result": "IOS16_LINKED_GOP_PROVIDER_GUARDS_AND_ORIGINAL_ALLOCATION_CPU_PASS",
+      "report_sha256": "3b024806fd4a801b34c31ff7fc7b09bf8ae9e2066b6ed3b1563924ec2146248c"
+    },
+    "ios16-display-payload": {
+      "report": "reports/ios16-display-payload.json",
+      "result": "IOS16_ISOLATED_DISPLAY_DEVELOPMENT_CONTAINER_READBACK_PASS",
+      "report_sha256": "ae79113ce1ceda1900e9744185680b9f0c18b61421a7fc1ddc022189c1c0e4e9"
+    }
+  },
+  "artifacts": {
+    "build/cph2653-a830-backend/libAdreno740.a": "d088e9c855ada9e4d8e240e5f7af682da330763b2d6fb76a210399598cc9959f",
+    "build/ios16-display-subclass/libIPhone16LegacySubclassBindings.a": "b50468059ab708985f3ad74598713c65bf11c5aee964867f9a2357a1c6e5456e",
+    "build/ios16-swap-completion/libIPhone16SwapCompletion.a": "dfcd7b5537e9d0c77c66e42fb69aa992fd8a41d741aa443554d287e1bc0deab2",
+    "build/ios16-refresh-interface/libIPhone16Refresh.a": "2698ef82fb53d64523455e6e7acf6692664b17255be3766529a4537332bdcde3",
+    "build/ios16-display-frontend/libDodgeDisplayFrontend.a": "05fff68e8d1b1b1e4a3f1758f0f2f9365ebcfca485c6defa810c051b4c176594",
+    "build/ios16-display-service/libDodgeIPhoneFramebuffer.a": "deed2cdf81f1f4a09bfe10d52ccaa3d0fa7d505e830391a80b0958dc72a4c586",
+    "build/ios16-software-refresh/libDodgeSoftwareRefresh.a": "c9b7e3779a62a81904a2cacfd90c458da3e5cf0fc3d63ec7b49c4857d67ae9d8",
+    "build/ios16-surface-interface/libIPhone16SurfaceBindings.a": "71af1226f9dc6504415e03e62bc1980b46b542ab20a6e6f437e8fab280f039e9",
+    "build/ios16-surface-backing/libDodgeSurfaceBacking.a": "fe8a032e5b74346dbed2025007633e1774214c0f0bb0cd26ced6da3dca861513",
+    "build/ios16-diagnostic-console/libDodgeDiagnosticConsole.a": "4ca7692d248fa6faa907b399ec67f6ce25f35a8cd37173b3b2b2f19fdf95c88c",
+    "build/ios16-gpu-swap-bridge/libDodgeGpuSwapBridge.a": "9c527d04b0564fefaebfb9b265ed2912f0314d63ccdbcf6a30c1564e13727945",
+    "build/cph2653-gpu-firmware/libSm8750GpuFirmware.a": "558f6162f9d67ff015e2e2acc769abe7eda26287f855acb63b5db300d49af66f",
+    "build/cph2653-gpu-policy/libDodgeGpuPolicy.a": "407b412fcdf24d1ff3b90d797212994edbae8c3edfef84b3891c84971c3d9b72",
+    "build/cph2653-gpu-board/libDodgeGpuConnection.a": "1def540199b1a2b0385f62ac356d843814f13ded341b944914a16c4cde8c57a9",
+    "build/cph2653-gpu-candidate/libDodgeA830Candidate.a": "f5cc984139afb4c7602e38122dcbd8cc7556c389f8ecece8d13191e889134f5f",
+    "build/cph2653-metal-bridge/target/aarch64-apple-ios/release/libadreno_metal_bridge.a": "2e281b434aca34d1785cb0919c71601fcb74b8e5c61c04c9c24a4ba318b009a2",
+    "build/cph2653-turnip-ios16/src/freedreno/vulkan/libvulkan_freedreno.dylib": "8e68998d9b1e67ee2bfd716a02ce20c5244822e66aeff312feb3a78136eaab45",
+    "build/ios16-graphics-lifecycle/libDodgeGraphicsLifecycle.a": "98d1e5e927d0207c6ad5ad1ac35e54a754a74c50c323acbe89c72181fb547d59",
+    "build/ios16-gop-provider/libDodgeGopProvider.a": "ab4e18231f57360d0754c31753ec63a30a8b2bb6fdbdd8858655ac191aac5776",
+    "build/ios16-graphics-late/libDodgeGraphicsLate.a": "639a94dc7277d0787b26282af3aacd6a33387a1101a8de05babb5a50d49b7829",
+    "build/cph2653-metal-translation-tests/target/release/adreno-metal-vulkan-probe": "d15575f7f0c88d14746f8ab9e3bc8039d38ec81ad038298cfca0b7ab30ccb25b",
+    "build/cph2653-metal-translation-tests/turnip-declared-profile.json": "c943b78486a3683a1d8ab35a85ef5c04c49a406c0a12e55401c7fd227703fce2",
+    "build/cph2653-metal-translation-tests/compute-buffer-0.spv": "857557750e7f760f991983ede41fb4627f76b63cc96702dc1cbbed5c44e57e62",
+    "build/cph2653-metal-translation-tests/compute-texture-0.spv": "b19b35e4a53468e4c8798b63636e91cf972e76d71d21dca5d44e1a828869724e",
+    "build/cph2653-metal-translation-tests/render-colored-0.spv": "77592efb2e9cee2ea59c3b8e775801e4555720f2331db2adb70d0e38c4a84c3a",
+    "build/cph2653-metal-translation-tests/render-colored-1.spv": "5a85814f27463b01f61cc1afbfccc5cf846ba23909ed13a6e54afb82fd142543",
+    "build/cph2653-metal-translation-tests/scanout-opaque-0.spv": "2936122a84652f62f287689eb32fb22aaec57a3e61d7a0254146307ca6dd15f1",
+    "build/cph2653-metal-translation-tests/scanout-half-convert-0.spv": "25e36e8bd3bb1913d4208b570d69c3afa854ad960253e24a75a2362552a1220f",
+    "build/a830-shader-compiler-host/src/freedreno/ir3/adreno_compiler_probe": "3218e731e915f241035877fd08c503f20dd31c67f2029008f19c07ae2ba936ea",
+    "build/a830-shader-compiler-host/cs.bin": "f74b3ea47645f6dee406c9d4fef9edf6da4fac1c6e148f6e05048dae67c08e8a",
+    "build/a830-shader-compiler-host/cs.asm": "c14fd6d42ddc4a312b6b5537abeab06d081e8ded5d8eb04bcc3ed9fdcf198c94",
+    "build/a830-shader-compiler-host/vs.bin": "504f4c62e00e5ac7c0eef67dd93aa50a794213a7f9169f6d2a9f6293e497d5a7",
+    "build/a830-shader-compiler-host/vs.asm": "256c0395267625c3b77215575e7a5a9640a1b152151a0290847a187f6b0c5fe4",
+    "build/a830-shader-compiler-host/fs.bin": "524e6346831bc5ba4b0646e7c457768072572b6c25b8e7feef52f4ed8a9b3e97",
+    "build/a830-shader-compiler-host/fs.asm": "099e846f1bf64e6b4172229487b547c0196af3d1a48b8a294710e77e85c6b843",
+    "build/a830-shader-compiler-host/air-fragment.bin": "e4577b84bd3ef5a34ca8fdec77434e8cbe5dbe32c275f7f47046e6e3bdbc60bf",
+    "build/a830-shader-compiler-host/air-fragment.asm": "1327fa1149481c087765754dcfe83e5ff7d2be31f27aa261035aabe97a69e4fa",
+    "build/cph2653-gpu-board/gpu-metal-registration-host": "c0904a1ccd32df6ac8a702c5a78c4062e5290c769992a95e6b9693aeba31032f",
+    "build/cph2653-gpu-board/PaganiGpuMetal.inc": "5671998d6447119a4969fcb016e366d354881a9119e5f4a9698900434a0f4da5",
+    "build/cph2653-gpu-board/gpu-startup-host": "28552fcea61df8b05d2ee44048c5c0fed79a04540581e5563c4fc93999bcfe44",
+    "build/cph2653-gpu-board/PaganiGpuStartup.inc": "abf3494fc2e3b91d806aaf9728b2c84e532ddde5b3b6e0c980d07d6b043b70cf",
+    "build/ios16-display-subclass/original-subclass-bindings.o": "2d42d558f6db5fce596c14878cd9c3146cfa6fc3147f50f66a1d2939c551e2c7",
+    "build/ios16-display-subclass/IPhoneLegacySubclassProbe.o": "86f9f3bca61edecf7f5adc711df750783c047de7139f54f98d141971c5f878db",
+    "build/ios16-display-subclass/subclass-probe.macho": "78449ca6d04bab8107be0984081c9bbe131dd5b4d8dd9e17e381ca885eb7075e",
+    "build/ios16-display-subclass/link-command.json": "10fef1776931f67f1a693a1c59596f7d55c5d855182e9f04cad7b8c22938c8bd",
+    "build/ios16-display-subclass/compile-commands.json": "6f138b610da1c6259f67d50decf8b24a98cbea50672796c349243a857eb35312",
+    "build/ios16-display-lifecycle/lifecycle.o": "3d8130a0ba481ff54c7234d116cc7854fbc0f135b2825d2c0e154f41ceb1a068",
+    "build/ios16-display-swap/queue.o": "500b781395fa875c18490f2767d5555d50f2afbd3dcd415c37c7d99c8eea10e9",
+    "build/ios16-swap-completion/completion.o": "8f25037bf9279061b79669a998cd5cc638e900b85e9a02817b705b09b0e7e988",
+    "build/ios16-request-fields/request-fields.o": "7cdf4833bc1c983a51fa7127ecdf5c2443afdd9f3a512fa0b41422f4c42e6815",
+    "build/ios16-producer/producer.o": "8e0d82486ed4acfd867083d16efda512dcc931ca7ea4f93612e9071899a85db2",
+    "build/ios16-display-cache/dyld_shared_cache_arm64": "76874e8375252ee643011ff8063f0cce12355f05cf5f9897a34e5679667a65aa",
+    "build/ios16-display-cache/dyld_shared_cache_arm64.13": "6340141bab750b7ab8a8f4e5d77ad2d9da15dde79d8a4d84182d51d49a660734",
+    "build/ios16-display-cache/dyld_shared_cache_arm64.symbols": "e763b0eadab7aaa283e3075fc4ebcd9e824d35c834101e4dd99554265126b308",
+    "build/ios16-display-cache/dyld_shared_cache_arm64.27.dylddata": "56ea7d32a488a66ca6e21a253997b5980e3225dae8bfbe8ef4efe356033656f1",
+    "build/ios16-surface-interface/surface.o": "796b43d76920cf1035cfed305b3b1b39d8e24d576f4bae1661cf0086a5c88e3a",
+    "build/ios16-refresh-interface/refresh.o": "8eec5d106c442f2a2889cd28973d9b456f6f2e2494b04a5b9a8ea9f4e4b758a7",
+    "build/ios16-display-frontend/frontend-guards.o": "64576d6fd82e911f200110410c3dd8b21f29b408dccdd6b2f3a1c7e45e259d07",
+    "build/cph2653-gpu-link-probe/DodgeA830Combined.o": "539acea9a515859e7cf644898625648f4f0798678727a5ad9af0fdf80f6ced13",
+    "build/cph2653-gpu-link-probe/mach.gpu": "ec41460411b00cd6f4a296c709277edd648f7c7245200788250c881ffb9ad997",
+    "build/cph2653-gpu-link-probe/mach.baseline": "5063f47a53b3a725771ee2f2abdf06c2cf4d3e2b23a25b274b4e17fdc5921f64",
+    "build/cph2653-gpu-link-probe/link-inputs.json": "21e58a3168c4b597edb45c7d5f36d111b58bb6db5fdb1ee8d02a3462705f5421",
+    "build/cph2653-gpu-link-probe/validated-commands.json": "1a4cb80ec2bbedd4468344213fb7f2976be7d825f56b237a37255d1f6f626e2d",
+    "build/cph2653-gpu-link-probe/optional-call.o": "2f3f42dc09186d87bc1d76a05a370e9823430813a986a536e5a855ddbef13070",
+    "build/cph2653-adreno-display-timeline/publisher-layout.o": "912e80b9937d11e2cffca326fd25e045ea0f06bb5ff8fc66289a54f033e3a4c4",
+    "build/cph2653-adreno-display-timeline/compiler-layouts.log": "3c0b920929d32137c627f8effa074c6faa5ee78a178c10c605da7319ba310656",
+    "build/cph2653-gpu-graphics-prelink/mach.gpu.sealed": "8ad73e0e20bdeb25add6db8b82111c9d8952a194f452bb47e527beff9c1c4559",
+    "build/cph2653-gpu-graphics-prelink/kernel.macho": "3f88733611e58c595029778009f34f04f290b62cb937bdd861e9c60e73815c1e",
+    "build/cph2653-gpu-graphics-prelink/emission.json": "7e1b131ac37bdbedbc62b7270787512fcfb12b4a14ed4bde83a7cbe1c236e839",
+    "build/cph2653-gpu-graphics-prelink/kernel.macho.crypto-hmac.json": "91a28fd2c07e224182fd789a2c87278801b41cbfcbba384fafaefb3811b83e02",
+    "build/cph2653-gpu-graphics-prelink/mach.gpu.sealed.crypto-hmac.json": "821b3094a8c9783274449106c156d38e9ca6ee7e106558541b46cc56d09bcf13",
+    "build/ios16-display-service/DodgeDisplayService.o": "0eda0f0bd933a20203e66f13f6d469028fe1c3784489b512efef87faf8f61b58",
+    "build/ios16-display-service/DodgeIPhoneFramebuffer.late.o": "ff7e37bf3f8cb641284a78c7eecdb7e542b186578213f1b97c7f601e07366ee2",
+    "build/ios16-display-service/original-legacy-bindings.o": "2d42d558f6db5fce596c14878cd9c3146cfa6fc3147f50f66a1d2939c551e2c7",
+    "build/ios16-display-service/original-legacy-vtable-binding.o": "9df5a31b0335cdc91de285ca7d114d8f6f16195c7488ad12b1afcc83aee0c0b3",
+    "build/ios16-display-service/display-service.macho": "5b49b8440d896e341837dd6b31ddd7c8126cd4f01a086afea20800cd41f4956e",
+    "build/ios16-display-service/compile-commands.json": "2c6b6f1382b6fa314541be12aa4247488e98014c1ae4ff3330c31425decf433c",
+    "build/ios16-display-service/link-command.json": "74fff5695553773d17663c770352db2e5a1a4e5198d8b1fc33ed82d5f4ca75c0",
+    "build/ios16-graphics-lifecycle/graphics-boot-host": "04748b07525c2a9ed2b6b77f49c39d0feaaf93c92f98105710f6302e5a19cfd1",
+    "build/ios16-graphics-lifecycle/DodgeGraphicsLifecycle.o": "eac5a696c686336020c138dc6fa6719ba62991bc32719b0053a6526985e30f5c",
+    "build/ios16-graphics-lifecycle/DodgeGraphicsBoot.o": "eeda64a4a0af4a22dfa1322e2e3ca38d009e5595382e0f2b99b2498baa3852ed",
+    "build/ios16-graphics-lifecycle/original-graphics-metadata.o": "916bb346f210ecac092d7a2e9107fba13b393f8708088eb4e1f093543c949ab5",
+    "build/ios16-graphics-lifecycle/compile-commands.json": "3916e42f848dafce6992e8db608cb84b4a520896ba8a04e7eec08ceab6ecbab0",
+    "build/ios16-graphics-lifecycle/graphics-lifecycle-host": "adf159f266937334b339fe80cabefa888b1332083598343a664e8651d532abf3",
+    "build/ios16-gop-provider/DodgeGopProvider.o": "c45188f6f18eb8c34334087e0857f31f92996775fd1cc8ea2855dfd645b9c8ed",
+    "build/ios16-gop-provider/original-gop-provider-metadata.o": "9308699a5cf1d9953e06d5d4029ad5dbbf377c1a3190e40cc28fac0586818919",
+    "build/ios16-gop-provider/compile-commands.json": "1b3fdc76a0294726613c89e85e95314530cd8696bdc66b008c29c019024002e8",
+    "build/ios16-gop-provider/gop-provider-host": "451391eaf5cf4e53ac30e05f8c413acced5bac0d03cfae7ec041a9f770c44d4f",
+    "build/ios16-graphics-late/DodgeGraphicsLate.o": "91937f04191ededd95491d03ae9839c627c0a17b68d9e1a9d0be65f6c685cf9d",
+    "build/ios16-graphics-late/compile-commands.json": "130fa2964c1eef64e4ea268124c1160708dddd109ec35b7af0a7eb2753625f02",
+    "build/ios16-graphics-late/graphics-late-host": "2fcb87fffef7e8b7666a3594d07674169d7d1b83449a78d445ecdce921fd0a55",
+    "build/ios16-graphics-late/IOKitBSDInit.extracted.cpp": "016726a69262322ce457382d266f616cd4af8c6afd5f63d9f85662b992a47d23",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/iokit/DEVELOPMENT/IOKitBSDInit.cpo": "17ff0b9dd0a98330fdbb4b632306d20d23e61da11aa23fc7c9916926579d234e",
+    "build/ios16-graphics-late/IOKitBSDInit.late.cpo": "07bd75568bc81096afa5c7490954651d76698624b7f2c69ec9986fb6afd6cbe7",
+    "build/ios16-graphics-late/bsd-compile-command.json": "b0f50ff9b1a2c9b1b05271e0e09ded71f7325d66f9fa3f28cdc3e1011eefd198",
+    "build/ios16-graphics-late/source/iokit/bsddev/IOKitBSDInit.cpp": "a955779d61d0d9626d4153af4be3292517f3f06a2808d3822218660da6aef5dd",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/bsddev/IOKitBSDInit.cpp": "1b401aa000a769a4acb3afe51ec8167b314b515ed73e9b45099058bad3d882aa",
+    "build/cph2653-display-kernel/DodgeDisplayCombined.o": "8567594ceadd9c09f2dea89b884c7c9f1efc8df80ee2219d0ef4f407d0ff2a85",
+    "build/cph2653-display-kernel/mach.display": "d8f7f6c03c7d1c19753c48c4988160768d52187e9502084727ce3457ce536c5c",
+    "build/cph2653-display-kernel/link-inputs.json": "d0fd04f3a05112d3dd5160cf5fe28ffdf5f162bde19d75fd02f3fbef7266b266",
+    "build/cph2653-display-kernel/link-commands.json": "1ee2cf01679bdb5976bb3eccbbc80fb24f9dd775e0847d7e3c11bffacbb46cd1",
+    "build/cph2653-display-prelink/kernel.macho": "e35d399f79ec0bec13fe9b638acf365a667da9dd639f8685064b67593386bdef",
+    "build/cph2653-display-prelink/mach.display.sealed": "dd3332b241fafa5f08f5e7bcacd8881e6bbd72b825f1a21952e88534ababf793",
+    "build/cph2653-display-prelink/emission.json": "0a0a2a5dc083a73ade78792aa21d2e81eee25ffbe6f33a365e3b1dda75130046",
+    "build/cph2653-display-prelink/kernel.macho.crypto-hmac.json": "04cef740c0ccca4c1143de328a24b98f5695ddeaaf0d00f24bfeeb24aa4b108c",
+    "build/cph2653-display-prelink/mach.display.sealed.crypto-hmac.json": "f686774777d42a10ac6e1fdfa798a3bed04f86d474d8002f6300065ecc16c5f1",
+    "build/ios16-display-kernel-lifecycle/cpu-cases.json": "bf5b03117a5cf34f6ee58aff1db071486f6a32cd681a4e0ce2ab0a3d6cc68b01",
+    "build/ios16-gop-provider/kernel-cpu-cases.json": "254c9607d3b20309d51d3e32b2cb0375dc2077c5c80c9112619e8c754c801c72",
+    "build/cph2653-display-bringup/payload.img": "e2027b10b4ae34469576cd18697c33f9275fab745b59ae0f9992d0d3727a178b",
+    "build/cph2653-display-bringup/boot.img": "e1a5241b0424bd9d4976462d9cbbe943e68ced7d337dfd5e3bac71f04cb317a9",
+    "build/cph2653-display-bringup/boot.json": "7d1713f686b0e550eb792278e8eeed10d523a6e60c6cbbe994d109539b4f0ef2",
+    "build/cph2653-metal-plugin/NativeAdrenoMetal.bundle/NativeAdrenoMetal": "972bb592046fd475ae9adc050977d4c2cce0a3679e216bd4eef49542cdf53005",
+    "build/cph2653-metal-plugin/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib": "8e68998d9b1e67ee2bfd716a02ce20c5244822e66aeff312feb3a78136eaab45",
+    "build/cph2653-metal-plugin/adrenoprobed": "f85d8ddb4048dd201554ee1437de7a34cebbbef395d8ae2451cb5577e37f6b42"
+  },
+  "required_display_provider_imports": [],
+  "native_static_link_only_imports": [
+    "___ubsan_handle_negate_overflow_minimal"
+  ],
+  "original_accelerator_base_static_audited": true,
+  "full_original_graphics_abi_qualified": false,
+  "framebuffer_legacy_iphone_size": 5728,
+  "framebuffer_legacy_iphone_vtable_entries": 338,
+  "offline_metal_pipelines": 5,
+  "validated_spirv_modules": 6,
+  "offline_a830_machine_programs": 4,
+  "software_refresh_candidate_rate_hz": 60,
+  "real_panel_vblank_qualified": false,
+  "isolated_native_link_probe_passed": true,
+  "coherent_adreno_display_snapshot_compiled_and_cpu_checked": true,
+  "isolated_original_graphics_strict_prelink_passed": true,
+  "isolated_original_graphics_components": 27,
+  "isolated_graphics_pointer_readbacks": 58962,
+  "unselected_optional_diagnostics": [
+    "_boot_log_export_put",
+    "_native_gpu_pixel_put",
+    "_native_gpu_trace_enabled",
+    "_native_gpu_trace_record",
+    "_native_owner_cache_stage",
+    "_native_pmap_user_mappings",
+    "_native_ufs_block_failures",
+    "_native_ufs_block_reads",
+    "_pagani_gpu_trace_start"
+  ],
+  "kernel_integration_complete": false,
+  "default_kernel_selected": false,
+  "owner_trust_installed": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "bounded_packet_queue_frontend_compiled": true,
+  "concrete_legacy_display_provider_installed": false,
+  "concrete_legacy_source_class_compiled": true,
+  "concrete_source_service_lifecycle_host_cases": 60,
+  "concrete_source_service_arm64_cases": 69,
+  "concrete_source_service_integration_host_cases": 10,
+  "original_graphics_prepare_and_attach_source_compiled": true,
+  "graphics_module_orchestration_host_cases": 33,
+  "unified_graphics_boot_source_compiled": true,
+  "graphics_boot_ordering_host_cases": 24,
+  "concrete_display_full_kernel_source_objects": 64,
+  "concrete_display_original_aliases": 196,
+  "real_class_gop_provider_source_compiled": true,
+  "gop_provider_ownership_host_cases": 60,
+  "linked_gop_provider_cpu_cases": 18,
+  "real_class_gop_provider_runtime_published": false,
+  "opt_in_iobsd_graphics_hook_compiled": true,
+  "late_graphics_scheduling_host_cases": 24,
+  "native_iobsd_hook_cpu_cases": 4,
+  "late_graphics_boot_argument_enabled_by_default": false,
+  "concrete_display_full_kernel_and_original_graphics_prelink_passed": true,
+  "linked_original_display_lifecycle_cpu_cases": 32,
+  "concrete_display_instance_bytes": 5768,
+  "original_new_user_client_method_body_cpu_cases": 5,
+  "provider_lifetime_preserved_for_late_original_thread": true,
+  "full_original_display_lifecycle_runtime_qualified": false,
+  "board_metal_registration_cleanup_host_cases": 15,
+  "board_atomic_startup_entry_host_cases": 6,
+  "isolated_display_development_container_packaged": true,
+  "isolated_display_boot_image": "build/cph2653-display-bringup/boot.img",
+  "remaining": [
+    "Qualify the full original loader and parent start/stop on actual objects, including original user-client creation and power lifecycle.",
+    "Qualify original request retirement, actual IOSurface producer fences/cache visibility and GPU failure quiescence.",
+    "Invoke the real post-VM console attachment only after display mapping/ownership is qualified.",
+    "Qualify runtime original-object lifetime and mutation serialization for the compiled frontend/backing connection.",
+    "Complete original IOGPU/IOSurface/IOMobileGraphicsFamily ABI and initialization lifecycle audit.",
+    "Qualify actual command-db/fused SKU, shared rail ownership, SMMU/cache ownership and reset recovery.",
+    "Qualify late invocation of the compiled real-class GOP publisher and unified module/preflight/A830/display entry after IOBSD and original-service matching.",
+    "Verify real queue/fence/shader pixels and scanout on hardware when separately authorized."
+  ],
+  "scope": "Current real kernel-side candidate, stock inputs, Rust bridge, Turnip and Metal binary builds with offline checks. No phone operations."
+}

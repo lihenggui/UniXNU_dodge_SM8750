@@ -1,0 +1,287 @@
+{
+  "result": "IOS16_PRELINKED_GENI_TRANSPORT_COMPLETION_RECOVERY_AND_TERMINAL_CPU_PASS",
+  "builder_sha256": "9c0fc55bb73410ee5cc412c6325fa5636059d4c757230ee184c1e897bc1d4b56",
+  "source_sha256": {
+    "scripts/check_input_transfer_kernel.py": "9c0fc55bb73410ee5cc412c6325fa5636059d4c757230ee184c1e897bc1d4b56",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "drivers/DodgeInput/DodgeGeniTransfer.cpp": "fcf458086c3b3c19b575027a5296f7a4bdf200bbf9504a1cf2e1959912f3f370",
+    "drivers/DodgeInput/DodgeGeniTransfer.h": "ce308dcfe918d988012398a3daa708806701bd31a420c67c0aa4bfc30083e1ae",
+    "drivers/DodgeInput/geni/GeniSpi.c": "c8926a67f8119b2c8caaa6ac711e8cd5a21f1d5b6eacc4d08b55df99e65b25a3",
+    "sources/UniXNU/drivers/QcomGeniSpi/GeniSpi.h": "e73891e4571c5323bca27aaf987bafa002856dfa1dcee156ff31b119e2d3ae3c"
+  },
+  "source_report_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
+  "prelink_report_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+  "candidate": "build/cph2653-input-prelink/kernel.macho",
+  "candidate_sha256": "be0b18ce8c30d2b9a257477aadb51795dcd7165523520e19372998c7688c3b7e",
+  "case_count": 20,
+  "cases": [
+    {
+      "case": "pio-duplex",
+      "result": "PASS",
+      "return": 0,
+      "commands": 1,
+      "mmio_writes": 14,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "pio-rx-maximum",
+      "result": "PASS",
+      "return": 0,
+      "commands": 1,
+      "mmio_writes": 14,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "pio-tx-maximum",
+      "result": "PASS",
+      "return": 0,
+      "commands": 1,
+      "mmio_writes": 146,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "dma-duplex",
+      "result": "PASS",
+      "return": 0,
+      "commands": 1,
+      "mmio_writes": 25,
+      "delay_calls": 2,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "dma-rx-maximum",
+      "result": "PASS",
+      "return": 0,
+      "commands": 1,
+      "mmio_writes": 18,
+      "delay_calls": 2,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "dma-tx-maximum",
+      "result": "PASS",
+      "return": 0,
+      "commands": 1,
+      "mmio_writes": 18,
+      "delay_calls": 2,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "dma-command-timeout",
+      "result": "PASS",
+      "return": -110,
+      "commands": 1,
+      "mmio_writes": 36,
+      "delay_calls": 10,
+      "dma_resets": [
+        3160,
+        3416
+      ],
+      "reset_acknowledgements": 2,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "dma-reset-timeout",
+      "result": "PASS",
+      "return": -110,
+      "commands": 1,
+      "mmio_writes": 31,
+      "delay_calls": 16,
+      "dma_resets": [
+        3160
+      ],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "dma-abort-success",
+      "result": "PASS",
+      "return": -110,
+      "commands": 1,
+      "mmio_writes": 37,
+      "delay_calls": 18,
+      "dma_resets": [
+        3160,
+        3416
+      ],
+      "reset_acknowledgements": 2,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "dma-abort-failure",
+      "result": "PASS",
+      "return": -110,
+      "commands": 1,
+      "mmio_writes": 28,
+      "delay_calls": 24,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "dma-stale-reset",
+      "result": "PASS",
+      "return": -110,
+      "commands": 1,
+      "mmio_writes": 31,
+      "delay_calls": 16,
+      "dma_resets": [
+        3160
+      ],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "foreign-descriptor",
+      "result": "PASS",
+      "return": -16,
+      "commands": 0,
+      "mmio_writes": 0,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "engine-busy",
+      "result": "PASS",
+      "return": -16,
+      "commands": 0,
+      "mmio_writes": 0,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "pio-zero-word-last",
+      "result": "PASS",
+      "return": -5,
+      "commands": 1,
+      "mmio_writes": 18,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "pio-overdepth",
+      "result": "PASS",
+      "return": -5,
+      "commands": 1,
+      "mmio_writes": 18,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "terminal-reentry",
+      "result": "PASS",
+      "return": -110,
+      "commands": 0,
+      "mmio_writes": 0,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "mode-mismatch",
+      "result": "PASS",
+      "return": -16,
+      "commands": 0,
+      "mmio_writes": 0,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "firmware-mismatch",
+      "result": "PASS",
+      "return": -71,
+      "commands": 0,
+      "mmio_writes": 0,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "invalid-length",
+      "result": "PASS",
+      "return": -22,
+      "commands": 0,
+      "mmio_writes": 0,
+      "delay_calls": 0,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    },
+    {
+      "case": "post-gpi-intrusion",
+      "result": "PASS",
+      "return": -16,
+      "commands": 1,
+      "mmio_writes": 25,
+      "delay_calls": 2,
+      "dma_resets": [],
+      "reset_acknowledgements": 0,
+      "full_native_transport_and_guard": true
+    }
+  ],
+  "compiler_derived_layout": {
+    "spi_bytes": 264,
+    "io_bytes": 32,
+    "spi_se": 0,
+    "oversampling": 100,
+    "tx_wm": 104,
+    "cur_bpw": 108,
+    "cur_speed_hz": 112,
+    "last_mode": 116,
+    "last_cs": 120,
+    "poll_limit": 124,
+    "poll_only": 128,
+    "snap_irq": 132,
+    "snap_status": 136,
+    "snap_valid": 164,
+    "use_dma": 176,
+    "info_fw_revision": 64,
+    "info_protocol": 68,
+    "info_tx_fifo_depth": 88,
+    "info_fifo_width_bits": 92,
+    "dma_ctx": 184,
+    "dma_clean": 192,
+    "dma_clean_inval": 200,
+    "dma_inval": 208,
+    "dma_tx_virt": 216,
+    "dma_rx_virt": 224,
+    "dma_tx_phys": 232,
+    "dma_rx_phys": 240,
+    "dma_size": 248
+  },
+  "reference_object": "build/ios16-input-transfer-abi/DodgeTransferLayout.o",
+  "reference_object_sha256": "f255382fc32f3cc6fcd6c24ae364325eda9435a8dde4dfdc3d7041b398f5cd45",
+  "cpu_cases": "build/cph2653-input-prelink/transfer-cpu-cases.json",
+  "cpu_cases_sha256": "275d5964e2be3f86b28a0dc4a091ee3f3d898abaf273121c9338683b09556ddc",
+  "mmio_slave_dma_cache_and_bzero_are_peers": true,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Actual current prelinked ARM64 terminal guard, full C FIFO/DMA transport, packing, cancel/abort and requested-channel reset loops. PIO/DMA byte extents, command/data/idle completion, cache ordering, failed/stale reset, live-abort refusal and terminal reentry use compiler-derived ABI and allocation canaries. Register/slave/DMA/cache/clock behavior and bzero are explicit peers, not hardware or serial-engine firmware execution."
+}

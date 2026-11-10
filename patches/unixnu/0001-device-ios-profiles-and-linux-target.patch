@@ -1,0 +1,837 @@
+diff --git a/docs/drivers/darwin-boot.md b/docs/drivers/darwin-boot.md
+index 1792dd8..430668c 100644
+--- a/docs/drivers/darwin-boot.md
++++ b/docs/drivers/darwin-boot.md
+@@ -20,6 +20,12 @@ applies its chained fixups. `MH_FILESET` input is not supported yet.
+ 
+ Include the DarwinBoot INF in the target firmware DSC/FDF, then run `./unixnu build firmware` from UniXNU. Follow [firmware integration](/porting/uefi-firmware#required-integration) and verify the loader protocol before selecting an XNU entry.
+ 
++Match the selected kernel's ARM64 `boot_args` ABI. Darwin 22 uses 608
++command-line bytes; set `DARWIN_BOOT_COMMAND_LINE_LENGTH=608` in the DarwinBoot
++module's DSC build options. The default 1024-byte layout serves the existing
++newer profiles. Verify field offsets against the selected source header and
++rebuild the loader after changing profiles.
++
+ The source storage runtime also accepts `kernel.macho.vroot`, a separate signed
+ policy bundle passed through `/chosen/memory-map/RootPolicies`. Firmware checks
+ the envelope; the kernel verifies each signature and hash table against its
+diff --git a/docs/drivers/xnu-prelink.md b/docs/drivers/xnu-prelink.md
+index a74c102..279e0d9 100644
+--- a/docs/drivers/xnu-prelink.md
++++ b/docs/drivers/xnu-prelink.md
+@@ -8,6 +8,22 @@ Kernel prelink emitter and ABI tooling.
+ 
+ XnuPrelink binds the built XNU kernel to selected original kexts and writes the prelink plan. The OS profile supplies the kernelcache pin, roots, slide, and ABI settings.
+ 
++The iPhone10,3 / 20H392 device overlay adds a fully hashed 1,228-byte Libm
++constant range to ordinary ARM64 instruction inspection. Its boundary excludes
++the following function. Device checks cover data references, direct branch
++entries and refusal after a byte change. Static emission preserves original
++executable bytes; it does not qualify layouts, register dataflow or early
++security initialization. Keep the report's ABI, loadability and runtime fields
++separate from successful emission.
++
++The ordinary ARM64 emitter accepts --early-security-fixture with explicit
++initializer arguments. Its schema-1 JSON record pins the original input,
++exact initializer set, complete executable ranges and declared dependencies.
++The 20H392 device record covers AMFI and sandbox; sandbox calls the same AMFI
++wrapper before registering its own policy. Byte/address/dependency mismatches
++stop output. This checks reviewed identities, not runtime policy registration
++or complete ABI compatibility.
++
+ For arm64e fileset kernel collections, `emit_prelink.py` selects the fileset
+ emitter and generates a function/data map. `--fileset-map FILE` supplies an
+ existing map with matching input hashes and matcher version. The selected roots
+diff --git a/docs/porting/device-repository.md b/docs/porting/device-repository.md
+index 980a659..d9013ae 100644
+--- a/docs/porting/device-repository.md
++++ b/docs/porting/device-repository.md
+@@ -255,7 +255,8 @@ extra_args = []
+ | `kernel` | Native kernel path in the build tree |
+ | `kernelcache_sha256` | Pins the original kernelcache |
+ | `slide` | Address slide applied to the selected components |
+-| `early_security_init` | Component identifier and address for the early initializer |
++| `early_security_init` | One BUNDLE=ORIGINAL_VA string, or a list of strings for multiple early initializers |
++| `early_security_fixture` | Optional profile-prefixed path to reviewed ordinary ARM64 initializer code identities |
+ | `roots` | Bundle identifiers kept from the original kernelcache |
+ | `extra_args` | Additional arguments for the prelink tool |
+ 
+diff --git a/scripts/build-corecrypto-14.py b/scripts/build-corecrypto-14.py
+index 54c5791..c51d0cc 100755
+--- a/scripts/build-corecrypto-14.py
++++ b/scripts/build-corecrypto-14.py
+@@ -79,7 +79,8 @@ command = ['xcrun', '--sdk', 'iphoneos', 'clang', '-target', TRIPLE, '-isysroot'
+            '-fno-vectorize', '-fno-slp-vectorize', '-mno-implicit-float',
+            '-DKERNEL=1', '-DKERNEL_PRIVATE=1', '-DBUILDKERNEL=1', '-DCC_USE_ASM=0', '-DNDEBUG=1',
+            '-DCC_DISABLE_RSAKEYGEN=1', '-Wno-deprecated-declarations', '-Wno-incompatible-library-redeclaration',
+-           '-I' + str(include.parent), '-I' + str(framework / 'PrivateHeaders'), '-I' + str(framework / 'Headers')]
++           '-I' + str(include.parent), '-I' + str(framework / 'PrivateHeaders'), '-I' + str(framework / 'Headers'),
++           '-idirafter', str(ROOT / '.cache/xnu-work/EXTERNAL_HEADERS')]
+ for folder in sorted({h.parent for h in SOURCE.rglob('*.h') if 'test' not in str(h.relative_to(SOURCE)).lower()}):
+     command.extend(['-I', str(folder)])
+ variant = '-namespaced' if args.namespace else ''
+diff --git a/scripts/build-libpthread-kernel.py b/scripts/build-libpthread-kernel.py
+index 08d9f68..8774533 100644
+--- a/scripts/build-libpthread-kernel.py
++++ b/scripts/build-libpthread-kernel.py
+@@ -60,6 +60,7 @@ def compile_one(source, destination, namespace=None):
+                    '-D__PTHREAD_EXPOSE_INTERNALS__=1', '-DABSOLUTETIME_SCALAR_TYPE=1', '-DNEEDS_SCHED_CALL_T=1',
+                    '-I', str(SOURCE / 'private'), '-I', str(SOURCE / 'include'), '-I', str(SOURCE),
+                    '-I', str(framework / 'PrivateHeaders'), '-I', str(framework / 'Headers'),
++                   '-idirafter', str(ROOT / '.cache/xnu-work/EXTERNAL_HEADERS'),
+                    '-Wno-deprecated-declarations', '-c', str(source), '-o', str(destination)]
+     if namespace:
+         command += ['-include', str(namespace)]
+@@ -106,4 +107,4 @@ archive = OUT / 'libpthread_kernel.a'
+ archive.unlink(missing_ok=True)
+ compile_one(ROOT / '.cache/xnu-work/bsd/kern/source_pthread_bootstrap.c', OUT / 'source_pthread_bootstrap.o')
+ subprocess.run(['xcrun', 'ar', 'rcs', archive, *objects, OUT / 'source_pthread_bootstrap.o'], check=True)
+-print('Matching libpthread: 3 real C sources + bootstrap, ARM64/iOS 17 audit, no unavailable kernel names')
++print(f'Matching libpthread: 3 real C sources + bootstrap, {TRIPLE} audit, no unavailable kernel names')
+diff --git a/scripts/build-mockfs-fixture.py b/scripts/build-mockfs-fixture.py
+index 701ae69..3dcc20b 100644
+--- a/scripts/build-mockfs-fixture.py
++++ b/scripts/build-mockfs-fixture.py
+@@ -4,7 +4,7 @@ import json
+ from pathlib import Path
+ import subprocess
+ 
+-from kernel_target import check_object
++from kernel_target import TRIPLE, check_object
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+ recipe = ROOT / 'build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/bsd/DEVELOPMENT/vfs_conf.o.json'
+@@ -40,5 +40,5 @@ for name in ('mockfs_fsnode', 'mockfs_vfsops', 'mockfs_vnops'):
+ archive = out / 'libmockfs_fixture.a'
+ archive.unlink(missing_ok=True)
+ subprocess.run(['xcrun', 'ar', 'rcs', archive, *objects], check=True)
+-print('3 XNU mockfs sources compiled (typed-allocation correction retained); ordinary ARM64 / iOS 17 audited')
+-print('Offline minimal-root fixture only; not an APFS driver or iPadOS filesystem')
++print(f'3 XNU mockfs sources compiled (typed-allocation correction retained); {TRIPLE} audited')
++print('Offline minimal-root fixture only; APFS and original OS root qualification remain separate')
+diff --git a/scripts/build-software-aes-bindings.py b/scripts/build-software-aes-bindings.py
+index fc467ad..f437218 100644
+--- a/scripts/build-software-aes-bindings.py
++++ b/scripts/build-software-aes-bindings.py
+@@ -3,6 +3,7 @@
+ import argparse
+ import hashlib
+ import json
++import os
+ from pathlib import Path
+ import struct
+ import subprocess
+@@ -10,7 +11,6 @@ import sys
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+ sys.path.insert(0, str(ROOT / 'kits/XnuPrelink'))
+-import native_prelink as np
+ sys.path.insert(0, str(Path(__file__).resolve().parent))
+ from kernel_target import TRIPLE
+ 
+@@ -21,6 +21,11 @@ args = parser.parse_args()
+ audit_path = ROOT / 'build/image4-ignition/aes-interface-audit.json'
+ recorded = ROOT / 'scripts/data/native-aes-original-bindings.S'
+ if not audit_path.is_file() and recorded.is_file():
++    # Recorded absolute methods are valid for exactly one unchanged original
++    # cache. A different iPhone/OS profile must supply its own qualified audit.
++    recorded_original = 'f18b4df865405f2a287b84977d7aca745e056d656d9fc9df1662970ce2969de7'
++    if os.environ.get('UNIXNU_ORIGINAL_KERNELCACHE_SHA256', recorded_original) != recorded_original:
++        raise SystemExit('Recorded AES bindings belong to a different kernelcache; qualify the selected iPhone/OS ABI first')
+     # Without the qualification evidence of the original kernelcache (kernel candidate, KDK annotations, live metadata),
+     # bind with the recorded result of that audit. The addresses belong to the kernelcache pinned in board.toml.
+     out = args.objects_dir
+@@ -32,6 +37,9 @@ if not audit_path.is_file() and recorded.is_file():
+     print('PASS: native AES bound with the recorded original-kernelcache addresses')
+     raise SystemExit(0)
+ audit = json.loads(audit_path.read_text())
++if os.environ.get('UNIXNU_ORIGINAL_KERNELCACHE_SHA256', audit['original_sha256']) != audit['original_sha256']:
++    raise SystemExit('AES qualification belongs to a different original kernelcache')
++import native_prelink as np
+ obj_path = args.objects_dir / 'NativeAES.o'
+ obj = obj_path.read_bytes()
+ obj_image = np.macho(obj)
+diff --git a/scripts/build-xnu-4k-baseline.sh b/scripts/build-xnu-4k-baseline.sh
+index 8f9d3cf..fe1d4be 100755
+--- a/scripts/build-xnu-4k-baseline.sh
++++ b/scripts/build-xnu-4k-baseline.sh
+@@ -25,14 +25,27 @@ fi
+ if [ ! -d .cache/xnu-work/.git ]; then
+   git clone --shared refer/xnu .cache/xnu-work
+ fi
+-if [ ! -x .cache/fakeroot/usr/local/libexec/availability.pl ]; then
+-  if [ ! -d refer/AvailabilityVersions/.git ]; then
+-    git clone --depth 1 --branch "$AVAILABILITY_TAG" https://github.com/apple-oss-distributions/AvailabilityVersions.git refer/AvailabilityVersions
+-  fi
++if [ ! -d refer/AvailabilityVersions/.git ]; then
++  git clone --depth 1 --branch "$AVAILABILITY_TAG" https://github.com/apple-oss-distributions/AvailabilityVersions.git refer/AvailabilityVersions
++fi
++AVAILABILITY_REVISION=$(git -C refer/AvailabilityVersions rev-parse HEAD)
++AVAILABILITY_STAMP=.cache/fakeroot/.availability-$AVAILABILITY_REVISION-installed
++if [ ! -f "$AVAILABILITY_STAMP" ]; then
+   mkdir -p .cache/fakeroot
++  # Older releases create this link without -f. A failed install can leave
++  # it behind before the Ruby-generated headers finish; retry the full step.
++  python3 - <<'PY_AVAILABILITY_LINK'
++from pathlib import Path
++header = Path('.cache/fakeroot/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/AvailabilityVersions.h')
++if header.is_symlink():
++    header.unlink()
++PY_AVAILABILITY_LINK
+   make -C refer/AvailabilityVersions install -j"${JOBS:-4}" \
+     OBJROOT="$ROOT/build/availability" SYMROOT="$ROOT/build/availability" \
+     DSTROOT="$ROOT/.cache/fakeroot" CMAKE="$(command -v cmake)" NINJA="$(command -v ninja)"
++  test -x .cache/fakeroot/usr/local/libexec/availability.pl
++  test -s .cache/fakeroot/usr/include/AvailabilityVersions.h
++  touch "$AVAILABILITY_STAMP"
+ fi
+ # Format 2 prepares its ordered patch series through the shared resolver.
+ if [ -z "${UNIXNU_PATCH_LIST:-}" ]; then
+@@ -108,7 +121,8 @@ if [ ! -d refer/libplatform/.git ]; then
+   git clone --depth 1 --branch "$LIBPLATFORM_TAG" https://github.com/apple-oss-distributions/libplatform.git refer/libplatform
+ fi
+ export KERNEL_SDKROOT=$ROOT/.cache/fakeroot
+-mkdir -p "$KERNEL_SDKROOT/usr/local/include/kernel" "$ROOT/build/xnu/obj/EXPORT_HDRS/libsa"
++mkdir -p "$KERNEL_SDKROOT/usr/local/include/kernel" "$ROOT/build/xnu/obj/EXPORT_HDRS/libsa" \
++  "$ROOT/build/xnu/ios-obj/EXPORT_HDRS/libsa"
+ copy_tree() {
+   mkdir -p "$2"
+   cp -R "$1/." "$2/"
+diff --git a/scripts/linux/iig-port-darwin-target.patch b/scripts/linux/iig-port-darwin-target.patch
+index 6c55688..18c7ffe 100644
+--- a/scripts/linux/iig-port-darwin-target.patch
++++ b/scripts/linux/iig-port-darwin-target.patch
+@@ -1,16 +1,30 @@
+-iig-port: Darwin parsing and Clang resource headers
++iig-port: Darwin target/resource headers and opt-in Darwin 22 RPC ABI
+ 
+-Against Nyktis/iig-port @ ea6d147.
+-
+-On Linux, use --target=arm64-apple-darwin when the caller supplies no target.
+-The setup script defines UNIXNU_CLANG_RESOURCE_DIR from the selected clang's
+--print-resource-dir output. Standalone builds derive the resource directory
+-from the loaded libclang library and its version. An explicit -resource-dir
+-argument takes priority.
++Against Nyktis/iig-port @ ea6d147d668ca15d490da638012243fcd705f30d.
++UNIXNU_IIG_LEGACY_RPC=1 retains the four-field IORPC and in-message content.
++Default newer output and message validation remain unchanged.
+ 
++diff --git a/README b/README
++index 81021f1..148005d 100644
++--- a/README
+++++ b/README
++@@ -16,3 +16,11 @@ Build:
++ Test:
++ 
++     tests/run.sh
+++
+++UniXNU Darwin 22 compatibility:
+++
+++    UNIXNU_IIG_LEGACY_RPC=1 iig ...
+++
+++This selects the older four-field IORPC layout and in-message content. It
+++retains message size, descriptor and object-reference checks. The default
+++output remains the newer layout. Generated output is tied to that selection.
++diff --git a/iig.cpp b/iig.cpp
++index 10a773e..30676df 100644
+ --- a/iig.cpp
+ +++ b/iig.cpp
+-@@ -22,6 +22,11 @@
++@@ -22,9 +22,25 @@
+  #include <utility>
+  #include <vector>
+  
+@@ -22,7 +36,21 @@ argument takes priority.
+  namespace {
+  
+  const char kIIGVersion[] = "DriverKit-440";
+-@@ -1375,6 +1380,54 @@ void add_direct_iig_includes(const Options &opt, ParseState *state)
+++
+++// Darwin 22 transports RPC content inside the Mach message. Later kernels
+++// add IORPC::kernelContent. Keep the selected kernel's actual layout.
+++const char *kernel_rpc_directive()
+++{
+++    const char *legacy = std::getenv("UNIXNU_IIG_LEGACY_RPC");
+++    return legacy && std::strcmp(legacy, "1") == 0
+++        ? "#if 0 /* Darwin 22 in-message RPC content */\n"
+++        : "#ifdef KERNEL\n";
+++}
+++
++ const char kIIGBannerVersion[] = "DriverKit-440 portable Jan  9 2026 10:49:41";
++ 
++ struct Options {
++@@ -1375,6 +1391,54 @@ void add_direct_iig_includes(const Options &opt, ParseState *state)
+  
+  void resolve_parameter_facts(ParseState *state);
+  
+@@ -77,7 +105,7 @@ argument takes priority.
+  int parse_iig(const Options &opt, ParseState *state)
+  {
+  	for (std::size_t i = 0; i < opt.clang_args.size(); ++i) {
+-@@ -1395,6 +1448,30 @@ int parse_iig(const Options &opt, ParseState *state)
++@@ -1395,6 +1459,30 @@ int parse_iig(const Options &opt, ParseState *state)
+  
+  	CXIndex index = clang_createIndex(0, 0);
+  	std::vector<const char *> args;
+@@ -108,3 +136,120 @@ argument takes priority.
+  	for (const std::string &arg : opt.clang_args) {
+  		args.push_back(arg.c_str());
+  	}
++@@ -3067,7 +3155,7 @@ void write_impl_rpc_types_for_method(std::ostringstream &out,
++ 	out << "    const IORPC rpc;\n";
++ 	out << "    struct\n";
++ 	out << "    {\n";
++-	out << "#ifdef KERNEL\n";
+++	out << kernel_rpc_directive();
++ 	out << "        const struct " << prefix << "_Msg * message;\n";
++ 	out << "#else /* KERNEL */\n";
++ 	out << "        const struct " << prefix << "_Msg_With_Content * message;\n";
++@@ -3075,7 +3163,7 @@ void write_impl_rpc_types_for_method(std::ostringstream &out,
++ 	out << "        struct " << prefix << "_Rpl_With_Content       * reply;\n";
++ 	out << "        uint32_t sendSize;\n";
++ 	out << "        uint32_t replySize;\n";
++-	out << "#ifdef KERNEL\n";
+++	out << kernel_rpc_directive();
++ 	out << "        const struct " << prefix << "_Msg_Content * kernelContent;\n";
++ 	out << "#endif /* KERNEL */\n";
++ 	out << "    };\n";
++@@ -3449,7 +3537,7 @@ void write_impl_dispatch(std::ostringstream &out, const ClassInfo &klass,
++ 	std::vector<const MethodInfo *> rpc_methods = rpc_methods_for_class(state, klass);
++ 	std::set<std::string> typed_targets = typed_action_target_names(methods);
++ 
++-	out << "#ifdef KERNEL\n";
+++	out << kernel_rpc_directive();
++ 	out << "#define MESSAGE_CONTENT(__field) (messageContent->__field)\n";
++ 	out << "#else /* KERNEL */\n";
++ 	out << "#define MESSAGE_CONTENT(__field) (message->content.__field)\n";
++@@ -3463,7 +3551,7 @@ void write_impl_dispatch(std::ostringstream &out, const ClassInfo &klass,
++ 	out << klass.name << "::_Dispatch(" << klass.name << " * self, const IORPC rpc)\n";
++ 	out << "{\n";
++ 	out << "    kern_return_t ret = kIOReturnUnsupported;\n";
++-	out << "#ifdef KERNEL\n";
+++	out << kernel_rpc_directive();
++ 	out << "    IORPCMessage * msg = rpc.kernelContent;\n";
++ 	out << "#else /* KERNEL */\n";
++ 	out << "    IORPCMessage * msg = IORPCMessageFromMach(rpc.message, false);\n";
++@@ -3506,7 +3594,7 @@ void write_impl_dispatch(std::ostringstream &out, const ClassInfo &klass,
++ 	out << "{\n";
++ 	out << "#endif /* !KERNEL */\n\n";
++ 	out << "    kern_return_t ret = kIOReturnUnsupported;\n";
++-	out << "#ifdef KERNEL\n";
+++	out << kernel_rpc_directive();
++ 	out << "    IORPCMessage * msg = rpc.kernelContent;\n";
++ 	out << "#else /* KERNEL */\n";
++ 	out << "    IORPCMessage * msg = IORPCMessageFromMach(rpc.message, false);\n";
++@@ -3837,7 +3925,7 @@ void write_impl_wrapper_body(std::ostringstream &out,
++ 	out << "    kern_return_t ret;\n";
++ 	if (has_annotation(method.annotations, "reply")) {
++ 		out << "    struct " << prefix << "_Msg_With_Content * msg = (typeof(msg)) rpc.reply;\n";
++-		out << "#ifdef KERNEL\n";
+++		out << kernel_rpc_directive();
++ 		out << "    rpc.kernelContent = &msg->content.__hdr;\n";
++ 		out << "#endif /* KERNEL */\n\n";
++ 	} else {
++@@ -3885,7 +3973,7 @@ void write_impl_wrapper_body(std::ostringstream &out,
++ 		write_impl_wrapper_input_assignment(out, classes, method, prefix, param);
++ 	}
++ 	if (!has_annotation(method.annotations, "reply")) {
++-		out << "#ifdef KERNEL\n";
+++		out << kernel_rpc_directive();
++ 		if (include_reply) {
++ 			out << "    IORPC rpc = { .message = &buf.msg.mach, .reply = &buf.rpl.rpl.mach, .sendSize = sizeof(buf.msg), .replySize = sizeof(buf.rpl), .kernelContent = &buf.msg.content.__hdr };\n";
++ 		} else {
++@@ -3950,7 +4038,7 @@ void write_impl_wrapper_body(std::ostringstream &out,
++ 			out << "        if (ret == kIOReturnSuccess) {\n";
++ 			out << "            IORPCMessage * message;\n";
++ 			out << "            OSObject     * object;\n\n";
++-			out << "#ifdef KERNEL\n";
+++			out << kernel_rpc_directive();
++ 			out << "            message = rpc.kernelContent;\n";
++ 			out << "#else /* KERNEL */\n";
++ 			out << "            message = IORPCMessageFromMach(rpc.reply, false);\n";
++@@ -4093,7 +4181,7 @@ void write_impl_invoke_body(std::ostringstream &out,
++ 	out << "{\n";
++ 	out << "    " << prefix << "_Invocation rpc = { _rpc };\n";
++ 	out << "    " << prefix << "_Rpl_With_Content * reply = rpc.reply;\n";
++-	out << "#ifdef KERNEL\n";
+++	out << kernel_rpc_directive();
++ 	out << "    const " << prefix << "_Msg *         message = rpc.message;\n";
++ 	out << "    const " << prefix << "_Msg_Content * messageContent = rpc.kernelContent;\n";
++ 	out << "#else /* KERNEL */\n";
++@@ -4285,7 +4373,7 @@ void write_impl_invoke_body(std::ostringstream &out,
++ 	out << "    if (kIOReturnSuccess != ret) return (ret);\n\n";
++ 	if (method_is_invoke_reply(method)) {
++ 		out << "    IORPCMessage * replyMessage;\n\n";
++-		out << "#ifdef KERNEL\n";
+++		out << kernel_rpc_directive();
++ 		out << "    replyMessage = rpc.rpc.kernelContent;\n";
++ 		out << "#else /* KERNEL */\n";
++ 		out << "    replyMessage = IORPCMessageFromMach(rpc.rpc.reply, false);\n";
++@@ -4431,7 +4519,7 @@ void write_impl_action_class_description(std::ostringstream &out,
++ void write_impl_action_dispatch(std::ostringstream &out,
++     const std::string &action_class)
++ {
++-	out << "#ifdef KERNEL\n";
+++	out << kernel_rpc_directive();
++ 	out << "#define MESSAGE_CONTENT(__field) (messageContent->__field)\n";
++ 	out << "#else /* KERNEL */\n";
++ 	out << "#define MESSAGE_CONTENT(__field) (message->content.__field)\n";
++@@ -4445,7 +4533,7 @@ void write_impl_action_dispatch(std::ostringstream &out,
++ 	out << action_class << "::_Dispatch(" << action_class << " * self, const IORPC rpc)\n";
++ 	out << "{\n";
++ 	out << "    kern_return_t ret = kIOReturnUnsupported;\n";
++-	out << "#ifdef KERNEL\n";
+++	out << kernel_rpc_directive();
++ 	out << "    IORPCMessage * msg = rpc.kernelContent;\n";
++ 	out << "#else /* KERNEL */\n";
++ 	out << "    IORPCMessage * msg = IORPCMessageFromMach(rpc.message, false);\n";
++@@ -4468,7 +4556,7 @@ void write_impl_action_dispatch(std::ostringstream &out,
++ 	out << "{\n";
++ 	out << "#endif /* !KERNEL */\n\n";
++ 	out << "    kern_return_t ret = kIOReturnUnsupported;\n";
++-	out << "#ifdef KERNEL\n";
+++	out << kernel_rpc_directive();
++ 	out << "    IORPCMessage * msg = rpc.kernelContent;\n";
++ 	out << "#else /* KERNEL */\n";
++ 	out << "    IORPCMessage * msg = IORPCMessageFromMach(rpc.message, false);\n";
+diff --git a/scripts/linux/prepare-xnu.py b/scripts/linux/prepare-xnu.py
+index efef7a6..6da82b5 100755
+--- a/scripts/linux/prepare-xnu.py
++++ b/scripts/linux/prepare-xnu.py
+@@ -9,6 +9,7 @@
+ Each rewrite checks whether it is still needed, so both modes can run on every build.
+ """
+ from pathlib import Path
++import os
+ import shutil
+ import subprocess
+ import sys
+@@ -20,7 +21,7 @@ FAKEROOT = ROOT / '.cache/fakeroot'
+ # llvm-project at the commit setup-toolchain.py builds clang from, and the Libc that macOS 14.6 ships with
+ # xnu-10063.141.1 (distribution-macOS release.json).
+ LLVM_COMMIT = '58c46bae21181fb4240cf964461bea738d96d50e'
+-LIBC_COMMIT = '899a3b2d52d95d75e05fb286a5e64975ec3de757'   # Libc-1592.100.35
++LIBC_COMMIT = os.environ.get('UNIXNU_LIBC_COMMIT', '899a3b2d52d95d75e05fb286a5e64975ec3de757')
+ PROFILE_SOURCES = ('InstrProfiling', 'InstrProfilingBuffer', 'InstrProfilingPlatformDarwin', 'InstrProfilingWriter',
+                    'InstrProfilingInternal', 'InstrProfilingVersionVar')
+ 
+@@ -51,6 +52,28 @@ def info(message):
+ 
+ 
+ def rewrite_sources():
++    # Darwin 22's compilation database mode skips compilation/linking. The
++    # archive builders need records from actual invocations, so emit sidecars
++    # while retaining the normal build and its object outputs.
++    rules = XNU / 'makedefs/MakeInc.rule'
++    lines = rules.read_text().splitlines(keepends=True)
++    changed = False
++    for index, line in enumerate(lines):
++        if line.startswith(('C_RULE_1A=', 'P_RULE_1A=', 'S_RULE_1A=')) and '-MJ' not in line:
++            if ' -c ' not in line:
++                sys.exit(f'{rules}: compile recipe changed')
++            lines[index] = line.replace(' -c ', ' -MJ $@.json -c ', 1)
++            changed = True
++    if changed:
++        rules.write_text(''.join(lines))
++        info('enabled compile records on actual C, C++ and assembler invocations')
++    objects = ROOT / 'build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837'
++    for relative in ('osfmk/DEVELOPMENT/startup.o', 'osfmk/DEVELOPMENT/prng_random.o',
++                     'iokit/DEVELOPMENT/IOPlatformExpert.cpo', 'bsd/DEVELOPMENT/vfs_conf.o'):
++        target = objects / relative
++        if target.is_file() and not target.with_suffix(target.suffix + '.json').is_file():
++            target.unlink()
++            info(f'rebuild {relative} to recover its actual compile record')
+     # bsd/kern/makesyscalls.sh writes `\(sy_call_t *\)` inside an awk string. BSD awk and gawk drop the unknown
+     # escape; Debian's default mawk keeps the backslash, and init_sysent.c does not compile. The escape is bogus
+     # either way: remove it, and any generated file that carries it.
+@@ -119,11 +142,26 @@ def build_cc_kext():
+     objects = src / 'cc_kext'
+     objects.mkdir(parents=True, exist_ok=True)
+     out.parent.mkdir(parents=True, exist_ok=True)
++    availability = objects / 'availability-spi.h'
++    availability.write_text('''/* Public Darwin 22 headers omit the SDK-private SPI spelling.
++ * Keep the same platform availability attributes for this kernel runtime. */
++#include <Availability.h>
++#ifndef __API_AVAILABLE_PLATFORM_bridgeos
++#define __API_AVAILABLE_PLATFORM_bridgeos(x) bridgeos,introduced=x
++#endif
++#ifndef __SPI_AVAILABLE
++#define __SPI_AVAILABLE(...) __API_AVAILABLE(__VA_ARGS__)
++#endif
++''')
+     for name in PROFILE_SOURCES:
+-        subprocess.run(['xcrun', 'clang', '-target', 'arm64-apple-ios17.0', '-arch', 'arm64', '-isysroot', FAKEROOT,
++        arch = os.environ.get('UNIXNU_XNU_ARCH', 'arm64')
++        ios_version = os.environ.get('UNIXNU_IOS_VERSION', '17.0')
++        subprocess.run(['xcrun', 'clang', '-target', f'{arch}-apple-ios{ios_version}', '-arch', arch, '-isysroot', FAKEROOT,
+                         '-mkernel', '-DKERNEL_USE', '-O3', '-fPIC', '-w',
++                        '-include', availability,
+                         '-I', rt / 'include', '-I', FAKEROOT / 'System/Library/Frameworks/Kernel.framework/Headers',
+                         '-idirafter', src / 'Libc/include', '-idirafter', XNU / 'libsyscall/wrappers',
++                        '-idirafter', XNU / 'EXTERNAL_HEADERS',
+                         '-c', rt / f'lib/profile/{name}.c', '-o', objects / f'{name}.o'], check=True)
+     subprocess.run(['xcrun', 'libtool', '-static', '-o', out, *(objects / f'{n}.o' for n in PROFILE_SOURCES)],
+                    check=True)
+diff --git a/scripts/unixnu/bootimg.py b/scripts/unixnu/bootimg.py
+index 259fb29..378389e 100644
+--- a/scripts/unixnu/bootimg.py
++++ b/scripts/unixnu/bootimg.py
+@@ -119,17 +119,41 @@ def build(ctx, uefi, fd, dtb, ramdisk=None, output=None):
+ def verify(path, combined, tree, ramdisk_path, image):
+     """Unpack the image and compare every part with its input."""
+     data = Path(path).read_bytes()
+-    kernel_size, kernel_address, ramdisk_size, _, second_size, _, tags, page, version, _ = struct.unpack_from('<10I', data, 8)
+-    if data[:8] != b'ANDROID!' or second_size or version != image['header_version'] or page != image['pagesize']:
++    if len(data) < 44 or data[:8] != b'ANDROID!':
++        raise Error('truncated or invalid Android boot header')
++    version = struct.unpack_from('<I', data, 40)[0]
++    if version != image['header_version'] or version not in range(5):
+         raise Error('boot image header does not match the requested parameters')
+-    if kernel_address != image['base'] + image['kernel_offset'] or tags != image['base'] + image['tags_offset']:
+-        raise Error('boot image load addresses do not match the requested offsets')
++    signature = 0
++    kernel_address = tags = None
++    if version >= 3:
++        page = 4096
++        kernel_size, ramdisk_size, _, header_size = struct.unpack_from('<4I', data, 8)
++        expected_header = 1584 if version == 4 else 1580
++        if len(data) < page or header_size != expected_header or any(data[24:40]):
++            raise Error('invalid Android v3/v4 header extent or reserved fields')
++        if version == 4:
++            signature = struct.unpack_from('<I', data, 1580)[0]
++    else:
++        if len(data) < 48:
++            raise Error('truncated legacy Android boot header')
++        kernel_size, kernel_address, ramdisk_size, _, second_size, _, tags, page, _, _ = struct.unpack_from('<10I', data, 8)
++        if second_size or page != image['pagesize'] or page < 2048 or page & (page - 1):
++            raise Error('boot image header does not match the requested parameters')
++        if kernel_address != image['base'] + image['kernel_offset'] or tags != image['base'] + image['tags_offset']:
++            raise Error('boot image load addresses do not match the requested offsets')
++    align = lambda value: -(-value // page) * page
++    start = page + align(kernel_size)
++    end = start + align(ramdisk_size)
++    if end + align(signature) != len(data):
++        raise Error('boot image length does not match its component extents')
+     kernel = data[page:page + kernel_size]
+     unpacker = zlib.decompressobj(16 + zlib.MAX_WBITS)
+     if unpacker.decompress(kernel) != combined or not unpacker.eof or unpacker.unused_data != tree:
+         raise Error('gzip, firmware and appended device tree do not round-trip')
+-    start = page * (1 + -(-kernel_size // page))
+     if data[start:start + ramdisk_size] != Path(ramdisk_path).read_bytes():
+         raise Error('ramdisk bytes differ')
+     return {'kernel_sha256': hashlib.sha256(kernel).hexdigest(), 'ramdisk_bytes': ramdisk_size,
+-            'header_version': version, 'kernel_address': hex(kernel_address), 'tags_address': hex(tags)}
++            'header_version': version, 'signature_bytes': signature,
++            'kernel_address': hex(kernel_address) if kernel_address is not None else None,
++            'tags_address': hex(tags) if tags is not None else None}
+diff --git a/scripts/unixnu/cli.py b/scripts/unixnu/cli.py
+index 2784bcf..d8161d8 100644
+--- a/scripts/unixnu/cli.py
++++ b/scripts/unixnu/cli.py
+@@ -17,7 +17,7 @@ def common():
+     p = argparse.ArgumentParser(add_help=False)
+     p.add_argument('--config', metavar='FILE', help='local build inputs (default: unixnu.local.toml in the UniXNU checkout)')
+     p.add_argument('-D', '--device', metavar='DIR', help='device repository (remembered; or UNIXNU_DEVICE)')
+-    p.add_argument('--os', metavar='VERSION', help='OS profile for this run: 17, 26, 27 or a profiles/os directory name (default: the board\'s os_profile)')
++    p.add_argument('--os', metavar='VERSION', help='OS profile directory name, or an unambiguous major version such as 16 (default: the board\'s os_profile)')
+     p.add_argument('--out', metavar='DIR', help='output root (default: out/ here, or UNIXNU_OUT)')
+     p.add_argument('-j', '--jobs', type=int, help='parallel jobs')
+     p.add_argument('--local', metavar='DIR', help='directory laid out like this repository; its drivers, kits, patches, scripts and package are used')
+@@ -88,7 +88,7 @@ def need_uefi(ctx):
+     return uefi
+ 
+ 
+-REFERENCES = {'kernel': ('xnu', 'libplatform', 'libdispatch', 'AvailabilityVersions', 'libpthread', 'corecrypto-2023', 'IOStorageFamily'), 'package': ('edk2',), 'firmware': ('edk2',)}
++REFERENCES = {'kernel': ('xnu', 'libplatform', 'libdispatch', 'AvailabilityVersions', 'libpthread', 'corecrypto-2023', 'IOStorageFamily', 'Libc'), 'package': ('edk2',), 'firmware': ('edk2',)}
+ 
+ 
+ def prepare(ctx, steps=()):
+diff --git a/scripts/unixnu/kernel.py b/scripts/unixnu/kernel.py
+index ac2723c..1d7df16 100644
+--- a/scripts/unixnu/kernel.py
++++ b/scripts/unixnu/kernel.py
+@@ -9,7 +9,7 @@ import struct
+ import tempfile
+ from pathlib import Path
+ 
+-from . import components, ipsw, patches
++from . import components, ipsw, patches, profiles
+ from .config import load_toml
+ from .util import Error, expand, log, run, sha256_file, tool
+ 
+@@ -29,7 +29,7 @@ def xnu_env(ctx):
+ def version_env(modules, ctx=None):
+     """Source versions of the Apple references, from feeds.toml, for the kernel scripts."""
+     env = {}
+-    for name, prefix in (('xnu', 'XNU'), ('libplatform', 'LIBPLATFORM'), ('libdispatch', 'LIBDISPATCH'), ('AvailabilityVersions', 'AVAILABILITYVERSIONS'), ('libpthread', 'LIBPTHREAD'), ('IOStorageFamily', 'IOSTORAGEFAMILY')):
++    for name, prefix in (('xnu', 'XNU'), ('libplatform', 'LIBPLATFORM'), ('libdispatch', 'LIBDISPATCH'), ('AvailabilityVersions', 'AVAILABILITYVERSIONS'), ('libpthread', 'LIBPTHREAD'), ('IOStorageFamily', 'IOSTORAGEFAMILY'), ('Libc', 'LIBC')):
+         module = modules.get(('refer', name))
+         entry = module.source if module and module.source else {}
+         if entry.get('ref'):
+@@ -52,6 +52,9 @@ def version_env(modules, ctx=None):
+             env['UNIXNU_XNU_TAG'] = 'xnu-' + profile['xnu_version']
+         if profile.get('ios_version'):
+             env['UNIXNU_IOS_VERSION'] = profile['ios_version']
++        original = ctx.board.get('kernel', {}).get('prelink', {}).get('kernelcache_sha256')
++        if original:
++            env['UNIXNU_ORIGINAL_KERNELCACHE_SHA256'] = original
+         # The root images of the OS: volume UUIDs and image digests the kernel and the storage builder check.
+         root = ctx.board.get('root', {})
+         for key, variable in (('os_volume_uuid', 'XNU_OWNER_ROOT_VOLUME_UUID'),
+@@ -80,26 +83,33 @@ def linux_env(ctx):
+     """Environment of the kernel step on a Linux host, with the toolchain of scripts/linux/setup-toolchain.py.
+ 
+     The xcrun shim answers every --sdk query with the fakeroot this build makes. The target is plain arm64 for
+-    iOS 17, so the clang wrapper adds only the flag that keeps C++ static destructors in __mod_term_func.
++    the selected OS profile, so the clang wrapper adds only the flag that keeps C++ static destructors in __mod_term_func.
+     CCC_OVERRIDE_OPTIONS (read by the clang driver itself, so also by the archive builders that replay xnu's
+     compile records) turns off two warnings that upstream clang has and Apple clang does not; the builders compile
+     with -Werror.
+     """
+     toolchain = Path(os.environ.get('UNIXNU_TOOLCHAIN', '/opt/unixnu-linux'))
+     clt, xctoolchain = toolchain / 'CommandLineTools/usr', toolchain / 'XcodeDefault.xctoolchain/usr'
++    host_tools = os.environ.get('UNIXNU_HOST_TOOLS')
++    preferred = Path(host_tools) / 'iig' if host_tools else xctoolchain / 'bin/iig'
++    iig = preferred if preferred.exists() else xctoolchain / 'bin/iig'
+     for path in (toolchain / 'llvm/bin/clang', clt / 'bin/ld', clt / 'bin/xnu-host-cc', clt / 'libexec/migcom',
+-                 xctoolchain / 'bin/iig', Path('/usr/bin/xcrun'), toolchain / 'bin/lzfse'):
++                 iig, Path('/usr/bin/xcrun'), toolchain / 'bin/lzfse'):
+         if not path.exists():
+             raise Error(f'{path} missing; run "sudo scripts/linux/setup-toolchain.py {toolchain}"')
+     fakeroot = ctx.tree / '.cache/fakeroot'
++    ios_version = ctx.board.get('os', {}).get('ios_version', '17.0')
++    architecture = ctx.board.get('os', {}).get('arch', 'arm64')
+     return {'PATH': os.pathsep.join([str(clt / 'bin'), str(toolchain / 'bin'), os.environ.get('PATH', '')]),
+             'LC_ALL': 'C', 'CLT_PREFIX': str(clt), 'XCTOOLCHAIN_PREFIX': str(xctoolchain),
+-            'XNU_TOOLCHAIN_BIN': f'{clt / "bin"} {xctoolchain / "bin"}',
+-            'UNIXNU_SDKROOT': str(fakeroot), 'UNIXNU_SDK_VERSION': '17.0',
++            'XNU_TOOLCHAIN_BIN': ' '.join(p for p in (host_tools, str(clt / 'bin'), str(xctoolchain / 'bin')) if p),
++            'UNIXNU_SDKROOT': str(fakeroot), 'UNIXNU_SDK_VERSION': ios_version,
+             'UNIXNU_PLATFORM_PATH': str(fakeroot / 'Platforms/iPhoneOS.platform'),
+-            'CROSS_CLANG': str(toolchain / 'llvm/bin/clang'), 'DARWIN_TRIPLE': 'arm64-apple-ios17.0',
++            'CROSS_CLANG': str(toolchain / 'llvm/bin/clang'), 'DARWIN_TRIPLE': f'{architecture}-apple-ios{ios_version}',
+             'CROSS_EXTRA_FLAGS': '-mllvm -disable-atexit-based-global-dtor-lowering',
+-            'CCC_OVERRIDE_OPTIONS': '# +-Wno-missing-designated-field-initializers +-Wno-unused-but-set-global'}
++            'XNU_CLANG_DROP_FLAGS': '-mno-implicit-sme -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang',
++            'UNIXNU_IIG_LEGACY_RPC': '1' if ctx.board.get('os', {}).get('darwin', '').startswith('22.') else '0',
++            'CCC_OVERRIDE_OPTIONS': '# +-Wno-missing-designated-field-initializers +-Wno-unused-but-set-global +-Wno-reserved-identifier +-Wno-unsafe-buffer-usage +-Wno-shadow-header'}
+ 
+ 
+ def archive_plan(ctx):
+@@ -167,6 +177,20 @@ def build_archives(ctx, env):
+             raise Error(f'{key}: {value} not found; supply the archive or its build recipe')
+ 
+ 
++def bootstrap_ready(tree):
++    """Archive recipes need all compile templates and the kernel's complete object list."""
++    obj = tree / 'build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837'
++    required = ('osfmk/DEVELOPMENT/startup.o.json', 'osfmk/DEVELOPMENT/prng_random.o.json',
++                'iokit/DEVELOPMENT/IOPlatformExpert.cpo.json', 'bsd/DEVELOPMENT/vfs_conf.o.json')
++    if not all((obj / name).is_file() for name in required):
++        return False
++    filelist = obj / 'link.filelist'
++    if not filelist.is_file():
++        return False
++    objects = [line.strip() for line in filelist.read_text().splitlines() if line.strip()]
++    return bool(objects) and all((obj / path).is_file() for path in objects)
++
++
+ def build(ctx, modules):
+     log('kernel: XNU')
+     script = ctx.tree / 'scripts/build-xnu-4k-baseline.sh'
+@@ -184,13 +208,12 @@ def build(ctx, modules):
+     env.update(xnu_env(ctx))
+     env.update(version_env(modules, ctx))
+     if ctx.schema_version == 2:
+-        env['UNIXNU_PATCH_LIST'] = str(patches.prepare(ctx, modules))
++        env['UNIXNU_PATCH_LIST'] = str(patches.prepare(ctx, modules, env))
+         generated = ctx.tree / 'build/generated'
+         generated.mkdir(parents=True, exist_ok=True)
+         env['UNIXNU_GENERATED_DIR'] = str(generated)
+     env['JOBS'] = str(ctx.jobs)
+-    record = ctx.tree / 'build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/osfmk/DEVELOPMENT/startup.o.json'
+-    if not record.is_file():
++    if not bootstrap_ready(ctx.tree):
+         # The archive builders and the boot progress layer read compile records of the XNU build, which only an earlier
+         # pass leaves behind. A first build from scratch therefore runs one pass without them; XNU_BOOTSTRAP makes it
+         # skip the archive checks and link without the archives, so it stops at the link and only the records are
+@@ -200,7 +223,7 @@ def build(ctx, modules):
+         try:
+             run(['bash', script], cwd=ctx.tree, env=subprocess_env, log_file=ctx.logs / 'kernel-bootstrap.log')
+         except Error:
+-            if not record.is_file():
++            if not bootstrap_ready(ctx.tree):
+                 raise
+     # Revalidate the selected source and regenerate headers on every archive build.
+     # A pre-existing directory can belong to a different OS profile/revision.
+@@ -278,7 +301,15 @@ def prelink(ctx):
+     for root in spec.get('roots', []):
+         command += ['--root', root]
+     if spec.get('early_security_init'):
+-        command += ['--early-security-init', spec['early_security_init']]
++        initializers = spec['early_security_init']
++        if isinstance(initializers, str):
++            initializers = [initializers]
++        if not isinstance(initializers, list) or not all(isinstance(value, str) for value in initializers):
++            raise Error('early_security_init must be a string or list of BUNDLE=ORIGINAL_VA strings')
++        for initializer in initializers:
++            command += ['--early-security-init', initializer]
++    if spec.get('early_security_fixture'):
++        command += ['--early-security-fixture', profiles.resolve_path(ctx, spec['early_security_fixture'])]
+     command += spec.get('extra_args', [])
+     # A failed rebuild must not remove the last candidate or its record.
+     with tempfile.TemporaryDirectory(dir=output.parent, prefix='.prelink-') as directory:
+diff --git a/scripts/unixnu/patches.py b/scripts/unixnu/patches.py
+index 823ec4b..753ec30 100644
+--- a/scripts/unixnu/patches.py
++++ b/scripts/unixnu/patches.py
+@@ -1,6 +1,7 @@
+ """Ordered XNU patch series and target-local source preparation."""
+ import hashlib
+ import json
++import os
+ import shutil
+ 
+ from .profiles import resolve_path
+@@ -30,7 +31,7 @@ def plan(ctx, modules):
+     return result
+ 
+ 
+-def prepare(ctx, modules):
++def prepare(ctx, modules, env=None):
+     selected = plan(ctx, modules)
+     module = modules.get(('refer', 'xnu'))
+     if not module or module.path is None:
+@@ -50,6 +51,16 @@ def prepare(ctx, modules):
+         stamp.unlink(missing_ok=True)
+         if work.exists():
+             shutil.rmtree(work)
++        # The installed SDK headers also depend on this patch set, including
++        # private IOKit allocation macros. Reinstall after source preparation.
++        for header_stamp in (ctx.tree / '.cache/fakeroot').glob('.xnu-*-headers'):
++            header_stamp.unlink()
++        # Archive builders replay these records before the final kernel pass.
++        # A record from another patch set must not supply stale feature flags.
++        obj = ctx.tree / 'build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837'
++        for name in ('osfmk/DEVELOPMENT/startup.o.json', 'osfmk/DEVELOPMENT/prng_random.o.json',
++                     'iokit/DEVELOPMENT/IOPlatformExpert.cpo.json', 'bsd/DEVELOPMENT/vfs_conf.o.json'):
++            (obj / name).unlink(missing_ok=True)
+         work.parent.mkdir(parents=True, exist_ok=True)
+         run(['git', 'clone', '--quiet', '--shared', '--no-checkout', module.path, work])
+         git(work, 'checkout', '--quiet', '--detach', revision)
+@@ -61,7 +72,10 @@ def prepare(ctx, modules):
+                 shutil.rmtree(work)
+                 raise Error(f'XNU patch {path}: {error}') from error
+         # A fresh clone lacks the public headers newer xnu omits (TrustCache among them); archives compile against it before the kernel build.
+-        run(['python3', ctx.tree / 'scripts/prepare-xnu-source.py'], cwd=ctx.tree)
++        if env is None:
++            from .kernel import version_env
++            env = dict(os.environ, **version_env(modules, ctx))
++        run(['python3', ctx.tree / 'scripts/prepare-xnu-source.py'], cwd=ctx.tree, env=env)
+         stamp.write_text(json.dumps(signature, indent=2) + '\n')
+     patch_list = ctx.work / 'xnu-patches.list'
+     patch_list.write_text(''.join(str(path) + '\n' for path in selected))
+diff --git a/scripts/unixnu/payload.py b/scripts/unixnu/payload.py
+index 0774c8e..32aabef 100644
+--- a/scripts/unixnu/payload.py
++++ b/scripts/unixnu/payload.py
+@@ -27,14 +27,17 @@ def paths(ctx):
+     return out, out / 'payload.img', out / 'payload.json'
+ 
+ 
+-def check_args(arguments):
++def check_args(arguments, command_line_length=1024):
+     for value in arguments:
+         if not re.fullmatch(r'[A-Za-z0-9_.\-]+(=[A-Za-z0-9_.,/\-]+)?', value):
+             raise Error(f'unsupported kernel argument: {value}')
+     line = ' '.join(arguments)
+-    # DarwinBoot copies the command line into a 1024-byte buffer and refuses a longer one.
+-    if len(line) > 1000:
+-        raise Error(f'the kernel command line is {len(line)} bytes; the limit is 1000')
++    if command_line_length not in (608, 1024):
++        raise Error('payload command_line_length must match a supported DarwinBoot ABI: 608 or 1024')
++    # Reserve the terminating NUL in the buffer selected when DarwinBoot is built.
++    limit = min(1000, command_line_length - 1)
++    if len(line.encode('ascii')) > limit:
++        raise Error(f'the kernel command line is {len(line)} bytes; the limit is {limit}')
+     return line
+ 
+ 
+@@ -114,7 +117,7 @@ def build(ctx, kernel=None):
+     # An extra NAME=VALUE replaces the board's argument of the same name.
+     names = {item.split('=', 1)[0] for item in extra}
+     arguments = [item for item in spec.get('kernel_args', []) if item.split('=', 1)[0] not in names] + extra
+-    line = check_args(arguments)
++    line = check_args(arguments, spec.get('command_line_length', 1024))
+     log(f'kernel args: {line}')
+     check_native_root(kernel, arguments, bool(ctx.board.get('adt', {}).get('defaults', {}).get('u32', {}).get('vmm-present')))
+     owner_trust = getattr(args, 'owner_trust_cache', None)
+diff --git a/scripts/unixnu/profiles.py b/scripts/unixnu/profiles.py
+index 3ca8c9b..922cdda 100644
+--- a/scripts/unixnu/profiles.py
++++ b/scripts/unixnu/profiles.py
+@@ -17,13 +17,15 @@ def merge(base, overlay):
+ 
+ 
+ def resolve_os(ctx, wanted):
+-    """--os 17, 26 or 27 (the OS major version) or a full profiles/os directory name."""
+-    names = sorted(path.name for path in (ctx.root / 'profiles/os').iterdir() if path.is_dir())
++    """Resolve a complete OS name or an unambiguous iOS/iPadOS major version."""
++    names = sorted({path.name for base in (ctx.root, ctx.device)
++                    if (base / 'profiles/os').is_dir()
++                    for path in (base / 'profiles/os').iterdir() if path.is_dir()})
+     if wanted in names:
+         return wanted
+-    matches = [name for name in names if name.startswith(f'ipados-{wanted}.')]
++    matches = [name for name in names if name.startswith((f'ipados-{wanted}.', f'ios-{wanted}.'))]
+     if len(matches) != 1:
+-        raise Error(f'--os {wanted}: expected one of {", ".join(names)} or 17, 26, 27')
++        raise Error(f'--os {wanted}: select an unambiguous full profile name from {", ".join(names)}')
+     return matches[0]
+ 
+ 
+@@ -39,6 +41,8 @@ def load(ctx, allow_fetch=False):
+         raise Error('[board] os_profile must be a profile directory name')
+     ctx.soc = feeds.resolve_soc(ctx, soc_name, allow_fetch)
+     os_root = ctx.root / 'profiles/os' / os_name
++    if (ctx.device / 'profiles/os' / os_name / 'profile.toml').is_file():
++        os_root = ctx.device / 'profiles/os' / os_name
+     arch_name = load_toml(os_root / 'profile.toml').get('os', {}).get('arch', 'arm64')
+     if arch_name not in ('arm64', 'arm64e'):
+         raise Error(f'{os_name}: [os] arch must be arm64 or arm64e')
+diff --git a/scripts/unixnu/test_kernel.py b/scripts/unixnu/test_kernel.py
+index ee7e7c9..0ec825f 100644
+--- a/scripts/unixnu/test_kernel.py
++++ b/scripts/unixnu/test_kernel.py
+@@ -16,6 +16,31 @@ from unixnu.util import Error
+ 
+ 
+ class NativeKernelTests(unittest.TestCase):
++    def test_prelink_forwards_each_initializer_and_resolves_fixture(self):
++        for initializers in ('test.amfi=0x3000', ['test.amfi=0x3000', 'test.sandbox=0x4000']):
++            with self.subTest(initializers=initializers), tempfile.TemporaryDirectory() as directory:
++                root = Path(directory)
++                (root / 'native').write_bytes(b'native')
++                (root / 'cache').write_bytes(b'cache')
++                ctx = SimpleNamespace(tree=root, work=root, logs=root, device=root,
++                    profile_roots={'os': root / 'profile'}, args=SimpleNamespace(skip_prelink=False),
++                    option=lambda *args: root / 'cache', board={'kernel': {'prelink': {
++                        'kernel': 'native', 'tool': 'emit.py', 'slide': '0',
++                        'early_security_init': initializers, 'early_security_fixture': 'os:security.json'}}})
++
++                def emit(command, **kwargs):
++                    expected = [initializers] if isinstance(initializers, str) else initializers
++                    self.assertEqual([command[i + 1] for i, arg in enumerate(command)
++                                      if arg == '--early-security-init'], expected)
++                    self.assertEqual(command[command.index('--early-security-fixture') + 1],
++                                     root / 'profile/security.json')
++                    candidate = command[command.index('--output') + 1]
++                    candidate.write_bytes(b'candidate')
++                    candidate.with_suffix('.json').write_text('{}')
++
++                with patch.object(kernel, 'run', side_effect=emit):
++                    self.assertEqual(kernel.prelink(ctx).read_bytes(), b'candidate')
++
+     def test_prelink_failure_preserves_previous_output_and_keeps_diagnostics(self):
+         self.check_prelink_publication(fail=True)
+ 

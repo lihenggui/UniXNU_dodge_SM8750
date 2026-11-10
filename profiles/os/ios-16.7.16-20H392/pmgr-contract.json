@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "classes": {
+    "ApplePMGR": {
+      "module": "com.apple.driver.ApplePMGR",
+      "instance_bytes": 223592,
+      "metaclass": "0xfffffff007a0b410",
+      "parent_metaclass": "0xfffffff0078b95b0",
+      "metadata_constructor": "0xfffffff00565717c",
+      "metadata_constructor_bytes": 56,
+      "metadata_constructor_sha256": "83d62a57f808d5af860d8d9e13b09cc12e2585661a3fe32d1fc747b060684ce2",
+      "vptr": "0xfffffff006c9faf8",
+      "vtable_entries": 325,
+      "vtable_sha256": "62f167bd5d62cfdad883eae66c170abeef953f8a566d8ca8c1445866266efe20"
+    },
+    "ApplePMGRNub": {
+      "module": "com.apple.driver.ApplePMGR",
+      "instance_bytes": 1856,
+      "metaclass": "0xfffffff007a0b780",
+      "parent_metaclass": "0xfffffff0078baf08",
+      "metadata_constructor": "0xfffffff0056831b4",
+      "metadata_constructor_bytes": 52,
+      "metadata_constructor_sha256": "eb37c809ddfb8f482908c8efb5de0a0667e3f66863ac36166d9f5c43ab2944e4",
+      "vptr": "0xfffffff006ca5058",
+      "vtable_entries": 168,
+      "vtable_sha256": "047eb0ba3ad1e24ce2ade1b236813485a81827d9d0fcbc4a45c74c095ec66cac"
+    },
+    "AppleT8015PMGR": {
+      "module": "com.apple.driver.AppleT8015PMGR",
+      "instance_bytes": 228744,
+      "metaclass": "0xfffffff007adca38",
+      "parent_metaclass": "0xfffffff007a0b410",
+      "metadata_constructor": "0xfffffff00626a0f8",
+      "metadata_constructor_bytes": 56,
+      "metadata_constructor_sha256": "8e89909f614d556a7f85b3bfa340aaddb39a7e3d87523f02086a8904e70df29d",
+      "vptr": "0xfffffff006ebb2a8",
+      "vtable_entries": 336,
+      "vtable_sha256": "b773427a5ade1b136e0943b3d32a270ff86a3d73f74b6843e7185284cdfe9a29"
+    }
+  },
+  "modules": {
+    "com.apple.driver.ApplePMGR": {
+      "version": "1",
+      "executable_sha256": {
+        "__TEXT_EXEC": "74ac53a277da51806f323e8c7d765d4ce9baa443adf4e513be2cff52a245db0e"
+      }
+    },
+    "com.apple.driver.AppleT8015PMGR": {
+      "version": "1",
+      "executable_sha256": {
+        "__TEXT_EXEC": "cc067cbc94168c56020991d20c69ebd5f196a88396265d1b6b62327089f179b1"
+      }
+    }
+  },
+  "amfi": {
+    "entry": "0xfffffff0056fe750",
+    "success_boundary": "0xfffffff0056fe7d8",
+    "missing_nub_boundary": "0xfffffff0056fe90c",
+    "service_class": "ApplePMGRNub",
+    "matching_timeout_ns": 30000000000,
+    "value_update_mask": 4,
+    "read_stub": "0xfffffff005717e34",
+    "write_stub": "0xfffffff005717e40",
+    "read_import_slot": "0xfffffff006cb56b8",
+    "write_import_slot": "0xfffffff006cb56c0"
+  },
+  "dispatch": {
+    "provider_field_offset": 136,
+    "read_slot": 312,
+    "write_slot": 313,
+    "read_entry": "0xfffffff005685734",
+    "write_entry": "0xfffffff005683dbc",
+    "null_provider_read": 4294967295,
+    "null_provider_write_has_no_operation": true,
+    "null_provider_fallback_is_not_hardware_success": true
+  },
+  "target_register": {
+    "read_entry": "0xfffffff00626e908",
+    "write_entry": "0xfffffff00626e918",
+    "read_wrapper": "0xfffffff005671058",
+    "write_wrapper": "0xfffffff005671070",
+    "region": 1,
+    "bank": 0,
+    "byte_offset": 852016,
+    "bank_count_field": 10852,
+    "resource_table_field": 2848,
+    "region_stride": 80,
+    "bank_stride": 40,
+    "resource_pointer_field": 24,
+    "resource_length_field": 32,
+    "value_bits": 32,
+    "read_bank_slot": 315,
+    "write_bank_slot": 316,
+    "actual_target_performs_register_access": true
+  },
+  "blocks": {
+    "amfi_matching_gate": {
+      "address": "0xfffffff0056fe750",
+      "bytes": 136,
+      "sha256": "4e2971ca40246c493c7e07e09b4eb45a13823c10349639c535f748a4aae6f6ad"
+    },
+    "nub_read": {
+      "address": "0xfffffff005685734",
+      "bytes": 28,
+      "sha256": "eb1d36766ff8a55169733a3f43a94511e40aaa7c99da17d36e5d80a70a0f72b2"
+    },
+    "nub_write": {
+      "address": "0xfffffff005683dbc",
+      "bytes": 24,
+      "sha256": "8fbd39d3b7ca9f673a142e3328f9231a482de14f67191d48a27a4186e5e76702"
+    },
+    "target_read": {
+      "address": "0xfffffff00626e908",
+      "bytes": 16,
+      "sha256": "eb66c3251a576994f71afac8ce6360ad712853ff6e391c5a9c3edaf1fa1b8708"
+    },
+    "target_write": {
+      "address": "0xfffffff00626e918",
+      "bytes": 20,
+      "sha256": "731eb34cd3e763c6f4db559754e2e4f1b374e449785a1194ce6a2d8e7a960c61"
+    },
+    "read_wrapper": {
+      "address": "0xfffffff005671058",
+      "bytes": 24,
+      "sha256": "0ee37433f75b5db4eab9b461ef7e70452be185f74f8ed54fe7b30540e5b30cb1"
+    },
+    "write_wrapper": {
+      "address": "0xfffffff005671070",
+      "bytes": 28,
+      "sha256": "07992c1559920ba6a3e77829a04c8f56812d684cdd8a01d20a3767612385e9b3"
+    },
+    "resource_lookup": {
+      "address": "0xfffffff005666074",
+      "bytes": 52,
+      "sha256": "4f05fe4368c634e8e3bbeb3b568ae48e63fa415dc2b443fee39df8057241b6e1"
+    },
+    "region_size": {
+      "address": "0xfffffff005670194",
+      "bytes": 44,
+      "sha256": "44fab2a180df36d21e57883e30edcb20ed933a309afe315d20e16da9faeb1179"
+    },
+    "generic_read": {
+      "address": "0xfffffff0056703ac",
+      "bytes": 96,
+      "sha256": "4d558519b3141e237e8232fbd9d6399bdee4adf8712b8a618ff5587bb05ec83f"
+    },
+    "generic_write": {
+      "address": "0xfffffff005670424",
+      "bytes": 96,
+      "sha256": "2f8530fcabd0fbeed0e1ae1edd8ad44b36a1fe31c89ddd9d7b9a2028d5433172"
+    },
+    "target_write_override": {
+      "address": "0xfffffff00626e1bc",
+      "bytes": 616,
+      "sha256": "2610f93bfe5026499b25a5a675bf172eeee6f5c83676f0c84fb933a870c3d4a8"
+    }
+  },
+  "sm8750_security_latch_mapping_derived": false,
+  "power_provider_implemented": false,
+  "original_policy_registration_qualified": false,
+  "hardware_tested": false
+}

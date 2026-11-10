@@ -1,0 +1,49 @@
+# OnePlus 13 iOS port
+
+Device configuration, drivers and build scripts for bringing iPhone iOS to the
+OnePlus 13 CPH2653 (dodge, SM8750).
+
+The current target is iPhone10,3 running iOS 16.7.16 / 20H392, using arm64 and
+Darwin 22. The UEFI and kernel build locally. Full system boot and hardware
+bring-up are still in development.
+
+## Getting started
+
+Use a Linux host with Python 3.12. See [the build guide](docs/bring-up.md) for
+system packages and toolchain setup.
+
+```sh
+python3.12 -m venv .venv-uefi
+.venv-uefi/bin/python -m pip install -r requirements-host.lock
+.venv-uefi/bin/python scripts/prepare_sources.py --apply
+cp local.toml.example local.toml
+```
+
+Builds use four jobs and inherit the host's resource limits. The original build
+host had a 20 GiB cgroup limit; this is a host detail, not a build requirement.
+
+## Repository layout
+
+| Path | Contents |
+| --- | --- |
+| `board.toml`, `configs/`, `dts/`, `targets/` | Board and iPhone target configuration |
+| `drivers/`, `profiles/`, `patches/` | Drivers, OS-specific interfaces and source patches |
+| `scripts/`, `tests/`, `tools/` | Setup, builds, extraction tools and tests |
+| `hardware/`, `proprietary-files.txt` | Hardware data and input hashes |
+| `upstream.lock.json`, `unixnu.lock`, dependency locks | Source and dependency versions |
+| `porting.toml` | Component status and remaining work |
+| `reports/public/` | Published build and test reports |
+
+## Local files
+
+Firmware, Apple system files, phone backups, private keys, build outputs and
+toolchains stay in ignored local directories. Setup scripts fetch the pinned
+sources into `sources/` and `uefi/`; builds write to `build/`.
+
+The [report index](reports/public/index.json) records the original and published
+hashes. See [report handling](docs/bring-up.md#reports) for details.
+
+## License
+
+See [NOTICE.md](NOTICE.md) for file licenses and third-party sources. License
+texts are included in `LICENSE`, `LICENSES/` and component license files.

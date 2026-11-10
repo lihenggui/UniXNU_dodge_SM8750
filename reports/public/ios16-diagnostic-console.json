@@ -1,0 +1,146 @@
+{
+  "result": "DARWIN22_POST_VM_DIAGNOSTIC_CONSOLE_BUILD_PASS",
+  "target": "arm64-apple-ios16.0",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "builder_sha256": "fad2bc9cae5b378981b90cb0b65b532dcd99aaea1963bd251975847f4d61ac60",
+  "source_revision": "f5017376415268fd39dcf0b3fd68a94661cee078",
+  "patch": {
+    "path": "patches/oneplus13/0002-darwin22-post-vm-console.patch",
+    "sha256": "a452cb5621870798cddfbe94b3c22e68a5425155b6d7aeb89b884a996d21ba1c",
+    "source_revision": "f5017376415268fd39dcf0b3fd68a94661cee078",
+    "scope": "Post-VM IOKit console binding, real overlay renderer and ownership callbacks; early boot entry/mapping excluded from this native candidate."
+  },
+  "source_sha256": "868ffb4f23e2ca0286270470985594040c76e51ed0c689e55ccdd632a90a2587",
+  "adapter_sha256": "442cfe1f83d61d3379f59b873800faae314d371f9551d2da9225ff4905dd1096",
+  "font_sha256": "d2a3687db67b069f4e34a961e17fd28b0242986e3fa8dd8a7545cab70834fa8e",
+  "headers": {
+    "kern/boot_progress.h": "3471ef0ecf211e9cd7113fbf68b20ef226b2f80330939b3530177e0a6071197d",
+    "kern/early_boot_progress.h": "0b271141bda3d7b9d095114f0578000b331333a5670b6cc656b23b83ebe4061f"
+  },
+  "objects": [
+    {
+      "path": "build/ios16-diagnostic-console/BootProgress.o",
+      "sha256": "95ec2e55c6143567079848695f47bff88063e7a1c1556a6516b51c6887e25c1e"
+    },
+    {
+      "path": "build/ios16-diagnostic-console/DodgeDiagnosticConsole.o",
+      "sha256": "ab66cdfac9c07eaafbdd76f115d14bcae6e76ce6a5bdce58be34d538fde75aab"
+    }
+  ],
+  "archive": "build/ios16-diagnostic-console/libDodgeDiagnosticConsole.a",
+  "archive_sha256": "4ca7692d248fa6faa907b399ec67f6ce25f35a8cd37173b3b2b2f19fdf95c88c",
+  "imports": {
+    "defined": [
+      "_boot_progress_active",
+      "_boot_progress_bind",
+      "_boot_progress_bind_post_vm",
+      "_boot_progress_critical_exit",
+      "_boot_progress_display_copy",
+      "_boot_progress_display_failed",
+      "_boot_progress_display_handoff",
+      "_boot_progress_display_status",
+      "_boot_progress_exit",
+      "_boot_progress_init",
+      "_boot_progress_irq",
+      "_boot_progress_kernel_exception",
+      "_boot_progress_overlay_preserve",
+      "_boot_progress_overlay_rows",
+      "_boot_progress_panic",
+      "_boot_progress_panic_text",
+      "_boot_progress_peripheral",
+      "_boot_progress_peripheral_enable",
+      "_boot_progress_peripheral_frame",
+      "_boot_progress_platform_enable",
+      "_boot_progress_poll",
+      "_boot_progress_process_stage",
+      "_boot_progress_putc",
+      "_boot_progress_root",
+      "_boot_progress_stage",
+      "_boot_progress_start",
+      "_boot_progress_touch_dma",
+      "_boot_progress_touch_hid",
+      "_boot_progress_touch_power",
+      "_boot_progress_touch_read",
+      "_boot_progress_touch_smmu",
+      "_boot_progress_touch_spi",
+      "_boot_progress_user_abort",
+      "_boot_progress_user_breakpoint",
+      "_dodge_diagnostic_console_attach",
+      "_early_boot_args_pa",
+      "_early_boot_phys_base",
+      "_early_boot_stage",
+      "_early_boot_virt_base",
+      "_native_legacy_overlay_preserve",
+      "_native_legacy_overlay_rows"
+    ],
+    "native_public_imports": [
+      "_PE_current_console",
+      "__ZN11IOMemoryMap18getPhysicalAddressEv",
+      "___stack_chk_fail",
+      "___stack_chk_guard",
+      "_armcpu_core_sgi",
+      "_armcpu_core_timer",
+      "_armcpu_gic_boot",
+      "_armcpu_gic_ready",
+      "_armcpu_registered",
+      "_armcpu_timer_interrupts",
+      "_armdt_platform_configured",
+      "_clock_interval_to_deadline",
+      "_gPEClockFrequencyInfo",
+      "_gPhysSize",
+      "_memorystatus_available_pages",
+      "_processor_avail_count",
+      "_processor_count",
+      "_snprintf",
+      "_thread_call_allocate_with_options",
+      "_thread_call_enter",
+      "_thread_call_enter_delayed",
+      "_vm_page_free_count",
+      "_vsnprintf"
+    ],
+    "native_static_link_only_imports": [],
+    "required_board_or_original_imports": [],
+    "optional_weak_imports": [
+      "_native_gop_gpu_completions",
+      "_native_gop_gpu_last_ns",
+      "_native_owner_cache_stage",
+      "_native_ufs_block_failures",
+      "_native_ufs_block_reads",
+      "_pagani_gpu_status"
+    ]
+  },
+  "overflow_instrumentation_retained": true,
+  "early_boot_entry_selected": false,
+  "native_instruction_count": 4858,
+  "actual_elapsed_counter_reads": {
+    "cntvct_el0": 4,
+    "cntfrq_el0": 2
+  },
+  "native_fp_simd_absent": true,
+  "native_translation_register_writes_absent": true,
+  "first_binding_before_observers_required": true,
+  "host_renderer_tests": [
+    {
+      "t0sz_boot": 25,
+      "output": "PASS: framebuffer/map bounds, root state, panic formatting, truncation, first-fault retention and frozen observer\nPASS: post-VM bind refusals, lock/panic ownership, one bind and actual overlay-band pixel bounds",
+      "sha256": "7c02ae80c5264dc10aa3cd2c83a447e3f06abde49ae411300782985148437488"
+    },
+    {
+      "t0sz_boot": 26,
+      "output": "PASS: framebuffer/map bounds, root state, panic formatting, truncation, first-fault retention and frozen observer\nPASS: post-VM bind refusals, lock/panic ownership, one bind and actual overlay-band pixel bounds",
+      "sha256": "a098bf154f889c45ca56727695617bcfbfa97137723bfaf198cf52dd1510104e"
+    }
+  ],
+  "reference_console_test_sha256": "832c0a343c52f429acacc11c794fde575b4fcf2025b7a1418c51cee0a8294104",
+  "bind_test_sha256": "10de86ee5196db63587d68f5cb59db25057e24f02f0de85141aeb2c24cc11f35",
+  "provider_host_test": "PASS: console adapter map ownership, 15 input refusals, failed bind release and real forwarding calls (software peers)",
+  "provider_test_sha256": "9a5d2f554ed6edd318d3326ae7987f958384797a05750c91f8f4870c137e7c71",
+  "software_peer_headers": {
+    "tests/diagnostic_console_include/IOKit/IOMemoryDescriptor.h": "4bb72c8582ba08bc4ba85c23a76ac6995434809cee879f162ab15e42fff56df1",
+    "tests/diagnostic_console_include/pexpert/pexpert.h": "43bca1bba4eaaf69531f1b28241ab5d53fd036a9ee617fc0429dc870520c1a0e"
+  },
+  "console_map_lifetime": "One verified IOMemoryMap retained until shutdown; no rebind.",
+  "default_kernel_selected": false,
+  "hardware_execution": false,
+  "scope": "Actual diagnostic renderer and map-retaining adapters compiled against Darwin22. No early MMU-off hooks, original display completion, refresh generator or physical rendering qualification."
+}

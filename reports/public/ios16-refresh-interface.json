@@ -1,0 +1,92 @@
+{
+  "result": "IOS16_ORIGINAL_REFRESH_SENDER_ARM64_CHECK_PASS",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "builder_sha256": "742dc03f62c37513deec23f4ba270a650b166a01b83fa71362913565687c7f25",
+  "contract": "profiles/os/ios-16.7.16-20H392/display-refresh.json",
+  "contract_sha256": "75e542a6d249091ce12472527882133aeb23a7a162506380ca78dfe74b3cc298",
+  "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyRefreshABI.h",
+  "header_sha256": "746c95a90d28313bbf6d34bc5672d3305f1e731ad00545f17527988679a7f7b7",
+  "queue_header_sha256": "c94511515c3989b470fcce568cfaa349216a8ae5111718ab65030ce42d383ce4",
+  "native_probe": "build/ios16-refresh-interface/refresh.o",
+  "native_probe_sha256": "8eec5d106c442f2a2889cd28973d9b456f6f2e2494b04a5b9a8ea9f4e4b758a7",
+  "archive": "build/ios16-refresh-interface/libIPhone16Refresh.a",
+  "archive_sha256": "2698ef82fb53d64523455e6e7acf6692664b17255be3766529a4537332bdcde3",
+  "binding_address": "0xfffffff004c1b838",
+  "slide": -16777216,
+  "arm64_cases": [
+    {
+      "case": "one-client-high-bits",
+      "original_sender_executed": true,
+      "async_transport_peer_calls": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "two-clients-low-halves",
+      "original_sender_executed": true,
+      "async_transport_peer_calls": 2,
+      "result": "PASS"
+    },
+    {
+      "case": "three-clients-high-halves",
+      "original_sender_executed": true,
+      "async_transport_peer_calls": 3,
+      "result": "PASS"
+    },
+    {
+      "case": "transport-failure-continues-list",
+      "original_sender_executed": true,
+      "async_transport_peer_calls": 3,
+      "result": "PASS"
+    },
+    {
+      "case": "null-display",
+      "original_sender_executed": false,
+      "async_transport_peer_calls": 0,
+      "result": "PASS"
+    },
+    {
+      "case": "empty-client-list",
+      "original_sender_executed": false,
+      "async_transport_peer_calls": 0,
+      "result": "PASS"
+    },
+    {
+      "case": "zero-timestamp",
+      "original_sender_executed": false,
+      "async_transport_peer_calls": 0,
+      "result": "PASS"
+    },
+    {
+      "case": "zero-continuous",
+      "original_sender_executed": false,
+      "async_transport_peer_calls": 0,
+      "result": "PASS"
+    },
+    {
+      "case": "zero-interval",
+      "original_sender_executed": false,
+      "async_transport_peer_calls": 0,
+      "result": "PASS"
+    },
+    {
+      "case": "wrong-reference-head-only",
+      "original_sender_executed": false,
+      "async_transport_peer_calls": 0,
+      "result": "PASS"
+    }
+  ],
+  "original_sender_bytes_changed": false,
+  "original_sender_body_executed": true,
+  "original_async_transport_executed": false,
+  "async_transport_peer": true,
+  "original_notification_objects_constructed": false,
+  "node_fixture_access_window_bytes": 88,
+  "notification_head_offset": 4992,
+  "refresh_attributes_slot": 287,
+  "timer_provider_installed": false,
+  "hardware_vblank_generated": false,
+  "default_kernel_selected": false,
+  "hardware_tested": false,
+  "scope": "Native guarded calls and unchanged complete original scalar refresh sender/transport wrapper execute over exact-size display and bounded node windows. Async delivery, memset and logger are explicit peers. No original notification lifecycle, kernel transport, timer or hardware executes."
+}

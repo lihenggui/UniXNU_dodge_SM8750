@@ -1,0 +1,17 @@
+--- a/IOKitBSDInit.cpp
++++ b/IOKitBSDInit.cpp
+@@ -108,12 +108,14 @@
+ 
+ extern "C" IOReturn dodge_system_schedule(void);
+ extern "C" IOReturn dodge_input_schedule(void);
++extern "C" IOReturn dodge_data_schedule(void);
+ 
+ kern_return_t
+ IOKitBSDInit( void )
+ {
+ 	IOService::publishResource("IOBSD");
+ 	(void)dodge_system_schedule();
++	(void)dodge_data_schedule();
+ 	(void)dodge_input_schedule();
+ 
+ #if IOPOLLED_COREFILE

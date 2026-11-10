@@ -1,0 +1,84 @@
+{
+  "native-4k": [
+    {
+      "ram": "0x10000000",
+      "kernel_shift": 12,
+      "user32_shift": 12
+    },
+    {
+      "ram": "0x40000000",
+      "kernel_shift": 12,
+      "user32_shift": 12
+    },
+    {
+      "ram": "0x40001000",
+      "kernel_shift": 12,
+      "user32_shift": 12
+    },
+    {
+      "ram": "0x80000000",
+      "kernel_shift": 12,
+      "user32_shift": 12
+    },
+    {
+      "ram": "0x200000000",
+      "kernel_shift": 12,
+      "user32_shift": 12
+    }
+  ],
+  "apple-16k-control": [
+    {
+      "ram": "0x10000000",
+      "kernel_shift": 14,
+      "user32_shift": 14
+    },
+    {
+      "ram": "0x40000000",
+      "kernel_shift": 14,
+      "user32_shift": 14
+    },
+    {
+      "ram": "0x40001000",
+      "kernel_shift": 14,
+      "user32_shift": 14
+    },
+    {
+      "ram": "0x80000000",
+      "kernel_shift": 14,
+      "user32_shift": 14
+    },
+    {
+      "ram": "0x200000000",
+      "kernel_shift": 14,
+      "user32_shift": 14
+    }
+  ],
+  "apple-4k-control": [
+    {
+      "ram": "0x10000000",
+      "kernel_shift": 12,
+      "user32_shift": 14
+    },
+    {
+      "ram": "0x40000000",
+      "kernel_shift": 12,
+      "user32_shift": 14
+    },
+    {
+      "ram": "0x40001000",
+      "kernel_shift": 14,
+      "user32_shift": 14
+    },
+    {
+      "ram": "0x80000000",
+      "kernel_shift": 14,
+      "user32_shift": 14
+    },
+    {
+      "ram": "0x200000000",
+      "kernel_shift": 14,
+      "user32_shift": 14
+    }
+  ],
+  "scope": "Host execution of extracted Darwin 22 arm_init.c policy at five RAM boundaries, including Apple controls. No kernel runtime or hardware claim."
+}

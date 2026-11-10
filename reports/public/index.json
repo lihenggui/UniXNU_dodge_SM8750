@@ -1,0 +1,1017 @@
+{
+  "schema_version": 1,
+  "kind": "sanitized-host-evidence-snapshots",
+  "target": "CPH2653 / iPhone10,3 / iOS 16.7.16 / 20H392",
+  "scope": "Publication copies of local reports, not build-cache inputs or a new validation run. Original report/dependency/artifact digests are retained. Resolve original report digests through this index; normalized snapshot hashes are listed separately. Host builds and CPU models do not establish hardware functionality.",
+  "exporter_sha256": "7f550edde734f8f6f4a9570f8be569a1bd254f9307db672b9a1a011b3d4438d7",
+  "reports": {
+    "a830-backend-tests.json": {
+      "local_report": "reports/a830-backend-tests.json",
+      "original_sha256": "1f74ba838ffa8809b773a91ccc729596d680858f71581ff8c9212bd8d5dc8ec6",
+      "snapshot_sha256": "1f74ba838ffa8809b773a91ccc729596d680858f71581ff8c9212bd8d5dc8ec6",
+      "paths_normalized": false
+    },
+    "a830-backend.json": {
+      "local_report": "reports/a830-backend.json",
+      "original_sha256": "5376bc837c313104834f6dddcb8cc00fc414fab1cbfac3baedb922f12709b2e2",
+      "snapshot_sha256": "5376bc837c313104834f6dddcb8cc00fc414fab1cbfac3baedb922f12709b2e2",
+      "paths_normalized": false
+    },
+    "a830-shader-compiler.json": {
+      "local_report": "reports/a830-shader-compiler.json",
+      "original_sha256": "32cce2e1bbee596ba5c033f435acdeaeec4d4ee07c2583fb32681f855b3170fa",
+      "snapshot_sha256": "32cce2e1bbee596ba5c033f435acdeaeec4d4ee07c2583fb32681f855b3170fa",
+      "paths_normalized": false
+    },
+    "adreno-display-timeline.json": {
+      "local_report": "reports/adreno-display-timeline.json",
+      "original_sha256": "4c9d0daa0bb7eaa318e021bf4813601bb492346688ca836445a8a2d965fc85ad",
+      "snapshot_sha256": "4c9d0daa0bb7eaa318e021bf4813601bb492346688ca836445a8a2d965fc85ad",
+      "paths_normalized": false
+    },
+    "allocator-compat.json": {
+      "local_report": "reports/allocator-compat.json",
+      "original_sha256": "62baa80f6ebbe59e858d4f4a5c2e6114344b5c84b7461b36737552fdfa968bb6",
+      "snapshot_sha256": "62baa80f6ebbe59e858d4f4a5c2e6114344b5c84b7461b36737552fdfa968bb6",
+      "paths_normalized": false
+    },
+    "apple-source-pairing.json": {
+      "local_report": "reports/apple-source-pairing.json",
+      "original_sha256": "7f4664649e50f4859585438f9036025109ca42036344685a935aeae2d442e619",
+      "snapshot_sha256": "7f4664649e50f4859585438f9036025109ca42036344685a935aeae2d442e619",
+      "paths_normalized": false
+    },
+    "boot-args-abi.json": {
+      "local_report": "reports/boot-args-abi.json",
+      "original_sha256": "5f8f3dff99eda1fdde75822f61aed1ca5accb480101d026a6d077cf149837634",
+      "snapshot_sha256": "5f8f3dff99eda1fdde75822f61aed1ca5accb480101d026a6d077cf149837634",
+      "paths_normalized": false
+    },
+    "crypto-stack.json": {
+      "local_report": "reports/crypto-stack.json",
+      "original_sha256": "5edf8d4b0f4b2fa604fe26855663ef4adb34879ff5731aa472421ce93b4cf5ea",
+      "snapshot_sha256": "5edf8d4b0f4b2fa604fe26855663ef4adb34879ff5731aa472421ce93b4cf5ea",
+      "paths_normalized": false
+    },
+    "data-mount-stack.json": {
+      "local_report": "reports/data-mount-stack.json",
+      "original_sha256": "de2a02c705e445e60d15f8df14a8e93aa0d2417da7e88efbbeab15f261f1114b",
+      "snapshot_sha256": "de2a02c705e445e60d15f8df14a8e93aa0d2417da7e88efbbeab15f261f1114b",
+      "paths_normalized": false
+    },
+    "data-stack.json": {
+      "local_report": "reports/data-stack.json",
+      "original_sha256": "95898873bd3fe46a586a7d949b3ea5363e71668cb116bfddf80eee8b107b419e",
+      "snapshot_sha256": "95898873bd3fe46a586a7d949b3ea5363e71668cb116bfddf80eee8b107b419e",
+      "paths_normalized": false
+    },
+    "data-startup-stack.json": {
+      "local_report": "reports/data-startup-stack.json",
+      "original_sha256": "b4276b521796cfb082909319037b57546786a0280b40ac1e4ea05f3d79a70071",
+      "snapshot_sha256": "b4276b521796cfb082909319037b57546786a0280b40ac1e4ea05f3d79a70071",
+      "paths_normalized": false
+    },
+    "device-tree.json": {
+      "local_report": "reports/device-tree.json",
+      "original_sha256": "63e2277fdb7942695956c53953aeeb41dedc433c2753980187481b673e0636a7",
+      "snapshot_sha256": "63e2277fdb7942695956c53953aeeb41dedc433c2753980187481b673e0636a7",
+      "paths_normalized": false
+    },
+    "fresh-gpu-stack.json": {
+      "local_report": "reports/fresh-gpu-stack.json",
+      "original_sha256": "ec5afb9cb7c14173d44616c95ce4a48898e6c8618700b9535e2f56bc866ec025",
+      "snapshot_sha256": "ec5afb9cb7c14173d44616c95ce4a48898e6c8618700b9535e2f56bc866ec025",
+      "paths_normalized": false
+    },
+    "gmu-firmware-tests.json": {
+      "local_report": "reports/gmu-firmware-tests.json",
+      "original_sha256": "b75bd7c53dbf002e7efde3eb8cf5be3c72c3920fd28293cb1c02c06babc8c710",
+      "snapshot_sha256": "b75bd7c53dbf002e7efde3eb8cf5be3c72c3920fd28293cb1c02c06babc8c710",
+      "paths_normalized": false
+    },
+    "gpu-adaptation.json": {
+      "local_report": "reports/gpu-adaptation.json",
+      "original_sha256": "81acc2c0f176977c7dca6e036428db6e5011a92c5a973061727247317bf2dc36",
+      "snapshot_sha256": "81acc2c0f176977c7dca6e036428db6e5011a92c5a973061727247317bf2dc36",
+      "paths_normalized": false
+    },
+    "gpu-board-candidate.json": {
+      "local_report": "reports/gpu-board-candidate.json",
+      "original_sha256": "cc6cbfbe24bef1b2ff07eecce7344f9e2372d730767b5ce42a6f2489a94fd4d8",
+      "snapshot_sha256": "cc6cbfbe24bef1b2ff07eecce7344f9e2372d730767b5ce42a6f2489a94fd4d8",
+      "paths_normalized": false
+    },
+    "gpu-firmware.json": {
+      "local_report": "reports/gpu-firmware.json",
+      "original_sha256": "060164769192d66e5226ef1d64343c91d67fe54b9d5afc6d092a15a7c06c1e6a",
+      "snapshot_sha256": "060164769192d66e5226ef1d64343c91d67fe54b9d5afc6d092a15a7c06c1e6a",
+      "paths_normalized": false
+    },
+    "gpu-graphics-prelink.json": {
+      "local_report": "reports/gpu-graphics-prelink.json",
+      "original_sha256": "1f6703015db72e86c03cb3f514109e5309f6a4df2ef9d42c372bc5dfad0e041a",
+      "snapshot_sha256": "1f6703015db72e86c03cb3f514109e5309f6a4df2ef9d42c372bc5dfad0e041a",
+      "paths_normalized": false
+    },
+    "gpu-handoff-tests.json": {
+      "local_report": "reports/gpu-handoff-tests.json",
+      "original_sha256": "3bfaf491f5f9fd85cbf8a8687f76cd8b69d5e744d93423a5ab84c8cb3026ea28",
+      "snapshot_sha256": "3bfaf491f5f9fd85cbf8a8687f76cd8b69d5e744d93423a5ab84c8cb3026ea28",
+      "paths_normalized": false
+    },
+    "gpu-kernel-candidate.json": {
+      "local_report": "reports/gpu-kernel-candidate.json",
+      "original_sha256": "11ede36c55f9e8bd60d02d7696eed748694fbb2cd3310dca697829a1a032484c",
+      "snapshot_sha256": "11ede36c55f9e8bd60d02d7696eed748694fbb2cd3310dca697829a1a032484c",
+      "paths_normalized": false
+    },
+    "gpu-link-probe.json": {
+      "local_report": "reports/gpu-link-probe.json",
+      "original_sha256": "1acf07872954bf3b5ba58f6d2ed6493a809f134db7f022c48841c6b8a06c5499",
+      "snapshot_sha256": "1acf07872954bf3b5ba58f6d2ed6493a809f134db7f022c48841c6b8a06c5499",
+      "paths_normalized": false
+    },
+    "gpu-policy.json": {
+      "local_report": "reports/gpu-policy.json",
+      "original_sha256": "7a6161cf02a4c770b0284e2c6e0c999d773d6e1d335c69ce91d2bb17637aedaf",
+      "snapshot_sha256": "7a6161cf02a4c770b0284e2c6e0c999d773d6e1d335c69ce91d2bb17637aedaf",
+      "paths_normalized": false
+    },
+    "gpu-stack.json": {
+      "local_report": "reports/gpu-stack.json",
+      "original_sha256": "730febcb9da95017ec07d7569905e5fea76ae4ac8026d86269460527de4ee1a7",
+      "snapshot_sha256": "730febcb9da95017ec07d7569905e5fea76ae4ac8026d86269460527de4ee1a7",
+      "paths_normalized": false
+    },
+    "gpu-userspace.json": {
+      "local_report": "reports/gpu-userspace.json",
+      "original_sha256": "f8022af4595eb1e30ef86dcfb58801e6726676affe8a581d8136e251b3d7fec2",
+      "snapshot_sha256": "f8022af4595eb1e30ef86dcfb58801e6726676affe8a581d8136e251b3d7fec2",
+      "paths_normalized": false
+    },
+    "host-tools.json": {
+      "local_report": "reports/host-tools.json",
+      "original_sha256": "abca764665a9b19096645ab0fe1b9bf2eba54e3a935a7509fc102cff46090e5b",
+      "snapshot_sha256": "abca764665a9b19096645ab0fe1b9bf2eba54e3a935a7509fc102cff46090e5b",
+      "paths_normalized": false
+    },
+    "input-stack.json": {
+      "local_report": "reports/input-stack.json",
+      "original_sha256": "6b56a882bb9b8f360f9c9b8a0fa703958411aabb6bb61c4a3e9caa408cbe1900",
+      "snapshot_sha256": "6b56a882bb9b8f360f9c9b8a0fa703958411aabb6bb61c4a3e9caa408cbe1900",
+      "paths_normalized": false
+    },
+    "ios-target.json": {
+      "local_report": "reports/ios-target.json",
+      "original_sha256": "482375a36c5bc7ef27a1079f9aae79a21a8333bd21009643ddc685955a63dfe2",
+      "snapshot_sha256": "482375a36c5bc7ef27a1079f9aae79a21a8333bd21009643ddc685955a63dfe2",
+      "paths_normalized": false
+    },
+    "ios16-apfs-mount-abi.json": {
+      "local_report": "reports/ios16-apfs-mount-abi.json",
+      "original_sha256": "ab4b7ad98cf2c5500fc55a2b43bb5badebc204f7249253f19369a2c68a7aa3a4",
+      "snapshot_sha256": "ab4b7ad98cf2c5500fc55a2b43bb5badebc204f7249253f19369a2c68a7aa3a4",
+      "paths_normalized": false
+    },
+    "ios16-apfs-mount-program.json": {
+      "local_report": "reports/ios16-apfs-mount-program.json",
+      "original_sha256": "cde4b25b8e59639e7b3096d6ab9789543a470f17715a3121b429c3e5adad4fe4",
+      "snapshot_sha256": "cde4b25b8e59639e7b3096d6ab9789543a470f17715a3121b429c3e5adad4fe4",
+      "paths_normalized": false
+    },
+    "ios16-apfs-mount-source.json": {
+      "local_report": "reports/ios16-apfs-mount-source.json",
+      "original_sha256": "1b2a92516a0ae93bf8a82aa7e8318229c670ed85ed93eac1e1aed994c0b3920d",
+      "snapshot_sha256": "1b2a92516a0ae93bf8a82aa7e8318229c670ed85ed93eac1e1aed994c0b3920d",
+      "paths_normalized": false
+    },
+    "ios16-backend-discovery.json": {
+      "local_report": "reports/ios16-backend-discovery.json",
+      "original_sha256": "cb6303519547a28306719fc9cf80e16d5fcf037551400b69559819a1eb2f48b3",
+      "snapshot_sha256": "cb6303519547a28306719fc9cf80e16d5fcf037551400b69559819a1eb2f48b3",
+      "paths_normalized": false
+    },
+    "ios16-bindings.json": {
+      "local_report": "reports/ios16-bindings.json",
+      "original_sha256": "6b02b061becbae944b2b516c1e2d2934727d13946e0e616ee942b3e896fa8c90",
+      "snapshot_sha256": "7392785f552329a435e6865b9cddc9ed49f4614172aed6871467842535e2b530",
+      "paths_normalized": true
+    },
+    "ios16-boot-entropy-kernel.json": {
+      "local_report": "reports/ios16-boot-entropy-kernel.json",
+      "original_sha256": "4dac94ef2283181edb8c91da272f8dcec8aa5773d0f66d49b9984baf3bc94e7e",
+      "snapshot_sha256": "4dac94ef2283181edb8c91da272f8dcec8aa5773d0f66d49b9984baf3bc94e7e",
+      "paths_normalized": false
+    },
+    "ios16-boot-entropy.json": {
+      "local_report": "reports/ios16-boot-entropy.json",
+      "original_sha256": "e54d6d987523262dc55962b15f2af6cc2b824222a18f00cc734634b7cc810ff0",
+      "snapshot_sha256": "f7173c9ddd7f57d00405918ddcd1095fe6a1f43e41ad46e59f6a8500a0932108",
+      "paths_normalized": true
+    },
+    "ios16-crypto-contract.json": {
+      "local_report": "reports/ios16-crypto-contract.json",
+      "original_sha256": "381aa80bdaef60deedbf21d78a102b2dd5a5a7700879a9c1fcc651989ce43a7f",
+      "snapshot_sha256": "381aa80bdaef60deedbf21d78a102b2dd5a5a7700879a9c1fcc651989ce43a7f",
+      "paths_normalized": false
+    },
+    "ios16-crypto-kernel.json": {
+      "local_report": "reports/ios16-crypto-kernel.json",
+      "original_sha256": "6373f4eeb61a165416d4b4f1f9af4ca39b5950b166c1fa3a5d60cbc8a8ae7f05",
+      "snapshot_sha256": "6373f4eeb61a165416d4b4f1f9af4ca39b5950b166c1fa3a5d60cbc8a8ae7f05",
+      "paths_normalized": false
+    },
+    "ios16-crypto-payload.json": {
+      "local_report": "reports/ios16-crypto-payload.json",
+      "original_sha256": "1e058c5ed732bd4ea11f4253569df66a6c046322526bf4d5c0aca8f1bbea84c7",
+      "snapshot_sha256": "1e058c5ed732bd4ea11f4253569df66a6c046322526bf4d5c0aca8f1bbea84c7",
+      "paths_normalized": false
+    },
+    "ios16-crypto-prelink.json": {
+      "local_report": "reports/ios16-crypto-prelink.json",
+      "original_sha256": "dfcaf6e82393b60841a205babd39830b423304982693a441d44d83bd78328e62",
+      "snapshot_sha256": "dfcaf6e82393b60841a205babd39830b423304982693a441d44d83bd78328e62",
+      "paths_normalized": false
+    },
+    "ios16-crypto-source.json": {
+      "local_report": "reports/ios16-crypto-source.json",
+      "original_sha256": "cc9cf58ee508415e2cf20db5b82ff1a684e3efdc2ea3f851d15e6c39d1f29ded",
+      "snapshot_sha256": "cc9cf58ee508415e2cf20db5b82ff1a684e3efdc2ea3f851d15e6c39d1f29ded",
+      "paths_normalized": false
+    },
+    "ios16-data-image.json": {
+      "local_report": "reports/ios16-data-image.json",
+      "original_sha256": "7d99049bf8990e70f88cb2d991ff0c6e278d44bdd61d26b08782fad7b227b9f5",
+      "snapshot_sha256": "20f9b542fa53ce6443a6ab8955d2ff7216174534bb2613bb8c01070f44c8f1c2",
+      "paths_normalized": true
+    },
+    "ios16-data-kernel.json": {
+      "local_report": "reports/ios16-data-kernel.json",
+      "original_sha256": "c65a014332cbf39e77b2e92fa315822a3bd665ecebb44fed032491ac8af45eb8",
+      "snapshot_sha256": "c65a014332cbf39e77b2e92fa315822a3bd665ecebb44fed032491ac8af45eb8",
+      "paths_normalized": false
+    },
+    "ios16-data-mount-kernel.json": {
+      "local_report": "reports/ios16-data-mount-kernel.json",
+      "original_sha256": "84f68a6db21a098c1d4d9740756ff0fbf0b30bf8454126319a4006e95677df69",
+      "snapshot_sha256": "84f68a6db21a098c1d4d9740756ff0fbf0b30bf8454126319a4006e95677df69",
+      "paths_normalized": false
+    },
+    "ios16-data-mount-native.json": {
+      "local_report": "reports/ios16-data-mount-native.json",
+      "original_sha256": "cad94d45f1aa1a3b3c877a479d6bc833a0fa646f7aa31d9150f11c3b0e6b096a",
+      "snapshot_sha256": "cad94d45f1aa1a3b3c877a479d6bc833a0fa646f7aa31d9150f11c3b0e6b096a",
+      "paths_normalized": false
+    },
+    "ios16-data-mount-payload.json": {
+      "local_report": "reports/ios16-data-mount-payload.json",
+      "original_sha256": "1d17b83a68fc0df4d39ebf029de944c82f00988bb20f1c656fa1bca2fbdda5a7",
+      "snapshot_sha256": "1d17b83a68fc0df4d39ebf029de944c82f00988bb20f1c656fa1bca2fbdda5a7",
+      "paths_normalized": false
+    },
+    "ios16-data-mount-prelink.json": {
+      "local_report": "reports/ios16-data-mount-prelink.json",
+      "original_sha256": "e189ac14f448523aefd9eaa40f8ffdc98d434ac430136d98bfb3723b3fdb8353",
+      "snapshot_sha256": "e189ac14f448523aefd9eaa40f8ffdc98d434ac430136d98bfb3723b3fdb8353",
+      "paths_normalized": false
+    },
+    "ios16-data-payload.json": {
+      "local_report": "reports/ios16-data-payload.json",
+      "original_sha256": "db47e57a69562ff04ec4826e1f1366eefda73b1f710cbf00afa2a05a5fb3f811",
+      "snapshot_sha256": "db47e57a69562ff04ec4826e1f1366eefda73b1f710cbf00afa2a05a5fb3f811",
+      "paths_normalized": false
+    },
+    "ios16-data-prelink.json": {
+      "local_report": "reports/ios16-data-prelink.json",
+      "original_sha256": "99608c7e4f7ce35846f7ada67bf41769bceb40ce785d24c2780990fa88ac9f6b",
+      "snapshot_sha256": "99608c7e4f7ce35846f7ada67bf41769bceb40ce785d24c2780990fa88ac9f6b",
+      "paths_normalized": false
+    },
+    "ios16-data-seed-host.json": {
+      "local_report": "reports/ios16-data-seed-host.json",
+      "original_sha256": "1dc82fedb3381058994b4e7c5d7e4bb3255add8913c33d96815d0f9bef342913",
+      "snapshot_sha256": "1dc82fedb3381058994b4e7c5d7e4bb3255add8913c33d96815d0f9bef342913",
+      "paths_normalized": false
+    },
+    "ios16-data-source.json": {
+      "local_report": "reports/ios16-data-source.json",
+      "original_sha256": "519a5ddc73e2890214b7d097fec5e0c20c9bcac66f22ae661896eefec0a68c9e",
+      "snapshot_sha256": "519a5ddc73e2890214b7d097fec5e0c20c9bcac66f22ae661896eefec0a68c9e",
+      "paths_normalized": false
+    },
+    "ios16-data-startup-kernel.json": {
+      "local_report": "reports/ios16-data-startup-kernel.json",
+      "original_sha256": "29f7d829e01a449538e3e154d2f977327c2187be5c4f216a0ac7bbfc90145d45",
+      "snapshot_sha256": "29f7d829e01a449538e3e154d2f977327c2187be5c4f216a0ac7bbfc90145d45",
+      "paths_normalized": false
+    },
+    "ios16-data-startup-prelink.json": {
+      "local_report": "reports/ios16-data-startup-prelink.json",
+      "original_sha256": "6f4deaf35a3bb398feef90a613d94b9567e2c19dbbc0be8fad6b2ee1445f0752",
+      "snapshot_sha256": "6f4deaf35a3bb398feef90a613d94b9567e2c19dbbc0be8fad6b2ee1445f0752",
+      "paths_normalized": false
+    },
+    "ios16-data-startup.json": {
+      "local_report": "reports/ios16-data-startup.json",
+      "original_sha256": "c515635f4d7ab7d6aea87345b3b4952bb1f2530c58140d90167ec6216347bcc9",
+      "snapshot_sha256": "c515635f4d7ab7d6aea87345b3b4952bb1f2530c58140d90167ec6216347bcc9",
+      "paths_normalized": false
+    },
+    "ios16-data-volatile-image.json": {
+      "local_report": "reports/ios16-data-volatile-image.json",
+      "original_sha256": "9d9907c749e3870f71f9944176331f76efd0392207afda3160141cf97f33bf37",
+      "snapshot_sha256": "21f23228ffac9ad2905e62a1ba51ba0f9d85f0a20386217ce81d1de5de4aa7d6",
+      "paths_normalized": true
+    },
+    "ios16-diagnostic-console.json": {
+      "local_report": "reports/ios16-diagnostic-console.json",
+      "original_sha256": "b554cf17cfc4740f90a1af139372ec3c3b0592cc717ac3a584175d54977caebf",
+      "snapshot_sha256": "b554cf17cfc4740f90a1af139372ec3c3b0592cc717ac3a584175d54977caebf",
+      "paths_normalized": false
+    },
+    "ios16-display-abi.json": {
+      "local_report": "reports/ios16-display-abi.json",
+      "original_sha256": "0a7dbbf93552072f9afd30cbca5d1be99d34b7ce1c7a26a0ff5bdaeec5ffbe2d",
+      "snapshot_sha256": "0a7dbbf93552072f9afd30cbca5d1be99d34b7ce1c7a26a0ff5bdaeec5ffbe2d",
+      "paths_normalized": false
+    },
+    "ios16-display-cache.json": {
+      "local_report": "reports/ios16-display-cache.json",
+      "original_sha256": "50c9d66e5e8a3ed3e05a78fe586afc58fc0e6461b854bd40a1479b44d67454d9",
+      "snapshot_sha256": "50c9d66e5e8a3ed3e05a78fe586afc58fc0e6461b854bd40a1479b44d67454d9",
+      "paths_normalized": false
+    },
+    "ios16-display-emulation.json": {
+      "local_report": "reports/ios16-display-emulation.json",
+      "original_sha256": "7cc293536bb2d23e12f0c1923acf65a985aabd86395ceccfe22fde37c54e13fe",
+      "snapshot_sha256": "7cc293536bb2d23e12f0c1923acf65a985aabd86395ceccfe22fde37c54e13fe",
+      "paths_normalized": false
+    },
+    "ios16-display-frontend.json": {
+      "local_report": "reports/ios16-display-frontend.json",
+      "original_sha256": "ce5d0df0227000188863305e759a91ff86eed630f8bada68ec1efaff6727fd83",
+      "snapshot_sha256": "ce5d0df0227000188863305e759a91ff86eed630f8bada68ec1efaff6727fd83",
+      "paths_normalized": false
+    },
+    "ios16-display-interface.json": {
+      "local_report": "reports/ios16-display-interface.json",
+      "original_sha256": "50a9773997035ce5645d871b2ddb4c21c2d68d872815786bdf2e80d88f61bcc7",
+      "snapshot_sha256": "50a9773997035ce5645d871b2ddb4c21c2d68d872815786bdf2e80d88f61bcc7",
+      "paths_normalized": false
+    },
+    "ios16-display-kernel-lifecycle.json": {
+      "local_report": "reports/ios16-display-kernel-lifecycle.json",
+      "original_sha256": "e93e2cfc7ad8632f42746f69436d5e2f06065a3fa58305bace86bfa6e1227f3c",
+      "snapshot_sha256": "e93e2cfc7ad8632f42746f69436d5e2f06065a3fa58305bace86bfa6e1227f3c",
+      "paths_normalized": false
+    },
+    "ios16-display-kernel.json": {
+      "local_report": "reports/ios16-display-kernel.json",
+      "original_sha256": "1d256d5592b1281d194ee03b305744a2cd6ea4258e5f8e5337fc13757ccaada4",
+      "snapshot_sha256": "1d256d5592b1281d194ee03b305744a2cd6ea4258e5f8e5337fc13757ccaada4",
+      "paths_normalized": false
+    },
+    "ios16-display-lifecycle.json": {
+      "local_report": "reports/ios16-display-lifecycle.json",
+      "original_sha256": "06416bd6a72a4723d8822db4677be5ea86605577ee8381b4fb95a5810dc49083",
+      "snapshot_sha256": "06416bd6a72a4723d8822db4677be5ea86605577ee8381b4fb95a5810dc49083",
+      "paths_normalized": false
+    },
+    "ios16-display-payload.json": {
+      "local_report": "reports/ios16-display-payload.json",
+      "original_sha256": "ae79113ce1ceda1900e9744185680b9f0c18b61421a7fc1ddc022189c1c0e4e9",
+      "snapshot_sha256": "ae79113ce1ceda1900e9744185680b9f0c18b61421a7fc1ddc022189c1c0e4e9",
+      "paths_normalized": false
+    },
+    "ios16-display-prelink.json": {
+      "local_report": "reports/ios16-display-prelink.json",
+      "original_sha256": "6f92eab86f87a553eab8d330fabfd6985de105b825b16a0f449076a6aeaff820",
+      "snapshot_sha256": "6f92eab86f87a553eab8d330fabfd6985de105b825b16a0f449076a6aeaff820",
+      "paths_normalized": false
+    },
+    "ios16-display-service.json": {
+      "local_report": "reports/ios16-display-service.json",
+      "original_sha256": "f02c15124a1a0f722409f79c00ec554b4e10952b358157dfff73341db50f0c97",
+      "snapshot_sha256": "f02c15124a1a0f722409f79c00ec554b4e10952b358157dfff73341db50f0c97",
+      "paths_normalized": false
+    },
+    "ios16-display-subclass.json": {
+      "local_report": "reports/ios16-display-subclass.json",
+      "original_sha256": "f4f059aa13c271f45f828b7bb6c4fc2c153d2fd76cf1848b110c4d75da64ec43",
+      "snapshot_sha256": "f4f059aa13c271f45f828b7bb6c4fc2c153d2fd76cf1848b110c4d75da64ec43",
+      "paths_normalized": false
+    },
+    "ios16-display-swap.json": {
+      "local_report": "reports/ios16-display-swap.json",
+      "original_sha256": "ed2e8f361c09903e9096d0051c1c17155aaa812bdcc9fd0a356b715acc1d2794",
+      "snapshot_sha256": "ed2e8f361c09903e9096d0051c1c17155aaa812bdcc9fd0a356b715acc1d2794",
+      "paths_normalized": false
+    },
+    "ios16-display-userland.json": {
+      "local_report": "reports/ios16-display-userland.json",
+      "original_sha256": "a0654e8087779a5617f07dbe9ae20835bbec267928c79d09c530478634d0b12b",
+      "snapshot_sha256": "a0654e8087779a5617f07dbe9ae20835bbec267928c79d09c530478634d0b12b",
+      "paths_normalized": false
+    },
+    "ios16-entropy-payload.json": {
+      "local_report": "reports/ios16-entropy-payload.json",
+      "original_sha256": "360bbc4ea5698642fcd04fea687a0c0fe3c4b6176f89779abbca35c45f607741",
+      "snapshot_sha256": "360bbc4ea5698642fcd04fea687a0c0fe3c4b6176f89779abbca35c45f607741",
+      "paths_normalized": false
+    },
+    "ios16-fresh-gpu-kernel.json": {
+      "local_report": "reports/ios16-fresh-gpu-kernel.json",
+      "original_sha256": "d042a92e98d57a7e797cc79733650ad8e7297da8ca5602a95869c9781e733c4a",
+      "snapshot_sha256": "d042a92e98d57a7e797cc79733650ad8e7297da8ca5602a95869c9781e733c4a",
+      "paths_normalized": false
+    },
+    "ios16-fresh-gpu-payload.json": {
+      "local_report": "reports/ios16-fresh-gpu-payload.json",
+      "original_sha256": "65deef263ff3fe87e531209dfac8b5394776be8c6dd59538e6e6b776ceccc533",
+      "snapshot_sha256": "65deef263ff3fe87e531209dfac8b5394776be8c6dd59538e6e6b776ceccc533",
+      "paths_normalized": false
+    },
+    "ios16-fresh-gpu-prelink.json": {
+      "local_report": "reports/ios16-fresh-gpu-prelink.json",
+      "original_sha256": "5ad4fa8b8140b5a44c6dd68d5a6c660479d05ef77737deea4e46b17028879023",
+      "snapshot_sha256": "5ad4fa8b8140b5a44c6dd68d5a6c660479d05ef77737deea4e46b17028879023",
+      "paths_normalized": false
+    },
+    "ios16-fresh-gpu-source.json": {
+      "local_report": "reports/ios16-fresh-gpu-source.json",
+      "original_sha256": "df288c29bcabb9d2584dbaea21b56f9109c335a82794c8a84946e3ec91bc371b",
+      "snapshot_sha256": "df288c29bcabb9d2584dbaea21b56f9109c335a82794c8a84946e3ec91bc371b",
+      "paths_normalized": false
+    },
+    "ios16-gop-provider-kernel.json": {
+      "local_report": "reports/ios16-gop-provider-kernel.json",
+      "original_sha256": "3b024806fd4a801b34c31ff7fc7b09bf8ae9e2066b6ed3b1563924ec2146248c",
+      "snapshot_sha256": "3b024806fd4a801b34c31ff7fc7b09bf8ae9e2066b6ed3b1563924ec2146248c",
+      "paths_normalized": false
+    },
+    "ios16-gop-provider.json": {
+      "local_report": "reports/ios16-gop-provider.json",
+      "original_sha256": "abdcce6181e7ba3b8feb6191edcccb1f3ba7d7f4695e70ebf15f39536f408517",
+      "snapshot_sha256": "abdcce6181e7ba3b8feb6191edcccb1f3ba7d7f4695e70ebf15f39536f408517",
+      "paths_normalized": false
+    },
+    "ios16-gpu-swap-bridge.json": {
+      "local_report": "reports/ios16-gpu-swap-bridge.json",
+      "original_sha256": "24cfff4069d94d3a2e1f6f479014d4c111f089570ccb999a9aa0262b7c4ffbd2",
+      "snapshot_sha256": "24cfff4069d94d3a2e1f6f479014d4c111f089570ccb999a9aa0262b7c4ffbd2",
+      "paths_normalized": false
+    },
+    "ios16-graphics-abi.json": {
+      "local_report": "reports/ios16-graphics-abi.json",
+      "original_sha256": "535683833dc7e926efabc964efc5234943a878f3c20985fcfe21ce72305b9eaf",
+      "snapshot_sha256": "535683833dc7e926efabc964efc5234943a878f3c20985fcfe21ce72305b9eaf",
+      "paths_normalized": false
+    },
+    "ios16-graphics-late.json": {
+      "local_report": "reports/ios16-graphics-late.json",
+      "original_sha256": "5bba30412c84536a155845df37ea497c04815f9abf3aca808715a158d21f1f03",
+      "snapshot_sha256": "5bba30412c84536a155845df37ea497c04815f9abf3aca808715a158d21f1f03",
+      "paths_normalized": false
+    },
+    "ios16-graphics-lifecycle.json": {
+      "local_report": "reports/ios16-graphics-lifecycle.json",
+      "original_sha256": "0a256f560e8f77127e09a84066e033cac91ea02d4cb30dfa8d02219172cd66a4",
+      "snapshot_sha256": "0a256f560e8f77127e09a84066e033cac91ea02d4cb30dfa8d02219172cd66a4",
+      "paths_normalized": false
+    },
+    "ios16-hid-abi.json": {
+      "local_report": "reports/ios16-hid-abi.json",
+      "original_sha256": "18f2fe4f82aca0a4ef868304a7f398d0fb33d8f9b3ca9efac8526335f3afe345",
+      "snapshot_sha256": "18f2fe4f82aca0a4ef868304a7f398d0fb33d8f9b3ca9efac8526335f3afe345",
+      "paths_normalized": false
+    },
+    "ios16-hid-edge-host.json": {
+      "local_report": "reports/ios16-hid-edge-host.json",
+      "original_sha256": "b3d2c44ef87d57db987256a2b4f8d1f1a54b1a531b7bec6d1a94223a321910c5",
+      "snapshot_sha256": "b3d2c44ef87d57db987256a2b4f8d1f1a54b1a531b7bec6d1a94223a321910c5",
+      "paths_normalized": false
+    },
+    "ios16-hid-edge-kernel.json": {
+      "local_report": "reports/ios16-hid-edge-kernel.json",
+      "original_sha256": "1ecd5bffa0f5eb6e3e457d92981de056c1287f84be17a188d54df9436c37fd73",
+      "snapshot_sha256": "1ecd5bffa0f5eb6e3e457d92981de056c1287f84be17a188d54df9436c37fd73",
+      "paths_normalized": false
+    },
+    "ios16-hid-edge-source.json": {
+      "local_report": "reports/ios16-hid-edge-source.json",
+      "original_sha256": "f48d1a002df4b0e7b119e4eb71124e285f58aa54325237817814abec7a6a9c71",
+      "snapshot_sha256": "f48d1a002df4b0e7b119e4eb71124e285f58aa54325237817814abec7a6a9c71",
+      "paths_normalized": false
+    },
+    "ios16-hid-event-abi.json": {
+      "local_report": "reports/ios16-hid-event-abi.json",
+      "original_sha256": "5a1f716e1413c17fa436dd6c6da8d94849e39a8eb1a1e459a3ebf74cf6faffca",
+      "snapshot_sha256": "5a1f716e1413c17fa436dd6c6da8d94849e39a8eb1a1e459a3ebf74cf6faffca",
+      "paths_normalized": false
+    },
+    "ios16-hid-event-kernel.json": {
+      "local_report": "reports/ios16-hid-event-kernel.json",
+      "original_sha256": "d25c0a8ca85d16536e74484469c8ddf322cc14ea7ce3c81052e2a501bbf771c1",
+      "snapshot_sha256": "d25c0a8ca85d16536e74484469c8ddf322cc14ea7ce3c81052e2a501bbf771c1",
+      "paths_normalized": false
+    },
+    "ios16-hid-object-lifetime.json": {
+      "local_report": "reports/ios16-hid-object-lifetime.json",
+      "original_sha256": "f9f3c3e969bc8cbcf3bdff8aafb1d74b13d870889d6a44e070ad2185fd7aeb84",
+      "snapshot_sha256": "f9f3c3e969bc8cbcf3bdff8aafb1d74b13d870889d6a44e070ad2185fd7aeb84",
+      "paths_normalized": false
+    },
+    "ios16-hid-source-calls.json": {
+      "local_report": "reports/ios16-hid-source-calls.json",
+      "original_sha256": "5baec7763ef38922cea7d261bd851014925f89cc9af53c3384eadcedcf28ff9e",
+      "snapshot_sha256": "5baec7763ef38922cea7d261bd851014925f89cc9af53c3384eadcedcf28ff9e",
+      "paths_normalized": false
+    },
+    "ios16-hid-source-interface.json": {
+      "local_report": "reports/ios16-hid-source-interface.json",
+      "original_sha256": "ff9f20c4d1fd6a3b6349d83cb0281110318d79fb9bd1f61d674271b2e18d7ed5",
+      "snapshot_sha256": "ff9f20c4d1fd6a3b6349d83cb0281110318d79fb9bd1f61d674271b2e18d7ed5",
+      "paths_normalized": false
+    },
+    "ios16-initial-data.json": {
+      "local_report": "reports/ios16-initial-data.json",
+      "original_sha256": "bf2a04448ba5861c2b6b4053753355570f9d1b254bba2db5c86480eca07353c2",
+      "snapshot_sha256": "bf2a04448ba5861c2b6b4053753355570f9d1b254bba2db5c86480eca07353c2",
+      "paths_normalized": false
+    },
+    "ios16-input-clock-kernel.json": {
+      "local_report": "reports/ios16-input-clock-kernel.json",
+      "original_sha256": "83b28bacb7f91463dd576e0d89b24df703f7946e5b98af191589b805faa90dee",
+      "snapshot_sha256": "83b28bacb7f91463dd576e0d89b24df703f7946e5b98af191589b805faa90dee",
+      "paths_normalized": false
+    },
+    "ios16-input-clock.json": {
+      "local_report": "reports/ios16-input-clock.json",
+      "original_sha256": "bbb5e3cff173545282a05bbe6dfc542098bcf8d3eb5680f648d58da11f3aeb27",
+      "snapshot_sha256": "bbb5e3cff173545282a05bbe6dfc542098bcf8d3eb5680f648d58da11f3aeb27",
+      "paths_normalized": false
+    },
+    "ios16-input-cold-host.json": {
+      "local_report": "reports/ios16-input-cold-host.json",
+      "original_sha256": "924b643b7ee8975af4ea4bf8438ffd4eeae44ae0a431128e96611c3ca60dce31",
+      "snapshot_sha256": "924b643b7ee8975af4ea4bf8438ffd4eeae44ae0a431128e96611c3ca60dce31",
+      "paths_normalized": false
+    },
+    "ios16-input-cold-kernel.json": {
+      "local_report": "reports/ios16-input-cold-kernel.json",
+      "original_sha256": "d34dab98844b636337616533e6cf262e2272bfc578bc34303d203b8122e11aba",
+      "snapshot_sha256": "d34dab98844b636337616533e6cf262e2272bfc578bc34303d203b8122e11aba",
+      "paths_normalized": false
+    },
+    "ios16-input-drain-kernel.json": {
+      "local_report": "reports/ios16-input-drain-kernel.json",
+      "original_sha256": "067e2b6ed016ff7bbb205e3cbf19f17abef28ca92ad20258c2e412165beb872a",
+      "snapshot_sha256": "067e2b6ed016ff7bbb205e3cbf19f17abef28ca92ad20258c2e412165beb872a",
+      "paths_normalized": false
+    },
+    "ios16-input-hardware.json": {
+      "local_report": "reports/ios16-input-hardware.json",
+      "original_sha256": "3969b943c148ecd917d36c56e1ba58d52207d47dbef9dae853e8772dcc64ec2d",
+      "snapshot_sha256": "3969b943c148ecd917d36c56e1ba58d52207d47dbef9dae853e8772dcc64ec2d",
+      "paths_normalized": false
+    },
+    "ios16-input-hid-parser.json": {
+      "local_report": "reports/ios16-input-hid-parser.json",
+      "original_sha256": "556a0c8b044f637045894c2796329a7f91f9f836d41c9830e6b47b6eeaf97a07",
+      "snapshot_sha256": "556a0c8b044f637045894c2796329a7f91f9f836d41c9830e6b47b6eeaf97a07",
+      "paths_normalized": false
+    },
+    "ios16-input-kernel.json": {
+      "local_report": "reports/ios16-input-kernel.json",
+      "original_sha256": "7e34b74c937e073d71e1f949daa2ac52be393fade3c10975424847aff95f9820",
+      "snapshot_sha256": "7e34b74c937e073d71e1f949daa2ac52be393fade3c10975424847aff95f9820",
+      "paths_normalized": false
+    },
+    "ios16-input-native.json": {
+      "local_report": "reports/ios16-input-native.json",
+      "original_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
+      "snapshot_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
+      "paths_normalized": false
+    },
+    "ios16-input-payload.json": {
+      "local_report": "reports/ios16-input-payload.json",
+      "original_sha256": "ebaa0fb9429d0d87f817a4cd9fc462af1bbbf43b9bec94546813c160d1ebb710",
+      "snapshot_sha256": "ebaa0fb9429d0d87f817a4cd9fc462af1bbbf43b9bec94546813c160d1ebb710",
+      "paths_normalized": false
+    },
+    "ios16-input-prelink.json": {
+      "local_report": "reports/ios16-input-prelink.json",
+      "original_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+      "snapshot_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+      "paths_normalized": false
+    },
+    "ios16-input-transfer-host.json": {
+      "local_report": "reports/ios16-input-transfer-host.json",
+      "original_sha256": "90921c9d3b8d2e443c09e4200138a77c56d05a45d1bc52402465616a5babeda1",
+      "snapshot_sha256": "90921c9d3b8d2e443c09e4200138a77c56d05a45d1bc52402465616a5babeda1",
+      "paths_normalized": false
+    },
+    "ios16-input-transfer-kernel.json": {
+      "local_report": "reports/ios16-input-transfer-kernel.json",
+      "original_sha256": "70c202a023304840617d448a48849d96511fc0fbce4b928dc3042a8a6ccf63cb",
+      "snapshot_sha256": "70c202a023304840617d448a48849d96511fc0fbce4b928dc3042a8a6ccf63cb",
+      "paths_normalized": false
+    },
+    "ios16-mapped-lease-host.json": {
+      "local_report": "reports/ios16-mapped-lease-host.json",
+      "original_sha256": "fe86f304994655eb9a0f5e6e60dfe4955fd07725a9219a744d570bac5a85530f",
+      "snapshot_sha256": "fe86f304994655eb9a0f5e6e60dfe4955fd07725a9219a744d570bac5a85530f",
+      "paths_normalized": false
+    },
+    "ios16-mapped-lease-kernel.json": {
+      "local_report": "reports/ios16-mapped-lease-kernel.json",
+      "original_sha256": "d2582b00772821b94ab635c8ab12275dcf61021e2ababa5e22f1be77493270a1",
+      "snapshot_sha256": "d2582b00772821b94ab635c8ab12275dcf61021e2ababa5e22f1be77493270a1",
+      "paths_normalized": false
+    },
+    "ios16-mapped-lease-payload.json": {
+      "local_report": "reports/ios16-mapped-lease-payload.json",
+      "original_sha256": "01c47526db7325416802b0d27524f1f38afc59211c2f7f482cfa81308855cfc1",
+      "snapshot_sha256": "01c47526db7325416802b0d27524f1f38afc59211c2f7f482cfa81308855cfc1",
+      "paths_normalized": false
+    },
+    "ios16-mapped-lease-prelink.json": {
+      "local_report": "reports/ios16-mapped-lease-prelink.json",
+      "original_sha256": "b82c9dd1ad8549c8de51db36fa774be55d97c7b72cc4e28e9ce762479206d9fe",
+      "snapshot_sha256": "b82c9dd1ad8549c8de51db36fa774be55d97c7b72cc4e28e9ce762479206d9fe",
+      "paths_normalized": false
+    },
+    "ios16-mapped-lease-source.json": {
+      "local_report": "reports/ios16-mapped-lease-source.json",
+      "original_sha256": "f389d8cbea8d2ec4b8d9cb12b66340b55f09322d529d4d5e3a38ae485c294137",
+      "snapshot_sha256": "f389d8cbea8d2ec4b8d9cb12b66340b55f09322d529d4d5e3a38ae485c294137",
+      "paths_normalized": false
+    },
+    "ios16-original-components.json": {
+      "local_report": "reports/ios16-original-components.json",
+      "original_sha256": "3714cbc7e69a0086c4d63e66b580f3300b9e52725ebf5d3236858cedaabcbac1",
+      "snapshot_sha256": "3714cbc7e69a0086c4d63e66b580f3300b9e52725ebf5d3236858cedaabcbac1",
+      "paths_normalized": false
+    },
+    "ios16-original-crypto-kernel.json": {
+      "local_report": "reports/ios16-original-crypto-kernel.json",
+      "original_sha256": "764d3a4a6403a9ccd0c25e420de5b2100e361932bb6dd8e2ddb38e6cbfe04465",
+      "snapshot_sha256": "764d3a4a6403a9ccd0c25e420de5b2100e361932bb6dd8e2ddb38e6cbfe04465",
+      "paths_normalized": false
+    },
+    "ios16-patch-audit.json": {
+      "local_report": "reports/ios16-patch-audit.json",
+      "original_sha256": "8c61c03a1bd2d87ced1fbaf839379c7633550013b0e1b1be7613b855ff19821c",
+      "snapshot_sha256": "8c61c03a1bd2d87ced1fbaf839379c7633550013b0e1b1be7613b855ff19821c",
+      "paths_normalized": false
+    },
+    "ios16-pmgr-contract.json": {
+      "local_report": "reports/ios16-pmgr-contract.json",
+      "original_sha256": "7490bcfab17d3a23318f8208aa3a9648b637d79b6a41d7551d9fd7169113d235",
+      "snapshot_sha256": "7490bcfab17d3a23318f8208aa3a9648b637d79b6a41d7551d9fd7169113d235",
+      "paths_normalized": false
+    },
+    "ios16-pmgr-kernel.json": {
+      "local_report": "reports/ios16-pmgr-kernel.json",
+      "original_sha256": "f0f481d8caeecd099d6d70b18b9e58b4c30a010e8db8ea801e6c82e0fff37aaf",
+      "snapshot_sha256": "f0f481d8caeecd099d6d70b18b9e58b4c30a010e8db8ea801e6c82e0fff37aaf",
+      "paths_normalized": false
+    },
+    "ios16-prelink.json": {
+      "local_report": "reports/ios16-prelink.json",
+      "original_sha256": "20e429bdae666bccf86778abcf38f2dd6f0dcfba24ce4382e6fbaad067d7b280",
+      "snapshot_sha256": "20e429bdae666bccf86778abcf38f2dd6f0dcfba24ce4382e6fbaad067d7b280",
+      "paths_normalized": false
+    },
+    "ios16-producer.json": {
+      "local_report": "reports/ios16-producer.json",
+      "original_sha256": "4eb711ad03991b765d056b03017341950877c7d29ddd8e030002da566f2633cf",
+      "snapshot_sha256": "4eb711ad03991b765d056b03017341950877c7d29ddd8e030002da566f2633cf",
+      "paths_normalized": false
+    },
+    "ios16-ramblock-start-kernel.json": {
+      "local_report": "reports/ios16-ramblock-start-kernel.json",
+      "original_sha256": "2dfa39fcdae098bba582942c8ff000b4639862237d5fec46caf02e54fa2295e0",
+      "snapshot_sha256": "2dfa39fcdae098bba582942c8ff000b4639862237d5fec46caf02e54fa2295e0",
+      "paths_normalized": false
+    },
+    "ios16-rebased-patches.json": {
+      "local_report": "reports/ios16-rebased-patches.json",
+      "original_sha256": "d1c8f91481298cc489b737ac4466c7f34f162087e9313ca4a8285f09fc939341",
+      "snapshot_sha256": "d1c8f91481298cc489b737ac4466c7f34f162087e9313ca4a8285f09fc939341",
+      "paths_normalized": false
+    },
+    "ios16-refresh-interface.json": {
+      "local_report": "reports/ios16-refresh-interface.json",
+      "original_sha256": "e1a943b75307a07455487b2b43294c4f88bac060d454a3b054076c4eb92a1c46",
+      "snapshot_sha256": "e1a943b75307a07455487b2b43294c4f88bac060d454a3b054076c4eb92a1c46",
+      "paths_normalized": false
+    },
+    "ios16-request-fields.json": {
+      "local_report": "reports/ios16-request-fields.json",
+      "original_sha256": "4e615312487c478d64608ec11844a0389c3c9c703b46c1d12e832997b20c16c4",
+      "snapshot_sha256": "4e615312487c478d64608ec11844a0389c3c9c703b46c1d12e832997b20c16c4",
+      "paths_normalized": false
+    },
+    "ios16-root-image.json": {
+      "local_report": "reports/ios16-root-image.json",
+      "original_sha256": "c3b4191b752726be9b7c6e03c82d4ad5f99ee4aaf80d3657a33aa02206a66ea1",
+      "snapshot_sha256": "c3b4191b752726be9b7c6e03c82d4ad5f99ee4aaf80d3657a33aa02206a66ea1",
+      "paths_normalized": false
+    },
+    "ios16-security.json": {
+      "local_report": "reports/ios16-security.json",
+      "original_sha256": "8761de654b669d3ca11d8a17cbdf31c081d5201584331a68fff20e280516541a",
+      "snapshot_sha256": "8761de654b669d3ca11d8a17cbdf31c081d5201584331a68fff20e280516541a",
+      "paths_normalized": false
+    },
+    "ios16-software-refresh.json": {
+      "local_report": "reports/ios16-software-refresh.json",
+      "original_sha256": "8af2f16f32fd5dd1a0f321885bb72683a2163b9a9b7c56f1882ed6ded64ed2c1",
+      "snapshot_sha256": "8af2f16f32fd5dd1a0f321885bb72683a2163b9a9b7c56f1882ed6ded64ed2c1",
+      "paths_normalized": false
+    },
+    "ios16-storage-abi.json": {
+      "local_report": "reports/ios16-storage-abi.json",
+      "original_sha256": "c25f48ec96cd9fc56433431b8bcbd01a58180196ddb8eac1c47c659e6da1e24c",
+      "snapshot_sha256": "c25f48ec96cd9fc56433431b8bcbd01a58180196ddb8eac1c47c659e6da1e24c",
+      "paths_normalized": false
+    },
+    "ios16-storage-prelink.json": {
+      "local_report": "reports/ios16-storage-prelink.json",
+      "original_sha256": "4c6f4194abf12396f5b8eb7f71fed29dc91c92bbbebb6007f451049df76f5a32",
+      "snapshot_sha256": "4c6f4194abf12396f5b8eb7f71fed29dc91c92bbbebb6007f451049df76f5a32",
+      "paths_normalized": false
+    },
+    "ios16-surface-acquire-prelink.json": {
+      "local_report": "reports/ios16-surface-acquire-prelink.json",
+      "original_sha256": "86f35768328037283624851d4700cfc47b7f3bd217a2cb4d1b8bd146b91ea1fa",
+      "snapshot_sha256": "86f35768328037283624851d4700cfc47b7f3bd217a2cb4d1b8bd146b91ea1fa",
+      "paths_normalized": false
+    },
+    "ios16-surface-acquire-source.json": {
+      "local_report": "reports/ios16-surface-acquire-source.json",
+      "original_sha256": "6306e5d3251ace04684b00e4b89b30c1a8f69128ed1d34f09057bbf4605d5f4e",
+      "snapshot_sha256": "6306e5d3251ace04684b00e4b89b30c1a8f69128ed1d34f09057bbf4605d5f4e",
+      "paths_normalized": false
+    },
+    "ios16-surface-backing.json": {
+      "local_report": "reports/ios16-surface-backing.json",
+      "original_sha256": "75ced10fd2d20ebb34f19ce35555ced9522475254fc17bc88bfe2686d61c97b6",
+      "snapshot_sha256": "75ced10fd2d20ebb34f19ce35555ced9522475254fc17bc88bfe2686d61c97b6",
+      "paths_normalized": false
+    },
+    "ios16-surface-identity-kernel.json": {
+      "local_report": "reports/ios16-surface-identity-kernel.json",
+      "original_sha256": "38928fbe9af4666d4bc446f648e799aee3e48ef931becd31559a33e86b45da99",
+      "snapshot_sha256": "38928fbe9af4666d4bc446f648e799aee3e48ef931becd31559a33e86b45da99",
+      "paths_normalized": false
+    },
+    "ios16-surface-identity-prelink.json": {
+      "local_report": "reports/ios16-surface-identity-prelink.json",
+      "original_sha256": "9fdb57648fb73ff7b0c56c5bcffb36fd2518d1718063e6127ef0045bc32bcf30",
+      "snapshot_sha256": "9fdb57648fb73ff7b0c56c5bcffb36fd2518d1718063e6127ef0045bc32bcf30",
+      "paths_normalized": false
+    },
+    "ios16-surface-identity-source.json": {
+      "local_report": "reports/ios16-surface-identity-source.json",
+      "original_sha256": "2650f872a3f38360c03eca8a4123794ca4bcb7d71b2e64615fb5eefb36e013c9",
+      "snapshot_sha256": "2650f872a3f38360c03eca8a4123794ca4bcb7d71b2e64615fb5eefb36e013c9",
+      "paths_normalized": false
+    },
+    "ios16-surface-interface.json": {
+      "local_report": "reports/ios16-surface-interface.json",
+      "original_sha256": "47d1ec7ce9c6658d65b4d9d58bb8a391838d8f8dbbe2c0080060b3b59823d867",
+      "snapshot_sha256": "47d1ec7ce9c6658d65b4d9d58bb8a391838d8f8dbbe2c0080060b3b59823d867",
+      "paths_normalized": false
+    },
+    "ios16-surface-pages-kernel.json": {
+      "local_report": "reports/ios16-surface-pages-kernel.json",
+      "original_sha256": "d9fc1981409a852ea5d4a5e2cd582a54aed36fe498c454d606a47061e137a8e1",
+      "snapshot_sha256": "d9fc1981409a852ea5d4a5e2cd582a54aed36fe498c454d606a47061e137a8e1",
+      "paths_normalized": false
+    },
+    "ios16-surface-pages-prelink.json": {
+      "local_report": "reports/ios16-surface-pages-prelink.json",
+      "original_sha256": "c2985f01a9b0df811788bf824f400e0c3921848c42510efa0eb2225cfb611a7c",
+      "snapshot_sha256": "c2985f01a9b0df811788bf824f400e0c3921848c42510efa0eb2225cfb611a7c",
+      "paths_normalized": false
+    },
+    "ios16-surface-pages-source.json": {
+      "local_report": "reports/ios16-surface-pages-source.json",
+      "original_sha256": "8ad5f49f91627e1934c7b4559710859fd06d3fb6e4185e3125e9e2cb66f8d7f7",
+      "snapshot_sha256": "8ad5f49f91627e1934c7b4559710859fd06d3fb6e4185e3125e9e2cb66f8d7f7",
+      "paths_normalized": false
+    },
+    "ios16-surface-sync-kernel.json": {
+      "local_report": "reports/ios16-surface-sync-kernel.json",
+      "original_sha256": "a9348582448ac43e7dd69ea3e077dffddfbb7e1fbd35f7e0a8a158735925ab92",
+      "snapshot_sha256": "a9348582448ac43e7dd69ea3e077dffddfbb7e1fbd35f7e0a8a158735925ab92",
+      "paths_normalized": false
+    },
+    "ios16-swap-completion.json": {
+      "local_report": "reports/ios16-swap-completion.json",
+      "original_sha256": "59b1b457b4470330eaddb4022f73b1a56f965146633130b486d2cc175481a857",
+      "snapshot_sha256": "59b1b457b4470330eaddb4022f73b1a56f965146633130b486d2cc175481a857",
+      "paths_normalized": false
+    },
+    "ios16-system-inputs.json": {
+      "local_report": "reports/ios16-system-inputs.json",
+      "original_sha256": "a6767d1ae46116cda0f5f9f2d3360589c20eae7a8c63696a608e541efcbebdcf",
+      "snapshot_sha256": "a6767d1ae46116cda0f5f9f2d3360589c20eae7a8c63696a608e541efcbebdcf",
+      "paths_normalized": false
+    },
+    "ios16-system-payload.json": {
+      "local_report": "reports/ios16-system-payload.json",
+      "original_sha256": "0535ce10a545a12badb0a13e33bc1e178f45d02a03cb5cfbcec95cb84f34df8d",
+      "snapshot_sha256": "0535ce10a545a12badb0a13e33bc1e178f45d02a03cb5cfbcec95cb84f34df8d",
+      "paths_normalized": false
+    },
+    "ios16-touch-firmware.json": {
+      "local_report": "reports/ios16-touch-firmware.json",
+      "original_sha256": "d2261a218b31d4623a402d399e92ced6d4852e44e3aac744d49a8a62f8101c72",
+      "snapshot_sha256": "d2261a218b31d4623a402d399e92ced6d4852e44e3aac744d49a8a62f8101c72",
+      "paths_normalized": false
+    },
+    "ios16-ufs-kernel.json": {
+      "local_report": "reports/ios16-ufs-kernel.json",
+      "original_sha256": "aecc2cda25c4fa5e49d3e31de96e91a963ee42c0ee5f1c2ff64fea53c18e3d0a",
+      "snapshot_sha256": "aecc2cda25c4fa5e49d3e31de96e91a963ee42c0ee5f1c2ff64fea53c18e3d0a",
+      "paths_normalized": false
+    },
+    "ios16-ufs-root.json": {
+      "local_report": "reports/ios16-ufs-root.json",
+      "original_sha256": "b7f5ad4ad930af42bd95e18b19f5bbf9edc36de7b351495c96282b293f6b19ed",
+      "snapshot_sha256": "b7f5ad4ad930af42bd95e18b19f5bbf9edc36de7b351495c96282b293f6b19ed",
+      "paths_normalized": false
+    },
+    "ios16-volumes.json": {
+      "local_report": "reports/ios16-volumes.json",
+      "original_sha256": "3d9eb5dc4f8e4c1cbcb588d7b140fb185dd45d932421334c6e5b6d02657fc7e7",
+      "snapshot_sha256": "3d9eb5dc4f8e4c1cbcb588d7b140fb185dd45d932421334c6e5b6d02657fc7e7",
+      "paths_normalized": false
+    },
+    "ios27-feasibility.json": {
+      "local_report": "reports/ios27-feasibility.json",
+      "original_sha256": "b263dde2d501ff57f37f1720ef0361a1b2557d0e0f40fa3d70f3f25086094d12",
+      "snapshot_sha256": "b263dde2d501ff57f37f1720ef0361a1b2557d0e0f40fa3d70f3f25086094d12",
+      "paths_normalized": false
+    },
+    "iphone-adt-identity.json": {
+      "local_report": "reports/iphone-adt-identity.json",
+      "original_sha256": "a279c0c55120b1bf372cf3814fa11bb4144b3c2bc8b70e5e8a5de69d3869bc3a",
+      "snapshot_sha256": "a279c0c55120b1bf372cf3814fa11bb4144b3c2bc8b70e5e8a5de69d3869bc3a",
+      "paths_normalized": false
+    },
+    "libm-literals.json": {
+      "local_report": "reports/libm-literals.json",
+      "original_sha256": "3b7004a0f3fd3b0b847842422999e1386d871ad5dcebf84b13e6222cd427be1d",
+      "snapshot_sha256": "3b7004a0f3fd3b0b847842422999e1386d871ad5dcebf84b13e6222cd427be1d",
+      "paths_normalized": false
+    },
+    "mapped-lease-stack.json": {
+      "local_report": "reports/mapped-lease-stack.json",
+      "original_sha256": "05ef44afa6c4df29c550cc3dc171a98d5b90ad7c6076dc5bd88b035d3b6fd99d",
+      "snapshot_sha256": "05ef44afa6c4df29c550cc3dc171a98d5b90ad7c6076dc5bd88b035d3b6fd99d",
+      "paths_normalized": false
+    },
+    "memory-after.json": {
+      "local_report": "reports/memory-after.json",
+      "original_sha256": "4b6520bd6733eea8b038f8d3d54eee4a47d2960b878c7b68b03e5fa9d2a1185a",
+      "snapshot_sha256": "4b6520bd6733eea8b038f8d3d54eee4a47d2960b878c7b68b03e5fa9d2a1185a",
+      "paths_normalized": false
+    },
+    "memory-before.json": {
+      "local_report": "reports/memory-before.json",
+      "original_sha256": "baac7a0b2a38c2266db196a7881bbded58c0a0e58f54eec461b81b0fe89cf4d5",
+      "snapshot_sha256": "baac7a0b2a38c2266db196a7881bbded58c0a0e58f54eec461b81b0fe89cf4d5",
+      "paths_normalized": false
+    },
+    "metal-plugin.json": {
+      "local_report": "reports/metal-plugin.json",
+      "original_sha256": "55e8521701292a2397a7ed0b8431f3bab6b2897e97754b8d9e427ffee586fe24",
+      "snapshot_sha256": "55e8521701292a2397a7ed0b8431f3bab6b2897e97754b8d9e427ffee586fe24",
+      "paths_normalized": false
+    },
+    "metal-rust-bridge.json": {
+      "local_report": "reports/metal-rust-bridge.json",
+      "original_sha256": "0245dc9b0e3992cdfd9f4fdafe7471203d693ab5d4a81cf3ea4ab9663ab02ac5",
+      "snapshot_sha256": "0245dc9b0e3992cdfd9f4fdafe7471203d693ab5d4a81cf3ea4ab9663ab02ac5",
+      "paths_normalized": false
+    },
+    "metal-translation-tests.json": {
+      "local_report": "reports/metal-translation-tests.json",
+      "original_sha256": "0b63055417c92a62677c017667efb9dfc2530a0f4761d0e6119d25f81816a59e",
+      "snapshot_sha256": "0b63055417c92a62677c017667efb9dfc2530a0f4761d0e6119d25f81816a59e",
+      "paths_normalized": false
+    },
+    "native-4k-policy.json": {
+      "local_report": "reports/native-4k-policy.json",
+      "original_sha256": "0b273e3c1456e840507b81abffe2e4217ea8b404c53c6297c3b215ffaee9b9d9",
+      "snapshot_sha256": "0b273e3c1456e840507b81abffe2e4217ea8b404c53c6297c3b215ffaee9b9d9",
+      "paths_normalized": false
+    },
+    "native-kernel.json": {
+      "local_report": "reports/native-kernel.json",
+      "original_sha256": "b1b8726c04b5e771bc2484e1110673aab92b88862435100043553377a0e7d4d2",
+      "snapshot_sha256": "b1b8726c04b5e771bc2484e1110673aab92b88862435100043553377a0e7d4d2",
+      "paths_normalized": false
+    },
+    "native-payload.json": {
+      "local_report": "reports/native-payload.json",
+      "original_sha256": "02ab73bffb6af491b496f47e326d394501dc388657f4473e4827af6cf5bdd3b5",
+      "snapshot_sha256": "02ab73bffb6af491b496f47e326d394501dc388657f4473e4827af6cf5bdd3b5",
+      "paths_normalized": false
+    },
+    "oneplus13t-reference.json": {
+      "local_report": "reports/oneplus13t-reference.json",
+      "original_sha256": "18105926bf644341af377cb0b1ea8c4111340b106baa31ae0f95e678a87754e4",
+      "snapshot_sha256": "18105926bf644341af377cb0b1ea8c4111340b106baa31ae0f95e678a87754e4",
+      "paths_normalized": false
+    },
+    "preparation.json": {
+      "local_report": "reports/preparation.json",
+      "original_sha256": "79bcfa602623654ff5daf51145a65f7f3a4a3d6fac0068271e22216dd56105e0",
+      "snapshot_sha256": "79bcfa602623654ff5daf51145a65f7f3a4a3d6fac0068271e22216dd56105e0",
+      "paths_normalized": false
+    },
+    "repository-validation.json": {
+      "local_report": "reports/repository-validation.json",
+      "original_sha256": "0afd9df20c41b37753f4882c8fab9c6ff15104d861004de1db4681dd3479e40a",
+      "snapshot_sha256": "0afd9df20c41b37753f4882c8fab9c6ff15104d861004de1db4681dd3479e40a",
+      "paths_normalized": false
+    },
+    "simplefb-tests.json": {
+      "local_report": "reports/simplefb-tests.json",
+      "original_sha256": "19e3dfa8f5689543abfb24b54dbcdeda2366ac15c94afa469f58110a60fec4ef",
+      "snapshot_sha256": "19e3dfa8f5689543abfb24b54dbcdeda2366ac15c94afa469f58110a60fec4ef",
+      "paths_normalized": false
+    },
+    "source-patches.json": {
+      "local_report": "reports/source-patches.json",
+      "original_sha256": "3f35ad8e5833554c689f6dcfef73a407b1b2bab0501369849875d0fa9071e089",
+      "snapshot_sha256": "3f35ad8e5833554c689f6dcfef73a407b1b2bab0501369849875d0fa9071e089",
+      "paths_normalized": false
+    },
+    "stock-uefi-patch-candidates.json": {
+      "local_report": "reports/stock-uefi-patch-candidates.json",
+      "original_sha256": "2fb6a2a1575605ceb66d184fdd15e9a09cdee96a4190cd66fb20df7c58f98824",
+      "snapshot_sha256": "2fb6a2a1575605ceb66d184fdd15e9a09cdee96a4190cd66fb20df7c58f98824",
+      "paths_normalized": false
+    },
+    "stock-uefi.json": {
+      "local_report": "reports/stock-uefi.json",
+      "original_sha256": "7d8ca735c98d34184ba7e488b59ad71c396ed0251774dfa1580451b4ff76d957",
+      "snapshot_sha256": "7d8ca735c98d34184ba7e488b59ad71c396ed0251774dfa1580451b4ff76d957",
+      "paths_normalized": false
+    },
+    "storage-stack.json": {
+      "local_report": "reports/storage-stack.json",
+      "original_sha256": "ac6cc03f0479ac2773ff1e09b11b026df33b1a305620bb4d1ae1b40aeaa4ca4e",
+      "snapshot_sha256": "ac6cc03f0479ac2773ff1e09b11b026df33b1a305620bb4d1ae1b40aeaa4ca4e",
+      "paths_normalized": false
+    },
+    "surface-identity-stack.json": {
+      "local_report": "reports/surface-identity-stack.json",
+      "original_sha256": "959d885800ce178785b7f19a56da6016e01f5dba946c72f77860f38674e707d4",
+      "snapshot_sha256": "959d885800ce178785b7f19a56da6016e01f5dba946c72f77860f38674e707d4",
+      "paths_normalized": false
+    },
+    "surface-pages-stack.json": {
+      "local_report": "reports/surface-pages-stack.json",
+      "original_sha256": "11317aa961023ab9ff3d98b38a3344744f22dfee7b04c2725696c3ee91d6a2aa",
+      "snapshot_sha256": "11317aa961023ab9ff3d98b38a3344744f22dfee7b04c2725696c3ee91d6a2aa",
+      "paths_normalized": false
+    },
+    "turnip-ios16.json": {
+      "local_report": "reports/turnip-ios16.json",
+      "original_sha256": "3d0b9aefb28a33ec4a9f1106d9a3e0ee2228c765645dbaa674d640debc1d6ee0",
+      "snapshot_sha256": "4ab2644da91c644a86a6c670bb0d012b56df7a6e37488b462097fa30aa1c83d1",
+      "paths_normalized": true
+    },
+    "uefi-build.json": {
+      "local_report": "reports/uefi-build.json",
+      "original_sha256": "ff91576bea37b95841f0ebc6ab9b4cfdbbb887fad03957fbbfade7a660b8e06c",
+      "snapshot_sha256": "ff91576bea37b95841f0ebc6ab9b4cfdbbb887fad03957fbbfade7a660b8e06c",
+      "paths_normalized": false
+    },
+    "ufs-source-probe.json": {
+      "local_report": "reports/ufs-source-probe.json",
+      "original_sha256": "5ff0ffbe325253c26f8c9c3c29395e7b34ca86a311eb08aba4d9a43466fe86e8",
+      "snapshot_sha256": "5ff0ffbe325253c26f8c9c3c29395e7b34ca86a311eb08aba4d9a43466fe86e8",
+      "paths_normalized": false
+    },
+    "vfs-backport.json": {
+      "local_report": "reports/vfs-backport.json",
+      "original_sha256": "a2d809cef36e76fc738e834f904a314735d92873ca141e06728251a71085af67",
+      "snapshot_sha256": "a2d809cef36e76fc738e834f904a314735d92873ca141e06728251a71085af67",
+      "paths_normalized": false
+    },
+    "xnu-toolchain.json": {
+      "local_report": "reports/xnu-toolchain.json",
+      "original_sha256": "b8047f6a26cbd0da23202274b7cbf8f98d2ef62040fee325b4a512fda00c4e10",
+      "snapshot_sha256": "b8047f6a26cbd0da23202274b7cbf8f98d2ef62040fee325b4a512fda00c4e10",
+      "paths_normalized": false
+    }
+  }
+}

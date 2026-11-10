@@ -1,0 +1,86 @@
+{
+  "result": "CPH2653_IOS16_READ_ONLY_STORAGE_DISPLAY_OFFLINE_SOURCE_STACK_PASS",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "stages": {
+    "ios16-storage-abi": {
+      "report": "reports/ios16-storage-abi.json",
+      "report_sha256": "c25f48ec96cd9fc56433431b8bcbd01a58180196ddb8eac1c47c659e6da1e24c",
+      "result": "IOS16_ORIGINAL_STORAGE_CLASS_AND_PUBLIC_HEADER_ABI_STATIC_PASS"
+    },
+    "ios16-ufs-root": {
+      "report": "reports/ios16-ufs-root.json",
+      "report_sha256": "b7f5ad4ad930af42bd95e18b19f5bbf9edc36de7b351495c96282b293f6b19ed",
+      "result": "IOS16_COMPLETE_READ_ONLY_UFS_ROOT_PUBLISHER_NATIVE_SOURCE_PASS"
+    },
+    "ios16-storage-prelink": {
+      "report": "reports/ios16-storage-prelink.json",
+      "report_sha256": "4c6f4194abf12396f5b8eb7f71fed29dc91c92bbbebb6007f451049df76f5a32",
+      "result": "IOS16_COMBINED_UFS_DISPLAY_AND_ORIGINAL_COMPONENTS_STRICT_PRELINK_PASS"
+    },
+    "ios16-ufs-kernel": {
+      "report": "reports/ios16-ufs-kernel.json",
+      "report_sha256": "aecc2cda25c4fa5e49d3e31de96e91a963ee42c0ee5f1c2ff64fea53c18e3d0a",
+      "result": "IOS16_COMBINED_UFS_NATIVE_LIFETIME_AND_IOBSD_CPU_PASS"
+    },
+    "ios16-system-payload": {
+      "report": "reports/ios16-system-payload.json",
+      "report_sha256": "0535ce10a545a12badb0a13e33bc1e178f45d02a03cb5cfbcec95cb84f34df8d",
+      "result": "IOS16_ISOLATED_STORAGE_DISPLAY_DEVELOPMENT_CONTAINER_READBACK_PASS"
+    }
+  },
+  "artifacts": {
+    "build/ios16-storage-abi/compile-commands.json": "ffdcbad05049df5fb2ced74d0af70d811a47b93347dc74dd7174979f53d14cc8",
+    "build/ios16-storage-abi/IOBlockStorageDevice.o": "9196624a625720b73ef37e6034796faad0ed69ebc6db56f1b77d5924dbde83dc",
+    "build/ios16-storage-abi/StorageHeaderProbe.o": "bb8d3d633b626b91a032d64e7595c21b0e5a4e8769bfa2438ae71d6c9b998e27",
+    "build/cph2653-ufs-root/libDodgeUfsRoot.a": "867f2e5220522f4515f09a7fce77cf6a40d717f7574d3d45d23c556b307df466",
+    "build/cph2653-ufs-root/compile-commands.json": "04d80a5cde282758c68cfbe5f911ce0e8cd8de5c1eb759bd75bdb03c7f54fac8",
+    "build/cph2653-ufs-root/mach.storage": "ef30b30dd044e091dcfacbec76c27eeb30c43c771f4983e217a22906720a44d6",
+    "build/cph2653-ufs-root/link-inputs.json": "87effb0cbcc94e76a67c3a277066f48a6bf5606bcc743484759ed77c098876ae",
+    "build/cph2653-ufs-root/link-command.json": "0af3078efa0a6694ee6d023eff5b1a430a5e12553319055ac27ad5a301cca953",
+    "build/cph2653-ufs-root/ufs-lifecycle-host": "912f2b1964201879d623283d3b37e45a55af29898e40dce7e5335791a22810b4",
+    "build/cph2653-ufs-root/system-late-host": "83124d89444083d8f7239a6994159a672228aee074926b57ecfab92a9a3951fa",
+    "build/cph2653-ufs-root/combined-native.filelist": "4affee6dd61cb0c49c0c39044de59aade207d50d745e2f9cedb79ae5674fbf81",
+    "build/cph2653-ufs-root/NativeUfs.late.o": "cee16ef13177921d9bf6e13feea338da0f6da2b61216c451b4d152eb42863790",
+    "build/cph2653-ufs-root/DodgeUfsLifecycle.o": "38385c689a97b33659e95f2ba4eb348419debc188b2773c009c4e02aea9dc263",
+    "build/cph2653-ufs-root/DodgeSystemLate.o": "88dfdc256b7637e6d38cda58487955897f1a7316f09373742d785910ec96072a",
+    "build/cph2653-ufs-root/original-storage-bindings.o": "0a69867131867138e890b75a1cd0bb852da8a05e56c08a02b823f5f10ae620c2",
+    "build/cph2653-storage-prelink/kernel.macho": "350073b7ee82f813370eb6d238f5c72107d960a661297e58fdb6e32ccce3a3b2",
+    "build/cph2653-storage-prelink/mach.storage.sealed": "7ea0f3388b51775bcedcb99b9a445e9581a70dbf77eac697e87a8fd70127fcf7",
+    "build/cph2653-storage-prelink/emission.json": "7623d71cc0688a1fb8d1c77641519448258b1b2613d82c4d2f751276dd58a653",
+    "build/cph2653-storage-prelink/kernel.macho.crypto-hmac.json": "314cb1416ed351024744d4f8f613c86ba2cd2e4f2d9e1addf27c608d4b5eeb38",
+    "build/cph2653-storage-prelink/mach.storage.sealed.crypto-hmac.json": "8ce35167d409e4ab2afa5a88b8ff3f4478ce14151954a3c208ca744ef466bb9c",
+    "build/cph2653-ufs-root/linked-cpu-cases.json": "435c0bc4b941a76085a52fe2d7eabc9485d9fab6140dea382c172f1bdf43df60",
+    "build/cph2653-ufs-root/root-publication-host": "22bd36b81249279bad60518d3dd8a8e55ad3ff0fc73bc5b36a3c6d051dfcd8b0",
+    "build/cph2653-ufs-root/ufs-probe-host": "2d2c29859f4675be350b85c8a9856e2121da1343189345318651223bfb188a46",
+    "build/cph2653-ufs-root/bsd/IOKitBSDInit.cpp": "4c26bb4532d1b9e76b7fc253220b27005763fee7c179daf3214a8690b3419a2f",
+    "build/cph2653-ufs-root/IOKitBSDInit.system.cpo": "205c50a0fe93abd38688495b327f8c2d3f6a7f0d22bc6c3fba4e1500a2b81af9",
+    "build/cph2653-ufs-root/system-bsd-compile.json": "0e6d484865b068102dfbeca16ddc860dbbd223f5036cf03f2ab6a22b67053c8a",
+    "build/cph2653-system-bringup/payload.img": "e205cf43a467959c485d321057a81aaeaf71eaa8451acfb5d7784740e63e2adf",
+    "build/cph2653-system-bringup/boot.img": "7c8ea5ad2f6acdfa3ddccbee1a0c05eaa23748cbdd567c99762c290061919730",
+    "build/cph2653-system-bringup/boot.json": "2cdbd91ec457dfb91ef73de9254a6c9f0908483fd7551337e807ee5ec60d880f"
+  },
+  "combined_source_objects": 68,
+  "original_bindings": 208,
+  "native_entries": 52,
+  "host_lifecycle_cases": 32,
+  "host_scheduling_cases": 25,
+  "host_matching_cases": 11,
+  "linked_cpu_cases": 11,
+  "boot_image": "build/cph2653-system-bringup/boot.img",
+  "root_window_publication_source_built": true,
+  "default_artifacts_unchanged": true,
+  "root_authenticated": false,
+  "original_userspace_included": false,
+  "physical_partition_modified": false,
+  "root_argument_enabled_by_default": false,
+  "graphics_argument_enabled_by_default": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "remaining": [
+    "Qualify actual UFS/SMMU/DMA ownership and reset, physical partition layout and original storage completion/matching ABI.",
+    "Finish authenticated APFS root and writable Data preparation, actual crypto/security/power lifecycle.",
+    "Complete and qualify touch/HID, remaining private graphics ABI, networking/audio/charging/thermal services."
+  ],
+  "scope": "Five current source/build/static-prelink/CPU/container stages. Full read-only transport/root-window publisher and combined opt-in startup are compiled, linked with exact iPhone originals and packaged locally. No phone, physical storage, authenticated root or working iOS result."
+}

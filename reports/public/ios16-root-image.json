@@ -1,0 +1,199 @@
+{
+  "result": "IOS16_ORIGINAL_READ_ONLY_ROOT_IMAGE_AND_PRODUCTION_CONSUMERS_PASS",
+  "builder_sha256": "d99af040650c8a67671ecd34ee16a036512114340ba83a6e0149ce7f2a41fa88",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "source_revision": "f5017376415268fd39dcf0b3fd68a94661cee078",
+  "volume_report_sha256": "3d9eb5dc4f8e4c1cbcb588d7b140fb185dd45d932421334c6e5b6d02657fc7e7",
+  "source_sha256": {
+    "scripts/prepare_root_image.py": "d99af040650c8a67671ecd34ee16a036512114340ba83a6e0149ce7f2a41fa88",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "tests/DodgeRootImageTest.cpp": "6d0e650b1402520cd56e0f360d1bf93a7589501b76ac301d958565628516725d",
+    "targets/iphone-x-ios16.toml": "4a33855a262ee3fe5e22d56f410e230b16ffc0c6f116f1b4aca07302855b606f",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/RootLayout.h": "5f8f46f818d089de03bbfd8cbd82ec203bb7eced20b03368e7d783c379868750",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/RootWindowRead.h": "e8d98556290cf540204227f863b043eb09996bb87d38e1d6894b83b351c8d112",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/RootPublication.h": "3c289b44f4d7c082b3f214eda2d4225f53860dd007f4a89402bdc910f268aeda",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/RootDiagnostics.h": "f9a8b13aba2b0a7b8ea43298689647a1261e08ff40cfad02ef09db3d41754c48",
+    "sources/UniXNU/scripts/unixnu/userdata.py": "637b1e62e05f3632fae6eab14024147811fcef3d2778acc571374d71ed0aa96a"
+  },
+  "image": "build/ios16-root-image/iphone-root.img",
+  "image_bytes": 8380219392,
+  "image_sha256": "2c2aca3feb7585c91b80ec6b50cc1888ac9315f4c77d981566de5dd902eabefa",
+  "manifest_sha256": "6d7ac29abd2a32e8a378728c27e6ddf9884efe5f2e5c876f45b4d17a248f40b9",
+  "format": "SHNGROOT",
+  "format_version": 1,
+  "selected_partition_name": "unixnu",
+  "physical_lba_bytes": 4096,
+  "logical_block_bytes": 512,
+  "window_alignment_bytes": 1048576,
+  "windows": [
+    {
+      "name": "OS",
+      "path": "build/ios16-volumes/OS.raw",
+      "offset": 1048576,
+      "bytes": 5635081728,
+      "sha256": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906"
+    },
+    {
+      "name": "SystemOS",
+      "path": "build/ios16-volumes/SystemOS.raw",
+      "offset": 5637144576,
+      "bytes": 2743074816,
+      "sha256": "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849"
+    }
+  ],
+  "all_window_bytes_read_back": true,
+  "host_consumer": "build/ios16-root-image/root-image-host",
+  "host_consumer_sha256": "47058747b542e238784b52f7b035e7bdf43fe5b931c6d7671a765f1af6af2074",
+  "host_compiler_sha256": "31925065812631303cf9af9a30b2f56427d2102667a87a9fb4ba03a306104589",
+  "host_cases": [
+    {
+      "case": "actual-image-production-manifest",
+      "result": "PASS"
+    },
+    {
+      "case": "actual-image-SystemOS-before-OS",
+      "result": "PASS"
+    },
+    {
+      "case": "OS-production-window-read-1",
+      "result": "PASS"
+    },
+    {
+      "case": "OS-production-window-read-2",
+      "result": "PASS"
+    },
+    {
+      "case": "OS-production-window-read-3",
+      "result": "PASS"
+    },
+    {
+      "case": "OS-production-window-read-4",
+      "result": "PASS"
+    },
+    {
+      "case": "OS-production-window-read-5",
+      "result": "PASS"
+    },
+    {
+      "case": "OS-production-window-read-6",
+      "result": "PASS"
+    },
+    {
+      "case": "OS-production-window-read-7",
+      "result": "PASS"
+    },
+    {
+      "case": "OS-EOF-refused-before-I/O",
+      "result": "PASS"
+    },
+    {
+      "case": "OS-read-failure-unlocks",
+      "result": "PASS"
+    },
+    {
+      "case": "OS-short-copy-refused",
+      "result": "PASS"
+    },
+    {
+      "case": "SystemOS-production-window-read-1",
+      "result": "PASS"
+    },
+    {
+      "case": "SystemOS-production-window-read-2",
+      "result": "PASS"
+    },
+    {
+      "case": "SystemOS-production-window-read-3",
+      "result": "PASS"
+    },
+    {
+      "case": "SystemOS-production-window-read-4",
+      "result": "PASS"
+    },
+    {
+      "case": "SystemOS-production-window-read-5",
+      "result": "PASS"
+    },
+    {
+      "case": "SystemOS-production-window-read-6",
+      "result": "PASS"
+    },
+    {
+      "case": "SystemOS-production-window-read-7",
+      "result": "PASS"
+    },
+    {
+      "case": "SystemOS-EOF-refused-before-I/O",
+      "result": "PASS"
+    },
+    {
+      "case": "SystemOS-read-failure-unlocks",
+      "result": "PASS"
+    },
+    {
+      "case": "SystemOS-short-copy-refused",
+      "result": "PASS"
+    },
+    {
+      "case": "manifest-digest-refused",
+      "result": "PASS"
+    },
+    {
+      "case": "manifest-image-size-overflow-refused",
+      "result": "PASS"
+    },
+    {
+      "case": "manifest-window-overflow-refused",
+      "result": "PASS"
+    },
+    {
+      "case": "manifest-window-overlap-refused",
+      "result": "PASS"
+    },
+    {
+      "case": "manifest-duplicate-name-refused",
+      "result": "PASS"
+    },
+    {
+      "case": "manifest-wrong-logical-block-refused",
+      "result": "PASS"
+    },
+    {
+      "case": "manifest-writable-window-refused",
+      "result": "PASS"
+    },
+    {
+      "case": "manifest-v2-not-supported-refused",
+      "result": "PASS"
+    },
+    {
+      "case": "no-userdata-fallback",
+      "result": "PASS"
+    },
+    {
+      "case": "short-LUN-refused",
+      "result": "PASS"
+    }
+  ],
+  "host_case_count": 32,
+  "cpu_cases": "build/ios16-root-image/consumer-cases.json",
+  "cpu_cases_sha256": "a437247535201fc2155fd6e9fa2a4005047dc7cd9a53b0b883a383891103af86",
+  "consumer_production_sources_unmodified": true,
+  "gpt_for_host_tests": "synthetic in-memory only, not captured hardware geometry",
+  "image_contains_gpt": false,
+  "original_os_windows_included": true,
+  "writable_data_included": false,
+  "root_authentication_qualified": false,
+  "owner_root_trust_generated": false,
+  "apple_signature_authentication_verified": false,
+  "block_devices_opened": false,
+  "filesystem_mounted": false,
+  "phone_operations": "none",
+  "physical_partition_modified": false,
+  "default_boot_image_replaced": false,
+  "runtime_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Local regular-file payload of the exact original iPhone OS/SystemOS raw windows, not a phone disk image or GPT. Every window byte is hashed back. Actual production manifest, publication ordering and 512-byte/4K window-read algorithms execute on the assembled file with synthetic GPT/transport/registry peers and sanitizer checks. No physical partition geometry, APFS authenticated root, writable Data, kernel runtime or iOS boot result."
+}

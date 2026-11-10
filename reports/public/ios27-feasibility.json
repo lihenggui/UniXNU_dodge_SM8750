@@ -1,0 +1,55 @@
+{
+  "result": "RESEARCH_PATH_EXISTS_NOT_QUALIFIED",
+  "requested_family": "iPhone iOS",
+  "candidate_version": "27",
+  "current_default_profile": "ios-16.7.16-20H392",
+  "phone_operations": "none",
+  "upstream_reference": {
+    "repository": "https://github.com/UniXNU/UniXNU",
+    "revision": "3fa5ff5f409398c0555a9561d6437ce5d4c3b3b7",
+    "profile": "sources/UniXNU/profiles/os/ipados-27.0.1-24A446/profile.toml",
+    "profile_sha256": "772f862278140f8d96242a56b3a0c5a398b7afec8a9f293c606280496171c775",
+    "family": "iPadOS",
+    "architecture": "arm64e",
+    "source_version": "12377.121.6",
+    "source_revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+    "native_source_darwin": "25.5.0",
+    "prelink_extra_args": [
+      "--fileset-reference",
+      "build/xnu/fileset-reference/mach.release.bcm2837.unstripped.noctf",
+      "--allow-missing"
+    ]
+  },
+  "primary_references": [
+    "https://unixnu.com/porting/arm64e",
+    "https://unixnu.com/xnu/source-and-patches",
+    "https://github.com/apple-oss-distributions/xnu/tags",
+    "https://unixnu.com/devices/oneplus13t"
+  ],
+  "oneplus13t": {
+    "reference_revision": "ad022a2a3a2e0c71c340361392d30d424c66b4d2",
+    "configured_profile": "ipados-17.7.11-21H461",
+    "configured_architecture": "arm64",
+    "comparison": "reports/oneplus13t-reference.json",
+    "is_iphone_ios27_evidence": false
+  },
+  "reusable_candidates": [
+    "UEFI and board memory provenance",
+    "SM8750 CPU topology, GIC, timers and controller operations",
+    "S3910 TouchComm and GENI SPI transport sources, after separate power qualification",
+    "Fileset matcher/emitter and arm64e source patches"
+  ],
+  "required_unfinished": [
+    "Pin an actual iPhone iOS 27 IPSW, BuildManifest, kernelcache, ADT and root images",
+    "Prove FEAT_PAuth address/generic keys on every enabled CPU and EL1 access to all key registers",
+    "Prove PAC/AUT execution at EL0 and EL1 under the actual firmware/hypervisor",
+    "Rebase the SM8750 platform and source archives for the arm64e kernel",
+    "Qualify chained fixups, stripped imports, original component layouts and security/crypto lifecycle",
+    "Prepare matching iPhone graphics, HID, storage and root authentication paths"
+  ],
+  "iphone27_inputs_pinned": false,
+  "el1_pac_qualified": false,
+  "iphone27_kernel_built": false,
+  "iphone27_ready_to_boot": false,
+  "scope": "Offline feasibility assessment. A maintained iPadOS profile and related-device observations do not establish an iPhone iOS 27 port on OnePlus 13."
+}

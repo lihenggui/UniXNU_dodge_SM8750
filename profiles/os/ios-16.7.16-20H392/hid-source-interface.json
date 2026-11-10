@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_class_contract_sha256": "933cbe4a2cdf641bc88325e70ed8c53f2555744130fa3b97d486eade9d7ea535",
+  "instance_bytes": 208,
+  "vtable_entries": 207,
+  "typed_additional_slots": [
+    171,
+    173,
+    180,
+    181
+  ],
+  "source_parent_calls_allowed_slots": [
+    14,
+    86,
+    87,
+    181
+  ],
+  "opaque_additional_slots": [
+    168,
+    169,
+    170,
+    172,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206
+  ],
+  "full_private_prototypes_qualified": false,
+  "opaque_source_calls_allowed": false,
+  "source_does_not_write_original_private_fields": true,
+  "blocks": {
+    "report_wrapper": {
+      "address": "0xfffffff00572a730",
+      "bytes": 156,
+      "sha256": "295aee5f38eaff869ee6c0b55a0db0f7486665c0819ad411f071ec996b6d395f"
+    },
+    "handle_start_and_descriptor_callers": {
+      "address": "0xfffffff005727190",
+      "bytes": 56,
+      "sha256": "52f2edba203b4c88808dbaa2c4598905cad8f9efa69e9d93cbff26a8a02ca31f"
+    },
+    "transport_property_caller": {
+      "address": "0xfffffff005728ea4",
+      "bytes": 48,
+      "sha256": "c0ba2a368573956f5f54cdda603786eee7ad952a2c6b92abf911a856f29ac313"
+    },
+    "product_property_caller": {
+      "address": "0xfffffff00572903c",
+      "bytes": 48,
+      "sha256": "01e28b16ee05ae3e14debf5f8e0d1d9c0a363338532d608dbc0f5c0c10cc989e"
+    }
+  }
+}

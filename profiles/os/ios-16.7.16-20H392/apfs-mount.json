@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_program_path": "/System/Library/Filesystems/apfs.fs/mount_apfs",
+  "original_program_sha256": "ccac6fa5b10c74ac9458212044bdc4115831c7a01be04d61d04e86bdec52dc27",
+  "original_program_bytes": 72960,
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "original_apfs_version": "2142.140.9",
+  "program_entry": "0x100001a34",
+  "mount_stub": "0x100003654",
+  "mount_call": "0x1000025dc",
+  "program_stubs": 67,
+  "program_pointer_imports": 76,
+  "user_buffer_bytes": 336,
+  "user_semantic_extent_bytes": 332,
+  "vfs_device_pointer_bytes": 8,
+  "apfs_copyin_bytes_after_vfs_pointer": 324,
+  "apfs_copyin_call": "0xfffffff0061d1348",
+  "vfs_registration": "0xfffffff006173604",
+  "vfsops": "0xfffffff006eb1540",
+  "apfs_mount_entry": "0xfffffff0061d1258",
+  "copyin_stub": "0xfffffff00625e700",
+  "statfs_stub": "0xfffffff00625f354",
+  "normal_after_copyin": "0xfffffff0061d1394",
+  "error_after_copyin": "0xfffffff0061d1354",
+  "offsets": {
+    "fspec": 0,
+    "flags": 8,
+    "mode": 16,
+    "volume_word": 24,
+    "snapshot_name": 28,
+    "owner_uid": 324,
+    "owner_gid": 328,
+    "tail_padding": 332
+  },
+  "bounded_ordinary_volume_mode": 1,
+  "ordinary_owner_policy": "mountpoint uid/gid, or 99 with MNT_UNKNOWNPERMISSIONS",
+  "kernel_blocks": {
+    "vfs_registration": {
+      "address": "0xfffffff00617355c",
+      "bytes": 172,
+      "sha256": "297d22450d47919cf40833763c1557b83d595b4da620301901eaa5e097a654f3"
+    },
+    "mount_to_copyin": {
+      "address": "0xfffffff0061d1258",
+      "bytes": 260,
+      "sha256": "f6dea4835c4d8b1742d8b574ec6a5145eeebc5cf9992bee8749d4b85277526b6"
+    },
+    "copyin_to_normal_path": {
+      "address": "0xfffffff0061d133c",
+      "bytes": 88,
+      "sha256": "697f4fc07ec572d879f4cb6c88999a5b55fb9c2d9221f63f2b850744daf43b13"
+    }
+  },
+  "full_apfs_mount_qualified": false,
+  "hardware_tested": false
+}

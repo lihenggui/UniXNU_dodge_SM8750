@@ -1,0 +1,155 @@
+{
+  "result": "REFERENCE_COMPARISON_PASS",
+  "reference_revision": "ad022a2a3a2e0c71c340361392d30d424c66b4d2",
+  "reference_url": "https://unixnu.com/devices/oneplus13t",
+  "reference_os_profile": "ipados-17.7.11-21H461",
+  "reference_file_sha256": {
+    "AGENTS.md": "6d5325da47443c01bead3a921f0488b2b3ccd5b3e906d09e213cf27312939422",
+    "README.md": "53288420dc23cd8331b9a0c05e7231643b3ee669bc6a8ed88ceb6e573efba6c9",
+    "board.toml": "54c4d4eb9eadac3f458b911ba5bf300e1c011807c55503de74d41636d3f1adbd",
+    "porting.toml": "c786cdd7576e985becf5a7b74dd480b8ee8c437480ca481617d32a916029a7c5",
+    "dts/oneplus13t.dts": "d08b510a490f4e5677e02cda07dd6181eae621c19508d513b14a9f2660e0667a",
+    "package/PaganiPeripherals.h": "600527040f290d83038ca49ce2bc4f9f3c95ccf92f987685fa94c339142d3f84",
+    "scripts/test-peripherals.py": "59efcb8b378ed5cc4cea5b1dc46a8e4994d106d527402056d577b3fae76e3ff1"
+  },
+  "reference_reported_state": {
+    "configuration": "host-verified",
+    "firmware": "device-verified",
+    "cpu": "device-verified",
+    "memory": "device-verified",
+    "storage": "host-verified",
+    "display": "device-verified",
+    "input": "device-verified",
+    "gpu": "host-verified",
+    "network": "planned",
+    "audio": "planned",
+    "power": "host-verified",
+    "packaging": "device-verified",
+    "diagnostics": "device-verified"
+  },
+  "captured_target_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "shared_controller_facts": {
+    "touch_se": true,
+    "touch_wrapper": true,
+    "touch_smmu": true,
+    "touch_stream": true,
+    "touch_reset_gpio": true,
+    "touch_attn_gpio": true,
+    "touch_spi_limit": true,
+    "cpu_mpidrs": true,
+    "architectural_timer_hz": true,
+    "gic_registers": true,
+    "ufs_controller": true,
+    "gic_redistributor_stride": true,
+    "gpu_chip_id": true
+  },
+  "target_touch_inputs": {
+    "chip": "S3910",
+    "stock_protocol": "HBP",
+    "firmware_name": [
+      "AA545"
+    ],
+    "se_base": "0xa90000",
+    "se_bytes": 16384,
+    "wrapper_base": "0xac0000",
+    "smmu_base": "0x15000000",
+    "stream_id": "0xa3",
+    "max_spi_hz": 19000000,
+    "reset_gpio": 161,
+    "reset_flags": "0x1",
+    "attn_gpio": 162,
+    "attn_flags": "0x2008",
+    "pin_states": [
+      {
+        "pins": [
+          "gpio49"
+        ],
+        "function": [
+          "qup1_se4_l1"
+        ],
+        "drive_ma": 4
+      },
+      {
+        "pins": [
+          "gpio48"
+        ],
+        "function": [
+          "qup1_se4_l0"
+        ],
+        "drive_ma": 6
+      },
+      {
+        "pins": [
+          "gpio50"
+        ],
+        "function": [
+          "qup1_se4_l2"
+        ],
+        "drive_ma": 6
+      },
+      {
+        "pins": [
+          "gpio51"
+        ],
+        "function": [
+          "qup1_se4_l3"
+        ],
+        "drive_ma": 4
+      },
+      {
+        "pins": [
+          "gpio162"
+        ],
+        "function": [
+          "gpio"
+        ],
+        "drive_ma": 8
+      },
+      {
+        "pins": [
+          "gpio161"
+        ],
+        "function": [
+          "gpio"
+        ],
+        "drive_ma": 8
+      }
+    ],
+    "advertised_panel_coordinates": [
+      23040,
+      50688
+    ],
+    "vdd": {
+      "path": "/soc/rsc@16500000/drv@2/rpmh-regulator-ldob4/regulator-pm-humu-l4",
+      "name": "pm_humu_l4",
+      "min_uv": 1800000,
+      "max_uv": 1800000
+    },
+    "avdd_gpio": {
+      "controller": "/soc/qcom,spmi@c42d000/qcom,pm8550vs@9/pinctrl@8800",
+      "pin": 3,
+      "flags": "0x1"
+    }
+  },
+  "separate_board_policy": {
+    "touch_power": "Target declares pm_humu_l4 at 1.8 V and PM8550VS SID9 GPIO3 for AVDD; the 13T LDO16 3.1 V sequence is not selected.",
+    "display": "Target panel is AA569 / 1440x3168 from boot arguments; donor is AA594 with documented 1216x2640 GOP. Actual target GOP is unmeasured.",
+    "memory": "Target runtime DTB and UEFI map own reservations; donor high-RAM base and memory map are not imported.",
+    "storage": "Target GPT/LUN/window geometry must be derived separately; donor unixnu partition LBAs are not imported.",
+    "os_abi": "The reference binds iPadOS 17; iPhone iOS 16 and arm64e iOS 27 require separate binary interfaces."
+  },
+  "portable_peripheral_tests": {
+    "result": "PASS",
+    "log_sha256": "6e2a7add50bc4f87bcc3ebed614c6b801b8bf272dd0a67e47928f83814b6290c",
+    "component_revision": "f5017376415268fd39dcf0b3fd68a94661cee078",
+    "reference_board_wiring": true,
+    "checks": [
+      "PASS: SPI, TouchComm v1/v2, touchscreen identity, HID contacts/edge lifecycle, buttons, RPMh and timing",
+      "PASS: GeniSpi init, clock, mode, packing, PIO and SE DMA transfers (20 PIO lengths) against the register model"
+    ],
+    "scope": "Existing production protocol/register-model tests with reference wiring; no target MMIO, rails or iPhone HID execution."
+  },
+  "target_driver_selected": false,
+  "hardware_tested": false,
+  "scope": "Reusable source candidates and exact board differences. Donor device observations are not OnePlus 13 qualification."
+}

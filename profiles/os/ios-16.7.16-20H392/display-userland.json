@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "cache_uuid": "8f970452c9e33e88b114feb1864bc9e0",
+  "framework_path": "/System/Library/PrivateFrameworks/IOMobileFramebuffer.framework/IOMobileFramebuffer",
+  "framework_address": "0x1af222000",
+  "swap_begin": {
+    "name": "_kern_SwapBegin",
+    "address": "0x1af223708",
+    "bytes": 200,
+    "sha256": "f8c8ffa172fe2453f0572489eac0a2b56c8e88d7b97ed17c20c2c6fcd8aae450"
+  },
+  "set_layer": {
+    "name": "_kern_SwapSetLayer",
+    "address": "0x1af2238a4",
+    "bytes": 1456,
+    "sha256": "44d301117b0572ffa0dbd4343bd2fb056a26c7b17a0f6d1b8f024b433bb8e49b"
+  },
+  "get_display_size": {
+    "name": "_kern_GetDisplaySize",
+    "address": "0x1af2248a0",
+    "bytes": 180,
+    "sha256": "b7befe7d1c2c9dec61adc46d2b64ed7b81a32248d2c967e71d7d6e277a5a465a"
+  },
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "size_dispatch_row": {
+    "address": "0xfffffff006decc18",
+    "bytes": 24,
+    "sha256": "7301d80a7e09ad1547056137b16e67659b7cc3266640f509dfacbbdedb8c8e92"
+  },
+  "size_action": {
+    "address": "0xfffffff005bffb94",
+    "bytes": 116,
+    "sha256": "a008dae995d5e66359b896d416472b9410064aef633b403cbdb179ef466bcfa5"
+  },
+  "size_wrapper": {
+    "address": "0xfffffff005bfe0a0",
+    "bytes": 68,
+    "sha256": "d044b65814f6ffb441eefa29cb5807e95955f9e1e4d83262fa5f9161a1b91850"
+  },
+  "size_getter": {
+    "address": "0xfffffff005c247ac",
+    "bytes": 112,
+    "sha256": "9281b91dafd5c88bce502428114888d579b560dba4fc2b6ab501d5acb591e1c6"
+  },
+  "size_selector": 8,
+  "size_scalar_outputs": 2,
+  "size_display_word_offsets": [
+    5208,
+    5212
+  ],
+  "size_cache_offset": 1192,
+  "rectangle_helper": {
+    "name": "original-rectangle-normalization",
+    "address": "0x1af224a1c",
+    "bytes": 144,
+    "sha256": "eb615912f3620065129d987aa9e41890f2f69f3d14dece69e2dc1e060abdbd6b"
+  },
+  "connection_access_window_bytes": 2832,
+  "packet_offset": 24,
+  "packet_bytes": 1132,
+  "packet_id": 80,
+  "packet_surfaces": 84,
+  "packet_source_rectangles": 100,
+  "packet_destination_rectangles": 196,
+  "packet_requested_mask": 260,
+  "packet_initial_ready_mask": 264,
+  "packet_layer_word": 164,
+  "packet_raw_float_bits": 180,
+  "packet_transform_word": 276,
+  "default_layer_word": 1,
+  "default_raw_float_bits": 0,
+  "default_transform_word": 0,
+  "geometry_words_are_integers": true,
+  "scalar_fields_fully_named": false,
+  "iosurface_implementation_executed": false,
+  "full_display_userspace_executed": false
+}

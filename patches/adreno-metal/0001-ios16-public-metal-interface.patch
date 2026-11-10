@@ -1,0 +1,62 @@
+--- a/NativeBridgeMetalFrontend.mm
++++ b/NativeBridgeMetalFrontend.mm
+@@ -923,7 +923,7 @@
+ }
+ static NSString *compileArguments(MTLCompileOptions *options) {
+  NSMutableArray<NSString *> *arguments=[NSMutableArray arrayWithObjects:@"--driver-mode=metal",@"-x",@"metal",nil];
+- const NSUInteger version=options && options.languageVersion?(NSUInteger)options.languageVersion:(NSUInteger)MTLLanguageVersion3_1;
++ const NSUInteger version=options && options.languageVersion?(NSUInteger)options.languageVersion:(NSUInteger)MTLLanguageVersion3_0;
+  const unsigned major=(unsigned)(version>>16),minor=(unsigned)(version&0xffff);
+  [arguments addObject:[NSString stringWithFormat:major>=3?@"-std=metal%u.%u":@"-std=ios-metal%u.%u",major,minor]];
+  const BOOL fast=options?((BOOL (*)(id,SEL))objc_msgSend)(options,sel_registerName("fastMathEnabled")):YES;
+@@ -3424,7 +3424,7 @@
+ - (MTLDataType)dataType {return MTLDataTypeTexture;}
+ - (MTLDataType)textureDataType {return (MTLDataType)reflectionValue(_json,@"dataType");}
+ - (MTLTextureType)textureType {return (MTLTextureType)reflectionValue(_json,@"textureType");}
+-- (MTLBindingAccess)access {return (MTLBindingAccess)reflectionValue(_json,@"access");}
++- (MTLArgumentAccess)access {return (MTLArgumentAccess)reflectionValue(_json,@"access");}
+ - (BOOL)isDepthTexture {return [_json[@"depth"] boolValue];}
+ @end
+ @interface NBPointerType : MTLPointerType
+@@ -3433,7 +3433,7 @@
+ @implementation NBPointerType
+ - (MTLDataType)dataType {return MTLDataTypePointer;}
+ - (MTLDataType)elementType {return (MTLDataType)reflectionValue(_json,@"elementType");}
+-- (MTLBindingAccess)access {return (MTLBindingAccess)reflectionValue(_json,@"access");}
++- (MTLArgumentAccess)access {return (MTLArgumentAccess)reflectionValue(_json,@"access");}
+ - (NSUInteger)alignment {return reflectionValue(_json,@"alignment");}
+ - (NSUInteger)dataSize {return reflectionValue(_json,@"size");}
+ - (BOOL)elementIsArgumentBuffer {return [_json[@"argumentBuffer"] boolValue];}
+@@ -3505,7 +3505,7 @@
+ @implementation NBArgument
+ - (NSString *)name {return _json[@"name"];}
+ - (MTLArgumentType)type {return (MTLArgumentType)reflectionValue(_json,@"type");}
+-- (MTLBindingAccess)access {return (MTLBindingAccess)reflectionValue(_json,@"access");}
++- (MTLArgumentAccess)access {return (MTLArgumentAccess)reflectionValue(_json,@"access");}
+ - (NSUInteger)index {return reflectionValue(_json,@"index");}
+ - (BOOL)isActive {return [_json[@"used"] boolValue];}
+ - (BOOL)isUsed {return self.isActive;}
+--- a/bridge/FrontendChecks.h
++++ b/bridge/FrontendChecks.h
+@@ -14,6 +14,12 @@
+ #include <cstdio>
+ #include <cstring>
+ #include <vector>
++
++// The bridge implements this own wait method. iOS 16's Metal protocol does
++// not declare it; keep its exact bridge signature explicit for this check.
++@protocol NmbFrontendEventWait
++- (BOOL)waitUntilSignaledValue:(uint64_t)value timeoutMS:(uint64_t)milliseconds;
++@end
+ 
+ namespace frontendchecks {
+ struct Report {
+@@ -379,7 +385,7 @@
+                 }
+                 CHECK(!dispatch_semaphore_wait(notified, dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC)) && heard >= 3,
+                       "listener notification %llu", (unsigned long long)heard);
+-                CHECK([event waitUntilSignaledValue:3 timeoutMS:10], "waitUntilSignaledValue");
++                CHECK([(id<NmbFrontendEventWait>)event waitUntilSignaledValue:3 timeoutMS:10], "waitUntilSignaledValue");
+             }
+         }
+         step(r, 0x660b);

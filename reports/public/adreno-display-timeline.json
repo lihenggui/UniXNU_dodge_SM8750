@@ -1,0 +1,322 @@
+{
+  "result": "A830_COHERENT_DISPLAY_TIMELINE_NATIVE_CPU_PASS",
+  "builder_sha256": "c13e1f20a5a08c5e5f8ee54888b5f4448a2854689a7ceb4f76492526e079b584",
+  "backend_report_sha256": "5376bc837c313104834f6dddcb8cc00fc414fab1cbfac3baedb922f12709b2e2",
+  "link_report_sha256": "1acf07872954bf3b5ba58f6d2ed6493a809f134db7f022c48841c6b8a06c5499",
+  "native_kernel": "build/cph2653-gpu-link-probe/mach.gpu",
+  "native_kernel_sha256": "ec41460411b00cd6f4a296c709277edd648f7c7245200788250c881ffb9ad997",
+  "source_sha256": {
+    "scripts/check_adreno_display_timeline.py": "c13e1f20a5a08c5e5f8ee54888b5f4448a2854689a7ceb4f76492526e079b584",
+    "scripts/adreno_display_timeline.py": "04c637d98f1f1516511284002965fc5a18b400806946f5b2f38d1fcb20ad5420",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "drivers/DodgeDisplay/DodgeAdrenoTimeline.h": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61"
+  },
+  "timeline_overlay": {
+    "patch": {
+      "path": "patches/oneplus13/0005-adreno-locked-display-timeline.patch",
+      "sha256": "a57b8090e56cd4c5e2174dbf14f1a6a42038ac0616966b6ec6014548b124b5c0",
+      "header": "drivers/DodgeDisplay/DodgeAdrenoTimeline.h",
+      "header_sha256": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61",
+      "source_revision": "1baf6d3a1d0f133d284f8b8844cc98bf5aff1bbe"
+    },
+    "stage": ".cache/gpu-work/kernel-display-timeline/backend",
+    "stager_sha256": "04c637d98f1f1516511284002965fc5a18b400806946f5b2f38d1fcb20ad5420",
+    "base_publish_sha256": "9bfb17ce6af8db5ba747c76e91d9b8af887d47494b9dfd32b382afec7c3ebaf5",
+    "patched_source_sha256": {
+      "NativeAdrenoPublish.cpp": "5850cd2c824c957726c47b5cd855286cd976e80ecdb6a33869ef161a1d7b3b93",
+      "DodgeAdrenoTimeline.h": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61"
+    }
+  },
+  "native_layouts": {
+    "published": {
+      "bytes": 160,
+      "fields": {
+        "published": 0,
+        "submit": 16,
+        "ring": 24,
+        "lock": 72
+      }
+    },
+    "ring": {
+      "bytes": 200,
+      "fields": {
+        "seqno_": 128,
+        "poisoned_": 141
+      }
+    },
+    "submit": {
+      "bytes": 3672,
+      "fields": {
+        "ring_count_": 112,
+        "preempt_on_": 312
+      }
+    },
+    "snapshot": {
+      "bytes": 16,
+      "fields": {
+        "epoch": 0,
+        "submitted": 8,
+        "retired": 12
+      }
+    }
+  },
+  "native_layout_probe": {
+    "object": "build/cph2653-adreno-display-timeline/publisher-layout.o",
+    "object_sha256": "912e80b9937d11e2cffca326fd25e045ea0f06bb5ff8fc66289a54f033e3a4c4",
+    "production_object_sha256": "912e80b9937d11e2cffca326fd25e045ea0f06bb5ff8fc66289a54f033e3a4c4",
+    "compiler_layout_log": "build/cph2653-adreno-display-timeline/compiler-layouts.log",
+    "compiler_layout_log_sha256": "3c0b920929d32137c627f8effa074c6faa5ee78a178c10c605da7319ba310656",
+    "compile_record_sha256": "5d69cc462e72221b6b1eb7edf54a01a8c490d8cc219f8151bb6350b63f0f1807",
+    "production_instruction_bytes_equal": true
+  },
+  "trace": {
+    "published_state": "0xfffffff007a9f908",
+    "recovery_counter": "0xfffffff007b584c4",
+    "snapshot_entry": "0xfffffff007a23634",
+    "epoch_helper": "0xfffffff007a24198",
+    "epoch_helper_sha256": "60a86ac3c2139afad269d10f57fb20f06f6ac5548b8aa038e447e7180cfeb53e",
+    "native_recovery_note_call": "0xfffffff007a23e08",
+    "native_recover_call": "0xfffffff007a23e74"
+  },
+  "cases": [
+    {
+      "case": "pending-fence-is-a-valid-snapshot",
+      "result": "PASS",
+      "snapshot_available": true,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 1,
+      "writes": 3,
+      "instructions": 96
+    },
+    {
+      "case": "completed-fence",
+      "result": "PASS",
+      "snapshot_available": true,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 1,
+      "writes": 3,
+      "instructions": 96
+    },
+    {
+      "case": "empty-ring",
+      "result": "PASS",
+      "snapshot_available": true,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 1,
+      "writes": 3,
+      "instructions": 96
+    },
+    {
+      "case": "new-recovery-epoch-same-fence",
+      "result": "PASS",
+      "snapshot_available": true,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 1,
+      "writes": 3,
+      "instructions": 96
+    },
+    {
+      "case": "high-32-bit-fences",
+      "result": "PASS",
+      "snapshot_available": true,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 1,
+      "writes": 3,
+      "instructions": 96
+    },
+    {
+      "case": "single-ring-preempt-flag-without-second-ring",
+      "result": "PASS",
+      "snapshot_available": true,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 1,
+      "writes": 3,
+      "instructions": 96
+    },
+    {
+      "case": "unpublished",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 0,
+      "unlocks": 0,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 18
+    },
+    {
+      "case": "no-lock",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 0,
+      "unlocks": 0,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 20
+    },
+    {
+      "case": "busy-lock",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 1,
+      "unlocks": 0,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 24
+    },
+    {
+      "case": "no-ring",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 38
+    },
+    {
+      "case": "no-submit",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 40
+    },
+    {
+      "case": "poisoned-ring",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 43
+    },
+    {
+      "case": "active-two-ring-preemption",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 51
+    },
+    {
+      "case": "epoch-saturated",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 51
+    },
+    {
+      "case": "cache-fence-read-failed",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 1,
+      "writes": 0,
+      "instructions": 83
+    },
+    {
+      "case": "retired-beyond-submitted",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 1,
+      "unlocks": 1,
+      "fences": 1,
+      "writes": 0,
+      "instructions": 92
+    },
+    {
+      "case": "null-output",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 0,
+      "unlocks": 0,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 2
+    },
+    {
+      "case": "unaligned-output",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 0,
+      "unlocks": 0,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 6
+    },
+    {
+      "case": "wrapping-output",
+      "result": "PASS",
+      "snapshot_available": false,
+      "held": false,
+      "tries": 0,
+      "unlocks": 0,
+      "fences": 0,
+      "writes": 0,
+      "instructions": 6
+    },
+    {
+      "case": "recovery-counter-0x0",
+      "result": "PASS",
+      "before": 0,
+      "after": 1
+    },
+    {
+      "case": "recovery-counter-0xfffffffe",
+      "result": "PASS",
+      "before": 4294967294,
+      "after": 4294967295
+    },
+    {
+      "case": "recovery-counter-0xffffffff",
+      "result": "PASS",
+      "before": 4294967295,
+      "after": 4294967295
+    }
+  ],
+  "case_count": 22,
+  "native_instruction_bytes_changed": false,
+  "nonblocking_mutex_and_fence_peers": true,
+  "failure_preserves_output": true,
+  "publisher_recovery_advances_saturating_epoch": true,
+  "multi_ring_preemption_refused": true,
+  "actual_cache_or_mmio_executed": false,
+  "original_iokit_mutex_executed": false,
+  "reset_hardware_qualified": false,
+  "external_reset_paths_qualified": false,
+  "hardware_tested": false,
+  "scope": "Actual linked native snapshot and recovery epoch helper execute over compiler-derived bounded Published/Ring/Submit records. Only native mutex entry points and the cache/fence read are explicit peers. Nineteen snapshot cases and three epoch counter cases cover busy/unpublished/poisoned/preempted/refused paths, unchanged output and recovery sequence reuse. Native recovery calls the saturating epoch helper before recover(). No GPU reset, MMIO, original mutex, cache ownership or full kernel executes."
+}

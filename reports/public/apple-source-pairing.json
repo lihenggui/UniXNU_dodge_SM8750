@@ -1,0 +1,43 @@
+{
+  "result": "PASS",
+  "source": "https://raw.githubusercontent.com/apple-oss-distributions/distribution-macOS/macos-135/release.json",
+  "source_sha256": "bce02865b191e957d2208c64a028de4311eed67e11b277178acfb91a6b71f2ee",
+  "scope": "Public source dependency pairing for XNU 8796.141.3; original OS binaries remain the pinned iPhone image. This is not binary ABI qualification.",
+  "sources": [
+    {
+      "name": "xnu",
+      "tag": "xnu-8796.141.3",
+      "revision": "1b191cb58250d0705d8a51287127505aa4bc0789"
+    },
+    {
+      "name": "libpthread",
+      "tag": "libpthread-514.100.2",
+      "revision": "a6c70ca0e544347a0377babf748f831577ec24f9"
+    },
+    {
+      "name": "libplatform",
+      "tag": "libplatform-292.120.1.0.1",
+      "revision": "c7b97b198e8329813fd9ca7fe122a82c2cffc109"
+    },
+    {
+      "name": "libdispatch",
+      "tag": "libdispatch-1415.140.2",
+      "revision": "cdb61e93e803d0093635f356753a9a30c09836db"
+    },
+    {
+      "name": "AvailabilityVersions",
+      "tag": "AvailabilityVersions-121",
+      "revision": "f3b52ca75ee842a8ac593bd7b03f9f4768c15755"
+    },
+    {
+      "name": "IOStorageFamily",
+      "tag": "IOStorageFamily-302.140.2",
+      "revision": "609cbbdf9fa8fd5eae973d9135c7d44b47e6502e"
+    },
+    {
+      "name": "Libc",
+      "tag": "Libc-1534.100.14",
+      "revision": "a61a5933206342413af76579500f313a045c1c33"
+    }
+  ]
+}

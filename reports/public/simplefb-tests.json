@@ -1,0 +1,32 @@
+{
+  "result": "PRODUCTION_SIMPLEFB_HOST_TEST_PASS",
+  "runner_sha256": "9459bf1e933707722bcfd59bcba44810fc826a881a3ac5704e4b95342cf8cebc",
+  "clean_patch_application": true,
+  "driver_sha256": "b21933b717999c49c66134be512f5096f8c1ada7cdd76e432d6a48f209d513f7",
+  "test_sha256": "237c58ef0faf1a514d933864ac3362ac0dad5a6f4820c7c52bf553b84ae1ea5b",
+  "video_helper_sha256": "8d25e85a166b272a1cbc0a5238288670e2707303f4cd97aef180ebf0c42246c4",
+  "patch": {
+    "path": "patches/mu-silicium/0004-check-simplefb-errors-and-bounds.patch",
+    "sha256": "fc55aa50380212d239da0e39bb2e9c611fa395e0eddabf4605051fbe0f119a7d",
+    "target": "Silicon/Silicium/SiliciumPkg/Drivers/SimpleFbDxe/SimpleFb.c",
+    "before_sha256": "926136fbf45aef45fda9a18c797e21cc361c2dbe34003176eadf9e98034a05d6",
+    "after_sha256": "b21933b717999c49c66134be512f5096f8c1ada7cdd76e432d6a48f209d513f7",
+    "scope": "Static framebuffer region/geometry bounds, GOP mode output and allocation/registration failure propagation. No scanout programming or runtime geometry discovery."
+  },
+  "output": "PASS: 32 production SimpleFb/boot-video cases; software services, no framebuffer access",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "configured_geometry": {
+    "Width": 1440,
+    "Height": 3168,
+    "ColorDepth": 32
+  },
+  "configured_geometry_source_sha256": "d23d0b2024855739ea483bac2ac903e0a613d325e51077e235ec973706076d64",
+  "real_edk2_types": true,
+  "software_boot_services": true,
+  "framebuffer_accessed": false,
+  "runtime_scanout_geometry_qualified": false,
+  "phone_operations": "none"
+}

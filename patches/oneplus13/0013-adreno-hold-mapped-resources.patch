@@ -1,0 +1,264 @@
+--- a/NativeAdrenoVm.h
++++ b/NativeAdrenoVm.h
+@@ -111,6 +111,18 @@
+         unsigned permissions,unsigned writeback,unsigned shareability,uint64_t *handle);
+     IOReturn unmap(uint64_t handle);
+     IOReturn holdJob(uint64_t handle);
++    // No resource-use list exists in this ABI: IB handles identify commands,
++    // not their indirect textures/targets. Hold the entire current mapping set.
++    // Serialize under the driver gate; handles never wrap or get reused.
++    IOReturn holdMapped(uint64_t *before,size_t *count);
++    // acquire_writes=true requires observed completion or a real successful
++    // quiescing reset. false is ONLY for a job never published to the device.
++    // Check and acquire the whole captured set before dropping any references.
++    IOReturn retireMapped(uint64_t before,size_t expected,bool acquire_writes);
++    bool hasMappedJobs() const {
++        for(size_t i=0;i<high_;++i)if(mappings_[i].memory && mappings_[i].jobs)return true;
++        return false;
++    }
+     /* TLBIALL for the context bank plus TLBSYNC: drops every cached translation of the bank whatever its ASID. Unmap already
+      * synchronizes by ASID; this is the stronger form the submit path uses before each submission (int-070: on sheng the CP read
+      * zeros from an IB whose table entry and DRAM were both correct, after the address had been mapped to other pages before). */
+--- a/NativeAdrenoVm.cpp
++++ b/NativeAdrenoVm.cpp
+@@ -298,6 +298,9 @@
+ {
+     if(!handle)return kIOReturnBadArgument;*handle=0;result_={};
+     if(!attached_ || poisoned_)return kIOReturnNotReady;
++    // Commands may name IOVAs that are not mapped yet. Do not make new
++    // pages visible while any job can still access this VM's address space.
++    if(hasMappedJobs())return kIOReturnBusy;
+     PhaseClock clock;
+     const unsigned cls=aliasClass(permissions,writeback,shareability)&15;
+     /* Room for the new spans' table transaction and their alias index. */
+@@ -621,3 +624,5 @@
+     IOReturn status=record->memory->retireAfterQuiescence();if(status)return status;
+     --record->jobs;return kIOReturnSuccess;
+ }
++
++#include "DodgeMappedLease.inc"
+--- a/NativeAdrenoSubmit.h
++++ b/NativeAdrenoSubmit.h
+@@ -35,7 +35,7 @@
+     size_t references_held,references_retired,peak_jobs;
+ };
+ /* Kernel-side execbuf: turns validated indirect buffers into one ring
+- * submission and owns a device reference per distinct buffer until the
++ * submission and owns a reference per current VM mapping until the
+  * timestamp fence is actually observed. This is not a userspace ABI and not a
+  * scheduler: as many jobs are outstanding as the ring has room for (a full
+  * ring answers kIOReturnBusy, as msm waits for ring space), callers serialize
+@@ -63,7 +63,8 @@
+         uint64_t handles[NativeAdrenoSubmitMaxBuffers]{};
+         uint64_t queue=0;
+         bool active=false;
+-        uint64_t vm_next=0;   /* NativeAdrenoVm::nextHandle() at submission: a mapping with a handle from it on came later */
++        uint64_t vm_next=0;   /* Exclusive handle boundary of the held mapping set. */
++        size_t mapped_count=0;       /* Includes resources that are absent from the IB list. */
+         NativeAdrenoVm *vm=nullptr;   /* the GPU address space (process page table) the job's buffers belong to */
+         uint32_t context=0;           /* the ring context it ran in (NativeAdrenoRing::useContext) */
+         uint64_t submit_us=0;         /* the clock when the write pointer moved (0: no clock), and the GPU level then (native_gpu_dcvs) */
+--- a/NativeAdrenoSubmit.cpp
++++ b/NativeAdrenoSubmit.cpp
+@@ -187,15 +187,12 @@
+     const int32_t p=next_priority_;
+     return p==2 || p==3 || (preempt_setup_.mode>=2 && p==1)?1:0;
+ }
+-/* Whether `handles` shares no buffer with any job outstanding on `index`: the conservative test that lets a queued job overtake the
+- * running ring. A job writes what it names (the driver cannot see its binds), so any sharing keeps the order. */
+-bool NativeAdrenoSubmit::ringDisjoint(unsigned index,const uint64_t *handles,size_t count) const
+-{
+-    for(const auto &job:jobs_) {
+-        if(!job.active || job.ring!=index)continue;
+-        for(size_t i=0;i<count;++i)
+-            for(size_t j=0;j<job.count;++j)if(handles[i]==job.handles[j])return false;
+-    }
++/* IB handles do not prove disjoint resource use, even across VMs (imports
++ * may alias physical pages). Without a resource-use ABI do not overtake any
++ * outstanding job on the other ring. A830 remains a single-ring target. */
++bool NativeAdrenoSubmit::ringDisjoint(unsigned index,const uint64_t *,size_t) const
++{
++    for(const auto &job:jobs_)if(job.active && job.ring==index)return false;
+     return true;
+ }
+ const NativeAdrenoSubmit::Job *NativeAdrenoSubmit::pendingOn(unsigned index)
+@@ -307,12 +304,9 @@
+ {
+     IOReturn status=kIOReturnSuccess;
+     NativeAdrenoVm *vm=job.vm?job.vm:vm_;
+-    for(size_t i=0;i<job.count;++i) {
+-        IOReturn retired=vm->retireJobAfterCompletion(job.handles[i]);
+-        if(retired)status=retired;else ++stats_.references_retired;
+-    }
++    status=vm->retireMapped(job.vm_next,job.mapped_count,true);
+     if(status)return poison();
+-    if(vm->acquireImported())return poison();
++    stats_.references_retired+=job.mapped_count;
+     {
+         uint64_t start=0,end=0;
+         NativeAdrenoRing *r=ringOfFence(job.fence);
+@@ -395,14 +389,24 @@
+     if(swept)return swept;
+     Job *job=free();
+     if(!job)return kIOReturnNoMemory;
+-    for(size_t i=0;i<handle_count;++i) {
+-        IOReturn status=vm_->holdJob(handles[i]);
+-        if(status) {
+-            while(i) {vm_->retireJobAfterCompletion(handles[--i]);++stats_.references_retired;}
+-            return status;
+-        }
+-        ++stats_.references_held;
+-    }
++    uint64_t mapped_before=0;size_t mapped_count=0;
++    IOReturn held=vm_->holdMapped(&mapped_before,&mapped_count);
++    if(held)return held;
++    stats_.references_held+=mapped_count;
++    // Keep the entire lease on an uncertain commit or a failed rollback.
++    // A zero fence is intentionally unretirable until independent recovery.
++    auto keepUncertain=[&]() -> IOReturn {
++        *job=Job{};++stats_.poisoned_jobs;
++        for(size_t i=0;i<handle_count;++i)job->handles[i]=handles[i];
++        job->count=handle_count;job->queue=queue;job->active=true;
++        job->vm_next=mapped_before;job->mapped_count=mapped_count;job->vm=vm;
++        return poison();
++    };
++    auto cancelUnpublished=[&]() -> IOReturn {
++        if(vm_->retireMapped(mapped_before,mapped_count,false))return keepUncertain();
++        stats_.references_retired+=mapped_count;
++        return kIOReturnSuccess;
++    };
+     uint32_t value=0;
+     /* int-070: the first IB word as the kernel's cacheable alias and DRAM see it before any maintenance, then DRAM after the CPU
+      * caches over every mapped BO are cleaned and invalidated. The board shows the last submission's record on a stall. */
+@@ -467,8 +471,8 @@
+      * its own pages before it returns, and the tables above the leaves never change. The TLBIALL here emptied the GPU's TLB on every
+      * submission (10944 in i568), so each frame began with page walks. A stalled fence still invalidates (below). */
+     if(status) {
+-        for(size_t i=0;i<handle_count;++i) {vm_->retireJobAfterCompletion(handles[i]);++stats_.references_retired;}
+-        return status;
++        const IOReturn rollback=cancelUnpublished();
++        return rollback?rollback:status;
+     }
+     /* The ring this job goes to (the first ring alone unless the board turned the switch on). */
+     const unsigned index=preemption()?ringForPriority():0;
+@@ -483,8 +487,8 @@
+     }
+     status=useVm(vm,clock);
+     if(status) {
+-        for(size_t i=0;i<handle_count;++i) {vm_->retireJobAfterCompletion(handles[i]);++stats_.references_retired;}
+-        return status;
++        const IOReturn rollback=cancelUnpublished();
++        return rollback?rollback:status;
+     }
+     /* One numbering for both rings: a fence tells its own ring, and a switch's arrival retires the jobs queued behind it. */
+     /* The board's earlier submissions (the CP init and the probes) numbered themselves on the first ring: the next number is above
+@@ -497,18 +501,15 @@
+         if(!value)fence_issued_=base;
+         /* A poisoned ring may already have consumed the WPTR write, so the
+          * referenced buffers cannot be retired here. */
+-        if(target->poisoned()) {
+-            *job=Job{};++stats_.poisoned_jobs;
+-            for(size_t i=0;i<handle_count;++i)job->handles[i]=handles[i];
+-            job->count=handle_count;job->queue=queue;job->active=true;job->vm_next=vm_->nextHandle();job->vm=vm;
+-            return poison();
+-        }
+-        while(handle_count) {vm_->retireJobAfterCompletion(handles[--handle_count]);++stats_.references_retired;}
++        if(target->poisoned())return keepUncertain();
++        const IOReturn rollback=cancelUnpublished();
++        if(rollback)return rollback;
+         /* No room in the ring yet: the caller waits for an earlier job and submits again. */
+         return status==kIOReturnNoResources?kIOReturnBusy:status;
+     }
+     for(size_t i=0;i<handle_count;++i)job->handles[i]=handles[i];
+-    job->count=handle_count;job->fence=value;job->queue=queue;job->active=true;job->vm_next=vm_->nextHandle();job->vm=vm;
++    job->count=handle_count;job->fence=value;job->queue=queue;job->active=true;
++    job->vm_next=mapped_before;job->mapped_count=mapped_count;job->vm=vm;
+     job->context=target->context();job->word_count=word_count;job->ring=uint8_t(index);
+     job->priority=int8_t(next_priority_);job->role=uint8_t(next_role_);
+     job->loaded=uint8_t(preemption()?preempt_.loaded():0);job->flight=preemption() && preempt_.inFlight()?1:0;
+@@ -760,6 +761,10 @@
+     if(!out)return kIOReturnBadArgument;*out={};
+     if(!attached_)return kIOReturnNotReady;
+     if(!restart)return kIOReturnUnsupported;
++    // No observed timestamp can retire an uncertain publication. In
++    // particular, zero must not compare as already completed. The
++    // existing replay reset protocol cannot resolve such a job.
++    for(const auto &job:jobs_)if(job.active && !job.fence)return poison();
+     /* The newest fence of either ring and what the CP last wrote on the ring the restart left it on (the first ring). */
+     const uint32_t last0=ring(0)->lastSubmitted(),last1=preemption()?ring(1)->lastSubmitted():0;
+     const uint32_t last=(int32_t)(last1-last0)>0?last1:last0;
+--- a/NativeAdrenoUserClient.h
++++ b/NativeAdrenoUserClient.h
+@@ -158,6 +158,7 @@
+     IOReturn attachDeviceInfo(const NativeAdrenoAbiDeviceInfo *);
+     IOReturn deviceInfo(NativeAdrenoAbiDeviceInfo *);
+     bool mapped(uint64_t handle);
++    bool mapMayWait(uint64_t handle); // Caller holds the driver gate.
+     /* Backing object of a live handle, for the IOKit wrapper's clientMemoryForType and for kernel self-tests;
+      * null for an unknown or unreleasable handle. The client keeps ownership. */
+     NativeAdrenoMemory *memoryOf(uint64_t handle);
+--- a/NativeAdrenoUserClient.cpp
++++ b/NativeAdrenoUserClient.cpp
+@@ -339,6 +339,9 @@
+     /* Only memory the GPU never writes is mapped coherent: sysmem passes written through write-back inner-shareable mappings stopped
+      * the GPU inside its end-of-pass cache clean (BR and BV idle at the clean events), while non-coherent mappings never did. */
+     const bool coherent=(entry->memory.imported() && native_adreno_io_coherent && !(permissions&2u)) || (!entry->memory.imported() && ownedCoherent());
++    // Reap actual completed jobs before the VM decides whether new
++    // mappings must wait. A pending job still refuses with Busy.
++    const IOReturn swept=submit_->retireCompleted();if(swept)return swept;
+     const IOReturn status=vm_->map(&entry->memory,0,request->iova,permissions,
+         coherent?1u:request->writeback,coherent?3u:request->shareability,&handle);
+     if(status)return status;
+@@ -781,3 +784,10 @@
+         (uint32_t)(request->timeout_ns/1000));
+     return submit_->wait((uint32_t)request->fence,clock,timeout_us);
+ }
++
++bool NativeAdrenoUserClient::mapMayWait(uint64_t handle)
++{
++    if(!open_ || !vm_)return false;
++    Entry *entry=find(handle);
++    return entry && !entry->unreleasable && !entry->mapped_state && vm_->hasMappedJobs();
++}
+--- a/NativeAdrenoPublish.cpp
++++ b/NativeAdrenoPublish.cpp
+@@ -21,6 +21,7 @@
+ #include <string.h>
+ #include <kern/thread.h>
+ #include "NativeAdrenoUserClient.h"
++#include "DodgeMapWait.inc"
+ #include "DodgeOptionalCalls.h"
+ #include "DodgeAdrenoTimeline.h"
+ #include "NativeAdrenoGpuContext.h"
+@@ -651,6 +652,31 @@
+         }
+         native_adreno_wait_outer[0]=native_adreno_wait_outer[0]+1;native_adreno_wait_outer[1]=native_adreno_wait_outer[1]+waited;
+         if(waited>native_adreno_wait_outer[3])native_adreno_wait_outer[3]=waited;
++    } else if(method==NativeAdrenoMethodBoMap && input && input_size==sizeof(NativeAdrenoAbiBoMap) &&
++              output && output_size==sizeof(NativeAdrenoAbiBoMapReply) && g.clock.now_us && g.clock.idle) {
++        // Turnip expects a completed map, rather than a new transient Busy
++        // result. Wait outside the publication lock, bounded by time and polls.
++        struct MapCall {
++            AGXDeviceUserClient *connection;NativeAdrenoAbiBoMap request;
++            void *output;size_t output_size;uint64_t *lockWait;
++        } call{connection,{},output,output_size,lockWait};
++        memcpy(&call.request,input,sizeof(call.request));
++        const DodgeMapWaitOps ops{&call,
++            [](void *opaque,bool *pending)->IOReturn {
++                MapCall &call=*static_cast<MapCall *>(opaque);AGXDeviceUserClient *connection=call.connection;
++                lockTimed(call.lockWait);
++                const IOReturn value=connection->live_?connection->core_->dispatch(NativeAdrenoMethodBoMap,
++                    &call.request,sizeof(call.request),call.output,call.output_size,&g.clock):kIOReturnNotReady;
++                *pending=value==kIOReturnBusy && connection->live_ && connection->core_->mapMayWait(call.request.handle);
++                if(!value && connection->live_ && !connection->kernel_)
++                    if(NativeAdrenoClientRecord *record=clientRecord(connection->name_))
++                        if(connection->core_->windowPeak()>>20>record->peak_mib)
++                            record->peak_mib=uint32_t(connection->core_->windowPeak()>>20);
++                unlockTimed(call.lockWait);return value;
++            },
++            [](void *)->uint64_t {return g.clock.now_us(g.clock.cookie);},
++            [](void *)->int {return g.clock.idle(g.clock.cookie);}};
++        status=dodge_adreno_wait_map(&ops,1000000,16384);
+     } else {
+         /* A BoAlloc's system pages are made and wired before the lock is taken (NativeAdrenoMemory::prepareSystem): i14aef633e spent 4.0 s
+          * in 5454 allocations under it, while every other process's submit, map and wait poll queued behind. The lock is held briefly

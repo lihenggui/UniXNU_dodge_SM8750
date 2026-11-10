@@ -1,0 +1,208 @@
+{
+  "result": "CPH2653_IPHONE_IOS16_SINGLE_ORIGINAL_CRYPTO_PREPARATION_STACK_PASS",
+  "builder_sha256": "f5ace193d583cce66e9631f12fb596497491b86b4278003dac1cc3bc176dcf34",
+  "source_sha256": {
+    "scripts/build_crypto_stack.py": "f5ace193d583cce66e9631f12fb596497491b86b4278003dac1cc3bc176dcf34"
+  },
+  "base_ramblock_report": "reports/ios16-ramblock-start-kernel.json",
+  "base_ramblock_report_sha256": "2dfa39fcdae098bba582942c8ff000b4639862237d5fec46caf02e54fa2295e0",
+  "base_pmgr_report": "reports/ios16-pmgr-kernel.json",
+  "base_pmgr_report_sha256": "f0f481d8caeecd099d6d70b18b9e58b4c30a010e8db8ea801e6c82e0fff37aaf",
+  "stages": {
+    "ios16-crypto-contract": {
+      "report": "reports/ios16-crypto-contract.json",
+      "sha256": "381aa80bdaef60deedbf21d78a102b2dd5a5a7700879a9c1fcc651989ce43a7f",
+      "result": "IOS16_ORIGINAL_CRYPTO_OWNER_AND_USED_KPI_BOUNDARIES_STATIC_PASS"
+    },
+    "ios16-crypto-source": {
+      "report": "reports/ios16-crypto-source.json",
+      "sha256": "cc9cf58ee508415e2cf20db5b82ff1a684e3efdc2ea3f851d15e6c39d1f29ded",
+      "result": "IOS16_SINGLE_ORIGINAL_CRYPTO_OWNER_SOURCE_LINK_PASS"
+    },
+    "ios16-crypto-prelink": {
+      "report": "reports/ios16-crypto-prelink.json",
+      "sha256": "dfcaf6e82393b60841a205babd39830b423304982693a441d44d83bd78328e62",
+      "result": "IOS16_SINGLE_ORIGINAL_CRYPTO_OWNER_STRICT_PRELINK_PASS"
+    },
+    "ios16-crypto-kernel": {
+      "report": "reports/ios16-crypto-kernel.json",
+      "sha256": "6373f4eeb61a165416d4b4f1f9af4ca39b5950b166c1fa3a5d60cbc8a8ae7f05",
+      "result": "IOS16_COMPILED_CRYPTO_OWNER_AND_STARTUP_SUBPATH_ARM64_PASS"
+    },
+    "ios16-crypto-payload": {
+      "report": "reports/ios16-crypto-payload.json",
+      "sha256": "1e058c5ed732bd4ea11f4253569df66a6c046322526bf4d5c0aca8f1bbea84c7",
+      "result": "IOS16_ORIGINAL_CRYPTO_PACKED_DATA_AND_CONTAINER_READBACK_PASS"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "build/cph2653-crypto-bringup/boot.img",
+      "sha256": "44bbe15b05fdc22fe6ed7a39a150ea8bee8499fdd73e577af0b2d5cfc39d5be3",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-bringup/boot.json",
+      "sha256": "6423866c746614798c8abacefb1352c981683dc23f0428d08fbdc1712925b91c",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-bringup/kernel.macho.adt",
+      "sha256": "c3080f76340ceda373d2e56caa9c0514007f6cfea666cfa63f7155a3cd22ee27",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-bringup/loader-parser.c",
+      "sha256": "2a53ccb696c0928af16804c09c6595d1610e761974e3e09795e3896800841e1b",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-bringup/loader-parser.so",
+      "sha256": "f5a6513cba8f9a2cbf22fb9ff8cad03b87e153bfc6f788a9a79af26d74109897",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-bringup/payload.img",
+      "sha256": "2ed8a2ea779edb6dba82df4363143d00ed9e68a02f0bb5f4d28b9f54cf0fc9ae",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-kernel/abi/CryptoStatusLayout.o",
+      "sha256": "6e63dc7306faaa0b06b5a9130852f3e0b6dcb9d1e453197251395dcce8b34b52",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-kernel/cpu-cases.json",
+      "sha256": "685a89ee8d7a40c43ae9c9b74497336a21f0838257c77b1554892f8f70208859",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-prelink/emission.json",
+      "sha256": "a72d5a07cbb6bb7adf993cf7c0668e7987fe7d3dc4590248d00c0571bfc9eb7d",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-prelink/kernel.macho",
+      "sha256": "3315aae02eeea2b79a7340793c3cd0296fe385202de2d26ad1949707abdceee0",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/DodgeCryptoBootstrap.o",
+      "sha256": "351d26cce9560db02eaecb82bb0a6d243ba9e52260fa6efda0f87b90741c0cf6",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/OSKext.crypto.cpp",
+      "sha256": "f9e262d684938a2308ab150f0c7d96e50592c20c2499ed6736b5a615a49471dc",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/OSKext.crypto.o",
+      "sha256": "c9b57816dd0b049d9f293bfbb8ffd98a7f94cf001f28423833d2fa9ffa69e739",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/combined-native.filelist",
+      "sha256": "a3aace1bc690f9c74ee458e6b9422ec33c091c474de92ebb32871e95e0cf7a0d",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/compile-commands.json",
+      "sha256": "ec081b98776896bd50164d00a146bf8d9636b218aa607c8504f91022080e4963",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/crypto-once-host",
+      "sha256": "9de2bfe4b5491326ddbc579b6f3006ebe474b7001d6320d56d055cd6cff448a8",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/libDodgeCryptoOwner.a",
+      "sha256": "f15d61ba419fb8f17b6a884ccd9002bd09c571cf2a07b85144809024fa4ba2e7",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/link-command.json",
+      "sha256": "825b08e643473774ab23e99b84e89197c62122dd009a0f8cd36d1605e193ad14",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/mach.crypto-owner",
+      "sha256": "b2c89d7b5b7002aed73cd82fcf660335204ec3bc23e292be06291ef96278de4d",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/original-crypto-inputs.o",
+      "sha256": "1ada0b044699c90e1622758f99294a7bf22764ed6338b5d66e0d4719ec1dff44",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/overlay-compile-commands.json",
+      "sha256": "9c3a004ca422dbdd9a01134268c60141096c49f1e0e73c36ba7335e84846317d",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/prng_random.crypto.c",
+      "sha256": "2188dbc64c5e6c281908a438dcbb40fea18f3c7d459246178c39a3555b63c89a",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/cph2653-crypto-source/prng_random.crypto.o",
+      "sha256": "f4da824d759b43d041f55f3803ef2669193c21a8e15d446f58dabcfc3b589007",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "build/ios16-crypto-abi/CryptoLayout.o",
+      "sha256": "aae7942eade166ba395b223a4f710e69e45988e1f4f4ca91bdbe3fe8fd138df7",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "reports/ios16-crypto-contract.json",
+      "sha256": "381aa80bdaef60deedbf21d78a102b2dd5a5a7700879a9c1fcc651989ce43a7f",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "reports/ios16-crypto-kernel.json",
+      "sha256": "6373f4eeb61a165416d4b4f1f9af4ca39b5950b166c1fa3a5d60cbc8a8ae7f05",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "reports/ios16-crypto-payload.json",
+      "sha256": "1e058c5ed732bd4ea11f4253569df66a6c046322526bf4d5c0aca8f1bbea84c7",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "reports/ios16-crypto-prelink.json",
+      "sha256": "dfcaf6e82393b60841a205babd39830b423304982693a441d44d83bd78328e62",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    },
+    {
+      "path": "reports/ios16-crypto-source.json",
+      "sha256": "cc9cf58ee508415e2cf20db5b82ff1a684e3efdc2ea3f851d15e6c39d1f29ded",
+      "role": "Isolated original-crypto ownership source/build/CPU/container preparation; explicit runtime limits"
+    }
+  ],
+  "combined_source_objects": 89,
+  "native_entries": 97,
+  "original_absolute_aliases": 339,
+  "original_components": 28,
+  "original_kernel_interfaces": 7,
+  "original_pointer_sites_read_back": 63889,
+  "source_sanitizer_cases": 18,
+  "source_and_startup_cpu_cases": 33,
+  "negative_controls": 25,
+  "single_original_crypto_owner_wired": true,
+  "actual_sysctl_and_oskext_owner_calls_wired": true,
+  "boot_image": "build/cph2653-crypto-bringup/boot.img",
+  "boot_image_sha256": "44bbe15b05fdc22fe6ed7a39a150ea8bee8499fdd73e577af0b2d5cfc39d5be3",
+  "boot_image_bytes": 170557440,
+  "original_crypto_post_executed": false,
+  "original_crypto_runtime_qualified": false,
+  "full_oskext_start_executed": false,
+  "original_apfs_data_mount_qualified": false,
+  "original_root_authentication_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "Five isolated stages derive the exact original iPhone crypto owner and wire a single original initialization into actual early SYSCTL and later OSKext loading. Eighteen sanitized owner-state paths and 33 compiled ARM64 paths use explicit original-initializer/POST/private-PRNG peers. Original start wrappers and native table registration execute. The independent source-provider entry/POST field is absent; original crypto code remains unchanged. Strict prelink and production loader/container readback pass with 25 rejection controls. Original POST/provider ABI/runtime, full OSKext and policy initialization, root/Data authentication and hardware are unqualified. No phone operations."
+}

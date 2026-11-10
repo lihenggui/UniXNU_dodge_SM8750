@@ -1,0 +1,87 @@
+{
+  "result": "IOS16_DISPLAY_SWAP_NATIVE_AND_ORIGINAL_ARM64_CHECK_PASS",
+  "contract": "profiles/os/ios-16.7.16-20H392/display-swap.json",
+  "contract_sha256": "0bcdf418b8c6b107a560c477a4f2aafe2ecb1576de0f42635f99d047cac8bc89",
+  "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacySwapABI.h",
+  "header_sha256": "c94511515c3989b470fcce568cfaa349216a8ae5111718ab65030ce42d383ce4",
+  "native_object": "build/ios16-display-swap/queue.o",
+  "native_object_sha256": "500b781395fa875c18490f2767d5555d50f2afbd3dcd415c37c7d99c8eea10e9",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "request_instance_bytes": 2424,
+  "surface_array_offset": 2184,
+  "queue": {
+    "current": 4872,
+    "head": 4880,
+    "tail": 4888,
+    "request_next": 2408,
+    "request_previous_link": 2416
+  },
+  "native_target": "arm64-apple-ios16.0",
+  "cases": [
+    {
+      "case": "1-queued",
+      "result": "PASS",
+      "matches_original_queue_blocks": true
+    },
+    {
+      "case": "2-queued",
+      "result": "PASS",
+      "matches_original_queue_blocks": true
+    },
+    {
+      "case": "3-queued",
+      "result": "PASS",
+      "matches_original_queue_blocks": true
+    },
+    {
+      "case": "empty",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "busy",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "wrong-head",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "previous-link",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "tail",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "next-link",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "next-is-self",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "tail-at-removed",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "null-display",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "null-request",
+      "result": "REFUSED_WITHOUT_WRITES"
+    }
+  ],
+  "surface_index_cases": 7,
+  "read_only_eligibility_cases": 13,
+  "wrong_os_surface_array_out_of_bounds": true,
+  "original_queue_blocks_changed": false,
+  "full_original_method_executed": false,
+  "retains_releases_fences_or_vblank_emulated": false,
+  "original_objects_constructed": false,
+  "provider_complete": false,
+  "hardware_tested": false,
+  "scope": "Owned native queue access matches unchanged original head/unlink blocks over synthetic exact-size objects. Invalid queues are refused without writes. No swap is completed and no display is published."
+}

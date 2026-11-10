@@ -1,0 +1,107 @@
+{
+  "result": "IOS16_ORIGINAL_INITIAL_DATA_CONTENT_AND_METADATA_ARCHIVE_PASS",
+  "builder_sha256": "1cc4467bb4224632adea2a5ac87d602b285207b5c0d6bd63937a6bfdcf8d271c",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "source_sha256": {
+    "scripts/prepare_initial_data.py": "1cc4467bb4224632adea2a5ac87d602b285207b5c0d6bd63937a6bfdcf8d271c",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "tools/ApfsDataInventory.cpp": "dee41b207cff7797fe8016f196fc626a5b38617ae327f144c53c0a903d0d68ef",
+    "scripts/prepare_ios16_display_cache.py": "d2712227a3953994daa438f8c72a1bed6a52ea703c6189fe89b5b701dd888d79",
+    "targets/iphone-x-ios16.toml": "4a33855a262ee3fe5e22d56f410e230b16ffc0c6f116f1b4aca07302855b606f",
+    "sources/apfs-fuse/ApfsLib/DeviceLinux.cpp": "763ae02c90ce6760855253ca78663c45ba141014d6b70482a1218446ebbe0b9f",
+    "sources/apfs-fuse/ApfsLib/ApfsDir.cpp": "fff36ac15715a6206f2189563e8329c1203c72ded5d691bc2cb29f858c46c5f6",
+    "sources/apfs-fuse/ApfsLib/Decmpfs.cpp": "f9b16053d9bc095af35fd022fd51b04c794144ca726fd913538db7fcc1bed58b"
+  },
+  "reader_source": {
+    "repository": "https://github.com/sgan81/apfs-fuse",
+    "revision": "66b86bd525e8cb90f9012543be89b1f092b75cf3",
+    "path": "sources/apfs-fuse",
+    "lzfse_submodule": "e634ca58b4821d9f3d560cdc6df5dec02ffc93fd",
+    "scope": "host-only read-only image extraction; not the kernel APFS implementation"
+  },
+  "source_image": "build/ios16-volumes/OS.raw",
+  "source_image_sha256": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906",
+  "volume_report_sha256": "3d9eb5dc4f8e4c1cbcb588d7b140fb185dd45d932421334c6e5b6d02657fc7e7",
+  "source_path": "/private/var",
+  "excluded_paths": [
+    "staged_system_apps"
+  ],
+  "archive": "build/ios16-initial-data/initial-data.tar",
+  "archive_sha256": "c8260049b23bcc73abdf86104d7c055980dfbe271c3eaeb2b26fc2739488e73e",
+  "archive_bytes": 1167360,
+  "metadata": "build/ios16-initial-data/initial-data-metadata.json",
+  "metadata_sha256": "209a94c2c51982f4c45765199affb52726b6f0e336293ac7690b2dbba555e7b0",
+  "artifacts": {
+    "build/ios16-initial-data/initial-data.tar": "c8260049b23bcc73abdf86104d7c055980dfbe271c3eaeb2b26fc2739488e73e",
+    "build/ios16-initial-data/initial-data-metadata.json": "209a94c2c51982f4c45765199affb52726b6f0e336293ac7690b2dbba555e7b0",
+    "build/ios16-initial-data/reader-output.jsonl": "40c99162353c27e2c292f31ea1842070d6316485917130c0e3b4bd1cfdaaec72",
+    "build/ios16-initial-data/apfs-data-inventory": "3f0a1c3b844f57b33e0b1a2dbe5632a8340597134140318883c61425d1ec8170"
+  },
+  "counts": {
+    "entries": 198,
+    "directories": 161,
+    "files": 36,
+    "symlinks": 1,
+    "unique_file_streams": 36,
+    "unique_file_bytes": 589907,
+    "extended_attribute_bytes": 27592
+  },
+  "tool_dependencies_sha256": {
+    ".toolchains/apfs-readonly/libapfs.a": "ed90dddeba0ccfdbf369df6c3235759241ae74e715eb06e4f674ffdff1ad899c",
+    ".toolchains/apfs-readonly/liblzfse.a": "56be969f8b8b500c826789db6eeb134475e6afa75e3efa79eb23a6ea3edac8b9",
+    ".toolchains/apfs-readonly/libcrypto.a": "aa6bdad25c71c0e635cf87dae4e379ce4b3028338f66b42dd58d4ee02f207dbe",
+    ".toolchains/apfs-deps/usr/lib/x86_64-linux-gnu/libbz2.a": "1edd2e1321a5d878741b78cb8be0735523baa826eca9b7dba8b400d87f6c0eb7"
+  },
+  "compiler_sha256": "2360901d864cf10bfd6296e261cb2c14053552a80377761ab07146ec9ec9a2c0",
+  "negative_controls": [
+    {
+      "case": "parent-traversal",
+      "result": "REJECTED"
+    },
+    {
+      "case": "blob-traversal",
+      "result": "REJECTED"
+    },
+    {
+      "case": "negative-owner",
+      "result": "REJECTED"
+    },
+    {
+      "case": "wrong-inode-type",
+      "result": "REJECTED"
+    },
+    {
+      "case": "file-content-pin",
+      "result": "REJECTED"
+    },
+    {
+      "case": "invalid-xattr",
+      "result": "REJECTED"
+    },
+    {
+      "case": "embedded-NUL-link",
+      "result": "REJECTED"
+    },
+    {
+      "case": "archive-file-byte",
+      "result": "REJECTED"
+    }
+  ],
+  "all_archive_files_and_metadata_read_back": true,
+  "source_uid_gid_mode_times_xattrs_and_hardlinks_preserved_as_metadata": true,
+  "host_ownership_or_xattrs_changed": false,
+  "source_symlinks_followed": false,
+  "data_protection_keys_created": false,
+  "settings_or_activation_state_changed": false,
+  "original_os_modified": false,
+  "apfs_data_image_formatted": false,
+  "archive_ready_as_apfs_restore_input": true,
+  "writable_data_runtime_qualified": false,
+  "phone_operations": "none",
+  "block_devices_opened": false,
+  "filesystem_mounted": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Deterministic archive of the exact original iPhone initial /private/var, excluding staged_system_apps as in the upstream seed tool. Regular payloads, links, numeric ownership/permissions, nanosecond timestamps, protection-class/flags and all xattr bytes are read back. The full JSON and UNIXNU PAX records preserve APFS metadata for a later formatter; they do not apply data-protection or compression state. No APFS container is formatted, no settings or keybags are generated, no host symlink/ownership operations, no phone or writable-Data runtime result."
+}

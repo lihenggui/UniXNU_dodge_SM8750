@@ -1,0 +1,1940 @@
+{
+  "result": "IOS16_CONCRETE_GOP_DISPLAY_SOURCE_AND_GATED_LIFECYCLE_PASS",
+  "builder_sha256": "278caf849610e03b873c9a0d8d3d6e94131629b23133972a96535a530d13988b",
+  "source_sha256": {
+    "scripts/build_display_service.py": "278caf849610e03b873c9a0d8d3d6e94131629b23133972a96535a530d13988b",
+    "scripts/ios16_service_emulation.py": "809deba4949abc32b05c6102a8a64db79e17ae31e06ae46135a81afc18030a79",
+    "scripts/ios16_parent_stop_emulation.py": "1f806a53d8006254c8854aeb3e9bff2737245aeb0a64d56321d0824c1accf45b",
+    "scripts/check_display_service_host.py": "d068e84f1a763cca4969ce786486c248044df05c58a166dae150edc74e3682d0",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/c++/OSMetaClass.cpp": "51756a6faa01cf564dd5761eb2113caa850a401b31806d2f87ca4e8a5a864243",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/c++/OSObject.cpp": "3ea523fe9066d63bb2943db4042c81ea062802087e2984a17360e09446c5b4c2",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/libkern/c++/OSMetaClass.h": "0b47cb07db5854013123fce2972592d63997c8a7bced80b7365bb04af4614647",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/Kernel/IOService.cpp": "f6052eea56933fb7960949de267f6b7434f22c65f1702baac7cf077eff17fcd9",
+    "tests/DodgeDisplayServiceTest.cpp": "7c9f40f73ce64512601c6b6b4ca73ee1c2f0589e22f0e95f73659adb6045eefc",
+    "tests/DodgeDisplayFrontendTest.cpp": "24dbda61538f7a14f22dea4fa629e9d31c6bb1ee8197671359018d19a09adc70",
+    "tests/DodgeDisplayServiceIntegrationCases.h": "15b96197a2afb3a57b8db2c0b92a5728f7883909917e64a555dd6f16a06f5bae",
+    "drivers/DodgeDisplay/DodgeDisplayService.cpp": "225d7cf3e15156840279c1f79bbdc997dc800f3ca9802ce0e4fce61f7d13beeb",
+    "drivers/DodgeDisplay/DodgeDisplayService.h": "17b2aa857b6d8b73261b64825f7f20e819e2aec7acff663302632e131873cbc8",
+    "drivers/DodgeDisplay/DodgeIPhoneFramebuffer.cpp": "019fdb985585f443082a98324eed0549398bc81bd3ab27c5bc00bb2a85077b1d",
+    "drivers/DodgeDisplay/DodgeIPhoneFramebuffer.h": "111ab2d7649350095e66f0d436739a17c0e1d30c5f96a1ea23669181b10b0b0b",
+    "drivers/DodgeDisplay/DodgeDisplayFrontend.cpp": "9224eecd34cd4b93a89c73b705fe5c97619d1b6b64264e1a0dd50ac8586dfac8",
+    "drivers/DodgeDisplay/DodgeDisplayFrontend.h": "00734530706bdb654104d8a28b6c24f198e99215dd679b051685f7f0077c3edb",
+    "drivers/DodgeDisplay/DodgeGpuSwapBridge.cpp": "d210fa110258c02243034ee94d8868d97c5464fb7a2c885bb60661e72867fc04",
+    "drivers/DodgeDisplay/DodgeGpuSwapBridge.h": "832a14c20d9c4033ee17e066f203bb796a617f7af127bc76a9306293d9e0160b",
+    "drivers/DodgeDisplay/DodgeSoftwareRefresh.cpp": "9d304b88f8405d23a420210a38a10a8888bf1d8267a0c84174a5a9029f270e02",
+    "drivers/DodgeDisplay/DodgeSoftwareRefresh.h": "596c0ee52480154a879fe3bff09eefedf5dc9b155d5c7661e5414f2130868026",
+    "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyFramebufferABI.h": "a1eee3ad14d295f4d0d4aa826fdb0de385113f5984f8c58e44b701169e074ea9",
+    "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyLifecycleABI.h": "c91a88ce3bb4d21f61be4b42bf2b7d7139d8343ede515bdd9b5590f65c810b52",
+    "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacySwapABI.h": "c94511515c3989b470fcce568cfaa349216a8ae5111718ab65030ce42d383ce4",
+    "tests/gpu_swap_include/IOKit/DodgeSwapPeer.h": "a54a384b387f18af6861710ffdefee95f25ac9c29662a4da14951ccfbb94b767",
+    "tests/gpu_swap_include/IOKit/IOCommandGate.h": "24d6b1d24a6c6054bd9942add22a76166a0abb941b2a8ac51d556ec312ee14ea",
+    "tests/gpu_swap_include/IOKit/IOLib.h": "4c41547190e672e4f12f28c6e4f4f08df8d38b120d832c5cfb924891f5a35f38",
+    "tests/gpu_swap_include/IOKit/IOMemoryDescriptor.h": "24d6b1d24a6c6054bd9942add22a76166a0abb941b2a8ac51d556ec312ee14ea",
+    "tests/gpu_swap_include/IOKit/IOService.h": "24d6b1d24a6c6054bd9942add22a76166a0abb941b2a8ac51d556ec312ee14ea",
+    "tests/gpu_swap_include/IOKit/IOTimerEventSource.h": "cf3b1f401db702bb35a9c770323ef0047c77c44d2f277272cba0100a7d165776",
+    "tests/gpu_swap_include/IOKit/IOWorkLoop.h": "24d6b1d24a6c6054bd9942add22a76166a0abb941b2a8ac51d556ec312ee14ea",
+    "tests/gpu_swap_include/kern/clock.h": "65ee867ca18e368464a73235c4be0a96199e947e4c687a66077fa05687b3dc4e",
+    "tests/gpu_swap_include/libkern/OSAtomic.h": "e70b9d1425fc8b3d0d9440dafab77e0610f5a8941e268cef7d6f8e2452150cb3",
+    "tests/gpu_swap_include/libkern/c++/OSObject.h": "9456c55e9cb16888bc946bf7ca72e04c867f34da74b921f6736aced38a44d595",
+    "tests/gpu_swap_include/pexpert/pexpert.h": "3f7946e0d5108ab395d567c34fc57f7a7fff36060ba540f50652853a02267d90"
+  },
+  "dependency_report_sha256": {
+    "ios16-display-interface": "50a9773997035ce5645d871b2ddb4c21c2d68d872815786bdf2e80d88f61bcc7",
+    "ios16-display-subclass": "f4f059aa13c271f45f828b7bb6c4fc2c153d2fd76cf1848b110c4d75da64ec43",
+    "ios16-display-lifecycle": "06416bd6a72a4723d8822db4677be5ea86605577ee8381b4fb95a5810dc49083",
+    "ios16-display-frontend": "ce5d0df0227000188863305e759a91ff86eed630f8bada68ec1efaff6727fd83",
+    "gpu-link-probe": "1acf07872954bf3b5ba58f6d2ed6493a809f134db7f022c48841c6b8a06c5499"
+  },
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "gpu_kernel_sha256": "ec41460411b00cd6f4a296c709277edd648f7c7245200788250c881ffb9ad997",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "archive": "build/ios16-display-service/libDodgeIPhoneFramebuffer.a",
+  "archive_sha256": "deed2cdf81f1f4a09bfe10d52ccaa3d0fa7d505e830391a80b0958dc72a4c586",
+  "objects": [
+    {
+      "path": "build/ios16-display-service/DodgeDisplayService.o",
+      "sha256": "0eda0f0bd933a20203e66f13f6d469028fe1c3784489b512efef87faf8f61b58"
+    },
+    {
+      "path": "build/ios16-display-service/DodgeIPhoneFramebuffer.late.o",
+      "sha256": "ff7e37bf3f8cb641284a78c7eecdb7e542b186578213f1b97c7f601e07366ee2"
+    },
+    {
+      "path": "build/ios16-display-service/original-legacy-bindings.o",
+      "sha256": "2d42d558f6db5fce596c14878cd9c3146cfa6fc3147f50f66a1d2939c551e2c7"
+    },
+    {
+      "path": "build/ios16-display-service/original-legacy-vtable-binding.o",
+      "sha256": "9df5a31b0335cdc91de285ca7d114d8f6f16195c7488ad12b1afcc83aee0c0b3"
+    }
+  ],
+  "imports": {
+    "defined": [
+      "__GLOBAL__sub_I_DodgeIPhoneFramebuffer.cpp",
+      "__Z26dodge_display_service_kickP19DodgeDisplayService",
+      "__Z26dodge_display_service_stopP19DodgeDisplayService",
+      "__Z27dodge_display_service_admitP19DodgeDisplayServicePFiP9IOServicePvES3_",
+      "__Z27dodge_display_service_readyP19DodgeDisplayService",
+      "__Z27dodge_display_service_startP19DodgeDisplayService20DodgeDisplayProducer",
+      "__Z28dodge_display_service_createP9IOServiceS0_PFvS0_S0_E",
+      "__Z28dodge_display_service_statusP19DodgeDisplayServiceP25DodgeDisplayServiceStatus",
+      "__Z28dodge_display_service_submitP19DodgeDisplayServicePKvPv",
+      "__Z29dodge_display_service_refreshP19DodgeDisplayServiceb",
+      "__Z29dodge_display_service_releaseP19DodgeDisplayService",
+      "__Z30dodge_display_service_validateP19DodgeDisplayServiceP18IOMFBSwapIORequest",
+      "__Z30dodge_display_service_workloopP19DodgeDisplayService",
+      "__Z33dodge_iphone_framebuffer_allocatev",
+      "__Z35dodge_iphone_framebuffer_initializev",
+      "__Z35dodge_iphone_framebuffer_registeredv",
+      "__ZN22DodgeIPhoneFramebuffer10gMetaClassE",
+      "__ZN22DodgeIPhoneFramebuffer10superClassE",
+      "__ZN22DodgeIPhoneFramebuffer9MetaClassC1Ev",
+      "__ZN22DodgeIPhoneFramebuffer9MetaClassC2Ev",
+      "__ZN22DodgeIPhoneFramebuffer9metaClassE",
+      "__ZN22DodgeIPhoneFramebuffer9opaque243Ev",
+      "__ZN22DodgeIPhoneFramebufferC1EPK11OSMetaClass",
+      "__ZN22DodgeIPhoneFramebufferC1Ev",
+      "__ZN22DodgeIPhoneFramebufferC2EPK11OSMetaClass",
+      "__ZN22DodgeIPhoneFramebufferC2Ev",
+      "__ZN22DodgeIPhoneFramebufferD0Ev",
+      "__ZN22DodgeIPhoneFramebufferD1Ev",
+      "__ZN22DodgeIPhoneFramebufferD2Ev",
+      "__ZN22DodgeIPhoneFramebufferdlEPvm",
+      "__ZN22DodgeIPhoneFramebuffernwEm",
+      "__ZN25IOMobileFramebufferLegacy10gMetaClassE",
+      "__ZN25IOMobileFramebufferLegacy13newUserClientEP4taskPvjPP12IOUserClient",
+      "__ZN25IOMobileFramebufferLegacy13setPowerStateEmP9IOService",
+      "__ZN25IOMobileFramebufferLegacy13setPropertiesEP8OSObject",
+      "__ZN25IOMobileFramebufferLegacy17getDimensionWordsEPjS0_",
+      "__ZN25IOMobileFramebufferLegacy18systemWillShutdownEj",
+      "__ZN25IOMobileFramebufferLegacy19completeCurrentSwapEv",
+      "__ZN25IOMobileFramebufferLegacy4freeEv",
+      "__ZN25IOMobileFramebufferLegacy4initEP12OSDictionary",
+      "__ZN25IOMobileFramebufferLegacy4stopEP9IOService",
+      "__ZN25IOMobileFramebufferLegacy5probeEP9IOServicePi",
+      "__ZN25IOMobileFramebufferLegacy5startEP9IOService",
+      "__ZN25IOMobileFramebufferLegacy9opaque168Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque169Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque170Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque171Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque172Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque173Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque174Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque175Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque176Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque177Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque179Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque180Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque181Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque182Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque183Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque184Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque185Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque186Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque187Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque188Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque189Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque190Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque191Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque192Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque193Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque194Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque195Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque196Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque197Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque198Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque199Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque200Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque201Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque202Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque203Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque204Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque205Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque206Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque207Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque208Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque209Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque210Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque213Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque214Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque215Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque216Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque217Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque218Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque219Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque220Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque221Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque222Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque223Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque224Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque225Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque226Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque227Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque228Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque229Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque230Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque231Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque232Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque233Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque234Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque235Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque236Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque237Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque238Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque239Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque240Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque241Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque244Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque245Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque247Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque248Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque249Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque250Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque251Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque252Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque253Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque254Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque255Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque256Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque257Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque258Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque259Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque260Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque261Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque262Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque263Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque264Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque265Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque266Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque267Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque268Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque269Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque270Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque271Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque272Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque273Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque275Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque277Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque278Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque279Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque280Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque283Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque284Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque285Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque286Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque287Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque288Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque289Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque290Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque291Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque294Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque295Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque296Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque297Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque298Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque299Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque300Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque301Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque302Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque303Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque304Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque305Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque306Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque307Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque308Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque309Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque310Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque311Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque312Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque313Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque314Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque315Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque316Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque317Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque318Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque319Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque320Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque323Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque324Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque325Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque326Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque327Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque328Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque330Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque331Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque332Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque333Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque334Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque335Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque336Ev",
+      "__ZN25IOMobileFramebufferLegacy9opaque337Ev",
+      "__ZN25IOMobileFramebufferLegacyC2EPK11OSMetaClass",
+      "__ZN25IOMobileFramebufferLegacyD2Ev",
+      "__ZNK22DodgeIPhoneFramebuffer12getMetaClassEv",
+      "__ZNK22DodgeIPhoneFramebuffer9MetaClass5allocEv",
+      "__ZNK25IOMobileFramebufferLegacy11getWorkLoopEv",
+      "__ZNK25IOMobileFramebufferLegacy12getMetaClassEv",
+      "__ZTV22DodgeIPhoneFramebuffer",
+      "__ZTV25IOMobileFramebufferLegacy",
+      "__ZTVN22DodgeIPhoneFramebuffer9MetaClassE"
+    ],
+    "native_public_imports": [
+      "_IOFree",
+      "_IOMalloc_internal",
+      "_KHEAP_DEFAULT",
+      "_OSObject_typed_operator_delete",
+      "_OSObject_typed_operator_new",
+      "_PE_current_console",
+      "__ZN11IOMemoryMap18getPhysicalAddressEv",
+      "__ZN11OSMetaClass20getMetaClassWithNameEPK8OSSymbol",
+      "__ZN11OSMetaClassC2EPKcPKS_j",
+      "__ZN11OSMetaClassD2Ev",
+      "__ZN13IOEventSource9setRefconEPv",
+      "__ZN15IORegistryEntry11detachAboveEPK15IORegistryPlane",
+      "__ZN15IORegistryEntry11setLocationEPK8OSSymbolPK15IORegistryPlane",
+      "__ZN15IORegistryEntry11setLocationEPKcPK15IORegistryPlane",
+      "__ZN15IORegistryEntry11setPropertyEPK8OSStringP8OSObject",
+      "__ZN15IORegistryEntry11setPropertyEPK8OSSymbolP8OSObject",
+      "__ZN15IORegistryEntry11setPropertyEPKcP8OSObject",
+      "__ZN15IORegistryEntry11setPropertyEPKcPvj",
+      "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+      "__ZN15IORegistryEntry11setPropertyEPKcb",
+      "__ZN15IORegistryEntry11setPropertyEPKcyj",
+      "__ZN15IORegistryEntry13attachToChildEPS_PK15IORegistryPlane",
+      "__ZN15IORegistryEntry13childFromPathEPKcPK15IORegistryPlanePcPi",
+      "__ZN15IORegistryEntry14attachToParentEPS_PK15IORegistryPlane",
+      "__ZN15IORegistryEntry14removePropertyEPK8OSString",
+      "__ZN15IORegistryEntry14removePropertyEPK8OSSymbol",
+      "__ZN15IORegistryEntry14removePropertyEPKc",
+      "__ZN15IORegistryEntry15detachFromChildEPS_PK15IORegistryPlane",
+      "__ZN15IORegistryEntry16detachFromParentEPS_PK15IORegistryPlane",
+      "__ZN15IORegistryEntry16setPropertyTableEP12OSDictionary",
+      "__ZN15IORegistryEntry17runPropertyActionEPFiP8OSObjectPvS2_S2_S2_ES1_S2_S2_S2_S2_",
+      "__ZN15IORegistryEntry7setNameEPK8OSSymbolPK15IORegistryPlane",
+      "__ZN15IORegistryEntry7setNameEPKcPK15IORegistryPlane",
+      "__ZN15IORegistryEntry9detachAllEPK15IORegistryPlane",
+      "__ZN15OSMetaClassBase8DispatchE5IORPC",
+      "__ZN18IOTimerEventSource16timerEventSourceEP8OSObjectPFvS1_PS_E",
+      "__ZN8OSObject4initEv",
+      "__ZN8OSSymbol17withCStringNoCopyEPKc",
+      "__ZN9IOService10adjustBusyEi",
+      "__ZN9IOService10handleOpenEPS_jPv",
+      "__ZN9IOService10joinPMtreeEPS_",
+      "__ZN9IOService11handleCloseEPS_j",
+      "__ZN9IOService12didTerminateEPS_jPb",
+      "__ZN9IOService12getBusyStateEv",
+      "__ZN9IOService12getResourcesEv",
+      "__ZN9IOService12requestProbeEj",
+      "__ZN9IOService12tellChangeUpEm",
+      "__ZN9IOService12updateReportEP19IOReportChannelListjPvS2_",
+      "__ZN9IOService13addPowerChildEPS_",
+      "__ZN9IOService13askChangeDownEm",
+      "__ZN9IOService13matchLocationEPS_",
+      "__ZN9IOService13messageClientEjP8OSObjectPvm",
+      "__ZN9IOService13newUserClientEP4taskPvjP12OSDictionaryPP12IOUserClient",
+      "__ZN9IOService13willTerminateEPS_j",
+      "__ZN9IOService14activityTickleEmm",
+      "__ZN9IOService14applyToClientsEPFvPS_PvES1_",
+      "__ZN9IOService14causeInterruptEi",
+      "__ZN9IOService14messageClientsEjPvm",
+      "__ZN9IOService14tellChangeDownEm",
+      "__ZN9IOService15comparePropertyEP12OSDictionaryPK8OSString",
+      "__ZN9IOService15comparePropertyEP12OSDictionaryPKc",
+      "__ZN9IOService15configureReportEP19IOReportChannelListjPvS2_",
+      "__ZN9IOService15enableInterruptEi",
+      "__ZN9IOService15errnoFromReturnEi",
+      "__ZN9IOService15getDeviceMemoryEv",
+      "__ZN9IOService15nextIdleTimeoutEyyj",
+      "__ZN9IOService15powerChangeDoneEm",
+      "__ZN9IOService15setDeviceMemoryEP7OSArray",
+      "__ZN9IOService15terminateClientEPS_j",
+      "__ZN9IOService16allowPowerChangeEm",
+      "__ZN9IOService16applyToProvidersEPFvPS_PvES1_",
+      "__ZN9IOService16disableInterruptEi",
+      "__ZN9IOService16getInterruptTypeEiPi",
+      "__ZN9IOService16registerInterestEPK8OSSymbolPFiPvS3_jPS_S3_mES3_S3_",
+      "__ZN9IOService16removePowerChildEP17IOPowerConnection",
+      "__ZN9IOService16requestTerminateEPS_j",
+      "__ZN9IOService16stringFromReturnEi",
+      "__ZN9IOService16tellNoChangeDownEm",
+      "__ZN9IOService17addNeededResourceEPKc",
+      "__ZN9IOService17applyToInterestedEPK8OSSymbolPFvP8OSObjectPvES5_",
+      "__ZN9IOService17cancelPowerChangeEm",
+      "__ZN9IOService17comparePropertiesEP12OSDictionaryP12OSCollection",
+      "__ZN9IOService17getAggressivenessEmPm",
+      "__ZN9IOService17registerInterruptEiP8OSObjectPFvS1_PvPS_iES2_",
+      "__ZN9IOService17setAggressivenessEmm",
+      "__ZN9IOService18lockForArbitrationEb",
+      "__ZN9IOService18matchPropertyTableEP12OSDictionary",
+      "__ZN9IOService18matchPropertyTableEP12OSDictionaryPi",
+      "__ZN9IOService18setIdleTimerPeriodEm",
+      "__ZN9IOService19registerPowerDriverEPS_P14IOPMPowerStatem",
+      "__ZN9IOService19unregisterInterruptEi",
+      "__ZN9IOService20callPlatformFunctionEPK8OSSymbolbPvS3_S3_S3_",
+      "__ZN9IOService20callPlatformFunctionEPKcbPvS2_S2_S2_",
+      "__ZN9IOService20getDeviceMemoryCountEv",
+      "__ZN9IOService20unlockForArbitrationEv",
+      "__ZN9IOService21powerStateDidChangeToEmmPS_",
+      "__ZN9IOService22copyClientWithCategoryEPK8OSSymbol",
+      "__ZN9IOService22powerStateWillChangeToEmmPS_",
+      "__ZN9IOService23acknowledgeNotificationEPvj",
+      "__ZN9IOService23requestPowerDomainStateEmP17IOPowerConnectionm",
+      "__ZN9IOService24getDeviceMemoryWithIndexEj",
+      "__ZN9IOService24mapDeviceMemoryWithIndexEjj",
+      "__ZN9IOService24powerStateForDomainStateEm",
+      "__ZN9IOService27maxCapabilityForDomainStateEm",
+      "__ZN9IOService31initialPowerStateForDomainStateEm",
+      "__ZN9IOService4initEP15IORegistryEntryPK15IORegistryPlane",
+      "__ZN9IOService4openEPS_jPv",
+      "__ZN9IOService5closeEPS_j",
+      "__ZN9IOService6PMinitEv",
+      "__ZN9IOService6PMstopEv",
+      "__ZN9IOService6attachEPS_",
+      "__ZN9IOService7messageEjPS_Pv",
+      "__ZN9IOService8DispatchE5IORPC",
+      "__ZN9IOService8finalizeEj",
+      "__ZN9IOService9terminateEj",
+      "__ZNK11OSMetaClass12getMetaClassEv",
+      "__ZNK11OSMetaClass12taggedRetainEPKv",
+      "__ZNK11OSMetaClass13taggedReleaseEPKv",
+      "__ZNK11OSMetaClass13taggedReleaseEPKvi",
+      "__ZNK11OSMetaClass14getRetainCountEv",
+      "__ZNK11OSMetaClass19instanceConstructedEv",
+      "__ZNK11OSMetaClass6retainEv",
+      "__ZNK11OSMetaClass7releaseEi",
+      "__ZNK11OSMetaClass7releaseEv",
+      "__ZNK11OSMetaClass9serializeEP11OSSerialize",
+      "__ZNK13IOEventSource9getRefconEv",
+      "__ZNK15IORegistryEntry11compareNameEP8OSStringPS1_",
+      "__ZNK15IORegistryEntry11getLocationEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry11getPropertyEPK8OSString",
+      "__ZNK15IORegistryEntry11getPropertyEPK8OSStringPK15IORegistryPlanej",
+      "__ZNK15IORegistryEntry11getPropertyEPK8OSSymbol",
+      "__ZNK15IORegistryEntry11getPropertyEPK8OSSymbolPK15IORegistryPlanej",
+      "__ZNK15IORegistryEntry11getPropertyEPKc",
+      "__ZNK15IORegistryEntry11getPropertyEPKcPK15IORegistryPlanej",
+      "__ZNK15IORegistryEntry12compareNamesEP8OSObjectPP8OSString",
+      "__ZNK15IORegistryEntry12copyLocationEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry12copyPropertyEPK8OSString",
+      "__ZNK15IORegistryEntry12copyPropertyEPK8OSStringPK15IORegistryPlanej",
+      "__ZNK15IORegistryEntry12copyPropertyEPK8OSSymbol",
+      "__ZNK15IORegistryEntry12copyPropertyEPK8OSSymbolPK15IORegistryPlanej",
+      "__ZNK15IORegistryEntry12copyPropertyEPKc",
+      "__ZNK15IORegistryEntry12copyPropertyEPKcPK15IORegistryPlanej",
+      "__ZNK15IORegistryEntry13getChildEntryEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry14applyToParentsEPFvPS_PvES1_PK15IORegistryPlane",
+      "__ZNK15IORegistryEntry14copyChildEntryEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry14getParentEntryEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry15applyToChildrenEPFvPS_PvES1_PK15IORegistryPlane",
+      "__ZNK15IORegistryEntry15copyParentEntryEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry16getChildIteratorEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry16getPathComponentEPcPiPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry17getParentIteratorEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry24dictionaryWithPropertiesEv",
+      "__ZNK15IORegistryEntry7getNameEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry7getPathEPcPiPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry7inPlaneEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry7isChildEPS_PK15IORegistryPlaneb",
+      "__ZNK15IORegistryEntry8copyNameEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry8getDepthEPK15IORegistryPlane",
+      "__ZNK15IORegistryEntry8isParentEPS_PK15IORegistryPlaneb",
+      "__ZNK15OSMetaClassBase8metaCastEPKc",
+      "__ZNK15OSMetaClassBase9isEqualToEPKS_",
+      "__ZNK8OSObject12taggedRetainEPKv",
+      "__ZNK8OSObject13taggedReleaseEPKv",
+      "__ZNK8OSObject13taggedReleaseEPKvi",
+      "__ZNK8OSObject14getRetainCountEv",
+      "__ZNK8OSObject6retainEv",
+      "__ZNK8OSObject7releaseEi",
+      "__ZNK8OSObject7releaseEv",
+      "__ZNK8OSObject9serializeEP11OSSerialize",
+      "__ZNK9IOService11getProviderEv",
+      "__ZNK9IOService12handleIsOpenEPKS_",
+      "__ZNK9IOService17getClientIteratorEv",
+      "__ZNK9IOService19getProviderIteratorEv",
+      "__ZNK9IOService19serializePropertiesEP11OSSerialize",
+      "__ZNK9IOService21getOpenClientIteratorEv",
+      "__ZNK9IOService23getOpenProviderIteratorEv",
+      "__ZNK9IOService6isOpenEPKS_",
+      "__ZNK9IOService8getStateEv",
+      "__ZNK9IOService9getClientEv",
+      "__ZTV9IOService",
+      "___stack_chk_fail",
+      "___stack_chk_guard",
+      "_mach_absolute_time",
+      "_nanoseconds_to_absolutetime",
+      "_panic"
+    ],
+    "native_static_link_only_imports": [],
+    "required_board_or_original_imports": [
+      "__Z27dodge_display_frontend_kickP20DodgeDisplayFrontend",
+      "__Z27dodge_display_frontend_stopP20DodgeDisplayFrontend",
+      "__Z29dodge_display_frontend_createP9IOServiceS0_P11IOMemoryMap20DodgeDisplayProducer20DodgeDisplayTransfer",
+      "__Z29dodge_display_frontend_submitP20DodgeDisplayFrontendPKvjPv",
+      "__Z31dodge_display_frontend_validateP20DodgeDisplayFrontendP18IOMFBSwapIORequest",
+      "__Z34dodge_display_frontend_set_refreshP20DodgeDisplayFrontendb"
+    ],
+    "optional_weak_imports": []
+  },
+  "native_binding_count": 191,
+  "original_binding_count": 172,
+  "original_vtable_alias": {
+    "__ZTV25IOMobileFramebufferLegacy": "0xfffffff005def8d0"
+  },
+  "linked_fixture": "build/ios16-display-service/display-service.macho",
+  "linked_fixture_sha256": "5b49b8440d896e341837dd6b31ddd7c8126cd4f01a086afea20800cd41f4956e",
+  "strict_no_undefined": true,
+  "compile_manifest": "build/ios16-display-service/compile-commands.json",
+  "compile_manifest_sha256": "2c6b6f1382b6fa314541be12aa4247488e98014c1ae4ff3330c31425decf433c",
+  "link_manifest": "build/ios16-display-service/link-command.json",
+  "link_manifest_sha256": "74fff5695553773d17663c770352db2e5a1a4e5198d8b1fc33ed82d5f4ca75c0",
+  "host_tests": {
+    "result": "PASS",
+    "frontend_is_peer": true,
+    "cases": [
+      "zero-mode-GOP-connected-before-ready",
+      "matching-existing-mode-CPU-producer",
+      "conflicting-existing-mode-untouched",
+      "repeated-start-preserves-running-service",
+      "stopped-service-cannot-restart",
+      "allocation-failure-no-retains",
+      "missing-loop-refused",
+      "missing-gate-refused",
+      "disabled-gate-refused",
+      "detached-gate-refused",
+      "queued-before-start-refused",
+      "bad-startup-tail-refused",
+      "bad-notification-tail-refused",
+      "invalid-producer-refused",
+      "console-query-failure",
+      "GOP-refuses-zero-physical",
+      "GOP-refuses-zero-width",
+      "GOP-refuses-zero-height",
+      "GOP-refuses-wide",
+      "GOP-refuses-tall",
+      "GOP-refuses-depth",
+      "GOP-refuses-rotation",
+      "GOP-refuses-short-stride",
+      "GOP-refuses-large-stride",
+      "GOP-refuses-physical-wrap",
+      "GOP-refuses-map-missing",
+      "GOP-refuses-map-physical",
+      "GOP-refuses-map-length",
+      "GOP-refuses-map-null-VA",
+      "GOP-refuses-map-VA-wrap",
+      "timer-factory-failure-unwinds-map",
+      "timer-add-failure-unwinds-map",
+      "frontend-create-failure-rolls-back-mode",
+      "failed-start-detach-failure-retains-for-retry",
+      "busy-front-keeps-map-and-retries",
+      "detach-error-does-not-repeat-consumed-front-stop",
+      "refused-wake-preserves-explicit-retry",
+      "deadline-overflow-keeps-owner",
+      "zero-time-conversion-keeps-owner",
+      "release-busy-preserves-owner-reference",
+      "submit-reentrant-stop-defers-parent-and-mapping-release",
+      "frontend-stop-reentrancy-is-not-double-retirement",
+      "completion-reentrant-stop-is-idempotent",
+      "completion-reentrant-owner-release-is-consumed-once",
+      "map-reentrant-stop-aborts-unpublished-start",
+      "add-source-reentrant-stop-aborts-unpublished-start",
+      "frontend-create-reentrant-stop-drains-returned-owner",
+      "add-source-mode-change-refuses-write",
+      "add-source-queue-change-refuses-write",
+      "creation-console-change-refuses-publication",
+      "readiness-query-reentrant-stop-keeps-inputs-live",
+      "live-mode-change-blocks-all-front-entrypoints",
+      "stale-timer-action-after-detach-is-empty",
+      "null-status-and-null-controller-refused",
+      "admission-requires-ready-and-preserves-result",
+      "admission-null-action-refused",
+      "admission-reentrant-stop-defers-parent-completion",
+      "admission-live-mode-change-refused",
+      "admission-after-stop-refused",
+      "borrowed-loop-survives-original-parent-stop"
+    ]
+  },
+  "host_case_count": 60,
+  "host_binary_sha256": "b4b0220b5053bfc4bd1972729b8ae62c1c1cc32a887d1e02b5aa21f5d6b3ed5d",
+  "host_sanitizers": [
+    "address",
+    "undefined",
+    "leak"
+  ],
+  "arm64_tests": {
+    "cases": [
+      {
+        "case": "backend-211-registers-0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-211-registers-123456789abcdef0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-211-registers-fedcba9876543210",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-212-registers-0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-212-registers-123456789abcdef0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-212-registers-fedcba9876543210",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-242-registers-0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-242-registers-123456789abcdef0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-242-registers-fedcba9876543210",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-243-registers-0",
+        "result": "PASS",
+        "original_leaf_compared": true
+      },
+      {
+        "case": "backend-243-registers-123456789abcdef0",
+        "result": "PASS",
+        "original_leaf_compared": true
+      },
+      {
+        "case": "backend-243-registers-fedcba9876543210",
+        "result": "PASS",
+        "original_leaf_compared": true
+      },
+      {
+        "case": "backend-292-registers-0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-292-registers-123456789abcdef0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-292-registers-fedcba9876543210",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-293-registers-0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-293-registers-123456789abcdef0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-293-registers-fedcba9876543210",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-321-registers-0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-321-registers-123456789abcdef0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-321-registers-fedcba9876543210",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-322-registers-0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-322-registers-123456789abcdef0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-322-registers-fedcba9876543210",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-329-registers-0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-329-registers-123456789abcdef0",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "backend-329-registers-fedcba9876543210",
+        "result": "PASS",
+        "original_leaf_compared": false
+      },
+      {
+        "case": "actual-native-ioservice-start-unconditional-success",
+        "result": "PASS",
+        "original_native_bytes_executed": true
+      },
+      {
+        "case": "native-concrete-start-success",
+        "result": "PASS",
+        "events": [
+          "core-create",
+          "parent-start",
+          "core-start",
+          "parent-return",
+          "publish",
+          "core-stop",
+          "parent-stop",
+          "core-stop"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-concrete-start-core-allocation-refused",
+        "result": "PASS",
+        "events": [
+          "core-create"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-concrete-start-hardware-refused",
+        "result": "PASS",
+        "events": [
+          "core-create",
+          "parent-start",
+          "core-start",
+          "parent-return",
+          "core-stop",
+          "parent-stop"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-concrete-start-parent-refused",
+        "result": "PASS",
+        "events": [
+          "core-create",
+          "parent-start",
+          "core-stop",
+          "parent-stop"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-concrete-start-parent-no-register",
+        "result": "PASS",
+        "events": [
+          "core-create",
+          "parent-start",
+          "core-stop",
+          "parent-stop"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-concrete-start-core-not-ready",
+        "result": "PASS",
+        "events": [
+          "core-create",
+          "parent-start",
+          "core-start",
+          "parent-return",
+          "core-stop",
+          "parent-stop"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-concrete-start-publication-not-ready",
+        "result": "PASS",
+        "events": [
+          "core-create",
+          "parent-start",
+          "core-start",
+          "parent-return",
+          "core-stop",
+          "parent-stop"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-concrete-start-publication-runAction-refused",
+        "result": "PASS",
+        "events": [
+          "core-create",
+          "parent-start",
+          "core-start",
+          "parent-return",
+          "core-stop",
+          "parent-stop"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-concrete-start-start-stop-deferred",
+        "result": "PASS",
+        "events": [
+          "core-create",
+          "parent-start",
+          "core-start",
+          "parent-return",
+          "core-stop",
+          "core-stop",
+          "parent-stop"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-concrete-start-stop-during-publication",
+        "result": "PASS",
+        "events": [
+          "core-create",
+          "parent-start",
+          "core-start",
+          "parent-return",
+          "publish",
+          "parent-stop",
+          "core-stop"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-concrete-start-core-drained-before-parent-return",
+        "result": "PASS",
+        "events": [
+          "core-create",
+          "parent-start",
+          "core-start",
+          "parent-return",
+          "core-stop",
+          "parent-stop"
+        ],
+        "parent_and_core_are_peers": true
+      },
+      {
+        "case": "native-client-admission-ready",
+        "result": "PASS",
+        "events": [
+          "admit",
+          "parent-client"
+        ],
+        "coordinator_admission_and_original_client_are_peers": true
+      },
+      {
+        "case": "native-client-admission-not-ready",
+        "result": "PASS",
+        "events": [
+          "admit"
+        ],
+        "coordinator_admission_and_original_client_are_peers": true
+      },
+      {
+        "case": "native-client-admission-parent-not-started",
+        "result": "PASS",
+        "events": [
+          "admit"
+        ],
+        "coordinator_admission_and_original_client_are_peers": true
+      },
+      {
+        "case": "native-client-admission-null-output",
+        "result": "PASS",
+        "events": [],
+        "coordinator_admission_and_original_client_are_peers": true
+      },
+      {
+        "case": "native-client-admission-no-controller",
+        "result": "PASS",
+        "events": [
+          "admit"
+        ],
+        "coordinator_admission_and_original_client_are_peers": true
+      },
+      {
+        "case": "native-client-admission-parent-client-error",
+        "result": "PASS",
+        "events": [
+          "admit",
+          "parent-client"
+        ],
+        "coordinator_admission_and_original_client_are_peers": true
+      },
+      {
+        "case": "native-deferred-detach-no-controller",
+        "result": "PASS",
+        "events": [
+          "base-detach"
+        ],
+        "core_workloop_and_original_stop_are_peers": true
+      },
+      {
+        "case": "native-deferred-detach-already-stopped",
+        "result": "PASS",
+        "events": [
+          "borrow-loop",
+          "status",
+          "base-detach"
+        ],
+        "core_workloop_and_original_stop_are_peers": true
+      },
+      {
+        "case": "native-deferred-detach-immediate-drain",
+        "result": "PASS",
+        "events": [
+          "borrow-loop",
+          "status",
+          "stop",
+          "parent-stop",
+          "base-detach"
+        ],
+        "core_workloop_and_original_stop_are_peers": true
+      },
+      {
+        "case": "native-deferred-detach-busy-drain",
+        "result": "PASS",
+        "events": [
+          "borrow-loop",
+          "status",
+          "stop",
+          "borrow-loop",
+          "status",
+          "stop",
+          "parent-stop",
+          "base-detach"
+        ],
+        "core_workloop_and_original_stop_are_peers": true
+      },
+      {
+        "case": "native-deferred-detach-parent-stop-reentrant-detach",
+        "result": "PASS",
+        "events": [
+          "borrow-loop",
+          "status",
+          "stop",
+          "parent-stop",
+          "borrow-loop",
+          "parent-return",
+          "base-detach"
+        ],
+        "core_workloop_and_original_stop_are_peers": true
+      },
+      {
+        "case": "native-deferred-detach-loop-action-refused",
+        "result": "PASS",
+        "events": [
+          "borrow-loop",
+          "borrow-loop",
+          "status",
+          "stop",
+          "parent-stop",
+          "base-detach"
+        ],
+        "core_workloop_and_original_stop_are_peers": true
+      },
+      {
+        "case": "native-deferred-detach-null-provider",
+        "result": "PASS",
+        "events": [],
+        "core_workloop_and_original_stop_are_peers": true
+      },
+      {
+        "case": "allocation-before-metadata-initialization-refused",
+        "result": "PASS"
+      },
+      {
+        "case": "native-metadata-guard-symbol-allocation-refused",
+        "result": "PASS",
+        "lookup_and_symbol_are_peers": true
+      },
+      {
+        "case": "native-metadata-guard-parent-missing",
+        "result": "PASS",
+        "lookup_and_symbol_are_peers": true
+      },
+      {
+        "case": "native-metadata-guard-parent-identity-mismatch",
+        "result": "PASS",
+        "lookup_and_symbol_are_peers": true
+      },
+      {
+        "case": "native-metadata-guard-own-class-missing",
+        "result": "PASS",
+        "lookup_and_symbol_are_peers": true
+      },
+      {
+        "case": "native-metadata-guard-own-class-identity-mismatch",
+        "result": "PASS",
+        "lookup_and_symbol_are_peers": true
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-init-only",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 0,
+        "callee_events": [
+          "log",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x242000",
+          "ioservice-stop"
+        ]
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-root-retained",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          },
+          {
+            "offset": 5032,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 0,
+        "callee_events": [
+          "log",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x242000",
+          "release-0x241000",
+          "ioservice-stop"
+        ]
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-interrupt-unattached",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5088,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          },
+          {
+            "offset": 5032,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 0,
+        "callee_events": [
+          "log",
+          "remove-0x244000",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x244000",
+          "release-0x242000",
+          "release-0x241000",
+          "ioservice-stop"
+        ]
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-interrupt-attached",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5088,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          },
+          {
+            "offset": 5032,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 0,
+        "callee_events": [
+          "log",
+          "remove-0x244000",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x244000",
+          "release-0x242000",
+          "release-0x241000",
+          "ioservice-stop"
+        ]
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-timer-unattached",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5104,
+            "bytes": 8
+          },
+          {
+            "offset": 5088,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          },
+          {
+            "offset": 5032,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 0,
+        "callee_events": [
+          "log",
+          "remove-0x244000",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x245000",
+          "release-0x244000",
+          "release-0x242000",
+          "release-0x241000",
+          "ioservice-stop"
+        ]
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-timer-attached",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5104,
+            "bytes": 8
+          },
+          {
+            "offset": 5088,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          },
+          {
+            "offset": 5032,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 1,
+        "callee_events": [
+          "log",
+          "remove-0x244000",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x245000",
+          "release-0x244000",
+          "release-0x242000",
+          "release-0x241000",
+          "ioservice-stop"
+        ]
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-optional-timer-attached",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5704,
+            "bytes": 8
+          },
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5104,
+            "bytes": 8
+          },
+          {
+            "offset": 5088,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          },
+          {
+            "offset": 5032,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 2,
+        "callee_events": [
+          "log",
+          "release-0x249000",
+          "remove-0x244000",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x245000",
+          "release-0x244000",
+          "release-0x242000",
+          "release-0x241000",
+          "ioservice-stop"
+        ]
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-mapper-command-pool",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          },
+          {
+            "offset": 5032,
+            "bytes": 8
+          },
+          {
+            "offset": 5024,
+            "bytes": 8
+          },
+          {
+            "offset": 5488,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 0,
+        "callee_events": [
+          "log",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x242000",
+          "release-0x241000",
+          "release-0x240000",
+          "release-0x24c000",
+          "release-0x24c100",
+          "release-0x246000",
+          "ioservice-stop"
+        ]
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-lock-only",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          },
+          {
+            "offset": 5520,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 0,
+        "callee_events": [
+          "log",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x242000",
+          "free-lock",
+          "ioservice-stop"
+        ]
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-lock-and-recursive",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          },
+          {
+            "offset": 5520,
+            "bytes": 8
+          },
+          {
+            "offset": 5632,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 0,
+        "callee_events": [
+          "log",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x242000",
+          "free-lock",
+          "free-recursive",
+          "ioservice-stop"
+        ]
+      },
+      {
+        "case": "unchanged-full-original-partial-stop-all-start-resources",
+        "result": "PASS",
+        "original_stop_bytes": 1408,
+        "object_field_writes": [
+          {
+            "offset": 5704,
+            "bytes": 8
+          },
+          {
+            "offset": 5048,
+            "bytes": 8
+          },
+          {
+            "offset": 5104,
+            "bytes": 8
+          },
+          {
+            "offset": 5088,
+            "bytes": 8
+          },
+          {
+            "offset": 5040,
+            "bytes": 8
+          },
+          {
+            "offset": 5032,
+            "bytes": 8
+          },
+          {
+            "offset": 5024,
+            "bytes": 8
+          },
+          {
+            "offset": 5488,
+            "bytes": 8
+          },
+          {
+            "offset": 5520,
+            "bytes": 8
+          },
+          {
+            "offset": 5632,
+            "bytes": 8
+          }
+        ],
+        "original_event_sources_remaining_disabled": 2,
+        "callee_events": [
+          "log",
+          "release-0x249000",
+          "remove-0x244000",
+          "remove-0x242000",
+          "disable-all",
+          "release-0x243000",
+          "release-0x245000",
+          "release-0x244000",
+          "release-0x242000",
+          "release-0x241000",
+          "release-0x240000",
+          "release-0x24c000",
+          "release-0x24c100",
+          "release-0x246000",
+          "free-lock",
+          "free-recursive",
+          "ioservice-stop"
+        ]
+      }
+    ],
+    "case_count": 69,
+    "native_backend_leaf_cases": 27,
+    "native_start_glue_cases": 11,
+    "native_client_admission_cases": 6,
+    "native_deferred_detach_cases": 7,
+    "actual_native_parent_start_leaf_cases": 1,
+    "original_partial_stop_body": {
+      "case_count": 11,
+      "cases": [
+        {
+          "case": "unchanged-full-original-partial-stop-init-only",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 0,
+          "callee_events": [
+            "log",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x242000",
+            "ioservice-stop"
+          ]
+        },
+        {
+          "case": "unchanged-full-original-partial-stop-root-retained",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            },
+            {
+              "offset": 5032,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 0,
+          "callee_events": [
+            "log",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x242000",
+            "release-0x241000",
+            "ioservice-stop"
+          ]
+        },
+        {
+          "case": "unchanged-full-original-partial-stop-interrupt-unattached",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5088,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            },
+            {
+              "offset": 5032,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 0,
+          "callee_events": [
+            "log",
+            "remove-0x244000",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x244000",
+            "release-0x242000",
+            "release-0x241000",
+            "ioservice-stop"
+          ]
+        },
+        {
+          "case": "unchanged-full-original-partial-stop-interrupt-attached",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5088,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            },
+            {
+              "offset": 5032,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 0,
+          "callee_events": [
+            "log",
+            "remove-0x244000",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x244000",
+            "release-0x242000",
+            "release-0x241000",
+            "ioservice-stop"
+          ]
+        },
+        {
+          "case": "unchanged-full-original-partial-stop-timer-unattached",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5104,
+              "bytes": 8
+            },
+            {
+              "offset": 5088,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            },
+            {
+              "offset": 5032,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 0,
+          "callee_events": [
+            "log",
+            "remove-0x244000",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x245000",
+            "release-0x244000",
+            "release-0x242000",
+            "release-0x241000",
+            "ioservice-stop"
+          ]
+        },
+        {
+          "case": "unchanged-full-original-partial-stop-timer-attached",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5104,
+              "bytes": 8
+            },
+            {
+              "offset": 5088,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            },
+            {
+              "offset": 5032,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 1,
+          "callee_events": [
+            "log",
+            "remove-0x244000",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x245000",
+            "release-0x244000",
+            "release-0x242000",
+            "release-0x241000",
+            "ioservice-stop"
+          ]
+        },
+        {
+          "case": "unchanged-full-original-partial-stop-optional-timer-attached",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5704,
+              "bytes": 8
+            },
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5104,
+              "bytes": 8
+            },
+            {
+              "offset": 5088,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            },
+            {
+              "offset": 5032,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 2,
+          "callee_events": [
+            "log",
+            "release-0x249000",
+            "remove-0x244000",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x245000",
+            "release-0x244000",
+            "release-0x242000",
+            "release-0x241000",
+            "ioservice-stop"
+          ]
+        },
+        {
+          "case": "unchanged-full-original-partial-stop-mapper-command-pool",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            },
+            {
+              "offset": 5032,
+              "bytes": 8
+            },
+            {
+              "offset": 5024,
+              "bytes": 8
+            },
+            {
+              "offset": 5488,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 0,
+          "callee_events": [
+            "log",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x242000",
+            "release-0x241000",
+            "release-0x240000",
+            "release-0x24c000",
+            "release-0x24c100",
+            "release-0x246000",
+            "ioservice-stop"
+          ]
+        },
+        {
+          "case": "unchanged-full-original-partial-stop-lock-only",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            },
+            {
+              "offset": 5520,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 0,
+          "callee_events": [
+            "log",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x242000",
+            "free-lock",
+            "ioservice-stop"
+          ]
+        },
+        {
+          "case": "unchanged-full-original-partial-stop-lock-and-recursive",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            },
+            {
+              "offset": 5520,
+              "bytes": 8
+            },
+            {
+              "offset": 5632,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 0,
+          "callee_events": [
+            "log",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x242000",
+            "free-lock",
+            "free-recursive",
+            "ioservice-stop"
+          ]
+        },
+        {
+          "case": "unchanged-full-original-partial-stop-all-start-resources",
+          "result": "PASS",
+          "original_stop_bytes": 1408,
+          "object_field_writes": [
+            {
+              "offset": 5704,
+              "bytes": 8
+            },
+            {
+              "offset": 5048,
+              "bytes": 8
+            },
+            {
+              "offset": 5104,
+              "bytes": 8
+            },
+            {
+              "offset": 5088,
+              "bytes": 8
+            },
+            {
+              "offset": 5040,
+              "bytes": 8
+            },
+            {
+              "offset": 5032,
+              "bytes": 8
+            },
+            {
+              "offset": 5024,
+              "bytes": 8
+            },
+            {
+              "offset": 5488,
+              "bytes": 8
+            },
+            {
+              "offset": 5520,
+              "bytes": 8
+            },
+            {
+              "offset": 5632,
+              "bytes": 8
+            }
+          ],
+          "original_event_sources_remaining_disabled": 2,
+          "callee_events": [
+            "log",
+            "release-0x249000",
+            "remove-0x244000",
+            "remove-0x242000",
+            "disable-all",
+            "release-0x243000",
+            "release-0x245000",
+            "release-0x244000",
+            "release-0x242000",
+            "release-0x241000",
+            "release-0x240000",
+            "release-0x24c000",
+            "release-0x24c100",
+            "release-0x246000",
+            "free-lock",
+            "free-recursive",
+            "ioservice-stop"
+          ]
+        }
+      ],
+      "original_stop_instruction_bytes_changed": false,
+      "entire_original_stop_body_executed": true,
+      "original_getter_gate_and_cleanup_leaf_executed": true,
+      "scope_no_original_surface_5056": true,
+      "osobject_workloop_lock_and_ioservice_stop_are_peers": true,
+      "real_iokit_ownership_or_runtime_qualified": false
+    },
+    "native_metadata_guard_cases": 5,
+    "concrete_instance_bytes": 5768,
+    "original_slot243_instruction_bytes_changed": false,
+    "slot243_original_argument_prototype_assumed": false,
+    "original_start_stop_executed": false,
+    "parent_start_peer": "Assembly control-flow peer calls actual native slots 274 and 84",
+    "core_and_workloop_and_publication_are_peers": true,
+    "iokit_objects_are_synthetic": true
+  },
+  "integration_tests": {
+    "result": "PASS",
+    "frontend_bridge_refresh_are_actual_source": true,
+    "cases": [
+      "actual-coordinator-frontend-bridge-default-first-frame",
+      "actual-zero-mode-initialized-before-packet-builder",
+      "actual-Adreno-producer-target-waits-and-retires",
+      "actual-Adreno-recovery-change-refuses-old-frame",
+      "actual-CPU-producer-explicit-mode",
+      "actual-backing-reentrant-stop-keeps-copy-inputs-live",
+      "actual-software-refresh-stops-before-parent-callback",
+      "actual-remove-failure-keeps-whole-service-for-retry",
+      "actual-frontend-allocation-failure-restores-mode",
+      "actual-live-mode-change-refuses-copy-and-builder"
+    ],
+    "original_builder_completion_and_IOKit_are_peers": true
+  },
+  "integration_case_count": 10,
+  "integration_binary_sha256": "da962823acd22986d389f7e68d88be56fafce178ff97b1265a9f3881f7aa7af1",
+  "native_vtable_entries": 338,
+  "strict_link_pointer_readbacks": 338,
+  "own_override_slots": [
+    0,
+    1,
+    7,
+    14,
+    79,
+    84,
+    86,
+    87,
+    109,
+    141,
+    155,
+    178,
+    211,
+    212,
+    242,
+    243,
+    274,
+    276,
+    282,
+    292,
+    293,
+    321,
+    322,
+    329
+  ],
+  "original_inherited_slots": 161,
+  "native_inherited_slots": 153,
+  "all_abstract_slots_have_source_entries": true,
+  "slot243_source_call_prototype_qualified": false,
+  "slot243_raw_leaf_register_equivalence": true,
+  "vtable_corruption_control": "REJECTED",
+  "initializer": "__GLOBAL__sub_I_DodgeIPhoneFramebuffer.cpp",
+  "initializer_removed_from_early_registration": true,
+  "initializer_staging_preserves_instructions": true,
+  "initializer_requires_original_parent_registration": true,
+  "initializer_requires_serialized_loader_context": true,
+  "allocation_requires_owned_metaclass_postModLoad_registration": true,
+  "concrete_instance_bytes": 5768,
+  "client_creation_uses_gated_admission": true,
+  "detach_deferred_until_drain_and_parent_stop_return": true,
+  "detached_original_loop_survives_in_controller": true,
+  "partial_parent_failure_cleanup_after_start_return_and_drain": true,
+  "original_partial_parent_stop_cpu_cases": 11,
+  "original_qualified_parent_start_and_stop_are_native_ioservice": true,
+  "parent_registration_checks_executed_on_kernel": false,
+  "original_parent_full_start_stop_executed": false,
+  "concrete_source_class_built": true,
+  "runtime_provider_registered": false,
+  "physical_power_implemented": false,
+  "default_kernel_selected": false,
+  "gpu_candidate_includes_service": false,
+  "hardware_tested": false,
+  "scope": "Concrete source subclass plus GOP/mode/frontend and deferred stop coordination. CPU glue checks use explicit parent/core/IOKit peers; 60 host coordinator cases use an explicit frontend peer; ten additional cases run the actual coordinator/frontend/bridge/refresh together. Original request allocation/builder/completion, backing and IOKit remain peers in those integration cases. Strict fixture binds imports to the real GPU kernel and original iPhone component addresses, without implementation stubs. No provider or metadata has been registered in a kernel; no full original start/stop, power or graphics runtime qualification."
+}

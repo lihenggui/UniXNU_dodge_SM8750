@@ -1,0 +1,103 @@
+name: Source checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  configuration:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Fetch the pinned build driver and verify local patch digests
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          import subprocess
+          lock = json.loads(Path('upstream.lock.json').read_text())
+          for name in ('unixnu', 'darwinboot', 'xnu_ios16', 'iig_port', 'xnuprelink', 'uefi', 'pagani_reference', 'oneplus13t_reference', 'sm8750'):
+              spec = lock[name] if name != 'uefi' else {
+                  'path': 'uefi/Mu-Silicium', 'repository': lock['repository'],
+                  'revision': lock['revision'], 'patches': [lock['boot_shim_patch'], lock['simplefb_patch']]}
+              root = Path(spec['path'])
+              root.mkdir(parents=True, exist_ok=True)
+              subprocess.run(['git', 'init', '-q', str(root)], check=True)
+              subprocess.run(['git', '-C', str(root), 'fetch', '-q', '--depth', '1', spec['repository'], spec['revision']], check=True)
+              subprocess.run(['git', '-C', str(root), 'checkout', '-q', '--detach', spec['revision']], check=True)
+              for patch in spec.get('patches', []):
+                  path = Path(patch['path']).resolve()
+                  assert hashlib.sha256(path.read_bytes()).hexdigest() == patch['sha256']
+                  subprocess.run(['git', '-C', str(root), 'apply', '--check', str(path)], check=True)
+                  subprocess.run(['git', '-C', str(root), 'apply', str(path)], check=True)
+          PY
+          git -C sources/UniXNU submodule update --init --depth 1 drivers/QcomGeniSpi
+          git -C uefi/Mu-Silicium submodule update --init --depth 1 Mu_Basecore
+      - name: Check device record and iPhone profile selection
+        run: |
+          python3 sources/UniXNU/scripts/porting-record.py check --device .
+          python3 scripts/test_ios_profile.py
+          python3 scripts/test_bootimg.py
+          python3 scripts/test_source_series.py
+          python3 scripts/check_source_patches.py
+          python3 scripts/check_ios16_patches.py
+          mkdir -p build
+          python3 scripts/check_boot_args_abi.py
+          python3 scripts/check_simplefb.py
+          python3 -m unittest discover -s sources/UniXNU/scripts/unixnu -p test_kernel.py
+          python3 -m unittest discover -s sources/UniXNU/kits/XnuPrelink -p test_emit_prelink.py
+      - name: Check whitespace
+        run: git diff --check
+      - name: Check surface range and provider ownership with software IOKit peers
+        run: python3 scripts/check_surface_backing_host.py
+      - name: Check current-task surface identity ownership and refusal paths with software IOKit peers
+        run: python3 scripts/check_surface_identity_host.py
+      - name: Check exact surface/import pages, ownership and quarantined rollback with software peers
+        run: python3 scripts/check_surface_pages_host.py
+      - name: Check observed descriptor references, acquisition and concurrent replacement with software peers
+        run: python3 scripts/check_surface_acquire_host.py
+      - name: Check GPU swap bridge, lifecycle and bounded scalar copy with software peers
+        run: python3 scripts/check_gpu_swap_bridge_host.py
+      - name: Check software refresh timing and stop/reentry with software peers
+        run: python3 scripts/check_software_refresh_host.py
+      - name: Check bounded iPhone packet/queue frontend and callback admission with software peers
+        run: python3 scripts/check_display_frontend_host.py
+      - name: Check GOP display coordination and actual frontend bridge refresh integration
+        run: python3 scripts/check_display_service_host.py
+      - name: Check original graphics preparation and attachment with loader peers
+        run: python3 scripts/check_graphics_lifecycle_host.py
+      - name: Check graphics boot ordering and one-shot GPU startup with API peers
+        run: python3 scripts/check_graphics_boot_host.py
+      - name: Check real-class GOP factory ownership and late-entry wiring with API peers
+        run: python3 scripts/check_gop_provider_host.py
+      - name: Check opt-in IOBSD scheduling and bounded graphics retries with API peers
+        run: python3 scripts/check_graphics_late_host.py --reference-source
+      - name: Check read-only UFS loader and one-shot controller ownership with API peers
+        run: python3 scripts/check_ufs_lifecycle_host.py
+      - name: Check Data registration, pre-init retention, failure latching and concurrent starts with API peers
+        run: python3 scripts/check_data_lifecycle.py
+      - name: Check bounded Data scheduling, dependency waits and owned-reference completion with API peers
+        run: python3 scripts/check_data_late_host.py
+      - name: Check ordinary iPhone APFS request serialization and refusal bounds with sanitizers
+        run: python3 scripts/check_apfs_mount_host.py
+      - name: Check original crypto owner failure latching and concurrent starts with sanitizers
+        run: python3 scripts/check_crypto_once_host.py
+      - name: Check storage-before-graphics ordering with API peers
+        run: python3 scripts/check_system_late_host.py
+      - name: Check GPU atomic startup and Metal registration cleanup with API peers
+        run: python3 scripts/check_gpu_metal_host.py
+      - name: Check target input power, original-parent loader and worker ownership with software peers
+        run: python3 scripts/check_input_host.py
+      - name: Check cold GPIO and GENI firmware loading with synthetic tables and MMIO peers
+        run: python3 scripts/check_input_cold_host.py --synthetic
+      - name: Check target cold clock and warm ownership with MMIO and PLL peers
+        run: python3 scripts/check_input_clock_host.py
+      - name: Check GENI transfer completion, bounded recovery and terminal ownership against original control
+        run: python3 scripts/check_input_transfer_host.py
+      - name: Check edge-origin tracking, lift, identity reuse and bounds under sanitizers
+        run: python3 scripts/check_hid_edge_host.py

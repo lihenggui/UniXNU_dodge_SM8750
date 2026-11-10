@@ -1,0 +1,38 @@
+{
+  "result": "CPH2653_GPU_POLICY_SOURCE_BUILD_PASS",
+  "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "generated_header_sha256": "71cae19f0a1d57c941232744a507477f7effaa2ddabe0a058d2cf77eb6c2c398",
+  "target_profiles": 6,
+  "target_policy_values_match_pinned_13t": true,
+  "native_target": "arm64-apple-ios16.0",
+  "archive": "build/cph2653-gpu-policy/libDodgeGpuPolicy.a",
+  "archive_sha256": "407b412fcdf24d1ff3b90d797212994edbae8c3edfef84b3891c84971c3d9b72",
+  "imports": {
+    "defined": [
+      "_PaganiGpuBuildStartup"
+    ],
+    "native_public_imports": [
+      "___stack_chk_fail",
+      "___stack_chk_guard",
+      "_bzero",
+      "_memcpy"
+    ],
+    "native_static_link_only_imports": [],
+    "required_board_or_original_imports": [
+      "_AdrenoHfiBcmAux",
+      "_AdrenoHfiBuildBandwidth",
+      "_AdrenoHfiGen8Votes",
+      "_AdrenoHfiStartupValidate"
+    ],
+    "optional_weak_imports": []
+  },
+  "vote_builder_sha256": "18d881a4aa88088c237c838243dcf79495a533c8d8cececcd2fe926c30fe79f1",
+  "host_regression": "ASan/UBSan PASS",
+  "candidate_fixed_initial_hz": 525000000,
+  "native_kernel_selected": false,
+  "active_fuse_bin_known": false,
+  "active_socinfo_sku_known": false,
+  "real_command_db_tested": false,
+  "hardware_tested": false,
+  "scope": "Target DT policy build and fixture rail/HFI checks; candidate fixed OPP is not a measured or enabled power policy."
+}

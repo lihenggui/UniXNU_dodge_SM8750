@@ -1,0 +1,824 @@
+{
+  "result": "PASS",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "architecture": "arm64",
+  "format": "MH_EXECUTE",
+  "original_component_count": 239,
+  "roots": [
+    "com.apple.driver.AppleARMPlatform",
+    "com.apple.iokit.IOStorageFamily",
+    "com.apple.filesystems.apfs",
+    "com.apple.driver.AppleMobileFileIntegrity",
+    "com.apple.kext.CoreTrust",
+    "com.apple.security.sandbox",
+    "com.apple.kec.corecrypto",
+    "com.apple.kec.Libm"
+  ],
+  "declared_dependency_closure": [
+    "com.apple.driver.AppleARMPlatform",
+    "com.apple.driver.AppleEffaceableStorage",
+    "com.apple.driver.AppleMobileFileIntegrity",
+    "com.apple.driver.ApplePMGR",
+    "com.apple.filesystems.apfs",
+    "com.apple.iokit.CoreAnalyticsFamily",
+    "com.apple.iokit.IOCryptoAcceleratorFamily",
+    "com.apple.iokit.IOReportFamily",
+    "com.apple.iokit.IOSlowAdaptiveClockingFamily",
+    "com.apple.iokit.IOStorageFamily",
+    "com.apple.kec.Libm",
+    "com.apple.kec.corecrypto",
+    "com.apple.kext.AppleMatch",
+    "com.apple.kext.CoreTrust",
+    "com.apple.kpi.bsd",
+    "com.apple.kpi.dsep",
+    "com.apple.kpi.iokit",
+    "com.apple.kpi.libkern",
+    "com.apple.kpi.mach",
+    "com.apple.kpi.private",
+    "com.apple.kpi.unsupported",
+    "com.apple.security.AppleImage4",
+    "com.apple.security.sandbox"
+  ],
+  "selected_executables": [
+    {
+      "CFBundleIdentifier": "com.apple.iokit.IOSlowAdaptiveClockingFamily",
+      "CFBundleVersion": "1.0.0",
+      "OSBundleLibraries": {
+        "com.apple.kpi.mach": "8.0",
+        "com.apple.kpi.private": "8.0",
+        "com.apple.kpi.unsupported": "8.0",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.libkern": "8.0",
+        "com.apple.kpi.bsd": "8.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004dce600",
+          "bytes": 3173,
+          "sha256": "0bdd722cfdca416e569c3e566da9760274a23c65471027add5226289e421e5c3"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff0055d4000",
+          "bytes": 8972,
+          "sha256": "e9c3a7337345297aa9282bdd5bda52c0a3ac39a997fb2c9de5ff0952cc39294b"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a08ec0",
+          "bytes": 296,
+          "sha256": "d8ead90db1ce4ba86722b825687801719ddb670737e363a9432452862cde9764"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006c722c0",
+          "bytes": 2440,
+          "sha256": "5a6064ebc04d1ba8a6b868efd5314fda5e0406ae8b0c595b2612ecc083facae4"
+        }
+      ],
+      "kmod_start": "0xfffffff0055d6184",
+      "kmod_stop": "0xfffffff0055d61d0",
+      "module_initializers": [
+        "0xfffffff0055d531c",
+        "0xfffffff0055d60a0"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.iokit.IOStorageFamily",
+      "CFBundleVersion": "2.1",
+      "OSBundleLibraries": {
+        "com.apple.kpi.mach": "8.0",
+        "com.apple.kpi.private": "8.0",
+        "com.apple.kpi.unsupported": "8.0",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.libkern": "8.0",
+        "com.apple.kpi.bsd": "8.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004dcf280",
+          "bytes": 8128,
+          "sha256": "315999a24b98f84e194a5112d578d00dd47d00839bdedb3ec8c0875da52d3ad5"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff0055d7000",
+          "bytes": 83976,
+          "sha256": "4c9e7e8f12306986dc124e9e2cd4f9126fa7dc61e89155d973767b88a0d5ce6f"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a09000",
+          "bytes": 945,
+          "sha256": "81f4d1b7be156cfba89e9fc3ea44848645c370185829417c722c83edafd8078f"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006c72c80",
+          "bytes": 23584,
+          "sha256": "6659306f7b00ac312bb720b6cfb63f6c86a2cf5a3ebd4268a26e1e8d2b72d26e"
+        }
+      ],
+      "kmod_start": "0xfffffff0055eb188",
+      "kmod_stop": "0xfffffff0055eb1d4",
+      "module_initializers": [
+        "0xfffffff0055d8e54",
+        "0xfffffff0055d9d18",
+        "0xfffffff0055da09c",
+        "0xfffffff0055de9d8",
+        "0xfffffff0055df760",
+        "0xfffffff0055dfd4c",
+        "0xfffffff0055e0e40",
+        "0xfffffff0055e299c",
+        "0xfffffff0055e736c",
+        "0xfffffff0055e89f0",
+        "0xfffffff0055e8da4"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.iokit.IOReportFamily",
+      "CFBundleVersion": "47",
+      "OSBundleLibraries": {
+        "com.apple.kpi.private": "8.0",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.libkern": "8.0",
+        "com.apple.kpi.mach": "8.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004dd1240",
+          "bytes": 2806,
+          "sha256": "51323edce1ea69d3b460be0dcd6f3a4f582fd9ab94712d9336b310903ba1337d"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff0055ec000",
+          "bytes": 8496,
+          "sha256": "6dc8734b81f576c22bd9fd78a686b29b46ba5cac4bff0957a489c001ffbc08d1"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a093c0",
+          "bytes": 296,
+          "sha256": "1bb031d18e10220d5ea369ca4cd761dcac20862f32e508de868306ba53e028dd"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006c788c0",
+          "bytes": 3824,
+          "sha256": "e1802361e6d96a1b2b9b5d546d3b3ffc171cb9b136b068b489f6457ec635b306"
+        }
+      ],
+      "kmod_start": "0xfffffff0055edf54",
+      "kmod_stop": "0xfffffff0055edfa0",
+      "module_initializers": [
+        "0xfffffff0055ecaec",
+        "0xfffffff0055edf0c"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.driver.AppleARMPlatform",
+      "CFBundleVersion": "1.0.2",
+      "OSBundleLibraries": {
+        "com.apple.kpi.bsd": "8.0",
+        "com.apple.kpi.libkern": "8.0",
+        "com.apple.kpi.mach": "8.0",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.iokit.IOSlowAdaptiveClockingFamily": "1.0",
+        "com.apple.kpi.unsupported": "8.0",
+        "com.apple.iokit.IOStorageFamily": "1.5",
+        "com.apple.kpi.private": "22.0",
+        "com.apple.iokit.IOReportFamily": "1.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004dd1d40",
+          "bytes": 60813,
+          "sha256": "3927292937fa17f28e886de566b0e5c0bbdb47d884139fb11957d7cafc4f2439"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff0055ef000",
+          "bytes": 230100,
+          "sha256": "247b8b77815f8c87b43290e52a6b3888053cb3763a60bf21a004cd65b341388b"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a09500",
+          "bytes": 5024,
+          "sha256": "28ada248788ab89a4a04b1842df23f097e3ef3b05c217018958c08d5d47f1f1b"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006c797c0",
+          "bytes": 96520,
+          "sha256": "376f03ca3fb6849dfa24e6c073906736250b4066a6ecec7d96a26f9d35c354b9"
+        }
+      ],
+      "kmod_start": "0xfffffff0056258fc",
+      "kmod_stop": "0xfffffff005625948",
+      "module_initializers": [
+        "0xfffffff0055f1130",
+        "0xfffffff0055f2710",
+        "0xfffffff0055f2ec8",
+        "0xfffffff0055f3be0",
+        "0xfffffff0055f5774",
+        "0xfffffff0055f5bf0",
+        "0xfffffff0055f6ffc",
+        "0xfffffff0055f83b4",
+        "0xfffffff0055f9300",
+        "0xfffffff0055f9618",
+        "0xfffffff0055fa688",
+        "0xfffffff0055fb270",
+        "0xfffffff0055fbd14",
+        "0xfffffff0056043c0",
+        "0xfffffff00560531c",
+        "0xfffffff0056063d0",
+        "0xfffffff005607c98",
+        "0xfffffff00560c70c",
+        "0xfffffff00560d164",
+        "0xfffffff00560e988",
+        "0xfffffff0056102c4",
+        "0xfffffff005610b60",
+        "0xfffffff005612e04",
+        "0xfffffff005613464",
+        "0xfffffff005614124",
+        "0xfffffff005614b70",
+        "0xfffffff0056153c8",
+        "0xfffffff0056155d8",
+        "0xfffffff00561ed08",
+        "0xfffffff00561f46c",
+        "0xfffffff005620468",
+        "0xfffffff005620a80",
+        "0xfffffff005621990",
+        "0xfffffff005621e80",
+        "0xfffffff005624de4",
+        "0xfffffff0056258b4"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.iokit.CoreAnalyticsFamily",
+      "CFBundleVersion": "1",
+      "OSBundleLibraries": {
+        "com.apple.kpi.mach": "15.0.0",
+        "com.apple.kpi.private": "15.0.0",
+        "com.apple.kpi.unsupported": "15.0.0",
+        "com.apple.kpi.iokit": "15.0.0",
+        "com.apple.kpi.libkern": "15.0.0",
+        "com.apple.kpi.bsd": "15.0.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004debd40",
+          "bytes": 14551,
+          "sha256": "977342e4d5c02963e3eaf1cf377f951a3d8b93e3a2702edf9870203b9dd2fa4b"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff005650000",
+          "bytes": 25108,
+          "sha256": "29d73b6c2a37d9eb40712b9413db0790e7fe0122f202341852f7725e24b9ee1f"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a0b100",
+          "bytes": 464,
+          "sha256": "92394b8e5441392e590ecef984a577a53eb90746f877575f99a693d0ef06bb91"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006c9d580",
+          "bytes": 8448,
+          "sha256": "4325c0ba8c3337adb1322031bd68273eadfcedb7b7ba751ed2c561563e835b7e"
+        }
+      ],
+      "kmod_start": "0xfffffff005655ef4",
+      "kmod_stop": "0xfffffff005655f10",
+      "module_initializers": [
+        "0xfffffff005650c98",
+        "0xfffffff005651448",
+        "0xfffffff005651fc4",
+        "0xfffffff0056523a0",
+        "0xfffffff005653570",
+        "0xfffffff005655eac"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.driver.ApplePMGR",
+      "CFBundleVersion": "1",
+      "OSBundleLibraries": {
+        "com.apple.kpi.bsd": "8.0",
+        "com.apple.kpi.libkern": "8.0",
+        "com.apple.kpi.mach": "8.0",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.unsupported": "8.0",
+        "com.apple.driver.AppleARMPlatform": "1.0.0",
+        "com.apple.kpi.private": "8.0",
+        "com.apple.iokit.IOReportFamily": "1.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004def6c0",
+          "bytes": 52639,
+          "sha256": "3a1bdb58d224640f1cb7d4dd7ad426654b1ffe5b2e4a04b045b590a8ca9137cb"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff005657000",
+          "bytes": 232428,
+          "sha256": "74ac53a277da51806f323e8c7d765d4ce9baa443adf4e513be2cff52a245db0e"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a0b300",
+          "bytes": 1248,
+          "sha256": "fee4316aca4fadf3a4268e16d2b3a2fdcb42b12f338e9179da8325aafe4f3337"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006c9f680",
+          "bytes": 29136,
+          "sha256": "4007f84e99fc794f934123bc64a65ae9a111db99b63e3382d53f68972c66e453"
+        }
+      ],
+      "kmod_start": "0xfffffff005685ca8",
+      "kmod_stop": "0xfffffff005685cf4",
+      "module_initializers": [
+        "0xfffffff005681e90",
+        "0xfffffff005682954",
+        "0xfffffff005685820"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.kec.corecrypto",
+      "CFBundleVersion": "12.0",
+      "OSBundleLibraries": {
+        "com.apple.kpi.mach": "11.2",
+        "com.apple.kpi.private": "11.2",
+        "com.apple.kpi.unsupported": "11.2",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.libkern": "11.2",
+        "com.apple.kpi.bsd": "12.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004dfc480",
+          "bytes": 99496,
+          "sha256": "37f3f75b3893f5b7cf7af495f044fe5cdc817f5377a3a2c939bab2315185a0ec"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff005690000",
+          "bytes": 297788,
+          "sha256": "0da4ca3127ef4ef272b776b932e8bb97855878845034ea1a2d58bb1f5fd6ddd9"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a0b800",
+          "bytes": 22216,
+          "sha256": "d02742b077926362776d58afb5e2a71f69a5106505a3b2a139a7a4fdb62222bd"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006ca6880",
+          "bytes": 8064,
+          "sha256": "4b552c99ed9d038f4e63500c9d78a8406051e5731ce889d675270b4d40dd67ce"
+        }
+      ],
+      "kmod_start": "0xfffffff0056d892c",
+      "kmod_stop": "0xfffffff0056d8948",
+      "module_initializers": []
+    },
+    {
+      "CFBundleIdentifier": "com.apple.iokit.IOCryptoAcceleratorFamily",
+      "CFBundleVersion": "1.0.1",
+      "OSBundleLibraries": {
+        "com.apple.kpi.mach": "8.0",
+        "com.apple.kpi.unsupported": "8.0",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.libkern": "8.0",
+        "com.apple.kpi.bsd": "8.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004e14940",
+          "bytes": 2847,
+          "sha256": "419d8eb32fea46886bbb96e45fdaaa9c3b468eb5918a3cf186c6d629cdc9fe8a"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff0056d9000",
+          "bytes": 10852,
+          "sha256": "87758ce6148f662f31e20fb7a2ec645f90f3697084db0b04331f6b44036a06fb"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a10f00",
+          "bytes": 512,
+          "sha256": "da0b6d43ca448624907d6d2777f2b7d762a15eab0d7d05d6d7c3561c0ef50a81"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006ca8800",
+          "bytes": 5872,
+          "sha256": "aba5e56eacce9fd89d68eea2bec14c222650e7da0fe56a4ce36d59e6329ddd1b"
+        }
+      ],
+      "kmod_start": "0xfffffff0056db76c",
+      "kmod_stop": "0xfffffff0056db7b8",
+      "module_initializers": [
+        "0xfffffff0056db438",
+        "0xfffffff0056db724"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.kext.CoreTrust",
+      "CFBundleVersion": "1",
+      "OSBundleLibraries": {
+        "com.apple.kec.corecrypto": "1.0.0",
+        "com.apple.kpi.private": "8.0.0",
+        "com.apple.kpi.libkern": "17.5"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004e15480",
+          "bytes": 6425,
+          "sha256": "c033badd073ae78c475394c3809ee5ae9061921a51688a0a94c9ee4239977581"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff0056dc000",
+          "bytes": 31736,
+          "sha256": "ffc005c8163fc83206f3b87720b512a3c7b438d64fa37fece7f437429fdaaa51"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a11100",
+          "bytes": 232,
+          "sha256": "dbe0be4756ba8558676428605e4eb29595d71320085da1db7892879074edee62"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006ca9f00",
+          "bytes": 6328,
+          "sha256": "be966edecd219f94b3a2b7c242ac8ad13f9087366cae01107477782afe9454c8"
+        }
+      ],
+      "kmod_start": "0xfffffff0056e3a30",
+      "kmod_stop": "0xfffffff0056e3a4c",
+      "module_initializers": []
+    },
+    {
+      "CFBundleIdentifier": "com.apple.security.AppleImage4",
+      "CFBundleVersion": "5.0.0",
+      "OSBundleLibraries": {
+        "com.apple.kpi.bsd": "18.0.0",
+        "com.apple.kpi.dsep": "21.0.0",
+        "com.apple.kec.corecrypto": "1.0.0",
+        "com.apple.kpi.libkern": "18.0.0",
+        "com.apple.iokit.IOCryptoAcceleratorFamily": "1.0.0",
+        "com.apple.kpi.iokit": "18.0.0",
+        "com.apple.kpi.mach": "18.0.0",
+        "com.apple.kext.CoreTrust": "1.0.0",
+        "com.apple.kpi.unsupported": "18.0.0",
+        "com.apple.kpi.private": "18.0.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004e16dc0",
+          "bytes": 52938,
+          "sha256": "75fe946fa13a182c800fc478153de2ab268f24f83a9348c804c1e8565cfd9705"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff0056e4000",
+          "bytes": 90524,
+          "sha256": "1ad058c1e525926c1e5f99b80ee59a05e2ec96c5a9c4663f3e5196f43656099b"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a11200",
+          "bytes": 1240,
+          "sha256": "3de601b9d6bcbb6504b400ed96beb89df4f6a039a815554c26146c709212411a"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006cab7c0",
+          "bytes": 40384,
+          "sha256": "da393d9c14e689e3e82e1f17c9f81539071f2f89cf36ba1f68bb547ec371b720"
+        }
+      ],
+      "kmod_start": "0xfffffff0056f94d4",
+      "kmod_stop": "0xfffffff0056f9520",
+      "module_initializers": [
+        "0xfffffff0056ef634",
+        "0xfffffff0056f2f90"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.driver.AppleMobileFileIntegrity",
+      "CFBundleVersion": "1.0.5",
+      "OSBundleLibraries": {
+        "com.apple.kpi.bsd": "15.0.0",
+        "com.apple.kpi.libkern": "8.0.0",
+        "com.apple.iokit.CoreAnalyticsFamily": "1.0",
+        "com.apple.kpi.dsep": "9.0.0d8",
+        "com.apple.kpi.unsupported": "8.0.0",
+        "com.apple.kpi.iokit": "15.0",
+        "com.apple.driver.ApplePMGR": "1.0.0",
+        "com.apple.kpi.mach": "8.0.0",
+        "com.apple.kpi.private": "8.0.0",
+        "com.apple.security.AppleImage4": "3.0.0",
+        "com.apple.kext.CoreTrust": "1.0.0",
+        "com.apple.kec.corecrypto": "1.0.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004e23cc0",
+          "bytes": 43481,
+          "sha256": "b6e036d15e8939fd43d0d4fb80a9f198c0b982c2346d7c406ff0fed80fd3d301"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff0056fb000",
+          "bytes": 120712,
+          "sha256": "6cbea28deab02a2b848dfac28f11c3c00745b55e7b2a896bac3cf9a600a4c7b1"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a11700",
+          "bytes": 1161,
+          "sha256": "3d7b250064b56bf4b8f8ce33e79d097d91bf1de20e453ca1e3f8b8bc52d127b4"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006cb5580",
+          "bytes": 21720,
+          "sha256": "75be1c4f89f36e6b2a3a700453eea92f9b573fe5fbc7b32d0d88855995608abd"
+        }
+      ],
+      "kmod_start": "0xfffffff00570b798",
+      "kmod_stop": "0xfffffff00570b7b4",
+      "module_initializers": [
+        "0xfffffff0056fbe08",
+        "0xfffffff00570003c",
+        "0xfffffff005707998"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.kec.Libm",
+      "CFBundleVersion": "1",
+      "OSBundleLibraries": {
+        "com.apple.kpi.libkern": "8.0.0d0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff004f35800",
+          "bytes": 25736,
+          "sha256": "2adfc7abc52e7054c7d1ef63c75e42c282fda503dbd8ca5e520c01fa509a61df"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff005b8b000",
+          "bytes": 14820,
+          "sha256": "4d56a6e6b3faf6d5a745cabc904ed6eea6f8872c80040c7e4074c15601f5151a"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007a3d3c0",
+          "bytes": 220,
+          "sha256": "075e3c3f2538a417dd8bb4b256dba3173975cf915ae47834654a0bd028db06f0"
+        }
+      ],
+      "kmod_start": "0xfffffff005b8e97c",
+      "kmod_stop": "0xfffffff005b8e9c8",
+      "module_initializers": []
+    },
+    {
+      "CFBundleIdentifier": "com.apple.driver.AppleEffaceableStorage",
+      "CFBundleVersion": "1.0",
+      "OSBundleLibraries": {
+        "com.apple.kpi.mach": "8.0",
+        "com.apple.kpi.unsupported": "8.0",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.libkern": "8.0",
+        "com.apple.kpi.bsd": "8.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff0050e3f00",
+          "bytes": 6832,
+          "sha256": "465f988c2be5b58d08bcfacb4343a86bf1e933f70d5efbf63f1aabaf9e6d5897"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff0060bd000",
+          "bytes": 17360,
+          "sha256": "2e7b3402cdb22319fa82544ab66a9a211799f3e970c5a66f53d3867270ae0d57"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007acccc0",
+          "bytes": 296,
+          "sha256": "0aa6e4c2a472f76d063f0656e15fd624371150dc10fc6eb2b73c9aa016696a06"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006e91ac0",
+          "bytes": 4304,
+          "sha256": "2f0a28e32737c32e7d79978717545005b9b15c3c32389303c527369f0bd7bd90"
+        }
+      ],
+      "kmod_start": "0xfffffff0060c1068",
+      "kmod_stop": "0xfffffff0060c10b4",
+      "module_initializers": [
+        "0xfffffff0060c06e4",
+        "0xfffffff0060c1020"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.filesystems.apfs",
+      "CFBundleVersion": "2142.140.9",
+      "OSBundleLibraries": {
+        "com.apple.kpi.bsd": "15.0",
+        "com.apple.kpi.libkern": "15.0",
+        "com.apple.driver.AppleEffaceableStorage": "1.0",
+        "com.apple.iokit.CoreAnalyticsFamily": "1.0",
+        "com.apple.kpi.dsep": "19.4.0",
+        "com.apple.kpi.unsupported": "15.0",
+        "com.apple.kpi.iokit": "15.0",
+        "com.apple.kpi.mach": "15.0",
+        "com.apple.kpi.private": "15.0",
+        "com.apple.iokit.IOStorageFamily": "2.1",
+        "com.apple.security.AppleImage4": "3.0.0",
+        "com.apple.kec.corecrypto": "1.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff0050fb000",
+          "bytes": 248341,
+          "sha256": "cfe7e10d0860872b4fd4c732da4aa4aac280c436835269bdec8ed1fb3be97d52"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff00615f000",
+          "bytes": 1050376,
+          "sha256": "ebc47d686c6917c7fb154a0b2e2ed19e3d6a277d994d1395b02d3214142577cc"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007adb3c0",
+          "bytes": 3880,
+          "sha256": "99a8ad052a9aa7c293844c79bbe52b5e1fc5bd55aa5c7fe94dffc19a2fe11af9"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006eab300",
+          "bytes": 56216,
+          "sha256": "15d207c1b9dfc5fcd90b02cb746b28839964c01e581bbe31d8eed40e0ef3086e"
+        }
+      ],
+      "kmod_start": "0xfffffff00615f1e8",
+      "kmod_stop": "0xfffffff00615f204",
+      "module_initializers": [
+        "0xfffffff006186604",
+        "0xfffffff00618b6a8"
+      ]
+    },
+    {
+      "CFBundleIdentifier": "com.apple.kext.AppleMatch",
+      "CFBundleVersion": "1.0.0d1",
+      "OSBundleLibraries": {
+        "com.apple.kpi.private": "10.0.0d3",
+        "com.apple.kpi.iokit": "7.0",
+        "com.apple.kpi.libkern": "9.0.0",
+        "com.apple.kpi.bsd": "8.0.0"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff005137a40",
+          "bytes": 1581,
+          "sha256": "ff7b4a8f865ac1d702baad9970dd8b5ac8e1de4de961b9569144d8eee6893624"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff006260000",
+          "bytes": 7928,
+          "sha256": "11eb44b13b917ca2fe80984cc6309e819b8ef597cc9ef9601e96473af0d7fbd4"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007adc300",
+          "bytes": 220,
+          "sha256": "f4b70f9cddb1bc10f198e795cd2ca1245eb302488d38e050dbe661b91c4b19d2"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006eb8ec0",
+          "bytes": 712,
+          "sha256": "dd4daf6b08af0985973eb9040f8251ce9315523197662d13d36a442535a18095"
+        }
+      ],
+      "kmod_start": "0xfffffff006261e18",
+      "kmod_stop": "0xfffffff006261e64",
+      "module_initializers": []
+    },
+    {
+      "CFBundleIdentifier": "com.apple.security.sandbox",
+      "CFBundleVersion": "300.0",
+      "OSBundleLibraries": {
+        "com.apple.kpi.bsd": "10.0.0d3",
+        "com.apple.driver.AppleMobileFileIntegrity": "1.0.1",
+        "com.apple.kpi.dsep": "10.0.0d3",
+        "com.apple.kpi.libkern": "10.0.0d3",
+        "com.apple.kext.AppleMatch": "1.0d1",
+        "com.apple.kpi.iokit": "7.0",
+        "com.apple.kpi.mach": "10.0.0d3",
+        "com.apple.kpi.unsupported": "10.0.0d3",
+        "com.apple.kpi.private": "10.0.0d3"
+      },
+      "MinimumOSVersion": "16.7",
+      "DTSDKName": "iphoneos16.7.internal",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "va": "0xfffffff0052365c0",
+          "bytes": 1310454,
+          "sha256": "7e8844fe7dc3134ee3e96d41d47916c91f8cedea7f01aee1f7b3afd6337c4995"
+        },
+        {
+          "name": "__TEXT_EXEC",
+          "va": "0xfffffff0064b9000",
+          "bytes": 177728,
+          "sha256": "ded8921e103c6597598c3d6b9d505748e096fb77936625d84f5dddde8ead47ca"
+        },
+        {
+          "name": "__DATA",
+          "va": "0xfffffff007ae8d00",
+          "bytes": 83688,
+          "sha256": "de3e499e10e5adc50dedb654eb6519d7be9350fa8130877eed9e4d363ddbf499"
+        },
+        {
+          "name": "__DATA_CONST",
+          "va": "0xfffffff006ef83c0",
+          "bytes": 14360,
+          "sha256": "f84e3723141e2c06b8c600deba018ac5b1658b0dde8752b7ebbdb9bcecea13a4"
+        }
+      ],
+      "kmod_start": "0xfffffff0064ba258",
+      "kmod_stop": "0xfffffff0064ba274",
+      "module_initializers": []
+    }
+  ],
+  "original_inputs_modified": false,
+  "native_binding_qualified": false,
+  "early_security_initializer_qualified": false,
+  "hardware_tested": false
+}

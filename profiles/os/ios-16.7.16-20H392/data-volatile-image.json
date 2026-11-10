@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "container_uuid": "25B6705D-FF0C-5446-ABD6-2787C9AFB8A6",
+  "volume_uuid": "DAF0DD2B-1D90-5A73-A426-9306E1F967B5",
+  "size_bytes": 2147483648,
+  "fixed_time_ns": 1777522284608194033,
+  "volume_name": "Data",
+  "case_sensitive": true,
+  "role": 0,
+  "encrypted": false,
+  "source_archive_sha256": "c8260049b23bcc73abdf86104d7c055980dfbe271c3eaeb2b26fc2739488e73e",
+  "source_metadata_sha256": "209a94c2c51982f4c45765199affb52726b6f0e336293ac7690b2dbba555e7b0",
+  "installation_identity": "Separate deterministic volatile bring-up installation. Its UUIDs differ from the 3 GiB seed; neither profile rewrites an existing image.",
+  "filename_admission": "All original names are ASCII. Writer profile macOS15 selects filename admission only; the APFS v2 feature set is independently checked, without changing the iPhone iOS target."
+}

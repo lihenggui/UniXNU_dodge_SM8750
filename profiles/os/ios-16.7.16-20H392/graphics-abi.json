@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "component": "com.apple.iokit.IOGPUFamily",
+  "component_version": "65.60.1",
+  "original_iogpu_text_sha256": "34aea2cba7f617ae031c37411027b34380c68bbe1e1a17d6abbf3bbabcc777cf",
+  "metaclass": "0xfffffff007bb6448",
+  "instance_bytes": 136,
+  "vptr": "0xfffffff006fc9e78",
+  "virtual_entries": 168,
+  "operational_overrides": [],
+  "metadata_overrides": [
+    0,
+    1,
+    7
+  ],
+  "protected_compatible_constructor_aliases": [
+    "0xfffffff006b45228",
+    "0xfffffff006b45248"
+  ],
+  "nondeleting_destructor": "0xfffffff006b4526c",
+  "get_meta_class": "0xfffffff006b452b4",
+  "class_metadata_setup": "0xfffffff006b48630",
+  "original_vtable_sha256": "26c39f9ba38d0ef33aafe5c39cc3d41aec6a9e030e17677e58848790bf146664",
+  "original_ioservice_vtable_sha256": "c28a1f7af37dcd8cd3f95f3c3f98d212fb61c12ffeff5641cddd836ce2f2c402",
+  "code_blocks": [
+    {
+      "address": "0xfffffff006b45228",
+      "bytes": 32,
+      "purpose": "constructor",
+      "sha256": "6ae3681f2b8b1b5a1029e6789b2d89a966855d729f505e079bc1c389d0816da7"
+    },
+    {
+      "address": "0xfffffff006b45248",
+      "bytes": 32,
+      "purpose": "constructor",
+      "sha256": "125ae185010ba90753e406f60736d74c9ceb2e2067ffcd02e42b0eb08ecc95a3"
+    },
+    {
+      "address": "0xfffffff006b4526c",
+      "bytes": 4,
+      "purpose": "nondeleting_destructor",
+      "sha256": "552ecf688f8ec3f42aee635be31c7d15e9e7a52b74a859517f8afd617342dd64"
+    },
+    {
+      "address": "0xfffffff006b452b4",
+      "bytes": 12,
+      "purpose": "get_meta_class",
+      "sha256": "ad36bffd39b71df6d8df979641be76d47c51273707ba572a97e6d1546a39f583"
+    },
+    {
+      "address": "0xfffffff006b48630",
+      "bytes": 48,
+      "purpose": "class_metadata_setup",
+      "sha256": "162f45cd19fb044831063d36dccf47fbff3bc252abb8c4ce6bfb3bda204cc229"
+    }
+  ]
+}

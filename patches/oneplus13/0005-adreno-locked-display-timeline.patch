@@ -1,0 +1,71 @@
+--- a/NativeAdrenoPublish.cpp
++++ b/NativeAdrenoPublish.cpp
+@@ -22,6 +22,7 @@
+ #include <kern/thread.h>
+ #include "NativeAdrenoUserClient.h"
+ #include "DodgeOptionalCalls.h"
++#include "DodgeAdrenoTimeline.h"
+ #include "NativeAdrenoGpuContext.h"
+ #include "NativeAdrenoDiagnostics.h"
+ 
+@@ -189,6 +190,14 @@
+ /* GPU hangs (msm hangcheck, NativeAdrenoSubmit::hangCheck) and restarts: [0] hangs, [1] restarts, [2] failed restarts, [3] the last hung
+  * fence, [4] the last restart's IOReturn, [5] submissions replayed so far, [6] hangs with a guilty job, [7] hangs of the kernel's own VM. */
+ extern "C" {volatile uint32_t native_adreno_recovery[8];}
++/* Called with g.lock held before recovery. Saturate rather than reuse an
++ * epoch after wrap; the display snapshot permanently refuses saturation.
++ * Keep this small operation separately visible for native trace validation. */
++static __attribute__((noinline)) void dodgeDisplayRecoveryEpoch()
++{
++    const uint32_t current=native_adreno_recovery[0];
++    if(current!=UINT32_MAX)native_adreno_recovery[0]=current+1;
++}
+ /* SMMU context faults ended before a restart (NativeAdrenoGpuContext::endFault): [0] how many, then the last one's FSR, FAR lo, FAR hi,
+  * FSYNR0. A latched FSR fails every later table operation's proof of the bank, so a restart that left it would poison the tables. */
+ extern "C" {volatile uint32_t native_adreno_recovery_fault[5];}
+@@ -208,7 +217,7 @@
+         IOLockLock(g.lock);
+         bool hung=false;
+         if(g.submit && !g.submit->hangCheck(&hung) && hung) {
+-            native_adreno_recovery[0]=native_adreno_recovery[0]+1;
++            dodgeDisplayRecoveryEpoch();
+             if(g.restart) {
+                 uint32_t fault[4]={};
+                 if(g.context && !g.context->endFault(fault) && fault[0]) {
+@@ -1155,6 +1164,26 @@
+     *submitted=g.ring->lastSubmitted();*retired=value;
+     return true;
+ }
++/* A coherent display snapshot for the one-ring A830 path. Do not wait on
++ * the GPU mutex while holding the original framebuffer's work-loop gate.
++ * No output is committed unless publication, lock, fence and epoch agree. */
++extern "C" bool dodge_adreno_display_timeline(DodgeAdrenoTimeline *out)
++{
++    if(!out || (reinterpret_cast<uintptr_t>(out)&7) ||
++       reinterpret_cast<uintptr_t>(out)>UINTPTR_MAX-sizeof(*out) ||
++       !__atomic_load_n(&g.published,__ATOMIC_ACQUIRE) || !g.lock || !IOLockTryLock(g.lock))return false;
++    bool valid=false;
++    uint32_t submitted=0,retired=0;
++    const uint32_t generation=native_adreno_recovery[0];
++    if(g.ring && g.submit && !g.ring->poisoned() && !g.submit->preemption() && generation!=UINT32_MAX &&
++       native_adreno_fences(&submitted,&retired) && retired<=submitted) {
++        out->epoch=uint64_t(generation)+1;
++        out->submitted=submitted;out->retired=retired;
++        valid=true;
++    }
++    IOLockUnlock(g.lock);
++    return valid;
++}
+ /* Boards with their own context instance supply it before publication. */
+ extern "C" void native_adreno_set_gpu_context(NativeAdrenoGpuContext *context)
+ {if(!g.published)g.context=context;}
+@@ -1187,8 +1216,8 @@
+         if(checked && !submit->outstanding())(void)submit->setTableSwitching(1,
+             [](void *cookie,uint64_t ttbr0)->IOReturn {return static_cast<NativeAdrenoGpuContext *>(cookie)->writeTtbr0(ttbr0);},g.context);
+     }
+     native_adreno_cp_aperture[3]=submit->tableMode();
+-    g.service=service;g.published=true;
++    g.service=service;__atomic_store_n(&g.published,true,__ATOMIC_RELEASE);
+     {
+         thread_t thread=nullptr;
+         if(kernel_thread_start(nativeAdrenoHangcheck,nullptr,&thread)==KERN_SUCCESS)thread_deallocate(thread);

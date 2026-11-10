@@ -1,0 +1,103 @@
+{
+  "device": "OnePlus 13 CPH2653 / dodge",
+  "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "touch": {
+    "chip": "S3910",
+    "stock_protocol": "HBP",
+    "firmware_name": [
+      "AA545"
+    ],
+    "se_base": "0xa90000",
+    "se_bytes": 16384,
+    "wrapper_base": "0xac0000",
+    "smmu_base": "0x15000000",
+    "stream_id": "0xa3",
+    "max_spi_hz": 19000000,
+    "reset_gpio": 161,
+    "reset_flags": "0x1",
+    "attn_gpio": 162,
+    "attn_flags": "0x2008",
+    "pin_states": [
+      {
+        "pins": [
+          "gpio49"
+        ],
+        "function": [
+          "qup1_se4_l1"
+        ],
+        "drive_ma": 4
+      },
+      {
+        "pins": [
+          "gpio48"
+        ],
+        "function": [
+          "qup1_se4_l0"
+        ],
+        "drive_ma": 6
+      },
+      {
+        "pins": [
+          "gpio50"
+        ],
+        "function": [
+          "qup1_se4_l2"
+        ],
+        "drive_ma": 6
+      },
+      {
+        "pins": [
+          "gpio51"
+        ],
+        "function": [
+          "qup1_se4_l3"
+        ],
+        "drive_ma": 4
+      },
+      {
+        "pins": [
+          "gpio162"
+        ],
+        "function": [
+          "gpio"
+        ],
+        "drive_ma": 8
+      },
+      {
+        "pins": [
+          "gpio161"
+        ],
+        "function": [
+          "gpio"
+        ],
+        "drive_ma": 8
+      }
+    ],
+    "advertised_panel_coordinates": [
+      23040,
+      50688
+    ],
+    "vdd": {
+      "path": "/soc/rsc@16500000/drv@2/rpmh-regulator-ldob4/regulator-pm-humu-l4",
+      "name": "pm_humu_l4",
+      "min_uv": 1800000,
+      "max_uv": 1800000
+    },
+    "avdd_gpio": {
+      "controller": "/soc/qcom,spmi@c42d000/qcom,pm8550vs@9/pinctrl@8800",
+      "pin": 3,
+      "flags": "0x1"
+    }
+  },
+  "panel": {
+    "name": "qcom,mdss_dsi_panel_AA569_P_3_A0019_dsc_cmd",
+    "width": 1440,
+    "height": 3168,
+    "source": "/chosen/bootargs matched to panel timing nodes; not a direct GOP measurement"
+  },
+  "runtime_enabled": false,
+  "power_sequence_qualified": false,
+  "iphone_hid_abi_qualified": false,
+  "hardware_tested": false,
+  "scope": "Observed board inputs only. GPIO flags and power declarations are preserved, not interpreted as an implemented rail sequence."
+}

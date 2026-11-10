@@ -1,0 +1,88 @@
+# iPhone iOS target. The public source baseline differs from the original KC revision.
+[os]
+name = "ios-16.7.16-20H392"
+arch = "arm64"
+ios_version = "16.0"
+darwin = "22.6.0"
+xnu_version = "8796.141.3"
+xnu_revision = "1b191cb58250d0705d8a51287127505aa4bc0789"
+driverkit_tag = "xnu-8796.141.3"
+trustcache_tag = "xnu-8796.101.5"
+abi = ["IOStorageFamily", "IOHIDFamily", "IOMobileGraphicsFamily"]
+
+[kernel.prelink]
+tool = "kits/XnuPrelink/emit_prelink.py"
+kernel = "build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped"
+kernelcache_sha256 = "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221"
+slide = "-0x1000000"
+roots = ["com.apple.driver.AppleARMPlatform", "com.apple.iokit.IOStorageFamily", "com.apple.filesystems.apfs", "com.apple.driver.AppleMobileFileIntegrity", "com.apple.kext.CoreTrust", "com.apple.security.sandbox", "com.apple.kec.corecrypto", "com.apple.kec.Libm"]
+# Original no-argument entries; code identity is checked before emission.
+# Runtime policy registration, PMGR and complete component ABI remain unqualified.
+early_security_init = ["com.apple.driver.AppleMobileFileIntegrity=0xfffffff005704320", "com.apple.security.sandbox=0xfffffff0064bcd80"]
+early_security_fixture = "os:security-init.json"
+
+[ipsw]
+url = "https://updates.cdn-apple.com/2025FallFCS/fullrestores/122-77006/1158E502-D76D-4226-AA06-ED5E30CD1111/iPhone10,3,iPhone10,6_16.7.16_20H392_Restore.ipsw"
+product = "iPhone10,3"
+version = "16.7.16"
+build = "20H392"
+device_class = "d22ap"
+chip_id = 32789
+board_id = 6
+fetch = ["KernelCache", "DeviceTree", "StaticTrustCache", "Cryptex1,SystemTrustCache"]
+
+[ipsw.sha256]
+"kernelcache.release.iphone10b" = "2d6a13d040aaf87cec09bb6906d43e9bd8cea951e43d1aa1cd62707dfdc5aaec"
+"DeviceTree.d22ap.im4p" = "480e8b0888949b4128b7aa2cd254497581c69e1bafa596a760b2fa955a8a6368"
+"087-86698-044.dmg.trustcache" = "63e01c03b31e1532a5581a24865490673f0b5c297b0199fe0095637c6100ef4b"
+"087-86593-047.dmg.trustcache" = "9cc478fe3525e2683b5b9ea1eea0851eaebebdab21d206556233400e59d2e361"
+
+"087-86698-044.dmg" = "80f426d5b8fca8552f95be427434f1911dbb4c2c6d28aad94f2426ddd0c92483"
+"087-86593-047.dmg" = "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849"
+"087-86715-047.dmg" = "391f2df322c3172b021b2874f6da5c3e78b70b3df8f502e1a4af2b1d715c4608"
+
+[adt.root.string]
+target-type = "D22"
+model = "iPhone10,3"
+
+[adt.root.strings]
+compatible = ["D22AP", "iPhone10,3", "AppleARM"]
+
+[adt.product.string]
+product-name = "iPhone X"
+product-description = "iPhone X"
+compatible-device-fallback = "iPhone9,2"
+artwork-device-idiom = "phone"
+artwork-display-gamut = "P3"
+
+[adt.product.u32]
+artwork-scale-factor = 3
+thin-bezel = 1
+artwork-device-subtype = 2436
+
+[adt.product.bytes]
+product-id = "fd079b298144a7deb4d7c87fef3eb474d8f0e7eb"
+
+[adt.product.audio.u32]
+wireless-splitter = 1
+
+[adt.chosen.string]
+osenvironment = "main"
+crypto-hash-method = "sha2-384"
+
+[adt.chosen.u32]
+certificate-production-status = 0
+effective-production-status-ap = 0
+certificate-security-mode = 1
+effective-security-mode-sep = 1
+amfi-only-platform-code = 1
+
+[userdata]
+windows = [{ name = "OS", component = "OS" }, { name = "SystemOS", component = "Cryptex1,SystemOS" }]
+
+# UUIDs and digests of the unchanged decoded images; authentication remains separate.
+[root]
+os_volume_uuid = "dadd93f8-dbbf-4b17-a1df-0f11e64172f7"
+os_image_sha256 = "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906"
+systemos_volume_uuid = "96096b28-b6dc-4bc7-9d3a-2632a0fe53f1"
+systemos_image_sha256 = "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849"

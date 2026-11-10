@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "mode": "native-source-bringup",
+  "product_identity": "iPhone10,3",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "firmware_sha256": "9f4d92ac4ab868d87e147bc0a4c1d02497bfda583a5d0e195f0a54376cb56c38",
+  "payload": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/payload/payload.img",
+  "payload_sha256": "5720f0d1250aea809b243794c599fecc2304aaa6154943284c23cfa6c711e9a6",
+  "boot_image": "build/cph2653-native-bringup/boot.img",
+  "boot_image_bytes": 170557440,
+  "boot_image_sha256": "18a04d167d6515640f3a180702d6c82d4dcfb9eb853d4a38416a05235f7bdb9e",
+  "adt_sha256": "ce729b8507079ac0f382234c76aac40c2c766585b16a5e6554c632cfa999bf3e",
+  "boot_header_version": 4,
+  "command_line_bytes": 30,
+  "fat_readback": "kernel, ADT and config match",
+  "android_container_readback": "shim, FD, firmware DTB and FAT match",
+  "private_seed_disclosed": false,
+  "original_kexts_added": false,
+  "original_userspace_included": false,
+  "phone_operations": "none",
+  "hardware_tested": false,
+  "scope": "Local native development artifact only. Original iPhone components, authenticated root, storage, display and input qualification remain pending."
+}

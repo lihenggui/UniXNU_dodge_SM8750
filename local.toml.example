@@ -1,0 +1,15 @@
+# Copy to local.toml after scripts/prepare_sources.py --apply.
+[[source]]
+name = "sm8750"
+kind = "soc"
+local = "sources/UniXNU-sm8750-common"
+
+[[source]]
+name = "edk2"
+kind = "refer"
+local = "uefi/Mu-Silicium/Mu_Basecore"
+
+[[source]]
+name = "xnu"
+kind = "refer"
+local = "sources/xnu-ios16"

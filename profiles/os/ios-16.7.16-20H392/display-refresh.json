@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "legacy_instance_bytes": 5728,
+  "sender": {
+    "address": "0xfffffff005c1b838",
+    "bytes": 404,
+    "sha256": "f30d2c6e30488985ab3efd65a3881093b65b2a7892a2c7fc312d93ca728abf98",
+    "prototype": "void (self, timestamp, continuous, interval)"
+  },
+  "transport_wrapper": {
+    "address": "0xfffffff005bfe258",
+    "bytes": 68,
+    "sha256": "4dff95878b83cf9cf0559990b827fe240ec260d91f25b133363a25228193c4a2"
+  },
+  "async_transport": "__ZN12IOUserClient28sendAsyncResult64WithOptionsEPyiS0_jj",
+  "async_import_stub": "0xfffffff005c26e54",
+  "memset_import_stub": "0xfffffff005c274cc",
+  "failure_logger": "0xfffffff005c0bb30",
+  "registration": {
+    "address": "0xfffffff005c1b01c",
+    "bytes": 492,
+    "sha256": "c9fa24f127b46dd2f1c178220309297a977a14bba4a9f6a9bb6346977f039088"
+  },
+  "notification_list_base": 4912,
+  "notification_type": 5,
+  "notification_head": 4992,
+  "node_next_offset": 0,
+  "node_async_reference_offset": 24,
+  "async_reference_words": 8,
+  "payload_words": 6,
+  "payload_word_bytes": 8,
+  "payload_times_split_into_32bit_halves": true,
+  "async_options": 1,
+  "refresh_attributes_slot": 287,
+  "refresh_attributes": {
+    "address": "0xfffffff005c234b4",
+    "bytes": 348,
+    "sha256": "fcfffe3aa1eeb21632fdbbf0f3b224afbd16f1dd660802b3e4a4344d24426ef9"
+  },
+  "refresh_property_publisher": {
+    "address": "0xfffffff005c23610",
+    "bytes": 484,
+    "sha256": "9273cc8f332436c8b421b0a441636a3562667c52ae366520d77fd5bf95ce583b"
+  },
+  "wrong_reference_head": 5592,
+  "wrong_reference_attributes_slot": 301,
+  "original_notification_lifecycle_qualified": false,
+  "hardware_vblank_qualified": false
+}

@@ -1,0 +1,180 @@
+{
+  "result": "CAPTURED_INPUTS_AND_SOFTWARE_PEERS_PASS",
+  "device": "OnePlus 13 CPH2653 / dodge / SM8750",
+  "chip_id": "0x44050001",
+  "source_revisions": {
+    "sm8750": "669bceeaadc298e085f33d393c941eaca9e2c08c",
+    "oneplus13t_reference": "ad022a2a3a2e0c71c340361392d30d424c66b4d2",
+    "a830_backend_reference": "1baf6d3a1d0f133d284f8b8844cc98bf5aff1bbe",
+    "a830_metal_reference": "403e69e990871be939a15632cf619af6c8eb60a9",
+    "a830_firmware_reference": "505d0a1ac079339ee1486f0e19cfd8bd36a282a2"
+  },
+  "source_sha256": {
+    "sources/Adreno740-a830/NativeAdrenoA830HwInit.cpp": "6418ec87142e25c8766f48295a48739d0d6ce997c92e02380bf6582816bf0969",
+    "sources/Adreno740-a830/README.md": "101e1a05d3cd88e6ec908ad37e14c144114a3e57c387741c30b4259c26ade09c",
+    "sources/AdrenoFirmware-a830/AdrenoFirmware.h": "6b2e308f2feae92642f21da2667c3665a2e234ef79e7c5400e7aac7dd3c5b7ed",
+    "sources/AdrenoFirmware-a830/AdrenoHfi.c": "e42c9c4b39ba804395eb40e6e20b7a2491e3ce5c4011312bbd57499b6d3cb6ec",
+    "sources/AdrenoFirmware-a830/AdrenoHfi.h": "615cb21d1c7bd3729e3b36d361f0f78bbaacb1bd8931a268797e00505e05f0b8",
+    "sources/AdrenoFirmware-a830/AdrenoHfiStartup.c": "fd074e66fd9e8a1a891726ffa02acf9d1829f5d14b1db4c1c7101226a7a28c34",
+    "sources/AdrenoFirmware-a830/AdrenoHfiStartup.h": "a9d05602b73f45d39ee1b3db8894aed79864e5714c9be2625847214c717d356d",
+    "sources/AdrenoFirmware-a830/AdrenoHfiVotes.c": "040b97e005d268f25e7db799d1394bceeb4fc8e7ea8375c1e4f546c62cb17694",
+    "sources/AdrenoFirmware-a830/AdrenoHfiVotes.h": "50f00fccd87c3530ae8ad209514dd3593dc551b8e2209c57dab2fd244acafdf0",
+    "sources/AdrenoFirmware-a830/test_hfi.c": "b1b7354bf2a185a501636bc8d3b1ab1d6d2c398c267cb7355a94f3aa162b9159",
+    "sources/AdrenoFirmware-a830/test_startup.c": "4bf3472edbab163a42457f86b738a28e72d0b9cd5f6ef40d374fd344f8300934",
+    "sources/AdrenoMetal-a830/README.md": "f9f39b5bafb95da55e7aa0ca912a6dc2fb9a38d24f06fa079a62610bf492ce93",
+    "sources/UniXNU-Pagani_SM8750/package/PaganiGpuOpps.h": "bf50ca2a7813fa7f06d23f47f8213aba641ceabe995fd6959ce723b059343952",
+    "sources/UniXNU-Pagani_SM8750/package/PaganiGpuVotes.c": "18d881a4aa88088c237c838243dcf79495a533c8d8cececcd2fe926c30fe79f1",
+    "sources/UniXNU-Pagani_SM8750/package/PaganiGpuVotes.h": "d29333f95e58123fb88e6933fdbbd2a0f904cd59dc9fb25d20333c0940b75460",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/GccUfs.h": "edc7538c868dae6d3c7413c7249a84d6dd9869fa4a320b1c536826420877bb85",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/GpuProbe.h": "7d22c0a3a870b81c1939960df5dd6db844d46430fd85d7d9e73952f30f0e614b",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/PeripheralIO.h": "876b2720292383f264a54e68cccba74fc721fb65d47774197c97643de896af35",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Rpmh.h": "6b25aee59c4f4afdc5ffc02e8847b2f9b145011095f873506e6a72f7d1691cf2",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750Gmu.h": "28118762e85f60c631a44a498c8ef21eced90bf332f5cfeef8f74ef4869499f4",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GmuCommandDb.c": "339dc0c4dec5e073065196dfd1fb083ce081e1ff93465e0a60305f20f55e4c02",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GmuCommandDb.h": "7b2682f209923065371d1dccdae2d013ccb4758e98694e5eca8aa0f1f2dc85eb",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GmuSource.h": "e2b8971bd21aa7cda0b9c2438eb19da19f5ff62de866483516abf6316000ca1f",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GpuPower.c": "a371ff46b9a730b861b92da2a082bdb84b4bcbb655a484b609b5ef066b0738f6",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GpuPower.h": "5e2b18ba17bb8a7e01128ad39b7565e006746c4ae84a914214f85904760fddcb",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GpuSmmu.h": "e0dd1ba0c1c065c328d39e1e5f811a0cdba1f19a53e4254f7bd8838a3879186e",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GpuZap.c": "3541b1f33139b2591d3724caed6eaa203db72283b24d2559880b0cc45f2252b7",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GpuZap.h": "4e2fea17a916fd18f77b9aac4da179976bda01ff1217aeed2dc2fbe938a7f395",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750SocInfo.c": "6610008b81b2e0ac75657c760ece21726bcf69257e34efe646ed6a26e416ea9c",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750SocInfo.h": "0d7b12eba20f4c713287d618a71bd74e9b8d8eeb1005fa4ed29b8faf9b85321b",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/SmmuTakeover.h": "2f1ad3235071abedb3b9493697eda7a6c48a198857987b0cbce81e4511a3ff6e",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Test/gpu-power.c": "941c46ac236afea27a5ad354b772b1f3eb376cab1aaf6b5e637161b74798e3af",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Test/gpu-probe.c": "13aa3dd3fdbdea4881fdf99ba31968c9d43431748a52cb50bcc3dade2c3dcd59",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Test/gpu-votes.c": "9cca6f49037c0a806f7664b2401c466242706f469dfe54a68588d7a4545117cb",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Test/gpu-zap.c": "d3e0729902c5d4d5c9d7ee787ac8768ddfc9e0bf0b6ff240ffcf44234782995e",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Test/socinfo.c": "70df020222939040e90a1610b9deacccd4cc77ea1b2c964a6cceaeaa09c88c6f"
+  },
+  "captured_inputs": "hardware/dodge-gpu.json",
+  "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "observed_power_bin_count": 6,
+  "iphone_target": "iPhone10,3 / iOS 16.7.16 / 20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "original_graphics_family_versions": {
+    "com.apple.iokit.IOSurface": {
+      "version": "336.60.1",
+      "declared_dependencies": {
+        "com.apple.kpi.mach": "9.0.0b1",
+        "com.apple.kpi.private": "9.0.0b1",
+        "com.apple.kpi.unsupported": "9.0.0b1",
+        "com.apple.kpi.iokit": "9.0.0b1",
+        "com.apple.kpi.libkern": "9.0.0b1",
+        "com.apple.kpi.bsd": "9.0.0b1"
+      }
+    },
+    "com.apple.iokit.IOMobileGraphicsFamily": {
+      "version": "343.0.0",
+      "declared_dependencies": {
+        "com.apple.kpi.bsd": "8.4.1",
+        "com.apple.driver.AppleMobileFileIntegrity": "1.0.1",
+        "com.apple.kpi.libkern": "8.0",
+        "com.apple.iokit.IOSurface": "52.7.0",
+        "com.apple.driver.AppleM2ScalerCSCDriver": "1.0.0",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.mach": "8.0",
+        "com.apple.kpi.unsupported": "8.0",
+        "com.apple.driver.AppleARMPlatform": "1.0.0",
+        "com.apple.iokit.IOAVFamily": "1.0.0",
+        "com.apple.kpi.private": "10.0.0d3"
+      }
+    },
+    "com.apple.iokit.IOGPUFamily": {
+      "version": "65.60.1",
+      "declared_dependencies": {
+        "com.apple.kpi.bsd": "9.0.0b1",
+        "com.apple.driver.AppleMobileFileIntegrity": "1.0.1",
+        "com.apple.kpi.libkern": "9.0.0b1",
+        "com.apple.iokit.IOSurface": "52.6.0",
+        "com.apple.kpi.iokit": "9.0.0b1",
+        "com.apple.kpi.mach": "9.0.0b1",
+        "com.apple.kpi.unsupported": "9.0.0b1",
+        "com.apple.driver.AppleARMPlatform": "1.0.0",
+        "com.apple.kpi.private": "9.0.0b1",
+        "com.apple.iokit.IOReportFamily": "1.0"
+      }
+    }
+  },
+  "original_graphics_selected_for_prelink": false,
+  "host_suites_passed": [
+    "gpu-probe",
+    "gpu-power",
+    "gpu-zap",
+    "socinfo",
+    "hfi",
+    "hfi-startup",
+    "gen8-votes"
+  ],
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "host_log_sha256": "bb0baddaf3f105a44ac3d9a1cc73ba6b4852c3972c66b0427c6710c2a8d3fe44",
+  "gen8_votes_test_uses_reference_policy_and_synthetic_command_db": true,
+  "reference_firmware_names": [
+    "gen80000_aqe.fw",
+    "gen80000_gmu.bin",
+    "gen80000_sqe.fw",
+    "gen80000_zap.mbn"
+  ],
+  "reference_firmware_is_target_qualified": false,
+  "remaining": [
+    "Identify the matching target GMU/SQE/AQE/ZAP files and verify their full hashes.",
+    "Resolve target command-db rail tables and active fused bin/SKU; qualify clocks, RPMh and ZAP authentication.",
+    "Build the A830 backend against exact iPhone graphics ABI; do not reuse iPadOS 17 binary bindings.",
+    "Qualify SMMU/DMA/cache ownership, BO lifetime, fences and fault/reset recovery.",
+    "Build matching Turnip/metal2vulkan/Metal userspace and qualify known shader pixels and IOSurface scanout."
+  ],
+  "a830_target_backend_built": false,
+  "metal_frontend_built": false,
+  "iphone_graphics_abi_qualified": false,
+  "selected_in_default_kernel": false,
+  "firmware_executed": false,
+  "mmio_executed": false,
+  "hardware_tested": false,
+  "scope": "Seven existing production tests with software register/SMC/HFI peers, including 13T policy with synthetic rail tables. No actual GPU, firmware, shader or iPhone graphics execution.",
+  "native_platform_archive": {
+    "result": "PASS",
+    "target": "arm64-apple-ios16.0",
+    "archive": "build/cph2653-gpu-platform/libSm8750GpuPlatform.a",
+    "archive_sha256": "68c208f321c94d35e319673e5d3550725bf5cf8ac25ec21827f5ba77a9501984",
+    "object_sha256": {
+      "AdrenoFirmware.o": "34c32d2d88c3dba2be28fd5de6293e1ff04c5d99c4d7ac06123a9d9b2b6cc049",
+      "AdrenoHfi.o": "eb5e1e2e91e36f84c28e00faffdb368763fbb51aed9e3388b5953d598d0b4610",
+      "AdrenoHfiStartup.o": "c53c252414104e3d3c291f063bca8774e344434619716c48a81d5f797130d533",
+      "AdrenoHfiVotes.o": "3b8f536cf6a2101324cd23398343f2fabf5ead2af3a4b3af5ce67b881cc81b97",
+      "Sm8750Gmu.o": "f621a212d060ee8ecf8fffa4aa9622197bd023fcc93839cbad7d55c30c6c7001",
+      "Sm8750GmuCommandDb.o": "39dc9c5e2dc0b9d744fbe8e84f21049498fd7477ecca6251cc81bec81e27773a",
+      "Sm8750SocInfo.o": "3964bacef7ace72a08f12acd7cf5539aa6fb54b31118080be186ab514ca31cc5",
+      "Sm8750GpuZap.o": "0219d4560ff6c6a55bd10b259df824f4d36acb5b57f8ad3de1ed762069498354",
+      "Sm8750GpuPower.o": "16cdb04071aff0ae4684803cd1efb743eb609b075486c900c69b12010dad0889",
+      "Sm8750GpuSmmu.o": "81fb7b77696b79d6b74c3ea8f23c9d751acb4f0e06faf160b7f7462bb9d4d8c1",
+      "NativeAdrenoA830HwInit.o": "df7f1eb732c3fd4c59a06697836701f14d8704899ac9f6738aa5014811dc7252"
+    },
+    "source_sha256": {
+      "sources/AdrenoFirmware-a830/AdrenoFirmware.c": "c3cc714a65ce90216a0fc5c6f0e102ae1769c45e559c08f94a0b5f6fa3e97070",
+      "sources/AdrenoFirmware-a830/AdrenoHfi.c": "e42c9c4b39ba804395eb40e6e20b7a2491e3ce5c4011312bbd57499b6d3cb6ec",
+      "sources/AdrenoFirmware-a830/AdrenoHfiStartup.c": "fd074e66fd9e8a1a891726ffa02acf9d1829f5d14b1db4c1c7101226a7a28c34",
+      "sources/AdrenoFirmware-a830/AdrenoHfiVotes.c": "040b97e005d268f25e7db799d1394bceeb4fc8e7ea8375c1e4f546c62cb17694",
+      "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750Gmu.c": "f029c03b4d97711142bf51c4f0c3607b4602b9640d3b0662835760bb8d5bcb6d",
+      "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GmuCommandDb.c": "339dc0c4dec5e073065196dfd1fb083ce081e1ff93465e0a60305f20f55e4c02",
+      "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750SocInfo.c": "6610008b81b2e0ac75657c760ece21726bcf69257e34efe646ed6a26e416ea9c",
+      "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GpuZap.c": "3541b1f33139b2591d3724caed6eaa203db72283b24d2559880b0cc45f2252b7",
+      "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GpuPower.c": "a371ff46b9a730b861b92da2a082bdb84b4bcbb655a484b609b5ef066b0738f6",
+      "sources/UniXNU-sm8750-common/kits/Sm8750Platform/Sm8750GpuSmmu.c": "99e305da0681e3f59bda18a472a944399039c6cda4e96ceafa43230efd872888",
+      "sources/Adreno740-a830/NativeAdrenoA830HwInit.cpp": "6418ec87142e25c8766f48295a48739d0d6ce997c92e02380bf6582816bf0969"
+    },
+    "compiler_recipe_sha256": {
+      "build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/bsd/DEVELOPMENT/vfs_conf.o.json": "0f312e05b2974aa151f8999661c4ab057326729818548118abb4acd092da40aa",
+      "build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/iokit/DEVELOPMENT/IOPlatformExpert.cpo.json": "ef73014a7e13189d7aa921b02ccc5d9b02c4a1cf3febee0c10ce0d32ddec9f92"
+    },
+    "support_header_revisions": {
+      "ArmSmmu4K": "83969cd874503e65997ff7639f7dcf3d0a92cd17",
+      "AdrenoPM4": "282606b528b2595bc4274ea7490b62b323f35a5f"
+    },
+    "host_test_macros": false,
+    "linked_into_target_kernel": false,
+    "scope": "Eleven native source objects, including A830 hardware-init and ARM64 HFI/SMC paths. An independent archive, without IOGPU publication, a Metal frontend or a runnable GPU driver."
+  }
+}

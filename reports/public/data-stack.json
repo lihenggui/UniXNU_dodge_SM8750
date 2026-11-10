@@ -1,0 +1,290 @@
+{
+  "result": "CPH2653_IPHONE_IOS16_LOCAL_DATA_PREPARATION_STACK_PASS",
+  "builder_sha256": "afe103a5ae109a88923136c7d627d95c79767dedc810dd5e4b9b43d799e4c576",
+  "source_sha256": {
+    "scripts/build_data_stack.py": "afe103a5ae109a88923136c7d627d95c79767dedc810dd5e4b9b43d799e4c576"
+  },
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "stages": {
+    "ios16-data-image": {
+      "report": "reports/ios16-data-image.json",
+      "sha256": "7d99049bf8990e70f88cb2d991ff0c6e278d44bdd61d26b08782fad7b227b9f5",
+      "result": "IOS16_LOCAL_APFS_DATA_IMAGE_PASS"
+    },
+    "ios16-data-volatile-image": {
+      "report": "reports/ios16-data-volatile-image.json",
+      "sha256": "9d9907c749e3870f71f9944176331f76efd0392207afda3160141cf97f33bf37",
+      "result": "IOS16_LOCAL_APFS_DATA_IMAGE_PASS"
+    },
+    "ios16-data-seed-host": {
+      "report": "reports/ios16-data-seed-host.json",
+      "sha256": "1dc82fedb3381058994b4e7c5d7e4bb3255add8913c33d96815d0f9bef342913",
+      "result": "IOS16_ACTUAL_DATA_SEED_SOURCE_SANITIZERS_PASS"
+    },
+    "ios16-data-source": {
+      "report": "reports/ios16-data-source.json",
+      "sha256": "519a5ddc73e2890214b7d097fec5e0c20c9bcac66f22ae661896eefec0a68c9e",
+      "result": "IOS16_SOURCE_RAMBLOCK_IPHONE_ABI_AND_STRICT_NATIVE_LINK_PASS"
+    },
+    "ios16-data-prelink": {
+      "report": "reports/ios16-data-prelink.json",
+      "sha256": "99608c7e4f7ce35846f7ada67bf41769bceb40ce785d24c2780990fa88ac9f6b",
+      "result": "IOS16_SOURCE_RAMBLOCK_AND_ORIGINAL_IPHONE_COMPONENTS_STRICT_PRELINK_PASS"
+    },
+    "ios16-data-kernel": {
+      "report": "reports/ios16-data-kernel.json",
+      "sha256": "c65a014332cbf39e77b2e92fa315822a3bd665ecebb44fed032491ac8af45eb8",
+      "result": "IOS16_ACTUAL_SOURCE_RAMBLOCK_IO_ARM64_PASS"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "build/cph2653-data-kernel/abi/DodgeRamBlock.o",
+      "sha256": "4a61c950f47ed379190c9f68a7829c35f0411e19fcabd67642e6b5c30f1713c6",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-kernel/cpu-cases.json",
+      "sha256": "994a93a7d08b5585a62282f255d05e8592cd2d57a71312da98dd571ca39beef3",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-prelink/emission.json",
+      "sha256": "854204f4b77c1aea2be5fd13ad97b8294823a523948f652e997509d5e44e9e72",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-prelink/kernel.macho",
+      "sha256": "1d125bc8cf24216c7e1fa243c279a8314f1d6accebbf7198b23742795b64de73",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-prelink/kernel.macho.crypto-hmac.json",
+      "sha256": "a12460bbdcb3bf1ff948119817b1a32e65ed798b0883cf243d0928fb55007bee",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-prelink/mach.data.sealed",
+      "sha256": "9f4feded7aa21703f0a4b72e2100a5e7f3ad2c2644ee8627d29ec190a1f7e8b2",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-prelink/mach.data.sealed.crypto-hmac.json",
+      "sha256": "fb198f4e53069978c491ff7e648aadf7b9e7c3ff4eb43f5edf20e6e070e4af47",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-seed-host/compact-3GiB.json",
+      "sha256": "3308020d45466df7b1059fb3bc2317872b713b99ec3d0f045eccedf5b0c0aa94",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-seed-host/data-seed-test",
+      "sha256": "25bea3c7ad908698cddecd423632dd758030521033c12f635aee942e07787f1a",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-seed-host/volatile-2GiB.json",
+      "sha256": "61faf43af58d6bbc4aaa9fa93491459ddf40cc5f52642f996827ecebf0b643b7",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-source/DodgeRamBlock.late.o",
+      "sha256": "599b3705289630ab8ee3c0c793bcbe5b3773ef2c813f11b5c702557335a47e5b",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-source/DodgeRamBlock.o",
+      "sha256": "6286d8da75dc4c9173f0da3e8787b6036ec7ba165adc830f4a316954fbcd6026",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-source/DodgeRamBlockLifecycle.o",
+      "sha256": "ffe5467913f78ddbf5e069e300a49247448825f5687475f1954f26ac4926521a",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-source/compile-commands.json",
+      "sha256": "caece8143fca76bffb8ec89e37db32d8d0ebff13b9e89efc8ba581c83ff75f8d",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-source/data-lifecycle-host",
+      "sha256": "2479445066f20bf637622f813d6bebfbe2e56c9e3cf9726ee86e1bbad0fd7dd9",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-source/libDodgeRamBlock.a",
+      "sha256": "1027596813f47f6b8f5d818dcc3f46dfb771ca12d1eea52e7d8754eec37bbe35",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-source/link-command.json",
+      "sha256": "69e0aaf05f55f38b7e5a9198bc9596d45af84c34d2380c1e18f8d67440e74d1e",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/cph2653-data-source/mach.data",
+      "sha256": "5a260458fd439b93c1827ef32ae8e609630b2e6d8669f4e6396c315280b2572c",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs-volatile/apfs-data-build",
+      "sha256": "4084cb00bb137f2973e4843a78d6f5d0a0f7196e0a19f95c14049236c5385f9f",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs-volatile/apfs-data-verify",
+      "sha256": "8d09f7e1144087ad2e3f74a5235f7ee3f291e561444fca2d206dbb7488135874",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs-volatile/apfsprogs-apple-signature/apfsck/apfsck",
+      "sha256": "87fa42c7302c91373dcd8e89337a7627bffd83641f4231a19b1ee7003745628f",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs-volatile/apfsprogs-build/apfsck/apfsck",
+      "sha256": "f262da33a4c67da8d15ec71667c5b2c9d65d958e7768bf41a186a7637ebd6965",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs-volatile/checker.json",
+      "sha256": "d734600722be2e8e385f85f8bbb6c2f6800256bbb9a5450b96278ac8ea16b39f",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs-volatile/data-volume.config",
+      "sha256": "80faedacf1d5e515ca30561cbf6e84dfe3cc4a8dfb5cc0c2ca15d9a921fb0f4f",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs-volatile/data.apfs",
+      "sha256": "8bbc59292a215c08fc40698dfe4c9b132633ae055afc956cf560626905c7a856",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs-volatile/data.dbr",
+      "sha256": "ad4cf27e8f1be50891d5549aabff7c4b28fbf17e7daacd3fbe3f9bcb03ee9cd3",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs-volatile/readback.jsonl",
+      "sha256": "161a20f6e4970e026edf33adb46d58bf8b740c7df2c2695aff1d5f1f7b4eb487",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs/apfs-data-build",
+      "sha256": "4084cb00bb137f2973e4843a78d6f5d0a0f7196e0a19f95c14049236c5385f9f",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs/apfs-data-verify",
+      "sha256": "8d09f7e1144087ad2e3f74a5235f7ee3f291e561444fca2d206dbb7488135874",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs/apfsprogs-apple-signature/apfsck/apfsck",
+      "sha256": "87fa42c7302c91373dcd8e89337a7627bffd83641f4231a19b1ee7003745628f",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs/apfsprogs-build/apfsck/apfsck",
+      "sha256": "f262da33a4c67da8d15ec71667c5b2c9d65d958e7768bf41a186a7637ebd6965",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs/checker.json",
+      "sha256": "d734600722be2e8e385f85f8bbb6c2f6800256bbb9a5450b96278ac8ea16b39f",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs/data-volume.config",
+      "sha256": "4dba3b1db501cdf372e608f40a7327cb64413f07a9e329a2c342bd8c8c63bc95",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs/data.apfs",
+      "sha256": "afb68554b7a849d85fa1562d6493f49aa59cc31648c7f137244478decc41b71e",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs/data.dbr",
+      "sha256": "e559ad3252493008d053e0a9641ddb5eeaff9c3f5d121ee75ca1e23a31b1b0d6",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "build/ios16-data-apfs/readback.jsonl",
+      "sha256": "25644f600909607934324f9d4ce8f853afb2290ddb0a8542a7c30965c720ef9c",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "reports/ios16-data-image.json",
+      "sha256": "7d99049bf8990e70f88cb2d991ff0c6e278d44bdd61d26b08782fad7b227b9f5",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "reports/ios16-data-kernel.json",
+      "sha256": "c65a014332cbf39e77b2e92fa315822a3bd665ecebb44fed032491ac8af45eb8",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "reports/ios16-data-prelink.json",
+      "sha256": "99608c7e4f7ce35846f7ada67bf41769bceb40ce785d24c2780990fa88ac9f6b",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "reports/ios16-data-seed-host.json",
+      "sha256": "1dc82fedb3381058994b4e7c5d7e4bb3255add8913c33d96815d0f9bef342913",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "reports/ios16-data-source.json",
+      "sha256": "519a5ddc73e2890214b7d097fec5e0c20c9bcac66f22ae661896eefec0a68c9e",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    },
+    {
+      "path": "reports/ios16-data-volatile-image.json",
+      "sha256": "9d9907c749e3870f71f9944176331f76efd0392207afda3160141cf97f33bf37",
+      "role": "Separate local Data preparation artifact; scope follows its stage report"
+    }
+  ],
+  "formatted_images": [
+    "build/ios16-data-apfs/data.apfs",
+    "build/ios16-data-apfs-volatile/data.apfs"
+  ],
+  "preferred_bringup_seed": "build/ios16-data-apfs-volatile/data.dbr",
+  "initial_data_entries_per_image": 198,
+  "compressed_files_per_image": 17,
+  "resource_forks_per_image": 5,
+  "host_cases": 77,
+  "prelinked_source_cpu_cases": 30,
+  "negative_controls": 43,
+  "combined_source_objects": 83,
+  "native_entries": 83,
+  "combined_original_aliases": 332,
+  "original_components": 28,
+  "kernel_interfaces": 7,
+  "original_pointer_sites_read_back": 63889,
+  "exact_original_initial_data_preserved": true,
+  "linux_apfs_formatting_and_independent_readback_prepared": true,
+  "data_registration_and_once_start_source_implemented": true,
+  "data_source_metadata_registered_or_started": false,
+  "data_source_default_enabled": false,
+  "original_apfs_data_mount_qualified": false,
+  "writable_data_runtime_qualified": false,
+  "phone_operations": "none",
+  "filesystem_mounted": false,
+  "block_devices_opened": false,
+  "hardware_tested": false,
+  "default_kernel_selected": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "remaining": [
+    "Wire the source Data starter and seed into a separately gated startup/payload route.",
+    "Prepare and qualify the exact iPhone original APFS Data mount, parent init/start and media matching lifecycle.",
+    "Finish private graphics, crypto/power and other platform driver work; host/CPU checks are not a working iOS result."
+  ],
+  "scope": "Six local construction/source/link/CPU stages. Two reproducible APFS seeds retain the exact original initial Data with distinct fixed installation identities. The 2 GiB variant uses the existing volatile sparse capacity; the 3 GiB variant requires a persistent store for runtime writes. 77 sanitizer cases, 30 ARM64 cases, 43 corruption controls and a separate 83-object/28-component prelink pass. New source registration/once-start is implemented and default-off; it has not registered/mounted original Data or booted iOS."
+}

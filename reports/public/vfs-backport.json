@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "source_revision": "d8b80295118ef25ac3a784134bcf95cd8e88109f",
+  "function_sha256": "e3ceaeb619f51b76c5351b36050ad4c748d280eb3f2684808dd3270ed1903807",
+  "behavior": [
+    "not found returns NULL",
+    "matching operations return the actual mount",
+    "mismatched operations return NULL",
+    "original lookup flags preserved"
+  ],
+  "arm64": {
+    "fsid_bytes": 8,
+    "mount_ops_offset": "0x28",
+    "mount_fsid_offset": "0xc0"
+  },
+  "scope": "Extracted production function exercised on the host; actual XNU mount headers compiled for ARM64. Complete APFS ABI and runtime remain unqualified."
+}

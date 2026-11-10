@@ -1,0 +1,46 @@
+{
+  "result": "PASS",
+  "tools": [
+    {
+      "path": ".toolchains/xnu-linux/llvm/bin/clang",
+      "bytes": 162251008,
+      "sha256": "fe718ee177942a943513e79baf009a5781ca13db44fab810221d47db7f8c7a41"
+    },
+    {
+      "path": ".toolchains/xnu-linux/CommandLineTools/usr/bin/ld",
+      "bytes": 4809320,
+      "sha256": "a80e60f069dee254e5c50b1aa7e1325bbea790db0100dfc8fe1226e8c11c7fd0"
+    },
+    {
+      "path": ".toolchains/xnu-linux/CommandLineTools/usr/bin/libtool",
+      "bytes": 194056,
+      "sha256": "a7dc45c5777ee56bce0341281e95c53e61ca6ea3c716d095ba2a82294da63c99"
+    },
+    {
+      "path": ".toolchains/xnu-linux/CommandLineTools/usr/libexec/migcom",
+      "bytes": 263608,
+      "sha256": "2e02246b111cd5be58828fa69120fa29c188d8510e4368f76b2ab617aa912987"
+    },
+    {
+      "path": ".toolchains/xnu-linux/XcodeDefault.xctoolchain/usr/bin/iig",
+      "bytes": 558008,
+      "sha256": "07a2a90cca6ef0ef63685990cd500c45c1686e015b13527f52ec9bb598beda9b"
+    },
+    {
+      "path": ".toolchains/xnu-linux/bin/lzfse",
+      "bytes": 47608,
+      "sha256": "97006bc6cbc90cfbdecde39c107c01d0ee7c15b088b0a66df0e7ce730ff2ce9e"
+    }
+  ],
+  "llvm_revision": "58c46bae21181fb4240cf964461bea738d96d50e",
+  "llvm_xnu_builtins_patch": "sources/UniXNU/scripts/linux/llvm-xnu-builtin-type.patch",
+  "cctools_ref": "1030.6.3-ld64-956.6",
+  "libdispatch_ref": "swift-6.4.0-RELEASE",
+  "mig_tag": "bootstrap_cmds-138",
+  "iig_revision": "ea6d147d668ca15d490da638012243fcd705f30d",
+  "cmake": "cmake version 3.31.10",
+  "clang": "clang version 24.0.0git (llvm-project/clang 58c46bae21181fb4240cf964461bea738d96d50e)",
+  "jobs": 4,
+  "effective_memory_max_bytes": 21474836480,
+  "scope": "Host compiler/tool installation, not kernel build or hardware qualification."
+}

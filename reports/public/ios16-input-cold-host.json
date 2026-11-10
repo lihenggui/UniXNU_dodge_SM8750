@@ -1,0 +1,45 @@
+{
+  "result": "CPH2653_COLD_GPIO_AND_STOCK_SPI_FIRMWARE_SOURCE_SANITIZERS_PASS",
+  "builder_sha256": "cf6ac6082e7f8277712dad8845fccf74f9abb38c7583abd60b41791dfc06aaf9",
+  "source_sha256": {
+    "scripts/check_input_cold_host.py": "cf6ac6082e7f8277712dad8845fccf74f9abb38c7583abd60b41791dfc06aaf9",
+    "drivers/DodgeInput/DodgeGeniFirmware.cpp": "951ba487f3ec10ada9665e87c2e6351ceafe58c2f225ad1f0365678978af306d",
+    "drivers/DodgeInput/DodgeGeniFirmware.h": "8c6354e187fc27784c839deb4b48b8f6d85fe6a4db46ffc948ffbe1c51d8be8c",
+    "drivers/DodgeInput/DodgePmicGpio.h": "3fe2e4d6a38994f9c37c9502007255b0079c011e88c063600cd6fed047453b7f",
+    "drivers/DodgeInput/DodgeTouchPower.h": "66454526c6c316b3fc1e6f594a1ba27502baa25ecf889c48596b8ed27a82b83f",
+    "tests/DodgePmicGpioTest.cpp": "67c3b2441f213667f1240ed0884aa999ab8313e10f0add6a509d818bc3367a21",
+    "tests/DodgeGeniFirmwareTest.cpp": "fb12c75765b411d1422c968ca09e2904f4ca3adcff31601b3ffa9ff1aa1e5549",
+    "drivers/DodgeInput/geni/GeniSpi.c": "c8926a67f8119b2c8caaa6ac711e8cd5a21f1d5b6eacc4d08b55df99e65b25a3",
+    "sources/UniXNU/drivers/QcomGeniSpi/GeniSpi.c": "2042cfc9647391e24d5a558202046425ac62a05adfc73afe769367b8374e3f91",
+    "patches/oneplus13/0008-geni-transfer-completion.patch": "55b8ec3dade55201c7ccdbd5b7cb4f4af5d7e8ec1aa4d9994c74bf22beee332b",
+    "scripts/input_geni_overlay.py": "4d77db8c9472609809f489910b19ab1b510b6bf41a24e3c94cc56e3075fae47e",
+    "sources/UniXNU/drivers/QcomGeniSpi/GeniSpi.h": "e73891e4571c5323bca27aaf987bafa002856dfa1dcee156ff31b119e2d3ae3c",
+    "sources/UniXNU-sm8750-common/kits/Sm8750Platform/PeripheralIO.h": "876b2720292383f264a54e68cccba74fc721fb65d47774197c97643de896af35"
+  },
+  "tests": {
+    "gpio": {
+      "result": "PASS",
+      "case_count": 73,
+      "only_output_mode_enable_writes": true,
+      "electrical_fields_preserved": true,
+      "binary": "build/cph2653-input-cold/cold-gpio-host",
+      "sha256": "2fff3ab0245eb014bd83371f1d2140eae2c94f8f1f5b2a63f08cd785d7f81ff1"
+    },
+    "geni": {
+      "result": "PASS",
+      "case_count": 2740,
+      "fault_injections": 535,
+      "firmware_bytes": 2141,
+      "source_is_production_loader": true,
+      "binary": "build/cph2653-input-cold/cold-geni-host",
+      "sha256": "b7a03872efe68dabb47ea7e7bfb3155b7f370448bde6f3dc7b0c26600001c4f9"
+    }
+  },
+  "case_count": 2813,
+  "synthetic_firmware": false,
+  "firmware_sha256": "3ea1a3aa89bd68e76491e3a2a55f46ba674cf4f96f11b1eb10a46c5fe853951e",
+  "mmio_and_clock_behavior_are_register_model_peers": true,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Production cold GPIO and raw SEFW parser/programmer under ASan/UBSan/LeakSanitizer. Input/output modes, rail electrical-field preservation, write order, ownership/read/write errors, every truncated firmware extent and programming-write readback failure are checked. No actual PMIC/GENI/firmware execution or cold hardware qualification."
+}

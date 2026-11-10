@@ -1,0 +1,387 @@
+{
+  "result": "CPH2653_ISOLATED_MAPPED_RESOURCE_GPU_ROUTE_PASS",
+  "builder_sha256": "2d18d38b55d7b3fc95d8c6b856e822ff8bbcb04e95519453a77201ab00d92013",
+  "stages": {
+    "host": {
+      "report": "reports/ios16-mapped-lease-host.json",
+      "sha256": "fe86f304994655eb9a0f5e6e60dfe4955fd07725a9219a744d570bac5a85530f",
+      "builder": "scripts/check_mapped_lease_host.py",
+      "builder_sha256": "22648f262a585c985f2a24f57f828cc0c52c7d625f4bc9fc0909b962d5aa30e7"
+    },
+    "source": {
+      "report": "reports/ios16-mapped-lease-source.json",
+      "sha256": "f389d8cbea8d2ec4b8d9cb12b66340b55f09322d529d4d5e3a38ae485c294137",
+      "builder": "scripts/build_mapped_lease_source.py",
+      "builder_sha256": "110976245f9f053c732e2c2f42116f937c7d34132147fe1a3bc9349c82c7fa3a"
+    },
+    "prelink": {
+      "report": "reports/ios16-mapped-lease-prelink.json",
+      "sha256": "b82c9dd1ad8549c8de51db36fa774be55d97c7b72cc4e28e9ce762479206d9fe",
+      "builder": "scripts/build_mapped_lease_prelink.py",
+      "builder_sha256": "c835eab5b93e05cf21fa94e549cd50f66defb253c06bdfb94bd82856016e92be"
+    },
+    "kernel": {
+      "report": "reports/ios16-mapped-lease-kernel.json",
+      "sha256": "d2582b00772821b94ab635c8ab12275dcf61021e2ababa5e22f1be77493270a1",
+      "builder": "scripts/check_mapped_lease_kernel.py",
+      "builder_sha256": "f90e5416047af005bb17d6b09f5d05198abfb7f31095e90bf77f55da718b1dd3"
+    },
+    "payload": {
+      "report": "reports/ios16-mapped-lease-payload.json",
+      "sha256": "01c47526db7325416802b0d27524f1f38afc59211c2f7f482cfa81308855cfc1",
+      "builder": "scripts/build_mapped_lease_payload.py",
+      "builder_sha256": "6d13202459702697af98b3e2c8e1807d4e907b53963f08ab74c321e083baec08"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/fixture/XnuMemoryFixture.h",
+      "sha256": "623604f14c79e58f7d26e9d5c1ab1dca496df4b64572c08493370e232b5181cd"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/fixture/test_vm.cpp",
+      "sha256": "a767c3f4c0cf2a45647c1d2cffd4632a2417e26966b4e4e5d9b8fbfd8382d11e"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/fixture/test_submit.cpp",
+      "sha256": "2cd4be5139fc0a55354996da3754fd4be8f90e6314b1513dab530048c0433448"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/fixture/test_userclient.cpp",
+      "sha256": "dae628d53fa27b8c4d022a9c95bc9025e1eddaebb4bcdc612b7da82ef18305cb"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/bootarg-peer.cpp",
+      "sha256": "09e687905e4efe0d9cae77dd7bc968cbbf874eaf126e71daedbe1b87c48b59a5"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/vm",
+      "sha256": "f2c268f6cc7b9637e96f6a57ffbbd4ad2b66602dd309cc8f93a21442f30dc87d"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/vm.log",
+      "sha256": "18ca101501994a6c469a735846e7a1ddaf0e272e6467456ab3370e84b63d8a26"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/submit",
+      "sha256": "c816521422ad4b2dc48930afd0c42bebbe5ee3bdb0cc01aa05f20722afbcc6da"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/submit.log",
+      "sha256": "d938c5946077d5a63951e772821c777f876096d23513054cc960ca0fe8500ac0"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/userclient",
+      "sha256": "ee92a506ad5d920b7047788c479ed244ab799afbe4f0648ec7169375900ab259"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/userclient.log",
+      "sha256": "9343f0cc4b45d36e67bc8f0918b1fc8bf2af34e1f161dad5639439992e02ef42"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/mapped",
+      "sha256": "0fc9219457108bb66eb4824f6ce2afabcce573fe60d132a04384f8aa3d717913"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/mapped.log",
+      "sha256": "6efcdbfb1a3ede9024b925812c23696ac2449ec6a75cb47701177980030ff903"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/map-wait",
+      "sha256": "82c08141bcb524507fd72436f2c819d9102ddb933b6407dabf2c9bbd10645539"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/map-wait.log",
+      "sha256": "711ec5189b299d4ba7e0681b7cef4eb6a0017492f23d7c15177694145a00a269"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/historical-IB-only-hold.log",
+      "sha256": "07d29f8932ce04832d5e55df050d6e8060d96afe538f51470d441791c859d93f"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/skip-write-acquisition.log",
+      "sha256": "a6fb30182484ed6ac592a3f7c6d9b6616c830b48758b6edb9cd52a6d06e11a4e"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/allow-late-mapping.log",
+      "sha256": "75103e4b9e9bc7bba528cecaff89c6801ed164280ff18123d47854ac801a22de"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/zero-fence-treated-as-complete.log",
+      "sha256": "93a92c5817b9484a2d402ee84219813cda8e2d99609ae31359c7456aec4236c0"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/wait-no-retry.log",
+      "sha256": "979f646e24587d41677380cd49b1772c3a90b68be084dfd90e3e96b81e6c9fa3"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/host/compile-commands.json",
+      "sha256": "e039e6b6a7861b6739cb093c1a95cbee3ca04c678249173f9fba66c873bcdba1"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source/NativeAdrenoVm.h",
+      "sha256": "8f4b071c1c706b9e7a332b29454923f31fd349fed477c1aab31acf53319f52af"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source/NativeAdrenoVm.cpp",
+      "sha256": "bde78ebfd6342ae0c1fa34e4aba4d209cd5ccd31719e8ef0e8f79afc324e188b"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source/NativeAdrenoSubmit.h",
+      "sha256": "8df97dc3774d472cd274e97107d00bcbeb0240327c84fd3a45884afbf217b60d"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source/NativeAdrenoSubmit.cpp",
+      "sha256": "72f97add35be5c4d7aea4c7e74c7e24255cac40c1629287e0b2cef5d729a790b"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source/NativeAdrenoUserClient.h",
+      "sha256": "7448c6ba4d0368f1e3448bfa11e93ccf2cc24d9caaa5881b5d8fbd6dddc9ca23"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source/NativeAdrenoUserClient.cpp",
+      "sha256": "574600cb0025719465239468f287bca9ce207f925704540eb804f5752f54fae9"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source/NativeAdrenoPublish.cpp",
+      "sha256": "d554b11ca25079cb6a026b2610d24d95ea5f58665f505f8bfef55fbdf82fa5dc"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source/DodgeMappedLease.inc",
+      "sha256": "596dac2eb95cb2011bcfe17b9f8316c9a37db3b8d545f8acecb4865b5617b014"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source/DodgeMapWait.inc",
+      "sha256": "5796d82fc13a482bbf5ede166824827d5b474697fa407520d82e86c73f4c9484"
+    },
+    {
+      "path": "reports/ios16-mapped-lease-host.json",
+      "sha256": "fe86f304994655eb9a0f5e6e60dfe4955fd07725a9219a744d570bac5a85530f"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoA830HwInit.o",
+      "sha256": "9d314d9f39b087649c637c8beb9fd99f2c5be43fc9ea73a199c53ca5c4fd98dc"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoCpInit.o",
+      "sha256": "5f8a3edf8d3373ccbceff37f1c43a103837b652b574da39890b542520721331b"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoCpu.o",
+      "sha256": "fcba636a1063ed670f80a33e4fe14f6b25e5b3e96f03fbaaf5909f2d2d44e866"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoGmuContext.o",
+      "sha256": "85c62c010d1d6445b1dbc28584bf7b1febef74d54e6465ac94c30a417f184b7f"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoGmuMemory.o",
+      "sha256": "685fa5751a8454a3bce51e73a44c519e7ef1adee822492319a683de498e8b4df"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoGpuContext.o",
+      "sha256": "5908c0934a7e6c11e2dee1e64754cc4e983c925e2b27e8702f3efccf6dfb38d0"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoIrq.o",
+      "sha256": "6f21f90b650e5dbb08035b4bd77f11edb8b25cea5bd4c3ecbabf49a552d51667"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoMemory.o",
+      "sha256": "733ccea06342801c2f2a2ba238ef91a4d9518bef23d2dfbff44f0f4a2448beac"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoPublish.o",
+      "sha256": "a076a4693d9f7d62ec1f972721a90c6ef16cd21e94943dff6954d93fa798569d"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoPwrup.o",
+      "sha256": "305326b9439e21f3bf306abcf5e22ccd320d21209a293449d08750b132fb1e37"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoPreempt.o",
+      "sha256": "ba0f4a4ca4cb242f3d042111d6f413414b28024ac9ff8bddf2abb26cee44c0a8"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoRing.o",
+      "sha256": "738921a8cf0596b6c835f32abf1a05927789dca1a6720e00c091d8d0aa6f7a7a"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoSha256.o",
+      "sha256": "8dc374d3ae482e4923f80f1c91f2ad2e21661c56b0b184905367f07cb6d2c602"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoSmmuContext.o",
+      "sha256": "441fc6ab6ba5195a52ddc62e17462f2604311c9946478dc36375cf0183d3edbe"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoSmmuMemory.o",
+      "sha256": "a15f9bd72dc3f4b26d2957e672d85437cac78c51b085c236271fce700b62c718"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoSubmit.o",
+      "sha256": "fabc093061ae35d869e7c6042eee710eba0dd658d354e1a14f75c58e3be40c3d"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoTimer.o",
+      "sha256": "11830f409ee15eaec51a23a0197c37441ccef792e641ad5d2c3a8bb44d1c7395"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoUserClient.o",
+      "sha256": "9732bdb20ace0587a0533cadaf32453db085e81e04a983ce68729b6a7f89be2b"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/NativeAdrenoVm.o",
+      "sha256": "7b8ebdf04d102478f4499ba2764eb6788a1095e9bb918bfc097d1f3b0a29dd8b"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/native/compile-commands.json",
+      "sha256": "dec2b3f6f0bedaeb3437f9651942bb82ab095e4943cd2543e1b4a609d1b3fe76"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/libDodgeA830MappedLease.a",
+      "sha256": "c04c06d67538687fa739f90d8684e89a77b1c60ca7ca2b0fde5a884084212ced"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/mach.mapped-lease",
+      "sha256": "999f8021556d8da2b6c7772a3308da0f58273b66c5c00c13d4ddae0a4a419584"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait/source-build/link-command.json",
+      "sha256": "e5ab3a8a3c61366beccfd9d6278c7b09ee2da06d6dd708746a057a3e4f97ee14"
+    },
+    {
+      "path": "reports/ios16-mapped-lease-source.json",
+      "sha256": "f389d8cbea8d2ec4b8d9cb12b66340b55f09322d529d4d5e3a38ae485c294137"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-prelink/kernel.macho",
+      "sha256": "f8a5b3c92d4252e294b14b8294363fb40171a551cd7824be61bbb22496b849ea"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-prelink/emission.json",
+      "sha256": "16555f73a79eec4cd57a2de75903239ddd6b1b5f62718f51b70d65b4cf5562ee"
+    },
+    {
+      "path": "reports/ios16-mapped-lease-prelink.json",
+      "sha256": "b82c9dd1ad8549c8de51db36fa774be55d97c7b72cc4e28e9ce762479206d9fe"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/frontend-layout.o",
+      "sha256": "6543335b84a9381eeb5ff727b89763d37881ce105887cf16e3e5c5faf99338d8"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/compiler-layouts.log",
+      "sha256": "54be8cf2f2ec64e8063bf087262a8b00e87324c32fa38eb4f937d2c5232cc254"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoMemory.probe.o",
+      "sha256": "733ccea06342801c2f2a2ba238ef91a4d9518bef23d2dfbff44f0f4a2448beac"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoMemory.layouts.log",
+      "sha256": "68639bf3cc948fcab564c12f4c2c92849d6d9d8a1d6cfe664c024b64431e6720"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoPublish.probe.o",
+      "sha256": "a076a4693d9f7d62ec1f972721a90c6ef16cd21e94943dff6954d93fa798569d"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoPublish.layouts.log",
+      "sha256": "be93344293a4880dad63a6ff4dd5b84cc2fbf676c5ab087c61c3977d2f1e8aac"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoSubmit.probe.o",
+      "sha256": "fabc093061ae35d869e7c6042eee710eba0dd658d354e1a14f75c58e3be40c3d"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoSubmit.layouts.log",
+      "sha256": "e8ab05348aa38149dc0170e8a07ef62fc8b825624602621f34bcd08bbaec8289"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoVm.probe.o",
+      "sha256": "7b8ebdf04d102478f4499ba2764eb6788a1095e9bb918bfc097d1f3b0a29dd8b"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoVm.layouts.log",
+      "sha256": "b7a770d2a78c51d285f053b27659e92ab082d910afcb97c319cf94cef533cb75"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-kernel/cpu-cases.json",
+      "sha256": "5d871fbc7fc4eb6320c43346e7dc16c990e95ade9246323a0cebd17b94b6b916"
+    },
+    {
+      "path": "reports/ios16-mapped-lease-kernel.json",
+      "sha256": "d2582b00772821b94ab635c8ab12275dcf61021e2ababa5e22f1be77493270a1"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-bringup/payload.img",
+      "sha256": "ee16ea97dc9d33f446154d6307a8f75e426251274bcc576f87ca14b3002299b8"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-bringup/boot.img",
+      "sha256": "c88a4c95b7786689f7074509eac3fa0443e4a497bb07a74643e0a15502fd1eaa"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-bringup/boot.json",
+      "sha256": "a09043c2138881d15f43622158969d7453975557317ecff0e46cf05cdf1b0e18"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-bringup/unixnu.toml",
+      "sha256": "ec0bde9be3e6e10ab058fc2a2e66e0165c531e78edb6eea3acdf978c97e21d30"
+    },
+    {
+      "path": "build/cph2653-mapped-lease-wait-bringup/embedded-efi-cpu.json",
+      "sha256": "8e91627058017f37491b5ccb369cf3f8337288a7201e0e152fb8a498684ccf92"
+    },
+    {
+      "path": "reports/ios16-mapped-lease-payload.json",
+      "sha256": "01c47526db7325416802b0d27524f1f38afc59211c2f7f482cfa81308855cfc1"
+    }
+  ],
+  "new_host_resource_cases": 16,
+  "existing_backend_host_suites": [
+    "vm",
+    "submit",
+    "userclient"
+  ],
+  "new_bounded_map_wait_host_cases": 12,
+  "resource_source_rejection_controls": 5,
+  "linked_kernel_cpu_paths": 112,
+  "kernel_instruction_rejection_controls": 6,
+  "kernel_lifetime_rejection_controls": 2,
+  "inherited_frontend_host_cases": 132,
+  "inherited_frontend_packet_mutations": 1124,
+  "combined_source_objects": 90,
+  "recompiled_backend_objects": 19,
+  "preserved_gpu_archive_members": 35,
+  "native_source_entries": 97,
+  "original_aliases": 341,
+  "original_pointer_readbacks": 63889,
+  "original_components": 28,
+  "original_interfaces": 7,
+  "actual_embedded_efi_success_paths": 2,
+  "actual_embedded_efi_failure_paths": 6,
+  "actual_original_post_subtests": 18,
+  "boot_image": "build/cph2653-mapped-lease-wait-bringup/boot.img",
+  "boot_image_bytes": 170557440,
+  "all_current_vm_mappings_held_per_job": true,
+  "new_mapping_waits_for_all_vm_jobs": true,
+  "publisher_pending_map_wait_outside_lock": true,
+  "map_wait_budget_us": 1000000,
+  "map_wait_attempt_limit": 16384,
+  "cache_failure_keeps_whole_lease": true,
+  "uncertain_zero_fence_not_retired": true,
+  "source_data_default_enabled": false,
+  "source_data_mount_default_enabled": false,
+  "default_artifacts_selected_or_replaced": false,
+  "phone_operations": "none",
+  "iosurface_producer_connected": false,
+  "producer_cache_visibility_qualified": false,
+  "gpu_failure_quiescence_qualified": false,
+  "original_userspace_included": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "Five isolated stages fix early release of command-indirect GPU resources. Each job holds every current VM mapping; new mappings wait until jobs finish because commands can name previously unmapped IOVAs. Writable resources are acquired before any lease release; cache/unknown publication/reset failures retain ownership. IB storage does not infer cross-ring resource disjointness. The fresh-health frontend is preserved. Source/native instruction checks and the complete new development container retain explicit MMIO/cache/IOKit/firmware peers. IOSurface identity authorization and producer registration, physical exclusion/cache/reset, full graphics ABI, root/Data authentication and iOS startup remain incomplete."
+}

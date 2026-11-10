@@ -1,0 +1,135 @@
+{
+  "result": "CPH2653_IPHONE_DARWIN22_FRESH_BOOT_ENTROPY_SOURCE_EFI_BUILD_PASS",
+  "builder_sha256": "cb0680162316afd083e162baa023aef3391360597d627c40030910cd5b57ecc6",
+  "overlay_pin": {
+    "path": "patches/darwinboot/0002-refresh-firmware-entropy.patch",
+    "sha256": "3430cea779b9a952ad7557f8346c13d7fca4af5b4e65ab1dcb219564bd75a1dd",
+    "header": "drivers/DodgeBoot/DodgeBootEntropy.h",
+    "header_sha256": "47612a059c3e18f15ae14ba8180488f4e2033fc01b41d957c997eab7912d5567",
+    "revision": "3c75734014cdab0acd9541e88057b7606ee7ae08",
+    "files": {
+      "DarwinBoot.c": {
+        "base_sha256": "4fd5b08848b4ca6af6bea534eefac4e04a5aa5a6175efe516bafadebf8dd31da",
+        "output_sha256": "aaec6ed9ea795e47287f0518e5d2e76e65c83f2e6699e45912d5bf77b8503988"
+      },
+      "DarwinBoot.inf": {
+        "base_sha256": "cb10851277b53b355794c1bca3fa16d3bf18a0dc2dee857091837b63599019df",
+        "output_sha256": "05248d62d1d1b5c4241a820f737ea9afb374791e5031e658a5a79b4775ec402e"
+      }
+    },
+    "scope": "Isolated Darwin22 EFI entropy handoff; exact 256-byte /chosen/random-seed refreshed through RAW EFI_RNG per attempt; no target entropy/hardware qualification or existing image replacement"
+  },
+  "source_sha256": {
+    "scripts/build_boot_entropy.py": "cb0680162316afd083e162baa023aef3391360597d627c40030910cd5b57ecc6",
+    "scripts/boot_entropy_overlay.py": "157a71c5341fe8b3de58fc280f74a375e16662a540b9150672124e55970203a9",
+    "scripts/check_boot_entropy_host.py": "5c4eb7c44af0bbe5d25c0ed707fde75526d3fd40e11a800431bfc2ca62ed54c2",
+    "scripts/build_uefi.py": "7da02c844c40db7c3438f18c5e9e1241e7080948d368e09bf18410bfdffb69ea",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "scripts/prepare_initial_data.py": "1cc4467bb4224632adea2a5ac87d602b285207b5c0d6bd63937a6bfdcf8d271c",
+    "tests/DodgeBootEntropyTest.c": "aad66595978e3aa164851e0b8f525381de092f15aab5d784e32805f8437d881f",
+    "drivers/DodgeBoot/DodgeBootEntropy.h": "47612a059c3e18f15ae14ba8180488f4e2033fc01b41d957c997eab7912d5567",
+    "patches/darwinboot/0002-refresh-firmware-entropy.patch": "3430cea779b9a952ad7557f8346c13d7fca4af5b4e65ab1dcb219564bd75a1dd",
+    "sources/UniXNU/drivers/DarwinBoot/DarwinBootPkg/DarwinBoot.dsc": "7dcdf998c45dcd9e37c98fc3bcc0992ee2dcb5dd0b2b50bc1c52e71b11ec2993",
+    "sources/UniXNU/drivers/DarwinBoot/DarwinBootPkg/Driver/DarwinBoot.c": "4fd5b08848b4ca6af6bea534eefac4e04a5aa5a6175efe516bafadebf8dd31da",
+    "sources/UniXNU/drivers/DarwinBoot/DarwinBootPkg/Driver/DarwinBoot.inf": "cb10851277b53b355794c1bca3fa16d3bf18a0dc2dee857091837b63599019df",
+    "sources/UniXNU/drivers/DarwinBoot/DarwinBootPkg/Driver/BootArgs.h": "e870307657437022162e798d071f67ad393f514d512e9667d2b2b36eaa7ff241",
+    "sources/UniXNU/drivers/DarwinBoot/DarwinBootPkg/Driver/WindowSize.h": "6f78303c54252eae722be7c9b33869e4e8251ee3569736511790170d499b58cb",
+    "uefi/Mu-Silicium/Mu_Basecore/MdePkg/Include/Protocol/Rng.h": "b6f0443681495d555a1ff42060574d26e3f82c372605bb9be7af6daf4096f0b7",
+    "uefi/Mu-Silicium/Mu_Basecore/MdePkg/Include/Guid/Rng.h": "1d36864475d9820fb1fcf4d4724f214095b5301a839ef5086c59d64191c58fef"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-crypto-payload.json": "1e058c5ed732bd4ea11f4253569df66a6c046322526bf4d5c0aca8f1bbea84c7"
+  },
+  "artifacts": {
+    "build/cph2653-boot-entropy/DarwinBoot.efi": "89e0076cd1b2589f53a0e1a08c0ccfb4e6b71e6d785e7820834bedf5d9380324",
+    "build/cph2653-boot-entropy/host-evidence.json": "102bc841f6d11c55b547634c9304f39d791fb0aa66d071a54d82522410727e4c",
+    "build/cph2653-boot-entropy-host/boot-entropy-test": "63d12c9c01479f25f29870980fde51976944ade899a7d3c1579b4674d3bbb182",
+    "build/cph2653-boot-entropy/tree/DodgeBootEntropy.dsc": "b86525686e7976eea561606639e44c9e2334f2a8c966b627d2ddfe925b965af8",
+    "build/cph2653-boot-entropy/tree/DarwinBootPkg/Driver/DarwinBoot.c": "aaec6ed9ea795e47287f0518e5d2e76e65c83f2e6699e45912d5bf77b8503988",
+    "build/cph2653-boot-entropy/tree/DarwinBootPkg/Driver/DarwinBoot.inf": "05248d62d1d1b5c4241a820f737ea9afb374791e5031e658a5a79b4775ec402e",
+    "build/cph2653-boot-entropy/tree/DarwinBootPkg/Driver/DodgeBootEntropy.h": "47612a059c3e18f15ae14ba8180488f4e2033fc01b41d957c997eab7912d5567",
+    "build/cph2653-boot-entropy/tree/Build/DodgeBootEntropy/DEBUG_CLANGPDB/AARCH64/DarwinBootPkg/Driver/DarwinBoot/DEBUG/DarwinBoot.map": "668f005a7afac294e7173c8f64992e108310e5c6301788ef04866e29d84e1205",
+    "build/cph2653-boot-entropy/tree/Build/DodgeBootEntropy/DEBUG_CLANGPDB/AARCH64/DarwinBootPkg/Driver/DarwinBoot/OUTPUT/DarwinBoot.obj": "518fee82acdba650ad1995d45c447902704c06dc62acd20b4614cd7297b7543a",
+    "build/cph2653-boot-entropy/tree/Build/DodgeBootEntropy/DEBUG_CLANGPDB/AARCH64/DarwinBootPkg/Driver/DarwinBoot/DEBUG/AutoGen.c": "a408fe3650276e25ea36101bfd24e21af59c34da25faf3079e3cb4279f56b206"
+  },
+  "efi": "build/cph2653-boot-entropy/DarwinBoot.efi",
+  "efi_geometry": {
+    "machine": "0xaa64",
+    "optional_header_magic": "0x20b",
+    "subsystem": 11,
+    "bytes": 28672
+  },
+  "build_command": [
+    ".venv-uefi/bin/python",
+    "uefi/Mu-Silicium/Mu_Basecore/BaseTools/Source/Python/build/build.py",
+    "-p",
+    "DodgeBootEntropy.dsc",
+    "-a",
+    "AARCH64",
+    "-b",
+    "DEBUG",
+    "-t",
+    "CLANGPDB",
+    "-n",
+    "4"
+  ],
+  "memory_budget": {
+    "effective_memory_max_bytes": 21474836480,
+    "requested_max_bytes": 21474836480,
+    "within_budget": true
+  },
+  "compiler_jobs": 4,
+  "host_tests": {
+    "result": "PASS",
+    "provider_and_order_cases": 14,
+    "malformed_or_truncation_cases": 408,
+    "invalid_parameter_cases": 3,
+    "actual_adt_with_rng_peer_checked": true,
+    "sanitizers": [
+      "address",
+      "undefined",
+      "leak"
+    ],
+    "binary": "build/cph2653-boot-entropy-host/boot-entropy-test",
+    "binary_sha256": "63d12c9c01479f25f29870980fde51976944ade899a7d3c1579b4674d3bbb182",
+    "source_sha256": {
+      "tests/DodgeBootEntropyTest.c": "aad66595978e3aa164851e0b8f525381de092f15aab5d784e32805f8437d881f",
+      "drivers/DodgeBoot/DodgeBootEntropy.h": "47612a059c3e18f15ae14ba8180488f4e2033fc01b41d957c997eab7912d5567"
+    },
+    "compiler": "Ubuntu clang version 14.0.0-1ubuntu1.1",
+    "command": [
+      "/usr/bin/clang-14",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-fshort-wchar",
+      "-fno-omit-frame-pointer",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fno-pie",
+      "-no-pie",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Iuefi/Mu-Silicium/Mu_Basecore/MdePkg/Include",
+      "-Iuefi/Mu-Silicium/Mu_Basecore/MdePkg/Include/X64",
+      "-Idrivers/DodgeBoot",
+      "tests/DodgeBootEntropyTest.c",
+      "-o",
+      "build/cph2653-boot-entropy-host/boot-entropy-test"
+    ],
+    "physical_entropy_quality_qualified": false,
+    "hardware_tested": false
+  },
+  "boot_argument_bytes": 608,
+  "raw_rng_bytes_requested_per_handoff": 256,
+  "source_failures_clear_seed_and_refuse_handoff": true,
+  "refreshes_final_copied_adt_before_memory_map_and_exit_boot_services": true,
+  "physical_entropy_quality_qualified": false,
+  "boot_services_rng_executed_on_target": false,
+  "hardware_tested": false,
+  "existing_firmware_or_boot_images_replaced": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "An isolated AARCH64 DarwinBoot EFI compiles/links with the exact Darwin22 608-byte command line and the production entropy helper. Before handoff the copied final ADT must contain one canonical /chosen and exactly one 256-byte random-seed. It is erased and filled by a fresh EFI_RNG_PROTOCOL RAW request; discovery, provider, zero-result and parser errors refuse handoff. Partial RNG errors and later loader failure erase the range. No time/CPU/build-seed fallback is installed. Fourteen provider/order, 408 malformed/truncation and three parameter cases run with ASan/UBSan/LSan, actual MdePkg headers and explicit RNG peers. The actual private iPhone ADT is accepted with a host RNG peer. Code/parser/EFI build evidence does not qualify the proprietary firmware provider, physical entropy/health, actual Boot/ExitBootServices execution, kernel consumption or phone boot. Existing firmware, payloads and images are unchanged."
+}

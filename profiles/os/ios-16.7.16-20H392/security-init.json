@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "original_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "initializers": {
+    "com.apple.driver.AppleMobileFileIntegrity": {
+      "address": "0xfffffff005704320",
+      "calling_convention": "void(void)",
+      "code": [
+        {
+          "name": "entry_wrapper",
+          "va": "0xfffffff005704320",
+          "size": 24,
+          "sha256": "7941fd053303f9b11a84f9f7522e756e993dcde19edcf500bdaea286b38c3d31"
+        },
+        {
+          "name": "policy_initializer",
+          "va": "0xfffffff005703c54",
+          "size": 1056,
+          "sha256": "3a7c782c190e6615797d7b2bc2471e4e5d8599e6d5cc7e539d21305943760551"
+        },
+        {
+          "name": "interface_setup",
+          "va": "0xfffffff0057003f0",
+          "size": 152,
+          "sha256": "fae76be06f1a31abaa5d9209f482a6e1001a098657719f02a3a1793cbb23b4ca"
+        }
+      ],
+      "required_dependencies": [
+        "com.apple.driver.ApplePMGR",
+        "com.apple.security.AppleImage4",
+        "com.apple.kext.CoreTrust",
+        "com.apple.kec.corecrypto"
+      ]
+    },
+    "com.apple.security.sandbox": {
+      "address": "0xfffffff0064bcd80",
+      "calling_convention": "void(void)",
+      "code": [
+        {
+          "name": "policy_initializer",
+          "va": "0xfffffff0064bcd80",
+          "size": 100,
+          "sha256": "65592bac61e3cd9a890a8e9729ef49eb268bda7cab2bc61d82f137e0a0bd4060"
+        }
+      ],
+      "required_dependencies": [
+        "com.apple.driver.AppleMobileFileIntegrity",
+        "com.apple.kext.AppleMatch"
+      ]
+    }
+  }
+}

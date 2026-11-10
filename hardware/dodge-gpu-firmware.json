@@ -1,0 +1,46 @@
+{
+  "device": "OnePlus 13 CPH2653",
+  "soc": "SM8750",
+  "chip_id": "0x44050001",
+  "captured_version": "CPH2653_16.0.1.304(EX01)",
+  "ota_id": "CPH2653_11.F.80_2800_202511110338",
+  "catalog": "https://roms.danielspringer.at/index.php?view=ota&build=3fc47b0ff6658c2a79bd7d48",
+  "manufacturer_download_host": "gauss-compota-c-sg.allawnofs.com",
+  "ota_bytes": 8090453187,
+  "payload_manifest_sha256": "2d66787f14dc36189f661d9694690e874c53cb60f4943a445eae35487a03f731",
+  "vendor": {
+    "bytes": 682434560,
+    "sha256": "bcae44f960184b9a12a7be9c0b3016876ec32485d7ca81b2544ce42e6261196a"
+  },
+  "vendor_boot": {
+    "bytes": 100663296,
+    "sha256": "87aad891ae5061e6d1abb8573024d8f59a177bf8367d9e4ef7c79a6e474be1d7",
+    "matches_local_captured_backup": "vendor_boot_a"
+  },
+  "vendor_build_incremental": "1762280641704",
+  "firmware": {
+    "directory": "/firmware",
+    "files": {
+      "gen80000_gmu.bin": {
+        "bytes": 88896,
+        "sha256": "1ad8175e6cd01ea76c64d20b83600038c52dd29844b48d57b11b769b038863a5"
+      },
+      "gen80000_sqe.fw": {
+        "bytes": 111476,
+        "sha256": "30ee3301534f95799d4afaf73864f3c369baa5a5dea8481e7f0cb8cc941f396c"
+      },
+      "gen80000_aqe.fw": {
+        "bytes": 25044,
+        "sha256": "67562ad5baae3a133c92a6e48a9d1b1a9a867fe2f85b49324e244e963f3b89c5"
+      },
+      "gen80000_zap.mbn": {
+        "bytes": 12088,
+        "sha256": "c11cc4f383a0b2a7aecab36aee59174d766530bdcef2d37ed8b082598ca8aeb1"
+      }
+    }
+  },
+  "zap_metadata_bytes": 4044,
+  "zap_payload_bytes": 4096,
+  "ota_signature_authenticated": false,
+  "scope": "Full-OTA manifest and operation/partition hashes, with exact captured vendor_boot match; no phone operations or GPU execution."
+}

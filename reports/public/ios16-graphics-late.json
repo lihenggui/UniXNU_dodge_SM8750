@@ -1,0 +1,280 @@
+{
+  "result": "IOS16_OPT_IN_IOBSD_GRAPHICS_WORKER_AND_ISOLATED_NATIVE_OVERLAY_PASS",
+  "builder_sha256": "4665e80ebd89eb8594fe91ff38e4c115ffd87e4b7a32501fa453e1728db68b53",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "source_sha256": {
+    "scripts/build_graphics_late.py": "4665e80ebd89eb8594fe91ff38e4c115ffd87e4b7a32501fa453e1728db68b53",
+    "scripts/graphics_late_overlay.py": "3095b65d4b463573004dcfdb0ab5ce218f42bf14c47a40500ca9c6a10de429be",
+    "scripts/check_graphics_late_host.py": "46a77bbb1fb0ad2f235859fdfab912f559f2ba000e7315e64982733cf09572e9",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "drivers/DodgeDisplay/DodgeGraphicsLate.cpp": "eba11f8c3b603dd89c1476200f0c00fd8f64babf396f6ad3fb429a3348c8364b",
+    "drivers/DodgeDisplay/DodgeGraphicsLate.h": "d7c260a7c38ebdbfc5a6a8494bb48a64fc3a629abad1fdf1f564c52f62bed938",
+    "drivers/DodgeDisplay/DodgeGopProvider.h": "bb149bea2d25715a8a7b254863faea5f3c7d024c326e39d039a3eb2a54b47ae1",
+    "drivers/DodgeDisplay/DodgeGraphicsBoot.h": "294bbdc266b889e52da5b64d9e87331a41e0f93aa7e9a9609616c09623d0c989",
+    "tests/DodgeGraphicsLateTest.cpp": "2d27b051b024d6c7b7f604d8c704a21a5326107d1f53081669d20aa018853285",
+    "tests/graphics_late_include/IOKit/IOLib.h": "6ffb57e21061521af82d14cf3014ea23d04f6f180eeb8e6f757ea2fd609727fe",
+    "tests/graphics_late_include/IOKit/IOPlatformExpert.h": "549251bbfee29d682c7df12c266f03ba10a104708cc0add8268421cbd3324d2d",
+    "tests/graphics_late_include/IOKit/IOService.h": "6751d7f171acd2ce467a9137b7f1e843ba9424dd856f18186f944cbee4693c36",
+    "tests/graphics_late_include/kern/thread.h": "a6701e8e6e54e152eb07ea6239a1fcf8b71d9a375611cf59d1ae4381cb451195",
+    "tests/graphics_late_include/pexpert/pexpert.h": "a2cd9b5310e91ec552b2e24de45fe24302f0acd0afcd750e0bc797ccab1149a7",
+    "build/ios16-graphics-late/source/iokit/bsddev/IOKitBSDInit.cpp": "a955779d61d0d9626d4153af4be3292517f3f06a2808d3822218660da6aef5dd",
+    "patches/oneplus13/0002-ios16-late-graphics.patch": "375bc77ba8799ed2b6eba883c66c77a08e8d428961e50a682fcf1b9c9008b1ea",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/bsddev/IOKitBSDInit.cpp": "1b401aa000a769a4acb3afe51ec8167b314b515ed73e9b45099058bad3d882aa",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/iokit/DEVELOPMENT/IOKitBSDInit.cpo.json": "c819cad3b5cb247ece8d6484548aacd8b961ebdfc4bc839db2bdeb84a51f69ea",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/osfmk/kern/thread.c": "51f0f5d349b69e326f41d885ce9925f08b4b18be03a7c04d628e41833913f3cd",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/osfmk/kern/thread.h": "7251f727bc2fb71271628ef604ce6123d2c5154fe360ae976fafce1f31f06791"
+  },
+  "archive": "build/ios16-graphics-late/libDodgeGraphicsLate.a",
+  "archive_sha256": "639a94dc7277d0787b26282af3aacd6a33387a1101a8de05babb5a50d49b7829",
+  "objects": [
+    {
+      "path": "build/ios16-graphics-late/DodgeGraphicsLate.o",
+      "sha256": "91937f04191ededd95491d03ae9839c627c0a17b68d9e1a9d0be65f6c685cf9d"
+    }
+  ],
+  "imports": {
+    "defined": [
+      "_dodge_graphics_late_status",
+      "_dodge_graphics_schedule"
+    ],
+    "native_public_imports": [
+      "_IOSleep",
+      "_PE_parse_boot_argn",
+      "__ZN9IOService11getPlatformEv",
+      "__ZNK9IOService10isInactiveEv",
+      "_current_thread",
+      "_kernel_thread_start",
+      "_thread_deallocate",
+      "_thread_terminate"
+    ],
+    "native_static_link_only_imports": [],
+    "required_board_or_original_imports": [
+      "_dodge_graphics_boot_gop",
+      "_dodge_graphics_boot_status"
+    ],
+    "optional_weak_imports": []
+  },
+  "compile_manifest": "build/ios16-graphics-late/compile-commands.json",
+  "compile_manifest_sha256": "130fa2964c1eef64e4ea268124c1160708dddd109ec35b7af0a7eb2753625f02",
+  "native_object_overlay": {
+    "patch": {
+      "path": "patches/oneplus13/0002-ios16-late-graphics.patch",
+      "sha256": "375bc77ba8799ed2b6eba883c66c77a08e8d428961e50a682fcf1b9c9008b1ea",
+      "base_source_sha256": "1b401aa000a769a4acb3afe51ec8167b314b515ed73e9b45099058bad3d882aa",
+      "scope": "Only the separate display candidate: schedule an opt-in worker after real IOBSD publication; default source/kernel/object/filelist untouched",
+      "reference_source_sha256": "e35916c887ad13109b8a40b6cddb2d3381407e945a2ad587585beb64dcfebd27"
+    },
+    "base_source": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/bsddev/IOKitBSDInit.cpp",
+    "base_source_sha256": "1b401aa000a769a4acb3afe51ec8167b314b515ed73e9b45099058bad3d882aa",
+    "patched_source": "build/ios16-graphics-late/source/iokit/bsddev/IOKitBSDInit.cpp",
+    "patched_source_sha256": "a955779d61d0d9626d4153af4be3292517f3f06a2808d3822218660da6aef5dd",
+    "stager_sha256": "3095b65d4b463573004dcfdb0ab5ce218f42bf14c47a40500ca9c6a10de429be",
+    "original_object": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/iokit/DEVELOPMENT/IOKitBSDInit.cpo",
+    "original_object_sha256": "17ff0b9dd0a98330fdbb4b632306d20d23e61da11aa23fc7c9916926579d234e",
+    "replacement_object": "build/ios16-graphics-late/IOKitBSDInit.late.cpo",
+    "replacement_object_sha256": "07bd75568bc81096afa5c7490954651d76698624b7f2c69ec9986fb6afd6cbe7",
+    "compile_manifest": "build/ios16-graphics-late/bsd-compile-command.json",
+    "compile_manifest_sha256": "b0f50ff9b1a2c9b1b05271e0e09ded71f7325d66f9fa3f28cdc3e1011eefd198"
+  },
+  "host_tests": {
+    "result": "PASS",
+    "case_count": 24,
+    "cases": [
+      {
+        "case": "success",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "flag-absent",
+        "result": "PASS",
+        "thread_starts": 0,
+        "boot_calls": 0,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "flag-zero",
+        "result": "PASS",
+        "thread_starts": 0,
+        "boot_calls": 0,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "flag-other",
+        "result": "PASS",
+        "thread_starts": 0,
+        "boot_calls": 0,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "thread-failure",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 0,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "thread-failure-retry",
+        "result": "PASS",
+        "thread_starts": 2,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "eager-worker",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "platform-missing",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 0,
+        "retry_sleeps": 199
+      },
+      {
+        "case": "platform-inactive",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 0,
+        "retry_sleeps": 199
+      },
+      {
+        "case": "root-delay",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 3,
+        "retry_sleeps": 2
+      },
+      {
+        "case": "busy-delay",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 3,
+        "retry_sleeps": 2
+      },
+      {
+        "case": "root-timeout",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 200,
+        "retry_sleeps": 199
+      },
+      {
+        "case": "unsupported",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "latched-failure",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "hardware-failure",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "hardware-busy",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "null-display",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "display-with-error",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "reentry-queue",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "reentry-deallocate",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "reentry-boot",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "reentry-sleep",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 3,
+        "retry_sleeps": 2
+      },
+      {
+        "case": "reentry-terminate",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      },
+      {
+        "case": "concurrent-queue",
+        "result": "PASS",
+        "thread_starts": 1,
+        "boot_calls": 1,
+        "retry_sleeps": 0
+      }
+    ],
+    "kernel_thread_boot_and_iokit_are_peers": true,
+    "actual_staged_iobsd_function_extracted": true,
+    "polled_corefile_branch_executed": false,
+    "hardware_tested": false
+  },
+  "host_binary": "build/ios16-graphics-late/graphics-late-host",
+  "host_binary_sha256": "2fcb87fffef7e8b7666a3594d07674169d7d1b83449a78d445ecdce921fd0a55",
+  "hook_extracted": "build/ios16-graphics-late/IOKitBSDInit.extracted.cpp",
+  "hook_extracted_sha256": "016726a69262322ce457382d266f616cd4af8c6afd5f63d9f85662b992a47d23",
+  "boot_argument": "dodge-graphics=1",
+  "schedule_after_real_iobsd_publication": true,
+  "independent_kernel_thread_required": true,
+  "one_worker_after_successful_queue": true,
+  "thread_start_failure_retryable": true,
+  "retry_attempts": 200,
+  "retry_milliseconds": 10,
+  "pre_hardware_not_ready_or_busy_retry_only": true,
+  "hardware_attempt_never_retried": true,
+  "owned_successful_display_retained": true,
+  "default_boot_argument_enabled": false,
+  "early_initializer_present": false,
+  "original_native_source_or_object_modified": false,
+  "native_hook_executed_on_kernel": false,
+  "runtime_qualified": false,
+  "default_kernel_selected": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "The actual isolated IOKitBSDInit source calls a scheduling entry after publishing IOBSD. Only explicit dodge-graphics=1 queues a separate kernel thread for the real GOP/GPU/display entry. Bounded retries stop before repeating any hardware attempt. The native source/object and default filelist/kernel stay untouched; only the separate display link substitutes the rebuilt object. Sanitized checks execute the extracted actual hook and source worker with scheduler, IOKit and boot peers. No kernel runtime or hardware execution."
+}

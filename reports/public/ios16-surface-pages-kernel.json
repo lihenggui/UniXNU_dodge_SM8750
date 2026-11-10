@@ -1,0 +1,157 @@
+{
+  "result": "IOS16_SURFACE_IMPORT_PAGE_ASSOCIATION_NATIVE_ARM64_PASS",
+  "source_sha256": {
+    "scripts/check_surface_pages_kernel.py": "48595da472f3927f6c580e0c4481e8b6449cc737b2c0ddcff23409542aa73ee8",
+    "scripts/surface_pages_execution.py": "acfb09b04fac372376c3d3469a4d17ed74d8b4bd9408fac32974cd85fffaa1ed",
+    "scripts/prepare_surface_memory.py": "6ee3c0379f7a8ae6527fe38447f2f6f760d4de65ed6eab59fbb24aff2b5f1ca9",
+    "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
+    "scripts/check_adreno_display_timeline.py": "c13e1f20a5a08c5e5f8ee54888b5f4448a2854689a7ceb4f76492526e079b584",
+    "scripts/fresh_gpu_execution.py": "efdfebff8a5cccf5377b8687dcb7c52c6f7eaaf8c84c76ba6591b91fe01ef4d9",
+    "scripts/mapped_lease_execution.py": "27c9add03e8f64f8a5a0db6decb4cb112f34cbb8c2cb40b2a5eb9593c406f606",
+    "scripts/surface_identity_execution.py": "4ba591ee31428ae311325f84e45c54ce3cd3d0f8b97b973655b7f9e665c7b425",
+    "scripts/surface_sync_execution.py": "7c287e31548061865ada9db071f47d078f075f31d5cecbe806dfc7def80f9feb",
+    "scripts/check_display_kernel_lifecycle.py": "1f9bb4d8cb5f28127aee44d83dab8084e24d01e2c83e2c2fbc27a31401867f8d",
+    "scripts/check_mapped_lease_kernel.py": "f90e5416047af005bb17d6b09f5d05198abfb7f31095e90bf77f55da718b1dd3",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "build/cph2653-surface-pages/native/compile-commands.json": "f5372b87b901fdc1b40325f9d595df8d4a4c563b0a9342b4bce1c6a862ebfb43",
+    "build/cph2653-surface-identity-kernel/probe/IdentityProbe.o": "069ec482a833890439dcbc926a4b697c42115b559bd48118355908bce7796910"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-surface-pages-prelink.json": "c2985f01a9b0df811788bf824f400e0c3921848c42510efa0eb2225cfb611a7c",
+    "reports/ios16-surface-identity-kernel.json": "38928fbe9af4666d4bc446f648e799aee3e48ef931becd31559a33e86b45da99",
+    "reports/adreno-display-timeline.json": "4c9d0daa0bb7eaa318e021bf4813601bb492346688ca836445a8a2d965fc85ad",
+    "reports/ios16-mapped-lease-kernel.json": "d2582b00772821b94ab635c8ab12275dcf61021e2ababa5e22f1be77493270a1",
+    "reports/ios16-surface-sync-kernel.json": "a9348582448ac43e7dd69ea3e077dffddfbb7e1fbd35f7e0a8a158735925ab92"
+  },
+  "artifacts": {
+    "build/cph2653-surface-pages-kernel/pages-layout.o": "693edb5a5e7097309552734dc6bb9ba32d2501ee7e2530a0d8d5c8af5b2387e1",
+    "build/cph2653-surface-pages-kernel/pages-layout.log": "bf6a6f7e91319ab20f0f8defb0b4bc812fac1bb1c406669cb8eb0c1a97aeb2c8",
+    "build/cph2653-surface-pages-kernel/cpu-cases.json": "5a02e24747f37644c3e210d353044b649d8066c850420b6a434f2fdd65258781"
+  },
+  "candidate": "build/cph2653-surface-pages-prelink/kernel.macho",
+  "candidate_sha256": "4ee2c911086d27b213e16056dbdcfa9753ed3ae12eeed6d2d595bd644f9a2387",
+  "memory_pin": {
+    "path": "profiles/os/ios-16.7.16-20H392/surface-memory.json",
+    "sha256": "c1eaff53583f352cd45c7111d0fc5a00c068c5e60a3590b5d88031a3b0951975",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceMemoryABI.h",
+    "header_sha256": "56e16346889c937419bf0a93a236172be2191ee232228e47997647e8186649dc"
+  },
+  "compiler_layouts": {
+    "association": {
+      "bytes": 48,
+      "fields": {
+        "identity": 0,
+        "backing": 16,
+        "memory": 24,
+        "bytes": 32,
+        "prepared": 40,
+        "quarantined": 41
+      }
+    },
+    "memory": {
+      "bytes": 80,
+      "fields": {
+        "descriptor_": 0,
+        "imported_": 8,
+        "read_only_": 16,
+        "spans_": 32,
+        "bytes_": 40,
+        "span_count_": 48,
+        "device_references_": 64,
+        "prepared_": 68,
+        "quarantined_": 69
+      }
+    },
+    "descriptor": {
+      "bytes": 96,
+      "fields": {}
+    },
+    "object": {
+      "bytes": 16,
+      "fields": {
+        "retainCount": 8
+      }
+    },
+    "vm": {
+      "bytes": 616,
+      "fields": {
+        "mappings_": 0,
+        "high_": 40,
+        "next_handle_": 544,
+        "attached_": 552,
+        "poisoned_": 553,
+        "fault_streams_": 576
+      }
+    },
+    "mapping": {
+      "bytes": 64,
+      "fields": {
+        "memory": 0,
+        "handle": 8,
+        "iova": 16,
+        "permissions": 40,
+        "writeback": 44,
+        "jobs": 52
+      }
+    }
+  },
+  "case_counts": {
+    "surface_page_association": 25,
+    "original_identity": 20,
+    "source_to_original_identity": 17,
+    "native_snapshot_and_epoch": 22,
+    "native_frontend_and_snapshot": 13,
+    "original_surface_chain": 17,
+    "display_lifecycle": 32,
+    "native_mapped_resource": 16,
+    "native_map_wait": 12
+  },
+  "instruction_controls": [
+    {
+      "case": "page-and-current-check-always-success",
+      "result": "REJECTED",
+      "function": "_dodge_surface_pages_current",
+      "reason": "Actual source accepted a mismatched physical page"
+    },
+    {
+      "case": "association-release-skipped",
+      "result": "REJECTED",
+      "function": "_dodge_surface_pages_release",
+      "reason": "Source page association did not balance its actual native/original references"
+    },
+    {
+      "case": "native-memory-hold-skipped",
+      "result": "REJECTED",
+      "function": "__ZN18NativeAdrenoMemory13holdForDeviceEv",
+      "reason": "Actual source page bind refused matching import"
+    },
+    {
+      "case": "native-memory-retirement-skipped",
+      "result": "REJECTED",
+      "function": "__ZN18NativeAdrenoMemory21retireAfterQuiescenceEv",
+      "reason": "Source page association did not balance its actual native/original references"
+    },
+    {
+      "case": "original-descriptor-getter-null",
+      "result": "REJECTED",
+      "function": "_native_iphone_surface_memory",
+      "reason": "Actual source page bind refused matching import"
+    }
+  ],
+  "kernel_import_page_association_implemented": true,
+  "native_memory_and_VM_reference_algorithms_are_peers": false,
+  "native_OSObject_reference_algorithms_are_peers": false,
+  "original_surface_reference_algorithm_is_peer": false,
+  "surface_descriptor_getter_is_peer": false,
+  "descriptor_prepare_complete_physical_segments_and_type_checks_are_peers": true,
+  "source_descriptor_acquisition_and_backing_mutation_serialization_qualified": false,
+  "actual_VM_mapping_or_TLB_unmap_executed_by_new_cases": false,
+  "final_descriptor_or_surface_destructors_executed": false,
+  "GPU_user_client_association_connected": false,
+  "iosurface_producer_connected": false,
+  "physical_cache_visibility_or_reset_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "Twenty-five new paths execute actual source page association/current checks/rollback/unprepare/quarantine, original descriptor getter and surface custom release, native descriptor OSObject/tagged reference chain, native memory holds and retirement, and native VM job holds/write acquisition/retirement. Compiler layout probe text equals production object text. Existing 149 identity/GPU/notification/display paths rerun in this candidate. Descriptor prepare/complete, physical-segment reporting, metadata casts and cache effects are explicit peers; descriptor acquisition requires a preexisting valid owner and original-component serialization. New VM cases use prepopulated mapping records and explicit mapping/TLB-quiescence fixture steps, without real map/unmap execution. Surfaces/descriptors retain external fixture references, so final destructors are not executed. Observation before/after a page walk is not check-to-submit exclusion. GPU user-client import association, original backing acquisition/serialization, producer callbacks/cancel and device/cache/reset/complete iOS runtime remain incomplete or unqualified."
+}

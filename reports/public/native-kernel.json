@@ -1,0 +1,85 @@
+{
+  "result": "PASS",
+  "architecture": "arm64",
+  "deployment": "iOS 16.0",
+  "native": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped",
+  "native_staging": "separate prelink candidate is outside this native-only check",
+  "bytes": 17702728,
+  "sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "entry": "0xfffffff007402488",
+  "source_revision": "1b191cb58250d0705d8a51287127505aa4bc0789",
+  "compiled_records": [
+    {
+      "object": "osfmk/DEVELOPMENT/prng_random.o",
+      "required_definitions": [
+        "XNU_NATIVE_PAN=1",
+        "XNU_SOURCE_CORECRYPTO14=1"
+      ],
+      "record_sha256": "88d4aa3af6b539495ad827aa0ca851d24da12c109ed5c619fc248d4576c24784"
+    },
+    {
+      "object": "osfmk/DEVELOPMENT/start.o",
+      "required_definitions": [
+        "XNU_NATIVE_ARCH_TIMER=1",
+        "XNU_NATIVE_PAN=1"
+      ],
+      "record_sha256": "1afce314d922838da0e0b4833443f7095ed1d2c297742d86b5f9cb4fa7661478"
+    },
+    {
+      "object": "iokit/DEVELOPMENT/IOPlatformExpert.cpo",
+      "required_definitions": [
+        "XNU_NATIVE_PAN=1"
+      ],
+      "record_sha256": "ef73014a7e13189d7aa921b02ccc5d9b02c4a1cf3febee0c10ce0d32ddec9f92"
+    },
+    {
+      "object": "bsd/DEVELOPMENT/vfs_conf.o",
+      "required_definitions": [
+        "XNU_NATIVE_PAN=1"
+      ],
+      "record_sha256": "0f312e05b2974aa151f8999661c4ab057326729818548118abb4acd092da40aa"
+    }
+  ],
+  "linked_entry_points": {
+    "__start": "0xfffffff007402488",
+    "_source_corecrypto14_status": "0xfffffff007174460",
+    "_source_pthread_status": "0xfffffff00720aeb8",
+    "_armcpu_registered": "0xfffffff007ace478",
+    "_armdt_platform_configured": "0xfffffff007ace430",
+    "_kalloc_sparse_prelink_index_version": "0xfffffff007008d6c",
+    "_native_prelink_security_init_version": "0xfffffff007026f98"
+  },
+  "archives": [
+    {
+      "path": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/corecrypto-2023/libcorecrypto_kernel_noasm-namespaced.a",
+      "bytes": 926792,
+      "sha256": "29b9e0fc06662e136d6cb1c1da3429f4bdf37a0dc5e70431b4dcc2f7ebea7eb9"
+    },
+    {
+      "path": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/armcpu/libArmCpu.a",
+      "bytes": 251672,
+      "sha256": "d381dfe2f94afa4f5ce523035deab3253016cbc9e714527684c14387e950b2de"
+    },
+    {
+      "path": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/armdt-platform/libArmDTPlatform.a",
+      "bytes": 191200,
+      "sha256": "0f59f527988acea2a5c43f3f0310b2c30ca1e81168ef70c2e8fa88885a316ab1"
+    },
+    {
+      "path": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/mockfs-fixture/libmockfs_fixture.a",
+      "bytes": 199320,
+      "sha256": "ddd5aba365cd377e70a256925b368ab50279ef2768d7d3b9e40efb6d875c58c0"
+    },
+    {
+      "path": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/libpthread-kernel/libpthread_kernel.a",
+      "bytes": 55960,
+      "sha256": "3b9394909d5bba9f8f957b083a4b476b0789429370d4ef1a9d24b87e79e39474"
+    }
+  ],
+  "darwinboot_production_parser": "PASS",
+  "source_crypto_post_field": "HMAC matches final linked instructions; runtime POST not executed",
+  "native_only": true,
+  "original_kexts_added": false,
+  "hardware_tested": false,
+  "scope": "Host compiler/linker, Mach-O, actual loader parser and source integrity field only; no iOS boot or original-kext ABI qualification."
+}

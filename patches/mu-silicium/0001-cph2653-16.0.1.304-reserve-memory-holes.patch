@@ -1,0 +1,21 @@
+diff --git a/Platforms/OnePlus/dodgePkg/Library/MemoryMapLib/MemoryMapLib.c b/Platforms/OnePlus/dodgePkg/Library/MemoryMapLib/MemoryMapLib.c
+index b936c886..41b3080c 100644
+--- a/Platforms/OnePlus/dodgePkg/Library/MemoryMapLib/MemoryMapLib.c
++++ b/Platforms/OnePlus/dodgePkg/Library/MemoryMapLib/MemoryMapLib.c
+@@ -29,7 +29,15 @@ gMemoryDescriptor[] = {
+   {"Kernel",             0xA8000000, 0x10000000, AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN},
+   {"XBL_Ramdump",        0xB8000000, 0x001C0000, AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN},
+   {"DBI_Dump",           0xB81C0000, 0x00F00000, NoHob,  MMAP_IO, INITIALIZED, Conv,   UNCACHED_UNBUFFERED_XN},
+-  {"DXE_Heap",           0xB90C0000, 0x1D500000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
++  // CPH2653_16.0.1.304(EX01): preserve the boot-time FDT memory holes.
++  // DTB SHA256: f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11
++  // SEC constructs its HOB list in the single contiguous region named DXE_Heap.
++  {"DXE_Heap_Low",       0xB90C0000, 0x04870000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
++  {"Gunyah_Hyp",         0xBD930000, 0x00800000, AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN},
++  {"Firmware_Gap",       0xBE130000, 0x00230000, AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN},
++  {"DXE_Heap",           0xBE360000, 0x16AC3000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
++  {"HwFence_Shmem",      0xD4E23000, 0x002DD000, AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN},
++  {"DXE_Heap_Tail",      0xD5100000, 0x014C0000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
+   {"Display_Reserved",   0xFC800000, 0x02B00000, AddMem, MEM_RES, SYS_MEM_CAP, Reserv, WRITE_THROUGH_XN},
+ 
+   // Other Memory Regions

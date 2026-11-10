@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+"""Workspace UniXNU entry point: pinned sources, local toolchain and four jobs."""
+import os
+from pathlib import Path
+import sys
+
+root = Path(__file__).resolve().parent
+python = root / '.venv-uefi/bin/python'
+if not python.is_file():
+    raise SystemExit('Create the local Python environment described in docs/bring-up.md first')
+if len(sys.argv) < 2:
+    raise SystemExit('Usage: ./unixnu <defconfig|fetch|tree|status|kernel|package|payload|...>')
+env = dict(os.environ)
+env['PATH'] = os.pathsep.join([str(python.parent), str(root / '.toolchains/host/bin'), str(root / 'sources/lzfse/build/bin'),
+                              '/usr/lib/llvm-14/bin', env.get('PATH', '')])
+env['UNIXNU_TOOLCHAIN'] = str(root / '.toolchains/xnu-linux')
+env['UNIXNU_HOST_TOOLS'] = str(root / '.toolchains/host/bin')
+env['JOBS'] = '4'
+env['CMAKE_BUILD_PARALLEL_LEVEL'] = '4'
+env.pop('LD_LIBRARY_PATH', None)
+arguments = [str(python), str(root / 'sources/UniXNU/unixnu'), *sys.argv[1:],
+             '-D', str(root), '--out', str(root / 'build/unixnu'), '-j', '4']
+os.execve(str(python), arguments, env)

@@ -1,0 +1,174 @@
+Disable unpublished Apple KPC and dependent KPERF; guard disabled sampling paths.
+No hardware counter provider is selected for initial SM8750 bring-up.
+
+diff --git a/bsd/kern/kern_ktrace.c b/bsd/kern/kern_ktrace.c
+index 9f521f6..d5f80d3 100644
+--- a/bsd/kern/kern_ktrace.c
++++ b/bsd/kern/kern_ktrace.c
+@@ -207,9 +207,11 @@ ktrace_reset_internal(uint32_t reset_mask)
+ 		ktrace_active_mask &= ~reset_mask;
+ 	}
+ 
++#if KPERF
+ 	if (reset_mask & KTRACE_KPERF) {
+ 		kperf_reset();
+ 	}
++#endif
+ 	if (reset_mask & KTRACE_KDEBUG) {
+ 		kdebug_reset();
+ 	}
+@@ -328,6 +330,11 @@ ktrace_configure(uint32_t config_mask)
+ {
+ 	ktrace_assert_lock_held();
+ 	assert(config_mask != 0);
++#if !KPERF
++	if (config_mask & KTRACE_KPERF) {
++		return ENOTSUP;
++	}
++#endif
+ 
+ 	proc_t p = current_proc();
+ 
+@@ -366,7 +373,9 @@ ktrace_disable(ktrace_state_t state_to_match)
+ {
+ 	if (ktrace_state == state_to_match) {
+ 		kernel_debug_disable();
++#if KPERF
+ 		kperf_disable_sampling();
++#endif
+ 	}
+ }
+ 
+@@ -390,9 +399,11 @@ ktrace_kernel_configure(uint32_t config_mask)
+ 	}
+ 
+ 	if (ktrace_state != KTRACE_STATE_OFF) {
++#if KPERF
+ 		if (ktrace_active_mask & config_mask & KTRACE_KPERF) {
+ 			kperf_reset();
+ 		}
++#endif
+ 		if (ktrace_active_mask & config_mask & KTRACE_KDEBUG) {
+ 			kdebug_reset();
+ 		}
+@@ -502,9 +513,11 @@ ktrace_set_owning_proc(proc_t p)
+ 			ktrace_state = KTRACE_STATE_BG;
+ 		} else {
+ 			if (ktrace_state == KTRACE_STATE_BG) {
++#if KPERF
+ 				if (ktrace_active_mask & KTRACE_KPERF) {
+ 					kperf_reset();
+ 				}
++#endif
+ 				if (ktrace_active_mask & KTRACE_KDEBUG) {
+ 					kdebug_reset();
+ 				}
+diff --git a/config/MASTER.arm64.bcm2837 b/config/MASTER.arm64.bcm2837
+index 583f0fe..6ba7569 100644
+--- a/config/MASTER.arm64.bcm2837
++++ b/config/MASTER.arm64.bcm2837
+@@ -48,7 +48,7 @@
+ #  LIBKERN_RELEASE =[ LIBKERN_BASE ]
+ #  LIBKERN_DEV =    [ LIBKERN_BASE iotracking ]
+ #  LIBKERN_DEBUG =  [ LIBKERN_BASE iotracking ]
+-#  PERF_DBG_BASE =  [ mach_kdp config_serial_kdp kperf kpc ]
++#  PERF_DBG_BASE =  [ mach_kdp config_serial_kdp ]
+ #  PERF_DBG_RELEASE=[ PERF_DBG_BASE ist_kdebug ]
+ #  PERF_DBG_DEV =   [ PERF_DBG_BASE config_dtrace zleaks kdp_interactive_debugging alternate_debugger config_iotrace]
+ #  PERF_DBG_DEBUG = [ PERF_DBG_BASE config_dtrace zleaks kdp_interactive_debugging alternate_debugger config_iotrace]
+diff --git a/osfmk/arm64/pcb.c b/osfmk/arm64/pcb.c
+index 7b98a33..d4529c7 100644
+--- a/osfmk/arm64/pcb.c
++++ b/osfmk/arm64/pcb.c
+@@ -180,7 +180,9 @@ machine_switch_context(thread_t old,
+ 		panic("machine_switch_context");
+ 	}
+ 
++#if KPC
+ 	kpc_off_cpu(old);
++#endif
+ 
+ 	machine_switch_pmap_and_extended_context(old, new);
+ 
+@@ -516,7 +518,9 @@ machine_stack_handoff(thread_t old,
+ 	}
+ #endif
+ 
++#if KPC
+ 	kpc_off_cpu(old);
++#endif
+ 
+ 	stack = machine_stack_detach(old);
+ #if CONFIG_STKSZ
+diff --git a/osfmk/kern/ast.c b/osfmk/kern/ast.c
+index ba26da2..276b37e 100644
+--- a/osfmk/kern/ast.c
++++ b/osfmk/kern/ast.c
+@@ -71,7 +71,9 @@
+ #include <kern/waitq.h>
+ #include <kern/ledger.h>
+ #include <kern/machine.h>
++#if KPC
+ #include <kperf/kperf_kpc.h>
++#endif
+ #include <mach/policy.h>
+ #include <security/mac_mach_internal.h> // for MACF AST hook
+ #include <stdatomic.h>
+@@ -256,7 +258,9 @@ ast_taken_user(void)
+ 
+ 	if (reasons & AST_KPERF) {
+ 		thread_ast_clear(thread, AST_KPERF);
++#if KPC
+ 		kperf_kpc_thread_ast(thread);
++#endif
+ 	}
+ 
+ 	if (reasons & AST_RESET_PCS) {
+diff --git a/osfmk/kern/processor.c b/osfmk/kern/processor.c
+index aad9f3b..cbea4d0 100644
+--- a/osfmk/kern/processor.c
++++ b/osfmk/kern/processor.c
+@@ -148,7 +148,9 @@ processor_set_t         pset_array[MAX_PSETS] = { 0 };
+ 
+ static timer_call_func_t running_timer_funcs[] = {
+ 	[RUNNING_TIMER_QUANTUM] = thread_quantum_expire,
++#if KPERF
+ 	[RUNNING_TIMER_KPERF] = kperf_timer_expire,
++#endif
+ };
+ static_assert(sizeof(running_timer_funcs) / sizeof(running_timer_funcs[0])
+     == RUNNING_TIMER_MAX, "missing running timer function");
+diff --git a/osfmk/kern/sched_prim.c b/osfmk/kern/sched_prim.c
+index 8e29586..cc3c570 100644
+--- a/osfmk/kern/sched_prim.c
++++ b/osfmk/kern/sched_prim.c
+@@ -3746,6 +3746,7 @@ thread_dispatch(
+ 
+ 		running_timer_setup(processor, RUNNING_TIMER_QUANTUM, self,
+ 		    processor->quantum_end, processor->last_dispatch);
++#if KPERF
+ 		if (was_idle) {
+ 			/*
+ 			 * kperf's running timer is active whenever the idle thread for a
+@@ -3753,6 +3754,7 @@ thread_dispatch(
+ 			 */
+ 			kperf_running_setup(processor, processor->last_dispatch);
+ 		}
++#endif
+ 		running_timers_activate(processor);
+ 		processor->first_timeslice = TRUE;
+ 	} else {
+diff --git a/osfmk/kern/task.c b/osfmk/kern/task.c
+index 24ed326..492b590 100644
+--- a/osfmk/kern/task.c
++++ b/osfmk/kern/task.c
+@@ -1510,7 +1510,9 @@ task_create_internal(
+ 
+ 	new_task->affinity_space = NULL;
+ 
++#if KPC
+ 	new_task->t_kpc = 0;
++#endif
+ 
+ 	new_task->pidsuspended = FALSE;
+ 	new_task->frozen = FALSE;

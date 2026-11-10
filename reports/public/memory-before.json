@@ -1,0 +1,44 @@
+{
+  "map": "upstream:Platforms/OnePlus/dodgePkg/Library/MemoryMapLib/MemoryMapLib.c",
+  "dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "allocatable_regions": [
+    {
+      "name": "DXE_Heap",
+      "base": 3104571392,
+      "size": 491782144,
+      "hob": "AddMem",
+      "resource": "SYS_MEM",
+      "type": "Conv",
+      "line": 32
+    }
+  ],
+  "problems": [
+    {
+      "kind": "outside_device_memory",
+      "region": "DXE_Heap",
+      "start": "0xbd930000",
+      "size": "0xa30000"
+    },
+    {
+      "kind": "outside_device_memory",
+      "region": "DXE_Heap",
+      "start": "0xd4e23000",
+      "size": "0x2dd000"
+    },
+    {
+      "kind": "reserved_overlap",
+      "region": "DXE_Heap",
+      "reserved_node": "/reserved-memory/gunyah_hyp_region1@bd930000",
+      "overlap_bytes": 8388608
+    },
+    {
+      "kind": "reserved_overlap",
+      "region": "DXE_Heap",
+      "reserved_node": "/reserved-memory/hwfence-shmem",
+      "overlap_bytes": 3002368
+    }
+  ],
+  "result": "FAIL",
+  "scope": "Static initial table versus captured FDT; not proof of a successful or safe hardware boot.",
+  "upstream_revision": "6b3d90b79e191e08171bfedd3980234a7e49d340"
+}

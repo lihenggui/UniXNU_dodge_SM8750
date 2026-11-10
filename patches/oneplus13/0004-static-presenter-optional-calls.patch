@@ -1,0 +1,38 @@
+--- a/NativeGOPPresenter.cpp
++++ b/NativeGOPPresenter.cpp
+@@ -218,7 +218,7 @@
+ }
+ void NativeGOPPresenter::captureScanout(uint64_t sequence) {
+     if(!capturePixels || captured>=3 || !mapping || !&native_gpu_trace_enabled ||
+-       !native_gpu_trace_enabled() || !&native_gpu_pixel_put)return;
++       !dodge_optional_call(native_gpu_trace_enabled) || !&native_gpu_pixel_put)return;
+     uint64_t ns=0;absolutetime_to_nanoseconds(mach_absolute_time(),&ns);
+     if(captured && ns-capturedAt<30000000000ull)return;
+     if(!mode.width || !mode.height || mode.width>16384 || mode.height>16384 || (mode.stride&3) || mode.stride<mode.width*4ull ||
+@@ -244,7 +244,7 @@
+     for(uint32_t offset=0;offset<bytes;offset+=piece.bytes) {
+         piece.offset=offset;piece.bytes=bytes-offset<NativeGpuPixelChunk?bytes-offset:uint32_t(NativeGpuPixelChunk);
+         memcpy(piece.data,reinterpret_cast<const uint8_t *>(grid)+offset,piece.bytes);
+-        if((result=native_gpu_pixel_put(&piece,0)))break;
++        if((result=dodge_optional_call(native_gpu_pixel_put,&piece,0)))break;
+     }
+     IOFree(grid,bytes);++captured;capturedAt=ns;
+     gpuTraceEvent(GpuTraceDisplayPixel,0,sequence,result,p.physical,p.format,bytes,0,1,0);
+--- a/NativeGpuTrace.h
++++ b/NativeGpuTrace.h
+@@ -69,12 +69,14 @@
+ uint32_t native_gpu_pixel_snapshot(void *out,uint32_t bytes);
+ #ifdef __cplusplus
+ }
++
++#include "DodgeOptionalCalls.h"
+ template<typename... T> static inline void gpuTraceEvent(uint32_t event,uint32_t pid,T... args) {
+ #ifdef NATIVE_GPU_TRACE_OPTIONAL
+     if(!&native_gpu_trace_record)return;
+ #endif
+     const uint64_t words[]={uint64_t(args)...};
+-    native_gpu_trace_record(event,pid,words,sizeof...(args));
++    dodge_optional_call(native_gpu_trace_record,event,pid,words,sizeof...(args));
+ }
+ #endif
+ #undef NATIVE_GPU_TRACE_LINK

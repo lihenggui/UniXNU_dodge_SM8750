@@ -1,0 +1,37 @@
+{
+  "result": "IOS16_PARTIAL_DISPLAY_SOURCE_INTERFACE_PASS",
+  "contract": "profiles/os/ios-16.7.16-20H392/display-interface.json",
+  "builder_sha256": "f2ea4f8e5067a4f2f1dae553cc275e4f132439b6d35a3a194030576a91438076",
+  "contract_sha256": "a1a41166d5d06e860569817a545e1ebaadad3f734baf2e1aef2bf2d2fb3399ab",
+  "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyFramebufferABI.h",
+  "header_sha256": "a1eee3ad14d295f4d0d4aa826fdb0de385113f5984f8c58e44b701169e074ea9",
+  "native_probe_object_sha256": "d4935cdc7259dc82bce2008ee9baba19d517d137a512a0601dcea0844ec96723",
+  "native_target": "arm64-apple-ios16.0",
+  "qualified_virtual_dispatch_slots": [
+    178,
+    211,
+    212,
+    242,
+    246,
+    274,
+    276,
+    281,
+    282,
+    292,
+    293,
+    321,
+    322,
+    329
+  ],
+  "protected_constructor": "0xfffffff005c0bbbc",
+  "backend_contract_sha256": "c191fafdd284df220bcc2ddcd9487a3e6d40a9a34f3308812351bf3e178f2f26",
+  "unclassified_backend_argument_slots": [
+    243
+  ],
+  "protected_destructor": "0xfffffff005c0bc08",
+  "abstract_complete_destructor_traps": true,
+  "object_instantiated": false,
+  "display_provider_complete": false,
+  "hardware_tested": false,
+  "scope": "Exact original protected lifetime, six frontend/leaf calls and eight raw backend call shapes with native header/dispatch checks. All nine backend methods remain abstract; slot 243 arguments, operation/status semantics, concrete instantiation and full lifecycle remain incomplete."
+}

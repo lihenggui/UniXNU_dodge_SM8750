@@ -1,0 +1,634 @@
+{
+  "result": "IOS16_ACTUAL_SOURCE_RAMBLOCK_IO_ARM64_PASS",
+  "builder_sha256": "e63106198779bec1089a66f90925213611f311bb8f726c4a48e3ca9afb882e39",
+  "source_sha256": {
+    "scripts/check_data_kernel.py": "e63106198779bec1089a66f90925213611f311bb8f726c4a48e3ca9afb882e39",
+    "drivers/DodgeStorage/DodgeRamBlock.cpp": "3c79e4dd14843c197590c352e73d8202380ff0404b51dd5deece20a71e9f6caa",
+    "sources/UniXNU/drivers/RamBlock/NativeRamBlock.cpp": "17dcb4bac69e46346d5b100ac64a9371ec61281a4f84504e4d2f74f9e123a2e1",
+    "sources/UniXNU/drivers/RamBlock/SparseDisk.h": "5ab6516488b7daaef88e788fffef17195e7d2f74746da2206c6d9ed3a63c8c74",
+    "sources/UniXNU/drivers/RamBlock/SeedDisk.h": "d8a654529b5d56703bcf491c3834b407590995eebcb7a26004448990c200e4a0",
+    "sources/UniXNU/drivers/RamBlock/DirectDisk.h": "5ff2dd31787553182dc02ff7b8ff3478c8a268c2979763b52b72ca206a9d3f8c",
+    "sources/UniXNU/drivers/RamBlock/PersistOverlay.h": "d3de39a34bfeae5b2235a7bdde8653b658b395cd869300190c690e8b4f13616b"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-data-source.json": "519a5ddc73e2890214b7d097fec5e0c20c9bcac66f22ae661896eefec0a68c9e",
+    "reports/ios16-data-prelink.json": "99608c7e4f7ce35846f7ada67bf41769bceb40ce785d24c2780990fa88ac9f6b",
+    "reports/ios16-data-image.json": "7d99049bf8990e70f88cb2d991ff0c6e278d44bdd61d26b08782fad7b227b9f5",
+    "reports/ios16-data-volatile-image.json": "9d9907c749e3870f71f9944176331f76efd0392207afda3160141cf97f33bf37"
+  },
+  "candidate": "build/cph2653-data-prelink/kernel.macho",
+  "candidate_sha256": "1d125bc8cf24216c7e1fa243c279a8314f1d6accebbf7198b23742795b64de73",
+  "instance_layout": {
+    "instance_bytes": 352,
+    "gate": 144,
+    "memory": 152,
+    "capacity": 160,
+    "online": 168,
+    "sparse": 176,
+    "big": 200,
+    "isBig": 248,
+    "direct": 345,
+    "directFailed": 346,
+    "overlay": 288,
+    "sparse_pages": 0,
+    "sparse_bytes": 8,
+    "sparse_resident": 16,
+    "big_bytes": 0,
+    "big_count": 8,
+    "big_index": 32,
+    "big_page": 40,
+    "completion_bytes": 24,
+    "completion_target": 0,
+    "completion_action": 8,
+    "completion_parameter": 16,
+    "success": 0,
+    "bad_argument": 3758097090,
+    "not_ready": 3758097112,
+    "io_error": 3758097098,
+    "no_memory": 3758097085,
+    "direction_in": 1,
+    "direction_out": 2,
+    "zero_alloc_flags": 4,
+    "overlay_readonly": 32,
+    "overlay_header": 36
+  },
+  "annotation_text_identical_to_production": true,
+  "artifacts": {
+    "build/cph2653-data-kernel/abi/DodgeRamBlock.o": "4a61c950f47ed379190c9f68a7829c35f0411e19fcabd67642e6b5c30f1713c6",
+    "build/cph2653-data-kernel/cpu-cases.json": "994a93a7d08b5585a62282f255d05e8592cd2d57a71312da98dd571ca39beef3"
+  },
+  "case_count": 30,
+  "cases": [
+    {
+      "case": "null-buffer",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "null-completion",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "null-action",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "zero-count",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "block-at-end",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "count-overflow",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": []
+    },
+    {
+      "case": "short-buffer",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "__ZNK18IOMemoryDescriptor9getLengthEv"
+      ]
+    },
+    {
+      "case": "bad-direction",
+      "result": "PASS",
+      "return": "0xe00002c2",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv"
+      ]
+    },
+    {
+      "case": "no-gate",
+      "result": "PASS",
+      "return": "0xe00002d8",
+      "completions": [],
+      "balanced_lock_pairs": 0,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv"
+      ]
+    },
+    {
+      "case": "offline",
+      "result": "PASS",
+      "return": "0xe00002d8",
+      "completions": [],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "read-seed",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "read-hole",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "read-cross-page",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          1536
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "write-existing",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "write-hole",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 1,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "_IOMalloc_internal",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "write-cross-page",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          1536
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 2,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "_IOMalloc_internal",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "write-last-sector",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 1,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "_IOMalloc_internal",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "allocate-failure",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          3758097085,
+          0
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "_IOMalloc_internal",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "allocate-partial",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          3758097085,
+          4096
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 1,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "_IOMalloc_internal",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "short-read",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          3758097098,
+          29
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "short-write",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          3758097098,
+          29
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "big-read",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "big-write-no-store",
+      "result": "PASS",
+      "return": "0xe00002d8",
+      "completions": [],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "sticky-direct-failure",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          3758097098,
+          0
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "dense-read",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor10writeBytesEyPKvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "dense-write",
+      "result": "PASS",
+      "return": "0x0",
+      "completions": [
+        [
+          0,
+          512
+        ]
+      ],
+      "balanced_lock_pairs": 1,
+      "allocated_pages": 0,
+      "explicit_peers": [
+        "IOStorageCompletionAction",
+        "__ZN18IOMemoryDescriptor9readBytesEyPvy",
+        "__ZNK18IOMemoryDescriptor12getDirectionEv",
+        "__ZNK18IOMemoryDescriptor9getLengthEv",
+        "_lck_mtx_lock",
+        "_lck_mtx_unlock"
+      ]
+    },
+    {
+      "case": "source-original-native-C1-D1",
+      "result": "PASS",
+      "original_parent_C2_D2_executed": true,
+      "original_storage_init_executed": false,
+      "init_peers": [],
+      "instance_bytes": 352,
+      "visited": [
+        "__ZN14NativeRamBlockC1Ev",
+        "original-storage.C2",
+        "original-storage.C2-import",
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2",
+        "__ZNK14NativeRamBlock12getMetaClassEv",
+        "__ZN14NativeRamBlockD1Ev",
+        "original-storage.D2",
+        "original-storage.D2-import",
+        "IOService.D2",
+        "IORegistryEntry.D2",
+        "OSObject.D2",
+        "OSMetaClassBase.D2"
+      ],
+      "explicit_peer": "OSMetaClass::instanceConstructed accounting; native parent init and registry property only for init cases"
+    },
+    {
+      "case": "init-parent-failure",
+      "result": "PASS",
+      "original_parent_C2_D2_executed": true,
+      "original_storage_init_executed": true,
+      "init_peers": [
+        "native-parent-init-peer"
+      ],
+      "instance_bytes": 352,
+      "visited": [
+        "__ZN14NativeRamBlockC1Ev",
+        "original-storage.C2",
+        "original-storage.C2-import",
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2",
+        "__ZNK14NativeRamBlock12getMetaClassEv",
+        "original-storage.init",
+        "__ZN14NativeRamBlockD1Ev",
+        "original-storage.D2",
+        "original-storage.D2-import",
+        "IOService.D2",
+        "IORegistryEntry.D2",
+        "OSObject.D2",
+        "OSMetaClassBase.D2"
+      ],
+      "explicit_peer": "OSMetaClass::instanceConstructed accounting; native parent init and registry property only for init cases"
+    },
+    {
+      "case": "init-property-failure",
+      "result": "PASS",
+      "original_parent_C2_D2_executed": true,
+      "original_storage_init_executed": true,
+      "init_peers": [
+        "native-parent-init-peer",
+        "registry-string-property-peer"
+      ],
+      "instance_bytes": 352,
+      "visited": [
+        "__ZN14NativeRamBlockC1Ev",
+        "original-storage.C2",
+        "original-storage.C2-import",
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2",
+        "__ZNK14NativeRamBlock12getMetaClassEv",
+        "original-storage.init",
+        "__ZN14NativeRamBlockD1Ev",
+        "original-storage.D2",
+        "original-storage.D2-import",
+        "IOService.D2",
+        "IORegistryEntry.D2",
+        "OSObject.D2",
+        "OSMetaClassBase.D2"
+      ],
+      "explicit_peer": "OSMetaClass::instanceConstructed accounting; native parent init and registry property only for init cases"
+    },
+    {
+      "case": "init-success",
+      "result": "PASS",
+      "original_parent_C2_D2_executed": true,
+      "original_storage_init_executed": true,
+      "init_peers": [
+        "native-parent-init-peer",
+        "registry-string-property-peer"
+      ],
+      "instance_bytes": 352,
+      "visited": [
+        "__ZN14NativeRamBlockC1Ev",
+        "original-storage.C2",
+        "original-storage.C2-import",
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2",
+        "__ZNK14NativeRamBlock12getMetaClassEv",
+        "original-storage.init",
+        "__ZN14NativeRamBlockD1Ev",
+        "original-storage.D2",
+        "original-storage.D2-import",
+        "IOService.D2",
+        "IORegistryEntry.D2",
+        "OSObject.D2",
+        "OSMetaClassBase.D2"
+      ],
+      "explicit_peer": "OSMetaClass::instanceConstructed accounting; native parent init and registry property only for init cases"
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "source-I/O-entry-ret",
+      "result": "REJECTED",
+      "reason": "Source completion status or byte count differs: (1048640, [], 0, 512)"
+    },
+    {
+      "case": "noncanonical-poisoned-allocation",
+      "result": "REJECTED",
+      "reason": "RamBlock constructor did not produce canonical object bytes"
+    }
+  ],
+  "actual_original_storage_protected_constructor_and_destructor_executed": true,
+  "original_storage_parent_init_executed_with_native_init_and_registry_peers": true,
+  "original_storage_parent_start_or_free_executed": false,
+  "hardware_tested": false,
+  "writable_apfs_runtime_qualified": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "phone_operations": "none",
+  "scope": "Actual compiled 352-byte RamBlock doAsyncReadWrite and source sparse/dense/seed paths in the 83-object original-prelinked candidate. Fixtures use the actual APFS seeds and real compiler field/completion layouts. IOMemoryDescriptor, allocator, locks, memcpy/bzero and completion are explicit peers. The original storage init body and protected C2/D2 execute with bounded native-init/registry/accounting peers; complete original lifecycle, disk matching, APFS mount and phone execution remain unqualified."
+}

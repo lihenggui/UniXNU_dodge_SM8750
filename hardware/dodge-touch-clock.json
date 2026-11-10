@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "device": "OnePlus 13 CPH2653 / dodge / SM8750",
+  "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "gcc_node": "/soc/clock-controller@100000",
+  "gcc_base": "0x100000",
+  "se_clock_id": 96,
+  "xo_board_hz": 76800000,
+  "xo_pad_divisor": 2,
+  "bi_tcxo_divisor": 2,
+  "bi_tcxo_hz": 19200000,
+  "root_command_register": "0x183dc",
+  "root_configuration_register": "0x183e0",
+  "vote_register": "0x52008",
+  "branches": [
+    {
+      "name": "gcc_qupv3_wrap1_core_2x_clk",
+      "status_register": "0x2315c",
+      "vote_bit": 18,
+      "hardware_gating_bit": null
+    },
+    {
+      "name": "gcc_qupv3_wrap1_core_clk",
+      "status_register": "0x23148",
+      "vote_bit": 19,
+      "hardware_gating_bit": null
+    },
+    {
+      "name": "gcc_qupv3_wrap_1_m_ahb_clk",
+      "status_register": "0x23140",
+      "vote_bit": 20,
+      "hardware_gating_bit": 1
+    },
+    {
+      "name": "gcc_qupv3_wrap_1_s_ahb_clk",
+      "status_register": "0x23144",
+      "vote_bit": 21,
+      "hardware_gating_bit": 1
+    },
+    {
+      "name": "gcc_qupv3_wrap1_s4_clk",
+      "status_register": "0x183cc",
+      "vote_bit": 26,
+      "hardware_gating_bit": null
+    }
+  ],
+  "vendor_se_frequency_table_hz": [
+    7372800,
+    14745600,
+    19200000,
+    29491200,
+    32000000,
+    48000000,
+    51200000,
+    64000000,
+    75000000,
+    80000000,
+    96000000,
+    100000000,
+    102400000,
+    112000000,
+    117964800,
+    120000000
+  ],
+  "policy": "Raise only target bus and serial votes. Initialize stopped/unvoted/non-DFS SE4 root to XO only after idle/foreign-protocol/DMA/GPI/FIFO checks; retain unrelated CFG fields. Adopt live roots/DFS read-only using actual locked GPLL0 L/alpha/postdivider and M/N rates, capped at 120 MHz. Read back writes and recheck selected source/ownership. No PLL/reset/voltage/table/global-clock write; pin resources after attempts.",
+  "source_reference_files": [
+    {
+      "path": ".cache/input-reference/clock-gcc-sun.c",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/gcc-sun.c",
+      "sha256": "8e2198b7ee9dfd306bafb5ff2343d38128ceb2bae98b676f7ebbcb0f16ad1326"
+    },
+    {
+      "path": ".cache/input-reference/clock-clk-rcg2.c",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-rcg2.c",
+      "sha256": "d3756a86b4508a590bc913f90881a0b61d4dd2e93a863f15c5e794fbf24018f6"
+    },
+    {
+      "path": ".cache/input-reference/clock-clk-rcg.h",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-rcg.h",
+      "sha256": "40add84badd583bbf658688a6abbd92589698a1b7d0149913fd51697fdae574d"
+    },
+    {
+      "path": ".cache/input-reference/clock-clk-branch.c",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-branch.c",
+      "sha256": "57c4f292cf0094e56ab5dece1a01feeff64fab2054dde1feea05c7157da23fa1"
+    },
+    {
+      "path": ".cache/input-reference/clock-clk-branch.h",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-branch.h",
+      "sha256": "9697654ab7a6efbd1d06eafd2cbed36573a8a8ea3aa8330240abe382c195cfc0"
+    },
+    {
+      "path": ".cache/input-reference/clock-clk-regmap.c",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-regmap.c",
+      "sha256": "e52aeb36613dbf0baa7c29f7ddc4aedb5c62951073304f2fca39a9cbdfaba772"
+    },
+    {
+      "path": ".cache/input-reference/clock-clk-alpha-pll.c",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-alpha-pll.c",
+      "sha256": "ebd76d6fb71f52a1da38b7e630e0d617f58ca79c19efaa33dcc238f8bde88eea"
+    },
+    {
+      "path": ".cache/input-reference/clock-clk-alpha-pll.h",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-alpha-pll.h",
+      "sha256": "9052ffcde0c0e3ba03e7dba747f8186830883962fa2d1403fc5fe37373c2aa22"
+    },
+    {
+      "path": ".cache/input-reference/clock-clk-rpmh.c",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-rpmh.c",
+      "sha256": "c28a8363be580037e86b5cdafdc76edb44be5375af626dde984585199ef2ca2e"
+    },
+    {
+      "path": ".cache/input-reference/clock-qcom,gcc-sun.h",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/include/dt-bindings/clock/qcom,gcc-sun.h",
+      "sha256": "b97f5ed148f51920328ca5bf082de1b6e033bff3032fbe7823d8f8002eb652fe"
+    },
+    {
+      "path": ".cache/input-reference/clock-qcom,rpmh.h",
+      "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/include/dt-bindings/clock/qcom,rpmh.h",
+      "sha256": "44c3255e0589feb822aa92681869ed649813ca350cb35b2de3fa51817ecaeb1b"
+    }
+  ],
+  "hardware_tested": false,
+  "cold_clock_runtime_qualified": false
+}

@@ -1,0 +1,111 @@
+{
+  "result": "IOS16_ORIGINAL_APFS_ORDINARY_REQUEST_SOURCE_PASS",
+  "builder_sha256": "805d6537362200febb45403d5b9709841af0639969d49e430f2894f1795c43aa",
+  "source_sha256": {
+    "scripts/build_apfs_mount_args.py": "805d6537362200febb45403d5b9709841af0639969d49e430f2894f1795c43aa",
+    "scripts/check_apfs_mount_host.py": "4bfda7eb39bfb7cc6b6256ecf21c53045b9f76c8659b9cd788a3d5dd27b6e5d5",
+    "drivers/DodgeStorage/DodgeApfsMountArgs.cpp": "de80bc8e78133f93d2f36097915a391582b3132d47663c9bfd59fd9b1cebcc6a",
+    "drivers/DodgeStorage/DodgeApfsMountArgs.h": "f32cbc620d2c7c17c7f2095c6fbc6b580a93ffde8937e27749d98171618f0c6e",
+    "profiles/os/ios-16.7.16-20H392/storage/OriginalApfsMountABI.h": "c2f10704f665ad4645961d89337225f098a4b921a1596eda1f03fa07f3228e06",
+    "tests/DodgeApfsMountArgsTest.cpp": "ee780473f55da0a0ccb5452e3a06375f0a9b04c213b08272a431dbaf29be97c0"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-apfs-mount-program.json": "cde4b25b8e59639e7b3096d6ab9789543a470f17715a3121b429c3e5adad4fe4"
+  },
+  "artifacts": {
+    "build/ios16-apfs-mount-source/DodgeApfsMountArgs.o": "38698a76896e0f666eb1067439c4ebc5209ffe4ea0a73d2d4265584572a152b1",
+    "build/ios16-apfs-mount-source/ApfsMountLayout.o": "8b7a183ecf737061c9cc94a7086da3ae5d7414d078e82d0f72733a2ed432b473",
+    "build/ios16-apfs-mount-source/libDodgeApfsMountArgs.a": "acda31fd597d08465f187444a7e6f490a5900f8e73e93e6b54739accbf8ff3f8",
+    "build/ios16-apfs-mount-source/apfs-mount-args-host": "7134ded46225f62961613896bf6b262e1813f0f7f4fbcc1f9f871962925a716c",
+    "build/ios16-apfs-mount-source/host-cases.json": "683eba20751fa8b1aa9b2fe66ae0c97c9f3b7343a78e265274fa90576bcebe19",
+    "build/ios16-apfs-mount-source/compile-commands.json": "17cb4c505908174869a8a79cd62ab9bab39299096f34befc157ad7c6751edc41"
+  },
+  "native_object": "build/ios16-apfs-mount-source/DodgeApfsMountArgs.o",
+  "native_archive": "build/ios16-apfs-mount-source/libDodgeApfsMountArgs.a",
+  "compiler_layout": {
+    "user_bytes": 336,
+    "fspec": 0,
+    "flags": 8,
+    "mode": 16,
+    "uid": 324,
+    "gid": 328,
+    "tail": 332,
+    "readonly": 1,
+    "unknown_owners": 2097152,
+    "update": 65536,
+    "vfs_entry_name": 28,
+    "vfs_mount_slot": 0
+  },
+  "sanitizer_case_count": 16,
+  "original_request_comparison_count": 12,
+  "original_comparisons": [
+    {
+      "case": "root-owners",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "mountpoint-owners",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "stat-failure",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "explicit-uid",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "explicit-gid",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "explicit-both",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "raw-device",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "unprefixed-device",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "noowners",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "noowners-explicit",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "readonly",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    },
+    {
+      "case": "readonly-noowners",
+      "result": "PASS",
+      "all_336_bytes_match_original": true
+    }
+  ],
+  "rejects_preserve_output_and_valid_output_redzones": true,
+  "mount_called": false,
+  "full_apfs_mount_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "negative_controls": [],
+  "scope": "The actual request helper passes ASan/UBSan, matches all 336 bytes in twelve independently captured original-program requests and compiles with actual iPhone kernel layouts/constants. Unsupported/remount flags and unresolved owners are rejected without writes. It serializes a caller-validated user pointer; no user VM, mount, device registry or APFS runtime is provided by this helper."
+}

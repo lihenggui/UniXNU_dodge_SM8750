@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "display_bytes": 5728,
+  "init": {
+    "address": "0xfffffff005c0c404",
+    "bytes": 528,
+    "sha256": "8fb0d2e8bae0f0ad28c19a869fb84303752c2765f07db5621e208c264b4cee21"
+  },
+  "start": {
+    "address": "0xfffffff005c0c8cc",
+    "bytes": 3852,
+    "sha256": "2de06eeec96976dcc9eb16a47fd8e17eef8f823a02a94531b25f865b57533ef4"
+  },
+  "stop": {
+    "address": "0xfffffff005c0dff4",
+    "bytes": 1408,
+    "sha256": "ec73a7f78327e87c9095fdbb506700b8781dcdef2b87c4406f7a02565ed69a94"
+  },
+  "parent_init": "0xfffffff007744674",
+  "parent_table_word": "0xfffffff006dedd28",
+  "gate_factory_stub": {
+    "address": "0xfffffff005c26e90",
+    "bytes": 12,
+    "sha256": "45b4a31921afac10658009fa1c9d0e9c8da9c77b355a055a3e1e930d99ea9cb7"
+  },
+  "gate_factory_import": "0xfffffff006deaf68",
+  "gate_factory_target": "0xfffffff00777ad54",
+  "workloop_factory_stub": {
+    "address": "0xfffffff005c26de8",
+    "bytes": 12,
+    "sha256": "99274dd7e3b5f275308e3d39955f94c3902e04925105bf18b282d569a85ab12b"
+  },
+  "workloop_factory_import": "0xfffffff006deaee0",
+  "workloop_factory_target": "0xfffffff007778304",
+  "gate_field": 5040,
+  "workloop_field": 5048,
+  "add_event_source_slot": 20,
+  "startup_queues": {
+    "address": "0xfffffff005c0d458",
+    "bytes": 188,
+    "sha256": "a1b390e3c28346066caf7dbbe89a61562d9e33f59c19be32948b2bf2cdc3d178"
+  },
+  "current": 4872,
+  "primary_head": 4880,
+  "primary_tail": 4888,
+  "unsubmitted_head": 4896,
+  "unsubmitted_tail": 4904,
+  "notification_heads": 4912,
+  "notification_count": 6,
+  "notification_stride": 16,
+  "hardware_call": {
+    "address": "0xfffffff005c0d5c0",
+    "bytes": 60,
+    "sha256": "4526fb3bc23512c063efccd7c6b6d55c9f715b6c1063385992b4f558eae2d6f6"
+  },
+  "register_service_call": {
+    "address": "0xfffffff005c0d76c",
+    "bytes": 20,
+    "sha256": "e1d2a785d422bb87032bac87bca4b4fcd158979bf7bf5b19d5f613d3b233ab15"
+  },
+  "register_service_slot": 84,
+  "registers_before_start_returns": true,
+  "initialization_failure_ownership_qualified": false,
+  "full_start_stop_lifecycle_qualified": false
+}

@@ -1,0 +1,16 @@
+{
+  "result": "PASS",
+  "case_count": 300,
+  "identities_exhausted": 256,
+  "builder_sha256": "aac07efd2646f485750ce92fde535a6f924b6511a298fd30e999653355fd7e9f",
+  "source_sha256": {
+    "scripts/check_hid_edge_host.py": "aac07efd2646f485750ce92fde535a6f924b6511a298fd30e999653355fd7e9f",
+    "drivers/DodgeInput/DodgeHidEdgePolicy.h": "09c3b17fc2c696621017d8201d009535824cf137a820871a856937e628d888c0",
+    "tests/DodgeHidEdgeTest.cpp": "ccc2285e75e6914b3a6ebae78b3f7db4a250aae45648432db8aa5a6b4168f367"
+  },
+  "binary": "build/cph2653-hid-edge/hid-edge-host",
+  "binary_sha256": "e0f7d669c82829d069162a717e236cc4b1dd00ba13725c28001c6b1eb647d54f",
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Actual edge policy with geometry bounds, all 256 identities, down/move/lift/reuse, exact edge boundaries, high masks and unchanged invalid outputs under ASan/UBSan/LeakSanitizer. No original events or UI."
+}

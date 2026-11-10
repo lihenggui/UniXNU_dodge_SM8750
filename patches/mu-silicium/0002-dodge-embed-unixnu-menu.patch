@@ -1,0 +1,48 @@
+diff --git a/Platforms/OnePlus/dodgePkg/dodge.dsc b/Platforms/OnePlus/dodgePkg/dodge.dsc
+index 78fe5a91..c833a10a 100644
+--- a/Platforms/OnePlus/dodgePkg/dodge.dsc
++++ b/Platforms/OnePlus/dodgePkg/dodge.dsc
+@@ -68,6 +68,11 @@
+   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
+ 
+ [LibraryClasses]
++  # UniXNU menu and FDT initrd support.
++  UniXNULib|UniXNUPkg/Library/UniXNULib/UniXNULib.inf
++  FdtLib|MdePkg/Library/BaseFdtLib/BaseFdtLib.inf
++  HobLib|MdePkg/Library/DxeHobLib/DxeHobLib.inf
++
+   #
+   # Memory Libraries
+   #
+@@ -79,6 +84,14 @@
+   ConfigurationMapLib|dodgePkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+ 
+ [Components]
++  UniXNUPkg/Application/UniXNU/UniXNU.inf
++  UniXNUPkg/Driver/UniXNUDxe/UniXNUDxe.inf
++  UniXNUPkg/Driver/UniXNURamDiskDxe/UniXNURamDiskDxe.inf
++  DarwinBootPkg/Driver/DarwinBoot.inf {
++    <BuildOptions>
++      *_CLANGPDB_AARCH64_CC_FLAGS = -DDARWIN_BOOT_COMMAND_LINE_LENGTH=608
++  }
++
+   #
+   # ACPI Tables
+   #
+diff --git a/Platforms/OnePlus/dodgePkg/dodge.fdf b/Platforms/OnePlus/dodgePkg/dodge.fdf
+index 399cb87f..1a04b78d 100644
+--- a/Platforms/OnePlus/dodgePkg/dodge.fdf
++++ b/Platforms/OnePlus/dodgePkg/dodge.fdf
+@@ -83,6 +83,12 @@ READ_LOCK_STATUS   = TRUE
+   !include Include/DXE.inc
+   !include Include/RAW.inc
+ 
++  # UniXNU menu, FDT initrd handoff and DarwinBoot; the kernel is a payload input.
++  INF UniXNUPkg/Application/UniXNU/UniXNU.inf
++  INF UniXNUPkg/Driver/UniXNUDxe/UniXNUDxe.inf
++  INF UniXNUPkg/Driver/UniXNURamDiskDxe/UniXNURamDiskDxe.inf
++  INF DarwinBootPkg/Driver/DarwinBoot.inf
++
+   # RAM Manager
+   INF SiliciumPkg/Drivers/RamManagerDxe/RamManagerDxe.inf
+ 

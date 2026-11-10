@@ -1,0 +1,486 @@
+{
+  "result": "IOS16_LINKED_GOP_PROVIDER_GUARDS_AND_ORIGINAL_ALLOCATION_CPU_PASS",
+  "builder_sha256": "354de5a5d3be410f5768ad9de1483816808c819ee160b4a71c646a0fb93caa06",
+  "source_sha256": {
+    "scripts/check_gop_provider_kernel.py": "354de5a5d3be410f5768ad9de1483816808c819ee160b4a71c646a0fb93caa06",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "scripts/prepare_gop_provider.py": "d5dc7e45baf27bcf36c4090e77e78505bcc866e3683f73f7aaa6c59fbd34166e",
+    "profiles/os/ios-16.7.16-20H392/gop-provider.json": "4bbde6151ab6ed9afe66d802dffcd5897c20f271d2ecf2dfbc8161ab39648886",
+    "drivers/DodgeDisplay/DodgeGopProvider.cpp": "67275dc78a51673becc358aa037e74ffaa1fff47ba29682b993276583fcd2340",
+    "drivers/DodgeDisplay/DodgeGopProvider.h": "bb149bea2d25715a8a7b254863faea5f3c7d024c326e39d039a3eb2a54b47ae1",
+    "drivers/DodgeDisplay/DodgeGraphicsLate.cpp": "eba11f8c3b603dd89c1476200f0c00fd8f64babf396f6ad3fb429a3348c8364b",
+    "drivers/DodgeDisplay/DodgeGraphicsLate.h": "d7c260a7c38ebdbfc5a6a8494bb48a64fc3a629abad1fdf1f564c52f62bed938",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/pexpert/pexpert/pexpert.h": "21f595229a45958b377f71f1aef48fb86119c7168283b6fb76b29e65dad4943f"
+  },
+  "dependency_report_sha256": {
+    "ios16-gop-provider": "abdcce6181e7ba3b8feb6191edcccb1f3ba7d7f4695e70ebf15f39536f408517",
+    "ios16-graphics-late": "5bba30412c84536a155845df37ea497c04815f9abf3aca808715a158d21f1f03",
+    "ios16-display-kernel": "1d256d5592b1281d194ee03b305744a2cd6ea4258e5f8e5337fc13757ccaada4",
+    "ios16-display-prelink": "6f92eab86f87a553eab8d330fabfd6985de105b825b16a0f449076a6aeaff820"
+  },
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "candidate": "build/cph2653-display-prelink/kernel.macho",
+  "candidate_sha256": "e35d399f79ec0bec13fe9b638acf365a667da9dd639f8685064b67593386bdef",
+  "unicorn_version": "2.1.4",
+  "case_count": 18,
+  "cases": [
+    {
+      "case": "factory-null-out",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "factory-null-platform",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "unpublished-status",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "factory-wrong-platform",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService11getPlatformEv"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "factory-modules-not-ready",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService11getPlatformEv",
+        "__ZNK15OSMetaClassBase8metaCastEPKc",
+        "__ZNK9IOService10isInactiveEv",
+        "_dodge_graphics_status"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "factory-metadata-identity",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService11getPlatformEv",
+        "__ZNK15OSMetaClassBase8metaCastEPKc",
+        "__ZNK9IOService10isInactiveEv",
+        "_dodge_graphics_status",
+        "_PE_current_console",
+        "__ZNK8OSObject6retainEv",
+        "__ZN8OSSymbol17withCStringNoCopyEPKc",
+        "__ZN11OSMetaClass21copyMetaClassWithNameEPK8OSSymbol",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK11OSMetaClass16releaseMetaClassEv",
+        "__ZNK8OSObject7releaseEv"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "factory-metadata-size",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService11getPlatformEv",
+        "__ZNK15OSMetaClassBase8metaCastEPKc",
+        "__ZNK9IOService10isInactiveEv",
+        "_dodge_graphics_status",
+        "_PE_current_console",
+        "__ZNK8OSObject6retainEv",
+        "__ZN8OSSymbol17withCStringNoCopyEPKc",
+        "__ZN11OSMetaClass21copyMetaClassWithNameEPK8OSSymbol",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK11OSMetaClass12getClassSizeEv",
+        "__ZNK11OSMetaClass16releaseMetaClassEv",
+        "__ZNK8OSObject7releaseEv"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "factory-metadata-parent",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService11getPlatformEv",
+        "__ZNK15OSMetaClassBase8metaCastEPKc",
+        "__ZNK9IOService10isInactiveEv",
+        "_dodge_graphics_status",
+        "_PE_current_console",
+        "__ZNK8OSObject6retainEv",
+        "__ZN8OSSymbol17withCStringNoCopyEPKc",
+        "__ZN11OSMetaClass21copyMetaClassWithNameEPK8OSSymbol",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK11OSMetaClass12getClassSizeEv",
+        "__ZNK11OSMetaClass13getSuperClassEv",
+        "__ZNK11OSMetaClass16releaseMetaClassEv",
+        "__ZNK8OSObject7releaseEv"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "factory-init-failure",
+      "result": "PASS",
+      "original_allocator_executed": true,
+      "actual_native_parent_constructor_entries": [
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2"
+      ],
+      "original_provider_functions": [
+        "allocator",
+        "get-meta-class",
+        "D0"
+      ],
+      "typed_delete_executed": true,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService11getPlatformEv",
+        "__ZNK15OSMetaClassBase8metaCastEPKc",
+        "__ZNK9IOService10isInactiveEv",
+        "_dodge_graphics_status",
+        "_PE_current_console",
+        "__ZNK8OSObject6retainEv",
+        "__ZN8OSSymbol17withCStringNoCopyEPKc",
+        "__ZN11OSMetaClass21copyMetaClassWithNameEPK8OSSymbol",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK11OSMetaClass12getClassSizeEv",
+        "__ZNK11OSMetaClass13getSuperClassEv",
+        "_OSObject_typed_operator_new",
+        "typed-allocation",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "instance-constructed",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZN9IOService4initEP12OSDictionary",
+        "public-init-peer",
+        "__ZNK8OSObject7releaseEv",
+        "_OSObject_typed_operator_delete",
+        "typed-free",
+        "__ZNK11OSMetaClass16releaseMetaClassEv",
+        "__ZNK8OSObject7releaseEv"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "factory-memory-allocation-failure",
+      "result": "PASS",
+      "original_allocator_executed": true,
+      "actual_native_parent_constructor_entries": [
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2"
+      ],
+      "original_provider_functions": [
+        "allocator",
+        "get-meta-class",
+        "D0"
+      ],
+      "typed_delete_executed": true,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService11getPlatformEv",
+        "__ZNK15OSMetaClassBase8metaCastEPKc",
+        "__ZNK9IOService10isInactiveEv",
+        "_dodge_graphics_status",
+        "_PE_current_console",
+        "__ZNK8OSObject6retainEv",
+        "__ZN8OSSymbol17withCStringNoCopyEPKc",
+        "__ZN11OSMetaClass21copyMetaClassWithNameEPK8OSSymbol",
+        "__ZNK8OSObject7releaseEv",
+        "__ZNK11OSMetaClass12getClassSizeEv",
+        "__ZNK11OSMetaClass13getSuperClassEv",
+        "_OSObject_typed_operator_new",
+        "typed-allocation",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "instance-constructed",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZN9IOService4initEP12OSDictionary",
+        "public-init-peer",
+        "__ZN15IORegistryEntry7setNameEPKcPK15IORegistryPlane",
+        "__ZNK15IORegistryEntry7getNameEPK15IORegistryPlane",
+        "_strcmp",
+        "__ZN14IODeviceMemory9withRangeEyy",
+        "__ZNK8OSObject7releaseEv",
+        "_OSObject_typed_operator_delete",
+        "typed-free",
+        "__ZNK11OSMetaClass16releaseMetaClassEv",
+        "__ZNK8OSObject7releaseEv"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "original-allocation-and-d0",
+      "result": "PASS",
+      "original_allocator_executed": true,
+      "actual_native_parent_constructor_entries": [
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2"
+      ],
+      "original_provider_functions": [
+        "allocator",
+        "get-meta-class",
+        "D0"
+      ],
+      "typed_delete_executed": true,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "_OSObject_typed_operator_new",
+        "typed-allocation",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "instance-constructed",
+        "_OSObject_typed_operator_delete",
+        "typed-free"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "original-allocation-and-d1",
+      "result": "PASS",
+      "original_allocator_executed": true,
+      "actual_native_parent_constructor_entries": [
+        "IOService.C2",
+        "IORegistryEntry.C2",
+        "OSObject.C2",
+        "OSMetaClassBase.C2"
+      ],
+      "original_provider_functions": [
+        "allocator",
+        "get-meta-class",
+        "D1"
+      ],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "_OSObject_typed_operator_new",
+        "typed-allocation",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "instance-constructed"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "original-resources-existing-memory",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [
+        "get-resources"
+      ],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService15getDeviceMemoryEv"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "original-resources-missing-memory",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [
+        "get-resources"
+      ],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService15getDeviceMemoryEv",
+        "__ZNK9IOService11getProviderEv",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK9IOService11getProviderEv"
+      ],
+      "actual_iobsd_hook_executed": false,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "late-hook-default-disabled",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "_PE_parse_boot_argn",
+        "_thread_call_allocate_with_options"
+      ],
+      "actual_iobsd_hook_executed": true,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "late-hook-explicit-zero",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "_PE_parse_boot_argn",
+        "_thread_call_allocate_with_options"
+      ],
+      "actual_iobsd_hook_executed": true,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "late-hook-explicit-other",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "_PE_parse_boot_argn",
+        "_thread_call_allocate_with_options"
+      ],
+      "actual_iobsd_hook_executed": true,
+      "independent_worker_queued": false
+    },
+    {
+      "case": "late-hook-opt-in-queued",
+      "result": "PASS",
+      "original_allocator_executed": false,
+      "actual_native_parent_constructor_entries": [],
+      "original_provider_functions": [],
+      "typed_delete_executed": false,
+      "object_canaries_preserved": true,
+      "api_peer_calls": [
+        "__ZN9IOService15publishResourceEPKcP8OSObject",
+        "_PE_parse_boot_argn",
+        "_kernel_thread_start",
+        "_thread_deallocate",
+        "_thread_call_allocate_with_options"
+      ],
+      "actual_iobsd_hook_executed": true,
+      "independent_worker_queued": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "unknown-native-allocator",
+      "result": "REJECTED",
+      "check": "Unknown native provider implementation: _OSObject_typed_operator_new"
+    },
+    {
+      "case": "nonzero-typed-allocation",
+      "result": "REJECTED",
+      "check": "Original typed allocation is not zero outside constructor fields"
+    }
+  ],
+  "original_provider_blocks": {
+    "metadata_constructor": {
+      "address": "0xfffffff0055f83e8",
+      "bytes": 52,
+      "sha256": "2dafe9900abc4701bd7b32a3f0221089d71e5ba3c5541c0143caea308e066239",
+      "linked_address": "0xfffffff0045f83e8"
+    },
+    "allocator": {
+      "address": "0xfffffff0055f7ba0",
+      "bytes": 84,
+      "sha256": "d7ef238ae831ff9957c501634dc97c61f16eeb33dea7713b2a1707ebe988fe32",
+      "linked_address": "0xfffffff0045f7ba0"
+    },
+    "get_resources": {
+      "address": "0xfffffff0055f8038",
+      "bytes": 156,
+      "sha256": "fd1f16de2f72ea7d13c00d7eb9250e23ef34c9a193f40027741a0149f562efe9",
+      "linked_address": "0xfffffff0045f8038"
+    },
+    "bus_initializer_not_called": {
+      "address": "0xfffffff0055f8178",
+      "bytes": 564,
+      "sha256": "724a1ac5783cfff145472368c736db4935e29f8451f1e8922709f1b8161c454b",
+      "linked_address": "0xfffffff0045f8178"
+    }
+  },
+  "cpu_cases": "build/ios16-gop-provider/kernel-cpu-cases.json",
+  "cpu_cases_sha256": "254c9607d3b20309d51d3e32b2cb0375dc2077c5c80c9112619e8c754c801c72",
+  "original_instance_bytes": 216,
+  "actual_original_allocator_and_native_parent_constructors_executed": true,
+  "actual_source_factory_early_guards_and_unwind_executed": true,
+  "actual_original_get_resources_fast_path_executed": true,
+  "original_get_meta_class_identity_executed": true,
+  "actual_iobsd_hook_and_opt_in_schedule_cpu_cases": 4,
+  "worker_executed_by_iobsd_caller": false,
+  "allocation_metadata_reference_public_init_and_registry_are_peers": true,
+  "original_instruction_bytes_unchanged": true,
+  "protected_default_artifact_sha256": {
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "5434b91d048c7ac3e72fdace018caf3f013bea656d5cdaae989fbc7404cff854",
+    "build/cph2653-native-bringup/boot.img": "18a04d167d6515640f3a180702d6c82d4dcfb9eb853d4a38416a05235f7bdb9e",
+    "build/cph2653-gpu-link-probe/mach.gpu": "ec41460411b00cd6f4a296c709277edd648f7c7245200788250c881ffb9ad997",
+    "build/cph2653-gpu-graphics-prelink/kernel.macho": "3f88733611e58c595029778009f34f04f290b62cb937bdd861e9c60e73815c1e",
+    "build/cph2653-display-kernel/mach.display": "d8f7f6c03c7d1c19753c48c4988160768d52187e9502084727ce3457ce536c5c"
+  },
+  "default_artifacts_unchanged": true,
+  "actual_service_publication_executed": false,
+  "original_loader_executed": false,
+  "real_iokit_instance_constructed": false,
+  "runtime_qualified": false,
+  "default_kernel_selected": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Bounded CPU execution from the full current prelink: real original provider allocator/getMetaClass/getResources/D1/D0 and complete native parent constructor/destructor chains, plus actual source factory early rejection and unwind. Four cases also execute the actual isolated IOBSD hook and scheduler, preserving disabled defaults or queuing the exact worker. Typed allocation/deallocation, metaclass registration/lookup, retain/release, generic public init, PE and registry operations are explicit peers. No real loader, service publication, mapping, Apple bus/clock callbacks or physical hardware."
+}

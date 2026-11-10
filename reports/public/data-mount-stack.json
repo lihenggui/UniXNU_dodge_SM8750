@@ -1,0 +1,273 @@
+{
+  "result": "CPH2653_IPHONE_IOS16_INIT_DATA_MOUNT_PREPARATION_STACK_PASS",
+  "builder_sha256": "bc02eda5d2ffdf6de83924ff4045e74a9ffad131fbe2f2423e58e4ee88aa2644",
+  "source_sha256": {
+    "scripts/build_data_mount_stack.py": "bc02eda5d2ffdf6de83924ff4045e74a9ffad131fbe2f2423e58e4ee88aa2644"
+  },
+  "base_data_startup_report": "reports/data-startup-stack.json",
+  "base_data_startup_report_sha256": "b4276b521796cfb082909319037b57546786a0280b40ac1e4ea05f3d79a70071",
+  "stages": {
+    "ios16-apfs-mount-abi": {
+      "report": "reports/ios16-apfs-mount-abi.json",
+      "sha256": "ab4b7ad98cf2c5500fc55a2b43bb5badebc204f7249253f19369a2c68a7aa3a4",
+      "result": "IOS16_EXACT_ORIGINAL_APFS_MOUNT_ABI_STATIC_PASS"
+    },
+    "ios16-apfs-mount-program": {
+      "report": "reports/ios16-apfs-mount-program.json",
+      "sha256": "cde4b25b8e59639e7b3096d6ab9789543a470f17715a3121b429c3e5adad4fe4",
+      "result": "IOS16_ORIGINAL_MOUNT_APFS_ORDINARY_REQUEST_CPU_PASS"
+    },
+    "ios16-apfs-mount-source": {
+      "report": "reports/ios16-apfs-mount-source.json",
+      "sha256": "1b2a92516a0ae93bf8a82aa7e8318229c670ed85ed93eac1e1aed994c0b3920d",
+      "result": "IOS16_ORIGINAL_APFS_ORDINARY_REQUEST_SOURCE_PASS"
+    },
+    "ios16-data-mount-native": {
+      "report": "reports/ios16-data-mount-native.json",
+      "sha256": "cad94d45f1aa1a3b3c877a479d6bc833a0fa646f7aa31d9150f11c3b0e6b096a",
+      "result": "IOS16_SEPARATE_INIT_CONTEXT_DATA_MOUNT_SOURCE_LINK_PASS"
+    },
+    "ios16-data-mount-prelink": {
+      "report": "reports/ios16-data-mount-prelink.json",
+      "sha256": "e189ac14f448523aefd9eaa40f8ffdc98d434ac430136d98bfb3723b3fdb8353",
+      "result": "IOS16_INIT_CONTEXT_DATA_MOUNT_AND_ORIGINAL_IPHONE_STRICT_PRELINK_PASS"
+    },
+    "ios16-data-mount-kernel": {
+      "report": "reports/ios16-data-mount-kernel.json",
+      "sha256": "84f68a6db21a098c1d4d9740756ff0fbf0b30bf8454126319a4006e95677df69",
+      "result": "IOS16_INIT_DATA_MOUNT_SOURCE_AND_ORIGINAL_COPYIN_CPU_PASS"
+    },
+    "ios16-data-mount-payload": {
+      "report": "reports/ios16-data-mount-payload.json",
+      "sha256": "1d17b83a68fc0df4d39ebf029de944c82f00988bb20f1c656fa1bca2fbdda5a7",
+      "result": "IOS16_INIT_DATA_MOUNT_PACKED_SEED_AND_CONTAINER_READBACK_PASS"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "build/ios16-apfs-mount-abi/mount_apfs-filesystem",
+      "sha256": "ccac6fa5b10c74ac9458212044bdc4115831c7a01be04d61d04e86bdec52dc27",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-bringup/boot.img",
+      "sha256": "1054ab215598cf50a57c1e135bccbc2b2b37a774fe6d9630bea8c8cfffb37b8b",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-bringup/boot.json",
+      "sha256": "351ac56e6852b50489e73407710259e24f5f67b0113cf676174446908936bcea",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-bringup/kernel.macho.adt",
+      "sha256": "c3080f76340ceda373d2e56caa9c0514007f6cfea666cfa63f7155a3cd22ee27",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-bringup/loader-parser.c",
+      "sha256": "2a53ccb696c0928af16804c09c6595d1610e761974e3e09795e3896800841e1b",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-bringup/loader-parser.so",
+      "sha256": "f5a6513cba8f9a2cbf22fb9ff8cad03b87e153bfc6f788a9a79af26d74109897",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-bringup/payload.img",
+      "sha256": "1be4a35062246bebcb88206aa64e3cbec031372d7d4f414f433957325de878b8",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-kernel/abi/DataMountLayout.o",
+      "sha256": "31b656cc2d36c09c523d3ae35255c084124eda5747171405ff177181fd6a23dc",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-kernel/cpu-cases.json",
+      "sha256": "bf14ba6ed9963117749753aca0b5429997072df41e16e618342f36f6812d36f4",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-native/DodgeDataMount.o",
+      "sha256": "13f0adf55cb254773eea8e540687569378342c1a689ecd9eae86e6b874335648",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-native/DodgeDataMountSyscall.o",
+      "sha256": "a53bf7cbbe77fc04d8427c0daf8b8a4dda357498dfc5925538cbc29b601fdd90",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-native/combined-native.filelist",
+      "sha256": "3fdf359cd667d982e159cf5c86e594bce4faefb00a92ff4f111a46bae61ba494",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-native/compile-commands.json",
+      "sha256": "effbd9b6be31bad78a96e002af54646f235fb0d8e2ccb6be107d2d517e8b9ec9",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-native/kern_exec.data.c",
+      "sha256": "2b928067f710ef18a2a382ad3ed49009074311a348b29165aea086fb7136c12a",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-native/kern_exec.data.o",
+      "sha256": "60d5c53cefc5c636ba0ce9ed9cfd0e40ca17ee93eaa3d504b7ce922beb44e622",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-native/libDodgeDataMount.a",
+      "sha256": "5272f357fea06df12437c3bd6c3b49fce1ab3eb281ea06da44e5034c3c44d898",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-native/link-command.json",
+      "sha256": "92c3abf5b3066341c0da737b22d6e67aade06fe420471035870acc64a823265d",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-native/mach.data-mount",
+      "sha256": "b16353aa29c2ff986b989fc4b282ca0963390763659362c165eb12b6f7d7f34e",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-prelink/emission.json",
+      "sha256": "24d431b2ebb65ab52c22b5ea4e2c31a78a7ed039c6ad99910e18a9aacf4433dc",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-prelink/kernel.macho",
+      "sha256": "81f6e6da769fcd3666da0af07d1b69e878064dbb7abccf2490d65d8e66b6da91",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-prelink/kernel.macho.crypto-hmac.json",
+      "sha256": "9c2e5dcf6523d96cf259b12e6be2da5dccdaa10ef6563d82fa3617700bab4706",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-prelink/mach.data-mount.sealed",
+      "sha256": "3358bd94f165f893d061ff05b01141db8fbb124b0eefff081c4667effbadd168",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-prelink/mach.data-mount.sealed.crypto-hmac.json",
+      "sha256": "97ffe9b35fe6c33da6aca0872881404879ff82523f46cfdbdfb036133389c9c1",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-program/captures.json",
+      "sha256": "5b26382901dd93be12d02ceb2840d9833d3377ef3c19f94b4c8509a2f360c198",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-program/libAppleMountOptions.so",
+      "sha256": "532a6a83f33acd31ddd83ea96ccf07688c43b6d5216003ae3ced1837cf20c3e8",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-source/ApfsMountLayout.o",
+      "sha256": "8b7a183ecf737061c9cc94a7086da3ae5d7414d078e82d0f72733a2ed432b473",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-source/DodgeApfsMountArgs.o",
+      "sha256": "38698a76896e0f666eb1067439c4ebc5209ffe4ea0a73d2d4265584572a152b1",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-source/apfs-mount-args-host",
+      "sha256": "7134ded46225f62961613896bf6b262e1813f0f7f4fbcc1f9f871962925a716c",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-source/compile-commands.json",
+      "sha256": "17cb4c505908174869a8a79cd62ab9bab39299096f34befc157ad7c6751edc41",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-source/host-cases.json",
+      "sha256": "683eba20751fa8b1aa9b2fe66ae0c97c9f3b7343a78e265274fa90576bcebe19",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "build/ios16-apfs-mount-source/libDodgeApfsMountArgs.a",
+      "sha256": "acda31fd597d08465f187444a7e6f490a5900f8e73e93e6b54739accbf8ff3f8",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "reports/ios16-apfs-mount-abi.json",
+      "sha256": "ab4b7ad98cf2c5500fc55a2b43bb5badebc204f7249253f19369a2c68a7aa3a4",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "reports/ios16-apfs-mount-program.json",
+      "sha256": "cde4b25b8e59639e7b3096d6ab9789543a470f17715a3121b429c3e5adad4fe4",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "reports/ios16-apfs-mount-source.json",
+      "sha256": "1b2a92516a0ae93bf8a82aa7e8318229c670ed85ed93eac1e1aed994c0b3920d",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "reports/ios16-data-mount-kernel.json",
+      "sha256": "84f68a6db21a098c1d4d9740756ff0fbf0b30bf8454126319a4006e95677df69",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "reports/ios16-data-mount-native.json",
+      "sha256": "cad94d45f1aa1a3b3c877a479d6bc833a0fa646f7aa31d9150f11c3b0e6b096a",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "reports/ios16-data-mount-payload.json",
+      "sha256": "1d17b83a68fc0df4d39ebf029de944c82f00988bb20f1c656fa1bca2fbdda5a7",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    },
+    {
+      "path": "reports/ios16-data-mount-prelink.json",
+      "sha256": "e189ac14f448523aefd9eaa40f8ffdc98d434ac430136d98bfb3723b3fdb8353",
+      "role": "Isolated exact-iPhone APFS/init/Data preparation; runtime limits follow stage report"
+    }
+  ],
+  "new_request_sanitizer_cases": 16,
+  "total_data_source_sanitizer_cases": 123,
+  "original_mount_program_cpu_cases": 19,
+  "source_and_original_prefix_cpu_cases": 80,
+  "source_request_cpu_cases": 12,
+  "original_apfs_copyin_cpu_cases": 4,
+  "mount_coordinator_cpu_cases": 52,
+  "actual_init_cpu_cases": 12,
+  "negative_controls": 32,
+  "combined_source_objects": 87,
+  "native_entries": 91,
+  "combined_original_aliases": 332,
+  "original_components": 28,
+  "kernel_interfaces": 7,
+  "original_pointer_sites_read_back": 63889,
+  "boot_image": "build/ios16-apfs-mount-bringup/boot.img",
+  "boot_image_bytes": 170557440,
+  "boot_image_sha256": "1054ab215598cf50a57c1e135bccbc2b2b37a774fe6d9630bea8c8cfffb37b8b",
+  "packed_seed_bytes": 721024,
+  "logical_seed_bytes": 2147483648,
+  "init_boot_call_site_wired": true,
+  "source_data_mount_default_enabled": false,
+  "original_apfs_data_mount_qualified": false,
+  "original_root_authentication_qualified": false,
+  "writable_data_runtime_qualified": false,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "default_kernel_selected": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "remaining": [
+    "Qualify actual original storage parent/IORegistry/media and the complete APFS mount/crypto lifecycle on the native platform.",
+    "Qualify the complete original-root boot/security path, remaining private graphics/event ABI and board peripherals."
+  ],
+  "scope": "Seven additional isolated stages preserve the six-stage Data seeds and four-stage startup candidate. Exact original iPhone mount_apfs and APFS copyin define the ordinary request, with a pinned Apple C option-parser peer. Sixteen new sanitizer cases, 19 original-program and 80 source/original-prefix CPU paths, 32 rejection controls and an 87-object/91-entry strict prelink pass. Actual load_init_program calls a default-off bounded process-context Data gate before init loading; failures stop that modeled route. The separate packed-seed/ADT/FAT/Android container is read back. Explicit peers do not authenticate or mount a real filesystem and no working iPhone iOS or complete-port result is claimed."
+}

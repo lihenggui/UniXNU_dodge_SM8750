@@ -1,0 +1,564 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "slide": "-0x1000000",
+  "iosurface_metadata_flow": {
+    "address": "0xfffffff005a54e60",
+    "bytes": 52,
+    "sha256": "df9965e35b45c22e257a49765c307499c0e3d0c55129c55d8c8f623254cae206",
+    "constructor_import": "__ZN11OSMetaClassC2EPKcPKS_jPP4zoneS1_19zone_create_flags_t"
+  },
+  "modules": [
+    {
+      "bundle": "com.apple.iokit.IOSurface",
+      "version": "336.60.1",
+      "class_name": "IOSurface",
+      "instance_bytes": 1168,
+      "metaclass": "0xfffffff007a1e578",
+      "linked_metaclass": "0xfffffff006a1e578",
+      "alias": "_dodge_original_graphics_surface_meta",
+      "request_matching": true,
+      "kmod_info": "0xfffffff007a1e300",
+      "kmod_info_sha256": "4205fc6bc777f506a2c139a7ea1c77b8f332479607456dab182e06cb337ab5d9",
+      "start": "0xfffffff005a66f10",
+      "stop": "0xfffffff005a66f5c",
+      "start_prefix_sha256": "abcefce02db0e8db476ddda868995f6b005a555412110a943cccba75010d7187",
+      "stop_prefix_sha256": "709c1abd66ff5bbd0f67cb77f74086316eac5d8bd1b7d8634363216c9e3b8a4c",
+      "sections": {
+        "__mod_init_func": {
+          "address": "0xfffffff006d854c8",
+          "bytes": 120,
+          "sha256": "66e18d600af968a38b6e9930e8ddc882df41305a55f9c68195efea72fd343cfa",
+          "entries": [
+            {
+              "address": "0xfffffff005a45cfc",
+              "prefix_sha256": "d52a0d38074e742e2698da1b4566af29d17713dfd8741f607522b6293d9331d8"
+            },
+            {
+              "address": "0xfffffff005a46f04",
+              "prefix_sha256": "24320494e1235bb86ef972ea605031e7d5eb03aa72730196f351271248468e66"
+            },
+            {
+              "address": "0xfffffff005a54e40",
+              "prefix_sha256": "c1e065210cfc187da91087d65089f6e9e58ca7e316466f172eb04e869e25d1be"
+            },
+            {
+              "address": "0xfffffff005a55d48",
+              "prefix_sha256": "7fd75778218ba670fa37a238807fc12a913e56ab324cc2b0d8acc51d84a149c1"
+            },
+            {
+              "address": "0xfffffff005a56204",
+              "prefix_sha256": "9757a2029d6da6705fb79cbb7e540843faad2492f24921893fe26a67c68f348f"
+            },
+            {
+              "address": "0xfffffff005a56a8c",
+              "prefix_sha256": "9bd23ecfee98b3c6e77242fb157f68eabf781b1d4719ad1a188a4d81c99da808"
+            },
+            {
+              "address": "0xfffffff005a57560",
+              "prefix_sha256": "4494f1bf6e52a431c7e4a2bf57d4802711dd8436d8c047cd3c852e37ec3a73e0"
+            },
+            {
+              "address": "0xfffffff005a57dbc",
+              "prefix_sha256": "94a9f46da53aedbdeea505ef5597dccecb54c4130c7e1b18de13d4feee8a2f92"
+            },
+            {
+              "address": "0xfffffff005a58244",
+              "prefix_sha256": "dc586b8a00fa59d06a9e73dc2f8a793d062c2a1a6d02355e54cab050651cdea1"
+            },
+            {
+              "address": "0xfffffff005a5ca04",
+              "prefix_sha256": "41f13dafa8e1090eefe7a059f6feb68814d2d2598f466306976331184e3ecc9e"
+            },
+            {
+              "address": "0xfffffff005a61f84",
+              "prefix_sha256": "3967af80a02233d72298490bca227e6405af93fe59b68d928975639efdc03530"
+            },
+            {
+              "address": "0xfffffff005a62570",
+              "prefix_sha256": "8d68d0e2073dfe45caae068c201902cf410134e799986d9d7ee6665e58a955f9"
+            },
+            {
+              "address": "0xfffffff005a62d48",
+              "prefix_sha256": "1aae9c300f91a8578e1a8c3f4a258ec925d604d9af102075606db55f78ad4e92"
+            },
+            {
+              "address": "0xfffffff005a6634c",
+              "prefix_sha256": "99a78a79b1b35e9b70d82a8efb3e9b5f8005f6dfacc01901949d1e9bc0acbb04"
+            },
+            {
+              "address": "0xfffffff005a66e7c",
+              "prefix_sha256": "7c1ad008b4619a4bae419f1fb6bddebc06a76e76a7ebd6cc1a84c60ce1ae077a"
+            }
+          ]
+        },
+        "__mod_term_func": {
+          "address": "0xfffffff006d85540",
+          "bytes": 120,
+          "sha256": "54509f3b5273cfb2742f36144d1be79d85b902af08a9e6d02110b494081dfc9e",
+          "entries": [
+            {
+              "address": "0xfffffff005a45de8",
+              "prefix_sha256": "d1de5c06f3fe0ff1fedc8c8b200ad1f90c726912ce8d5955946e3444949b149e"
+            },
+            {
+              "address": "0xfffffff005a46f40",
+              "prefix_sha256": "8eb348be01d1c3a49efe7c32489752ad1ac078effbce915114f5a9cb2494172e"
+            },
+            {
+              "address": "0xfffffff005a54ea8",
+              "prefix_sha256": "3d403a37609216b0e8fecb4d4e89f0bf6b2d789de52c13d7c4930def6235e409"
+            },
+            {
+              "address": "0xfffffff005a55d84",
+              "prefix_sha256": "4efcb70bfd1f4cccf0866a22654c0495e6284c6657341aeac42456af58c74316"
+            },
+            {
+              "address": "0xfffffff005a56240",
+              "prefix_sha256": "bb0bfca49a889e5b334a65789866a94fd8b3c1d3fa2cd819325313ee1ea82875"
+            },
+            {
+              "address": "0xfffffff005a56ac8",
+              "prefix_sha256": "bc4fecfaf8b2bca7dc7d535bc716f1b33f127fad23ff35348a00fd66295b9ec3"
+            },
+            {
+              "address": "0xfffffff005a5759c",
+              "prefix_sha256": "16474c40b0c06ed7031ca747cb488be34ec91f9b5b16436b193e43cad58b624d"
+            },
+            {
+              "address": "0xfffffff005a57df8",
+              "prefix_sha256": "9085bfaf1528325269a2f9cd90d29fd608265606883d21e9a5fd8939b5601ad5"
+            },
+            {
+              "address": "0xfffffff005a58280",
+              "prefix_sha256": "00176657d0b7660beb1ea7a858faa4caad101711489e850b83703c7f5e0b3805"
+            },
+            {
+              "address": "0xfffffff005a5ca54",
+              "prefix_sha256": "911cbb66ea336749fb4869031c015bd3b40bb9ae3c1ab40473d7b17e78d4f1aa"
+            },
+            {
+              "address": "0xfffffff005a61fc0",
+              "prefix_sha256": "261a22d092cea4c51bb96617c04fdff7362b9446f5fd44e50e8bdaacaeef741f"
+            },
+            {
+              "address": "0xfffffff005a625ac",
+              "prefix_sha256": "9cad95634ab659531a99f17f3ca6704db2935984c2653691e438b018b5af7033"
+            },
+            {
+              "address": "0xfffffff005a62d84",
+              "prefix_sha256": "9198a7f6161f21a3da4ecb304789ccf9ed53fca8961156223dc7ff61c6bc7432"
+            },
+            {
+              "address": "0xfffffff005a6640c",
+              "prefix_sha256": "6973c506933ae2ccf182829c9c8482c7245a42b4a26440d847d0f516a72a1c79"
+            },
+            {
+              "address": "0xfffffff005a66eec",
+              "prefix_sha256": "c6d1b4bcde56df41c497de223b17ac6874d6e849b41e6b33742df8159cf57adf"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "bundle": "com.apple.iokit.IOGPUFamily",
+      "version": "65.60.1",
+      "class_name": "IOAcceleratorES",
+      "instance_bytes": 136,
+      "metaclass": "0xfffffff007bb6448",
+      "linked_metaclass": "0xfffffff006bb6448",
+      "alias": "_dodge_original_graphics_accelerator_meta",
+      "request_matching": false,
+      "kmod_info": "0xfffffff007bb5c40",
+      "kmod_info_sha256": "043eee608814056c15d1a433f97f2a1e1be14007c20810cfb556c397fa7b9623",
+      "start": "0xfffffff006b4fa70",
+      "stop": "0xfffffff006b4fabc",
+      "start_prefix_sha256": "96708c19b8468591bcd1314b1e730e87990100559d9704b6621b20033af3d5d4",
+      "stop_prefix_sha256": "49913b34279964268b3e8ca360f817d0cc754a00a42fdfd5d1c565e0d40dc5bc",
+      "sections": {
+        "__mod_init_func": {
+          "address": "0xfffffff006fc5ce0",
+          "bytes": 224,
+          "sha256": "242e19154839ef78e128561c002f712bd66eb3892cfd094a9f3d78ec8882248e",
+          "entries": [
+            {
+              "address": "0xfffffff006b2bc6c",
+              "prefix_sha256": "1cb5f802b84e8747d2081248e63aa9aba202ea2de6e4155b04e6be886ea321a1"
+            },
+            {
+              "address": "0xfffffff006b2ca74",
+              "prefix_sha256": "b8bf5a84e39cb8542c95ef5d6194866ad7ba2853db30c31019fced5665364498"
+            },
+            {
+              "address": "0xfffffff006b2cea4",
+              "prefix_sha256": "fca05d5d0898fb6474d43bff3a94f0c7f2545e7c93ddd06d00489c34e332589c"
+            },
+            {
+              "address": "0xfffffff006b2efbc",
+              "prefix_sha256": "57f133f57cbaa4fd4efebf4397a9a61ab2784231ab626b1bd73237a80cbdd08f"
+            },
+            {
+              "address": "0xfffffff006b2f2a0",
+              "prefix_sha256": "c5414521c7f443f409cd4c4c97fb8cef01b371cdb8fc11375df66a6984e76c85"
+            },
+            {
+              "address": "0xfffffff006b318cc",
+              "prefix_sha256": "8c1393d77e64b106781f39b4e88ad749667c37311c0ae789d7c6b1ca47178135"
+            },
+            {
+              "address": "0xfffffff006b31bb8",
+              "prefix_sha256": "cc0ae1b0708b1a7eb0eeea94b08a6a26b6c9390bc0e7f8df4182e6555bd0706e"
+            },
+            {
+              "address": "0xfffffff006b31f00",
+              "prefix_sha256": "73360c681631406820be49b48bc5e8bc1c8b0dbbcbf31e66011947d09ea8fbc5"
+            },
+            {
+              "address": "0xfffffff006b32168",
+              "prefix_sha256": "29b5526823f85ddf367dd217de397a67daac45d9e68812dd702b06024ac21951"
+            },
+            {
+              "address": "0xfffffff006b3406c",
+              "prefix_sha256": "0ef583d715d79f230ff85033668726635891e3b6a081a3c2eaf540c16fe30953"
+            },
+            {
+              "address": "0xfffffff006b34b8c",
+              "prefix_sha256": "cc64a66230684fe8ffdb75267fd48f3460b88b8be25cb06997b0f61e16427c3e"
+            },
+            {
+              "address": "0xfffffff006b37458",
+              "prefix_sha256": "0a8410aa6803c23629dd88f384db32ebdc97c543ad5283d45983b260d7312b7b"
+            },
+            {
+              "address": "0xfffffff006b3a31c",
+              "prefix_sha256": "f2f45f9de6daa5345508ab93e01c4f96ab7e5825f3fd54ac34f934078a93b288"
+            },
+            {
+              "address": "0xfffffff006b3be98",
+              "prefix_sha256": "5426121090e3af392609f44528a7dd1b83d8a78d0005241f84ea507c5a8cd3c2"
+            },
+            {
+              "address": "0xfffffff006b3f69c",
+              "prefix_sha256": "6e7d094694ff3a4307ae33c5ff447b08b57c259727fe828d9931bc0487c294ee"
+            },
+            {
+              "address": "0xfffffff006b428f4",
+              "prefix_sha256": "1d40fd284ada82dc98d6165642815dd3e45fcec8ed9ab9cc2bd42802ee5676aa"
+            },
+            {
+              "address": "0xfffffff006b43110",
+              "prefix_sha256": "51b231cbdeea3122d1dc5284b05e518eac18b8aa572ca17b1932c49ba73c9e96"
+            },
+            {
+              "address": "0xfffffff006b43fb4",
+              "prefix_sha256": "6ba591707b4c70526e5787f61f3232677a3ea875db1dad30f34a553b5130cf96"
+            },
+            {
+              "address": "0xfffffff006b4487c",
+              "prefix_sha256": "fb713ff4c96bcfd18ee3ce0ad0b695de87066a345f3245b25ae47d8b17eefa61"
+            },
+            {
+              "address": "0xfffffff006b451a8",
+              "prefix_sha256": "dea5abcccd3b9283fd560a3b492bea482372730ed0b87ddc437588ce024573b8"
+            },
+            {
+              "address": "0xfffffff006b48624",
+              "prefix_sha256": "544cf555a2728d06c302636417f011e54a0dc33d9f0085f4f944156affb32f5e"
+            },
+            {
+              "address": "0xfffffff006b4ada4",
+              "prefix_sha256": "32ed163920deb8a62741f2c8a83f752f601ad29f12b6655ed0e6070a8eb99fee"
+            },
+            {
+              "address": "0xfffffff006b4c72c",
+              "prefix_sha256": "051e40639b18fcf315b4163f5df92cdf7656861fae9c0c0d840865feecf55702"
+            },
+            {
+              "address": "0xfffffff006b4d7b4",
+              "prefix_sha256": "ec1f5edcb23d6fc63e8dc26c20706f45191f10e88d840bf2660e20db0f9c0043"
+            },
+            {
+              "address": "0xfffffff006b4ddb0",
+              "prefix_sha256": "d21c1349f8ba89bd74b83f274680b3efc821fcb8de5ce3da30808f1b0e57b31d"
+            },
+            {
+              "address": "0xfffffff006b4e410",
+              "prefix_sha256": "20d4b8da639ed864a5e602acede4020e52a5885d800f19ede3abb1252e06d165"
+            },
+            {
+              "address": "0xfffffff006b4f578",
+              "prefix_sha256": "fea9013be922a67e3bbb5c32d2b0340a9446eb54e9f88fb063bdecc7dd1e896f"
+            },
+            {
+              "address": "0xfffffff006b4fa28",
+              "prefix_sha256": "fc1e46cc29ff4cdc441273c79d12a0269809afc5659b6cdef457843d91dcd64d"
+            }
+          ]
+        },
+        "__mod_term_func": {
+          "address": "0xfffffff006fc5dc0",
+          "bytes": 224,
+          "sha256": "bc300bb00d52a9cc4bf72f9cdaa1b400f9b022e3daa8a6edd3dff5aeeec67c8d",
+          "entries": [
+            {
+              "address": "0xfffffff006b2bca8",
+              "prefix_sha256": "922abc917e1dd0f1784e7b61a633ad2a277cce82f321cc800d412deb4f3466cc"
+            },
+            {
+              "address": "0xfffffff006b2cae4",
+              "prefix_sha256": "ab703d5dfaba316924f884129777ff3e52451f17805546ebc2b222dffa4c22d2"
+            },
+            {
+              "address": "0xfffffff006b2cee0",
+              "prefix_sha256": "f92c273310c7706678fc4da9c7f8e0fe6dea3c6d280b338a4227f501bc61d6a6"
+            },
+            {
+              "address": "0xfffffff006b2eff8",
+              "prefix_sha256": "438afac0e8ed8897a4996eac30e229bec209b1f267b3c64e990443f8dcc0c2d1"
+            },
+            {
+              "address": "0xfffffff006b2f2dc",
+              "prefix_sha256": "261e943f2ad4a831f1ea231046b9f5cd7d8fbaeaf1711d389dc385267618632c"
+            },
+            {
+              "address": "0xfffffff006b31908",
+              "prefix_sha256": "fd2a1c6cbe769ff198f80f691f66bb23cf43558eb0d18a3de155420157a80f2d"
+            },
+            {
+              "address": "0xfffffff006b31bf4",
+              "prefix_sha256": "3b8744ce99ab51c5ee64aa2b303fe3a1965f1969268753a67637d4dfea4524b4"
+            },
+            {
+              "address": "0xfffffff006b31f3c",
+              "prefix_sha256": "7feb9ca4c3b5761c1d679b1aed904aa3e8c86632fbbeb58386156eee98271c0c"
+            },
+            {
+              "address": "0xfffffff006b321a4",
+              "prefix_sha256": "1e25cc4bae0b164ee43b6e39bf46456bf4192e5671d037206e58789683f3598d"
+            },
+            {
+              "address": "0xfffffff006b34158",
+              "prefix_sha256": "488f073eaf06a485513ae7ce0483acdfa55367efa7b4da947ffb3e21b9526949"
+            },
+            {
+              "address": "0xfffffff006b34bfc",
+              "prefix_sha256": "1c50ab2e6cc23ca168acbba09fd599fe5ad3a88bb2ba1e1b4429db7852e76e5c"
+            },
+            {
+              "address": "0xfffffff006b37494",
+              "prefix_sha256": "f0cbc564b86b0ae5233d3e12ca8dc405629cbd944c4b57f3f9200860680d140e"
+            },
+            {
+              "address": "0xfffffff006b3a3b4",
+              "prefix_sha256": "f0b48db53159563597c2724f49f73011c2334a0451c67c7b2c7e8cad0a522e1d"
+            },
+            {
+              "address": "0xfffffff006b3bf00",
+              "prefix_sha256": "5bf869855036c013c998d447f09700294be982d40f9f8a8a550b1139a64dd053"
+            },
+            {
+              "address": "0xfffffff006b3f6d8",
+              "prefix_sha256": "10832c5db099bf601fa009389bbd4d57a30ebf64a84647f5c0276cb9ccd79e20"
+            },
+            {
+              "address": "0xfffffff006b42990",
+              "prefix_sha256": "ef62c4a2d29ccbebc8e347e5fbdd0f3a9dd35f7ca5c3701ca7991a45dbe1d85e"
+            },
+            {
+              "address": "0xfffffff006b4314c",
+              "prefix_sha256": "21003d0ec3c6902e788c1bf5d3435e8699d24038d5a6826da5da987cd56b7123"
+            },
+            {
+              "address": "0xfffffff006b43ff0",
+              "prefix_sha256": "5e4b14d31a5356ba7bd521786dffa067dd6cba822e4ac017cd7fc8b6e58e218d"
+            },
+            {
+              "address": "0xfffffff006b44918",
+              "prefix_sha256": "b1d7abb9b13595a26412b1352c64c26ed4447268f26f03df759a9cda9078ff35"
+            },
+            {
+              "address": "0xfffffff006b451e4",
+              "prefix_sha256": "16da91dd7a298a5a4bac79f6c8ffc96abfdc5b0cbb46341ae193ca16fb88c10d"
+            },
+            {
+              "address": "0xfffffff006b48694",
+              "prefix_sha256": "544cf555a2728d06c302636417f011e54a0dc33d9f0085f4f944156affb32f5e"
+            },
+            {
+              "address": "0xfffffff006b4ade0",
+              "prefix_sha256": "25e64fa7440efaa35888aecc83592ce627f428775297fd91158fe59831dedb30"
+            },
+            {
+              "address": "0xfffffff006b4c768",
+              "prefix_sha256": "592460afeabd34ff7d039b934525db6bfaf11efcc6ae9cb4792f1bea3f903b6d"
+            },
+            {
+              "address": "0xfffffff006b4d7f0",
+              "prefix_sha256": "e01200c96968680b5df9d18b8367e24ad2c3b9abe9254cd1666416951d7cecc2"
+            },
+            {
+              "address": "0xfffffff006b4ddec",
+              "prefix_sha256": "6902c814000875fbbbc6e12515daf10f1b4f738a8dd19f18c82e4be158faff0b"
+            },
+            {
+              "address": "0xfffffff006b4e44c",
+              "prefix_sha256": "7ba36f8097cc562a8e686069ac0e9cd2b4789d4c4e6401b0eb619d1bf58be3f1"
+            },
+            {
+              "address": "0xfffffff006b4f5b4",
+              "prefix_sha256": "5d38e5a0fff6bc561ba0eca3b35534e8742b468a749c78332543549b51a2e82b"
+            },
+            {
+              "address": "0xfffffff006b4fa64",
+              "prefix_sha256": "e5bb7a63bf6e98248e94c0b85e77d2b34d6ddb53d7ebab74ed64b437a905a86c"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "bundle": "com.apple.iokit.IOMobileGraphicsFamily",
+      "version": "343.0.0",
+      "class_name": "IOMobileFramebufferLegacy",
+      "instance_bytes": 5728,
+      "metaclass": "0xfffffff007a45540",
+      "linked_metaclass": "0xfffffff006a45540",
+      "alias": "_dodge_original_graphics_legacy_meta",
+      "request_matching": false,
+      "kmod_info": "0xfffffff007a3e2c0",
+      "kmod_info_sha256": "cf5b7ce00c34716c26f391061db9a8f39d172abe9db3cc5fcb13a5940406fbb3",
+      "start": "0xfffffff005c26c48",
+      "stop": "0xfffffff005c26c94",
+      "start_prefix_sha256": "b6722cf229fd52c9be06362e8eff790d203c1b1e0af7253dc97fb8041f7a0a0f",
+      "stop_prefix_sha256": "0b08532e6e560c9d50593a16195241cc5b072c2af098a3c43e37ba965843a87c",
+      "sections": {
+        "__mod_init_func": {
+          "address": "0xfffffff006deb4d8",
+          "bytes": 80,
+          "sha256": "76029f659c67f23139ee34f93bf339dc5c40ba15c4e290bd0d79a0f4354966a5",
+          "entries": [
+            {
+              "address": "0xfffffff005bf5e24",
+              "prefix_sha256": "5a597b0744308f64372fd166cae60f3b20895e8eec81fd7dfc090457be248f91"
+            },
+            {
+              "address": "0xfffffff005bfa3ac",
+              "prefix_sha256": "dc9209ed24b5ad2bf2e8e5763d85849abfb5deca321cdc4b1f55bfda4f72cc5a"
+            },
+            {
+              "address": "0xfffffff005c0131c",
+              "prefix_sha256": "27b358359470240e2232e68bb2d70224aed4818d4e66deae359562530e29d960"
+            },
+            {
+              "address": "0xfffffff005c01b48",
+              "prefix_sha256": "7c550c58e04c140fc7a5abce190a3a085d1af690c745798d1fa6def350a78712"
+            },
+            {
+              "address": "0xfffffff005c04da4",
+              "prefix_sha256": "ab9d876ca471b90868a258754a93e82b40d7800ca860f5fdbc865a46f1aa9a2f"
+            },
+            {
+              "address": "0xfffffff005c06074",
+              "prefix_sha256": "82016cd31813a583014142dadd16ea1dedd1104bab002f7e2372d8d2797076a7"
+            },
+            {
+              "address": "0xfffffff005c07a5c",
+              "prefix_sha256": "eb6909503acbfe59c3b71e642a81dcb3e453d403912d265113346feecc724f33"
+            },
+            {
+              "address": "0xfffffff005c0b570",
+              "prefix_sha256": "daa730c851e9fc6957637092a97297180b619e2c126cc8d64495a89a55355d82"
+            },
+            {
+              "address": "0xfffffff005c0b874",
+              "prefix_sha256": "0032a9b19d05ae2fa2ce8698c9f2da3d05c7593bb08852e6b93b40abc5329755"
+            },
+            {
+              "address": "0xfffffff005c25b94",
+              "prefix_sha256": "d952658b8f95e4cb84cc1897e4e03a26df4dd3ce9445b2b4b38d01a91ff9ae47"
+            }
+          ]
+        },
+        "__mod_term_func": {
+          "address": "0xfffffff006deb528",
+          "bytes": 80,
+          "sha256": "43fee337cc8d2e26a4d5e0cee053345898abbf8ac968e73faa023565107d784f",
+          "entries": [
+            {
+              "address": "0xfffffff005bf5e38",
+              "prefix_sha256": "2b52b24c5f1814dd6cf70a8c341be1d73a179216f3932100991a82706de56c44"
+            },
+            {
+              "address": "0xfffffff005bfa3c0",
+              "prefix_sha256": "9b3152d0c7e047d1edc6ce197f921002d365910601663f81066994acc92bd3fe"
+            },
+            {
+              "address": "0xfffffff005c01330",
+              "prefix_sha256": "34e9246ea2bf8ad4d12c65a8c31e9e2692664ee7e003cb25307fa7d9fd554b62"
+            },
+            {
+              "address": "0xfffffff005c01b60",
+              "prefix_sha256": "0446f573bc0a897bc35772076ebe9759ed9a1907fbe0be78f36d03ea2f606ed6"
+            },
+            {
+              "address": "0xfffffff005c04db8",
+              "prefix_sha256": "2d7ef2e57d664bfed4a21576d7c251069a0a9d63aa09b197126d317b591fa902"
+            },
+            {
+              "address": "0xfffffff005c06088",
+              "prefix_sha256": "4830d79286d63b69175a56b6798f31cf7ee9c99f3d16694780e406e421273ef5"
+            },
+            {
+              "address": "0xfffffff005c07a74",
+              "prefix_sha256": "333fd9fdc522e670bff18f6e809e8231030bef389e857de61dead9322f183d3e"
+            },
+            {
+              "address": "0xfffffff005c0b584",
+              "prefix_sha256": "8074537acede4590a446d97470a6574abfe959c73bbb03667ff787c4ef436f6b"
+            },
+            {
+              "address": "0xfffffff005c0b888",
+              "prefix_sha256": "9dde4f97dd916798972319551dc11c8b05208d7cc90298b060c865949902fb96"
+            },
+            {
+              "address": "0xfffffff005c25bac",
+              "prefix_sha256": "4044a089c0685f3e9271d23b74193f756d98af72b198f8fde522b48531ec647b"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "surface_root_dependency": {
+    "name": "IOCoreSurfaceRoot",
+    "class": "IOSurfaceRoot",
+    "provider": "IOResources",
+    "resource": "IOBSD",
+    "original_wait_flow": {
+      "address": "0xfffffff005c0ce40",
+      "bytes": 48,
+      "sha256": "fca93cbae46ad7de68dae9a39815f1f87f8ed4d05da2a29a0441929586bbce46"
+    },
+    "original_wait_has_timeout": false
+  },
+  "provider_requirement": {
+    "class": "AppleARMIODevice",
+    "instance_bytes": 216,
+    "metaclass": "0xfffffff007a09e20",
+    "metaclass_pointer": "0xfffffff006c7df18",
+    "metadata_constructor": {
+      "address": "0xfffffff0055f83e8",
+      "bytes": 52,
+      "sha256": "2dafe9900abc4701bd7b32a3f0221089d71e5ba3c5541c0143caea308e066239"
+    },
+    "original_cast_flow": {
+      "address": "0xfffffff005c0cde8",
+      "bytes": 48,
+      "sha256": "1c89b669421f325cf317031e1f2ed9cc09a1437e037131b965f53bfa680eda3c"
+    }
+  },
+  "runtime_initialization_executed": false
+}

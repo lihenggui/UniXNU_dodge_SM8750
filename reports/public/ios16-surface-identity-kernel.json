@@ -1,0 +1,140 @@
+{
+  "result": "IOS16_SOURCE_TO_ORIGINAL_SURFACE_IDENTITY_ARM64_PASS",
+  "source_sha256": {
+    "scripts/check_surface_identity_kernel.py": "bd825cb359423650f1d9ce6ec05958456cdad91197339a5d27ab076d3b85e0d2",
+    "scripts/surface_identity_execution.py": "4ba591ee31428ae311325f84e45c54ce3cd3d0f8b97b973655b7f9e665c7b425",
+    "scripts/prepare_surface_identity.py": "b2d65a403f1f7e56459fefc9332ed065dbd81c695a1ee452b977c42a744331e1",
+    "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
+    "scripts/check_adreno_display_timeline.py": "c13e1f20a5a08c5e5f8ee54888b5f4448a2854689a7ceb4f76492526e079b584",
+    "scripts/fresh_gpu_execution.py": "efdfebff8a5cccf5377b8687dcb7c52c6f7eaaf8c84c76ba6591b91fe01ef4d9",
+    "scripts/mapped_lease_execution.py": "27c9add03e8f64f8a5a0db6decb4cb112f34cbb8c2cb40b2a5eb9593c406f606",
+    "scripts/surface_sync_execution.py": "7c287e31548061865ada9db071f47d078f075f31d5cecbe806dfc7def80f9feb",
+    "scripts/check_display_kernel_lifecycle.py": "1f9bb4d8cb5f28127aee44d83dab8084e24d01e2c83e2c2fbc27a31401867f8d",
+    "scripts/check_mapped_lease_kernel.py": "f90e5416047af005bb17d6b09f5d05198abfb7f31095e90bf77f55da718b1dd3",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "build/cph2653-surface-identity/native/compile-commands.json": "ddd58e368f22c48b5aa41ba17dfcbcfd8f176ca6cefabbdc326c14706febb691"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-surface-identity-prelink.json": "9fdb57648fb73ff7b0c56c5bcffb36fd2518d1718063e6127ef0045bc32bcf30",
+    "reports/ios16-mapped-lease-kernel.json": "d2582b00772821b94ab635c8ab12275dcf61021e2ababa5e22f1be77493270a1",
+    "reports/adreno-display-timeline.json": "4c9d0daa0bb7eaa318e021bf4813601bb492346688ca836445a8a2d965fc85ad",
+    "reports/ios16-surface-sync-kernel.json": "a9348582448ac43e7dd69ea3e077dffddfbb7e1fbd35f7e0a8a158735925ab92"
+  },
+  "artifacts": {
+    "build/cph2653-surface-identity-kernel/probe/IdentityProbe.o": "069ec482a833890439dcbc926a4b697c42115b559bd48118355908bce7796910",
+    "build/cph2653-surface-identity-kernel/probe/compile-commands.json": "c47c78349a4e391d49365ce7770be2611cef6c0c3e4e760624d043b2522cbe4c",
+    "build/cph2653-surface-identity-kernel/identity-layout.o": "562b9a1fc61d3bf94959b63d9584c186c192dcc2ce98cf4e380d8470b3a9086b",
+    "build/cph2653-surface-identity-kernel/identity-layout.log": "2ef1dafc52464ea7f768861385b56c4007bd77bca264f6e91a0859063409df5e",
+    "build/cph2653-surface-identity-kernel/cpu-cases.json": "428bc01d501d384c02694faa742d0cb5dda48168127887694a6bcf8f59d96d8f"
+  },
+  "candidate": "build/cph2653-surface-identity-prelink/kernel.macho",
+  "candidate_sha256": "0a5ddf0d9dec1e070ba891e27188ab0833467b809aee6e126b3896ce47265c29",
+  "identity_pin": {
+    "path": "profiles/os/ios-16.7.16-20H392/surface-identity.json",
+    "sha256": "b424dd4692ba61d2bd135dccc1f856bba19735481ea9f69e5aa5981002b95eb7",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceIdentityABI.h",
+    "header_sha256": "38dd14832e0e0ceee262941e21e8f515189940baa71919c332765596b07b6a2c"
+  },
+  "compiler_identity_layout": {
+    "bytes": 16,
+    "fields": {
+      "surface": 0,
+      "id": 8
+    }
+  },
+  "native_trace": {
+    "published_state": "0xfffffff007a88bf8",
+    "recovery_counter": "0xfffffff007b40394",
+    "snapshot_entry": "0xfffffff0079f4254",
+    "epoch_helper": "0xfffffff0079f4f40",
+    "epoch_helper_sha256": "51e9f190b7540ec9a0fd48cb344b8fc292abd6d96f3c182fa35e5914def47f9a",
+    "native_recovery_note_call": "0xfffffff0079f4a28",
+    "native_recover_call": "0xfffffff0079f4a94"
+  },
+  "case_counts": {
+    "original_identity": 20,
+    "source_to_original_identity": 17,
+    "native_snapshot_and_epoch": 22,
+    "native_frontend_and_snapshot": 13,
+    "original_surface_chain": 17,
+    "display_lifecycle": 32,
+    "native_mapped_resource": 16,
+    "native_map_wait": 12
+  },
+  "instruction_controls": [
+    {
+      "case": "lookup-without-authorization-or-retain",
+      "result": "REJECTED",
+      "instruction_address": "0xfffffff005a59e04",
+      "reason": "Wrong task authorization or original retained surface reference: owner-task-without-client"
+    },
+    {
+      "case": "owner-and-client-authorization-bypassed",
+      "result": "REJECTED",
+      "instruction_address": "0xfffffff005a59bb4",
+      "reason": "Wrong task authorization or original retained surface reference: client-without-surface-membership-refused"
+    },
+    {
+      "case": "try-retain-increment-skipped",
+      "result": "REJECTED",
+      "instruction_address": "0xfffffff005a664d4",
+      "reason": "Wrong task authorization or original retained surface reference: owner-task-without-client"
+    },
+    {
+      "case": "surface-release-skipped",
+      "result": "REJECTED",
+      "instruction_address": "0xfffffff005a4c2ec",
+      "reason": "Original virtual release did not balance owned result"
+    },
+    {
+      "case": "client-membership-result-ignored",
+      "result": "REJECTED",
+      "instruction_address": "0xfffffff005a59bd4",
+      "reason": "Wrong task authorization or original retained surface reference: client-without-surface-membership-refused"
+    },
+    {
+      "case": "source-resolver-always-success",
+      "result": "REJECTED",
+      "reason": "Actual source failed to transfer original retained result"
+    },
+    {
+      "case": "source-release-removed",
+      "result": "REJECTED",
+      "reason": "Actual source did not clear released identity"
+    }
+  ],
+  "original_invariant_controls": [
+    {
+      "case": "surface-table-ID-corrupt",
+      "result": "ORIGINAL_PANIC"
+    },
+    {
+      "case": "client-entry-wrong-task",
+      "result": "ORIGINAL_PANIC"
+    },
+    {
+      "case": "client-entry-wrong-root",
+      "result": "ORIGINAL_PANIC"
+    },
+    {
+      "case": "reference-overflow",
+      "result": "ORIGINAL_PANIC"
+    },
+    {
+      "case": "release-underflow",
+      "result": "ORIGINAL_PANIC"
+    }
+  ],
+  "original_lookup_or_custom_references_are_peers": false,
+  "source_resolution_algorithm_is_peer": false,
+  "IOKit_matching_task_metacast_mutex_process_and_base_client_refs_are_peers": true,
+  "original_process_logging_paths_executed": false,
+  "final_surface_destructor_executed": false,
+  "original_allocator_and_root_initialization_executed": false,
+  "GPU_import_backing_associated": false,
+  "iosurface_producer_connected": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "Actual new prelinked source resolves the root and calls the original task-aware lookup, which executes task-client cache lookup, client membership, owner/restricted/global-sharing policy, protected table lookup, custom try-retain and virtual surface retain/release with its real CAS reference counter at +1000. The surface ID at +12 is preserved. Bounded records/canaries and native compiler identity layout are checked. Original primitive locks, process lookup (null process), base client refs and source IOKit matching/type/task primitives are explicit peers; no authorization or custom surface reference algorithm is replaced. Seven instruction controls and five original invariant refusals are checked. Existing 112 native GPU/resource/surface/display paths rerun in this candidate. Actual allocator/root initialization, nonnull-process logging, final surface destruction, backing-page association/stability, GPU producer registration, hardware cache/reset and iOS startup remain unqualified."
+}

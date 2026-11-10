@@ -1,0 +1,391 @@
+--- a/PaganiInput.cpp
++++ b/PaganiInput.cpp
+@@ -17,8 +17,15 @@
+ }
+ 
+ #include "Reports.h"
+-#include "HidEvents.h"
+-#include "../BootProgress/PeripheralStatus.h"
++#include "DodgeHidEvents.h"
++#include "DodgeTouchPower.h"
++#include "DodgePmicGpio.h"
++#include "DodgeGeniFirmware.h"
++#include "DodgeTouchClock.h"
++#include "DodgeGeniTransfer.h"
++#include "DodgeInputStatus.h"
++#include "DodgeInputLifecycle.h"
++extern "C" const uint8_t dodge_touch_spi_firmware[],dodge_touch_spi_firmware_end[];
+ 
+ static void dmaCache(void *bytes,size_t size,unsigned operation) {
+     uint64_t ctr;__asm__ volatile("mrs %0, ctr_el0" : "=r"(ctr));
+@@ -34,15 +41,17 @@
+ static void dmaCleanInval(void *,void *p,size_t n) {dmaCache(p,n,1);}
+ static void dmaInval(void *,void *p,size_t n) {dmaCache(p,n,2);}
+ 
+-class PaganiInput : public IOHIDDevice {
+-    OSDeclareDefaultStructors(PaganiInput)
++class DodgeInput : public IOHIDDevice {
++    OSDeclareDefaultStructors(DodgeInput)
+     IOWorkLoop *loop=nullptr;
+     IOTimerEventSource *timer=nullptr;
+     IOService *touchEvents=nullptr;
+     bool touch=false,running=false,timerAdded=false;
+-    PeripheralWindow core,cnfg,obs,gcc,se,wrapper,smmu,rsc,cmddb,pins[6];
++    bool starting=false,parentCleanupPending=false,tickActive=false,stopRequested=false,parentStopping=false;
++    IOService *pendingStopProvider=nullptr;
++    PeripheralWindow core,cnfg,obs,channels,gcc,se,wrapper,smmu,rsc,cmddb,pins[6];
+     IOBufferMemoryDescriptor *dmaMemory=nullptr;
+-    bool dmaExposed=false,firstReadCaptured=false;
++    bool dmaExposed=false,firstReadCaptured=false,hardwareTouched=false;
+     geni_spi spi={};
+     s3910 controller={};
+     s3910_frame previous={};
+@@ -60,29 +69,31 @@
+     char touchPhase[24]={};
+     void observe(const char *stage,int result=0) {
+         phase=stage;
+-        boot_progress_peripheral(touch?PAGANI_TOUCH:PAGANI_KEYS,phase,result,sample,reports);
++        dodge_input_observe(touch?DODGE_TOUCH:DODGE_KEYS,phase,result,sample,reports);
+     }
+     void observeTouch(int result) {
+         snprintf(touchPhase,sizeof touchPhase,"T%u %02x %s",controller.version,controller.command,controller.stage);
+         sample=controller.detail;observe(touchPhase,result);
+     }
+     int transferTouch(const uint8_t *tx,uint8_t *rx,size_t size) {
++        if (touchError) return touchError;
+         spi.snap_valid=0;
+         bool capture=rx && !firstReadCaptured;
+         uint32_t pin=capture?(PeripheralWindow::read(&pins[5],4)&1):0;
+         if (spi.use_dma) dmaExposed=true;
+-        int rc=geni_spi_transfer(&spi,tx,rx,size,0);
++        int rc=dodge_geni_transfer(&spi,tx,rx,size,&touchError);
++        if (rc) controller.ready=0;
+         // Preserve the driver's pre-cancel snapshot; live registers now describe recovery.
+-        if (rc && spi.snap_valid) boot_progress_touch_spi(spi.info.fw_revision,spi.info.if_disable,
++        if (rc && spi.snap_valid) dodge_input_touch_spi(spi.info.fw_revision,spi.info.if_disable,
+             spi.snap_status,spi.snap_irq,spi.snap_txfs,spi.snap_rxfs);
+-        if (rc && spi.snap_valid && spi.use_dma) boot_progress_touch_dma(
++        if (rc && spi.snap_valid && spi.use_dma) dodge_input_touch_dma(
+             spi.snap_dma_tx,spi.snap_dma_rx,spi.snap_dma_txin,spi.snap_dma_rxin);
+         if (!rc && capture) {
+             uint32_t head=0;
+             for (size_t i=0;i<size && i<4;++i) head|=(uint32_t)rx[i]<<(8*i);
+             pin|=(PeripheralWindow::read(&pins[5],4)&1)<<1;
+             pin|=(PeripheralWindow::read(&pins[4],4)&3)<<2;
+-            boot_progress_touch_read((uint32_t)size,head,pin,(uint32_t)spi.use_dma,
++            dodge_input_touch_read((uint32_t)size,head,pin,(uint32_t)spi.use_dma,
+                 spi.se.rd(spi.se.ctx,SE_GENI_STATUS),spi.last_tx_in,spi.last_rx_in,
+                 spi.se.rd(spi.se.ctx,SM8750_SPI_DELAY_COUNTERS));
+             firstReadCaptured=true;
+@@ -95,15 +106,16 @@
+         if (size>sizeof dummy) return -90;
+         // Synaptics reads clock 0xff on MOSI, as in the stock HBP SPI transport.
+         memset(dummy,0xff,size);
+-        return static_cast<PaganiInput *>(ctx)->transferTouch(dummy,data,size);
++        return static_cast<DodgeInput *>(ctx)->transferTouch(dummy,data,size);
+     }
+     static int writeTouch(void *ctx,const uint8_t *data,size_t size) {
+-        return static_cast<PaganiInput *>(ctx)->transferTouch(data,nullptr,size);
++        return static_cast<DodgeInput *>(ctx)->transferTouch(data,nullptr,size);
+     }
+     static void sleepTouch(void *,unsigned ms) {IOSleep(ms);}
+     int setupDma() {
+         constexpr size_t bytes=4096;
+         static_assert(S3910_PAYLOAD_MAX+7<=bytes,"touch transfer fits DMA page");
++        static_assert(S3910_PAYLOAD_MAX+7<=DODGE_GENI_TRANSFER_MAX,"touch transfer fits terminal guard");
+         observe("DMA allocate");
+         dmaMemory=IOBufferMemoryDescriptor::inTaskWithOptions(kernel_task,
+             static_cast<IOOptionBits>(kIODirectionInOut)|static_cast<IOOptionBits>(kIOMemoryPhysicallyContiguous)|
+@@ -123,8 +135,8 @@
+         sample=(plan.slot<<16)|plan.bank;observe(plan.error?"SMMU conflict":"SMMU configure");
+         const char *error=configureUfsSmmu(plan,PAGANI_TOUCH_SMMU_SID,read,write);
+         if (error) {
+-            IOLog("Pagani touch SMMU: %s slot=%u smr=%x s2cr=%x\n",error,plan.slot,plan.smr,plan.s2cr);
+-            boot_progress_touch_smmu(plan.slot,plan.bank,plan.smr,plan.s2cr);return -16;
++            IOLog("Dodge touch SMMU: %s slot=%u smr=%x s2cr=%x\n",error,plan.slot,plan.smr,plan.s2cr);
++            dodge_input_touch_smmu(plan.slot,plan.bank,plan.smr,plan.s2cr);return -16;
+         }
+         observe("SMMU sync");unsigned polls=0;
+         if (!syncUfsSmmu(read,write,[&] {IODelay(10);return ++polls>=10000;},sample)) return -110;
+@@ -158,41 +170,47 @@
+     int setupTouchPower() {
+         observe("power map");
+         if (!rsc.map(PAGANI_TOUCH_RSC,PAGANI_TOUCH_RSC_SIZE) ||
+-            !cmddb.map(PAGANI_CMD_DB,PAGANI_CMD_DB_SIZE)) return -12;
+-        auto db=cmddb.io(),power=rsc.io();uint32_t addresses[2]={};
+-        observe("power VDD lookup");
+-        int rc=rpmh_vrm_address(&db,PAGANI_CMD_DB_SIZE,PAGANI_TOUCH_VDD,&addresses[0]);if (rc) return rc;
+-        observe("power VCC lookup");
+-        rc=rpmh_vrm_address(&db,PAGANI_CMD_DB_SIZE,PAGANI_TOUCH_VCC,&addresses[1]);if (rc) return rc;
+-        observe("power resource");
+-        if (addresses[0]!=PAGANI_TOUCH_VDD_VRM || addresses[1]!=PAGANI_TOUCH_VCC_VRM) return -71;
+-        const unsigned millivolts[]={PAGANI_TOUCH_VDD_MV,PAGANI_TOUCH_VCC_MV};
+-        for (unsigned i=0;i<2;++i) {
+-            sample=addresses[i];observe(i?"power VCC":"power VDD");
+-            rpmh_result result={};rc=sm8750_rpmh_vrm_enable(&power,addresses[i],millivolts[i],&result);
+-            if (rc) {
+-                boot_progress_touch_power(addresses[i],result.hardware,result.tcs,result.status,
+-                    result.command[0],result.command[1],result.command[2]);
+-                return rc;
+-            }
+-        }
+-        IOSleep(PAGANI_TOUCH_POWER_MS);return 0;
++            !cmddb.map(PAGANI_CMD_DB,PAGANI_CMD_DB_SIZE) ||
++            !core.map(PAGANI_SPMI_CORE,0x3000) || !cnfg.map(PAGANI_SPMI_CNFG,0x4000) ||
++            !obs.map(PAGANI_SPMI_OBS,0x80000) || !channels.map(PAGANI_SPMI_CHANNELS,PAGANI_SPMI_CHANNEL_BYTES)) return -12;
++        auto db=cmddb.io(),power=rsc.io(),c=core.io(),f=cnfg.io(),o=obs.io(),w=channels.io();
++        return dodge_touch_power_sequence([&] {
++            uint32_t address=0;observe("power VDD lookup");
++            int rc=rpmh_vrm_address(&db,PAGANI_CMD_DB_SIZE,PAGANI_TOUCH_VDD,&address);if (rc) return rc;
++            if (address!=PAGANI_TOUCH_VDD_VRM) return -71;
++            sample=address;observe("power VDD");rpmh_result result={};
++            rc=sm8750_rpmh_vrm_enable(&power,address,PAGANI_TOUCH_VDD_MV,&result);
++            dodge_input_touch_power(address,result.hardware,result.tcs,result.status,
++                result.command[0],result.command[1],result.command[2]);return rc;
++        },[&] {
++            sample=PAGANI_AVDD_PPID;observe("power GPIO AVDD");DodgeGpioInitResult result={};
++            int rc=dodge_avdd_initialize(&c,&f,&o,&w,PAGANI_SPMI_CHANNEL_BYTES,
++                PAGANI_AVDD_PPID,PAGANI_SPMI_EE,PAGANI_AVDD_ON,&result);
++            dodge_input_touch_power(PAGANI_AVDD_PPID,(uint32_t)result.before.apid,result.before.subtype,result.before.mode,
++                result.source,result.mode,result.enable);return rc;
++        },[](unsigned ms) {IOSleep(ms);},PAGANI_TOUCH_POWER_MS);
+     }
+     int setupTouch() {
+         observe("GCC map");
+         if (!gcc.map(PAGANI_GCC_BASE,0x60000)) return -12;
+-        auto g=gcc.io();unsigned hz=0,select=0;
++        observe("SPI map");
++        if (!se.map(PAGANI_TOUCH_SE,0x4000) || !wrapper.map(PAGANI_TOUCH_WRAPPER,0x1000)) return -12;
++        auto g=gcc.io(),clockSe=se.io();DodgeTouchClockResult clock={};
+         observe("SPI clock");
+-        int rc=sm8750_touch_clock(&g,&hz,&select);if (rc) return rc;
+-        sample=hz;observe("SPI map");
+-        if (!se.map(PAGANI_TOUCH_SE,0x4000) || !wrapper.map(PAGANI_TOUCH_WRAPPER,0x1000)) return -12;
++        int rc=dodge_touch_clock_prepare(&g,&clockSe,&clock);
++        sample=clock.hz;observe(clock.programmed?"SPI XO initialized":"SPI clock checked",rc);
++        if (rc) return rc;
++        unsigned hz=clock.hz,select=clock.select;
+         spi.se={&se,PeripheralWindow::read,PeripheralWindow::write,PeripheralWindow::delay};
+         spi.wrapper={&wrapper,PeripheralWindow::read,PeripheralWindow::write,PeripheralWindow::delay};
+-        // shortcut: retain boot firmware SPI microcode until cold firmware loading is implemented.
+-        observe("GENI firmware");rc=geni_spi_read_info(&spi);if (rc) return rc;
+-        sample=spi.info.geni_status;
+-        if (spi.info.protocol!=GENI_PROTO_SPI) return GENI_ERR_PROTO;
+-        if (spi.info.geni_status&(GENI_STATUS_M_ACTIVE|(1u<<12))) return -16;
++        // Preserve an existing SPI image. Program the pinned stock image only
++        // into an empty idle matching engine, with no GPI/DMA owner.
++        observe("GENI firmware");DodgeGeniResult firmware={};
++        size_t firmwareBytes=(uintptr_t)dodge_touch_spi_firmware_end-(uintptr_t)dodge_touch_spi_firmware;
++        rc=dodge_geni_prepare(&spi,dodge_touch_spi_firmware,firmwareBytes,&firmware);
++        sample=(firmware.phase<<24)|(firmware.writes&0xffffffu);
++        observe(rc?"GENI load failed":firmware.loaded?"GENI loaded":"GENI adopted",rc);
++        if (rc) return rc;
+         spi.poll_only=1;spi.poll_limit=20000;
+         if (spi.info.fifo_disabled) {
+             rc=setupDma();if (rc) return rc;
+@@ -228,30 +246,30 @@
+     }
+     IOReturn bindTouchEvents() {
+         if (touchEvents) return touchEvents->isInactive()?kIOReturnNotReady:kIOReturnSuccess;
+-        IOService *driver=pagani_hid::findDriver(this,4);
++        IOService *driver=dodge_hid::findDriver(this,4);
+         if (!driver) return kIOReturnNotReady;
+         touchBinding=1;
+-        touchUsage=(pagani_hid::number(driver,"PrimaryUsagePage")<<16)|pagani_hid::number(driver,"PrimaryUsage");
+-        if (*reinterpret_cast<uintptr_t **>(driver)==pagani_original_hid_driver_vtable) touchBinding|=2;
++        touchUsage=(dodge_hid::number(driver,"PrimaryUsagePage")<<16)|dodge_hid::number(driver,"PrimaryUsage");
+         if (touchUsage==0xd0004) touchBinding|=4;
+-        auto digitizer=OSDynamicCast(OSDictionary,driver->getProperty("Digitizer"));
++        auto *digitizer=OSDynamicCast(OSDictionary,driver->getProperty("Digitizer"));
+         if (driver->getProperty("Built-In")==kOSBooleanTrue && driver->getProperty("DisplayIntegrated")==kOSBooleanTrue &&
+             digitizer && digitizer->getObject("collectionDispatch")==kOSBooleanTrue) touchBinding|=8;
+-        if (touchBinding!=15 || !pagani_hid::installDispatch(driver)) {driver->release();return kIOReturnUnsupported;}
+-        touchBinding|=16;touchEvents=driver;return kIOReturnSuccess;
++        if (touchBinding!=13) {driver->release();return kIOReturnUnsupported;}
++        // The source event subclass annotates origins through qualified APIs.
++        // Original event-driver and event-object vtables stay unchanged.
++        touchEvents=driver;return kIOReturnSuccess;
+     }
+     void showTouchEvents() {
+-        boot_progress_touch_hid(touchBinding,touchUsage,__atomic_load_n(&pagani_hid::events,__ATOMIC_RELAXED),
+-            __atomic_load_n(&pagani_hid::digitizers,__ATOMIC_RELAXED),__atomic_load_n(&pagani_hid::edges,__ATOMIC_RELAXED),
+-            lastInputXY,__atomic_load_n(&pagani_hid::lastXY,__ATOMIC_RELAXED),__atomic_load_n(&pagani_hid::lastMask,__ATOMIC_RELAXED));
++        dodge_input_touch_hid(touchBinding,touchUsage,0,0,0,lastInputXY,0,0);
+     }
+     bool send(const void *bytes,size_t size) {
++        if (!bytes || !size) return false;
+         if (touch) {
+             IOReturn rc=bindTouchEvents();
+             if (rc) {observe(rc==kIOReturnNotReady?"HID wait":"HID bind",rc);return false;}
+         }
+         auto buffer=IOBufferMemoryDescriptor::withBytes(bytes,size,kIODirectionNone);
+-        IOReturn rc=buffer?handleReport(buffer,0,0):kIOReturnNoMemory;
++        IOReturn rc=buffer?handleReport(buffer,kIOHIDReportTypeInput,0):kIOReturnNoMemory;
+         if (!rc) ++reports;
+         observe("HID report",rc);
+         OSSafeReleaseNULL(buffer);return rc==kIOReturnSuccess;
+@@ -262,9 +280,40 @@
+         s3910_frame empty={};uint8_t report[62];s3910_hid_report(&empty,&previous,report);
+         if (send(report,sizeof report)) previous=empty;
+     }
++    void stopOnGate(IOService *provider) {
++        if (starting || tickActive || parentStopping) return;
++        if (parentCleanupPending) {
++            parentCleanupPending=false;parentStopping=true;
++            if (touch) releaseContacts();else {uint8_t report[]={2,0};send(report,2);}
++            IOHIDDevice::stop(provider);
++            parentStopping=false;
++        }
++        cleanup();
++    }
++    void finishPendingStop() {
++        if (starting || tickActive || parentStopping || !pendingStopProvider) return;
++        auto *provider=pendingStopProvider;pendingStopProvider=nullptr;
++        stopOnGate(provider);provider->release();
++    }
++    static IOReturn stopAction(OSObject *owner,void *argument,void *,void *,void *) {
++        auto *self=static_cast<DodgeInput *>(owner);
++        auto *provider=static_cast<IOService *>(argument);
++        if (!provider || !self->loop || !self->loop->inGate()) return kIOReturnBadArgument;
++        self->stopRequested=true;
++        __atomic_store_n(&self->running,false,__ATOMIC_RELEASE);
++        if (self->timer) {
++            self->timer->cancelTimeout();
++            if (self->timerAdded) {self->loop->removeEventSource(self->timer);self->timerAdded=false;}
++        }
++        if (self->starting || self->tickActive) {
++            if (!self->pendingStopProvider) {provider->retain();self->pendingStopProvider=provider;}
++        } else self->stopOnGate(provider);
++        return kIOReturnSuccess;
++    }
+     static void tick(OSObject *owner,IOTimerEventSource *) {
+-        auto self=static_cast<PaganiInput *>(owner);
+-        if (!__atomic_load_n(&self->running,__ATOMIC_ACQUIRE)) return;
++        auto self=static_cast<DodgeInput *>(owner);
++        if (!__atomic_load_n(&self->running,__ATOMIC_ACQUIRE) || self->stopRequested || self->tickActive) return;
++        self->tickActive=true;
+         if (self->touch) {
+             if (self->controller.ready) self->sample=PeripheralWindow::read(&self->pins[5],4)&1;
+             if (self->controller.ready && !self->sample) {
+@@ -294,12 +343,19 @@
+             else self->observe("PMIC sample",rc);
+         }
+         // shortcut: poll the ATTN line and PMIC levels until GIC detach/lifetime support is available.
+-        self->timer->setTimeoutMS(self->touch?8:16);
++        self->tickActive=false;
++        if (self->stopRequested) self->finishPendingStop();
++        else if (__atomic_load_n(&self->running,__ATOMIC_ACQUIRE)) self->timer->setTimeoutMS(self->touch?8:16);
+     }
+     void cleanup() {
+         __atomic_store_n(&running,false,__ATOMIC_RELEASE);
+         if (timer) {timer->cancelTimeout();if (timerAdded) loop->removeEventSource(timer);}
+-        timerAdded=false;OSSafeReleaseNULL(timer);OSSafeReleaseNULL(loop);
++        timerAdded=false;
++        if (!hardwareTouched) {OSSafeReleaseNULL(timer);OSSafeReleaseNULL(loop);}
++        // Once hardware may have been touched, the lifecycle coordinator pins
++        // this object/provider and every mapping until reboot. Do not restore
++        // pins, release DMA mappings, or reset a live engine on failure/stop.
++        if (hardwareTouched) return;
+         OSSafeReleaseNULL(touchEvents);
+         for (unsigned i=0;i<pinsConfigured;++i) {
+             if (i==4) PeripheralWindow::write(&pins[i],4,savedReset);
+@@ -310,7 +366,7 @@
+         // shortcut: retain the exposed 8 KiB until reboot; DMA reset completion is not yet qualified on this board.
+         if (dmaExposed) dmaMemory=nullptr;
+         OSSafeReleaseNULL(dmaMemory);
+-        core.release();cnfg.release();obs.release();se.release();wrapper.release();gcc.release();smmu.release();
++        core.release();cnfg.release();obs.release();channels.release();se.release();wrapper.release();gcc.release();smmu.release();
+         // Leave shared rail votes enabled; cleanup must not cut power to another consumer.
+         rsc.release();cmddb.release();
+     }
+@@ -318,46 +374,72 @@
+     void selectTouch() {touch=true;}
+     IOWorkLoop *getWorkLoop() const override {return loop;}
+     OSString *newTransportString() const override {return OSString::withCString(touch?"SPI":"SPMI");}
+-    OSString *newProductString() const override {return OSString::withCString(touch?"Pagani S3910":"Pagani buttons");}
++    OSString *newProductString() const override {return OSString::withCString(touch?"Dodge S3910":"Dodge buttons");}
+     IOReturn newReportDescriptor(IOMemoryDescriptor **out) const override {
+         if (!out) return kIOReturnBadArgument;
+         *out=IOBufferMemoryDescriptor::withBytes(touch?touchDescriptor:buttonsDescriptor,
+             touch?sizeof touchDescriptor:sizeof buttonsDescriptor,kIODirectionNone);
+         return *out?kIOReturnSuccess:kIOReturnNoMemory;
+     }
+-    bool start(IOService *provider) override {
+-        observe("work loop");
+-        loop=IOWorkLoop::workLoop();if (!loop) {observe(phase,kIOReturnNoMemory);return false;}
++    bool initializeOnGate(IOService *provider) {
+         setProperty("HIDDefaultBehavior",true);setProperty("Built-In",true);
+         if (touch) {
+             setProperty("DisplayIntegrated",true);setProperty("DigitizerCollectionDispatch",true);
+             PE_Video video={};
+             if (PE_current_console(&video) || video.v_rotate || video.v_width<=2*PAGANI_TOUCH_EDGE_PIXELS ||
+-                video.v_height<=2*PAGANI_TOUCH_EDGE_PIXELS || !pagani_hid::installPersonality()) {
++                video.v_height<=2*PAGANI_TOUCH_EDGE_PIXELS || !dodge_hid::installPersonality()) {
+                 observe("HID identity",kIOReturnUnsupported);cleanup();return false;
+             }
+-            pagani_hid::edgeX=PAGANI_TOUCH_EDGE_PIXELS*65536u/video.v_width;
+-            pagani_hid::edgeY=PAGANI_TOUCH_EDGE_PIXELS*65536u/video.v_height;
+-        }
++        }
++        hardwareTouched=true;
+         int rc=touch?setupTouch():setupButtons();
+-        if (rc) {observe(phase,rc);IOLog("Pagani %s %s failed: %d\n",touch?"touch":"buttons",phase,rc);cleanup();return false;}
++        if (rc) {observe(phase,rc);IOLog("Dodge %s %s failed: %d\n",touch?"touch":"buttons",phase,rc);cleanup();return false;}
++        if (stopRequested) return false;
+         observe("HID start");
+-        if (!IOHIDDevice::start(provider)) {observe(phase,kIOReturnError);cleanup();return false;}
++        // The original start calls this virtual stop on partial failure.
++        // Latch its cleanup obligation before entering it, so a deferred stop
++        // still cleans the parent exactly once after start has returned.
++        parentCleanupPending=true;
++        if (!IOHIDDevice::start(provider)) {observe(phase,kIOReturnError);return false;}
++        if (stopRequested) return false;
+         timer=IOTimerEventSource::timerEventSource(this,tick);
+         timerAdded=timer && loop->addEventSource(timer)==kIOReturnSuccess;
+-        if (!timerAdded) {observe("timer",kIOReturnNoResources);IOHIDDevice::stop(provider);cleanup();return false;}
++        if (!timerAdded) {observe("timer",kIOReturnNoResources);return false;}
+         observe("ready");
+         __atomic_store_n(&running,true,__ATOMIC_RELEASE);timer->setTimeoutMS(1);return true;
+     }
++    static IOReturn startAction(OSObject *owner,void *argument,void *,void *,void *) {
++        auto *self=static_cast<DodgeInput *>(owner);
++        if (!self->loop || !self->loop->inGate() || self->starting || self->parentCleanupPending || self->stopRequested)
++            return kIOReturnNotReady;
++        self->starting=true;
++        bool ok=self->initializeOnGate(static_cast<IOService *>(argument));
++        self->starting=false;
++        if (!ok || self->stopRequested) {self->stopOnGate(static_cast<IOService *>(argument));ok=false;}
++        self->finishPendingStop();
++        return ok?kIOReturnSuccess:kIOReturnNotReady;
++    }
++    bool start(IOService *provider) override {
++        if (!provider || loop || stopRequested) return false;
++        observe("work loop");
++        loop=IOWorkLoop::workLoop();if (!loop) {observe(phase,kIOReturnNoMemory);return false;}
++        auto *workLoop=loop;workLoop->retain();
++        IOReturn rc=workLoop->runAction(startAction,this,provider);
++        workLoop->release();return rc==kIOReturnSuccess;
++    }
+     void stop(IOService *provider) override {
+-        __atomic_store_n(&running,false,__ATOMIC_RELEASE);
+-        if (timer) {timer->cancelTimeout();if (timerAdded) {loop->removeEventSource(timer);timerAdded=false;}}
+-        if (touch) releaseContacts();else {uint8_t report[]={2,0};send(report,2);}
+-        IOHIDDevice::stop(provider);cleanup();
++        if (!provider || !loop) return;
++        auto *workLoop=loop;workLoop->retain();
++        workLoop->runAction(stopAction,this,provider);
++        workLoop->release();
+     }
+     void free() override {cleanup();IOHIDDevice::free();}
+ };
+-OSDefineMetaClassAndStructors(PaganiInput,IOHIDDevice)
+-extern "C" IOService *pagani_input_allocate(bool touch) {
+-    auto device=new PaganiInput;if (device && touch) device->selectTouch();return device;
++OSDefineMetaClassAndStructors(DodgeInput,IOHIDDevice)
++extern "C" IOService *dodge_input_allocate(bool touch) {
++    DodgeInputStatus status={};dodge_input_status(&status);
++    if (status.phase!=DodgeInputPhase::Ready) return nullptr;
++    auto device=new DodgeInput;if (device && touch) device->selectTouch();return device;
+ }
++extern "C" unsigned dodge_input_driver_bytes() {return sizeof(DodgeInput);}
++extern "C" const OSMetaClass *dodge_input_driver_meta() {return DodgeInput::metaClass;}

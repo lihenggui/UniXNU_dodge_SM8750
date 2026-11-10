@@ -1,0 +1,164 @@
+{
+  "result": "IOS16_ORIGINAL_HID_INIT_FREE_AND_PARTIAL_INITIALIZATION_HAZARD_AUDIT_PASS",
+  "builder_sha256": "df03ad8384bf31aafd59c2300a2f706e9b9de0aa2db2f26eb8d3f5d83e3ae744",
+  "source_sha256": {
+    "scripts/check_hid_object_lifetime.py": "df03ad8384bf31aafd59c2300a2f706e9b9de0aa2db2f26eb8d3f5d83e3ae744",
+    "scripts/check_ios16_swap.py": "f5d5dbf33f9e217386f1ab970f0b5ddcafa12b1aed54b7e89841d112ec1fb215",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078"
+  },
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "case_count": 7,
+  "cases": [
+    {
+      "case": "init-expansion-failure",
+      "result": "PASS",
+      "original_init_full_body": true,
+      "original_free_full_body": false,
+      "unsafe_free_fault_at_0x20_confirmed": false,
+      "events": [
+        "typed-expansion-allocation-peer"
+      ]
+    },
+    {
+      "case": "init-set-failure",
+      "result": "PASS",
+      "original_init_full_body": true,
+      "original_free_full_body": true,
+      "events": [
+        "typed-expansion-allocation-peer",
+        "set-allocation-peer",
+        "typed-expansion-free-peer",
+        "parent-free-peer"
+      ],
+      "released_peer_objects": 0,
+      "expansion_fixture_bytes_not_a_claim_of_original_allocation_size": 4096
+    },
+    {
+      "case": "init-parent-failure",
+      "result": "PASS",
+      "original_init_full_body": true,
+      "original_free_full_body": true,
+      "events": [
+        "typed-expansion-allocation-peer",
+        "set-allocation-peer",
+        "parent-init-peer",
+        "set-count-peer",
+        "release-peer",
+        "typed-expansion-free-peer",
+        "parent-free-peer"
+      ],
+      "released_peer_objects": 1,
+      "expansion_fixture_bytes_not_a_claim_of_original_allocation_size": 4096
+    },
+    {
+      "case": "init-success",
+      "result": "PASS",
+      "original_init_full_body": true,
+      "original_free_full_body": true,
+      "events": [
+        "typed-expansion-allocation-peer",
+        "set-allocation-peer",
+        "parent-init-peer",
+        "set-count-peer",
+        "release-peer",
+        "typed-expansion-free-peer",
+        "parent-free-peer"
+      ],
+      "released_peer_objects": 1,
+      "expansion_fixture_bytes_not_a_claim_of_original_allocation_size": 4096
+    },
+    {
+      "case": "free-owned-fields",
+      "result": "PASS",
+      "original_init_full_body": true,
+      "original_free_full_body": true,
+      "events": [
+        "typed-expansion-allocation-peer",
+        "set-allocation-peer",
+        "parent-init-peer",
+        "release-peer",
+        "release-peer",
+        "release-peer",
+        "release-peer",
+        "release-peer",
+        "release-peer",
+        "release-peer",
+        "set-count-peer",
+        "release-peer",
+        "release-peer",
+        "release-peer",
+        "release-peer",
+        "typed-expansion-free-peer",
+        "parent-free-peer"
+      ],
+      "released_peer_objects": 11,
+      "expansion_fixture_bytes_not_a_claim_of_original_allocation_size": 4096
+    },
+    {
+      "case": "free-nonempty-set",
+      "result": "PASS",
+      "original_init_full_body": true,
+      "original_free_full_body": true,
+      "events": [
+        "typed-expansion-allocation-peer",
+        "set-allocation-peer",
+        "parent-init-peer",
+        "set-count-peer",
+        "collection-iteration-peer-no-items",
+        "release-peer",
+        "typed-expansion-free-peer",
+        "parent-free-peer"
+      ],
+      "released_peer_objects": 1,
+      "expansion_fixture_bytes_not_a_claim_of_original_allocation_size": 4096
+    },
+    {
+      "case": "free-thread-call",
+      "result": "PASS",
+      "original_init_full_body": true,
+      "original_free_full_body": true,
+      "events": [
+        "typed-expansion-allocation-peer",
+        "set-allocation-peer",
+        "parent-init-peer",
+        "set-count-peer",
+        "release-peer",
+        "thread-call-free-peer",
+        "typed-expansion-free-peer",
+        "parent-free-peer"
+      ],
+      "released_peer_objects": 1,
+      "expansion_fixture_bytes_not_a_claim_of_original_allocation_size": 4096
+    }
+  ],
+  "cpu_cases": "build/ios16-hid-source-interface/object-lifetime-cases.json",
+  "cpu_cases_sha256": "d785c1f0011a0430e930b96c6dada59ec21b2705b1e64ece1aca578b67f0078c",
+  "unsafe_partial_free_control": {
+    "case": "init-expansion-failure",
+    "result": "PASS",
+    "original_init_full_body": true,
+    "original_free_full_body": false,
+    "unsafe_free_fault_at_0x20_confirmed": true,
+    "events": [
+      "typed-expansion-allocation-peer"
+    ]
+  },
+  "original_function_blocks": {
+    "init": {
+      "address": "0xfffffff005726c34",
+      "bytes": 108,
+      "sha256": "1606d284492156d0a2a5b7657a96054c0be931df2175755c1281d0c8e9135683"
+    },
+    "free": {
+      "address": "0xfffffff005726ca0",
+      "bytes": 492,
+      "sha256": "2c6efb74bd1e42420bdb39d47a70fb81b766175ddaf259c79f56c79c4367d9da"
+    }
+  },
+  "source_must_preserve_object_on_unqualified_init_failure": true,
+  "allocator_set_collection_release_parent_and_thread_apis_are_peers": true,
+  "actual_original_start_parser_or_collection_elements_executed": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Seven unchanged full original init paths and six full free paths with explicit allocator/set/collection/native-parent/release/thread peers. A failed original expansion allocation makes init return false; forcing original free then reads unmapped 0x20. This is an instruction-level hazard audit, not an assertion that a real allocator fails or runtime free is safe. Source retains objects after initialization attempts."
+}

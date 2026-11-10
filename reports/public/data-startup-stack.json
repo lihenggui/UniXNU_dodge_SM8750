@@ -1,0 +1,195 @@
+{
+  "result": "CPH2653_IPHONE_IOS16_DATA_STARTUP_AND_PAYLOAD_STACK_PASS",
+  "builder_sha256": "a6917129e0937164b3a43d550a5f90b7b11e245ee20abd8ee830c51251f2e8d0",
+  "source_sha256": {
+    "scripts/build_data_startup_stack.py": "a6917129e0937164b3a43d550a5f90b7b11e245ee20abd8ee830c51251f2e8d0"
+  },
+  "base_data_report": "reports/data-stack.json",
+  "base_data_report_sha256": "95898873bd3fe46a586a7d949b3ea5363e71668cb116bfddf80eee8b107b419e",
+  "stages": {
+    "ios16-data-startup": {
+      "report": "reports/ios16-data-startup.json",
+      "sha256": "c515635f4d7ab7d6aea87345b3b4952bb1f2530c58140d90167ec6216347bcc9",
+      "result": "IOS16_SEPARATE_DATA_STARTUP_SOURCE_AND_STRICT_LINK_PASS"
+    },
+    "ios16-data-startup-prelink": {
+      "report": "reports/ios16-data-startup-prelink.json",
+      "sha256": "6f4deaf35a3bb398feef90a613d94b9567e2c19dbbc0be8fad6b2ee1445f0752",
+      "result": "IOS16_DATA_STARTUP_AND_ORIGINAL_IPHONE_STRICT_PRELINK_PASS"
+    },
+    "ios16-data-startup-kernel": {
+      "report": "reports/ios16-data-startup-kernel.json",
+      "sha256": "29f7d829e01a449538e3e154d2f977327c2187be5c4f216a0ac7bbfc90145d45",
+      "result": "IOS16_ACTUAL_DATA_STARTUP_AND_DATA_PATHS_ARM64_PASS"
+    },
+    "ios16-data-payload": {
+      "report": "reports/ios16-data-payload.json",
+      "sha256": "db47e57a69562ff04ec4826e1f1366eefda73b1f710cbf00afa2a05a5fb3f811",
+      "result": "IOS16_DATA_STARTUP_PACKED_SEED_AND_CONTAINER_READBACK_PASS"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "build/cph2653-data-bringup/boot.img",
+      "sha256": "65f65a6da2b1b13d8aa2cfd89d822770410ae1e148b12e9a70a5bc099cb13927",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-bringup/boot.json",
+      "sha256": "6f4e91ccc03e6b8dfc3a71cbac32da8f3aff7923aec9862cae5e204b79c612bd",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-bringup/kernel.macho.adt",
+      "sha256": "c3080f76340ceda373d2e56caa9c0514007f6cfea666cfa63f7155a3cd22ee27",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-bringup/loader-parser.c",
+      "sha256": "2a53ccb696c0928af16804c09c6595d1610e761974e3e09795e3896800841e1b",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-bringup/loader-parser.so",
+      "sha256": "f5a6513cba8f9a2cbf22fb9ff8cad03b87e153bfc6f788a9a79af26d74109897",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-bringup/payload.img",
+      "sha256": "236eb0a4a9cc6684298644d0bd5a71a4fbb19467a32c7af02b40111b3fd3e597",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup-kernel/abi/DataLateLayout.o",
+      "sha256": "56148442a9a4240657853a15cf7b2a94dc85e338810478003a847f6a18a13f7a",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup-kernel/cpu-cases.json",
+      "sha256": "7f960d15cd866efbb22d75f07f890eaa652ca905441c7d3de0393d6d0c7b5584",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup-prelink/emission.json",
+      "sha256": "e9214885f8e68d604466604d0ad679bdcafd584fbb581b94e41889f17da4c4d2",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup-prelink/kernel.macho",
+      "sha256": "2dd49342fc3cc52e948c7649aa848399a901c4f7a5b4ef3a735ce99c985a3b50",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup-prelink/kernel.macho.crypto-hmac.json",
+      "sha256": "fef14b86faceadfa20bf580eeb6373cc92db7fb9fe087d087941b76d98533c1b",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup-prelink/mach.data-startup.sealed",
+      "sha256": "d24616f7572ddf9098941fbba3c4ce62075f89d849050d9672e78a29931dd115",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup-prelink/mach.data-startup.sealed.crypto-hmac.json",
+      "sha256": "ca7312c6e1b67253cb8c41aab50c1acd40c7d25ebef85acb64272fe6f947f5f3",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup/DodgeDataLate.o",
+      "sha256": "a989c661858c13c12a530873fccaf831f8baa29ab3544e7c2e21a7e262ffb00a",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup/IOKitBSDInit.cpp",
+      "sha256": "e5babb673140d7d7fb9076ae2447672d23f67d0e7a19531e23d158db9eaf79cd",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup/IOKitBSDInit.data.cpo",
+      "sha256": "56088c81747e6189f4498d157dd3cec3129765914843bfeeb873afe0cd90a87d",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup/combined-native.filelist",
+      "sha256": "951487f0db446828a7b1d4fe2c6689e770bdfd95c1e433e6b6219f0fc19396ce",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup/compile-commands.json",
+      "sha256": "113efa709d294cb72a6ded927f3960e45bedf519ba779cc248efcb116fab53b8",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup/data-late-host",
+      "sha256": "8230e64b24086d08fe2dc9abae97159bea76b45767d509d5234f8e17bc27124b",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup/libDodgeDataLate.a",
+      "sha256": "39c09a47339fcd4f93ba052ccd875754a88c1c455a90802dad34f68f11941b84",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup/link-command.json",
+      "sha256": "24f7efbaf75e4586262f8293837afb2d20549bc37845188b4cdbf0afa96ecb75",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "build/cph2653-data-startup/mach.data-startup",
+      "sha256": "7909b488f3c0cde345b5917267a600b91b5c64e608f6aa11408058688ff91c9c",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "reports/ios16-data-payload.json",
+      "sha256": "db47e57a69562ff04ec4826e1f1366eefda73b1f710cbf00afa2a05a5fb3f811",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "reports/ios16-data-startup-kernel.json",
+      "sha256": "29f7d829e01a449538e3e154d2f977327c2187be5c4f216a0ac7bbfc90145d45",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "reports/ios16-data-startup-prelink.json",
+      "sha256": "6f4deaf35a3bb398feef90a613d94b9567e2c19dbbc0be8fad6b2ee1445f0752",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    },
+    {
+      "path": "reports/ios16-data-startup.json",
+      "sha256": "c515635f4d7ab7d6aea87345b3b4952bb1f2530c58140d90167ec6216347bcc9",
+      "role": "Separate default-off Data startup/loader/container evidence"
+    }
+  ],
+  "new_scheduler_host_cases": 30,
+  "total_distinct_data_source_host_cases": 107,
+  "prelinked_cpu_cases_this_candidate": 43,
+  "new_scheduler_cpu_cases": 13,
+  "retained_data_cpu_cases_rerun": 30,
+  "startup_negative_controls": 24,
+  "combined_source_objects": 84,
+  "native_entries": 85,
+  "combined_original_aliases": 332,
+  "original_components": 28,
+  "kernel_interfaces": 7,
+  "original_pointer_sites_read_back": 63889,
+  "boot_image": "build/cph2653-data-bringup/boot.img",
+  "boot_image_bytes": 170557440,
+  "boot_image_sha256": "65f65a6da2b1b13d8aa2cfd89d822770410ae1e148b12e9a70a5bc099cb13927",
+  "packed_seed_bytes": 721024,
+  "logical_data_bytes": 2147483648,
+  "source_data_startup_and_payload_route_wired": true,
+  "data_source_default_enabled": false,
+  "original_data_mount_qualified": false,
+  "writable_data_runtime_qualified": false,
+  "original_userspace_or_root_windows_in_boot_container": false,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "default_kernel_selected": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "remaining": [
+    "Prepare and qualify the exact iPhone original APFS Data mount, complete parent/registry/media matching and crypto/power lifecycle.",
+    "Complete remaining private graphics/event ABI and platform peripherals; all host/CPU evidence remains separate from phone execution."
+  ],
+  "scope": "Four additional isolated startup stages retain the six-stage/83-object Data baseline. The 84-object candidate queues Data after system scheduling and packages the exact 2 GiB seed with a preserved iPhone ADT and PackedRAMDisk handoff. Thirty new scheduler sanitizer cases, 43 CPU paths in this candidate, 24 rejection controls, original pointer/code and full FAT/Android container readback pass. The default-off route does not claim original Data mount, physical loader allocation, registry/UI or a working iPhone system."
+}

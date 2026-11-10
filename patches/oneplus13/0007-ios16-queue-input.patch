@@ -1,0 +1,17 @@
+--- a/IOKitBSDInit.cpp
++++ b/IOKitBSDInit.cpp
+@@ -107,12 +107,14 @@
+ #endif
+ 
+ extern "C" IOReturn dodge_system_schedule(void);
++extern "C" IOReturn dodge_input_schedule(void);
+ 
+ kern_return_t
+ IOKitBSDInit( void )
+ {
+ 	IOService::publishResource("IOBSD");
+ 	(void)dodge_system_schedule();
++	(void)dodge_input_schedule();
+ 
+ #if IOPOLLED_COREFILE
+ 	corefile_open_call = thread_call_allocate_with_options(IOOpenPolledCoreFile, NULL, THREAD_CALL_PRIORITY_KERNEL, THREAD_CALL_OPTIONS_ONCE);

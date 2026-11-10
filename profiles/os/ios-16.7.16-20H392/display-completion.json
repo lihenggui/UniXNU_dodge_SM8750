@@ -1,0 +1,111 @@
+{
+  "schema_version": 3,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "legacy_instance_bytes": 5728,
+  "completion_slot": 281,
+  "wrapper": {
+    "address": "0xfffffff005c1ace4",
+    "bytes": 44,
+    "sha256": "5f8085d74d897fa16dcc95131672f574cfc17ef7640c6a3523c6cc3dca7b2ba3",
+    "prototype": "void (self)",
+    "body_bool_register": "w1",
+    "body_bool_value": true
+  },
+  "body": {
+    "address": "0xfffffff005c1012c",
+    "bytes": 1792,
+    "sha256": "deb2fa96d27598f97999638ecd1e33bf744b63ce651b805eb2b918d570ed03d1"
+  },
+  "retirement_tail": {
+    "address": "0xfffffff005c10758",
+    "bytes": 72,
+    "sha256": "a8c064bcf2b2eeab534ce80fec0311f54e03ac9e23583fc31eda25c695a556f1"
+  },
+  "current_offset": 4872,
+  "head_offset": 4880,
+  "command_gate_offset": 5040,
+  "request_release_slot": 5,
+  "request_release_overridden": false,
+  "request_reference_dispatch_qualified": true,
+  "request_vptr": "0xfffffff006dee510",
+  "request_refcount_slots": {
+    "2": "__ZNK8OSObject7releaseEi",
+    "3": "__ZNK8OSObject14getRetainCountEv",
+    "4": "__ZNK8OSObject6retainEv",
+    "5": "__ZNK8OSObject7releaseEv",
+    "9": "__ZNK8OSObject12taggedRetainEPKv",
+    "10": "__ZNK8OSObject13taggedReleaseEPKv",
+    "11": "__ZNK8OSObject13taggedReleaseEPKvi"
+  },
+  "request_constructor": {
+    "address": "0xfffffff005c04b24",
+    "bytes": 92,
+    "sha256": "ca65c47364b31f2d139333e02277db29c6ce5414ff5bcfc39ff3e5c21ae708d0"
+  },
+  "request_free_hook": "0xfffffff005c04cdc",
+  "request_free_execution_qualified": false,
+  "command_gate_wakeup_slot": 33,
+  "command_gate_one_thread": false,
+  "bounded_retirement_cpu": {
+    "helpers": {
+      "request_notification": {
+        "address": "0xfffffff005c0f538",
+        "bytes": 880,
+        "sha256": "03d92831307bb8b366e6ea0957e63736dc36dae7723bea10a73608dc86be2b17"
+      },
+      "mode_index": {
+        "address": "0xfffffff005c1a490",
+        "bytes": 164,
+        "sha256": "b61015a7d19fe88a2f80cf496b3953df8d200b803894f628ff37dae791ab6fe9"
+      },
+      "mode_word": {
+        "address": "0xfffffff005c19d5c",
+        "bytes": 108,
+        "sha256": "d73aa3ee356bc34a6cde21eb0ea1e894398f248d6e271e8ac1d8382e6236fa64"
+      },
+      "statistics": {
+        "address": "0xfffffff005c1b63c",
+        "bytes": 264,
+        "sha256": "26caef686ac55451dd7b99453ee48dd0395d45132197bbae12791e40ac2556dd"
+      },
+      "after_completion": {
+        "address": "0xfffffff005c24c80",
+        "bytes": 16,
+        "sha256": "d53e8c59aa22c23dbfc99dd98e5e02cf4ba052a2905b2991bfe1edff9c0b9efa"
+      }
+    },
+    "trace_template": {
+      "address": "0xfffffff004f68210",
+      "bytes": 20,
+      "sha256": "750837cbeaadaf72ab0a852ee3e0517760ca56eb6b8fc3c08b2d9e73348b6bea"
+    },
+    "debug_flag_import": {
+      "address": "0xfffffff006deb458",
+      "bytes": 8,
+      "sha256": "8eb835e172ec57fe21337f83ffd7c649050aedb7f29dce1a8e4050756c2e0086"
+    },
+    "debug_flag_address": "0xfffffff0078bb190",
+    "stack_guard_import": {
+      "address": "0xfffffff006deb3b8",
+      "bytes": 8,
+      "sha256": "a7b16df10f8665fb38a006d995108cfa428e7ea116a4ca8945c4f303e7bf3817"
+    },
+    "stack_guard_address": "0xfffffff007867000",
+    "frame_counter_offset": 172,
+    "last_id_offsets": [
+      5220,
+      5224
+    ],
+    "background_word_offset": 5228,
+    "completion_state_word_offset": 5260,
+    "mode_index_offset": 5448,
+    "mode_word_offset": 5452,
+    "statistics_counts_offset": 5460,
+    "surface_commit_and_lifetime_are_peers": true,
+    "notification_clients_required_empty": true
+  },
+  "original_retirement_body_execution_qualified": false,
+  "full_original_graphics_lifecycle_qualified": false
+}

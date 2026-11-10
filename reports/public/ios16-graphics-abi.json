@@ -1,0 +1,112 @@
+{
+  "result": "IOACCELERATOR_BASE_STATIC_AUDIT_PASS",
+  "fixture": "profiles/os/ios-16.7.16-20H392/graphics-abi.json",
+  "fixture_sha256": "6db8bb088e26a40c63ad86ec8b2dbadb431551fa3eab3d0889cbaed1c68036e3",
+  "identity": {
+    "schema_version": 1,
+    "product": "iPhone10,3",
+    "build": "20H392",
+    "original_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+    "component": "com.apple.iokit.IOGPUFamily",
+    "component_version": "65.60.1",
+    "original_iogpu_text_sha256": "34aea2cba7f617ae031c37411027b34380c68bbe1e1a17d6abbf3bbabcc777cf",
+    "metaclass": "0xfffffff007bb6448",
+    "instance_bytes": 136,
+    "vptr": "0xfffffff006fc9e78",
+    "virtual_entries": 168,
+    "operational_overrides": [],
+    "metadata_overrides": [
+      0,
+      1,
+      7
+    ],
+    "protected_compatible_constructor_aliases": [
+      "0xfffffff006b45228",
+      "0xfffffff006b45248"
+    ],
+    "nondeleting_destructor": "0xfffffff006b4526c",
+    "get_meta_class": "0xfffffff006b452b4",
+    "class_metadata_setup": "0xfffffff006b48630",
+    "original_vtable_sha256": "26c39f9ba38d0ef33aafe5c39cc3d41aec6a9e030e17677e58848790bf146664",
+    "original_ioservice_vtable_sha256": "c28a1f7af37dcd8cd3f95f3c3f98d212fb61c12ffeff5641cddd836ce2f2c402",
+    "code_blocks": [
+      {
+        "address": "0xfffffff006b45228",
+        "bytes": 32,
+        "purpose": "constructor",
+        "sha256": "6ae3681f2b8b1b5a1029e6789b2d89a966855d729f505e079bc1c389d0816da7"
+      },
+      {
+        "address": "0xfffffff006b45248",
+        "bytes": 32,
+        "purpose": "constructor",
+        "sha256": "125ae185010ba90753e406f60736d74c9ceb2e2067ffcd02e42b0eb08ecc95a3"
+      },
+      {
+        "address": "0xfffffff006b4526c",
+        "bytes": 4,
+        "purpose": "nondeleting_destructor",
+        "sha256": "552ecf688f8ec3f42aee635be31c7d15e9e7a52b74a859517f8afd617342dd64"
+      },
+      {
+        "address": "0xfffffff006b452b4",
+        "bytes": 12,
+        "purpose": "get_meta_class",
+        "sha256": "ad36bffd39b71df6d8df979641be76d47c51273707ba572a97e6d1546a39f583"
+      },
+      {
+        "address": "0xfffffff006b48630",
+        "bytes": 48,
+        "purpose": "class_metadata_setup",
+        "sha256": "162f45cd19fb044831063d36dccf47fbff3bc252abb8c4ce6bfb3bda204cc229"
+      }
+    ]
+  },
+  "native_comparison": {
+    "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+    "ioservice_named_virtual_slots_matched": 167,
+    "ioservice_complete_destructor_bytes_matched": 12,
+    "native_complete_destructor_tail_aliases": [
+      {
+        "address": "0xfffffff0078c975c",
+        "target": "0xfffffff0078c3de0",
+        "target_names": [
+          "__ZN15IORegistryEntryD2Ev"
+        ]
+      },
+      {
+        "address": "0xfffffff0078c3de0",
+        "target": "0xfffffff007866444",
+        "target_names": [
+          "__ZN8OSObjectD2Ev"
+        ]
+      },
+      {
+        "address": "0xfffffff007866444",
+        "target": "0xfffffff007864738",
+        "target_names": [
+          "__ZN15OSMetaClassBaseD2Ev"
+        ]
+      }
+    ],
+    "complete_destructor_sha256": "44b1a5b526f6636f1bd3fefe02e1cfcf690bcb266ef2c5b20632d00d872019ff"
+  },
+  "native_header_assertions": [
+    "sizeof(IOService)==136",
+    "sizeof(IOAcceleratorES)==136",
+    "sizeof(OSMetaClass)==40"
+  ],
+  "header_sha256": "b8f9068815934c675eed6a8c5f9b6a23e0ce8b1fdb432fdbac4ba959c8b3b652",
+  "compiler_recipe_sha256": "ef73014a7e13189d7aa921b02ccc5d9b02c4a1cf3febee0c10ce0d32ddec9f92",
+  "negative_fixtures_rejected": [
+    "original_sha256",
+    "metaclass",
+    "instance_bytes"
+  ],
+  "base_shape_statically_qualified": true,
+  "all_graphics_abi_qualified": false,
+  "original_code_modified": false,
+  "class_initialized": false,
+  "hardware_tested": false,
+  "scope": "Exact iPhone base-class ancestry, whole virtual table, full constructor/destructor/getter bodies, metadata setup and source IOService prefix. No original IOGPU runtime or full graphics ABI qualification."
+}

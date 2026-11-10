@@ -1,0 +1,31 @@
+--- a/MetalVulkanProbe.rs
++++ b/MetalVulkanProbe.rs
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: BSD-2-Clause-Patent
+ // Offline consumer of a pinned translator's public API; never opens a GPU.
+-use metal2vulkan::device::{Device, DeviceDescription, DevicePolicy, SamplingPolicy};
++use metal2vulkan::device::{Device, DeviceDescription, DevicePolicy};
+ use metal2vulkan::library::{FunctionStage, Library};
+ use metal2vulkan::metal::PixelFormat;
+ use metal2vulkan::pipeline::{
+@@ -59,9 +59,8 @@
+         );
+     }
+     let description = DeviceDescription::from_khronos_json(&fs::read_to_string(&args[0])?, None)?;
+-    let mut policy = DevicePolicy::default().exact_answers();
+-    // exact_answers deliberately keeps sampling unchanged in this upstream revision.
+-    policy.sampling = SamplingPolicy::Exact;
++    // The pinned public API derives sampling from device/profile facts.
++    let policy = DevicePolicy::default().exact_answers();
+     let device = Device::new(description, policy)?;
+     let library = Library::parse(&fs::read(&args[1])?)?;
+     let function = library.function(&args[2])?;
+@@ -124,7 +123,7 @@
+     Ok(json!({
+         "stages": stages, "layout": layout, "interface": interface,
+         "dependencies": dependencies, "requirements": requirements,
+-        "policy": "exact_answers+exact_sampling",
++        "policy": "exact_answers; sampling derived by profile",
+         "validation_envs": device.profile().spirv_validation().target_envs,
+         "validation_relaxations": device.profile().spirv_validation().relaxations,
+         "profile_is_hardware_observation": false,

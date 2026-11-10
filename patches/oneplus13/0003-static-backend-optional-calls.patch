@@ -1,0 +1,37 @@
+--- a/NativeAdrenoMemory.cpp
++++ b/NativeAdrenoMemory.cpp
+@@ -1,5 +1,6 @@
+ /* SPDX-License-Identifier: MIT */
+ #include "NativeAdrenoMemory.h"
++#include "DodgeOptionalCalls.h"
+ /* Where a call that never returns is stuck: the free/unmap/release path stores a stage number here, the board page shows it. */
+ extern "C" {volatile uint32_t native_adreno_trace_stage;}
+ #include <IOKit/IOBufferMemoryDescriptor.h>
+@@ -339,7 +340,7 @@
+          * of system memory maps its VM object, which keeps the pages until the view goes. */
+         for(size_t i=0;i<span_count_ && i<64;++i) {
+             char name[17]={};void *pmap=nullptr;uint64_t va=0;
+-            if(native_pmap_user_mappings((ppnum_t)(spans_[i].physical>>12),&pmap,&va,name)) {
++            if(dodge_optional_call(native_pmap_user_mappings,(ppnum_t)(spans_[i].physical>>12),&pmap,&va,name)) {
+                 native_adreno_free_user_mapped[0]=native_adreno_free_user_mapped[0]+1;
+                 native_adreno_free_user_mapped[1]=(uint32_t)(va>>12);
+                 break;
+--- a/NativeAdrenoPublish.cpp
++++ b/NativeAdrenoPublish.cpp
+@@ -21,6 +21,7 @@
+ #include <string.h>
+ #include <kern/thread.h>
+ #include "NativeAdrenoUserClient.h"
++#include "DodgeOptionalCalls.h"
+ #include "NativeAdrenoGpuContext.h"
+ #include "NativeAdrenoDiagnostics.h"
+ 
+@@ -751,7 +752,7 @@
+         if(input && input_size>=sizeof(piece))memcpy(&piece,input,sizeof(piece));
+         const bool valid=!output_size && input && input_size>=sizeof(piece) && piece.bytes && piece.bytes<=NativeAdrenoExportMaxPiece &&
+             input_size==sizeof(piece)+piece.bytes && !strncmp(caller,"backboardd",sizeof caller);
+-        const int stored=valid && boot_log_export_put?boot_log_export_put(piece.generation,piece.total,piece.offset,
++        const int stored=valid && boot_log_export_put?dodge_optional_call(boot_log_export_put,piece.generation,piece.total,piece.offset,
+             static_cast<const uint8_t *>(input)+sizeof(piece),piece.bytes):-1;
+         if(stored) {native_adreno_export_stats[1]=native_adreno_export_stats[1]+1;return kIOReturnBadArgument;}
+         native_adreno_export_stats[0]=native_adreno_export_stats[0]+1;

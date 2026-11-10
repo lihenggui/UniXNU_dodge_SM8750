@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "request_bytes": 2424,
+  "layer_count": 4,
+  "primary_mask": 792,
+  "secondary_mask": 796,
+  "background_raw": 800,
+  "options": [
+    804,
+    812
+  ],
+  "dimensions": [
+    816,
+    820
+  ],
+  "source_rectangles": {
+    "base": 17,
+    "stride": 16,
+    "words": 4
+  },
+  "destination_rectangles": {
+    "base": 81,
+    "stride": 16,
+    "words": 4
+  },
+  "raw_layer_word": {
+    "base": 532,
+    "stride": 4
+  },
+  "raw_float_bits": {
+    "base": 564,
+    "stride": 4
+  },
+  "raw_transform_bits": {
+    "base": 580,
+    "stride": 4,
+    "builder_mask": 7
+  },
+  "user_packet_access_window_bytes": 312,
+  "builder_blocks": [
+    {
+      "name": "primary",
+      "address": "0xfffffff005c14c04",
+      "bytes": 24,
+      "sha256": "6071495a5435fe784151709ee75850ef47c2b10ced078b63625b33fae7c1224f"
+    },
+    {
+      "name": "common",
+      "address": "0xfffffff005c14c94",
+      "bytes": 80,
+      "sha256": "77f93bfc4c9dbc936146a10ed36a5006208db897009de44c30729bc5d807ca1a"
+    },
+    {
+      "name": "rectangles-scalars",
+      "address": "0xfffffff005c15190",
+      "bytes": 136,
+      "sha256": "33041bf0426ead2e4ed5cc7f10fa81095c13b8c67098f80a16d4bc631ef2f842"
+    },
+    {
+      "name": "transform-bits",
+      "address": "0xfffffff005c1534c",
+      "bytes": 40,
+      "sha256": "a8c6f84bc0408174f09287b2dc70167ec68df9faef88ad1b5d990bb08aa199f2"
+    },
+    {
+      "name": "secondary",
+      "address": "0xfffffff005c16068",
+      "bytes": 48,
+      "sha256": "426ffd65d68b9c68a8f9fa4c51e7c94d923399e74d309cee263dc67d154856ef"
+    }
+  ],
+  "color_alpha_transform_semantics_qualified": false,
+  "producer_sync_qualified": false,
+  "full_swap_validation_qualified": false
+}

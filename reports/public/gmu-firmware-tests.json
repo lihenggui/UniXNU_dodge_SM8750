@@ -1,0 +1,19 @@
+{
+  "result": "TARGET_GMU_FIRMWARE_HOST_TEST_PASS",
+  "firmware_sha256": "1ad8175e6cd01ea76c64d20b83600038c52dd29844b48d57b11b769b038863a5",
+  "source_revisions": {
+    "sm8750": "669bceeaadc298e085f33d393c941eaca9e2c08c",
+    "a830_firmware_reference": "505d0a1ac079339ee1486f0e19cfd8bd36a282a2",
+    "a830_backend_reference": "1baf6d3a1d0f133d284f8b8844cc98bf5aff1bbe",
+    "oneplus13t_reference": "ad022a2a3a2e0c71c340361392d30d424c66b4d2"
+  },
+  "test_sha256": "61fae2bc8759d0936bd75ceb13e91613206b64545f0835f04a2a0b389b22b062",
+  "log": "build/cph2653-gmu-tests/tests.log",
+  "log_sha256": "039f0c1f589ad318677d713710e73b274653654ca723b921e671c4bfe76810f2",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "hardware_tested": false,
+  "scope": "Actual target GMU hash/loader/readback and failure quarantine over software MMIO; OPP and command-db are fixtures."
+}

@@ -1,0 +1,226 @@
+{
+  "result": "IOS16_MAPPED_LEASE_HEALTH_SURFACE_DISPLAY_ARM64_PASS",
+  "source_sha256": {
+    "scripts/check_mapped_lease_kernel.py": "f90e5416047af005bb17d6b09f5d05198abfb7f31095e90bf77f55da718b1dd3",
+    "scripts/mapped_lease_execution.py": "27c9add03e8f64f8a5a0db6decb4cb112f34cbb8c2cb40b2a5eb9593c406f606",
+    "build/cph2653-mapped-lease-wait/source-build/native/compile-commands.json": "dec2b3f6f0bedaeb3437f9651942bb82ab095e4943cd2543e1b4a609d1b3fe76",
+    "scripts/fresh_gpu_execution.py": "efdfebff8a5cccf5377b8687dcb7c52c6f7eaaf8c84c76ba6591b91fe01ef4d9",
+    "scripts/check_adreno_display_timeline.py": "c13e1f20a5a08c5e5f8ee54888b5f4448a2854689a7ceb4f76492526e079b584",
+    "scripts/check_display_kernel_lifecycle.py": "1f9bb4d8cb5f28127aee44d83dab8084e24d01e2c83e2c2fbc27a31401867f8d",
+    "scripts/surface_sync_execution.py": "7c287e31548061865ada9db071f47d078f075f31d5cecbe806dfc7def80f9feb",
+    "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
+    "scripts/prepare_surface_sync.py": "2c00ababad2f9a444aabe79e6b9209dc9b666c78bbf1d1e400740d62a1c9c881",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "build/cph2653-fresh-gpu-source/native/compile-commands.json": "6f9083fb8bfb4ddf828c85b8329fba9474f0a8fcb1dbef7fc6dca15cc8aeadb8",
+    "build/cph2653-fresh-gpu-source/source/DodgeDisplayFrontend.cpp": "364fb9ee8b5da452c2108bc9a653599f267c43a7d22313d2229bdd59ba047df8"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-mapped-lease-prelink.json": "b82c9dd1ad8549c8de51db36fa774be55d97c7b72cc4e28e9ce762479206d9fe",
+    "reports/adreno-display-timeline.json": "4c9d0daa0bb7eaa318e021bf4813601bb492346688ca836445a8a2d965fc85ad",
+    "reports/ios16-surface-sync-kernel.json": "a9348582448ac43e7dd69ea3e077dffddfbb7e1fbd35f7e0a8a158735925ab92",
+    "reports/ios16-display-kernel-lifecycle.json": "e93e2cfc7ad8632f42746f69436d5e2f06065a3fa58305bace86bfa6e1227f3c",
+    "reports/ios16-fresh-gpu-source.json": "df288c29bcabb9d2584dbaea21b56f9109c335a82794c8a84946e3ec91bc371b"
+  },
+  "artifacts": {
+    "build/cph2653-mapped-lease-wait-kernel/frontend-layout.o": "6543335b84a9381eeb5ff727b89763d37881ce105887cf16e3e5c5faf99338d8",
+    "build/cph2653-mapped-lease-wait-kernel/compiler-layouts.log": "54be8cf2f2ec64e8063bf087262a8b00e87324c32fa38eb4f937d2c5232cc254",
+    "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoMemory.probe.o": "733ccea06342801c2f2a2ba238ef91a4d9518bef23d2dfbff44f0f4a2448beac",
+    "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoMemory.layouts.log": "68639bf3cc948fcab564c12f4c2c92849d6d9d8a1d6cfe664c024b64431e6720",
+    "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoPublish.probe.o": "a076a4693d9f7d62ec1f972721a90c6ef16cd21e94943dff6954d93fa798569d",
+    "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoPublish.layouts.log": "be93344293a4880dad63a6ff4dd5b84cc2fbf676c5ab087c61c3977d2f1e8aac",
+    "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoSubmit.probe.o": "fabc093061ae35d869e7c6042eee710eba0dd658d354e1a14f75c58e3be40c3d",
+    "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoSubmit.layouts.log": "e8ab05348aa38149dc0170e8a07ef62fc8b825624602621f34bcd08bbaec8289",
+    "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoVm.probe.o": "7b8ebdf04d102478f4499ba2764eb6788a1095e9bb918bfc097d1f3b0a29dd8b",
+    "build/cph2653-mapped-lease-wait-kernel/lease-layouts/NativeAdrenoVm.layouts.log": "b7a770d2a78c51d285f053b27659e92ab082d910afcb97c319cf94cef533cb75",
+    "build/cph2653-mapped-lease-wait-kernel/cpu-cases.json": "5d871fbc7fc4eb6320c43346e7dc16c990e95ade9246323a0cebd17b94b6b916"
+  },
+  "candidate": "build/cph2653-mapped-lease-wait-prelink/kernel.macho",
+  "candidate_sha256": "f8a5b3c92d4252e294b14b8294363fb40171a551cd7824be61bbb22496b849ea",
+  "compiler_layout": {
+    "frontend": {
+      "bytes": 1552,
+      "fields": {
+        "requiresAdreno": 1543
+      }
+    },
+    "entry": {
+      "bytes": 88,
+      "fields": {
+        "gpuEpoch": 8,
+        "gpuTarget": 64,
+        "gpuSubmitted": 68,
+        "gpuRetired": 72,
+        "gpuCaptured": 79,
+        "gpuPassed": 80,
+        "gpuInvalid": 81
+      }
+    }
+  },
+  "native_trace": {
+    "published_state": "0xfffffff007a88bf8",
+    "recovery_counter": "0xfffffff007b40394",
+    "snapshot_entry": "0xfffffff0079f4254",
+    "epoch_helper": "0xfffffff0079f4f40",
+    "epoch_helper_sha256": "51e9f190b7540ec9a0fd48cb344b8fc292abd6d96f3c182fa35e5914def47f9a",
+    "native_recovery_note_call": "0xfffffff0079f4a28",
+    "native_recover_call": "0xfffffff0079f4a94"
+  },
+  "case_counts": {
+    "native_snapshot_and_epoch": 22,
+    "native_frontend_and_snapshot": 13,
+    "original_surface_chain": 17,
+    "display_lifecycle": 32,
+    "native_mapped_resource": 16,
+    "native_map_wait": 12
+  },
+  "instruction_controls": [
+    {
+      "case": "gpuReady-always-success",
+      "result": "REJECTED",
+      "reason": "Native health did not capture the initial completed target"
+    },
+    {
+      "case": "gpuCurrent-always-success",
+      "result": "REJECTED",
+      "reason": "Historical target bypassed fresh backend refusal: poisoned-ring"
+    },
+    {
+      "case": "hold-skipped",
+      "result": "REJECTED",
+      "reason": "Actual full mapped hold is missing or differs"
+    },
+    {
+      "case": "memory-reference-increment-skipped",
+      "result": "REJECTED",
+      "reason": "Actual full mapped hold is missing or differs"
+    },
+    {
+      "case": "write-acquisition-skipped",
+      "result": "REJECTED",
+      "reason": "Actual complete write acquisition/retirement is missing"
+    },
+    {
+      "case": "map-wait-always-success",
+      "result": "REJECTED",
+      "reason": "Bounded native map waiting did not honor status/deadline/poll bounds: pending-then-success"
+    }
+  ],
+  "lifetime_controls": [
+    {
+      "case": "lost-provider-lifetime-pin",
+      "result": "REJECTED",
+      "reason": "Provider died before the retained original background thread completed"
+    },
+    {
+      "case": "unreviewed-native-allocator",
+      "result": "REJECTED",
+      "reason": "Linked lifecycle unreviewed-native-allocator failed at 0xfffffff0078fe3f8 ['_IOMalloc', '_IOMalloc_external']; recent events []; PCs ['0xfffffff0078fe3f8']; args [64, 0, 0, 0, 0, 0, 0, 0]: Unreviewed lifecycle instruction 0xfffffff0078fe3f8 ['_IOMalloc', '_IOMalloc_external']"
+    }
+  ],
+  "native_mapped_resource_algorithms_are_peers": false,
+  "mapped_resource_layout": {
+    "vm": {
+      "bytes": 616,
+      "fields": {
+        "mappings_": 0,
+        "high_": 40,
+        "next_handle_": 544,
+        "attached_": 552,
+        "poisoned_": 553,
+        "fault_streams_": 576
+      }
+    },
+    "mapping": {
+      "bytes": 64,
+      "fields": {
+        "memory": 0,
+        "handle": 8,
+        "iova": 16,
+        "permissions": 40,
+        "writeback": 44,
+        "jobs": 52
+      }
+    },
+    "memory": {
+      "bytes": 80,
+      "fields": {
+        "descriptor_": 0,
+        "imported_": 8,
+        "owner_uncached_": 17,
+        "mapping_": 24,
+        "spans_": 32,
+        "bytes_": 40,
+        "span_count_": 48,
+        "device_references_": 64,
+        "prepared_": 68,
+        "quarantined_": 69,
+        "write_combined_": 70
+      }
+    },
+    "submit": {
+      "bytes": 3672,
+      "fields": {
+        "jobs_": 0,
+        "ring_count_": 112,
+        "preempt_on_": 312
+      }
+    },
+    "jobs": {
+      "bytes": 16,
+      "fields": {
+        "items": 0,
+        "count": 8
+      }
+    },
+    "job": {
+      "bytes": 3176,
+      "fields": {
+        "active": 1048,
+        "vm_next": 1056,
+        "mapped_count": 1064,
+        "ring": 3160
+      }
+    },
+    "published": {
+      "bytes": 160,
+      "fields": {
+        "published": 0,
+        "submit": 16,
+        "ring": 24,
+        "lock": 72
+      }
+    },
+    "ring": {
+      "bytes": 200,
+      "fields": {
+        "seqno_": 128,
+        "poisoned_": 141
+      }
+    },
+    "map_wait": {
+      "bytes": 32,
+      "fields": {
+        "context": 0,
+        "attempt": 8,
+        "now": 16,
+        "idle": 24
+      }
+    }
+  },
+  "native_map_wait_algorithm_is_peer": false,
+  "map_wait_clock_idle_attempt_are_explicit_peers": true,
+  "iosurface_producer_connected": false,
+  "native_frontend_and_snapshot_algorithms_are_peers": false,
+  "original_surface_algorithms_are_peers": false,
+  "snapshot_mutex_and_fence_read_are_peers": true,
+  "original_surface_and_display_primitive_peers": true,
+  "native_readonly_admission_writes_entry": false,
+  "full_frontend_uses_real_iokit_objects": false,
+  "original_surface_5056_lifecycle_executed": false,
+  "producer_cache_visibility_qualified": false,
+  "gpu_failure_quiescence_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "Sixteen additional paths execute actual linked VM hold/retire, memory references and acquisition, late-map rejection and conservative ring dependency checks. Four compiler layout probes match production object text; three new instruction controls are rejected. Allocation/cache effects remain peers, without GPU completion or visibility qualification. Actual new prelinked kernel instructions also run 22 native snapshot/epoch paths, 13 fresh frontend-helper-to-real-snapshot paths, 17 original IOSurface/display notification-chain paths and 32 complete source/original display lifecycle paths. The native compiler measures the exact private frontend/entry layout; its probe text equals the production object. Fresh admission leaves all entry bytes unchanged. Unknown/poisoned/busy/preempted snapshots hold the old target; successful epoch/regression observations latch refusal. Six instruction controls and two display lifetime controls fail. Mutex/fence-cache reads and the previously documented platform/IOKit/allocator/scheduler/final display callbacks remain explicit peers. Whole native frontend/bridge integration is separately tested under sanitizers. No actual IOKit allocator, GPU cache/DMA/SMMU visibility, presenter quiescence, +5056 original-surface lifecycle, MMIO or phone boot is qualified."
+}

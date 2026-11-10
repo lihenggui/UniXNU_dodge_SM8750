@@ -1,0 +1,118 @@
+{
+  "result": "IOS16_ACTUAL_DATA_SEED_SOURCE_SANITIZERS_PASS",
+  "builder_sha256": "7e5d2520ed46f926f84ee24b914d58f90849010205824e01eac84b33df0b24af",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "source_reference": {
+    "repository": "https://github.com/UniXNU/RamBlock.git",
+    "revision": "4be2d7eb05ef5a98126c91e0302c149140c0e3e1",
+    "path": "sources/UniXNU/drivers/RamBlock",
+    "scope": "Pinned source, seed helpers and native class; compiled against the separate measured iPhone IOStorageFamily ABI, without copying the catalog iPadOS ABI identity"
+  },
+  "source_sha256": {
+    "scripts/check_data_seed.py": "7e5d2520ed46f926f84ee24b914d58f90849010205824e01eac84b33df0b24af",
+    "tests/DodgeDataSeedTest.cpp": "02d495ee28beeba9f818470d04d19c45a238cc425f21a3f3e5068ea978841c90",
+    "scripts/prepare_data_image.py": "9fef596a896352617d0cb68a6deb5979c28868281fcec94e65992e6c185f476d",
+    "sources/UniXNU/drivers/RamBlock/SparseDisk.h": "5ab6516488b7daaef88e788fffef17195e7d2f74746da2206c6d9ed3a63c8c74",
+    "sources/UniXNU/drivers/RamBlock/SeedDisk.h": "d8a654529b5d56703bcf491c3834b407590995eebcb7a26004448990c200e4a0",
+    "sources/UniXNU/drivers/RamBlock/LICENSE": "5b1d3d911103cb0f41641ec0964c5ac1f7e229f57aa072b6ac38bae913a1307b"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-data-image.json": "7d99049bf8990e70f88cb2d991ff0c6e278d44bdd61d26b08782fad7b227b9f5",
+    "reports/ios16-data-volatile-image.json": "9d9907c749e3870f71f9944176331f76efd0392207afda3160141cf97f33bf37"
+  },
+  "artifacts": {
+    "build/cph2653-data-seed-host/data-seed-test": "25bea3c7ad908698cddecd423632dd758030521033c12f635aee942e07787f1a",
+    "build/cph2653-data-seed-host/volatile-2GiB.json": "61faf43af58d6bbc4aaa9fa93491459ddf40cc5f52642f996827ecebf0b643b7",
+    "build/cph2653-data-seed-host/compact-3GiB.json": "3308020d45466df7b1059fb3bc2317872b713b99ec3d0f045eccedf5b0c0aa94"
+  },
+  "host_compiler": "/usr/bin/x86_64-linux-gnu-g++-11",
+  "host_compiler_sha256": "2360901d864cf10bfd6296e261cb2c14053552a80377761ab07146ec9ec9a2c0",
+  "host_crypto_library": "/usr/lib/x86_64-linux-gnu/libcrypto.so.3",
+  "host_crypto_library_sha256": "7cc817ff1841b59516d684f357bc0c3fc2cc52c3fa9b4ffb8ce8bdc215f02915",
+  "sanitizers": [
+    "ASan",
+    "UBSan",
+    "LeakSanitizer"
+  ],
+  "case_count": 47,
+  "tests": {
+    "compact-3GiB": {
+      "result": "PASS",
+      "logical_bytes": 3221225472,
+      "nonzero_pages": 176,
+      "resident_seed_bytes": 720896,
+      "encoded_input_sha256": "e559ad3252493008d053e0a9641ddb5eeaff9c3f5d121ee75ca1e23a31b1b0d6",
+      "case_count": 18,
+      "cases": [
+        "actual-packed-layout",
+        "actual-compact-import",
+        "every-original-nonzero-page",
+        "actual-source-seed-identity",
+        "compact-lookup-boundaries",
+        "truncated-header",
+        "bad-magic",
+        "bad-version",
+        "bad-page-size",
+        "zero-logical-size",
+        "oversize-logical-size",
+        "misaligned-logical-size",
+        "excessive-count",
+        "zero-extent",
+        "extent-offset-overflow",
+        "misaligned-extent",
+        "trailing-data",
+        "malformed-import-has-no-allocation"
+      ]
+    },
+    "volatile-2GiB": {
+      "result": "PASS",
+      "logical_bytes": 2147483648,
+      "nonzero_pages": 176,
+      "resident_seed_bytes": 720896,
+      "encoded_input_sha256": "ad4cf27e8f1be50891d5549aabff7c4b28fbf17e7daacd3fbe3f9bcb03ee9cd3",
+      "case_count": 29,
+      "cases": [
+        "actual-packed-layout",
+        "actual-compact-import",
+        "every-original-nonzero-page",
+        "actual-source-seed-identity",
+        "compact-lookup-boundaries",
+        "actual-volatile-sparse-import",
+        "entire-logical-image-through-source-read",
+        "write-existing-seed-page",
+        "write-unallocated-hole-and-cross-page",
+        "write-last-sector",
+        "unaligned-short-write",
+        "zero-overrun-and-overflow-ranges",
+        "truthful-short-descriptor-transfers",
+        "zero-allocation-failure",
+        "partial-allocation-failure",
+        "writes-preserve-immutable-seed",
+        "truncated-header",
+        "bad-magic",
+        "bad-version",
+        "bad-page-size",
+        "zero-logical-size",
+        "oversize-logical-size",
+        "misaligned-logical-size",
+        "excessive-count",
+        "zero-extent",
+        "extent-offset-overflow",
+        "misaligned-extent",
+        "trailing-data",
+        "malformed-import-has-no-allocation"
+      ]
+    }
+  },
+  "entire_2GiB_image_read_through_actual_ramSparseIO_and_hashed": true,
+  "actual_source_helpers_unmodified": true,
+  "actual_sparse_writes_and_truthful_short_completion_checked": true,
+  "physical_storage_used": false,
+  "filesystem_mounted": false,
+  "phone_operations": "none",
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "Actual pinned RamBlock header implementations, real APFS seeds and host allocation/descriptor/SHA callbacks. Volatile writes, failure cleanup by the owning harness, boundaries and short transfers are checked in host RAM. This does not execute the complete original IOKit/APFS stack or qualify writable Data on the phone."
+}

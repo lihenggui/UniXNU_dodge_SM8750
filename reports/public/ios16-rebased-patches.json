@@ -1,0 +1,258 @@
+{
+  "result": "PASS",
+  "scope": "Strict ordered application on a clean pinned source; compilation, binary ABI and hardware are separate.",
+  "baseline_tag": "xnu-8796.141.3",
+  "baseline_revision": "1b191cb58250d0705d8a51287127505aa4bc0789",
+  "upstream_unixnu_revision": "3fa5ff5f409398c0555a9561d6437ce5d4c3b3b7",
+  "rebased_patch_count": 61,
+  "not_required": {
+    "pgz-aligned-validation.patch": "Darwin 22 has no zone_id_require_aligned implementation; retain its size-aware zone_id_require.",
+    "published-freezer-condition.patch": "The malformed Darwin 23 FREEZE_ENABLED_DEFAULT condition is absent from Darwin 22."
+  },
+  "patches": [
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/apple-only-cpu-tunables.patch",
+      "sha256": "262b9c31b29b259b3a69fc1c56d32d63a3910fceb9bf736eda58db7988b08f20"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/architectural-timer-entry.patch",
+      "sha256": "32bd57d20c49ddf6cc6fab800f7502079ce369c4bd7af386f0d7277a4ee11bb0"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/armvirt-platform-personality.patch",
+      "sha256": "c933d5fd9c623c98ee5d7e69ebddc73cb5e3afa17c80a825532d20c12bac58bc"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/cxx-flag-dependencies.patch",
+      "sha256": "323a0342b78c327baf9a2c38616f994987eb2d0fa5292c7e3193509379a08ce8"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/disabled-deferred-reclaim.patch",
+      "sha256": "f49375ba9bcb803ad7658a893e4c67e630761175d15dd5ae5c3d789d3f3f27b1"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/external-archive-dependencies.patch",
+      "sha256": "431c3ec6959b71045fb1675cce808fff7cb1f424cc87a9194bfa35332a9d2cfa"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/kernel-sdk-root.patch",
+      "sha256": "35234919aaab53637e56838530f3a2ac3a46f7902734467c35d7b7e322d5d563"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/local-availability.patch",
+      "sha256": "0fd2c90be46717296edf9f09f6787d4a5411dade19320cbe29a2c437de7814d3"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/mockfs-intermediate-lookup.patch",
+      "sha256": "dd114d6a250ce4900c605e8e7aac4e3af6aeef6cdd443be3c7f69d343cb5ff89"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/mockfs-memory-device-width.patch",
+      "sha256": "506f4ba36e30a700f0d27370d07abbde6e2c689d13fbad3400a6b940569ae30a"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/mockfs-statfs.patch",
+      "sha256": "cd1f265780103310e981c9b67e6f52ac8ab947b9b89ae4497796ac5ff55dc23f"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/mockfs-test-file.patch",
+      "sha256": "ccaf9d0dc02b42231154f9848c655dc692edfbc71a67b64ce7935bab54f405df"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/mockfs-typed-allocation.patch",
+      "sha256": "85ce1e6b2c6f488a890c32c4df847811eedc10df4eaf7c57f8aff02fbdc82f9b"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-4k-bootstrap-capacity.patch",
+      "sha256": "cd334e681627c22fc2ba4c1435ebac154ef2fd89eddc6ea4092e509227f1b010"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-4k-signature-hash-cache.patch",
+      "sha256": "1dfdc0f7f785094bd23fc4fc2d4b6fefc9ea1335a73611d3dfbb3f4acf933ef3"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-4k-user-abi.patch",
+      "sha256": "bbd91658aca5c00681fa0b63f750329d77463e6e31dd29161f654b0ee4cf898c"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-aes-personality.patch",
+      "sha256": "6cb179ad838c72a2fd530fd75796d5b3f52a63ed8b090f2dfe91e3692ed22202"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-arm-pan.patch",
+      "sha256": "238a122e7f6756dface066ba683021fd523b4cff7e62e1d112857edd909c007b"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-dt-panic-region.patch",
+      "sha256": "481bf9748fab9abc1ac5d31f1a545363f001e475e462bcdcf000d80c979debcb"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-lookup-trace.patch",
+      "sha256": "19855b5423f85b2b744ea0bac14b109c4087f4c5e74994a31f8cde5bacd67824"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-priv-work-interval.patch",
+      "sha256": "6250b487e67dd35e97da59cc79040aa5d73f11106fbe5bc07e81047c4c33e2ed"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-quiet-managed-page-report.patch",
+      "sha256": "bfb69dbcbf25c409792cd5a36e9471ba07040e64bdd383b14b20519b965af988"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-text-fixup.patch",
+      "sha256": "1738a87bbe19a39f4523b1e417f3ce04d978ba5441695fd2673db9e3ad954752"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-trust-cache-runtime.patch",
+      "sha256": "99e5db4c9da7fe22de1b37e8bcfe8ec01581c1351f2fa4e1a034e58019c58ac1"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-union-getattrlistbulk.patch",
+      "sha256": "b08bd4e61d2eaecf7a9ce3df5b893d9078c2445845ebf5737c94c37386d39be0"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-union-lower-directory.patch",
+      "sha256": "5f8fe869056a24a49b81b58d040cff40fcd09949e72aaeb512dda9ccdbbd6e4b"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-work-interval-soft-fail.patch",
+      "sha256": "466897048883df1392b468228b926d3c1efd2eef15a13b6c36361399235a72a0"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-work-interval-trace.patch",
+      "sha256": "f2c11511c172929572c3b075b0b0f3b8ae2c63d6f229c489c0339acc4f39815c"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/native-work-interval-instance.patch",
+      "sha256": "7d84ec4cf1b52e51039a99a07643ff051306e5ee4d0bde1a3b1c86761db9bc8c"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/non-apple-cache-monitor.patch",
+      "sha256": "f0221d96ecd1e0e96361852d78128d2e42f8dcddf3e6acad616dd0e13768b6e9"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/non-apple-iommu-bootstrap.patch",
+      "sha256": "c3ae451b9e30a2469dc54d554ec163eb671df0253872fc822721d62bf812bfd4"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/non-apple-pmap-field.patch",
+      "sha256": "977d53cd96410bc2cbf206d4426e01b42ac25fab81f8cf499b7eee377636d516"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/null-root-media.patch",
+      "sha256": "e192ac122164076fda1d3fbd05e3f2d052b10adb397ebad230e7b7c2982f4bb4"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/offline-component-load-probes.patch",
+      "sha256": "79a4f6090c532e2423b8c9d9ef6c3f93420f6d7932a458c9a63aed5474cc8a3c"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/offline-legacy-start.patch",
+      "sha256": "cf14fec709fb1665a12a4d67a0805ed39375bf3d66d4f5afee8a26081c3dd7d0"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/offline-native-gpu-broker.patch",
+      "sha256": "1db8d808a519fb6c3120fda5174756302c728cca2655cd75dadc45ee31a8eb1f"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/offline-owner-boot-manifest.patch",
+      "sha256": "246dea8c751f994ca1fc52c61054f5a54ded8571b6bc41f3ea1edc5ebd90f13f"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/offline-owner-cache-carrier.patch",
+      "sha256": "d751d1ff1e61fa79bfbdaf923c6639fabf5a7ef8c82082c2397cc234f2758b09"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/offline-owner-root-binding-audit.patch",
+      "sha256": "0c7b6528322e9f262be82c4cbb6bd762eff6b29cbe910498c8462cecfb8d72b8"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/offline-owner-root-crypto-probe.patch",
+      "sha256": "934f76992cb6fb30f370ab223de77d5a3fa5a4b3a579b3800c062f005b2715eb"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/offline-owner-systemos-mount.patch",
+      "sha256": "3f02e063e150d4b235112ac2748c18ad3a16abfadec09e6ecb9669f575d728e8"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/offline-owner-z-air-init.patch",
+      "sha256": "07a904ee832599f996a7fb64e6f05d406d6d6cf5e85d945ba98c486447cfda69"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/offline-pgz-alignment-probe.patch",
+      "sha256": "e87d2b6c9c63aed2b0dc58fb13724332096ca3ddd7f39d95fc5064e60ffd4356"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/public-entitlements-header.patch",
+      "sha256": "ff4ca93bf834f750f9f1442733cd94995b1b08d9a509d1a956e71a97ffa804c3"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/source-corecrypto14-bootstrap.patch",
+      "sha256": "041f0d0627e83f5c276cfa87130cec04907cdd02682428d069af2a9af2a16ebd"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/source-machine-layer.patch",
+      "sha256": "6528daad199f0181397a3732190d808ca030be80aa467af1e4e370ba67bcec34"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/source-pthread-bootstrap.patch",
+      "sha256": "9cf94534c4710b3983f5fc1c420e2ebd8bfb3a562e44b88a3428ab1813fe31b2"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/zzw-native-adreno-sandbox-grant.patch",
+      "sha256": "24cb14ae6e30b84df8f9c3d340d9bdb27201517a4562fbe2d55c147ce73d241a"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/zzwb-native-sandbox-grant-set-properties.patch",
+      "sha256": "01735a2fc42dc913aabbefc3b99e4402a3a8126526d105eb7c85cb5872feb794"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/zzx-pmap-sync-64bit-pa.patch",
+      "sha256": "dfe5a91cf968a0a0b51d72c846e0764b08b859cef71d708720ba11368d84a72a"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/zzy-native-gpu-addon-mount.patch",
+      "sha256": "d2c624ff1ecd195f8695199fd370ebe6039a5565d1d2001d3e9a0c51ba630198"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/zzy-staged-system-apps.patch",
+      "sha256": "59bfae4ffb6cc61638a455bb0d2c9c55bec0c839eb0b2bae3548ce7c56c7549a"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/zzyb-native-cryptex-os-view.patch",
+      "sha256": "44aa72293518943a903f5fea6015a0cc0a7e7ebb22baaacecac789e9e9a75594"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/arch/zzyc-owner-skip-launch-constraints.patch",
+      "sha256": "97413fd0e15cf90f5646f3bd5e2b6e6535d30bcafe69e74c1d4cc4628c07cb1b"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/xnu/xnu-8796.141.3-security-init.patch",
+      "sha256": "13d3b896283a4efef77ab9890e5d984f109f55ac8a26064b661b413c0de48712"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/xnu/xnu-8796.141.3-sparse-index.patch",
+      "sha256": "bf754a4e956a33a29caf32aae875aa59e636a254ccb4723b071a59b3e90e9329"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/xnu/xnu-8796.141.3-typed-delete-and-uio-alignment.patch",
+      "sha256": "bf878392a87b08e3b57d65863f5b9b851ad9327d728451f8718dfb55d2b8b658"
+    },
+    {
+      "path": "profiles/os/ios-16.7.16-20H392/patches/xnu/xnu-8796.141.3-vfs-getvfs-with-vfsops.patch",
+      "sha256": "48850437e9c1571ab593444eb9c12cb81612586d36dc6c9994a12da513e7437a"
+    },
+    {
+      "path": "patches/xnu/0001-sm8750-topology-darwin22.patch",
+      "sha256": "20add414e0e6a5decdbfce230134d0de4e67e0e487a25f2bdd2db3a08e938594"
+    },
+    {
+      "path": "patches/xnu/0002-sm8750-disable-unimplemented-apple-kpc.patch",
+      "sha256": "9a5d870205f13ca4503a4e88dddc892bb6214ba83c39542cba9a74f4db2051ad"
+    },
+    {
+      "path": "patches/xnu/0003-preserve-osmetaclass-destructor-poison.patch",
+      "sha256": "2f87cce4b28b5621b96cfa1fd10c2e0e070f5fa987daa40c66f1bae0252ef8d4"
+    }
+  ]
+}

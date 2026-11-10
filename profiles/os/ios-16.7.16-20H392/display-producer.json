@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "request_bytes": 2424,
+  "requested_layers": 792,
+  "ready_layers": 796,
+  "registered_byte": 1349,
+  "cancelled_byte": 1354,
+  "new_surfaces": 2184,
+  "effective_surfaces": 2216,
+  "surface_count": 4,
+  "queue_submit_slot": 276,
+  "queue_submit_prototype": "void (self)",
+  "validation_slot": 282,
+  "validation_prototype": "bool (self, request)",
+  "registration": {
+    "name": "original-registration",
+    "address": "0xfffffff005c17020",
+    "bytes": 904,
+    "sha256": "ab43e36489efcf6493bef5840a52d76f011bdab046e211615b7c5fc7e6102075"
+  },
+  "callback_update": {
+    "name": "original-gated-ready-update",
+    "address": "0xfffffff005c0bfb0",
+    "bytes": 1108,
+    "sha256": "8092193570893436fc1c1a2aa7a90657b9fe8a33b56180c89830833fd7ca5dfa"
+  },
+  "callback_action": {
+    "name": "original-callback-action",
+    "address": "0xfffffff005c0bde0",
+    "bytes": 464,
+    "sha256": "4f76cc1dd3f85df855077511ba85e5964063960bd854a58d9bc49f76be4bc903"
+  },
+  "enqueue_action": {
+    "name": "original-enqueue-action",
+    "address": "0xfffffff005c16d94",
+    "bytes": 652,
+    "sha256": "6d5c94cfa6519ef2b91d1b5a385ce015dcaaf04aa91a67556513cc4852420547"
+  },
+  "stock_ready_compare": {
+    "name": "stock-ready-admission",
+    "address": "0xfffffff005cd5918",
+    "bytes": 16,
+    "sha256": "9f5e419bd70e03ebdefd4d61270534cc46aebb457e3404d706c297418613d7f0"
+  },
+  "surface_completion_import": {
+    "stub": "0xfffffff005c2719c",
+    "target": "0xfffffff005a51a94"
+  },
+  "secondary_mask_is_persistent_disable_mask": false,
+  "original_iosurface_fence_implementation_executed": false,
+  "producer_hardware_visibility_qualified": false
+}

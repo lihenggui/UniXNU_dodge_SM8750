@@ -1,0 +1,27 @@
+{
+  "result": "NAME_MAPPING_ONLY",
+  "original_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "native_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "selected_dependency_count": 23,
+  "pointer_counts": {
+    "unique_name_pointer_sites": 18859,
+    "component_pointer_sites": 9338
+  },
+  "unresolved_target_count": 0,
+  "unresolved_targets": [],
+  "binary_abi_qualified": false,
+  "early_security_initializer_qualified": false,
+  "hardware_tested": false,
+  "scope": "Complete selected pointer-table name survey only; names do not prove layouts/calling conventions, instruction relocation or initialization.",
+  "strict_prelink": {
+    "exit_code": 0,
+    "log": "analysis/ios16-prelink.log",
+    "candidate_preserved_on_failure": null,
+    "diagnostic_tail": [
+      "+ python3 build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/kits/XnuPrelink/emit_prelink.py --kernel build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped --prelinked build/unixnu/ipsw/20H392/kernelcache.decompressed --slide=-0x1000000 --root com.apple.driver.AppleARMPlatform --root com.apple.iokit.IOStorageFamily --root com.apple.filesystems.apfs --root com.apple.driver.AppleMobileFileIntegrity --root com.apple.kext.CoreTrust --root com.apple.security.sandbox --root com.apple.kec.corecrypto --root com.apple.kec.Libm --early-security-init com.apple.driver.AppleMobileFileIntegrity=0xfffffff005704320 --early-security-init com.apple.security.sandbox=0xfffffff0064bcd80 --early-security-fixture profiles/os/ios-16.7.16-20H392/security-init.json --output build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/.prelink-2j82roka/kernel.macho",
+      "== kernel: build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho sha256 5434b91d048c7ac3e72fdace018caf3f013bea656d5cdaae989fbc7404cff854"
+    ],
+    "allow_missing": false,
+    "substitute_addresses": false
+  }
+}

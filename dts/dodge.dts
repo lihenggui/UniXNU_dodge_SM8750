@@ -1,0 +1,17 @@
+/dts-v1/;
+/include/ "sm8750.dtsi"
+
+/ {
+    model = "OnePlus 13 CPH2653";
+    compatible = "oneplus,dodge", "qcom,sm8750";
+
+    // First 4 GiB of the captured high bank [0xa00000000, 0xe00000000).
+    // The loader must still allocate from the actual UEFI memory map.
+    memory@a00000000 {
+        device_type = "memory";
+        reg = <0xa 0 0x1 0>;
+    };
+};
+
+// Initial source bring-up uses one core; all observed affinities remain in the SoC DTSI.
+&cpu0 { status = "okay"; };

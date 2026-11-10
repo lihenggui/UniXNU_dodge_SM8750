@@ -1,0 +1,151 @@
+{
+  "result": "IOS16_STOCK_BACKEND_CLASS_AND_LIMITED_LEAF_AUDIT_PASS",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "builder_sha256": "15cf0f8d6520666fb6f3b813405dcc2488de07d96e3a68949f1a34bdaed9169c",
+  "contract": "profiles/os/ios-16.7.16-20H392/display-backend-discovery.json",
+  "contract_sha256": "c191fafdd284df220bcc2ddcd9487a3e6d40a9a34f3308812351bf3e178f2f26",
+  "component": "com.apple.driver.AppleMobileDispH10P",
+  "classes": {
+    "UnifiedPipeline": {
+      "metadata": "0xfffffff007a9a338",
+      "parent_metadata": "0xfffffff007a45540",
+      "instance_bytes": 7896,
+      "vptr": "0xfffffff006e06980",
+      "observed_nonzero_virtual_prefix_entries": 368,
+      "full_vtable_boundary_qualified": false,
+      "vtable_prefix_sha256": "8d23ae412bf8f9b0dd0fcb3381517a9a9ab45996233444937c1a3e0834443981",
+      "metaclass_vptr": "0xfffffff006e07518",
+      "allocation": {
+        "address": "0xfffffff005cce498",
+        "bytes": 32,
+        "sha256": "1c0a1c2b2d8c46a5d65e8f7b13718b29654ba6ba44b33db91413f751924c4408"
+      },
+      "constructor": {
+        "address": "0xfffffff005cce4cc",
+        "bytes": 100,
+        "sha256": "09db3ac0047a83c3a6b864db18e923ef7844c1519231db6d02b42395a2c98884"
+      },
+      "legacy_backend_targets": {
+        "211": "0xfffffff005cd4b50",
+        "212": "0xfffffff005cd4ae4",
+        "242": "0xfffffff005cdd374",
+        "243": "0xfffffff005cdd380",
+        "292": "0xfffffff005cd4af4",
+        "293": "0xfffffff005cd4b04",
+        "321": "0xfffffff005cd4680",
+        "322": "0xfffffff005cdd41c",
+        "329": "0xfffffff005cdd430"
+      }
+    },
+    "AppleCLCD": {
+      "metadata": "0xfffffff007a9a360",
+      "parent_metadata": "0xfffffff007a9a338",
+      "instance_bytes": 7896,
+      "vptr": "0xfffffff006e075b0",
+      "observed_nonzero_virtual_prefix_entries": 368,
+      "full_vtable_boundary_qualified": false,
+      "vtable_prefix_sha256": "e17c8d9fb9446b0316041117b7179f2838cbfe7d249a66c882b3ccc0a566bd79",
+      "metaclass_vptr": "0xfffffff006e08148",
+      "allocation": {
+        "address": "0xfffffff005cce72c",
+        "bytes": 32,
+        "sha256": "876dec0eaa74b4da735de5125ea78518c162f5348a30266e8664779f6f5c1d67"
+      },
+      "constructor": {
+        "address": "0xfffffff005cce760",
+        "bytes": 112,
+        "sha256": "f6a635b1bc64233dac6bee50d1b67c35bac43e630af8cb373c81bd042f07d460"
+      },
+      "legacy_backend_targets": {
+        "211": "0xfffffff005cd4b50",
+        "212": "0xfffffff005cd4ae4",
+        "242": "0xfffffff005cdd374",
+        "243": "0xfffffff005cdd380",
+        "292": "0xfffffff005cd4af4",
+        "293": "0xfffffff005cd4b04",
+        "321": "0xfffffff005cd4680",
+        "322": "0xfffffff005cdd41c",
+        "329": "0xfffffff005cdd430"
+      }
+    }
+  },
+  "legacy_backend_slots": [
+    211,
+    212,
+    242,
+    243,
+    292,
+    293,
+    321,
+    322,
+    329
+  ],
+  "arm64_leaf_cases": [
+    {
+      "case": "unsupported-242-False",
+      "result": "PASS",
+      "return_x0": "0xe00002c7",
+      "object_writes": 0,
+      "hardware_accesses": 0
+    },
+    {
+      "case": "unsupported-242-True",
+      "result": "PASS",
+      "return_x0": "0xe00002c7",
+      "object_writes": 0,
+      "hardware_accesses": 0
+    },
+    {
+      "case": "unsupported-243-False",
+      "result": "PASS",
+      "return_x0": "0xe00002c7",
+      "object_writes": 0,
+      "hardware_accesses": 0
+    },
+    {
+      "case": "unsupported-243-True",
+      "result": "PASS",
+      "return_x0": "0xe00002c7",
+      "object_writes": 0,
+      "hardware_accesses": 0
+    },
+    {
+      "case": "noop-False",
+      "result": "PASS",
+      "return_x0": "0x0",
+      "object_writes": 0,
+      "hardware_accesses": 0
+    },
+    {
+      "case": "noop-True",
+      "result": "PASS",
+      "return_x0": "0x200000",
+      "object_writes": 0,
+      "hardware_accesses": 0
+    },
+    {
+      "case": "status-byte-0",
+      "result": "PASS",
+      "return_x0": "0x0",
+      "object_writes": 0,
+      "hardware_accesses": 0
+    },
+    {
+      "case": "status-byte-1",
+      "result": "PASS",
+      "return_x0": "0x1",
+      "object_writes": 0,
+      "hardware_accesses": 0
+    }
+  ],
+  "original_scalar_leaf_bytes_changed": false,
+  "stock_subclass_constructors_executed": false,
+  "original_device_objects_constructed": false,
+  "controller_forwarders_executed": false,
+  "completion_report_body_executed": false,
+  "hardware_access_methods_executed": false,
+  "stock_subclass_selected": false,
+  "full_backend_override_prototypes_qualified": false,
+  "hardware_tested": false,
+  "scope": "Original Legacy -> UnifiedPipeline -> AppleCLCD metadata/size and a nonzero virtual prefix; nine inherited backend targets identified. Eight CPU cases execute unchanged unsupported/noop/raw-byte leaves with synthetic memory only. This neither classifies all override arguments nor ports the controller, request lifecycle, timing semantics or Apple hardware code."
+}

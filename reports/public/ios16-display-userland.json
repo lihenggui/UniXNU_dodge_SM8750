@@ -1,0 +1,186 @@
+{
+  "result": "IOS16_ORIGINAL_DISPLAY_SWAP_SETTERS_ARM64_PASS",
+  "contract": "profiles/os/ios-16.7.16-20H392/display-userland.json",
+  "contract_sha256": "62e6b4cebe56b3afcd11a3bab29d3ba83aa2c7e3bb7baec173e085f419991760",
+  "builder_sha256": "aa297cef6c67b2353ff7baa89f2acba7f18f397a1d7f2575612bc42aa986a8f0",
+  "cache_reader_sha256": "16e4e2c9946333b86cc444c1ad8cb4d5879bd1fd4b44bcc62beedf26136686d2",
+  "cache_report_sha256": "50c9d66e5e8a3ed3e05a78fe586afc58fc0e6461b854bd40a1479b44d67454d9",
+  "arm64_cases": [
+    {
+      "case": "default-layer-0-17x4",
+      "result": "PASS",
+      "packet_requested": 1,
+      "packet_initial_ready": 0,
+      "default_layer_word": 1,
+      "default_raw_float_bits": 0,
+      "transform_word": 0,
+      "original_display_size_calls": 1,
+      "original_kernel_size_actions": 1
+    },
+    {
+      "case": "default-layer-1-17x4",
+      "result": "PASS",
+      "packet_requested": 2,
+      "packet_initial_ready": 0,
+      "default_layer_word": 1,
+      "default_raw_float_bits": 0,
+      "transform_word": 0,
+      "original_display_size_calls": 1,
+      "original_kernel_size_actions": 1
+    },
+    {
+      "case": "default-layer-2-17x4",
+      "result": "PASS",
+      "packet_requested": 4,
+      "packet_initial_ready": 0,
+      "default_layer_word": 1,
+      "default_raw_float_bits": 0,
+      "transform_word": 0,
+      "original_display_size_calls": 1,
+      "original_kernel_size_actions": 1
+    },
+    {
+      "case": "default-layer-3-17x4",
+      "result": "PASS",
+      "packet_requested": 8,
+      "packet_initial_ready": 0,
+      "default_layer_word": 1,
+      "default_raw_float_bits": 0,
+      "transform_word": 0,
+      "original_display_size_calls": 1,
+      "original_kernel_size_actions": 1
+    },
+    {
+      "case": "default-layer-0-1440x3168",
+      "result": "PASS",
+      "packet_requested": 1,
+      "packet_initial_ready": 0,
+      "default_layer_word": 1,
+      "default_raw_float_bits": 0,
+      "transform_word": 0,
+      "original_display_size_calls": 1,
+      "original_kernel_size_actions": 1
+    },
+    {
+      "case": "default-layer-1-1440x3168",
+      "result": "PASS",
+      "packet_requested": 2,
+      "packet_initial_ready": 0,
+      "default_layer_word": 1,
+      "default_raw_float_bits": 0,
+      "transform_word": 0,
+      "original_display_size_calls": 1,
+      "original_kernel_size_actions": 1
+    },
+    {
+      "case": "default-layer-2-1440x3168",
+      "result": "PASS",
+      "packet_requested": 4,
+      "packet_initial_ready": 0,
+      "default_layer_word": 1,
+      "default_raw_float_bits": 0,
+      "transform_word": 0,
+      "original_display_size_calls": 1,
+      "original_kernel_size_actions": 1
+    },
+    {
+      "case": "default-layer-3-1440x3168",
+      "result": "PASS",
+      "packet_requested": 8,
+      "packet_initial_ready": 0,
+      "default_layer_word": 1,
+      "default_raw_float_bits": 0,
+      "transform_word": 0,
+      "original_display_size_calls": 1,
+      "original_kernel_size_actions": 1
+    },
+    {
+      "case": "disabled-layer-0",
+      "result": "PASS",
+      "initial_ready_bit_set_for_null_surface": true
+    },
+    {
+      "case": "disabled-layer-1",
+      "result": "PASS",
+      "initial_ready_bit_set_for_null_surface": true
+    },
+    {
+      "case": "disabled-layer-2",
+      "result": "PASS",
+      "initial_ready_bit_set_for_null_surface": true
+    },
+    {
+      "case": "disabled-layer-3",
+      "result": "PASS",
+      "initial_ready_bit_set_for_null_surface": true
+    },
+    {
+      "case": "invalid-layer-4",
+      "result": "REFUSED_WITHOUT_PACKET_WRITES"
+    },
+    {
+      "case": "invalid-layer-31",
+      "result": "REFUSED_WITHOUT_PACKET_WRITES"
+    },
+    {
+      "case": "invalid-layer-4294967295",
+      "result": "REFUSED_WITHOUT_PACKET_WRITES"
+    },
+    {
+      "case": "begin-null-token-output",
+      "result": "PASS"
+    },
+    {
+      "case": "begin-transport-failure",
+      "result": "REFUSED_WITHOUT_PACKET_WRITES"
+    },
+    {
+      "case": "original-size-chain-17x4",
+      "result": "PASS",
+      "unchanged_kernel_functions": 3,
+      "geometry_callback_peer": false
+    },
+    {
+      "case": "original-size-chain-1440x3168",
+      "result": "PASS",
+      "unchanged_kernel_functions": 3,
+      "geometry_callback_peer": false
+    },
+    {
+      "case": "original-size-chain-4294967295x2147483648",
+      "result": "PASS",
+      "unchanged_kernel_functions": 3,
+      "geometry_callback_peer": false
+    },
+    {
+      "case": "original-size-cache-hit",
+      "result": "PASS",
+      "kernel_queries": 1
+    },
+    {
+      "case": "original-zero-width-size-requeries",
+      "result": "PASS"
+    },
+    {
+      "case": "original-size-transport-failure",
+      "result": "PASS"
+    }
+  ],
+  "unchanged_original_functions": [
+    "_kern_SwapBegin",
+    "_kern_SwapSetLayer",
+    "_kern_GetDisplaySize"
+  ],
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "original_size_kernel_functions_executed": 3,
+  "original_kernel_size_scalar_to_double_dataflow_checked": true,
+  "original_instruction_bytes_changed": false,
+  "fp_simd_runs_only_in_userspace_cpu_fixture": true,
+  "io_transport_marshalling_surface_id_and_mutex_are_peers": true,
+  "display_size_callback_is_peer": false,
+  "original_iosurface_executed": false,
+  "full_userspace_or_dyld_executed": false,
+  "request_color_effect_semantics_complete": false,
+  "hardware_tested": false,
+  "scope": "Original iPhone framework symbols and unchanged swap-begin/layer-setter instructions produce bounded packet fixtures. Default one-layer integer geometry, flags and scalar bit patterns are observed without guessing alpha semantics. The original display-size callback executes unchanged, through an IOKit marshalling peer into three unchanged original kernel functions and back to user CGSize/cache conversion. Surface ID, mutex and transport are peers; no original service, IOSurface or notification lifecycle executes."
+}

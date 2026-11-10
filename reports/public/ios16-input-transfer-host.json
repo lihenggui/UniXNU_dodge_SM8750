@@ -1,0 +1,52 @@
+{
+  "result": "CPH2653_GENI_TRANSFER_COMPLETION_RECOVERY_AND_TERMINAL_SOURCE_SANITIZERS_PASS",
+  "builder_sha256": "e139bb188f0dfbbab8c88c5d3888dbab93e8594a610e89d6266af2ae12169e5f",
+  "source_sha256": {
+    "scripts/check_input_transfer_host.py": "e139bb188f0dfbbab8c88c5d3888dbab93e8594a610e89d6266af2ae12169e5f",
+    "scripts/input_geni_overlay.py": "4d77db8c9472609809f489910b19ab1b510b6bf41a24e3c94cc56e3075fae47e",
+    "drivers/DodgeInput/geni/GeniSpi.c": "c8926a67f8119b2c8caaa6ac711e8cd5a21f1d5b6eacc4d08b55df99e65b25a3",
+    "sources/UniXNU/drivers/QcomGeniSpi/GeniSpi.c": "2042cfc9647391e24d5a558202046425ac62a05adfc73afe769367b8374e3f91",
+    "patches/oneplus13/0008-geni-transfer-completion.patch": "55b8ec3dade55201c7ccdbd5b7cb4f4af5d7e8ec1aa4d9994c74bf22beee332b",
+    "sources/UniXNU/drivers/QcomGeniSpi/GeniSpi.h": "e73891e4571c5323bca27aaf987bafa002856dfa1dcee156ff31b119e2d3ae3c",
+    "drivers/DodgeInput/DodgeGeniTransfer.cpp": "fcf458086c3b3c19b575027a5296f7a4bdf200bbf9504a1cf2e1959912f3f370",
+    "drivers/DodgeInput/DodgeGeniTransfer.h": "ce308dcfe918d988012398a3daa708806701bd31a420c67c0aa4bfc30083e1ae",
+    "tests/DodgeGeniTransferTest.cpp": "e46648438474848fa6458febefb7108c85dbdd889fd216ce22dd1ff824d451c9"
+  },
+  "case_count": 224,
+  "tests": {
+    "production": {
+      "result": "PASS",
+      "case_count": 224,
+      "positive_wire_data_cases": 144,
+      "terminal_reentry_checked": true,
+      "actual_transport_and_guard": true,
+      "binary": "build/cph2653-input-transfer/production-transfer-host",
+      "sha256": "76b68153cc5addc021838818c0062d4703cc4d9b6deb8ed8b03738b09ce6e080"
+    },
+    "original-control": {
+      "result": "REJECTED",
+      "raw_original_return": 0,
+      "command_still_active": true,
+      "rx_invalidated_before_command_done": true,
+      "binary": "build/cph2653-input-transfer/original-control-transfer-host",
+      "sha256": "f8a1e2da0213eda0a8b83635ad13993952bc436f936abde92e54bd4c50b5b27e"
+    }
+  },
+  "local_overlay": {
+    "path": "patches/oneplus13/0008-geni-transfer-completion.patch",
+    "sha256": "55b8ec3dade55201c7ccdbd5b7cb4f4af5d7e8ec1aa4d9994c74bf22beee332b",
+    "base_source": "sources/UniXNU/drivers/QcomGeniSpi/GeniSpi.c",
+    "base_source_sha256": "2042cfc9647391e24d5a558202046425ac62a05adfc73afe769367b8374e3f91",
+    "output_source": "drivers/DodgeInput/geni/GeniSpi.c",
+    "output_source_sha256": "c8926a67f8119b2c8caaa6ac711e8cd5a21f1d5b6eacc4d08b55df99e65b25a3",
+    "scope": "Device-local BSD derivative: command/data/idle completion, bounded cancel/abort/reset ACK and FIFO extent validation; shared source/revision unchanged."
+  },
+  "original_source_unchanged": true,
+  "dma_command_data_and_idle_all_required": true,
+  "bounded_cancel_abort_and_requested_channel_reset_ack": true,
+  "terminal_error_disables_future_io": true,
+  "mmio_slave_dma_cache_and_reset_behavior_are_peers": true,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Actual local C transport and C++ ownership/terminal guard under ASan/UBSan/LeakSanitizer. Original component control demonstrates data-DMA completion returning while command/wire is active and invalidating RX early. The local derivative waits data+command+idle, bounds FIFO extents/cancel/abort/channel-reset ACK and never retries a failed device. No physical DMA, SMMU, cache, controller-reset or touch functionality is qualified."
+}

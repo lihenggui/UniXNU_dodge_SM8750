@@ -1,0 +1,70 @@
+{
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "images": [
+    {
+      "name": "OS",
+      "source": "087-86698-044.dmg",
+      "source_sha256": "80f426d5b8fca8552f95be427434f1911dbb4c2c6d28aad94f2426ddd0c92483",
+      "raw_bytes": 5635081728,
+      "raw_sha256": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906",
+      "path": "build/ios16-volumes/OS.raw",
+      "apfs": {
+        "container": {
+          "offset": 17408,
+          "xid": 255,
+          "block_bytes": 4096,
+          "blocks": 1375744,
+          "uuid": "0e25f331-6279-458a-9cfe-f39598da17aa"
+        },
+        "observed_volumes": [
+          {
+            "uuid": "dadd93f8-dbbf-4b17-a1df-0f11e64172f7",
+            "oid": 1026,
+            "xid": 255,
+            "offset": 81593344,
+            "name": "SydneyUpdate20H392.D22D221OS",
+            "role": 1
+          }
+        ],
+        "object_checksums_verified": true,
+        "object_map_traversed": false,
+        "filesystem_mount_verified": false,
+        "root_signature_authenticated": false
+      }
+    },
+    {
+      "name": "SystemOS",
+      "source": "087-86593-047.dmg",
+      "source_sha256": "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849",
+      "raw_bytes": 2743074816,
+      "raw_sha256": "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849",
+      "path": "build/ios16-volumes/SystemOS.raw",
+      "apfs": {
+        "container": {
+          "offset": 0,
+          "xid": 24,
+          "block_bytes": 4096,
+          "blocks": 669696,
+          "uuid": "07490cba-83ee-4f50-a415-3de222723455"
+        },
+        "observed_volumes": [
+          {
+            "uuid": "96096b28-b6dc-4bc7-9d3a-2632a0fe53f1",
+            "oid": 1026,
+            "xid": 24,
+            "offset": 2663161856,
+            "name": "SydneyUpdate20H392.D22D221SystemCryptex",
+            "role": 0
+          }
+        ],
+        "object_checksums_verified": true,
+        "object_map_traversed": false,
+        "filesystem_mount_verified": false,
+        "root_signature_authenticated": false
+      }
+    }
+  ],
+  "phone_operations": "none",
+  "root_authentication_qualified": false
+}

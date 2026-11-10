@@ -1,0 +1,13 @@
+--- a/apfsck/xattr.c
++++ b/apfsck/xattr.c
+@@ -90,7 +90,9 @@
+ 		report("Decmpfs xattr", "too small for the header.");
+ 	hdr = (struct apfs_compress_hdr *)xdata;
+ 
+-	if (hdr->signature)
++	/* Apple decmpfs carries the little-endian bytes "fpmc". Keep accepting
++	 * the historical zero signature; all other values remain unknown. */
++	if (hdr->signature && le32_to_cpu(hdr->signature) != 0x636d7066U)
+ 		report_unknown("Compression signature");
+ 	algo = le32_to_cpu(hdr->algo);
+ 	compress->size = le64_to_cpu(hdr->size);

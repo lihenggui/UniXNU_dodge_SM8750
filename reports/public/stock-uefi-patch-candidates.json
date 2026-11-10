@@ -1,0 +1,281 @@
+{
+  "result": "STOCK_UEFI_PATCH_CANDIDATES_PREPARED",
+  "script_sha256": "5a0871c3fe0348a953108eb194b357767473282a3960cb7867e575c5d153549a",
+  "donor_revision": "9f4dbfd7d61acdae69fd5bb48720ce7e53711e25",
+  "stock_report_sha256": "7d8ca735c98d34184ba7e488b59ad71c396ed0251774dfa1580451b4ff76d957",
+  "readme_sha256": "9e099b26cd9f24fadce7e90fe2a6ebbe89d4f99b3bc9cbbd9f779ca2fc8aa25e",
+  "pefile_version": "2024.8.26",
+  "capstone_version": "5.0.6",
+  "patches": [
+    {
+      "name": "TzDxe",
+      "file_guid": "cf6dfc66-14ab-4e13-84db-9c02912d1404",
+      "upstream_raw_path": "QcomPkg/Drivers/TzDxe/TzDxeLA.efi",
+      "upstream_raw_sha256": "d24462dff8a41c00f93894b6fed8d67cac717e3c30c40963683af8b630ff1af2",
+      "upstream_patched_path": "QcomPkg/Drivers/TzDxe/TzDxeLA.patched.efi",
+      "upstream_patched_sha256": "eeb415698bd4e6774d0b7ae831c35f849e68d132b8fe4cbeeb5850cbc4b55fd6",
+      "stock_path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/modules/uefi/cf6dfc66-14ab-4e13-84db-9c02912d1404/d24462dff8a41c00f93894b6fed8d67cac717e3c30c40963683af8b630ff1af2.efi",
+      "stock_sha256": "d24462dff8a41c00f93894b6fed8d67cac717e3c30c40963683af8b630ff1af2",
+      "selected_in_firmware": false,
+      "status": "UNSELECTED_PATCH_CANDIDATE",
+      "changes": [
+        {
+          "section": ".data",
+          "rva": "0xf5b0",
+          "file_offset": 62896,
+          "bytes": 1,
+          "before_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "after_sha256": "4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a"
+        }
+      ],
+      "changed_sections": [
+        ".data"
+      ],
+      "path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/patch-candidates/TzDxe.efi",
+      "sha256": "eeb415698bd4e6774d0b7ae831c35f849e68d132b8fe4cbeeb5850cbc4b55fd6",
+      "bytes": 69632
+    },
+    {
+      "name": "PmicDxe",
+      "file_guid": "5776232e-082d-4b75-9a0e-fe1d13f7a5d9",
+      "upstream_raw_path": "QcomPkg/Drivers/PmicDxe/PmicDxeLa.efi",
+      "upstream_raw_sha256": "dc528813c7c3e3625e506d0ad2dac04ce3b72f6955cdda007635ed87375dec98",
+      "upstream_patched_path": "QcomPkg/Drivers/PmicDxe/PmicDxeLa.patched.efi",
+      "upstream_patched_sha256": "0fbecb29e2953ff2e73f5f793d642bfbc2b80fd8d5323a9bb1faca386aa9e27e",
+      "stock_path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/modules/uefi/5776232e-082d-4b75-9a0e-fe1d13f7a5d9/a792ec9f1b5c34b481b4b3518444e3baee08bfd82c08e74ff95977e3e94124f0.efi",
+      "stock_sha256": "a792ec9f1b5c34b481b4b3518444e3baee08bfd82c08e74ff95977e3e94124f0",
+      "selected_in_firmware": false,
+      "status": "REFUSED",
+      "reason": "whole-changed-section-is-not-byte-identical"
+    },
+    {
+      "name": "UFSDxe",
+      "file_guid": "0d35cd8e-97ea-4f9a-96af-0f0d89f76567",
+      "upstream_raw_path": "QcomPkg/Drivers/UFSDxe/UFSDxe.efi",
+      "upstream_raw_sha256": "0b32d9244c945d8c4105142f1a8dafb02f7cc29d37cca6e7e1973465add41aac",
+      "upstream_patched_path": "QcomPkg/Drivers/UFSDxe/UFSDxe.patched.efi",
+      "upstream_patched_sha256": "e76b555f7c855784cc03303ae1044c69b24f04f214a320a8e2ea101b4f3c85ef",
+      "stock_path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/modules/uefi/0d35cd8e-97ea-4f9a-96af-0f0d89f76567/1f33a4bb0f0898f17ccf3f1022e21b86a53307c7c54229676b30f200fde691d1.efi",
+      "stock_sha256": "1f33a4bb0f0898f17ccf3f1022e21b86a53307c7c54229676b30f200fde691d1",
+      "selected_in_firmware": false,
+      "status": "UNSELECTED_PATCH_CANDIDATE",
+      "changes": [
+        {
+          "section": "PE-header",
+          "file_offset": 3678,
+          "bytes": 1,
+          "before_sha256": "084fed08b978af4d7d196a7446a86b58009e636b611db16211b65a9aadff29c5",
+          "after_sha256": "e52d9c508c502347344d8c07ad91cbd6068afc75ff6292f062a09ca381c89e71"
+        },
+        {
+          "section": "PE-header",
+          "file_offset": 3753,
+          "bytes": 1,
+          "before_sha256": "5c62e091b8c0565f1bafad0dad5934276143ae2ccef7a5381e8ada5b1a8d26d2",
+          "after_sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+        },
+        {
+          "section": "PE-header",
+          "file_offset": 4056,
+          "bytes": 6,
+          "before_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44",
+          "after_sha256": "5e3605ac6582d71ae9a81ec91035d7a5a0d9c716a78b81b5a8a878a88693891f"
+        },
+        {
+          "section": "PE-header",
+          "file_offset": 4065,
+          "bytes": 1,
+          "before_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "after_sha256": "c555eab45d08845ae9f10d452a99bfcb06f74a50b988fe7e48dd323789b88ee3"
+        },
+        {
+          "section": "PE-header",
+          "file_offset": 4069,
+          "bytes": 2,
+          "before_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+          "after_sha256": "f3b00ebab7afaee0570a68a4bdaa5ad1be9c6e6fd844edf9c187b82148c27f62"
+        },
+        {
+          "section": "PE-header",
+          "file_offset": 4073,
+          "bytes": 1,
+          "before_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "after_sha256": "c555eab45d08845ae9f10d452a99bfcb06f74a50b988fe7e48dd323789b88ee3"
+        },
+        {
+          "section": "PE-header",
+          "file_offset": 4077,
+          "bytes": 2,
+          "before_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+          "after_sha256": "f3b00ebab7afaee0570a68a4bdaa5ad1be9c6e6fd844edf9c187b82148c27f62"
+        },
+        {
+          "section": "PE-header",
+          "file_offset": 4092,
+          "bytes": 1,
+          "before_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "after_sha256": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068"
+        },
+        {
+          "section": "PE-header",
+          "file_offset": 4095,
+          "bytes": 1,
+          "before_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "after_sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+        },
+        {
+          "section": ".text",
+          "file_offset": 43416,
+          "bytes": 8,
+          "before_sha256": "4f5bdae12ca594451e196d4d926ba59f3e1ff44dbaecbf11221825ab01e0d183",
+          "after_sha256": "0181d7de2c2a3b754f164f3eea8583cb78ead866bb7fa871b3978b910987fc83"
+        },
+        {
+          "section": ".text",
+          "file_offset": 71964,
+          "bytes": 4,
+          "before_sha256": "826afcb6d0d677d7124f39240fd045c74e21cedf8bf5b56a1e8451e02f339f53",
+          "after_sha256": "7f0d7ead068ce85df212d4aa07c040ac37a8ee16cda612ebbf767a7141b6ff78"
+        },
+        {
+          "section": ".extra",
+          "file_offset": 151552,
+          "bytes": 4096,
+          "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "after_sha256": "ef6ad6921202fc7872e031f40efaf20d891d9f2bda1162d3f4c97546dc9b1c15"
+        }
+      ],
+      "changed_sections": [
+        ".text",
+        ".extra",
+        "PE-header"
+      ],
+      "path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/patch-candidates/UFSDxe.efi",
+      "sha256": "5c1a21b768303c7933c8e90f02f914ac5a117a033a7f5e64a89100df41f97d9a",
+      "bytes": 155648
+    },
+    {
+      "name": "SPMIDxe",
+      "file_guid": "2a7b4bef-80cd-49e1-b473-374ba4d673fc",
+      "upstream_raw_path": "QcomPkg/Drivers/SPMIDxe/SPMIDxe.efi",
+      "upstream_raw_sha256": "f150e782c11cc9ced5c67b156e7cd982126e7d6ebcb2ba7958399270a9e0b9dd",
+      "upstream_patched_path": "QcomPkg/Drivers/SPMIDxe/SPMIDxe.patched.efi",
+      "upstream_patched_sha256": "a4f1d44225dcf8d1d121109276e72508b8d2e491683e93d0079f797b8f7e5c35",
+      "stock_path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/modules/uefi/2a7b4bef-80cd-49e1-b473-374ba4d673fc/5a7836775ba669bd079595bec6bac8d6726b9ae8af393e97bd5351edd0e8ebd9.efi",
+      "stock_sha256": "5a7836775ba669bd079595bec6bac8d6726b9ae8af393e97bd5351edd0e8ebd9",
+      "selected_in_firmware": false,
+      "status": "REFUSED_PAIRED_REQUIREMENT",
+      "changes": [
+        {
+          "section": ".text",
+          "rva": "0x2da8",
+          "file_offset": 11688,
+          "bytes": 8,
+          "before_sha256": "8b43612d82e03c667f508daa1b682fd0840876ae7ecda24fe6c3805d25c95283",
+          "after_sha256": "2b59db05426e0f313d72b30f3398c65721de2562a59dc46ceeba224f98d0b876"
+        }
+      ],
+      "changed_sections": [
+        ".text"
+      ],
+      "reason": "PmicDxe-and-SPMIDxe-must-be-qualified-together"
+    },
+    {
+      "name": "ButtonsDxe",
+      "file_guid": "5bd181db-0487-4f1a-ae73-820e165611b3",
+      "upstream_raw_path": "QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.efi",
+      "upstream_raw_sha256": "d041ea3b18961af672cbcf4bf950df58587e2b0f2edb6b0c2bf5968799adb663",
+      "upstream_patched_path": "QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.patched.efi",
+      "upstream_patched_sha256": "c15573510f44b23c2807d3f0c3572cb70af5300b64037b1b4d16a49227a3e10f",
+      "stock_path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/modules/uefi/5bd181db-0487-4f1a-ae73-820e165611b3/3c3a3c6f1b868dc59bc0b10f8d5c4246c5d03f5beb1fcb565ff5fdf214f7c104.efi",
+      "stock_sha256": "3c3a3c6f1b868dc59bc0b10f8d5c4246c5d03f5beb1fcb565ff5fdf214f7c104",
+      "selected_in_firmware": false,
+      "status": "UNSELECTED_PATCH_CANDIDATE",
+      "changes": [
+        {
+          "section": ".text",
+          "rva": "0x36b8",
+          "file_offset": 14008,
+          "bytes": 2,
+          "before_sha256": "ef666e3d289af8ddae6ff73ade335bb206bced1682e8d7c917ab97ebf9e480f3",
+          "after_sha256": "a96006e4d0504c629b5263d97f4489111bf7111c6a6296522fa4d8d4bc5bfd14"
+        },
+        {
+          "section": ".text",
+          "rva": "0x36bc",
+          "file_offset": 14012,
+          "bytes": 1,
+          "before_sha256": "0a2c6ea0370d1d49c411a6e2396695fcd4eab03d96e9e7a8a3ec1ec312d9ab38",
+          "after_sha256": "f3df1f9c358ae8eceb8fce7c00614288d113ad55315f4ebb909774a7daadfc84"
+        }
+      ],
+      "changed_sections": [
+        ".text"
+      ],
+      "path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/patch-candidates/ButtonsDxe.efi",
+      "sha256": "c9a53e5ee83155837dcc0dc740aa8650a2b6e6ea0027410922df3c69587b3e96",
+      "bytes": 40960
+    },
+    {
+      "name": "QcomChargerDxe",
+      "file_guid": "4bce7f36-428e-4393-99e3-7e0844404dba",
+      "upstream_raw_path": "QcomPkg/Drivers/QcomChargerDxe/QcomChargerDxeLA.efi",
+      "upstream_raw_sha256": "f0b68c864dfb3c88d46e923c6eb3a0b59e8eeeb6e9a42236b109a421d7d08e5a",
+      "upstream_patched_path": "QcomPkg/Drivers/QcomChargerDxe/QcomChargerDxeLA.patched.efi",
+      "upstream_patched_sha256": "6f2e3797c50564460f728b6e45f97cb8237123e4af564702528e3bf371cbecee",
+      "stock_path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/modules/uefi/4bce7f36-428e-4393-99e3-7e0844404dba/10198ed37846dc5c7beb2249f83405fdaa89d37eba49cb6f13661b256f4a466a.efi",
+      "stock_sha256": "10198ed37846dc5c7beb2249f83405fdaa89d37eba49cb6f13661b256f4a466a",
+      "selected_in_firmware": false,
+      "status": "REFUSED",
+      "reason": "whole-changed-section-is-not-byte-identical"
+    },
+    {
+      "name": "UsbMsdDxe",
+      "file_guid": "5af77f10-90df-4e7e-8325-a17ec09d5443",
+      "upstream_raw_path": "QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.efi",
+      "upstream_raw_sha256": "93944d498cc244eddca6ffd289fcfd80b86f338cb1c18fb77b6da114f1e6fecc",
+      "upstream_patched_path": "QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.patched.efi",
+      "upstream_patched_sha256": "1ef3af51e1d9f3a4149c3cc9a73f40ffdb2286e65a221add1852d3100b9a995f",
+      "stock_path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/modules/uefi/5af77f10-90df-4e7e-8325-a17ec09d5443/99f53dda518fcc891646f60f9c9fe3808eaa8e85c0d35d37fb7c8b3d08a62944.efi",
+      "stock_sha256": "99f53dda518fcc891646f60f9c9fe3808eaa8e85c0d35d37fb7c8b3d08a62944",
+      "selected_in_firmware": false,
+      "status": "REFUSED",
+      "reason": "whole-changed-section-is-not-byte-identical"
+    },
+    {
+      "name": "UsbConfigDxe",
+      "file_guid": "cd823a4d-7dec-4531-ae5d-4134fa4127b8",
+      "upstream_raw_path": "QcomPkg/Drivers/UsbConfigDxe/UsbConfigDxe.efi",
+      "upstream_raw_sha256": "3f1b246f9b558353756d74ba760581bf8aa908af55ea1a9e7f9e1fe6f09873a4",
+      "upstream_patched_path": "QcomPkg/Drivers/UsbConfigDxe/UsbConfigDxe.patched.efi",
+      "upstream_patched_sha256": "2525db2fc1cd135e08921bb805e175f4809770b81257eafa6d804501396433fa",
+      "stock_path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/modules/uefi/cd823a4d-7dec-4531-ae5d-4134fa4127b8/b1ac0e8809c685ab7aa70a5beddb441130b5209d2761848e1c200f5e9a28b9c2.efi",
+      "stock_sha256": "b1ac0e8809c685ab7aa70a5beddb441130b5209d2761848e1c200f5e9a28b9c2",
+      "selected_in_firmware": false,
+      "status": "REFUSED",
+      "reason": "whole-changed-section-is-not-byte-identical"
+    }
+  ],
+  "candidate_count": 3,
+  "negative_controls": [
+    "TzDxe:changed-stock-section-refused",
+    "TzDxe:double-application-refused",
+    "UFSDxe:changed-stock-section-refused",
+    "UFSDxe:double-application-refused",
+    "UFSDxe:extra-page-code-extent-refused",
+    "UFSDxe:changed-extra-branch-target-refused",
+    "UFSDxe:unreviewed-data-change-refused",
+    "SPMIDxe:changed-stock-section-refused",
+    "SPMIDxe:double-application-refused",
+    "ButtonsDxe:changed-stock-section-refused",
+    "ButtonsDxe:double-application-refused"
+  ],
+  "whole_changed_section_byte_identity_required": true,
+  "pmic_spmi_pair_enforced": true,
+  "default_firmware_changed": false,
+  "patch_behavior_qualified": false,
+  "hardware_execution": false,
+  "phone_operations": "none",
+  "ufs_structural_rebase": "Only the pinned one-page append, unchanged existing section layouts, two reviewed PE fields, byte-identical original text and eleven PC-relative instructions.",
+  "scope": "Only eligible existing upstream byte deltas applied to separate exact stock modules. No unmatched PMIC/USB rebase, firmware selection or physical execution. The donor README labels its patches outdated and unstable; byte identity does not resolve that limitation."
+}

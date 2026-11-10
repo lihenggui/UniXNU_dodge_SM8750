@@ -1,0 +1,1527 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "module": "com.apple.iokit.IOHIDFamily",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "class": "IOHIDDevice",
+  "instance_bytes": 208,
+  "parent": "IOService",
+  "parent_instance_bytes": 136,
+  "vptr": "0xfffffff006cbe2d0",
+  "metaclass": "0xfffffff007a128e0",
+  "protected_constructor": "0xfffffff005726b9c",
+  "protected_destructor": "0xfffffff005726bbc",
+  "vtable_entries": 207,
+  "vtable_sha256": "e848d3a94bda09e37bd817f00097468d41e1883c9da0602852f407c9d73eaf03",
+  "pure_virtual_slots": [
+    180
+  ],
+  "overridden_native_slots": [
+    0,
+    1,
+    7,
+    12,
+    14,
+    21,
+    23,
+    76,
+    81,
+    82,
+    86,
+    87,
+    91,
+    92,
+    93,
+    101,
+    132,
+    140
+  ],
+  "public_reference_entries": 205,
+  "public_reference_native_mismatches": [
+    76,
+    81,
+    82
+  ],
+  "unmatched_tail_slots": [
+    205,
+    206
+  ],
+  "public_header_is_exact_driver_abi": false,
+  "methods": [
+    {
+      "slot": 0,
+      "address": "0xfffffff005726bc0",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDeviceD1Ev",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 1,
+      "address": "0xfffffff005726bc4",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDeviceD0Ev",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 2,
+      "address": "0xfffffff0076e20c0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK8OSObject7releaseEi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 3,
+      "address": "0xfffffff0076e20d4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK8OSObject14getRetainCountEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 4,
+      "address": "0xfffffff0076e20dc",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK8OSObject6retainEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 5,
+      "address": "0xfffffff0076e20ec",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK8OSObject7releaseEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 6,
+      "address": "0xfffffff0076e20fc",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK8OSObject9serializeEP11OSSerialize",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 7,
+      "address": "0xfffffff005726bc8",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice12getMetaClassEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 8,
+      "address": "0xfffffff0076df9e0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15OSMetaClassBase9isEqualToEPKS_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 9,
+      "address": "0xfffffff0076e2228",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK8OSObject12taggedRetainEPKv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 10,
+      "address": "0xfffffff0076e22a0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK8OSObject13taggedReleaseEPKv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 11,
+      "address": "0xfffffff0076e22b0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK8OSObject13taggedReleaseEPKvi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 12,
+      "address": "0xfffffff005757ed8",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice8DispatchE5IORPC",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 13,
+      "address": "0xfffffff0076e2360",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN8OSObject4initEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 14,
+      "address": "0xfffffff005726ca0",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice4freeEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 15,
+      "address": "0xfffffff00773cf18",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry12copyPropertyEPKcPK15IORegistryPlanej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 16,
+      "address": "0xfffffff00773d080",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry12copyPropertyEPK8OSStringPK15IORegistryPlanej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 17,
+      "address": "0xfffffff00773d1e8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry12copyPropertyEPK8OSSymbolPK15IORegistryPlanej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 18,
+      "address": "0xfffffff00773d350",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry15copyParentEntryEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 19,
+      "address": "0xfffffff00773d3d0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry14copyChildEntryEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 20,
+      "address": "0xfffffff00773d450",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry17runPropertyActionEPFiP8OSObjectPvS2_S2_S2_ES1_S2_S2_S2_S2_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 21,
+      "address": "0xfffffff005726c34",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice4initEP12OSDictionary",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 22,
+      "address": "0xfffffff00773d790",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry16setPropertyTableEP12OSDictionary",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 23,
+      "address": "0xfffffff00572a53c",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice11setPropertyEPK8OSSymbolP8OSObject",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 24,
+      "address": "0xfffffff00773da5c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry11setPropertyEPK8OSStringP8OSObject",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 25,
+      "address": "0xfffffff00773dac0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry11setPropertyEPKcP8OSObject",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 26,
+      "address": "0xfffffff00773db24",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 27,
+      "address": "0xfffffff00773dba8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry11setPropertyEPKcb",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 28,
+      "address": "0xfffffff00773dc34",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry11setPropertyEPKcyj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 29,
+      "address": "0xfffffff00773dd04",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry11setPropertyEPKcPvj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 30,
+      "address": "0xfffffff00773ddd4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry14removePropertyEPK8OSSymbol",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 31,
+      "address": "0xfffffff00773deb4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry14removePropertyEPK8OSString",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 32,
+      "address": "0xfffffff00773defc",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry14removePropertyEPKc",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 33,
+      "address": "0xfffffff00773df44",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry11getPropertyEPK8OSSymbol",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 34,
+      "address": "0xfffffff00773e024",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry11getPropertyEPK8OSString",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 35,
+      "address": "0xfffffff00773e078",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry11getPropertyEPKc",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 36,
+      "address": "0xfffffff00773e0cc",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry11getPropertyEPK8OSSymbolPK15IORegistryPlanej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 37,
+      "address": "0xfffffff00773e234",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry11getPropertyEPK8OSStringPK15IORegistryPlanej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 38,
+      "address": "0xfffffff00773e39c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry11getPropertyEPKcPK15IORegistryPlanej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 39,
+      "address": "0xfffffff00773e504",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry12copyPropertyEPK8OSSymbol",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 40,
+      "address": "0xfffffff00773e5f8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry12copyPropertyEPK8OSString",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 41,
+      "address": "0xfffffff00773e6ec",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry12copyPropertyEPKc",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 42,
+      "address": "0xfffffff00773e7e0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry24dictionaryWithPropertiesEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 43,
+      "address": "0xfffffff007744714",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK9IOService19serializePropertiesEP11OSSerialize",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 44,
+      "address": "0xfffffff00773ea24",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry13setPropertiesEP8OSObject",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 45,
+      "address": "0xfffffff00773ea30",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry17getParentIteratorEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 46,
+      "address": "0xfffffff00773eb8c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry14applyToParentsEPFvPS_PvES1_PK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 47,
+      "address": "0xfffffff00773eca8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry14getParentEntryEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 48,
+      "address": "0xfffffff00773ece8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry16getChildIteratorEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 49,
+      "address": "0xfffffff00773ee44",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry15applyToChildrenEPFvPS_PvES1_PK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 50,
+      "address": "0xfffffff00773ef60",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry13getChildEntryEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 51,
+      "address": "0xfffffff00773efa0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry7isChildEPS_PK15IORegistryPlaneb",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 52,
+      "address": "0xfffffff00773f0e0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry8isParentEPS_PK15IORegistryPlaneb",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 53,
+      "address": "0xfffffff00773f220",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry7inPlaneEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 54,
+      "address": "0xfffffff00773f378",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry8getDepthEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 55,
+      "address": "0xfffffff00773f49c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry14attachToParentEPS_PK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 56,
+      "address": "0xfffffff00773f7b8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry16detachFromParentEPS_PK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 57,
+      "address": "0xfffffff00773fa18",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry13attachToChildEPS_PK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 58,
+      "address": "0xfffffff00773fb40",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry15detachFromChildEPS_PK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 59,
+      "address": "0xfffffff00773fda0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry11detachAboveEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 60,
+      "address": "0xfffffff00773fe40",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry9detachAllEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 61,
+      "address": "0xfffffff00774000c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry7getNameEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 62,
+      "address": "0xfffffff0077400c8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry8copyNameEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 63,
+      "address": "0xfffffff007740190",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry12compareNamesEP8OSObjectPP8OSString",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 64,
+      "address": "0xfffffff0077402e8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry11compareNameEP8OSStringPS1_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 65,
+      "address": "0xfffffff007740374",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry7setNameEPK8OSSymbolPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 66,
+      "address": "0xfffffff007740444",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry7setNameEPKcPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 67,
+      "address": "0xfffffff0077404b0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry11getLocationEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 68,
+      "address": "0xfffffff007740500",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry12copyLocationEPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 69,
+      "address": "0xfffffff00774058c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry11setLocationEPK8OSSymbolPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 70,
+      "address": "0xfffffff007740610",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry11setLocationEPKcPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 71,
+      "address": "0xfffffff00774067c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry7getPathEPcPiPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 72,
+      "address": "0xfffffff007740bc4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK15IORegistryEntry16getPathComponentEPcPiPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 73,
+      "address": "0xfffffff007740cc4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN15IORegistryEntry13childFromPathEPKcPK15IORegistryPlanePcPi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 74,
+      "address": "0xfffffff007744718",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService4initEP15IORegistryEntryPK15IORegistryPlane",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 75,
+      "address": "0xfffffff0077447b8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService16requestTerminateEPS_j",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 76,
+      "address": "0xfffffff00572878c",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN9IOService13willTerminateEPS_j",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 77,
+      "address": "0xfffffff007744844",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService12didTerminateEPS_jPb",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 78,
+      "address": "0xfffffff00776d798",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService15nextIdleTimeoutEyyj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 79,
+      "address": "0xfffffff00776e9b0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService18systemWillShutdownEj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 80,
+      "address": "0xfffffff00774491c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService22copyClientWithCategoryEPK8OSSymbol",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 81,
+      "address": "0xfffffff00572854c",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN9IOService15configureReportEP19IOReportChannelListjPvS2_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 82,
+      "address": "0xfffffff005728558",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN9IOService12updateReportEP19IOReportChannelListjPvS2_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 83,
+      "address": "0xfffffff007744f64",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK9IOService8getStateEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 84,
+      "address": "0xfffffff007744f6c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService15registerServiceEj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 85,
+      "address": "0xfffffff007745190",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService5probeEPS_Pi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 86,
+      "address": "0xfffffff005726f90",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice5startEP9IOService",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 87,
+      "address": "0xfffffff005728564",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice4stopEP9IOService",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 88,
+      "address": "0xfffffff0077451c4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService4openEPS_jPv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 89,
+      "address": "0xfffffff0077452f0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService5closeEPS_j",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 90,
+      "address": "0xfffffff007745418",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK9IOService6isOpenEPKS_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 91,
+      "address": "0xfffffff005729a60",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice10handleOpenEP9IOServicejPv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 92,
+      "address": "0xfffffff005729eb4",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice11handleCloseEP9IOServicej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 93,
+      "address": "0xfffffff005729fa0",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice12handleIsOpenEPK9IOService",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 94,
+      "address": "0xfffffff007745518",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService9terminateEj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 95,
+      "address": "0xfffffff007745520",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService8finalizeEj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 96,
+      "address": "0xfffffff007745704",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService18lockForArbitrationEb",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 97,
+      "address": "0xfffffff007745a98",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService20unlockForArbitrationEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 98,
+      "address": "0xfffffff007745c00",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService15terminateClientEPS_j",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 99,
+      "address": "0xfffffff007745c64",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService12getBusyStateEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 100,
+      "address": "0xfffffff007745c70",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService10adjustBusyEi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 101,
+      "address": "0xfffffff005728b74",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice18matchPropertyTableEP12OSDictionaryPi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 102,
+      "address": "0xfffffff007745cc4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService18matchPropertyTableEP12OSDictionary",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 103,
+      "address": "0xfffffff007745ccc",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService13matchLocationEPS_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 104,
+      "address": "0xfffffff007745d10",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService17addNeededResourceEPKc",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 105,
+      "address": "0xfffffff007745eb0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService15comparePropertyEP12OSDictionaryPKc",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 106,
+      "address": "0xfffffff007745f44",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService15comparePropertyEP12OSDictionaryPK8OSString",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 107,
+      "address": "0xfffffff007745fd8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService17comparePropertiesEP12OSDictionaryP12OSCollection",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 108,
+      "address": "0xfffffff0077460ec",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService6attachEPS_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 109,
+      "address": "0xfffffff007746364",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService6detachEPS_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 110,
+      "address": "0xfffffff0077466e0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK9IOService11getProviderEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 111,
+      "address": "0xfffffff00774674c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK9IOService11getWorkLoopEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 112,
+      "address": "0xfffffff00774677c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK9IOService19getProviderIteratorEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 113,
+      "address": "0xfffffff007746790",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK9IOService23getOpenProviderIteratorEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 114,
+      "address": "0xfffffff007746898",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK9IOService9getClientEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 115,
+      "address": "0xfffffff0077468ac",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK9IOService17getClientIteratorEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 116,
+      "address": "0xfffffff0077468c0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZNK9IOService21getOpenClientIteratorEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 117,
+      "address": "0xfffffff0077469c8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService20callPlatformFunctionEPK8OSSymbolbPvS3_S3_S3_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 118,
+      "address": "0xfffffff007746d18",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService20callPlatformFunctionEPKcbPvS2_S2_S2_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 119,
+      "address": "0xfffffff007746dbc",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService12getResourcesEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 120,
+      "address": "0xfffffff007746dc4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService20getDeviceMemoryCountEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 121,
+      "address": "0xfffffff007746e38",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService24getDeviceMemoryWithIndexEj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 122,
+      "address": "0xfffffff007746eb4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService24mapDeviceMemoryWithIndexEjj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 123,
+      "address": "0xfffffff007746ef8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService15getDeviceMemoryEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 124,
+      "address": "0xfffffff007746f5c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService15setDeviceMemoryEP7OSArray",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 125,
+      "address": "0xfffffff007746f74",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService17registerInterruptEiP8OSObjectPFvS1_PvPS_iES2_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 126,
+      "address": "0xfffffff007747040",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService19unregisterInterruptEi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 127,
+      "address": "0xfffffff0077470e8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService16getInterruptTypeEiPi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 128,
+      "address": "0xfffffff007747198",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService15enableInterruptEi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 129,
+      "address": "0xfffffff00774721c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService16disableInterruptEi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 130,
+      "address": "0xfffffff0077472a0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService14causeInterruptEi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 131,
+      "address": "0xfffffff007747324",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService12requestProbeEj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 132,
+      "address": "0xfffffff00572a31c",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice7messageEjP9IOServicePv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 133,
+      "address": "0xfffffff00774733c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService13messageClientEjP8OSObjectPvm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 134,
+      "address": "0xfffffff007747638",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService14messageClientsEjPvm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 135,
+      "address": "0xfffffff007747688",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService16registerInterestEPK8OSSymbolPFiPvS3_jPS_S3_mES3_S3_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 136,
+      "address": "0xfffffff007747798",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService16applyToProvidersEPFvPS_PvES1_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 137,
+      "address": "0xfffffff0077477ac",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService14applyToClientsEPFvPS_PvES1_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 138,
+      "address": "0xfffffff0077477c0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService17applyToInterestedEPK8OSSymbolPFvP8OSObjectPvES5_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 139,
+      "address": "0xfffffff007747828",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService23acknowledgeNotificationEPvj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 140,
+      "address": "0xfffffff005729fe0",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice13newUserClientEP4taskPvjP12OSDictionaryPP12IOUserClient",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 141,
+      "address": "0xfffffff007747ab4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService13newUserClientEP4taskPvjPP12IOUserClient",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 142,
+      "address": "0xfffffff007747ac0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService16stringFromReturnEi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 143,
+      "address": "0xfffffff007747b38",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService15errnoFromReturnEi",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 144,
+      "address": "0xfffffff00775e108",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService6PMinitEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 145,
+      "address": "0xfffffff00776b540",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService6PMstopEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 146,
+      "address": "0xfffffff00776b524",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService10joinPMtreeEPS_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 147,
+      "address": "0xfffffff00776c00c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService19registerPowerDriverEPS_P14IOPMPowerStatem",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 148,
+      "address": "0xfffffff00776c9a0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService23requestPowerDomainStateEmP17IOPowerConnectionm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 149,
+      "address": "0xfffffff00776d588",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService14activityTickleEmm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 150,
+      "address": "0xfffffff00776d7f8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService17setAggressivenessEmm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 151,
+      "address": "0xfffffff00776d800",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService17getAggressivenessEmPm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 152,
+      "address": "0xfffffff00776b7f8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService13addPowerChildEPS_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 153,
+      "address": "0xfffffff00776be54",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService16removePowerChildEP17IOPowerConnection",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 154,
+      "address": "0xfffffff00776d5f4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService18setIdleTimerPeriodEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 155,
+      "address": "0xfffffff00776e8b0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService13setPowerStateEmPS_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 156,
+      "address": "0xfffffff00776e8b8",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService27maxCapabilityForDomainStateEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 157,
+      "address": "0xfffffff00776e900",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService31initialPowerStateForDomainStateEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 158,
+      "address": "0xfffffff00776e954",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService24powerStateForDomainStateEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 159,
+      "address": "0xfffffff00776e99c",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService22powerStateWillChangeToEmmPS_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 160,
+      "address": "0xfffffff00776e9a4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService21powerStateDidChangeToEmmPS_",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 161,
+      "address": "0xfffffff00776d918",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService13askChangeDownEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 162,
+      "address": "0xfffffff00776d924",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService14tellChangeDownEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 163,
+      "address": "0xfffffff00776d930",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService16tellNoChangeDownEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 164,
+      "address": "0xfffffff00776dde4",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService12tellChangeUpEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 165,
+      "address": "0xfffffff00776ddf0",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService16allowPowerChangeEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 166,
+      "address": "0xfffffff00776de74",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService17cancelPowerChangeEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 167,
+      "address": "0xfffffff00776e9ac",
+      "native_inherited_exact": true,
+      "public_reference_declaration": "__ZN9IOService15powerChangeDoneEm",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 168,
+      "address": "0xfffffff005729a54",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice11handleStartEP9IOService",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 169,
+      "address": "0xfffffff005729a5c",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice10handleStopEP9IOService",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 170,
+      "address": "0xfffffff005728d28",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice17publishPropertiesEP9IOService",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 171,
+      "address": "0xfffffff00572a648",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice18newTransportStringEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 172,
+      "address": "0xfffffff00572a650",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice21newManufacturerStringEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 173,
+      "address": "0xfffffff00572a658",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice16newProductStringEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 174,
+      "address": "0xfffffff00572a660",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice17newVendorIDNumberEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 175,
+      "address": "0xfffffff00572a668",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice18newProductIDNumberEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 176,
+      "address": "0xfffffff00572a670",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice16newVersionNumberEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 177,
+      "address": "0xfffffff00572a678",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice15newSerialNumberEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 178,
+      "address": "0xfffffff00572a680",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice21newPrimaryUsageNumberEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 179,
+      "address": "0xfffffff00572a6d8",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice25newPrimaryUsagePageNumberEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 180,
+      "address": "0xfffffff00770ace4",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "___cxa_pure_virtual",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 181,
+      "address": "0xfffffff00572a730",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice12handleReportEP18IOMemoryDescriptor15IOHIDReportTypej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 182,
+      "address": "0xfffffff00572a7cc",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice9getReportEP18IOMemoryDescriptor15IOHIDReportTypej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 183,
+      "address": "0xfffffff00572a900",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice9setReportEP18IOMemoryDescriptor15IOHIDReportTypej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 184,
+      "address": "0xfffffff00572b2bc",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice33getMemoryWithCurrentElementValuesEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 185,
+      "address": "0xfffffff00572b2ac",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice15registerElementEP19IOHIDElementPrivatePj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 186,
+      "address": "0xfffffff00572b2d0",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice18startEventDeliveryEP15IOHIDEventQueuejj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 187,
+      "address": "0xfffffff00572b3dc",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice17stopEventDeliveryEP15IOHIDEventQueuej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 188,
+      "address": "0xfffffff00572b510",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice18checkEventDeliveryEP15IOHIDEventQueuejPb",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 189,
+      "address": "0xfffffff00572b59c",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice19updateElementValuesEPjj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 190,
+      "address": "0xfffffff00572b5b8",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice17postElementValuesEPjj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 191,
+      "address": "0xfffffff00572b5d0",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice21newSerialNumberStringEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 192,
+      "address": "0xfffffff00572b694",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice19newLocationIDNumberEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 193,
+      "address": "0xfffffff00572b7ec",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice9getReportEP18IOMemoryDescriptor15IOHIDReportTypejjP15IOHIDCompletion",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 194,
+      "address": "0xfffffff00572b80c",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice9setReportEP18IOMemoryDescriptor15IOHIDReportTypejjP15IOHIDCompletion",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 195,
+      "address": "0xfffffff00572b82c",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice23newVendorIDSourceNumberEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 196,
+      "address": "0xfffffff00572b834",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice20newCountryCodeNumberEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 197,
+      "address": "0xfffffff00572b83c",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice20handleReportWithTimeEyP18IOMemoryDescriptor15IOHIDReportTypej",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 198,
+      "address": "0xfffffff00572bd48",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZNK11IOHIDDevice23newReportIntervalNumberEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 199,
+      "address": "0xfffffff00572bdd4",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice25handleReportWithTimeAsyncEyP18IOMemoryDescriptor15IOHIDReportTypejjP15IOHIDCompletion",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 200,
+      "address": "0xfffffff00572a9e4",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice19newDeviceUsagePairsEv",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 201,
+      "address": "0xfffffff00572bf08",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice15createInterfaceEj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 202,
+      "address": "0xfffffff00572c0a4",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice16destroyInterfaceEj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 203,
+      "address": "0xfffffff00572c1b0",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice10conformsToEjj",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 204,
+      "address": "0xfffffff00572c320",
+      "native_inherited_exact": false,
+      "public_reference_declaration": "__ZN11IOHIDDevice14completeReportEP8OSActionij",
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 205,
+      "address": "0xfffffff00572cacc",
+      "native_inherited_exact": false,
+      "public_reference_declaration": null,
+      "original_owned_prototype_qualified": false
+    },
+    {
+      "slot": 206,
+      "address": "0xfffffff00572cad4",
+      "native_inherited_exact": false,
+      "public_reference_declaration": null,
+      "original_owned_prototype_qualified": false
+    }
+  ],
+  "blocks": {
+    "protected_constructor": {
+      "address": "0xfffffff005726b9c",
+      "bytes": 32,
+      "sha256": "a37fc18ef5e76da6a79b398d52a0612ab22c89b5c7cd6613ddd50fb4690b9c09"
+    },
+    "protected_destructor": {
+      "address": "0xfffffff005726bbc",
+      "bytes": 4,
+      "sha256": "5b42a1d89eb63876ad139485e36a90598c1fec6cc102e83d43934e82a6c1dde2"
+    },
+    "get_meta_class": {
+      "address": "0xfffffff005726bc8",
+      "bytes": 12,
+      "sha256": "eb5d941161deabcf250ad7526c480013e60e6579ea4bef77f0282a53854fd5b2"
+    },
+    "metadata_constructor": {
+      "address": "0xfffffff005726bd4",
+      "bytes": 52,
+      "sha256": "48bb85ecf76c70013b8668bc3cb75e2a65654d7e74e5c9a7405dd87efbfb6f06"
+    }
+  },
+  "full_hid_prototypes_qualified": false,
+  "source_driver_installed": false,
+  "hardware_tested": false
+}

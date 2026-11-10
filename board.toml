@@ -1,0 +1,84 @@
+schema_version = 2
+
+[board]
+name = "dodge"
+soc = "SM8750"
+soc_source = "sm8750"
+os_profile = "ios-16.7.16-20H392"
+description = "OnePlus 13 CPH2653: iPhone iOS 16 source preparation"
+kit = "dodge"
+
+[components]
+include = ["ArmDTPlatform", "ArmCpu", "XnuPrelink", "DarwinBoot"]
+
+[kernel]
+defconfig = "dodge_defconfig"
+config_fragments = ["os:configs/ios.config", "soc:configs/sm8750.config"]
+patch_series = ["os:patches/arch/series", "os:patches/xnu/series", "device:patches/xnu/series"]
+archives = [
+  "build-corecrypto-14.py",
+  "build-corecrypto-14.py --namespace",
+  "component:ArmDTPlatform",
+  "component:ArmCpu",
+  "build-mockfs-fixture.py",
+  "build-libpthread-kernel.py",
+]
+
+[device_tree]
+source = "device:dts/dodge.dts"
+include_dirs = ["soc:dts"]
+
+[firmware]
+config = "dodge"
+dsc = "Platforms/OnePlus/dodgePkg/dodge.dsc"
+fd = "Build/dodgePkg/{target}_CLANGPDB/FV/SILICIUM_UEFI.fd"
+packages = [
+  "{uefi}", "{uefi}/Platforms/OnePlus", "{tree}/package",
+  "{tree}/drivers/DarwinBoot", "{edk2}", "{uefi}/Common/Mu",
+  "{uefi}/Common/Mu_OEM_Sample", "{uefi}/Silicon/Qualcomm",
+  "{uefi}/Silicon/Silicium", "{uefi}/Silicium-ACPI",
+]
+
+[firmware.defines]
+DEVICE_MODEL = "0"
+ENABLE_SECUREBOOT = "0"
+MEMORY_PROTECTION = "TRUE"
+SHIP_MODE = "FALSE"
+
+[payload]
+volume = "UNIXNU13"
+size_mib = 160
+loader = "firmware"
+title = "OnePlus 13: iPhone iOS 16 development"
+dram_size = "0x100000000"
+kernel_args = ["-v", "serial=0", "debug=0x14e", "cpus=1"]
+command_line_length = 608
+timeout = 10
+
+[payload.adt]
+chip_id = "0x8015"
+unique_chip_id = "required"
+owned_memory_size = "0x100000000"
+
+[adt.chosen.u32]
+display-scale = 3
+display-rotation = 0
+
+[adt.defaults.u32]
+sleep-disabled = 1
+
+[adt.buttons.string]
+compatible = "buttons"
+device_type = "buttons"
+
+[adt.buttons.strings]
+button-names = ["hold", "voldown", "volup"]
+
+[adt.buttons.u32]
+home-button-type = 2
+
+[package]
+unixnu = "sources/UniXNU"
+
+[package.defconfig]
+"ios-16.7.16-20H392" = "dodge_defconfig"

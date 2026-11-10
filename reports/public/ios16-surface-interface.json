@@ -1,0 +1,228 @@
+{
+  "result": "IOS16_SURFACE_BINDINGS_NATIVE_AND_ORIGINAL_ARM64_CHECK_PASS",
+  "contract": "profiles/os/ios-16.7.16-20H392/surface-abi.json",
+  "contract_sha256": "a12fd3035980152d70f872dbbe4cb7569150699adca4c10aa50df0409f6dfd6e",
+  "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceABI.h",
+  "header_sha256": "62e50dafcc54843aaf8fcd29e9fdc09cefb148115bdac074525efd06dd2453db",
+  "archive": "build/ios16-surface-interface/libIPhone16SurfaceBindings.a",
+  "archive_sha256": "71af1226f9dc6504415e03e62bc1980b46b542ab20a6e6f437e8fab280f039e9",
+  "native_probe": "build/ios16-surface-interface/surface.o",
+  "native_probe_sha256": "796b43d76920cf1035cfed305b3b1b39d8e24d576f4bae1661cf0086a5c88e3a",
+  "native_target": "arm64-apple-ios16.0",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "slide": -16777216,
+  "bindings": {
+    "_native_iphone_surface_width": "0xfffffff004a4e7f4",
+    "_native_iphone_surface_height": "0xfffffff004a4e7fc",
+    "_native_iphone_surface_stride": "0xfffffff004a4e80c",
+    "_native_iphone_surface_offset": "0xfffffff004a4e804",
+    "_native_iphone_surface_format": "0xfffffff004a4e7e4",
+    "_native_iphone_surface_allocation": "0xfffffff004a4e834",
+    "_native_iphone_surface_bytes_per_element": "0xfffffff004a4e814",
+    "_native_iphone_surface_element_width": "0xfffffff004a4e81c",
+    "_native_iphone_surface_element_height": "0xfffffff004a4e824",
+    "_native_iphone_surface_tile_format": "0xfffffff004a50528",
+    "_native_iphone_surface_tile_mode": "0xfffffff004a54ad4",
+    "_native_iphone_surface_planes": "0xfffffff004a4e82c",
+    "_native_iphone_surface_region": "0xfffffff004a4e844"
+  },
+  "cases": [
+    {
+      "getter": "width",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "width",
+      "value": "0x80000057",
+      "result": "PASS"
+    },
+    {
+      "getter": "width",
+      "value": "0xffffffff",
+      "result": "PASS"
+    },
+    {
+      "getter": "height",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "height",
+      "value": "0x80000057",
+      "result": "PASS"
+    },
+    {
+      "getter": "height",
+      "value": "0xffffffff",
+      "result": "PASS"
+    },
+    {
+      "getter": "stride",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "stride",
+      "value": "0x80000057",
+      "result": "PASS"
+    },
+    {
+      "getter": "stride",
+      "value": "0xffffffff",
+      "result": "PASS"
+    },
+    {
+      "getter": "offset",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "offset",
+      "value": "0x80000057",
+      "result": "PASS"
+    },
+    {
+      "getter": "offset",
+      "value": "0xffffffff",
+      "result": "PASS"
+    },
+    {
+      "getter": "format",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "format",
+      "value": "0x80000057",
+      "result": "PASS"
+    },
+    {
+      "getter": "format",
+      "value": "0xffffffff",
+      "result": "PASS"
+    },
+    {
+      "getter": "allocation",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "allocation",
+      "value": "0x80000057",
+      "result": "PASS"
+    },
+    {
+      "getter": "allocation",
+      "value": "0xffffffff",
+      "result": "PASS"
+    },
+    {
+      "getter": "bytes_per_element",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "bytes_per_element",
+      "value": "0x8057",
+      "result": "PASS"
+    },
+    {
+      "getter": "bytes_per_element",
+      "value": "0xffff",
+      "result": "PASS"
+    },
+    {
+      "getter": "element_width",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "element_width",
+      "value": "0xd7",
+      "result": "PASS"
+    },
+    {
+      "getter": "element_width",
+      "value": "0xff",
+      "result": "PASS"
+    },
+    {
+      "getter": "element_height",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "element_height",
+      "value": "0xd7",
+      "result": "PASS"
+    },
+    {
+      "getter": "element_height",
+      "value": "0xff",
+      "result": "PASS"
+    },
+    {
+      "getter": "tile_format",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "tile_format",
+      "value": "0x80000057",
+      "result": "PASS"
+    },
+    {
+      "getter": "tile_format",
+      "value": "0xffffffff",
+      "result": "PASS"
+    },
+    {
+      "getter": "tile_mode",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "tile_mode",
+      "value": "0xd7",
+      "result": "PASS"
+    },
+    {
+      "getter": "tile_mode",
+      "value": "0xff",
+      "result": "PASS"
+    },
+    {
+      "getter": "planes",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "planes",
+      "value": "0x80000057",
+      "result": "PASS"
+    },
+    {
+      "getter": "planes",
+      "value": "0xffffffff",
+      "result": "PASS"
+    },
+    {
+      "getter": "region",
+      "value": "0x0",
+      "result": "PASS"
+    },
+    {
+      "getter": "region",
+      "value": "0xabcdef0187654321",
+      "result": "PASS"
+    }
+  ],
+  "original_method_bytes_changed": false,
+  "own_probe_branch_relocations_applied_to_fixture_addresses": true,
+  "region_is_memory_descriptor": false,
+  "backing_descriptor_provider_complete": false,
+  "original_surface_constructed": false,
+  "hardware_tested": false,
+  "scope": "Thirteen exact original getters, property-to-field provenance, ordinary ARM64 typed calls and unsigned return-width checks. The borrowed IOSurfaceMemoryRegion must not be passed to the GPU as an IOMemoryDescriptor."
+}

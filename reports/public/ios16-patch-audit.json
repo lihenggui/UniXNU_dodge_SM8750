@@ -1,0 +1,21 @@
+{
+  "baseline": {
+    "repository": "https://github.com/apple-oss-distributions/xnu",
+    "tag": "xnu-8796.141.3",
+    "revision": "1b191cb58250d0705d8a51287127505aa4bc0789"
+  },
+  "original_iphone_xnu": "8796.142.1.703.8",
+  "unixnu_revision": "3fa5ff5f409398c0555a9561d6437ce5d4c3b3b7",
+  "series": "profiles/arch/arm64/patches/xnu/series",
+  "listed_patches": 56,
+  "applied": [],
+  "first_failure": {
+    "patch": "patches/xnu/apple-only-cpu-tunables.patch",
+    "stderr": "error: patch failed: osfmk/arm64/start.s:33\nerror: osfmk/arm64/start.s: patch does not apply"
+  },
+  "result": "requires-rebase",
+  "scope": "Ordered architecture-series application against the available public Darwin 22 candidate; not a compile, ABI or hardware result. Patches after the first failure were not attempted.",
+  "status": "superseded",
+  "current_report": "reports/ios16-rebased-patches.json",
+  "note": "Historical initial audit against Darwin 23 upstream patches; the device now uses the strictly rebased Darwin 22 series."
+}

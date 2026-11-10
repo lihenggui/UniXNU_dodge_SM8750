@@ -1,0 +1,43 @@
+{
+  "result": "CPH2653_GPU_FIRMWARE_STATIC_BUILD_PASS",
+  "device_version": "CPH2653_16.0.1.304(EX01)",
+  "ota_id": "CPH2653_11.F.80_2800_202511110338",
+  "pin_sha256": "c5a8b6adb8c6f3137c6d0eceb6500c7c85b490a2d2067bfedc68fcf34f17ec3f",
+  "vendor_sha256": "bcae44f960184b9a12a7be9c0b3016876ec32485d7ca81b2544ce42e6261196a",
+  "captured_vendor_boot_manifest_match": true,
+  "downloaded_vendor_boot_sha256": "87aad891ae5061e6d1abb8573024d8f59a177bf8367d9e4ef7c79a6e474be1d7",
+  "files": {
+    "gen80000_gmu.bin": {
+      "bytes": 88896,
+      "sha256": "1ad8175e6cd01ea76c64d20b83600038c52dd29844b48d57b11b769b038863a5"
+    },
+    "gen80000_sqe.fw": {
+      "bytes": 111476,
+      "sha256": "30ee3301534f95799d4afaf73864f3c369baa5a5dea8481e7f0cb8cc941f396c"
+    },
+    "gen80000_aqe.fw": {
+      "bytes": 25044,
+      "sha256": "67562ad5baae3a133c92a6e48a9d1b1a9a867fe2f85b49324e244e963f3b89c5"
+    },
+    "gen80000_zap.mbn": {
+      "bytes": 12088,
+      "sha256": "c11cc4f383a0b2a7aecab36aee59174d766530bdcef2d37ed8b082598ca8aeb1"
+    }
+  },
+  "zap_parser_revision": "ad022a2a3a2e0c71c340361392d30d424c66b4d2",
+  "zap_parser_sha256": "94d87cb1e53ead25fef6804d930df9e52a3d4561117e4d17eb26e3423671f7c4",
+  "zap_metadata_bytes": 4044,
+  "zap_payload_bytes": 4096,
+  "archive": "build/cph2653-gpu-firmware/libSm8750GpuFirmware.a",
+  "archive_sha256": "558f6162f9d67ff015e2e2acc769abe7eda26287f855acb63b5db300d49af66f",
+  "object_readback": "PASS",
+  "corrupted_input_negative_controls": [
+    "gen80000_gmu.bin",
+    "gen80000_sqe.fw",
+    "gen80000_aqe.fw",
+    "gen80000_zap.mbn"
+  ],
+  "installed_or_executed": false,
+  "hardware_tested": false,
+  "scope": "Exact stock GPU files parsed and assembled for iOS 16; loading/authentication on the device is untested."
+}

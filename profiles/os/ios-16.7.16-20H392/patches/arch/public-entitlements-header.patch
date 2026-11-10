@@ -1,0 +1,16 @@
+diff --git a/EXTERNAL_HEADERS/CoreEntitlements/CoreEntitlements.h b/EXTERNAL_HEADERS/CoreEntitlements/CoreEntitlements.h
+index 60e7e8f..5831a6c 100644
+--- a/EXTERNAL_HEADERS/CoreEntitlements/CoreEntitlements.h
++++ b/EXTERNAL_HEADERS/CoreEntitlements/CoreEntitlements.h
+@@ -5,6 +5,11 @@
+ #ifndef CORE_ENTITLEMENTS_H
+ #define CORE_ENTITLEMENTS_H
+ 
++#define kCSWebBrowserNetworkEntitlement "com.apple.developer.web-browser-engine.networking"
++#define kCSWebBrowserWebContentEntitlement "com.apple.developer.web-browser-engine.webcontent"
++#define kCSWebBrowserGPUEntitlement "com.apple.developer.web-browser-engine.rendering"
++#define kCSWebBrowserHostEntitlement "com.apple.developer.web-browser-engine.host"
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif

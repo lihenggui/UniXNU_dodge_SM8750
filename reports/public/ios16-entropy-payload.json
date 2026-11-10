@@ -1,0 +1,3620 @@
+{
+  "result": "CPH2653_FRESH_ENTROPY_FIRMWARE_EFI_CPU_CHAIN_AND_ANDROID_V4_READBACK_PASS",
+  "builder_sha256": "3fb54bbd34991a8397181b9bec3b10f73651f7324c36034ce1a6673894534e10",
+  "source_sha256": {
+    "scripts/build_entropy_payload.py": "3fb54bbd34991a8397181b9bec3b10f73651f7324c36034ce1a6673894534e10",
+    "scripts/audit_stock_uefi.py": "1c80d52e84522f7433286d128006a3e982b87e4aa7c539aff0222a0540b56486",
+    "scripts/boot_entropy_overlay.py": "157a71c5341fe8b3de58fc280f74a375e16662a540b9150672124e55970203a9",
+    "scripts/build_boot_entropy.py": "cb0680162316afd083e162baa023aef3391360597d627c40030910cd5b57ecc6",
+    "scripts/check_boot_entropy_kernel.py": "e99b357d4031e99c4a8783d454564e0fc8c64d439396959ad5fccdb94d1576c1",
+    "scripts/boot_entropy_execution.py": "6577bca169fc081a8bf14047e672ebd3b76cfed74be713e5a829c07193fadebb",
+    "scripts/build_uefi.py": "7da02c844c40db7c3438f18c5e9e1241e7080948d368e09bf18410bfdffb69ea",
+    "scripts/prepare_initial_data.py": "1cc4467bb4224632adea2a5ac87d602b285207b5c0d6bd63937a6bfdcf8d271c",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "sources/UniXNU/scripts/unixnu/bootimg.py": "ebfc1856d7b0ed40df92cdaa491888e39c19d8d275018b65e7c7fe2b218c5289",
+    "board.toml": "fbd0228458405ff70d7703e993d70305e0582d65ace814af4e196d00975d0f9b",
+    "drivers/DodgeBoot/DodgeBootEntropy.h": "47612a059c3e18f15ae14ba8180488f4e2033fc01b41d957c997eab7912d5567",
+    "patches/darwinboot/0002-refresh-firmware-entropy.patch": "3430cea779b9a952ad7557f8346c13d7fca4af5b4e65ab1dcb219564bd75a1dd",
+    "uefi/Mu-Silicium/Platforms/OnePlus/dodgePkg/Library/MemoryMapLib/MemoryMapLib.c": "71e096b88be2700c2bc92eb58f64dbfa2bca585ff5713de78179ca3ade557ab9",
+    "uefi/Mu-Silicium/Silicon/Silicium/SiliciumPkg/Drivers/SimpleFbDxe/SimpleFb.c": "b21933b717999c49c66134be512f5096f8c1ada7cdd76e432d6a48f209d513f7",
+    "uefi/Mu-Silicium/Platforms/OnePlus/dodgePkg/dodge.dsc": "d23d0b2024855739ea483bac2ac903e0a613d325e51077e235ec973706076d64",
+    "uefi/Mu-Silicium/Platforms/OnePlus/dodgePkg/dodge.fdf": "3728a3039e99458e887cc645104c0a9fc9872443d1a96bb284fe5afbc84738cd",
+    "uefi/Mu-Silicium/BootShim/BootShim.S": "ad1037dd5db2ceb66b9b714ec9821335f6a375b38b3242ea1f57c2a966f39e14",
+    "uefi/Mu-Silicium/Resources/DTBs/dodge.dtb": "b6044e472020b26e5304173291afea80f5ebe4e2ccf48dadfe985cee2a52e90a",
+    "uefi/Mu-Silicium/Resources/Configs/dodge.toml": "f96c6e166eceea767ff0c7c2a9105b647f1f540364f70894a97eef26de752035",
+    "uefi/Mu-Silicium/Binaries/dodge/QcomPkg/Drivers/RNGDxe/RngDxe.efi": "671bc6943c02401fc70ff5754d7df8c4eeca4a7cbc78a7125fe5babd6aeff55f"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-boot-entropy.json": "e54d6d987523262dc55962b15f2af6cc2b824222a18f00cc734634b7cc810ff0",
+    "reports/ios16-original-crypto-kernel.json": "764d3a4a6403a9ccd0c25e420de5b2100e361932bb6dd8e2ddb38e6cbfe04465",
+    "reports/ios16-crypto-payload.json": "1e058c5ed732bd4ea11f4253569df66a6c046322526bf4d5c0aca8f1bbea84c7",
+    "reports/ios16-crypto-prelink.json": "dfcaf6e82393b60841a205babd39830b423304982693a441d44d83bd78328e62",
+    "reports/ios16-data-volatile-image.json": "9d9907c749e3870f71f9944176331f76efd0392207afda3160141cf97f33bf37",
+    "reports/ios16-boot-entropy-kernel.json": "4dac94ef2283181edb8c91da272f8dcec8aa5773d0f66d49b9984baf3bc94e7e",
+    "reports/uefi-build.json": "ff91576bea37b95841f0ebc6ab9b4cfdbbb887fad03957fbbfade7a660b8e06c"
+  },
+  "artifacts": {
+    "build/cph2653-entropy-firmware/SILICIUM_UEFI.fd": "3392e3d05f85e62cbf46e7da6ea712a7b68128d9932e4721ed67533f357f48b2",
+    "build/cph2653-entropy-firmware/DarwinBoot.efi": "a7100a1db90dae45b418440b29cb3a01ca03e9d9e40c3faa887b21c423469fb5",
+    "build/cph2653-entropy-firmware/DarwinBoot.map": "1ad7edd27d92ed9943af63a08743715a6e7f0c21291808a74c173f95baa77db4",
+    "build/cph2653-entropy-firmware/build-command.json": "49481a3375e4c3c752e1634307036ad25f1b9787ae629edd51ba42371369e6fd",
+    "build/cph2653-entropy-firmware/tree/Build/dodgePkg/DEBUG_CLANGPDB/AARCH64/DarwinBootPkg/Driver/DarwinBoot/GNUmakefile": "6cf0198a31be9caaf780fe59c73cd8663208792f4b8cf996536b2b4c14b60248",
+    "build/cph2653-entropy-firmware/tree/DarwinBootPkg/Driver/DarwinBoot.c": "aaec6ed9ea795e47287f0518e5d2e76e65c83f2e6699e45912d5bf77b8503988",
+    "build/cph2653-entropy-firmware/tree/DarwinBootPkg/Driver/DarwinBoot.inf": "05248d62d1d1b5c4241a820f737ea9afb374791e5031e658a5a79b4775ec402e",
+    "build/cph2653-entropy-firmware/tree/DarwinBootPkg/Driver/DodgeBootEntropy.h": "47612a059c3e18f15ae14ba8180488f4e2033fc01b41d957c997eab7912d5567",
+    "build/cph2653-entropy-firmware/embedded-efi-cpu.json": "8e91627058017f37491b5ccb369cf3f8337288a7201e0e152fb8a498684ccf92",
+    "build/cph2653-entropy-firmware/boot.img": "3b3718f85bbafc978d260b05c0c1e7f4e0a30caac5638d91811c6372d194ae5c",
+    "build/cph2653-entropy-firmware/boot.json": "8b59114f8a6698fec4928ff20e6bbc2164dc9ecd4fa0cf8a73a3f8aad25fc99b"
+  },
+  "firmware": "build/cph2653-entropy-firmware/SILICIUM_UEFI.fd",
+  "firmware_readback": {
+    "source_efi_count": 53,
+    "volumes": [
+      {
+        "location": "entropy-fd",
+        "filesystem_guid": "8c8ce578-8a3d-4f1c-9935-896185c32dd3",
+        "bytes": 3145728,
+        "sha256": "3392e3d05f85e62cbf46e7da6ea712a7b68128d9932e4721ed67533f357f48b2"
+      },
+      {
+        "location": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "filesystem_guid": "8c8ce578-8a3d-4f1c-9935-896185c32dd3",
+        "bytes": 7835648,
+        "sha256": "8fdd8df8779bbc1387979081e4d883744fe1daa58a2c4d1496b13b956fe1ad9c"
+      }
+    ],
+    "modules": [
+      {
+        "guid": "9affb503-e643-4141-8b90-17e8588b1d35",
+        "volume": "entropy-fd",
+        "file_type": 3,
+        "ffs_sha256": "ed1726034cfc89be4c2220571d1f2a980c19fb69f632e4248405b754155f8de5",
+        "ui": null,
+        "images": [
+          {
+            "kind": "TE",
+            "sha256": "99972f8d121b2493bef53a8ea34c3233e96b68ae37b5701a79170b5ff84c8f70",
+            "bytes": 65192,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x9ca0"
+          }
+        ]
+      },
+      {
+        "guid": "fc510ee7-ffdc-11d4-bd41-0080c73c8881",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "6d91c3bd5dd03eba0896f3dbd088a29953f0f0600082ca611e87c3199b73ba3a",
+        "ui": null,
+        "images": []
+      },
+      {
+        "guid": "d6a2cb7f-6a18-4e2f-b43b-9920a733700a",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 5,
+        "ffs_sha256": "850a3ab06171d16e4fa2930ba78fa2b941bf63365f754ed0882f958fdaa7af30",
+        "ui": "DxeCore",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2114a022ccca46b61440ec932741923fdedfaff8ebe440ed3b4868d530d6266b",
+            "bytes": 169984,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x123c",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 122880,
+                "raw_bytes": 122880,
+                "sha256": "921638b78bea4996e6bd09ff67beeb331314b940f36462f5c45e31efbc14620d"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "80cf7257-87ab-47f9-a3fe-d50b76d89541",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "f0934500522319d7d01af57594844e67a5400beaa2129cc9f64f975b1f8ac996",
+        "ui": "PcdDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "6bc03a8b3639e6874bcf5f8e4ed46c0648d3a827e0d322910b6070c6790c101d",
+            "bytes": 36352,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 22296,
+                "raw_bytes": 22528,
+                "sha256": "6e7c1ba6533c3f7f0232f150f92f0a7076647df355dd367288c8c534394afd20"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "90a49afd-422f-08ae-9611-e788d3804845",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2a74ab77081cda8fb0180941d578d3576ed18dae55b456b159a10337f2d7af5c",
+        "ui": "EnvDxeEnhanced",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1405dddaed23c1ad6ceb62d5761563b04acba639e8fa6acda29d5d606cecdfb6",
+            "bytes": 77824,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 61440,
+                "raw_bytes": 61440,
+                "sha256": "18cac637c94751f830a5c8d34385c34fd4547441a2d160eb074b2fd9b6d116ec"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "d93ce3d8-a7eb-4730-8c8e-cc466a9ecc3c",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "b0eb4e74f55f38f8dd3e0de3584aa873b34fbf3e84160005ee295fb7a145d77d",
+        "ui": "ReportStatusCodeRouterRuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "0a0b05d7a49ff6625cf90b9ddc15c3efe50a42492c27c8121be46d2d5c21cbec",
+            "bytes": 9216,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10104",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 5948,
+                "raw_bytes": 6144,
+                "sha256": "69a7b62ad72c3ab45e4fb11fb63a81aae145223da9e225e95384429afdec37bc"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "6c2004ef-4e0e-4be4-b14c-340eb4aa5891",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "9189baf46b0c94e4530d206e73e4aa4c6b22840b6c0f24ddf1b240b619fd5201",
+        "ui": "StatusCodeHandlerRuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "93f95aabc2742375ff57ad2b7271962886dd8143a9989863ce03cf138431c4da",
+            "bytes": 19968,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 10416,
+                "raw_bytes": 10752,
+                "sha256": "8e26086e609543ffba0baaf4c8475a9eb35b8e8433ae5fc16377e766635096e2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b8d9777e-d72a-451f-9bdb-bafb52a68415",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "da59c1433a51bdf1d50a6605337753db71e8b28913f76697094531c3ad346b71",
+        "ui": "ArmCpuDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a88966be6caa42eb567c94a49083d59f72063ade3cdc5a1a88cd20d263006283",
+            "bytes": 45056,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x11ac",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 26624,
+                "raw_bytes": 26624,
+                "sha256": "e05ef4bb250e45c51c6800cab827ba58d4f3a76cc3704e484df569a8048686ea"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b601f8c4-43b7-4784-95b1-f4226cb40cee",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "a05b427c4d60511a32fb0f87be6ea520b89e2562e88f1fca2f8f66425d6c62fd",
+        "ui": "RuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "eb951d085b33f9b8755b630c3ef596da2b606ddc8b6cd3987aa5853a67d03c65",
+            "bytes": 20480,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 10208,
+                "raw_bytes": 10240,
+                "sha256": "79f7b7a1e5e5b0337e07e2071844be356cf0dad8832297a1760addf509e1d72e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f80697e9-7fd6-4665-8646-88e33ef71dfc",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "a079bbcaf34820288f7a40c5db712dd91644b18d2baee4287b877592139aace7",
+        "ui": "SecurityStubDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "237859df64a7b19e75f6bd0648f158067101354dcb99d045bac684dfb70682b9",
+            "bytes": 38912,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 21104,
+                "raw_bytes": 21504,
+                "sha256": "f6ef42b74e4d3812566a2e3b42bc468f25d3b734ebed6b5aac094ac7d7e81755"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "41ebb6a6-2c19-4c02-841d-848ce004a282",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "5b2a8554277a3c5028b07031473eeab0236a60f9846c201932d38b16c9e86c7c",
+        "ui": "ShmBridgeDxeLA",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "d7e6b4d2d20f71e3830f12995f41555fe686d8c7c03f6ebec428ca83798cb8ec",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "c4108237257788393f4d70dbe7f8827cd3b5ff0ecf1bbe10a8d5a4142bc0a89a"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "4b4973ee-401b-4f36-a6a9-533dfccdfc33",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "c861dad33bb191a7f3284668338e93bb3562d642b4ee0248a615518a18d6ca82",
+        "ui": "ScmDxeCompat",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "75a1b163d6a0d9bdea480e2bb9c0972a045ab4f882e5b0c02a213e9972f21415",
+            "bytes": 53248,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "d9f8ac55b7720b9630540674c72269db7c6e3d5bbcc3eb76cc287984e0a133e3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cf6dfc66-14ab-4e13-84db-9c02912d1404",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "dabd47c168ada4615d6f1b5b90536e27fb504ac7f0a0b9eea8a8ddd4ae2eb9e0",
+        "ui": "TzDxeLA",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "eeb415698bd4e6774d0b7ae831c35f849e68d132b8fe4cbeeb5850cbc4b55fd6",
+            "bytes": 69632,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 57344,
+                "raw_bytes": 57344,
+                "sha256": "79d2b42cb6cb562b4ffab10452dad545c12e1609b340a342258305e5833fe639"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f099d67f-71ae-4c36-b2a3-dceb0eb2b7d8",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "3bd8d57b3e87000af7bad434ee99d8711e1f1b269e00abd62aa1acbeae8c7543",
+        "ui": "WatchdogTimer",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "94357a7fcba363855bf7ba38c7acd462104f3510a0d6ce549da0c0e9d3866cca",
+            "bytes": 18432,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 8864,
+                "raw_bytes": 9216,
+                "sha256": "00fc2d440adf4057d09a32d62cf5020f57f2eef86b2457e27282ef7787b67f3d"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "42857f0a-13f2-4b21-8a23-53d3f714b840",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "ec0a6bec5bed430933335e6397042f8431c4968b9393ef995cb40656f304da0d",
+        "ui": "CapsuleRuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "13988282775889ce81eb61a499392fbfa4f40909042ac2844e198a3cc8a8b429",
+            "bytes": 19456,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 10152,
+                "raw_bytes": 10240,
+                "sha256": "355887b6cc3c2016466112c7d119c937149898164809d4e5eb9f92617c9fa41c"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cbd2e4d5-7068-4ff5-b462-9822b4ad8d60",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "de8fb679bc22e2238242829cc990164404df1e0f23fcb414692f9b12a5c4f581",
+        "ui": "VariableRuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "aa7571edbf0f28c6a747f6cd0273e7295a566ea0658342a4bd8ef2d84d02804f",
+            "bytes": 65024,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10104",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 44412,
+                "raw_bytes": 44544,
+                "sha256": "a3a9fdf298d0189b26e25ebcc88bc9b64ddd0e999269b88c42915b8b6df96994"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "fcabe6a7-7953-4a84-b7ec-d29e89b62e87",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "9adee41da7bff972c1da6a17025341cfedaa026179ba6bae6b40d075390a23ee",
+        "ui": "EmbeddedMonotonicCounter",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "77a4abe8b24a385405a1dbe34b4536a209313c25a05626fda6b76dcd49b34ffd",
+            "bytes": 16896,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 8052,
+                "raw_bytes": 8192,
+                "sha256": "e167c5b0ae6ca5c41cf07dcab916913c95f0d8e2a940535ca54f08a8d016c399"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "4b28e4c7-ff36-4e10-93cf-a82159e777c5",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "5b6624379b909004271624246c584c1daa643383ef1e89a3ce06dac55b4cb5e0",
+        "ui": "ResetSystemRuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "071e0cfffb1142be049b10a068e9a6bd13513d8ce1a0290a405064e1f2397bb7",
+            "bytes": 22528,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 12020,
+                "raw_bytes": 12288,
+                "sha256": "be9464021bc5e08d444a61825976d119a58fd039065deefb43ce91738c9bcdb2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b336f62d-4135-4a55-ae4e-4971bbf0885d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1e0e26748f7a01ab6e873a8947a2d2474fdcd5bb423d35286f5ea69cab44f7b5",
+        "ui": "RealTimeClock",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2e8e2d029b3ff6b4a07e491e5d50c8c5e11363456a8301d376494d2daffbc4da",
+            "bytes": 19456,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 9872,
+                "raw_bytes": 10240,
+                "sha256": "e37e30938d9889946d13b3c68a3769d3498fc813641fd35e5073a53a118737ea"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "4c6e0267-c77d-410d-8100-1495911a989d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "7008ab421c2c3d994d606680cd7e5e90c01d51588a965d8831beac8232c8fdd0",
+        "ui": "MetronomeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c54c299c5d6a98d79cc36e66248906ba0ba1df973ca98fd15f1148560cfd05cb",
+            "bytes": 17920,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 8332,
+                "raw_bytes": 8704,
+                "sha256": "7114e9c803b9d55894d50141b639ee5bf8c759c8dd96399e56a50ca5115ce3cb"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "348c4d62-bfbd-4882-9ece-c80bb1c4783b",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "cf80022246f115ea42f0abf064b33d4c0481a76c76eabe04fe844b6e3fd6e1d6",
+        "ui": "HiiDatabase",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a9822f731d898c0ad1737f43284474c1167f3551b56a48dd8045ecb811037a56",
+            "bytes": 125440,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 101000,
+                "raw_bytes": 101376,
+                "sha256": "4ee76e0ed6884d1fd389fcf590a500d79fbd03279fc2b3bbd3aea20669871e18"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "de371f7c-dec4-4d21-adf1-593abcc15882",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "9d65c77282a81248bfaf7208e47136b10d177f352c0a1668d0e47693d3979efc",
+        "ui": "ArmGicDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1b0b1070fd034bb4591cbc1e181b94431fa6a52c3b0f079e70ce9d627840192e",
+            "bytes": 28672,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 16768,
+                "raw_bytes": 16896,
+                "sha256": "400df638dbebe3a754583251fbec9dd6a56d45168ec66d2a896cb728e3d4ba25"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "49ea041e-6752-42ca-b0b1-7344fe2546b7",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "3a4c74e12df03f35c3a1222a38acfd4cae858deb2c400626687607b0e12a3583",
+        "ui": "ArmTimerDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "17f91b2b1942cb4e6117788ca3c799e8c1fb1df2451d564d5269f459e4e1d2ef",
+            "bytes": 18944,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 9328,
+                "raw_bytes": 9728,
+                "sha256": "4e952933f8592b37afff9b7adbc4ca4d0ac0fa2a1245ad406b53d3010f1bfe17"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "10e193df-9966-44e7-b17c-59dd831e20fc",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "16bca08a3506a4291e6ec31a5c9e047261b37f639eaf607bd7bbe3728ffcce7c",
+        "ui": "ChipInfo",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "86dde5e8e4957d061a6a1375fed970abe5639f3b554df151bcf469781888410f",
+            "bytes": 49152,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 36864,
+                "raw_bytes": 36864,
+                "sha256": "632bd66a9f7fc2ddfc86577fa765c2029e6d612654004381965319403ef9faa6"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b105211b-bbbd-4add-a3b0-d1cf4a52154c",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "be403fa06b5cbc56bf11cf36f92146af767e6855a0fcaa76e2089841f1cd7100",
+        "ui": "PlatformInfoDxeDriver",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "094248ade9fd5d23c4f3faa405c57cbc5a91b77e238c4d35957d553d64113c1b",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "ad0ed889c044f3dd0f53950a96cfb86cb2772a0b7d185869eb444d9e4517920a"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "8e9bd160-b184-11df-94e2-0800200c9a66",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "921babcf427f2902495decce2444ff125dca46eb4f4655e6973ebf89a04d2236",
+        "ui": "DALSys",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2cd7616e8de046121b4161c096de9717f9d2ff18409fec9b6b0c7df4543149ce",
+            "bytes": 344064,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 204800,
+                "raw_bytes": 204800,
+                "sha256": "fde9bf7a2fb951823a6d6fab96c4f798dc87b3fe869c477ba2fbc21001776389"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "9a00771f-36d4-4dd5-8916-c48ed9b16b86",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "d72c9dacc8b28003445d19802b9ad5df6f2864b262ebf6f2883b41f2c634923c",
+        "ui": "HALIOMMU",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "624ff09858e34cc338d11ea2585f68748e26ab6d2b276f4ff4df2447f6ea25f5",
+            "bytes": 143360,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "9a7f6a41d9fbaf284a82780d93797a33b4fdcae2bc28082935bf1c8c41b11fcb"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "af9763a2-033b-4109-8e17-56a98d380c92",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "bebec5c762afb3e6bcf0dc00d5a5ec592e7b37da6cf17095530cb1ffc0e70f2f",
+        "ui": "HWIODxeDriver",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "e9eedfccc3e58e5afbca2257704b7c5e6ca3a1bc24efce45df9fa4f4996eee26",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "b57b59d46f8b02ad4b095fadcb7a50c99a953b6a11e6b7d99402a69d4196760b"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "04de8591-d2b3-4077-bbbe-b12070094eb6",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "c8b1abbae2bc79cf52e5d89e361b9810cb8673b64b43f9bcc1dc1890aa387de7",
+        "ui": "I2C",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "afa0170a1c358bd7bd1cd1e4b634924b63b49c0c463034e24b760d39aac4c52d",
+            "bytes": 61440,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 45056,
+                "raw_bytes": 45056,
+                "sha256": "7acdfb8bcccf617e40705074c3589b60bf0945dc6b2e39ea78ca389019754181"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "8681cc5a-0df6-441e-b4b8-e915c538f067",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "bad60d6a0449fce015eb662c8283eb48d37ece29852338da8895d3d2b258c897",
+        "ui": "DALTLMM",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a8f4ea786740f56f182c09a632243380fb6a412fa3af5c3e14a75ca69e979d89",
+            "bytes": 49152,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 36864,
+                "raw_bytes": 36864,
+                "sha256": "6985e8388b2e48deb3ec86b29809620882acfbba3c0e7df9c2995895ed877d73"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "a16b79d2-afe0-4aed-a3ab-8ce3fd0f8c71",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "38ce568c15ebfa3e12702b134719495e96b9208f30037a8c0c4ef48e9ba2e4b9",
+        "ui": "Qup",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "fd70e7dde3826452cff6829d9f36bb04eef6a8431ea05c83812f8df9ed99419c",
+            "bytes": 28672,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 16384,
+                "raw_bytes": 16384,
+                "sha256": "47f9baf9c06f800ca5527d0c94d3c8766bd1d678dd67b84bf28f94ce8449f38c"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5776232e-082d-4b75-9a0e-fe1d13f7a5d9",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "77bd27d904e01c4a9a4b24fb425b5a10f8aee103157a050f742c24a6123405b2",
+        "ui": "PmicDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "0fbecb29e2953ff2e73f5f793d642bfbc2b80fd8d5323a9bb1faca386aa9e27e",
+            "bytes": 282624,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 229376,
+                "raw_bytes": 229376,
+                "sha256": "42adb8b7398b4548caeb34140277b1418c3df4a7e6e80be5091d2afe70fc283d"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "9b680fce-ad6b-4f3a-b60b-f59899003443",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1444e70cbaf23251aca4a904ad8e37894afb7054b04c4377b7da7e2cc6591577",
+        "ui": "DevicePathDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "6e6d0ce5ee08a09fddff1e7dc17a07a0df79c278d5abe3eebf691d69fd5332d8",
+            "bytes": 73728,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 61440,
+                "raw_bytes": 61440,
+                "sha256": "a94f77d6e6736e851e25bd74259a4cf5592d5deb225df3504591aee602ff55c2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "6b38f7b4-ad98-40e9-9093-aca2b5a253c4",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "cdc2fe7c6bf45a7109dce77003c8bc6145b5691da09f15e744848766890a081d",
+        "ui": "DiskIoDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "3141115dfb23c8581f45584e5e9a34f9b3ab112ec8abd30a41cbd1c27e7579b6",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "c174fc135a005d5d94013eb56daa802ef61ee0e75b621ad9c536fb0241004660"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "1fa1f39e-feff-4aae-bd7b-38a070a3b609",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "d83b322ea40cd43fc9ab6dc4f0307b454d9b072d21b2f7b8d76612ac2af22ab8",
+        "ui": "PartitionDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "28a56dde03b4090ef294bc9ddc6037f7b3da81957e5c31487bedf956805fac64",
+            "bytes": 53248,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "8ddd4cf7bcf54938f1c6640f67c32ab9c7e7d9944d047a40fdc6a339ab89887a"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "961578fe-b6b7-44c3-af35-6bc705cd2b1f",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "da3500177e87c125ee9115566db82e55790d2ef034dc23fcc1898558e8e7256d",
+        "ui": "Fat",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "36c18bfd3ab61fd620e6a514ca0be94dfa6e7ce6457ae732b7f3b5c1cb0ae1bc",
+            "bytes": 53760,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x11dc",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 37756,
+                "raw_bytes": 37888,
+                "sha256": "69af674a6de507b037cb6b21a06b2c19323a9d101c43a54c54888db44d74a8d9"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cd3bafb6-50fb-4fe8-8e4e-ab74d2c1a600",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "08536361dcf44c1dde88610e1823269561f88f6d59aa95349f1010fa186bdd70",
+        "ui": "EnglishDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "ab85e2fc8e1012fc61c4b86a8104a3995b2b547fe319a8b1696684febfd01d8c",
+            "bytes": 18432,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 9032,
+                "raw_bytes": 9216,
+                "sha256": "340600cce7a6b45cd24340475a84c58ed4b163c5fe90cb4a41258f045b795084"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "0d35cd8e-97ea-4f9a-96af-0f0d89f76567",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "5c1c127c6787e46c8917732c831a75e1083198d52b6eac5d889a0f33af0b1ea6",
+        "ui": "UFSDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "e76b555f7c855784cc03303ae1044c69b24f04f214a320a8e2ea101b4f3c85ef",
+            "bytes": 155648,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 126976,
+                "raw_bytes": 126976,
+                "sha256": "da2cb15de2c0eb0f9b7e45a27a0e61bb122cbb9f63ad5e9b5efba0e1669c9652"
+              },
+              {
+                "name": ".extra",
+                "rva": "0x25000",
+                "virtual_bytes": 4096,
+                "raw_bytes": 4096,
+                "sha256": "ef6ad6921202fc7872e031f40efaf20d891d9f2bda1162d3f4c97546dc9b1c15"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "aba01ff8-2ccb-4e12-8b2e-cd3f4a742993",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "78d76c908b49508685c8853bdd49a5c9935f5aa76a6ce0b4127e83961ee2c93e",
+        "ui": "CmdDbDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "521efa77750578266746249736c3aac68206a37eaed104a92c4b5147d56e0dad",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "807a6d8719bb1db293518ff33573c9dcf86631825d5d6b6a772acf7a9a4fffd5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "0401b830-bff9-44a2-a5f6-95734a33c017",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2517168891ae794de590b08b4892b22c9e2e457ba1ad1e4e1dfef8d0d0c559f4",
+        "ui": "PwrUtilsDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "52913574395a32d835d070d82b8fe1e3d07ff9ce7bc874ea507b4591b1b90e2d",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "49c63f23405a4c319d914edd06a56409037006126eca95c5bba36567ad53a400"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cb29f4d1-7f37-4692-a416-93e82e219766",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "24dacb1ecaf773ae3a3723b12f54a96ac0cadaddcf810749214e68151cfa549b",
+        "ui": "RpmhDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "7099a4ac886e48f61f737f8a85b324dc4027c43280078db6d414f25d8d1b42a1",
+            "bytes": 61440,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 49152,
+                "raw_bytes": 49152,
+                "sha256": "1d58bb172e8131144e75f35c03a626ea7b61760fd48d008a8f2b7b01ebacb70d"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cb29f4d1-7f37-4692-a416-93e82e219711",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1eef40418aa4af7da3f88d2457801a0be2597439e1296e6ce7fc01abb84eb44a",
+        "ui": "NpaDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c0556c168310bdb26b59a39e6a56e63936ae6c8df2fba4056e59c45a3767ff4e",
+            "bytes": 77824,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 65536,
+                "raw_bytes": 65536,
+                "sha256": "23fb88f6fa74b668b5dbd844e98281090976137cf197085a68bc55ba12c6b8d4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "e43128a8-8692-42b6-8afa-676158578d18",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2def7804968109b7e5d41e0b249547b2f7782897fceb1df9f117a79e36f949e2",
+        "ui": "ULogDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "e7b9142ed93978e038706de308876378bb1787aa6e3684994f06266161210973",
+            "bytes": 77824,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 65536,
+                "raw_bytes": 65536,
+                "sha256": "da1f3428ad5a0558d6d8fff29c23f21a1ebc884c401894e5c2307bdd1008ae6b"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "e3095547-34b8-4bd4-8d8f-c3223c30318d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "6ee9e53818d552b3ea9255d5b18c0426a7ad48e0dc05763e1de89d5d863d2a78",
+        "ui": "MailboxDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "441ee24901609f8bd2e9905a044d2e74b824154d884ddc92abe6b7dc0868c61a",
+            "bytes": 45056,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 32768,
+                "raw_bytes": 32768,
+                "sha256": "2f398adf1ac0fd77aa19af7baf96b0c3c7e946e05eeb22d9de4c3778b7c9b8a2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "9585984c-f027-45e9-afdf-adaa6dfaaac7",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "a60c965c18ac30709d3ea727ff62500658fbe61854a04f41c58d00e66b702af1",
+        "ui": "QcomScmiDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c2d0d1f549a4f9cc4d8d415c88b3f5d2d635d732d53c8b8d6ddd18f38768a04d",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "08ad7e5d8be0ea0f41ddf20f1659b8c9b06514b1aea7ea7a33ab836b2b65d046"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "8bd3b475-401a-4b0b-9315-edee61a1eae5",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "26262107c1fcfc6cfe19cff99998020acf691d26e98332ff4ebc0486e8498aff",
+        "ui": "VcsDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "6cb0a4f3d7409076d941a27133bbee67635237ab7a9579ea77f11316a8e8f553",
+            "bytes": 69632,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 36864,
+                "raw_bytes": 36864,
+                "sha256": "f080f2ab4a19b3267e7295dcbdf49b5851eb459788aaf53c6eeaacbf27184561"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "4db5dea6-5302-4d1a-8a82-677a683b0d29",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "040addcfb0846c9e654d8ed2b2701584672d85b93cba42b516df473717194a09",
+        "ui": "ClockDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "285d51331453f0d52476c6daf35bd594376ad95091590fe8d39310431fb2fb5b",
+            "bytes": 278528,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 159744,
+                "raw_bytes": 159744,
+                "sha256": "6e47c7004193bdedab7a44f851a9c662f580a57572e63c06614a34cd0e46b9b9"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "2a7b4bef-80cd-49e1-b473-374ba4d673fc",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "91416da360f09809eeda599c9aebc20c893be29290fe6e8cf9af9c04cc15d5c7",
+        "ui": "SPMI",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a4f1d44225dcf8d1d121109276e72508b8d2e491683e93d0079f797b8f7e5c35",
+            "bytes": 45056,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "6352416633753428d8e3a199735292e7a132387410678fd248e490f364c577c3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5824f9de-17d2-4b1f-a5fe-5eb77fa53093",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "949c76f91e07139e0b5765290db3767b9a9fdcd3fcecdaf1194ae373a089097f",
+        "ui": "ICBDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "b8cdd560f414dce941205f4c85c9635f0e3a7a3baecd1ba965ec47089ac3a0cf",
+            "bytes": 188416,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "1c1e9e747796ccc0372be5bbdab70035da51119f6c7d65a19a0114345b167880"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f541d663-4a48-40aa-aabf-ff158ccae34c",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "65dd4df227963f645dc51d5416fbff74d67d6f88497b890f3c13160dd610f667",
+        "ui": "SmemDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "011eb594d9f465a73c4ae7fb5dc61adea0d15cca62f105d2b1f4c60bdbb17ffd",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "e8644365ed11a171f9ea7439742b1d4467c0fc146690e1a3e15de67ff051ac86"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "6d33944a-ec75-4855-a54d-809c75241f6c",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2266e6803e01cb6171a73c5e2dc023ca0fe29f113b55b7bf973e9ede97ad0a38",
+        "ui": "BdsDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1f72b53a0f83a9f3b564ec100afbc69f801f1d7c817b73e4fce0c57f95525767",
+            "bytes": 383488,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 83880,
+                "raw_bytes": 83968,
+                "sha256": "c782c9f25fbe8f12b9ae4b972e060413c8eed2a3f33874074dbaae22f21191fb"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "ea888df7-d431-44af-844c-7b29390f2758",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "ed3f58fda5def9546c2793a0ba4f726e84d22e838116b788e3dffe3ad6dbf610",
+        "ui": "RscDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "ccfb769ce19c122e4f68103817e22b00e8a7b2717e6fe48bc9c757690efa0ef6",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "aa8c04daf30811669d621167c09d19bed945bc8783cdf28ed0a850e424016582"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "6696936d-3637-467c-87cb-14ea8248948c",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "ade78f28b4b35f1368d1129b7ab1c41a4504068f186b74ccd6f25d7a2591e885",
+        "ui": "SimpleTextInOutSerial",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "457f8473719dffdbd84e80122923e1299de295d5c7487d1d496cf414ae5956ec",
+            "bytes": 19968,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 9832,
+                "raw_bytes": 10240,
+                "sha256": "6f0286b17d2b1c2c97992fbcaee2129f76f8fc0c702f5a08bbe07e3a314625e4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "79e4a61c-ed73-4312-94fe-e3e7563362a9",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "717699cf99808e55c31bb6bdb4d0b9d17a45a3e51fb93427d7441bfdd4ec3e93",
+        "ui": "PrintDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "229b2ac499cb6e230a0917250ec2468ac4a81a652dc2f65b539c0a20be651415",
+            "bytes": 22016,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 11252,
+                "raw_bytes": 11264,
+                "sha256": "6d751db9888d1913818926bf3006ef1745a2625ffe308abe5328ce80725832de"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "51ccf399-4fdf-4e55-a45b-e123f84d456a",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "9816024393eb0f83265442adebba95943d419aa6bc000ac05fc476dc7cf7acde",
+        "ui": "ConPlatformDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "eb25846667557c2f9cef7401257d2af40cc808638f1bc8751bf710e93aaa62a2",
+            "bytes": 29184,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 17648,
+                "raw_bytes": 17920,
+                "sha256": "db020c74e5615ee09bab54deec18f2e73609c54893c2a8ba1f5c0c38e3827d2b"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "408edcec-cf6d-477c-a5a8-b4844e3de281",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "32f43a67f7ff39886979617be3ad322e263898293a27c2535772bf999ed3cd9d",
+        "ui": "ConSplitterDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "7e4ea2102b3ec971d7078c3ba1d84a474a32ac219ef8033f6751cd0354af9c38",
+            "bytes": 38912,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 25804,
+                "raw_bytes": 26112,
+                "sha256": "998aa7b4b4ffe3e9d9f06e116d2d17c492ac1150950fcd834560a064c454b3bc"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cccb0c28-4b24-11d5-9a5a-0090273fc14d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "d9149210d772f28257597cb18e49bbd45c04107d382839de3f364ca0f298099a",
+        "ui": "GraphicsConsoleDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "9971bca802f5e731f6e749fdf83e5f6f5948fa58ab6e26e17d40b0a9ae72e48b",
+            "bytes": 33280,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 16932,
+                "raw_bytes": 17408,
+                "sha256": "55df9fde962edf4db36972a5c0609c0c1914f16f37dadd041b46e0eba43d0d2e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "7a32bd23-f735-4f57-aa1a-447d2fe3be0d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "37c0eb8e173b35ad5133aa22074b8299e84a776344c7fef1752c4fba733d1dae",
+        "ui": "SPI",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "7a70c89627891b638f1521036d73b6bd9bf927c9347d85f5d5e78dbbf83ee7c0",
+            "bytes": 61440,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 45056,
+                "raw_bytes": 45056,
+                "sha256": "7b924e5275c2dc2423c2c3005a06bff2a5bdb27b3c585cc4fbddf27ca54e0779"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f10f76db-42c1-533f-34a8-69be24653110",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "00c3241430f0a3a2e98c7c66de13480321b9c656307d1045dd612f8536b9537a",
+        "ui": "SdccDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4218ea8fd711f50e4b2f3ab39fb564eef3db9e50c249c6e0299ec196ace7e133",
+            "bytes": 126976,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 102400,
+                "raw_bytes": 102400,
+                "sha256": "0da5192f122a08b6c0b6d86f8441cbdbeb6405c4936233efa64190bc41e02403"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "1c04f529-0612-4319-9315-b2e75c16810a",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "6224def9e81ebe1ec802027a84c486a6d78ddd717c744653d9e708187dfb48c7",
+        "ui": "FeatureEnablerDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4d89b2594d3c991e2a6de0d4a82c994a334d95cec6ae657b005fad7dfd7315e8",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "91ed061bad0330acae580a853302b72dd55c5cda75a6cce34119dccfeeac4913"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "dcfd1e6d-788d-4ffc-8e1b-ca2f75651a92",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "b6cabc3a3d3005155c985f9e1f14faf4e71a7d756bbdceeb2528da7d7d7ccbc1",
+        "ui": "SimpleFbDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "80df0a4cb3f171bf2873c9a406e71349b10307fac85cdf27df0958c6a464f930",
+            "bytes": 23552,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 12840,
+                "raw_bytes": 13312,
+                "sha256": "538d8decff16ce02d6359863d07dd0ba6fc2e053bea73a1769f9b1e96c9e33ca"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5bd181db-0487-4f1a-ae73-820e165611b3",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "617f84f64d6a977a71355c0035462e4490164dc9b736924f6181ec8f2439779c",
+        "ui": "ButtonsDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c15573510f44b23c2807d3f0c3572cb70af5300b64037b1b4d16a49227a3e10f",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "10aec46d7e220e2412ac6402e48e4a1ac7dae2a9fbac79d043e3d3d026fb816d"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "2e3042f3-2bb9-463f-8866-56d75b7c4ab0",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "f3ae8f015757014242ca4ec518864530284bf92b79558d47ed917c75a2fee349",
+        "ui": "ChargerExDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2d881843fb7f6e99346ac8b78bfa559b5a00ac00f4c95e70f05bbe6cd9c8e37a",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "7919628428a2cdeb356f7b231332ac77a98871bfe3f178652a04c95e80f152ca"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "42031f68-1f0b-429b-93f1-0eb0cf89ddbf",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "4412283881d1f0b0a8fac30a5e153a6d0d1a0820b09e6a8ee260ecbf6d1da466",
+        "ui": "IPCCDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "dd1cc5a4bddbb5280bf564bab4a3ab092aa2ae8d38fdefc15058336f42f7539e",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "4fcb32bbb2fef60476d3cd1cb484b3bf87726fb5a70a1f33cb8823a89b91d2cc"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "68a710ab-a58d-4c0b-be1e-5f6ee2c36ad8",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "a89a0ebbddd8e321cc526e146b5ea68c548bf4364989d2e566b303c97d53986e",
+        "ui": "OplusProject",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "97c0e275f90d9dbd10fc902d30349dcea25328a31e36bdf36faf7076eb832251",
+            "bytes": 53248,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 36864,
+                "raw_bytes": 36864,
+                "sha256": "a9f3797f1f318cc95b4819a1240ce59a780e836f1d239ca6b6d94bf3f9e2a498"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "6d4a9cf7-cc0c-42b0-aa89-f6a6a8d99273",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "c2ef8cbf268da27433559c44ae0dd85c6d01d8d965b73dc0869c7beb8250bf16",
+        "ui": "PmicGlinkDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "3a7cb058a94df7a9d42a4135f5b7a0cf77547154547e4ddc3bf216ec746484dd",
+            "bytes": 53248,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "fc93f24b80eedcff32a1c9bff5ccb4da3d6b692bf64d356ce6b1bea381d6137f"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "4bce7f36-428e-4393-99e3-7e0844404dba",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "3db10be44137031fe5d296cd39f844135406996cea1fe1a64f970b68dee3ecec",
+        "ui": "QcomChargerDxeLA",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "6f2e3797c50564460f728b6e45f97cb8237123e4af564702528e3bf371cbecee",
+            "bytes": 147456,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 131072,
+                "raw_bytes": 131072,
+                "sha256": "b0af00970de98ce1e10a7f0e048684e2899657d38be2b6e8c056c7ab2e687374"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "11faed4c-b21f-4d88-8e48-c4c28a1e50df",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "24aa6ad84c891b3e849499e65279510a6c72e183c90ebd6f7dd67ff503342524",
+        "ui": "UsbPwrCtrlDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "ab28667f6f3eee66baddf757ba313c76a3397fc713003166d9a78fab6f073976",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "da78ee583413fc9ac27eb4223f366ce0c7a09842f46c3cea7941e5113b6f9c79"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f09ad92e-485c-9cdb-3e05-3385c38f94cc",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "50235f5372873acb0d2592b5d38d6d232c87f6c420b8c4614f2f6ab360ab2585",
+        "ui": "TsensDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "e6c3827ccb74f15f8c2f38c49fc3f4ae83a517ddf40b1a80b6e05bd657c3a4bc",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "5ea57a04286059fc9e49bc5d8e513bc5e0fd5649ec576032ad44b397fd487ef6"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "7db0793a-4402-4be1-906e-d0fabad2707e",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "49ccc79970c679aa14f2de061b810ef26f12e84b2f69f31d4c3e5305b70c326f",
+        "ui": "DDRInfoDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1eb7130c0b3fba6d540567af0fa2d62aeeb7feee3865726c080f1e50a1fbcc7e",
+            "bytes": 45056,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 32768,
+                "raw_bytes": 32768,
+                "sha256": "4923302c3692a1b7e4f3bb78a4e267988e11cca992fc586b6004c58134b2826c"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "94f8a6a7-dc34-4101-88c1-99179cceae83",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "5ea1094bcdd312a320cc0b52c7c99536e6354e226b7261bd00ef1bf19b937693",
+        "ui": "UsbfnDwc3Dxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c1977e23c78721c4c8827080ff227909224f40e7134894bff347436b5a09ad54",
+            "bytes": 98304,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 86016,
+                "raw_bytes": 86016,
+                "sha256": "7a856e8d4f9010b19eb743441143809789de7b4914a91418d9de5d02e63364ea"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "beb12bee-f6e1-11e1-9fb8-6c626de4aeb1",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "faff243b29dde066b7a735f1d951018bcbedeee78bdb2a32c1e892b94c7ea36f",
+        "ui": "XhciPciEmulation",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "3bd89688b109faa1d5e5bc5f006698bf061bbecdf5255cbadee4e791cb9bb91e",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "79e927034e46e62898769586cb92991e54815d6d5b8c2a76a5dc81adcbe1643e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b7f50e91-a759-412c-ade4-dcd03e7f7c28",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "39e3b1d06779874f9324eac478fb339ec112b23d095744862e3993ff114d7259",
+        "ui": "XhciDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "bfa86fe4144e83d790e7adb2c2b8df9963d9d5bc4db01ed1ca276cbc76b5b91f",
+            "bytes": 90112,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 77824,
+                "raw_bytes": 77824,
+                "sha256": "6f44916e01cc6f01e47351293fd26ae48865a1d3db65f443e2bce3796ed897fc"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "240612b7-a063-11d4-9a3a-0090273fc14d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "46deaed8093b1a258a3e2035c7f4cbd837ab6210b98e21c487f7a03b4570b771",
+        "ui": "UsbBusDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "e008d32c0668aa35bb7d3195fc3da643c5a3bc1c15c2d852f77aecfc7fe1d530",
+            "bytes": 52224,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 33580,
+                "raw_bytes": 33792,
+                "sha256": "14c352227d1d76f3196716d6243aea3e4fa7ffd1c2e0ea2bbfb7cf7c597dbf01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "2d2e62cf-9ecf-43b7-8219-94e7fc713dfe",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "a980a67b12da8e6ff1be5a361e1b9a6da850ba1154f0325537deb49f4e39a1c2",
+        "ui": "UsbKbDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "12dd08d19fca8042f8ba6643a7f5948a424a46876e7dc3c0f8cf43f6a098d2cc",
+            "bytes": 34816,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 21280,
+                "raw_bytes": 21504,
+                "sha256": "f8dc42d9afa1058b099a1a5998ab3e5fc1619667a1f33d09ec73081ca3401194"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "9fb4b4a7-42c0-4bcd-8540-9bcc6711f83e",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "0449ef89da11ac7f06dba429dc9e621811597025fe241852e318b617beac2937",
+        "ui": "UsbMassStorageDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "0735f78d982a8302c97598a320a1cb9294305a09e7960b564c7e5d78b0564869",
+            "bytes": 34304,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 21312,
+                "raw_bytes": 21504,
+                "sha256": "a9451c2ac620fe9c38e67bb44b4101aa90e228c68d16be078b94c75f3eb57ef2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5af77f10-90df-4e7e-8325-a17ec09d5443",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "61326a15d966b0cb8347faaff60c3a36642f9071559af21474ef9bc927b4bd97",
+        "ui": "UsbMsdDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1ef3af51e1d9f3a4149c3cc9a73f40ffdb2286e65a221add1852d3100b9a995f",
+            "bytes": 61440,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 45056,
+                "raw_bytes": 45056,
+                "sha256": "1b20dc1c5742684d66d03fb42069bad63014cce380c5b10950ef2f36e13f14d4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "3299a266-15f0-4346-8318-716336736d3e",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "0f521890590c1c5f622e7f38ceaa19b52ab61a9f310b071794abcdb4efe0512c",
+        "ui": "UsbDeviceDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1f68e78043dd561e78979277e17e25f7e5f215a317b18d7f7bd19b999f1b1eae",
+            "bytes": 53248,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "8be5544dc4901ecc9151ed6d11b690b1ab20465ecb6a699ab9c305fc19a4b1d9"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cd823a4d-7dec-4531-ae5d-4134fa4127b8",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "ece186e602f56a7526921e54bc1ad426e64325e14cd30ceb54ec03da4244d238",
+        "ui": "UsbConfigDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2525db2fc1cd135e08921bb805e175f4809770b81257eafa6d804501396433fa",
+            "bytes": 90112,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 73728,
+                "raw_bytes": 73728,
+                "sha256": "93b7e59f8ade22773d803225bef4b1f46d6aae174500d43d9d457f2f00fb08a2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "0a134f0e-075e-40b3-9c63-3b3906804663",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "d29749e16c7d0dc195a7dea50d963f8f0ff2e1c41ebd0f79cafc0e98f6d8886c",
+        "ui": "UsbInitDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4b5c0794f52316e8061617b9837c8e7780c0e855b85e6e67d2dae238b374bf5a",
+            "bytes": 28672,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 16384,
+                "raw_bytes": 16384,
+                "sha256": "250c2b5ca53cbca981c00eefa7e6c292d1019e9448b698e6ce1964f85bec0775"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5f0937cd-73f9-445e-b320-bb6fd5d3cbde",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1a61a6d2eadd4394fdb0e0c25b7dd9d5afc8ff7b829db10dbe3cca33315dd911",
+        "ui": "UCDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "9fc74b18270dbf0e7d8550bd19126f75c65a81a664e1fa7633fed43f29f26afd",
+            "bytes": 192512,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 180224,
+                "raw_bytes": 180224,
+                "sha256": "a5d492c32e262b2985d73aef92ac13b3a05faf03c68102a264d6e3f907f9cf0f"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b0d3689e-11f8-43c6-8ece-023a29cec35b",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1a08cfb1872f795bc8c82a4ceb1f70c05617d311b4318f4e83d6b9a421fdafa1",
+        "ui": "RngDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "671bc6943c02401fc70ff5754d7df8c4eeca4a7cbc78a7125fe5babd6aeff55f",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "14dd5d7c7e8452ac5c8ac3a25bb0071af7a71dddd45995aff69de1cca3789f22"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "1d317734-4083-47c6-83ea-e3a42f2a6bff",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "0ea62e586cade838db6118d5b6aeed81fb054fb42d469f6dec9ed0a643591721",
+        "ui": "PILDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c7260bcce55b30b4601b4485b93737f16065178376aaa0a076e750a641549500",
+            "bytes": 114688,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 81920,
+                "raw_bytes": 81920,
+                "sha256": "6632376b27b44905497942aa53693a2d9a254de06d240e21c1307a55d8e53f43"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "8cf9c920-d5e6-4dac-bef9-6e6a4eec7add",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "921296215b040c3f481d3ba966c9b03c54b12bf43caab5be8e470521e4a4d3e3",
+        "ui": "PILProxyDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4fbf96b4710895a899fd6d6f2d27841304b8acb7ed278cfaf8c339c4b03ea769",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "556e4054d7726e70a414da6faec76663029714e522c513548e24a16aa8ab3609"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5d787b6c-6254-43f5-a7a8-cb25329cf97e",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "c4b921c181a96a5fbb0deefb5e822d452f2bef78c26a90876fa7e40523032ff9",
+        "ui": "SPSSDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "364938f5c4ca2838ac51ede6075bd28c5fb7b3da16c3be88f382011ce0b8671a",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "d07977adb7f1a43cd8173dfdf4db22552ba1da7af170b076b1ab1fc7c5c1f3fd"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "a1e235de-e825-4591-9623-c43175811826",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "49fcbd6ad13d5b1d63bd80f07b77d47bcc580d00f358718b68d65bad05485b89",
+        "ui": "SecParti.cfg",
+        "images": []
+      },
+      {
+        "guid": "21e9bdd9-6c3f-4f10-84a5-bbec322741f1",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "b65af5358cf2e1c088741a512939f62650c572d2602d2fc52d336fad629e1755",
+        "ui": "uefipil.cfg",
+        "images": []
+      },
+      {
+        "guid": "9b665204-a133-47a2-9396-9e2b370a4e25",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "876920eb5075334b5a4ae63650f469a38ced67d3de8ca84c9ae5a53a7b763cd0",
+        "ui": "UniXNU",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "84c57ba5249b4211109bcf9a9a1a4d8a7ce3d7a48d4a4f7914ff2c49e5957843",
+            "bytes": 105472,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 71076,
+                "raw_bytes": 71168,
+                "sha256": "ed5779720eff6a9cbd7c254e4c52b0fc00c591880df23ee02ee3f9b971e79318"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "29b950cf-586d-49ea-9d71-f88645ccdaf6",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "5d2dd2cb7bfa51cb1a9ac956477726ac0ddfa458ab77dab1ebe56b7ea82f6998",
+        "ui": "UniXNUDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "0d2ea942bf10f6da9f856229d5c564e22c9b6a826310b7b65386ca5a30dca8bd",
+            "bytes": 23552,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 12856,
+                "raw_bytes": 13312,
+                "sha256": "175d344ff6dbcd55f8ed63d653ae3c0f0223dbdb866aaba5433f85ead7da4fb1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "75ca63ad-fbae-4a06-92a0-f937c671251d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2f2d6ede8287889cf8cf20e998d6e7f2a092f1c3e60abc1297653c344362c4d8",
+        "ui": "UniXNURamDiskDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "fc7c2ad7609fb7c62ad5b8e74b1f13a24b8d249fa5eeed0f170c1c8d5f567781",
+            "bytes": 23552,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 13000,
+                "raw_bytes": 13312,
+                "sha256": "2d066c4c911ca681ab021a1d19460df69a9a20ae25cde477754bb2a3a44e8157"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "1b64af87-8415-4b57-9b16-680d70913b9f",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "432f6b51d34e3d20a71654fbbb6aab6101a195ba9ce75cf3f8b12b22fe4792d8",
+        "ui": "DarwinBoot",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a7100a1db90dae45b418440b29cb3a01ca03e9d9e40c3faa887b21c423469fb5",
+            "bytes": 36352,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 22592,
+                "raw_bytes": 23040,
+                "sha256": "5affb0d6623df1f3eabe430d0e62e0bbdb57a39d2c4574ebf68dab39f47d4c64"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f4c010c0-96f1-4b49-bfda-e982b807f44e",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "3d12c85656e52d0cb4765a3ff9fa3fbc1c74b4754c6865b9923e1bf2f7f62b59",
+        "ui": "RamManagerDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1d02336bc6685a4f44df8d8097649a3346043f2375a94dafc71618a6a7be91c7",
+            "bytes": 26112,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 14440,
+                "raw_bytes": 14848,
+                "sha256": "4db076503dc3f07e50e6a012075e209efb5a49cac64dd89c8a5461160ace6d4e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f9d88642-0737-49bc-81b5-6889cd57d9ea",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "814ad57b5e6df8e37824c0fd2873a390247470e08f0cbead9e7abf823b031c54",
+        "ui": "SmbiosDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a92501e6799cc563c9840a286120b513ba6e9fd28327ffe1b4c82de591e33355",
+            "bytes": 30208,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 17652,
+                "raw_bytes": 17920,
+                "sha256": "71202f644b197cfc4948b30a8649bcc438fcf6fd6fb9ae5898f398370cf0e87e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "50a15b6f-e3a9-4192-9640-369cb367c4de",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "4c761910a7f8bea365c7c55124d7e3ad9ffe85a97cf93d0c70f4f9ab58a09a04",
+        "ui": "SmBiosTableDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2ffef36b44fc1a388cca8db093a0f2c5b1cfff2911915e61c22f71e2a0b9648f",
+            "bytes": 25600,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 13296,
+                "raw_bytes": 13312,
+                "sha256": "31bf230a473933f45018981522a6adb6b963126c99609443635421fe936a1165"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "17f55a7f-ddb8-4152-a280-e3984b6eea94",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "b5680c578808e430e75e40abb0649efa4c86a023ac53da667d02dad8cee042f7",
+        "ui": "IortDtDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a1759f9502fe8d156be3de8a895fefc384d987e3d5681c856613df388f74d9ce",
+            "bytes": 23552,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 12772,
+                "raw_bytes": 12800,
+                "sha256": "3231a5832e9404a60b6f64fd805148413b08f848a14f5738583de395419fd1fa"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "fc097b3c-2ebd-4a75-a3da-121dcab365cc",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "4357f09f4b9e6bf254fd9e4398f2d2e4937a5629322105463ad35860bf158ec7",
+        "ui": "DtPlatformDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "ede295963145d61e29f9cf3980a2af727f4cf1b08311d335b596529fab74a86f",
+            "bytes": 22528,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 11292,
+                "raw_bytes": 11776,
+                "sha256": "cd304485bbc9fba830185d253db2e2c74cfabd903f4be909c2bdf9f49a7fd50e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "25462cda-221f-47df-ac1d-259cfaa4e326",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "91989635ea3a2fcfad6e0e902bc29e4cc41e016dc79f1a28c84da11dcc35f576",
+        "ui": "DeviceTreeBlob",
+        "images": []
+      },
+      {
+        "guid": "fb14ecd8-9432-48b8-a692-ae4bc19d568b",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "5846c748a19bb472671884e6af3821dcc89ba6682c55decf74c22b74689df24a",
+        "ui": "MassStorage",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "5e68379370320437e1302f980583f3a56006f7b65be45c8a1e02f266bc5171e5",
+            "bytes": 295936,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 21552,
+                "raw_bytes": 22016,
+                "sha256": "15ba6bec51649919c08428ab6c67a14eac99657f7789e68270f15a6dd3e96e57"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b8e62775-bb0a-43f0-a843-5be8b14f8ccd",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "71a61ad4bf637a98ca3667b1d68cf8d636f6fb12c71ab5ae45f73816bc05ab10",
+        "ui": "BootGraphicsResourceTableDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "160e1604db5d2d18abe98ebd3501dcb48319685b8b984ed627ea7caa2cb6a0b8",
+            "bytes": 21504,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 10788,
+                "raw_bytes": 11264,
+                "sha256": "3b9c0e2f696761d9f9718b6e2836fe22f555ed05f0df9925c8fc6b9e4b9b4495"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "ebf342fe-b1d3-4ef8-957c-8048606ff671",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "e1e5530b4961a73b5aa59e74436f95ef6f39511529ea9af7ce829439bc2e32e5",
+        "ui": "SetupBrowser",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "39cbad1b3fb0a0ed8dd45b506f6fd91cc57d6e2642e8a9dd9d5d54190053e6a0",
+            "bytes": 110592,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 89272,
+                "raw_bytes": 89600,
+                "sha256": "f164215e436ab83a27590d5d8b8330e2044a2f1f087de0b4128fe0b82fabc8e8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "eec25bdc-67f2-4d95-b1d5-f81b2039d11d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "b6ec754e9139ecadc88ef9cd10aae40e072ca1cc8d4ae59688ade38b19abea8e",
+        "ui": "BootManagerMenuApp",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "d07270db6c3e7052b00e1e42c8ba3435c726e4d70f63a1c5a0fe6b71f6c0b59d",
+            "bytes": 96256,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 65964,
+                "raw_bytes": 66048,
+                "sha256": "3a2265d03103233802cf366fdf6b996ce81865f0623e8eff7441262ee58265f4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "50670071-478f-4be7-ad13-8754f379c62f",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "62823ee7e55d44c756b51c45f5b57126ec4c02c9f72b87aebeff7d3dbccfab7f",
+        "ui": "MsBootPolicy",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c635df280ae5da759307a5767a96724aef7459d0cf6e038cdab2c00ddcd3ebce",
+            "bytes": 356352,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 65064,
+                "raw_bytes": 65536,
+                "sha256": "695ecc4ecfa75d8ecea3a7b4aa8ef70596a724bfe8c3746cefccacb3262b9459"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cc680c97-94ce-4c09-a377-4bed5e6e9cb9",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "8f7eed38c9e2d125fbcf81559169b430d94275b0527133afb3024f2c2cdac0e0",
+        "ui": "UFPLoader",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "d8b3d274deac1295fc7a248ff68dc76059312b3e0e0dcd5361b74a01efdfadc7",
+            "bytes": 20480,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 10824,
+                "raw_bytes": 11264,
+                "sha256": "9b3d8b5647a660d398accde2d597f46b4efd36b8407a6e82ecfcd4a50e85fbfa"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "643d4788-63c8-40d2-bd7a-6842e66850d1",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "b4b2a3f2407993d036222fb24db4e14b66507fc80d4870f4dedd24567cb2335b",
+        "ui": "ufpdevicefw",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "72de25543341ba515be3872749b5fe7501468019acb6d8d997ae4a5bb19493fa",
+            "bytes": 443904,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1500",
+            "section_count": 7,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 257818,
+                "raw_bytes": 258048,
+                "sha256": "2c3a6f71559f95aa631c404312c6a9cbfa3cbdc9232284d4e3466de8e292ce18"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "7bb28b99-61bb-11d5-9a5d-0090273fc14d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "66ebd6f4781efed17710d797ff233216e35313387a980cc0af880d1c34a20fc1",
+        "ui": "BootLogo.bmp",
+        "images": []
+      },
+      {
+        "guid": "1554fbbe-a3e6-7c40-97b3-9daf603a0250",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "a90db9a357cea7d65972dc6955d4cb7c9f9b2648dc2d75e7edd08a4bfe27fc33",
+        "ui": "NoBootOS.bmp",
+        "images": []
+      },
+      {
+        "guid": "1201f964-e3d0-c840-aed1-c46c3391dc43",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "243c8936e96282d6e79d066a52cbe1b7d9b2a41933475138118ae2c05a1237a3",
+        "ui": "MassStorage.bmp",
+        "images": []
+      },
+      {
+        "guid": "9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "volume": "entropy-fd",
+        "file_type": 11,
+        "ffs_sha256": "71f9613016360f870918ed2cab089dc48c666c23096a8a74047e52379681ce1a",
+        "ui": null,
+        "images": []
+      }
+    ],
+    "embedded_executable_count": 100,
+    "exact_new_darwinboot_efi_read_back": true,
+    "rng_provider_matches_existing_donor": true,
+    "rng_provider_sha256": "671bc6943c02401fc70ff5754d7df8c4eeca4a7cbc78a7125fe5babd6aeff55f"
+  },
+  "embedded_efi_cpu": {
+    "firmware_positive_paths": [
+      {
+        "case": "normal",
+        "result": "PASS",
+        "raw_rng_calls": 1,
+        "actual_boot_c_function_executed": true,
+        "actual_inlined_entropy_code_executed": true,
+        "exit_boot_services_is_explicit_peer": true,
+        "exit_calls": 1,
+        "actual_seed_erase_calls": 1,
+        "events": [
+          "open:kernel.macho",
+          "open:kernel.macho.adt",
+          "open:kernel.macho.trustcache",
+          "open:kernel.macho.gpuaddon",
+          "open:kernel.macho.vroot",
+          "get-memory-map",
+          "allocate-window",
+          "locate-rng",
+          "raw-rng",
+          "get-memory-map",
+          "get-memory-map",
+          "exit-boot-services",
+          "darwin-enter-boundary"
+        ],
+        "explicit_platform_peers_visited": [
+          "AllocatePool",
+          "CopyMem",
+          "DarwinCurrentEl",
+          "DarwinEnter",
+          "DebugPrint",
+          "FreePool",
+          "Print",
+          "ZeroMem",
+          "firmware_allocate_pages",
+          "firmware_exit_boot_services",
+          "firmware_file_close",
+          "firmware_file_info",
+          "firmware_file_open",
+          "firmware_file_read",
+          "firmware_get_memory_map",
+          "firmware_handle_protocol",
+          "firmware_locate_protocol",
+          "firmware_open_volume",
+          "firmware_raw_rng"
+        ],
+        "handoff_assembly_or_kernel_entered": false
+      },
+      {
+        "case": "exit-stale-key-once",
+        "result": "PASS",
+        "raw_rng_calls": 1,
+        "actual_boot_c_function_executed": true,
+        "actual_inlined_entropy_code_executed": true,
+        "exit_boot_services_is_explicit_peer": true,
+        "exit_calls": 2,
+        "actual_seed_erase_calls": 1,
+        "events": [
+          "open:kernel.macho",
+          "open:kernel.macho.adt",
+          "open:kernel.macho.trustcache",
+          "open:kernel.macho.gpuaddon",
+          "open:kernel.macho.vroot",
+          "get-memory-map",
+          "allocate-window",
+          "locate-rng",
+          "raw-rng",
+          "get-memory-map",
+          "get-memory-map",
+          "exit-stale-key",
+          "get-memory-map",
+          "exit-boot-services",
+          "darwin-enter-boundary"
+        ],
+        "explicit_platform_peers_visited": [
+          "AllocatePool",
+          "CopyMem",
+          "DarwinCurrentEl",
+          "DarwinEnter",
+          "DebugPrint",
+          "FreePool",
+          "Print",
+          "ZeroMem",
+          "firmware_allocate_pages",
+          "firmware_exit_boot_services",
+          "firmware_file_close",
+          "firmware_file_info",
+          "firmware_file_open",
+          "firmware_file_read",
+          "firmware_get_memory_map",
+          "firmware_handle_protocol",
+          "firmware_locate_protocol",
+          "firmware_open_volume",
+          "firmware_raw_rng"
+        ],
+        "handoff_assembly_or_kernel_entered": false
+      }
+    ],
+    "firmware_failure_paths": [
+      {
+        "case": "rng-missing",
+        "result": "REJECTED",
+        "actual_boot_c_function_executed": true,
+        "actual_status": "0x800000000000000e",
+        "raw_rng_calls": 0,
+        "allocated_window_freed": true,
+        "exit_boot_services_called": false,
+        "events": [
+          "open:kernel.macho",
+          "open:kernel.macho.adt",
+          "open:kernel.macho.trustcache",
+          "open:kernel.macho.gpuaddon",
+          "open:kernel.macho.vroot",
+          "get-memory-map",
+          "allocate-window",
+          "locate-rng",
+          "free-window"
+        ],
+        "explicit_platform_peers_visited": [
+          "AllocatePool",
+          "CopyMem",
+          "DarwinCurrentEl",
+          "FreePool",
+          "Print",
+          "ZeroMem",
+          "firmware_allocate_pages",
+          "firmware_file_close",
+          "firmware_file_info",
+          "firmware_file_open",
+          "firmware_file_read",
+          "firmware_free_pages",
+          "firmware_get_memory_map",
+          "firmware_handle_protocol",
+          "firmware_locate_protocol",
+          "firmware_open_volume"
+        ]
+      },
+      {
+        "case": "rng-partial-error",
+        "result": "REJECTED",
+        "actual_boot_c_function_executed": true,
+        "actual_status": "0x8000000000000007",
+        "raw_rng_calls": 1,
+        "allocated_window_freed": true,
+        "exit_boot_services_called": false,
+        "events": [
+          "open:kernel.macho",
+          "open:kernel.macho.adt",
+          "open:kernel.macho.trustcache",
+          "open:kernel.macho.gpuaddon",
+          "open:kernel.macho.vroot",
+          "get-memory-map",
+          "allocate-window",
+          "locate-rng",
+          "raw-rng",
+          "free-window"
+        ],
+        "explicit_platform_peers_visited": [
+          "AllocatePool",
+          "CopyMem",
+          "DarwinCurrentEl",
+          "FreePool",
+          "Print",
+          "ZeroMem",
+          "firmware_allocate_pages",
+          "firmware_file_close",
+          "firmware_file_info",
+          "firmware_file_open",
+          "firmware_file_read",
+          "firmware_free_pages",
+          "firmware_get_memory_map",
+          "firmware_handle_protocol",
+          "firmware_locate_protocol",
+          "firmware_open_volume",
+          "firmware_raw_rng"
+        ]
+      },
+      {
+        "case": "rng-zero",
+        "result": "REJECTED",
+        "actual_boot_c_function_executed": true,
+        "actual_status": "0x8000000000000007",
+        "raw_rng_calls": 1,
+        "allocated_window_freed": true,
+        "exit_boot_services_called": false,
+        "events": [
+          "open:kernel.macho",
+          "open:kernel.macho.adt",
+          "open:kernel.macho.trustcache",
+          "open:kernel.macho.gpuaddon",
+          "open:kernel.macho.vroot",
+          "get-memory-map",
+          "allocate-window",
+          "locate-rng",
+          "raw-rng",
+          "free-window"
+        ],
+        "explicit_platform_peers_visited": [
+          "AllocatePool",
+          "CopyMem",
+          "DarwinCurrentEl",
+          "FreePool",
+          "Print",
+          "ZeroMem",
+          "firmware_allocate_pages",
+          "firmware_file_close",
+          "firmware_file_info",
+          "firmware_file_open",
+          "firmware_file_read",
+          "firmware_free_pages",
+          "firmware_get_memory_map",
+          "firmware_handle_protocol",
+          "firmware_locate_protocol",
+          "firmware_open_volume",
+          "firmware_raw_rng"
+        ]
+      },
+      {
+        "case": "rng-unsupported",
+        "result": "REJECTED",
+        "actual_boot_c_function_executed": true,
+        "actual_status": "0x8000000000000003",
+        "raw_rng_calls": 1,
+        "allocated_window_freed": true,
+        "exit_boot_services_called": false,
+        "events": [
+          "open:kernel.macho",
+          "open:kernel.macho.adt",
+          "open:kernel.macho.trustcache",
+          "open:kernel.macho.gpuaddon",
+          "open:kernel.macho.vroot",
+          "get-memory-map",
+          "allocate-window",
+          "locate-rng",
+          "raw-rng",
+          "free-window"
+        ],
+        "explicit_platform_peers_visited": [
+          "AllocatePool",
+          "CopyMem",
+          "DarwinCurrentEl",
+          "FreePool",
+          "Print",
+          "ZeroMem",
+          "firmware_allocate_pages",
+          "firmware_file_close",
+          "firmware_file_info",
+          "firmware_file_open",
+          "firmware_file_read",
+          "firmware_free_pages",
+          "firmware_get_memory_map",
+          "firmware_handle_protocol",
+          "firmware_locate_protocol",
+          "firmware_open_volume",
+          "firmware_raw_rng"
+        ]
+      },
+      {
+        "case": "missing-seed",
+        "result": "REJECTED",
+        "actual_boot_c_function_executed": true,
+        "actual_status": "0x8000000000000021",
+        "raw_rng_calls": 0,
+        "allocated_window_freed": true,
+        "exit_boot_services_called": false,
+        "events": [
+          "open:kernel.macho",
+          "open:kernel.macho.adt",
+          "open:kernel.macho.trustcache",
+          "open:kernel.macho.gpuaddon",
+          "open:kernel.macho.vroot",
+          "get-memory-map",
+          "allocate-window",
+          "free-window"
+        ],
+        "explicit_platform_peers_visited": [
+          "AllocatePool",
+          "CopyMem",
+          "DarwinCurrentEl",
+          "FreePool",
+          "Print",
+          "ZeroMem",
+          "firmware_allocate_pages",
+          "firmware_file_close",
+          "firmware_file_info",
+          "firmware_file_open",
+          "firmware_file_read",
+          "firmware_free_pages",
+          "firmware_get_memory_map",
+          "firmware_handle_protocol",
+          "firmware_locate_protocol",
+          "firmware_open_volume"
+        ]
+      },
+      {
+        "case": "late-map-failure",
+        "result": "REJECTED",
+        "actual_boot_c_function_executed": true,
+        "actual_status": "0x8000000000000007",
+        "raw_rng_calls": 1,
+        "allocated_window_freed": true,
+        "exit_boot_services_called": false,
+        "events": [
+          "open:kernel.macho",
+          "open:kernel.macho.adt",
+          "open:kernel.macho.trustcache",
+          "open:kernel.macho.gpuaddon",
+          "open:kernel.macho.vroot",
+          "get-memory-map",
+          "allocate-window",
+          "locate-rng",
+          "raw-rng",
+          "late-map-failure",
+          "free-window"
+        ],
+        "explicit_platform_peers_visited": [
+          "AllocatePool",
+          "CopyMem",
+          "DarwinCurrentEl",
+          "FreePool",
+          "Print",
+          "ZeroMem",
+          "firmware_allocate_pages",
+          "firmware_file_close",
+          "firmware_file_info",
+          "firmware_file_open",
+          "firmware_file_read",
+          "firmware_free_pages",
+          "firmware_get_memory_map",
+          "firmware_handle_protocol",
+          "firmware_locate_protocol",
+          "firmware_open_volume",
+          "firmware_raw_rng"
+        ]
+      }
+    ],
+    "instruction_controls": [
+      {
+        "case": "erase-RET",
+        "result": "REJECTED",
+        "reason": "Actual loader did not erase the payload seed before RNG"
+      },
+      {
+        "case": "Boot-RET",
+        "result": "REJECTED",
+        "reason": "Firmware did not refuse/clean up the failed handoff"
+      }
+    ],
+    "native_seed_to_crypto": {
+      "case": "normal",
+      "result": "PASS",
+      "actual_native_secure_dt_and_pe_and_early_prng_executed": true,
+      "actual_bootloader_seed_requests": [
+        64
+      ],
+      "native_sha256_bootseed_matches_fresh_first_64_bytes": true,
+      "native_pe_consumed_seed_bytes_cleared": 64,
+      "remaining_dt_seed_bytes_untouched_by_native_pe": 192,
+      "native_bootseed_32_bytes_cleared_after_registration": true,
+      "post_registration_early_random_original_generator_bytes": 8,
+      "actual_post_tests": [
+        "fipspost_post_hmac",
+        "fipspost_post_integrity",
+        "fipspost_post_indicator",
+        "fipspost_post_aes_ecb",
+        "fipspost_post_aes_cbc",
+        "fipspost_post_rsa_sig",
+        "fipspost_post_ecdsa",
+        "fipspost_post_ecdh",
+        "fipspost_post_aes_ccm",
+        "fipspost_post_aes_cmac",
+        "fipspost_post_hkdf",
+        "fipspost_post_pbkdf",
+        "fipspost_post_drbg_hmac",
+        "fipspost_post_kdf_ctr",
+        "fipspost_post_aes_gcm",
+        "fipspost_post_aes_xts",
+        "fipspost_post_tdes_ecb",
+        "fipspost_post_drbg_ctr"
+      ],
+      "actual_post_return": [
+        0
+      ],
+      "native_sha_vectors": [
+        {
+          "algorithm": "SHA256",
+          "input_bytes": 0,
+          "split_at": 0,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA256",
+          "input_bytes": 3,
+          "split_at": 3,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA256",
+          "input_bytes": 127,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA256",
+          "input_bytes": 128,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA256",
+          "input_bytes": 129,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA256",
+          "input_bytes": 3000,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA384",
+          "input_bytes": 0,
+          "split_at": 0,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA384",
+          "input_bytes": 3,
+          "split_at": 3,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA384",
+          "input_bytes": 127,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA384",
+          "input_bytes": 128,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA384",
+          "input_bytes": 129,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA384",
+          "input_bytes": 3000,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA512",
+          "input_bytes": 0,
+          "split_at": 0,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA512",
+          "input_bytes": 3,
+          "split_at": 3,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA512",
+          "input_bytes": 127,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA512",
+          "input_bytes": 128,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA512",
+          "input_bytes": 129,
+          "split_at": 17,
+          "result": "PASS"
+        },
+        {
+          "algorithm": "SHA512",
+          "input_bytes": 3000,
+          "split_at": 17,
+          "result": "PASS"
+        }
+      ],
+      "native_read_random_transfers": [
+        {
+          "bytes": 1,
+          "generator_chunks": [
+            1
+          ],
+          "all_output_bytes_written": true,
+          "result": "PASS"
+        },
+        {
+          "bytes": 32,
+          "generator_chunks": [
+            32
+          ],
+          "all_output_bytes_written": true,
+          "result": "PASS"
+        },
+        {
+          "bytes": 4096,
+          "generator_chunks": [
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256
+          ],
+          "all_output_bytes_written": true,
+          "result": "PASS"
+        },
+        {
+          "bytes": 65536,
+          "generator_chunks": [
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256
+          ],
+          "all_output_bytes_written": true,
+          "result": "PASS"
+        }
+      ],
+      "actual_initializer_registration_counts": {
+        "original_entry": 1,
+        "original_wrapper": 1,
+        "post_entry": 1,
+        "native_prng": 1,
+        "native_table": 1,
+        "entropy_init": 1,
+        "entropy_callbacks": 4
+      },
+      "explicit_platform_peers_visited": [
+        "_IOFreeData",
+        "_IOMallocData",
+        "_PE_parse_boot_argn",
+        "___memcpy_chk",
+        "___memset_chk",
+        "___strlcpy_chk",
+        "_bzero",
+        "_clock_timebase_info",
+        "_cpu_number",
+        "_entropy_init",
+        "_entropy_provide",
+        "_kprintf",
+        "_lck_grp_alloc_init",
+        "_lck_mtx_alloc_init",
+        "_lck_mtx_assert",
+        "_lck_mtx_lock",
+        "_lck_mtx_try_lock",
+        "_lck_mtx_unlock",
+        "_mach_absolute_time",
+        "_memcmp",
+        "_memcpy",
+        "_memset",
+        "_memset_s",
+        "_ml_get_timebase",
+        "_pmap_in_ppl",
+        "_snprintf",
+        "_strcmp",
+        "_strncmp",
+        "_sysctl_register_oid"
+      ],
+      "physical_entropy_quality_qualified": false
+    },
+    "native_seed_failures": [
+      {
+        "case": "zero-seed",
+        "result": "REJECTED",
+        "actual_panic_formats": [
+          "Expected %lu seed bytes from bootloader, but got %u. @%s:%d"
+        ],
+        "actual_bootloader_seed_requests": [
+          64
+        ],
+        "original_post_or_registration_started": false
+      },
+      {
+        "case": "short-seed",
+        "result": "REJECTED",
+        "actual_panic_formats": [
+          "Expected %lu seed bytes from bootloader, but got %u. @%s:%d"
+        ],
+        "actual_bootloader_seed_requests": [
+          64
+        ],
+        "original_post_or_registration_started": false
+      }
+    ]
+  },
+  "efi": "build/cph2653-entropy-firmware/DarwinBoot.efi",
+  "boot_image": "build/cph2653-entropy-firmware/boot.img",
+  "boot_image_bytes": 170557440,
+  "boot_header_version": 4,
+  "fat_input": "build/cph2653-crypto-bringup/payload.img",
+  "fat_input_sha256": "2ed8a2ea779edb6dba82df4363143d00ed9e68a02f0bb5f4d28b9f54cf0fc9ae",
+  "fat_input_bytes": 167772160,
+  "packed_data_bytes": 721024,
+  "memory_budget": {
+    "effective_memory_max_bytes": 21474836480,
+    "requested_max_bytes": 21474836480,
+    "within_budget": true
+  },
+  "compiler_jobs": 4,
+  "existing_firmware_or_boot_images_replaced": false,
+  "hardware_tested": false,
+  "physical_entropy_quality_qualified": false,
+  "original_userspace_included": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "A separate full dodge firmware is built with preserved board memory/SimpleFb patches and the fresh-entropy DarwinBoot source override. All 53 generated EFI headers and 100 embedded executable images are structurally checked. Bounded FV/FFS/LZMA/header checksums pass; the exact new DarwinBoot EFI and unchanged donor RNG bytes are read back from the actual FD. That embedded EFI, with its actual link map, executes the same two success/six failure/two instruction controls and native seed-to-original-18-test-POST/consumer chain. An Android v4 container carries this FD and the byte-identical preserved 160 MiB crypto development FAT/packed Data input. Actual bootimg gzip/shim/FD/DTB/FAT/header readback passes. Firmware/allocator/RNG/console/ExitBootServices are explicit CPU peers; no proprietary provider entropy health, physical services, handoff assembly, full kernel/root/Data/userspace boot or phone operation is qualified. Existing firmware, payloads and boot images are preserved."
+}

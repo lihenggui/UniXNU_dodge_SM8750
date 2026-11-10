@@ -1,0 +1,90 @@
+{
+  "result": "IOS16_REQUEST_FIELDS_NATIVE_AND_ORIGINAL_BLOCKS_PASS",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "builder_sha256": "fc3e0de5b1e75a92f07c0bcb368c9ab0e383909c5d863b975069b2d859afd6d3",
+  "contract": "profiles/os/ios-16.7.16-20H392/display-request-fields.json",
+  "contract_sha256": "7e4a9a2421667fd034bf75f6b970d2d7d33711fd3f0e71bb846be29f3c6319ef",
+  "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyRequestFieldsABI.h",
+  "header_sha256": "e44bb87e734a0a80dad65cf1051a23f12540e791fd41af641fd7eefc7064391f",
+  "queue_header_sha256": "c94511515c3989b470fcce568cfaa349216a8ae5111718ab65030ce42d383ce4",
+  "native_probe": "build/ios16-request-fields/request-fields.o",
+  "native_probe_sha256": "7cdf4833bc1c983a51fa7127ecdf5c2443afdd9f3a512fa0b41422f4c42e6815",
+  "arm64_cases": [
+    {
+      "case": "layer-0",
+      "result": "PASS",
+      "unchanged_original_builder_blocks_executed": 5
+    },
+    {
+      "case": "layer-1",
+      "result": "PASS",
+      "unchanged_original_builder_blocks_executed": 5
+    },
+    {
+      "case": "layer-2",
+      "result": "PASS",
+      "unchanged_original_builder_blocks_executed": 5
+    },
+    {
+      "case": "layer-3",
+      "result": "PASS",
+      "unchanged_original_builder_blocks_executed": 5
+    },
+    {
+      "case": "zero-fields",
+      "result": "PASS",
+      "unchanged_original_builder_blocks_executed": 5
+    },
+    {
+      "case": "opaque-bit-patterns",
+      "result": "PASS",
+      "unchanged_original_builder_blocks_executed": 5
+    },
+    {
+      "case": "null-request",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "null-output",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "layer-four",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "layer-max",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "output-alias-request",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "output-overlaps-request-start",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "request-address-wrap",
+      "result": "REFUSED_WITHOUT_WRITES"
+    },
+    {
+      "case": "output-address-wrap",
+      "result": "REFUSED_WITHOUT_WRITES"
+    }
+  ],
+  "native_snapshot_bytes": 72,
+  "original_builder_blocks": 5,
+  "original_instructions_changed": false,
+  "original_neon_runs_only_in_cpu_fixture": true,
+  "snapshot_fp_types_used": false,
+  "snapshot_validation_semantics_complete": false,
+  "original_objects_constructed": false,
+  "producer_fences_executed": false,
+  "full_original_swap_builder_executed": false,
+  "frontend_invoked": false,
+  "default_kernel_selected": false,
+  "hardware_tested": false,
+  "scope": "Native read-only packed-field snapshot matches five unchanged original scalar/NEON builder blocks on synthetic bounded memory. Output overlap/wrap and invalid arguments are refused before writes. Raw scalar fields retain unclassified semantics; this is not full layer/color/alpha/transform validation, producer completion, a queue frontend or display execution."
+}

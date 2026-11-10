@@ -1,0 +1,90 @@
+{
+  "/": {
+    "target-type": {
+      "type": "string",
+      "value": "D22"
+    },
+    "name": {
+      "type": "string",
+      "value": "device-tree"
+    },
+    "model": {
+      "type": "string",
+      "value": "iPhone10,3"
+    },
+    "compatible": {
+      "type": "strings",
+      "value": [
+        "D22AP",
+        "iPhone10,3",
+        "AppleARM"
+      ]
+    }
+  },
+  "/product": {
+    "product-name": {
+      "type": "string",
+      "value": "iPhone X"
+    },
+    "product-id": {
+      "type": "bytes",
+      "value": "fd079b298144a7deb4d7c87fef3eb474d8f0e7eb"
+    },
+    "product-description": {
+      "type": "string",
+      "value": "iPhone X"
+    },
+    "compatible-device-fallback": {
+      "type": "string",
+      "value": "iPhone9,2"
+    },
+    "artwork-scale-factor": {
+      "type": "u32",
+      "value": 3
+    },
+    "name": {
+      "type": "string",
+      "value": "product"
+    },
+    "artwork-device-idiom": {
+      "type": "string",
+      "value": "phone"
+    },
+    "artwork-display-gamut": {
+      "type": "string",
+      "value": "P3"
+    },
+    "thin-bezel": {
+      "type": "u32",
+      "value": 1
+    },
+    "artwork-device-subtype": {
+      "type": "u32",
+      "value": 2436
+    }
+  },
+  "/product/audio": {
+    "wireless-splitter": {
+      "type": "u32",
+      "value": 1
+    },
+    "name": {
+      "type": "string",
+      "value": "audio"
+    }
+  },
+  "/buttons": {
+    "button-names": {
+      "type": "string",
+      "value": "volup\u0000voldown\u0000hold\u0000ringerab"
+    },
+    "name": {
+      "type": "string",
+      "value": "buttons"
+    },
+    "home-button-type": {
+      "type": "u32",
+      "value": 2
+    }
+  }
+}

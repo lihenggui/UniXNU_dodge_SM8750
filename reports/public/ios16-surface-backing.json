@@ -1,0 +1,77 @@
+{
+  "result": "IOS16_SURFACE_BACKING_SOURCE_CANDIDATE_PASS",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "archive": "build/ios16-surface-backing/libDodgeSurfaceBacking.a",
+  "archive_sha256": "fe8a032e5b74346dbed2025007633e1774214c0f0bb0cd26ced6da3dca861513",
+  "surface_contract_sha256": "a12fd3035980152d70f872dbbe4cb7569150699adca4c10aa50df0409f6dfd6e",
+  "surface_bindings_archive_sha256": "71af1226f9dc6504415e03e62bc1980b46b542ab20a6e6f437e8fab280f039e9",
+  "source_sha256": {
+    "drivers/DodgeDisplay/DodgeSurfaceBacking.cpp": "42ea9a37a7ac9688a65a926d194a489098ee1349b338da15a2e1752c6de5c551",
+    "drivers/DodgeDisplay/DodgeSurfaceBacking.h": "b06fdddb0411f8b585b5432602a653d2d3276b8427d931e0191b6b0f8de61fa9",
+    "drivers/DodgeDisplay/DodgeSurfaceLayout.h": "00ed86fe4d099d82ac3ace08588c8c178da0d307cfb964b47c0b3522f17754c5",
+    "tests/DodgeSurfaceLayoutTest.cpp": "caf7d36ea61d30e84f2620768238a099aab19af6c4ba165a8b824be1b00d83ca",
+    "tests/DodgeSurfaceBackingTest.cpp": "19825b6d496090798b5eaa3335b2a2de4b6f5d881c63dcaf0c6ea5234cc62762",
+    "tests/surface_backing_include/IOKit/IOMemoryDescriptor.h": "2105bff3d7f1f279e6cc54e1211a4a5f9ac613cf3dc56d4cbca38807143ccbb4",
+    "tests/surface_backing_include/IOKit/IOSubMemoryDescriptor.h": "c3ad6fb02d41d5f23afbc21a932237f84ece2edf3dba6ffa2001b55c43379f2f",
+    "scripts/check_surface_backing_host.py": "6510dbadbf44978cc90ae4cb43c3b9e76e28b28b7b99d22e10bbf7e6c93b6dc6"
+  },
+  "native_header_offset_probe_sha256": "a38443f9430c3f6711a651f9bd6b92acdbc1c4a58857bb674fe1f76bce3c16b2",
+  "device_region_map_field": 64,
+  "map_offset_field": 32,
+  "original_offset_flow_sha256": "f35adc498eefd452933ef118b380cc56b282f8649aa09fb60643f76eea455015",
+  "original_and_native_map_methods": {
+    "getMemoryDescriptor": {
+      "original": "0xfffffff007789448",
+      "field": 16,
+      "sha256": "dfb556a413c8bda5332942d0202e8d5f1e52f45158aec3676294cf11ad5909cb"
+    },
+    "getLength": {
+      "original": "0xfffffff007789420",
+      "field": 48,
+      "sha256": "6b819324b4a3bc2d390c83c7fe02ea41a1f57ae5d4f2a9b0c9256341a5b8d37f"
+    },
+    "getVirtualAddress": {
+      "original": "0xfffffff007789318",
+      "field": 40,
+      "sha256": "c0b9896d6c3d8aacf384c0d0cf5d897e84f621efe31cc89c980be348eb9c6614"
+    }
+  },
+  "imports": {
+    "defined": [
+      "__Z26dodge_copy_surface_backingP8OSObjectjjP19DodgeSurfaceBacking",
+      "__Z29dodge_release_surface_backingP19DodgeSurfaceBacking",
+      "_native_iphone_surface_allocation",
+      "_native_iphone_surface_bytes_per_element",
+      "_native_iphone_surface_element_height",
+      "_native_iphone_surface_element_width",
+      "_native_iphone_surface_format",
+      "_native_iphone_surface_height",
+      "_native_iphone_surface_offset",
+      "_native_iphone_surface_planes",
+      "_native_iphone_surface_region",
+      "_native_iphone_surface_stride",
+      "_native_iphone_surface_tile_format",
+      "_native_iphone_surface_tile_mode",
+      "_native_iphone_surface_width"
+    ],
+    "native_public_imports": [
+      "__ZN21IOSubMemoryDescriptor12withSubRangeEP18IOMemoryDescriptoryyj",
+      "__ZNK15OSMetaClassBase8metaCastEPKc"
+    ],
+    "native_static_link_only_imports": [],
+    "required_board_or_original_imports": [],
+    "optional_weak_imports": []
+  },
+  "host_layout_tests": "PASS: three valid offset/padded layouts, 21 invalid layouts without output writes, null output",
+  "host_provider_peer_tests": "PASS: actual provider source with software IOKit peers; ownership/release, 20 error paths, null arguments",
+  "plain_nonplanar_bgra_only": true,
+  "linear_unit_4byte_elements_only": true,
+  "subrange_includes_map_and_surface_offsets": true,
+  "uses_retaining_iosubmemorydescriptor_api": true,
+  "caller_surface_mutation_serialization_required": true,
+  "original_iokit_objects_executed": false,
+  "ownership_runtime_qualified": false,
+  "default_selected": false,
+  "hardware_tested": false,
+  "scope": "Actual iOS16 source candidate obtains a checked device-region map, creates an owned IOSubMemoryDescriptor for the bounded visible rows, and preserves descriptor direction. Native ABI field checks and sanitized arithmetic tests pass; real original-object lifetime, cache/SMMU ownership and producer fences remain unqualified."
+}

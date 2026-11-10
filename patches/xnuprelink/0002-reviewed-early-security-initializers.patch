@@ -1,0 +1,181 @@
+diff --git a/emit_prelink.py b/emit_prelink.py
+--- a/emit_prelink.py
++++ b/emit_prelink.py
+@@ -116,7 +116,52 @@
+             'register_dataflow_qualified': False}
+ 
+ 
+-def emit(native_data, original_data, roots, slide, early_security_init=None):
++def security_fixture_evidence(original_data, parent, entries, modules, initializers, fixture):
++    """Check reviewed code identities; this does not infer an initializer ABI."""
++    if (not isinstance(fixture, dict) or fixture.get('schema') != 1
++            or fixture.get('original_sha256') != hashlib.sha256(original_data).hexdigest()):
++        raise ValueError('Early security fixture schema or original input mismatch')
++    reviewed = fixture.get('initializers')
++    if not initializers or not isinstance(reviewed, dict) or set(reviewed) != set(initializers):
++        raise ValueError('Early security fixture must cover exactly the requested initializers')
++    evidence = {}
++    for identifier, address in initializers.items():
++        record = reviewed[identifier]
++        if (not isinstance(record, dict) or record.get('calling_convention') != 'void(void)'
++                or int(record['address'], 0) != address):
++            raise ValueError('Early security fixture address or calling convention mismatch')
++        if identifier not in modules or entries[identifier].get('AppleSecurityExtension') is not True:
++            raise ValueError('Early security fixture requires a selected security extension')
++        dependencies = record.get('required_dependencies')
++        if (not isinstance(dependencies, list) or not all(isinstance(dep, str) for dep in dependencies)
++                or set(dependencies) - set(entries[identifier].get('OSBundleLibraries', {}))):
++            raise ValueError('Early security fixture dependencies are not declared by the component')
++        code = record.get('code')
++        if not isinstance(code, list) or not code:
++            raise ValueError('Early security fixture needs reviewed executable ranges')
++        ranges, names = [], set()
++        for block in code:
++            va, size, name = int(block['va'], 0), block['size'], block['name']
++            if (type(size) is not int or size < 4 or size % 4 or va % 4 or not isinstance(name, str)
++                    or not name or name in names or not any(s['name'] == '__TEXT_EXEC' and s['initprot'] == 5
++                    and not s['maxprot'] & 2 and s['va'] <= va and va + size <= s['va'] + s['filesize']
++                    for s in modules[identifier]['segments'])):
++                raise ValueError('Invalid or non-executable early security fixture range')
++            at = backed_offset(parent, va, size, len(original_data))
++            digest = hashlib.sha256(original_data[at:at + size]).hexdigest()
++            if digest != block.get('sha256'):
++                raise ValueError('Early security fixture code hash mismatch')
++            names.add(name)
++            ranges.append({'name': name, 'va': va, 'size': size, 'sha256': digest})
++        if not any(block['va'] == address for block in ranges):
++            raise ValueError('Early security fixture lacks the requested entry code')
++        evidence[identifier] = {'original_address': address, 'calling_convention': 'void(void)',
++                                'code': ranges, 'required_dependencies': dependencies,
++                                'runtime_qualified': False}
++    return evidence
++
++
++def emit(native_data, original_data, roots, slide, early_security_init=None, early_security_fixture=None):
+     report = plan(native_data, original_data, roots, slide)
+     native, original = macho(native_data), macho(original_data)
+     marker = [address for address, names in exports(native_data, native).items()
+@@ -156,6 +201,9 @@
+         if not 0 <= address + slide < 1 << 64:
+             raise ValueError('Early initializer address overflow')
+         report['early_security_initializers'][identifier] = address + slide
++    if early_security_fixture is not None:
++        report['early_security_evidence'] = security_fixture_evidence(
++            original_data, parent, entries, modules, early_security_init, early_security_fixture)
+     output = bytearray(native_data)
+     new_segments = []
+ 
+@@ -317,6 +365,8 @@
+     parser.add_argument('--output', required=True, type=Path)
+     parser.add_argument('--early-security-init', action='append', default=[], metavar='BUNDLE=ORIGINAL_VA',
+                         help='Explicit original void(void) policy initializer, called before lockdown; requires source ABI')
++    parser.add_argument('--early-security-fixture', type=Path,
++                        help='Reviewed ordinary ARM64 initializer addresses, complete code hashes and dependencies')
+     parser.add_argument('--fileset-map', type=Path, help='existing exact-input pairing for an MH_FILESET cache')
+     parser.add_argument('--fileset-reference', type=Path, help='symbol-bearing comparison kernel for fileset matching')
+     parser.add_argument('--allow-missing', action='store_true',
+@@ -332,6 +382,8 @@
+         initializers[identifier] = int(address, 0)
+     native_data, original_data = args.kernel.read_bytes(), args.prelinked.read_bytes()
+     if len(original_data) >= 16 and struct.unpack_from('<I', original_data, 12)[0] == 12:
++        if args.early_security_fixture:
++            parser.error('--early-security-fixture currently requires an ordinary ARM64 prelink input')
+         from fileset_emit import atomic_write, emit_images, validate_map, write_candidate
+         from fileset_match import match_images, MATCHER_VERSION, matcher_signature
+         reference_data = args.fileset_reference.read_bytes() if args.fileset_reference else None
+@@ -372,7 +424,11 @@
+         return
+     if args.fileset_map or args.fileset_reference or args.allow_missing:
+         parser.error('--fileset-map, --fileset-reference and --allow-missing require an MH_FILESET input')
+-    image, report = emit(native_data, original_data, args.root, args.slide, initializers)
++    fixture_data = args.early_security_fixture.read_bytes() if args.early_security_fixture else None
++    fixture = json.loads(fixture_data) if fixture_data is not None else None
++    image, report = emit(native_data, original_data, args.root, args.slide, initializers, fixture)
++    if fixture_data is not None:
++        report['early_security_fixture_sha256'] = hashlib.sha256(fixture_data).hexdigest()
+     args.output.parent.mkdir(parents=True, exist_ok=True)
+     args.output.write_bytes(image)
+     args.output.with_suffix('.json').write_text(json.dumps(report, indent=2) + '\n')
+diff --git a/test_emit_prelink.py b/test_emit_prelink.py
+--- a/test_emit_prelink.py
++++ b/test_emit_prelink.py
+@@ -67,6 +67,58 @@
+ 
+ 
+ class EmitTests(unittest.TestCase):
++    def test_reviewed_security_fixture(self):
++        native, original = images()
++        fixture = self.security_fixture(original)
++        _, report = emit(native, original, ['test.component'], 0x4000,
++                         {'test.component': 0x3000}, fixture)
++        self.assertEqual(report['early_security_evidence']['test.component']['code'][0]['va'], 0x3000)
++        self.assertFalse(report['early_security_evidence']['test.component']['runtime_qualified'])
++
++    @staticmethod
++    def security_fixture(original):
++        return {'schema': 1, 'original_sha256': hashlib.sha256(original).hexdigest(), 'initializers': {
++            'test.component': {'address': '0x3000', 'calling_convention': 'void(void)',
++                'required_dependencies': [], 'code': [{'name': 'entry', 'va': '0x3000', 'size': 4,
++                    'sha256': hashlib.sha256(original[0x2000:0x2004]).hexdigest()}]}}}
++
++    def test_refuse_changed_security_fixture_identity(self):
++        native, original = images()
++        for field, value in [('schema', 2), ('original_sha256', '0' * 64)]:
++            fixture = self.security_fixture(original)
++            fixture[field] = value
++            with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'schema or original input mismatch'):
++                emit(native, original, ['test.component'], 0x4000, {'test.component': 0x3000}, fixture)
++        fixture = self.security_fixture(original)
++        with self.assertRaisesRegex(ValueError, 'exactly the requested'):
++            emit(native, original, ['test.component'], 0x4000, {}, fixture)
++
++    def test_refuse_unreviewed_security_fixture_entry_or_dependencies(self):
++        native, original = images()
++        changes = [('address', '0x3004', 'address or calling convention'),
++                   ('calling_convention', 'int(int)', 'address or calling convention'),
++                   ('required_dependencies', ['omitted.dependency'], 'dependencies are not declared')]
++        for field, value, message in changes:
++            fixture = self.security_fixture(original)
++            fixture['initializers']['test.component'][field] = value
++            with self.subTest(field=field), self.assertRaisesRegex(ValueError, message):
++                emit(native, original, ['test.component'], 0x4000, {'test.component': 0x3000}, fixture)
++
++    def test_refuse_changed_security_fixture_code_or_extent(self):
++        native, original = images()
++        changes = [('sha256', '0' * 64, 'code hash mismatch'),
++                   ('va', '0x2000', 'non-executable'), ('size', 0x1004, 'non-executable'),
++                   ('size', 3, 'non-executable')]
++        for field, value, message in changes:
++            fixture = self.security_fixture(original)
++            fixture['initializers']['test.component']['code'][0][field] = value
++            with self.subTest(field=field), self.assertRaisesRegex(ValueError, message):
++                emit(native, original, ['test.component'], 0x4000, {'test.component': 0x3000}, fixture)
++        fixture = self.security_fixture(original)
++        fixture['initializers']['test.component']['code'] *= 2
++        with self.assertRaisesRegex(ValueError, 'non-executable'):
++            emit(native, original, ['test.component'], 0x4000, {'test.component': 0x3000}, fixture)
++
+     def test_explicit_early_security_initializer_metadata(self):
+         native, original = images()
+         output, report = emit(native, original, ['test.component'], 0x4000, {'test.component': 0x3000})
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -30,6 +30,17 @@
+ of direct branches into the range are checked in the device repository. Changing
+ the bytes removes this classification. This does not qualify register dataflow,
+ binary layouts, initialization order or runtime behavior.
++
++For ordinary ARM64 inputs, --early-security-fixture validates a reviewed JSON
++record alongside the explicit --early-security-init arguments. Schema 1 pins
++the complete original image hash, the exact set of no-argument entries,
++complete executable-range hashes and required declared dependencies. A changed
++address, range, input or dependency stops emission. The device's 20H392 record
++identifies both the AMFI wrapper and sandbox entry, including sandbox's call
++back into that same AMFI wrapper. These identities do not qualify execution,
++crypto lifecycle, PMGR or the complete binary ABI. Without this optional file,
++the existing explicit-initializer interface is unchanged.
++
+ Adapters that call retained kext code use a native `BTI c; B` stub and an
+ `N_ABS` symbol named `<stub>.original` at the fixed collection target. The
+ linker emits no split-segment record for this branch. The emitter therefore

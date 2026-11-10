@@ -1,0 +1,198 @@
+{
+  "result": "GPU_ISOLATED_NATIVE_AND_RELOCATABLE_LINK_PASS",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "builder_sha256": "f3f1eefd63a7ed5e9c53122d479e991a54b3fb1bc0efbfe7ce90102eab4e61f5",
+  "candidate_report_sha256": "11ede36c55f9e8bd60d02d7696eed748694fbb2cd3310dca697829a1a032484c",
+  "candidate_archive_sha256": "f5cc984139afb4c7602e38122dcbd8cc7556c389f8ecece8d13191e889134f5f",
+  "linked_source_objects": 54,
+  "partial_object": "build/cph2653-gpu-link-probe/DodgeA830Combined.o",
+  "partial_object_sha256": "539acea9a515859e7cf644898625648f4f0798678727a5ad9af0fdf80f6ced13",
+  "isolated_kernel": "build/cph2653-gpu-link-probe/mach.gpu",
+  "isolated_kernel_sha256": "ec41460411b00cd6f4a296c709277edd648f7c7245200788250c881ffb9ad997",
+  "bytes": 18412152,
+  "baseline_replay": "build/cph2653-gpu-link-probe/mach.baseline",
+  "baseline_replay_sha256": "5063f47a53b3a725771ee2f2abdf06c2cf4d3e2b23a25b274b4e17fdc5921f64",
+  "baseline_matches_default_except_uuid_and_post_seal": true,
+  "strict_no_undefined": true,
+  "optional_weak_absence": {
+    "_boot_log_export_put": "Unselected UFS-backed cache export",
+    "_native_gpu_pixel_put": "Unselected GPU trace pixel capture",
+    "_native_gpu_trace_enabled": "Unselected GPU trace switch",
+    "_native_gpu_trace_record": "Unselected GPU trace recorder",
+    "_native_owner_cache_stage": "Unselected owner-root cache diagnostics",
+    "_native_pmap_user_mappings": "Unselected pmap diagnostic query",
+    "_native_ufs_block_failures": "Unselected UFS read diagnostics",
+    "_native_ufs_block_reads": "Unselected UFS read diagnostics",
+    "_pagani_gpu_trace_start": "Unselected reference trace/presenter startup"
+  },
+  "optional_reference_metadata": [
+    {
+      "object": "NativeAdrenoMemory.o",
+      "symbol": "_native_pmap_user_mappings",
+      "weak_reference": true
+    },
+    {
+      "object": "NativeAdrenoPublish.o",
+      "symbol": "_boot_log_export_put",
+      "weak_reference": true
+    },
+    {
+      "object": "PaganiGpu.o",
+      "symbol": "_pagani_gpu_trace_start",
+      "weak_reference": true
+    },
+    {
+      "object": "NativeGOPPresenter.o",
+      "symbol": "_native_gpu_pixel_put",
+      "weak_reference": true
+    },
+    {
+      "object": "NativeGOPPresenter.o",
+      "symbol": "_native_gpu_trace_enabled",
+      "weak_reference": true
+    },
+    {
+      "object": "NativeGOPPresenter.o",
+      "symbol": "_native_gpu_trace_record",
+      "weak_reference": true
+    },
+    {
+      "object": "BootProgress.o",
+      "symbol": "_native_owner_cache_stage",
+      "weak_reference": true
+    },
+    {
+      "object": "BootProgress.o",
+      "symbol": "_native_ufs_block_failures",
+      "weak_reference": true
+    },
+    {
+      "object": "BootProgress.o",
+      "symbol": "_native_ufs_block_reads",
+      "weak_reference": true
+    }
+  ],
+  "optional_direct_branch_relocations_absent": true,
+  "absence_adapter_contains_code_or_data": false,
+  "optional_call_arm64_probe": {
+    "native_probe": "build/cph2653-gpu-link-probe/optional-call.o",
+    "native_probe_sha256": "2f3f42dc09186d87bc1d76a05a370e9823430813a986a536e5a855ddbef13070",
+    "cases": [
+      {
+        "present": false,
+        "arguments": [
+          7,
+          11
+        ],
+        "result": 65261,
+        "callback_peer_calls": 0
+      },
+      {
+        "present": true,
+        "arguments": [
+          7,
+          11
+        ],
+        "result": 18,
+        "callback_peer_calls": 1
+      },
+      {
+        "present": true,
+        "arguments": [
+          18446744073709551615,
+          1
+        ],
+        "result": 0,
+        "callback_peer_calls": 1
+      }
+    ],
+    "actual_kernel_callback_executed": false
+  },
+  "negative_controls": [
+    "strong-import-not-hidden-by-weak",
+    "duplicate-definition-rejected-by-real-linker"
+  ],
+  "firmware_binary_readback": [
+    {
+      "name": "gen80000_gmu.bin",
+      "symbol": "_sm8750_gpu_gmu",
+      "address": "0xfffffff00720d000",
+      "bytes": 88896,
+      "sha256": "1ad8175e6cd01ea76c64d20b83600038c52dd29844b48d57b11b769b038863a5"
+    },
+    {
+      "name": "gen80000_sqe.fw",
+      "symbol": "_sm8750_gpu_sqe",
+      "address": "0xfffffff007223000",
+      "bytes": 111476,
+      "sha256": "30ee3301534f95799d4afaf73864f3c369baa5a5dea8481e7f0cb8cc941f396c"
+    },
+    {
+      "name": "gen80000_aqe.fw",
+      "symbol": "_sm8750_gpu_aqe",
+      "address": "0xfffffff00723f000",
+      "bytes": 25044,
+      "sha256": "67562ad5baae3a133c92a6e48a9d1b1a9a867fe2f85b49324e244e963f3b89c5"
+    },
+    {
+      "name": "gen80000_zap.mbn",
+      "symbol": "_sm8750_gpu_zap",
+      "address": "0xfffffff007246000",
+      "bytes": 12088,
+      "sha256": "c11cc4f383a0b2a7aecab36aee59174d766530bdcef2d37ed8b082598ca8aeb1"
+    }
+  ],
+  "original_absolute_bindings_preserved": {
+    "__ZN15IOAcceleratorES10gMetaClassE": "0xfffffff006bb6448",
+    "__ZN15IOAcceleratorESC2EPK11OSMetaClass": "0xfffffff005b45228",
+    "__ZN15IOAcceleratorESD2Ev": "0xfffffff005b4526c",
+    "_native_iphone_complete_current": "0xfffffff004c1ace4",
+    "_native_iphone_refresh_notify": "0xfffffff004c1b838",
+    "_native_iphone_surface_allocation": "0xfffffff004a4e834",
+    "_native_iphone_surface_bytes_per_element": "0xfffffff004a4e814",
+    "_native_iphone_surface_element_height": "0xfffffff004a4e824",
+    "_native_iphone_surface_element_width": "0xfffffff004a4e81c",
+    "_native_iphone_surface_format": "0xfffffff004a4e7e4",
+    "_native_iphone_surface_height": "0xfffffff004a4e7fc",
+    "_native_iphone_surface_offset": "0xfffffff004a4e804",
+    "_native_iphone_surface_planes": "0xfffffff004a4e82c",
+    "_native_iphone_surface_region": "0xfffffff004a4e844",
+    "_native_iphone_surface_stride": "0xfffffff004a4e80c",
+    "_native_iphone_surface_tile_format": "0xfffffff004a50528",
+    "_native_iphone_surface_tile_mode": "0xfffffff004a54ad4",
+    "_native_iphone_surface_width": "0xfffffff004a4e7f4",
+    "_native_iphone_submit_default_packet": "0xfffffff004c14930",
+    "_native_iphone_surface_id": "0xfffffff004a4e7ec"
+  },
+  "real_linked_entry_points": {
+    "_native_legacy_gpu_complete": "0xfffffff007a4db50",
+    "_native_gop_vsync": "0xfffffff007b5b350",
+    "_dodge_software_refresh_create": "0xfffffff007a4e0e8",
+    "_dodge_diagnostic_console_attach": "0xfffffff007a4cd6c",
+    "_dodge_gpu_start": "0xfffffff007a4277c",
+    "_native_gop_handoff_call": "0xfffffff007a47aa8",
+    "_dodge_adreno_display_timeline": "0xfffffff007a23634",
+    "___ubsan_handle_negate_overflow_minimal": "0xfffffff007a63360",
+    "__Z27dodge_display_frontend_kickP20DodgeDisplayFrontend": "0xfffffff007a4f7e8",
+    "__Z27dodge_display_frontend_stopP20DodgeDisplayFrontend": "0xfffffff007a50ccc",
+    "__Z29dodge_display_frontend_createP9IOServiceS0_P11IOMemoryMap20DodgeDisplayProducer20DodgeDisplayTransfer": "0xfffffff007a4ee1c",
+    "__Z29dodge_display_frontend_statusP20DodgeDisplayFrontendP26DodgeDisplayFrontendStatus": "0xfffffff007a50fb0",
+    "__Z29dodge_display_frontend_submitP20DodgeDisplayFrontendPKvjPv": "0xfffffff007a5054c",
+    "__Z31dodge_display_frontend_validateP20DodgeDisplayFrontendP18IOMFBSwapIORequest": "0xfffffff007a4f3e4",
+    "__Z34dodge_display_frontend_set_refreshP20DodgeDisplayFrontendb": "0xfffffff007a50bb4"
+  },
+  "static_ubsan_runtime_resolved_from_actual_native_objects": true,
+  "input_manifest": "build/cph2653-gpu-link-probe/link-inputs.json",
+  "input_manifest_sha256": "21e58a3168c4b597edb45c7d5f36d111b58bb6db5fdb1ee8d02a3462705f5421",
+  "command_manifest": "build/cph2653-gpu-link-probe/validated-commands.json",
+  "command_manifest_sha256": "1a4cb80ec2bbedd4468344213fb7f2976be7d825f56b237a37255d1f6f626e2d",
+  "default_kernel_unchanged": true,
+  "default_kernel_selected": false,
+  "boot_payload_packaged": false,
+  "original_components_embedded": false,
+  "source_crypto_post_sealed": false,
+  "initializer_lifecycle_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Real 54-object relocatable and isolated full native-kernel links with original aliases, bounded packet/queue frontend and stock firmware readback. Unselected, guarded weak diagnostics are null addresses; no dummy function/data implementations are linked. Default kernel remains byte-for-byte unchanged. Output has no original graphics components, qualified initialization order, POST seal or boot packaging and is not a usable iPhone system."
+}

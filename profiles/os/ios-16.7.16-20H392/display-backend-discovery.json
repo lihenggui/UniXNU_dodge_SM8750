@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "component": "com.apple.driver.AppleMobileDispH10P",
+  "component_version": "140.0",
+  "component_text": {
+    "address": "0xfffffff005c5e000",
+    "bytes": 540196,
+    "sha256": "4eb368a17a4b1bc985151c2b9ac19e1c9c94643415e178cf94bad43284ad487f"
+  },
+  "metadata_setup": {
+    "address": "0xfffffff005cde6a0",
+    "bytes": 100,
+    "sha256": "18864a58f221b7a1cb7e237df574756c5c416a3fba79c04d7a8b3ddb3bfb54bf"
+  },
+  "legacy_instance_bytes": 5728,
+  "legacy_virtual_entries": 338,
+  "classes": {
+    "UnifiedPipeline": {
+      "metadata": "0xfffffff007a9a338",
+      "parent_metadata": "0xfffffff007a45540",
+      "instance_bytes": 7896,
+      "vptr": "0xfffffff006e06980",
+      "observed_nonzero_virtual_prefix_entries": 368,
+      "full_vtable_boundary_qualified": false,
+      "vtable_prefix_sha256": "8d23ae412bf8f9b0dd0fcb3381517a9a9ab45996233444937c1a3e0834443981",
+      "metaclass_vptr": "0xfffffff006e07518",
+      "allocation": {
+        "address": "0xfffffff005cce498",
+        "bytes": 32,
+        "sha256": "1c0a1c2b2d8c46a5d65e8f7b13718b29654ba6ba44b33db91413f751924c4408"
+      },
+      "constructor": {
+        "address": "0xfffffff005cce4cc",
+        "bytes": 100,
+        "sha256": "09db3ac0047a83c3a6b864db18e923ef7844c1519231db6d02b42395a2c98884"
+      },
+      "legacy_backend_targets": {
+        "211": "0xfffffff005cd4b50",
+        "212": "0xfffffff005cd4ae4",
+        "242": "0xfffffff005cdd374",
+        "243": "0xfffffff005cdd380",
+        "292": "0xfffffff005cd4af4",
+        "293": "0xfffffff005cd4b04",
+        "321": "0xfffffff005cd4680",
+        "322": "0xfffffff005cdd41c",
+        "329": "0xfffffff005cdd430"
+      }
+    },
+    "AppleCLCD": {
+      "metadata": "0xfffffff007a9a360",
+      "parent_metadata": "0xfffffff007a9a338",
+      "instance_bytes": 7896,
+      "vptr": "0xfffffff006e075b0",
+      "observed_nonzero_virtual_prefix_entries": 368,
+      "full_vtable_boundary_qualified": false,
+      "vtable_prefix_sha256": "e17c8d9fb9446b0316041117b7179f2838cbfe7d249a66c882b3ccc0a566bd79",
+      "metaclass_vptr": "0xfffffff006e08148",
+      "allocation": {
+        "address": "0xfffffff005cce72c",
+        "bytes": 32,
+        "sha256": "876dec0eaa74b4da735de5125ea78518c162f5348a30266e8664779f6f5c1d67"
+      },
+      "constructor": {
+        "address": "0xfffffff005cce760",
+        "bytes": 112,
+        "sha256": "f6a635b1bc64233dac6bee50d1b67c35bac43e630af8cb373c81bd042f07d460"
+      },
+      "legacy_backend_targets": {
+        "211": "0xfffffff005cd4b50",
+        "212": "0xfffffff005cd4ae4",
+        "242": "0xfffffff005cdd374",
+        "243": "0xfffffff005cdd380",
+        "292": "0xfffffff005cd4af4",
+        "293": "0xfffffff005cd4b04",
+        "321": "0xfffffff005cd4680",
+        "322": "0xfffffff005cdd41c",
+        "329": "0xfffffff005cdd430"
+      }
+    }
+  },
+  "unsupported_leaves": {
+    "242": {
+      "address": "0xfffffff005cdd374",
+      "bytes": 12,
+      "sha256": "f6e0cb09673ef6f38d0f357d35f4b4ce74e28ece2e432409e72af405fb35cac6",
+      "return_value": "0xe00002c7"
+    },
+    "243": {
+      "address": "0xfffffff005cdd380",
+      "bytes": 12,
+      "sha256": "f6e0cb09673ef6f38d0f357d35f4b4ce74e28ece2e432409e72af405fb35cac6",
+      "return_value": "0xe00002c7"
+    }
+  },
+  "noop_leaf": {
+    "slot": 322,
+    "address": "0xfffffff005cdd41c",
+    "bytes": 4,
+    "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91"
+  },
+  "status_byte_leaf": {
+    "slot": 329,
+    "field_in_stock_subclass": 7153,
+    "address": "0xfffffff005cdd430",
+    "bytes": 12,
+    "sha256": "c7bcede80f59accec1c101da55a5e6614c01834f93ada368dda93c9f5a3c4396"
+  },
+  "controller_forwarders": {
+    "field_in_stock_subclass": 7208,
+    "controller_virtual_slots": {
+      "211": 12,
+      "212": 92,
+      "292": 11,
+      "293": 13
+    }
+  },
+  "completion_report_leaf": {
+    "slot": 321,
+    "address": "0xfffffff005cd4680",
+    "body_executed": false
+  },
+  "qualified_raw_call_shapes": {
+    "211": {
+      "declaration": "uint32_t backend211(uint32_t,void *,uint32_t)",
+      "original_target": {
+        "address": "0xfffffff005cd4b50",
+        "bytes": 16,
+        "sha256": "9840f4f17c90e19c5481c3734da968a8f2217f2381be8680a89b4226905ad47c"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c254ac",
+          "bytes": 40,
+          "sha256": "b0e40441de59d4de7cb34ccc33b75aea80589536f82f768cee337d0892d98706"
+        }
+      ],
+      "operation_semantics_qualified": false
+    },
+    "212": {
+      "declaration": "uint32_t backend212(uint32_t,uint32_t *,void *)",
+      "original_target": {
+        "address": "0xfffffff005cd4ae4",
+        "bytes": 16,
+        "sha256": "a12aabafdfa367541792284e2eec8662c17810d4a39dd8b23453dbe07ac52844"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005bfec48",
+          "bytes": 52,
+          "sha256": "6052133a0a8ac636d227b699c712d4eefaef12bd4915861e09c842fc80506447"
+        }
+      ],
+      "operation_semantics_qualified": false,
+      "count_local_address": {
+        "address": "0xfffffff005bfec34",
+        "bytes": 4,
+        "sha256": "a3d931d9b11bb774d8cfbbc23b9cde244a59e236408afbcb393e6906467ef1db"
+      }
+    },
+    "242": {
+      "declaration": "uint32_t backend242(void *,void *)",
+      "original_target": {
+        "address": "0xfffffff005cdd374",
+        "bytes": 12,
+        "sha256": "f6e0cb09673ef6f38d0f357d35f4b4ce74e28ece2e432409e72af405fb35cac6"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005bff5fc",
+          "bytes": 28,
+          "sha256": "fbf64c45891934f1532a6474b61894508fe20e00c9414613e823c0cb28bc1a23"
+        }
+      ],
+      "operation_semantics_qualified": false
+    },
+    "292": {
+      "declaration": "void backend292(void *,bool)",
+      "original_target": {
+        "address": "0xfffffff005cd4af4",
+        "bytes": 16,
+        "sha256": "dde09a2742b23f7a64786ebf890f3f26bc4664d918d2c0da35f6cb175ead4e22"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c1b194",
+          "bytes": 28,
+          "sha256": "8d2f732aeb6fae9ea1cc80bc2eb3976a7efc1850de90e5b472993f0dce4a1ed0"
+        },
+        {
+          "address": "0xfffffff005c1b4e4",
+          "bytes": 28,
+          "sha256": "1430c56532f44737c54caab0d1d4c1efd25b6fcde492312340f20634a49818cd"
+        }
+      ],
+      "operation_semantics_qualified": false
+    },
+    "293": {
+      "declaration": "uint32_t backend293(void *,void *)",
+      "original_target": {
+        "address": "0xfffffff005cd4b04",
+        "bytes": 36,
+        "sha256": "164fc6237c3d2cf593720ee2fd9496fdd74c95e6ea52452561edc164d2e18ddf"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c1ba90",
+          "bytes": 56,
+          "sha256": "624fd2df37574b3465ce1bc36bbf8043a012b4b0dd4bd73e12a2ea746e1866d3"
+        }
+      ],
+      "operation_semantics_qualified": false
+    },
+    "321": {
+      "declaration": "uint32_t backend321(uint32_t,void *,uint32_t *,uint32_t)",
+      "original_target": {
+        "address": "0xfffffff005cd4680",
+        "bytes": 1108,
+        "sha256": "ae2dfa8fa9cba639b34e3037b72b2098ded85673d8a8df1dc76f430c4d918421"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c10230",
+          "bytes": 36,
+          "sha256": "176e3a291db8d5f852faeee023b2cd6c96c984bd001cbbc91b3b547327fefa87"
+        }
+      ],
+      "operation_semantics_qualified": false,
+      "records_are_optional": true,
+      "record_stride_bytes": 216,
+      "count_word_bytes": 4,
+      "capacity_word_bytes": 4,
+      "original_full_report_semantics_qualified": false
+    },
+    "322": {
+      "declaration": "void backend322(uint32_t)",
+      "original_target": {
+        "address": "0xfffffff005cdd41c",
+        "bytes": 4,
+        "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c1bdd4",
+          "bytes": 20,
+          "sha256": "ea44bed7de725826e6a226c59c6984b672c8393de5cde4d7d2fe56ecde56199f"
+        }
+      ],
+      "operation_semantics_qualified": false
+    },
+    "329": {
+      "declaration": "uint32_t backend329()",
+      "original_target": {
+        "address": "0xfffffff005cdd430",
+        "bytes": 12,
+        "sha256": "c7bcede80f59accec1c101da55a5e6614c01834f93ada368dda93c9f5a3c4396"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c10e38",
+          "bytes": 20,
+          "sha256": "3481bc00c6df53d3a5c412bd5ac4c4f0c277814d287a394ef7fa93a2be1cf3f3"
+        }
+      ],
+      "operation_semantics_qualified": false,
+      "raw_byte_zero_extended_to_uint32": true,
+      "caller_consumes_bit_zero": true,
+      "state_meaning_qualified": false
+    }
+  },
+  "unclassified_argument_slots": [
+    243
+  ],
+  "fully_classified_backend_override_prototypes": false,
+  "controller_method_semantics_qualified": false,
+  "stock_subclass_selected_for_oneplus": false,
+  "hardware_code_reusable_on_oneplus": false
+}

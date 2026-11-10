@@ -1,0 +1,18 @@
+{
+  "result": "CPH2653_INPUT_WIRING_AND_COMPATIBLE_POWER_POLICY_PASS",
+  "builder_sha256": "9825df492b7e3316f164cba36331cb936ad6b7ca677f10d7926111d3eaa46e54",
+  "source_sha256": {
+    "scripts/prepare_input_hardware.py": "9825df492b7e3316f164cba36331cb936ad6b7ca677f10d7926111d3eaa46e54",
+    "scripts/compare_oneplus13t.py": "d9dc610596fe85c066a9def01f87281b19af22c68052f51dd1c94399a6a1ae9f",
+    "drivers/DodgeInput/PaganiPeripherals.h": "977a5110e73e9c6a497c4fc6fd467ef68979693055296164c079cb5425fd2fbd",
+    "hardware/dodge-input.json": "ca837066a42e12e5a5c24682f2da65f7862230304bfbea826af78e282c16c332"
+  },
+  "header_sha256": "977a5110e73e9c6a497c4fc6fd467ef68979693055296164c079cb5425fd2fbd",
+  "facts_sha256": "ca837066a42e12e5a5c24682f2da65f7862230304bfbea826af78e282c16c332",
+  "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "raw_gpio_flags_used_as_logical_level": false,
+  "vdd_only_rpmh_resource": "ldob4",
+  "donor_ldob16_selected": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false
+}

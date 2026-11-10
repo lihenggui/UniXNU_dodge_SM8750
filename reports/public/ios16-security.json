@@ -1,0 +1,160 @@
+{
+  "result": "STATIC_SECURITY_ENTRY_CHECKS_PASS",
+  "original_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "native_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "fixture_sha256": "f621e8196e923045d38a44040ddf543fe27c9a91838e9799e853a097655cf2fd",
+  "initializers": {
+    "com.apple.driver.AppleMobileFileIntegrity": {
+      "original_address": 18446744005081318176,
+      "calling_convention": "void(void)",
+      "code": [
+        {
+          "name": "entry_wrapper",
+          "va": 18446744005081318176,
+          "size": 24,
+          "sha256": "7941fd053303f9b11a84f9f7522e756e993dcde19edcf500bdaea286b38c3d31"
+        },
+        {
+          "name": "policy_initializer",
+          "va": 18446744005081316436,
+          "size": 1056,
+          "sha256": "3a7c782c190e6615797d7b2bc2471e4e5d8599e6d5cc7e539d21305943760551"
+        },
+        {
+          "name": "interface_setup",
+          "va": 18446744005081302000,
+          "size": 152,
+          "sha256": "fae76be06f1a31abaa5d9209f482a6e1001a098657719f02a3a1793cbb23b4ca"
+        }
+      ],
+      "required_dependencies": [
+        "com.apple.driver.ApplePMGR",
+        "com.apple.security.AppleImage4",
+        "com.apple.kext.CoreTrust",
+        "com.apple.kec.corecrypto"
+      ],
+      "runtime_qualified": false
+    },
+    "com.apple.security.sandbox": {
+      "original_address": 18446744005095705984,
+      "calling_convention": "void(void)",
+      "code": [
+        {
+          "name": "policy_initializer",
+          "va": 18446744005095705984,
+          "size": 100,
+          "sha256": "65592bac61e3cd9a890a8e9729ef49eb268bda7cab2bc61d82f137e0a0bd4060"
+        }
+      ],
+      "required_dependencies": [
+        "com.apple.driver.AppleMobileFileIntegrity",
+        "com.apple.kext.AppleMatch"
+      ],
+      "runtime_qualified": false
+    }
+  },
+  "original_call_chain": {
+    "amfi_first_allocation": {
+      "stub": "0xfffffff005717ce4",
+      "slot": "0xfffffff006cb55c0",
+      "target": "0xfffffff007738348",
+      "kernel_exports": [
+        "_IOLockAlloc"
+      ]
+    },
+    "amfi_interface_registration": {
+      "stub": "0xfffffff00571802c",
+      "slot": "0xfffffff006cb58f8",
+      "target": "0xfffffff007725438",
+      "kernel_exports": [
+        "_amfi_interface_register"
+      ]
+    },
+    "amfi_policy_registration": {
+      "stub": "0xfffffff0057184ac",
+      "slot": "0xfffffff006cb5c38",
+      "target": "0xfffffff007804ef0",
+      "kernel_exports": [
+        "_mac_policy_register"
+      ]
+    },
+    "sandbox_amfi_initialization": {
+      "stub": "0xfffffff0064e3ca4",
+      "slot": "0xfffffff006ef85b0",
+      "target": "0xfffffff005704320",
+      "kernel_exports": []
+    },
+    "sandbox_policy_registration": {
+      "stub": "0xfffffff0064e3f14",
+      "slot": "0xfffffff006ef8798",
+      "target": "0xfffffff007804ef0",
+      "kernel_exports": [
+        "_mac_policy_register"
+      ]
+    }
+  },
+  "entry_argument_prefix_checks": "PASS",
+  "amfi_table": {
+    "va": "0xfffffff006cb69a0",
+    "bytes": 472,
+    "callback_pointers": 49,
+    "sha256": "a338edebd277a7bbeaa422c5932a00b1630c4ecb2674c428693fd6d931c939ca",
+    "trust_cache_interface_version": 3
+  },
+  "native_header_boundaries": {
+    "sizes": {
+      "amfi_t": 472,
+      "coreentitlements_t": 216,
+      "TrustCacheInterface_t": 120,
+      "OSEntitlementsInterface_t": 72,
+      "struct mac_policy_conf": 80
+    },
+    "offsets": {
+      "amfi_t": {
+        "OSEntitlements_invalidate": 0,
+        "OSEntitlements_asdict": 8,
+        "OSEntitlements_query": 16,
+        "OSEntitlements_get_transmuted": 24,
+        "OSEntitlements_get_xml": 32,
+        "CoreEntitlements": 40,
+        "CoreEntitlements.kNoError": 144,
+        "CoreEntitlements.kAPIMisuse": 152,
+        "CoreEntitlements.kInvalidArgument": 160,
+        "CoreEntitlements.kAllocationFailed": 168,
+        "CoreEntitlements.kMalformedEntitlements": 176,
+        "CoreEntitlements.kQueryCannotBeSatisfied": 184,
+        "CoreEntitlements.kNotEligibleForAcceleration": 192,
+        "get_legacy_profile_exemptions": 256,
+        "get_udid": 264,
+        "query_context_to_object": 272,
+        "TrustCache": 280,
+        "OSEntitlements": 400
+      },
+      "struct mac_policy_conf": {
+        "mpc_name": 0,
+        "mpc_fullname": 8,
+        "mpc_labelnames": 16,
+        "mpc_labelname_count": 24,
+        "mpc_ops": 32,
+        "mpc_loadtime_flags": 40,
+        "mpc_field_off": 48,
+        "mpc_runtime_flags": 56,
+        "mpc_list": 64,
+        "mpc_data": 72
+      }
+    },
+    "wrong_offset_negative_control": "rejected",
+    "target": "arm64-apple-ios16.0",
+    "compiler_recipe_sha256": "0f312e05b2974aa151f8999661c4ab057326729818548118abb4acd092da40aa"
+  },
+  "altered_code_identity_negative_control": "rejected",
+  "native_early_security_hook_abi": 1,
+  "early_security_entries_identified": true,
+  "complete_component_abi_qualified": false,
+  "crypto_lifecycle_qualified": false,
+  "pmgr_runtime_qualified": false,
+  "policy_registration_executed": false,
+  "runtime_qualified": false,
+  "hardware_tested": false,
+  "scope": "Original entry identity, bounded call-chain/prefix analysis and observed ARM64 header boundaries. No policy callback was replaced or executed; whole-component ABI and runtime remain open."
+}

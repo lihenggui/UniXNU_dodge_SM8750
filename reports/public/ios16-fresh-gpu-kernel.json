@@ -1,0 +1,101 @@
+{
+  "result": "IOS16_FRESH_GPU_NATIVE_HEALTH_SURFACE_AND_DISPLAY_ARM64_PASS",
+  "source_sha256": {
+    "scripts/check_fresh_gpu_kernel.py": "e721c6a4566078849e7de3867e717e45ad0c4c116bbd7bf8cd6dec8829976542",
+    "scripts/fresh_gpu_execution.py": "efdfebff8a5cccf5377b8687dcb7c52c6f7eaaf8c84c76ba6591b91fe01ef4d9",
+    "scripts/check_adreno_display_timeline.py": "c13e1f20a5a08c5e5f8ee54888b5f4448a2854689a7ceb4f76492526e079b584",
+    "scripts/check_display_kernel_lifecycle.py": "1f9bb4d8cb5f28127aee44d83dab8084e24d01e2c83e2c2fbc27a31401867f8d",
+    "scripts/surface_sync_execution.py": "7c287e31548061865ada9db071f47d078f075f31d5cecbe806dfc7def80f9feb",
+    "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
+    "scripts/prepare_surface_sync.py": "2c00ababad2f9a444aabe79e6b9209dc9b666c78bbf1d1e400740d62a1c9c881",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "build/cph2653-fresh-gpu-source/native/compile-commands.json": "6f9083fb8bfb4ddf828c85b8329fba9474f0a8fcb1dbef7fc6dca15cc8aeadb8",
+    "build/cph2653-fresh-gpu-source/source/DodgeDisplayFrontend.cpp": "364fb9ee8b5da452c2108bc9a653599f267c43a7d22313d2229bdd59ba047df8"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-fresh-gpu-prelink.json": "5ad4fa8b8140b5a44c6dd68d5a6c660479d05ef77737deea4e46b17028879023",
+    "reports/adreno-display-timeline.json": "4c9d0daa0bb7eaa318e021bf4813601bb492346688ca836445a8a2d965fc85ad",
+    "reports/ios16-surface-sync-kernel.json": "a9348582448ac43e7dd69ea3e077dffddfbb7e1fbd35f7e0a8a158735925ab92",
+    "reports/ios16-display-kernel-lifecycle.json": "e93e2cfc7ad8632f42746f69436d5e2f06065a3fa58305bace86bfa6e1227f3c",
+    "reports/ios16-fresh-gpu-source.json": "df288c29bcabb9d2584dbaea21b56f9109c335a82794c8a84946e3ec91bc371b"
+  },
+  "artifacts": {
+    "build/cph2653-fresh-gpu-kernel/frontend-layout.o": "6543335b84a9381eeb5ff727b89763d37881ce105887cf16e3e5c5faf99338d8",
+    "build/cph2653-fresh-gpu-kernel/compiler-layouts.log": "896bcd9c8dd99b973ba0a2778dc2cc775cb6b9f1835a8b4828adeb658567589e",
+    "build/cph2653-fresh-gpu-kernel/cpu-cases.json": "3a931708e05ccf202fd438c6488fda05c9d05bc81a5b4a8373b8e9f4b868d78d"
+  },
+  "candidate": "build/cph2653-fresh-gpu-prelink/kernel.macho",
+  "candidate_sha256": "fde28d4ebee62790c42071cccd8ae0348c54d18f4544a9ba5a85975879c4219e",
+  "compiler_layout": {
+    "frontend": {
+      "bytes": 1552,
+      "fields": {
+        "requiresAdreno": 1543
+      }
+    },
+    "entry": {
+      "bytes": 88,
+      "fields": {
+        "gpuEpoch": 8,
+        "gpuTarget": 64,
+        "gpuSubmitted": 68,
+        "gpuRetired": 72,
+        "gpuCaptured": 79,
+        "gpuPassed": 80,
+        "gpuInvalid": 81
+      }
+    }
+  },
+  "native_trace": {
+    "published_state": "0xfffffff007a88bf8",
+    "recovery_counter": "0xfffffff007b40394",
+    "snapshot_entry": "0xfffffff0079f4090",
+    "epoch_helper": "0xfffffff0079f4bf4",
+    "epoch_helper_sha256": "51e9f190b7540ec9a0fd48cb344b8fc292abd6d96f3c182fa35e5914def47f9a",
+    "native_recovery_note_call": "0xfffffff0079f4864",
+    "native_recover_call": "0xfffffff0079f48d0"
+  },
+  "case_counts": {
+    "native_snapshot_and_epoch": 22,
+    "native_frontend_and_snapshot": 13,
+    "original_surface_chain": 17,
+    "display_lifecycle": 32
+  },
+  "instruction_controls": [
+    {
+      "case": "gpuReady-always-success",
+      "result": "REJECTED",
+      "reason": "Native health did not capture the initial completed target"
+    },
+    {
+      "case": "gpuCurrent-always-success",
+      "result": "REJECTED",
+      "reason": "Historical target bypassed fresh backend refusal: poisoned-ring"
+    }
+  ],
+  "lifetime_controls": [
+    {
+      "case": "lost-provider-lifetime-pin",
+      "result": "REJECTED",
+      "reason": "Provider died before the retained original background thread completed"
+    },
+    {
+      "case": "unreviewed-native-allocator",
+      "result": "REJECTED",
+      "reason": "Linked lifecycle unreviewed-native-allocator failed at 0xfffffff0078fe3f8 ['_IOMalloc', '_IOMalloc_external']; recent events []; PCs ['0xfffffff0078fe3f8']; args [64, 0, 0, 0, 0, 0, 0, 0]: Unreviewed lifecycle instruction 0xfffffff0078fe3f8 ['_IOMalloc', '_IOMalloc_external']"
+    }
+  ],
+  "native_frontend_and_snapshot_algorithms_are_peers": false,
+  "original_surface_algorithms_are_peers": false,
+  "snapshot_mutex_and_fence_read_are_peers": true,
+  "original_surface_and_display_primitive_peers": true,
+  "native_readonly_admission_writes_entry": false,
+  "full_frontend_uses_real_iokit_objects": false,
+  "original_surface_5056_lifecycle_executed": false,
+  "producer_cache_visibility_qualified": false,
+  "gpu_failure_quiescence_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "Actual new prelinked kernel instructions run 22 native snapshot/epoch paths, 13 fresh frontend-helper-to-real-snapshot paths, 17 original IOSurface/display notification-chain paths and 32 complete source/original display lifecycle paths. The native compiler measures the exact private frontend/entry layout; its probe text equals the production object. Fresh admission leaves all entry bytes unchanged. Unknown/poisoned/busy/preempted snapshots hold the old target; successful epoch/regression observations latch refusal. Two instruction controls and two display lifetime controls fail. Mutex/fence-cache reads and the previously documented platform/IOKit/allocator/scheduler/final display callbacks remain explicit peers. Whole native frontend/bridge integration is separately tested under sanitizers. No actual IOKit allocator, GPU cache/DMA/SMMU visibility, presenter quiescence, +5056 original-surface lifecycle, MMIO or phone boot is qualified."
+}

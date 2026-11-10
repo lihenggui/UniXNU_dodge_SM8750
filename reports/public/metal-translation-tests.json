@@ -1,0 +1,226 @@
+{
+  "result": "PRODUCTION_METAL_TRANSLATION_HOST_CHECK_PASS",
+  "translator_revision": "624bab3918de5b978e1101517abca2b4fa426565",
+  "runtime_patches": [
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0001-optional-constant-output-members.patch",
+      "sha256": "af8eadbab4c9bc2576b14abea5308abfbc95aafb33a3c53b72117d3b1e535919"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0002-resource-wait-storage-dependencies.patch",
+      "sha256": "bd36d4f0b8bf21a7b409bd65e5d6f1a24397fc1fb24113bbf215c68a9a71a29f"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0003-cache-device-entry-point-priming.patch",
+      "sha256": "f865084d147f3111d406a91d2d400fc29f75b9b7381250489efe04b1098f8839"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0004-fold-constant-global-field-loads.patch",
+      "sha256": "0783ad2223da6b7c5902c3a128b0cb489e2440cb6eec1ed1a196c2a304b3c4a3"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0005-skip-draws-without-a-pipeline.patch",
+      "sha256": "d99f4ef5fe5893b16c4d6aa3548ec8bacf8429a49b3395eee4e2b0f4ec6b290b"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0006-batch-barriers-and-key-hash-neutral-maps.patch",
+      "sha256": "bba26d2ef307234c4858b9906f5894e167e640d4bb48d68280e505407b3ac211"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0007-optional-shader-cache-directory.patch",
+      "sha256": "cd169276534ec265c10a2dd557ce986ab1d31989aa2624f4787e9a3f2082dcf3"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0008-llvm-bitreverse.patch",
+      "sha256": "62fe7871d3695277e46bc2020dd5e2dbd3c1f5ec4e631d2ca69f772b19a4d9dc"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0009-patch-with-no-control-points.patch",
+      "sha256": "f5d2a9a864064803a0dac4e9f3ada4235b08433edfe0587ebe023aed9f02e82f"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0010-core-image-kernel-libraries.patch",
+      "sha256": "8ca93e8f6e31ddfb502df5497ea68480dbcb2fdbafd7b0ea5c6f546e60dbe6e2"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0011-two-plane-shadow-as-memory-lies.patch",
+      "sha256": "2b7c8449367ab3a78268101d88640a4328be27ae9b96235c9a1dc1d3cdf20e4a"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0012-srgb-extended-range-blend-rounded-model.patch",
+      "sha256": "72ceaa0fff8f3e5d5ac62165eb92048ee6e99004d46f9a3fb067545267009e2d"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0013-growing-memory-blocks.patch",
+      "sha256": "f1e4b65499f1a65f135a18d23b3dd5ee61453f599f824c0913e5c6f35b2468c1"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0014-in-place-written-textures.patch",
+      "sha256": "22c5374e7672fe0eca9554611c9f0e7f6fa4097f4815d29bc9d75b622ba75673"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0015-in-place-written-host-page-textures.patch",
+      "sha256": "10aff3b6d9c31d14cc8486622afc7da53de29f359bc4b3edf0b5efcf9be47369"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0016-refuse-rebinds.patch",
+      "sha256": "13caa51b08f68622286de41b6e4232ad364114cf8c93b60336d6158706b36709"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0017-heap-texture-size-a-multiple-of-its-alignment.patch",
+      "sha256": "30233bfbd397aef5538a1b797ff1521c26c9d32c32c0f607fa35f53eb92058b0"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0018-memory-census-bytes.patch",
+      "sha256": "2fca303f0f9564e8debf7476e35733775ef4be542f107fd580813a68fd772612"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0019-allocation-sites.patch",
+      "sha256": "88b59f2bbfca27fbec78f846b3e3725acc616f596d5228633751e686adc25cb3"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0020-written-host-page-textures-in-place-at-any-size.patch",
+      "sha256": "fd01025c0f40fba6f8670c75f78b10047c08a442edb696130fa30d86f74faa55"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0021-spare-image-blocks-and-room-keeper.patch",
+      "sha256": "cbafb85f2f43fc2302d06bfe2c972283802fa50aa257db09e4dfcc3bf6b36b03"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0022-command-buffer-stage-trace.patch",
+      "sha256": "38dd5825a5665eada2a33d40d89881405cb88405feaa250a37a9e1c67ea62406"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0023-quality-of-service-on-ios.patch",
+      "sha256": "b134e9d5143ceed52a5c89ad4cc40b0f807b16442ea9ac03d95f2079f6ff17d9"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0024-diagnostics-switch-and-submit-steps.patch",
+      "sha256": "d04cd3a19ecd2697dfeccd70d4df998489caf7554acb441d030c34b61844672e"
+    }
+  ],
+  "translator_source_tree": {
+    "git_tree": "70afeb54204b53bcd4e94cc32f377c993fb325b2",
+    "files_verified": 6371,
+    "bytes_verified": 1750241720,
+    "method": "Every blob matches HEAD plus hash-locked overlays via a private index; user index preserved"
+  },
+  "consumer_source_sha256": "0b2b96211c21b600d8fade6d07660ce533c277e96bcc6eb1c396eaddb100160d",
+  "cargo_lock_sha256": "b3d29601c2656ca778d8020bc343bfda1f27ab7ec930a3690b06ceb62f4f807e",
+  "original_consumer_source_sha256": "9da882cf2c51e02ef30e13d10be9669d4bcb610afbd3dd28f26b9618472d9728",
+  "consumer_api_patch": {
+    "path": "patches/adreno-metal/0002-refresh-offline-probe-api.patch",
+    "sha256": "d574e58a56e3075c7b90c18923d3165e53f7d3e4371b982ec707ec212ce6f0de"
+  },
+  "host_binary": "build/cph2653-metal-translation-tests/target/release/adreno-metal-vulkan-probe",
+  "host_binary_sha256": "d15575f7f0c88d14746f8ab9e3bc8039d38ec81ad038298cfca0b7ab30ccb25b",
+  "profile": "build/cph2653-metal-translation-tests/turnip-declared-profile.json",
+  "profile_sha256": "c943b78486a3683a1d8ab35a85ef5c04c49a406c0a12e55401c7fd227703fce2",
+  "profile_scope": "Vulkan 1.2 floor plus two production Turnip-declared storage-image features; not observed A830 capabilities",
+  "base_profile_sha256": "9fcad275b41d6d553ee3aa9c67ab9713adcb7d327b52f67a96fa827c7487d8ba",
+  "turnip_feature_source_sha256": "76a026a570a2103cab69650c530e1fef3bc72104749794cc567a43afaa86da3f",
+  "air_source_sha256": {
+    "build/cph2653-metal-bridge/nmb_fixture_air.air": "5d377e15fffcca9108bd00d1f290e5238bbfe1ecbf65ba575ff254470ffa4de5",
+    "build/cph2653-metal-bridge/nmb_scanout_air.air": "f619fe625249d358e5180b446b6f7abe4e39ccad1a9665424097fb8a5c68ac61"
+  },
+  "pipelines": 5,
+  "spirv_modules": [
+    {
+      "case": "compute-buffer",
+      "stage": "VK_SHADER_STAGE_COMPUTE_BIT",
+      "entry_point": "main",
+      "path": "build/cph2653-metal-translation-tests/compute-buffer-0.spv",
+      "sha256": "857557750e7f760f991983ede41fb4627f76b63cc96702dc1cbbed5c44e57e62",
+      "words": 581,
+      "validation_environments": [
+        "vulkan1.2"
+      ],
+      "validation_flags": [
+        "--uniform-buffer-standard-layout"
+      ]
+    },
+    {
+      "case": "compute-texture",
+      "stage": "VK_SHADER_STAGE_COMPUTE_BIT",
+      "entry_point": "main",
+      "path": "build/cph2653-metal-translation-tests/compute-texture-0.spv",
+      "sha256": "b19b35e4a53468e4c8798b63636e91cf972e76d71d21dca5d44e1a828869724e",
+      "words": 588,
+      "validation_environments": [
+        "vulkan1.2"
+      ],
+      "validation_flags": [
+        "--uniform-buffer-standard-layout"
+      ]
+    },
+    {
+      "case": "render-colored",
+      "stage": "VK_SHADER_STAGE_VERTEX_BIT",
+      "entry_point": "main",
+      "path": "build/cph2653-metal-translation-tests/render-colored-0.spv",
+      "sha256": "77592efb2e9cee2ea59c3b8e775801e4555720f2331db2adb70d0e38c4a84c3a",
+      "words": 471,
+      "validation_environments": [
+        "vulkan1.2"
+      ],
+      "validation_flags": [
+        "--uniform-buffer-standard-layout"
+      ]
+    },
+    {
+      "case": "render-colored",
+      "stage": "VK_SHADER_STAGE_FRAGMENT_BIT",
+      "entry_point": "main",
+      "path": "build/cph2653-metal-translation-tests/render-colored-1.spv",
+      "sha256": "5a85814f27463b01f61cc1afbfccc5cf846ba23909ed13a6e54afb82fd142543",
+      "words": 83,
+      "validation_environments": [
+        "vulkan1.2"
+      ],
+      "validation_flags": [
+        "--uniform-buffer-standard-layout"
+      ]
+    },
+    {
+      "case": "scanout-opaque",
+      "stage": "VK_SHADER_STAGE_COMPUTE_BIT",
+      "entry_point": "main",
+      "path": "build/cph2653-metal-translation-tests/scanout-opaque-0.spv",
+      "sha256": "2936122a84652f62f287689eb32fb22aaec57a3e61d7a0254146307ca6dd15f1",
+      "words": 711,
+      "validation_environments": [
+        "vulkan1.2"
+      ],
+      "validation_flags": [
+        "--uniform-buffer-standard-layout"
+      ]
+    },
+    {
+      "case": "scanout-half-convert",
+      "stage": "VK_SHADER_STAGE_COMPUTE_BIT",
+      "entry_point": "main",
+      "path": "build/cph2653-metal-translation-tests/scanout-half-convert-0.spv",
+      "sha256": "25e36e8bd3bb1913d4208b570d69c3afa854ad960253e24a75a2362552a1220f",
+      "words": 935,
+      "validation_environments": [
+        "vulkan1.2"
+      ],
+      "validation_flags": [
+        "--uniform-buffer-standard-layout"
+      ]
+    }
+  ],
+  "invalid_pipeline_controls_refused": [
+    "truncated-bitcode",
+    "invalid-profile",
+    "missing-entry",
+    "standalone-fragment",
+    "wrong-fragment-stage",
+    "missing-color-attachment",
+    "missing-storage-format-on-floor"
+  ],
+  "vulkan_loader_linked": false,
+  "gpu_execution": false,
+  "hardware_tested": false,
+  "scope": "Actual patched translator compiles public buffer/texture/render and production scanout AIR; validates real SPIR-V. No pixels executed."
+}

@@ -1,0 +1,37 @@
+{
+  "map": "patched:Platforms/OnePlus/dodgePkg/Library/MemoryMapLib/MemoryMapLib.c",
+  "dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "allocatable_regions": [
+    {
+      "name": "DXE_Heap_Low",
+      "base": 3104571392,
+      "size": 75956224,
+      "hob": "AddMem",
+      "resource": "SYS_MEM",
+      "type": "Conv",
+      "line": 35
+    },
+    {
+      "name": "DXE_Heap",
+      "base": 3191209984,
+      "size": 380383232,
+      "hob": "AddMem",
+      "resource": "SYS_MEM",
+      "type": "Conv",
+      "line": 38
+    },
+    {
+      "name": "DXE_Heap_Tail",
+      "base": 3574595584,
+      "size": 21757952,
+      "hob": "AddMem",
+      "resource": "SYS_MEM",
+      "type": "Conv",
+      "line": 40
+    }
+  ],
+  "problems": [],
+  "result": "PASS",
+  "scope": "Static initial table versus captured FDT; not proof of a successful or safe hardware boot.",
+  "upstream_revision": "6b3d90b79e191e08171bfedd3980234a7e49d340"
+}

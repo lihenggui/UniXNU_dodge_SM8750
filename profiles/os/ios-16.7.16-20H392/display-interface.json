@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "legacy_metadata": "0xfffffff007a45540",
+  "legacy_instance_bytes": 5728,
+  "legacy_vptr": "0xfffffff006def8e0",
+  "legacy_virtual_entries": 338,
+  "abstract_slots": [
+    211,
+    212,
+    242,
+    243,
+    292,
+    293,
+    321,
+    322,
+    329
+  ],
+  "lifecycle_override_slots": [
+    0,
+    1,
+    7,
+    14,
+    21,
+    44,
+    79,
+    85,
+    86,
+    87,
+    111,
+    141,
+    155
+  ],
+  "protected_constructor": "0xfffffff005c0bbbc",
+  "protected_constructor_sha256": "f706d1c020ba76c62707ac009261bf821c664badd77a6df614152096b41e3cb7",
+  "protected_destructor": "0xfffffff005c0bc08",
+  "protected_destructor_sha256": "06835a6e2cfd1f526f5d9fdd275471247aa8775658f1619021c0ecf1ad173475",
+  "abstract_complete_destructor_traps": true,
+  "dimension_getter": {
+    "slot": 246,
+    "address": "0xfffffff005c247ac",
+    "bytes": 112,
+    "sha256": "9281b91dafd5c88bce502428114888d579b560dba4fc2b6ab501d5acb591e1c6",
+    "output_word_offsets": [
+      5208,
+      5212
+    ],
+    "prototype": "void (self, uint32_t *, uint32_t *)",
+    "width_height_roles_inferred_from_reference": false,
+    "original_size_role_contract": "profiles/os/ios-16.7.16-20H392/display-userland.json",
+    "original_size_role_contract_sha256": "62e6b4cebe56b3afcd11a3bab29d3ba83aa2c7e3bb7baec173e085f419991760"
+  },
+  "start_hardware": {
+    "slot": 274,
+    "address": "0xfffffff005c17e44",
+    "prototype": "bool (self)",
+    "original_default_result": false,
+    "caller": "0xfffffff005c0d5c0",
+    "caller_sha256": "4526fb3bc23512c063efccd7c6b6d55c9f715b6c1063385992b4f558eae2d6f6"
+  },
+  "swap_frontend_hooks": {
+    "packet": {
+      "slot": 178,
+      "address": "0xfffffff005c14930",
+      "bytes": 5628,
+      "sha256": "674fbb71c08b92833eccf03017c0049d23f6f7797593b689e8962d10dc7ce8ae",
+      "prototype": "int32_t (self, const void *packet, void *opaque submitter)",
+      "caller": "0xfffffff005bfde54",
+      "caller_bytes": 28,
+      "caller_sha256": "7e297d7f79cf10f1bb2f9fc2cf0a6e8a00ab2aab6c3280cde49058ab8bd3f2ba"
+    },
+    "kick": {
+      "slot": 276,
+      "address": "0xfffffff005c192b8",
+      "bytes": 16,
+      "sha256": "d53e8c59aa22c23dbfc99dd98e5e02cf4ba052a2905b2991bfe1edff9c0b9efa",
+      "prototype": "void (self)",
+      "caller": "0xfffffff005c16ff8",
+      "caller_bytes": 20,
+      "caller_sha256": "1d1b1665af33428b195ba1f9ce08705dfe2ad760206545a8e9872428cd337653"
+    },
+    "complete": {
+      "slot": 281,
+      "address": "0xfffffff005c1ace4",
+      "bytes": 44,
+      "sha256": "5f8085d74d897fa16dcc95131672f574cfc17ef7640c6a3523c6cc3dca7b2ba3",
+      "prototype": "void (self)"
+    },
+    "validate": {
+      "slot": 282,
+      "address": "0xfffffff005c1ad10",
+      "bytes": 28,
+      "sha256": "124fe177efe1b0265836df52b214ee662c5f4ca2a0f70dc1683426c15a56e3f9",
+      "prototype": "bool (self, IOMFBSwapIORequest *)",
+      "caller": "0xfffffff005c165a8",
+      "caller_bytes": 40,
+      "caller_sha256": "d95dea0f71c0228385ca532cb8a3b47a1fa78b9ea56230cdfdb00cfa284cd724"
+    }
+  },
+  "backend_contract": "profiles/os/ios-16.7.16-20H392/display-backend-discovery.json",
+  "backend_contract_sha256": "c191fafdd284df220bcc2ddcd9487a3e6d40a9a34f3308812351bf3e178f2f26",
+  "qualified_raw_backend_calls": {
+    "211": {
+      "declaration": "uint32_t backend211(uint32_t,void *,uint32_t)",
+      "original_target": {
+        "address": "0xfffffff005cd4b50",
+        "bytes": 16,
+        "sha256": "9840f4f17c90e19c5481c3734da968a8f2217f2381be8680a89b4226905ad47c"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c254ac",
+          "bytes": 40,
+          "sha256": "b0e40441de59d4de7cb34ccc33b75aea80589536f82f768cee337d0892d98706"
+        }
+      ],
+      "operation_semantics_qualified": false
+    },
+    "212": {
+      "declaration": "uint32_t backend212(uint32_t,uint32_t *,void *)",
+      "original_target": {
+        "address": "0xfffffff005cd4ae4",
+        "bytes": 16,
+        "sha256": "a12aabafdfa367541792284e2eec8662c17810d4a39dd8b23453dbe07ac52844"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005bfec48",
+          "bytes": 52,
+          "sha256": "6052133a0a8ac636d227b699c712d4eefaef12bd4915861e09c842fc80506447"
+        }
+      ],
+      "operation_semantics_qualified": false,
+      "count_local_address": {
+        "address": "0xfffffff005bfec34",
+        "bytes": 4,
+        "sha256": "a3d931d9b11bb774d8cfbbc23b9cde244a59e236408afbcb393e6906467ef1db"
+      }
+    },
+    "242": {
+      "declaration": "uint32_t backend242(void *,void *)",
+      "original_target": {
+        "address": "0xfffffff005cdd374",
+        "bytes": 12,
+        "sha256": "f6e0cb09673ef6f38d0f357d35f4b4ce74e28ece2e432409e72af405fb35cac6"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005bff5fc",
+          "bytes": 28,
+          "sha256": "fbf64c45891934f1532a6474b61894508fe20e00c9414613e823c0cb28bc1a23"
+        }
+      ],
+      "operation_semantics_qualified": false
+    },
+    "292": {
+      "declaration": "void backend292(void *,bool)",
+      "original_target": {
+        "address": "0xfffffff005cd4af4",
+        "bytes": 16,
+        "sha256": "dde09a2742b23f7a64786ebf890f3f26bc4664d918d2c0da35f6cb175ead4e22"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c1b194",
+          "bytes": 28,
+          "sha256": "8d2f732aeb6fae9ea1cc80bc2eb3976a7efc1850de90e5b472993f0dce4a1ed0"
+        },
+        {
+          "address": "0xfffffff005c1b4e4",
+          "bytes": 28,
+          "sha256": "1430c56532f44737c54caab0d1d4c1efd25b6fcde492312340f20634a49818cd"
+        }
+      ],
+      "operation_semantics_qualified": false
+    },
+    "293": {
+      "declaration": "uint32_t backend293(void *,void *)",
+      "original_target": {
+        "address": "0xfffffff005cd4b04",
+        "bytes": 36,
+        "sha256": "164fc6237c3d2cf593720ee2fd9496fdd74c95e6ea52452561edc164d2e18ddf"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c1ba90",
+          "bytes": 56,
+          "sha256": "624fd2df37574b3465ce1bc36bbf8043a012b4b0dd4bd73e12a2ea746e1866d3"
+        }
+      ],
+      "operation_semantics_qualified": false
+    },
+    "321": {
+      "declaration": "uint32_t backend321(uint32_t,void *,uint32_t *,uint32_t)",
+      "original_target": {
+        "address": "0xfffffff005cd4680",
+        "bytes": 1108,
+        "sha256": "ae2dfa8fa9cba639b34e3037b72b2098ded85673d8a8df1dc76f430c4d918421"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c10230",
+          "bytes": 36,
+          "sha256": "176e3a291db8d5f852faeee023b2cd6c96c984bd001cbbc91b3b547327fefa87"
+        }
+      ],
+      "operation_semantics_qualified": false,
+      "records_are_optional": true,
+      "record_stride_bytes": 216,
+      "count_word_bytes": 4,
+      "capacity_word_bytes": 4,
+      "original_full_report_semantics_qualified": false
+    },
+    "322": {
+      "declaration": "void backend322(uint32_t)",
+      "original_target": {
+        "address": "0xfffffff005cdd41c",
+        "bytes": 4,
+        "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c1bdd4",
+          "bytes": 20,
+          "sha256": "ea44bed7de725826e6a226c59c6984b672c8393de5cde4d7d2fe56ecde56199f"
+        }
+      ],
+      "operation_semantics_qualified": false
+    },
+    "329": {
+      "declaration": "uint32_t backend329()",
+      "original_target": {
+        "address": "0xfffffff005cdd430",
+        "bytes": 12,
+        "sha256": "c7bcede80f59accec1c101da55a5e6614c01834f93ada368dda93c9f5a3c4396"
+      },
+      "caller_blocks": [
+        {
+          "address": "0xfffffff005c10e38",
+          "bytes": 20,
+          "sha256": "3481bc00c6df53d3a5c412bd5ac4c4f0c277814d287a394ef7fa93a2be1cf3f3"
+        }
+      ],
+      "operation_semantics_qualified": false,
+      "raw_byte_zero_extended_to_uint32": true,
+      "caller_consumes_bit_zero": true,
+      "state_meaning_qualified": false
+    }
+  },
+  "unclassified_backend_argument_slots": [
+    243
+  ],
+  "all_private_methods_qualified": false
+}

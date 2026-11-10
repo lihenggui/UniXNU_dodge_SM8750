@@ -1,0 +1,160 @@
+{
+  "schema_version": 2,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "family_version": "336.60.1",
+  "family_text_address": "0xfffffff005a44000",
+  "family_text_bytes": 145604,
+  "family_text_sha256": "201b4452233e5471fe88fb7a69e0e3c37a17df3d8eead51e2698ca663ef09bae",
+  "surface_instance_bytes": 1168,
+  "memory_region_instance_bytes": 40,
+  "device_memory_region_instance_bytes": 96,
+  "memory_region_ancestry": [
+    "IOSurfaceDeviceMemoryRegion",
+    "IOSurfaceMemoryRegion",
+    "OSObject",
+    "OSMetaClassBase"
+  ],
+  "getters": {
+    "width": {
+      "address": "0xfffffff005a4e7f4",
+      "field": 144,
+      "result_bits": 32,
+      "sha256": "9a739141555c266cc1645a055a0813e76d0a0e5559ff253fbe982378360980b4",
+      "property": "IOSurfaceWidth",
+      "property_string": "0xfffffff004ed0a3c",
+      "property_key_load": "0xfffffff005a4ac10",
+      "property_store": "0xfffffff005a4ac40",
+      "property_flow_sha256": "0961f0418be4b58a468b0d0dcf87d629b53ceb8c04c3a2b8e15416e10902a88d"
+    },
+    "height": {
+      "address": "0xfffffff005a4e7fc",
+      "field": 148,
+      "result_bits": 32,
+      "sha256": "dd598cf70aef13b423eb4190433b2442752167a8f75ed3e5af29e9f25b1a8fd7",
+      "property": "IOSurfaceHeight",
+      "property_string": "0xfffffff004ed0a4b",
+      "property_key_load": "0xfffffff005a4ac58",
+      "property_store": "0xfffffff005a4ac88",
+      "property_flow_sha256": "14a49852a1cb43b4afbcdddb414d286b997206445f42a64344d00f561a55a662"
+    },
+    "stride": {
+      "address": "0xfffffff005a4e80c",
+      "field": 152,
+      "result_bits": 32,
+      "sha256": "9249f32b31e8d77574e88f31ddf3813a4540bc0947a0e7d86edc408c31449897",
+      "property": "IOSurfaceBytesPerRow",
+      "property_string": "0xfffffff004ed09f8",
+      "property_key_load": "0xfffffff005a4af30",
+      "property_store": "0xfffffff005a4af64",
+      "property_flow_sha256": "a39da9f138ae258077b343e0e695e18191faaeca30dc74385744af1e8fae25fb"
+    },
+    "offset": {
+      "address": "0xfffffff005a4e804",
+      "field": 160,
+      "result_bits": 32,
+      "sha256": "d69f3cffc8e693353edccb74dca4d3e625ce5f853d9d96431dcb9ae13745242c",
+      "property": "IOSurfaceOffset",
+      "property_string": "0xfffffff004ed0a88",
+      "property_key_load": "0xfffffff005a4b290",
+      "property_store": "0xfffffff005a4b2c0",
+      "property_flow_sha256": "a3bdb50d8d56dec14e0413d4687fb621c530e769315b2eb413cde1b46b25b614"
+    },
+    "format": {
+      "address": "0xfffffff005a4e7e4",
+      "field": 164,
+      "result_bits": 32,
+      "sha256": "fd5c66128704695a5ce5a6d4943edc26f0e46fdafa5df0ece2fb068f0f8cdf73",
+      "property": "IOSurfacePixelFormat",
+      "property_string": "0xfffffff004ed0a98",
+      "property_key_load": "0xfffffff005a4a9b0",
+      "property_store": "0xfffffff005a4a9d8",
+      "property_flow_sha256": "ef53869a8f33b7d8d5a90b19f90f8f126850ba4b8fab7622afb90d3d102ffc54"
+    },
+    "allocation": {
+      "address": "0xfffffff005a4e834",
+      "field": 172,
+      "result_bits": 32,
+      "sha256": "981587c6afa3560cb743cf3250b019df7736fed99453c4c873e9b9c42f1c2e6b",
+      "property": "IOSurfaceAllocSize",
+      "property_string": "0xfffffff004ed0aad",
+      "property_key_load": "0xfffffff005a4b2cc",
+      "property_store": "0xfffffff005a4b3b4",
+      "property_flow_sha256": "6a33b435ca6176b0439375fe5da22ad74e3cfc7c8a60949ab22d7b1738c37b87"
+    },
+    "bytes_per_element": {
+      "address": "0xfffffff005a4e814",
+      "field": 156,
+      "result_bits": 16,
+      "sha256": "4653ff5fa6bbbdbe3a4b20e0e848f2854aa680a7e0c693ff9dfdaf5ddfc79c1d",
+      "property": "IOSurfaceBytesPerElement",
+      "property_string": "0xfffffff004ed0a23",
+      "property_key_load": "0xfffffff005a4aa24",
+      "property_store": "0xfffffff005a4ac04",
+      "property_flow_sha256": "fe0cc7ebc7526a5450268941378dbaa5f246b054be0d976a52632df138319956"
+    },
+    "element_width": {
+      "address": "0xfffffff005a4e81c",
+      "field": 158,
+      "result_bits": 8,
+      "sha256": "48dc127af7d2a239c77bab10d3a79c38d15ea5860554474d4b3c7ebd76e4523c",
+      "property": "IOSurfaceElementWidth",
+      "property_string": "0xfffffff004ed0a5b",
+      "property_key_load": "0xfffffff005a4acd0",
+      "property_store": "0xfffffff005a4ad00",
+      "property_flow_sha256": "b8b8bf328f1e8026c4ffd853bc385b310afbc7a8061927429cff6b2d31dea9ae"
+    },
+    "element_height": {
+      "address": "0xfffffff005a4e824",
+      "field": 159,
+      "result_bits": 8,
+      "sha256": "064d7539e3f6886c32203f2565d26fa0b5511eb756a0f90ce455e612fd72caee",
+      "property": "IOSurfaceElementHeight",
+      "property_string": "0xfffffff004ed0a71",
+      "property_key_load": "0xfffffff005a4ad0c",
+      "property_store": "0xfffffff005a4ad3c",
+      "property_flow_sha256": "3cd9de4d75ed65db7c56a3b9b3836a930b7efb8f7b8f8de537bbc9250a2b2177"
+    },
+    "tile_format": {
+      "address": "0xfffffff005a50528",
+      "field": 528,
+      "result_bits": 32,
+      "sha256": "8ee0e07f4b9515ef87e14083f5d79d709898c6498b55c995f1c4173f8e69e6f3",
+      "property": "IOSurfaceBufferTileFormat",
+      "property_string": "0xfffffff004ed0da9",
+      "property_key_load": "0xfffffff005a4a8bc",
+      "property_store": "0xfffffff005a4a8e4",
+      "property_flow_sha256": "1d099176380c5ec072da57872d5e8d75dffd7b05f3f4b5aa26ff7608913641b6"
+    },
+    "tile_mode": {
+      "address": "0xfffffff005a54ad4",
+      "field": 512,
+      "result_bits": 8,
+      "sha256": "990516bc5c148f1c6f4816c7b21f150368c9baa0f1853e99a7a53f02a81f3fc9",
+      "property": "IOSurfaceBufferTileMode",
+      "property_string": "0xfffffff004ed0c56",
+      "property_key_load": "0xfffffff005a4a924",
+      "property_store": "0xfffffff005a4a950",
+      "property_flow_sha256": "a460d9d206c83084570beb87501e5ba631986edf57a64afdce639a0b224b2e38"
+    },
+    "planes": {
+      "address": "0xfffffff005a4e82c",
+      "field": 176,
+      "result_bits": 32,
+      "sha256": "312c6a73dafb55689e61d80f317bc13e4048f1f326682bb48f18128d0531a5c2",
+      "property": "IOSurfacePlaneInfo count",
+      "property_string": "0xfffffff004ed0ad6",
+      "property_flow_sha256": "f261866594f440375c27d1328493935d931025864343a83beb50284ed31674ce"
+    },
+    "region": {
+      "address": "0xfffffff005a4e844",
+      "field": 48,
+      "result_bits": 64,
+      "sha256": "6b819324b4a3bc2d390c83c7fe02ea41a1f57ae5d4f2a9b0c9256341a5b8d37f",
+      "result": "borrowed IOSurfaceMemoryRegion pointer"
+    }
+  },
+  "region_is_memory_descriptor": false,
+  "backing_descriptor_provider_complete": false
+}

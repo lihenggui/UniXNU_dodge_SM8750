@@ -1,0 +1,182 @@
+{
+  "result": "IOS16_PRELINKED_TARGET_COLD_CLOCK_AND_OWNERSHIP_CPU_PASS",
+  "builder_sha256": "fbc2907cc5022d11a6a3a3f36b41206cfa0c17df8794655d1901e60a578ffce5",
+  "source_sha256": {
+    "scripts/check_input_clock_kernel.py": "fbc2907cc5022d11a6a3a3f36b41206cfa0c17df8794655d1901e60a578ffce5",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "drivers/DodgeInput/DodgeTouchClock.cpp": "adc536bf61a577196628da009feaf219d25118d379a444a5ce3ace7683baba51",
+    "drivers/DodgeInput/DodgeTouchClock.h": "b7d8ef62f216542f29727f080c297e2cc024129ea9a95b19ed97b1da7e4c0a95"
+  },
+  "source_report_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
+  "prelink_report_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+  "candidate": "build/cph2653-input-prelink/kernel.macho",
+  "candidate_sha256": "be0b18ce8c30d2b9a257477aadb51795dcd7165523520e19372998c7688c3b7e",
+  "case_count": 18,
+  "cases": [
+    {
+      "case": "cold",
+      "result": "PASS",
+      "return": 0,
+      "register_writes": 4,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "adopt",
+      "result": "PASS",
+      "return": 0,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "adopt-fractional",
+      "result": "PASS",
+      "return": 0,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "adopt-dfs",
+      "result": "PASS",
+      "return": 0,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "bad-parent",
+      "result": "PASS",
+      "return": -95,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "unlocked-pll",
+      "result": "PASS",
+      "return": -95,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "update-busy",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "engine-busy",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 1,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "foreign-protocol",
+      "result": "PASS",
+      "return": -71,
+      "register_writes": 1,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "foreign-dma",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 1,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "root-owned",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 1,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "bus-timeout",
+      "result": "PASS",
+      "return": -110,
+      "register_writes": 1,
+      "delay_calls": 200,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "serial-timeout",
+      "result": "PASS",
+      "return": -110,
+      "register_writes": 4,
+      "delay_calls": 200,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "cfg-write-failure",
+      "result": "PASS",
+      "return": -5,
+      "register_writes": 2,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "update-timeout",
+      "result": "PASS",
+      "return": -110,
+      "register_writes": 3,
+      "delay_calls": 500,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "root-timeout",
+      "result": "PASS",
+      "return": -110,
+      "register_writes": 3,
+      "delay_calls": 500,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "late-busy",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 4,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    },
+    {
+      "case": "source-drift",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 4,
+      "delay_calls": 0,
+      "full_native_clock_body": true
+    }
+  ],
+  "compiler_derived_layout": {
+    "io_bytes": 32,
+    "result_bytes": 36,
+    "hz": 0,
+    "select": 4,
+    "phase": 8,
+    "writes": 12,
+    "voteBefore": 16,
+    "commandBefore": 20,
+    "configurationBefore": 24,
+    "dfsBefore": 28,
+    "programmed": 32
+  },
+  "reference_object": "build/ios16-input-clock-abi/DodgeClockLayout.o",
+  "reference_object_sha256": "7ec8991be71742ad6aca0497429fc439ece444231eb5b6db89f270616c145fc9",
+  "cpu_cases": "build/cph2653-input-prelink/clock-cpu-cases.json",
+  "cpu_cases_sha256": "f47a0c3625e27a9c0092f5a9fbca89016db12ab9b86a1d6dfbad8744efd36924",
+  "mmio_clock_pll_and_bzero_are_peers": true,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Actual current prelinked ARM64 clock ownership, XO cold initialization, live PLL/MND/DFS rate adoption, write-error and bounded timeout paths with compiler-derived layout/canaries. Only three allowed GCC registers can be written; serial-engine, PLL, voltage and reset registers are not written. Physical clock/rail/interconnect/PLL behavior remains unqualified."
+}

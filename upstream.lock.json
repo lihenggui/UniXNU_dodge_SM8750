@@ -1,0 +1,1251 @@
+{
+  "repository": "https://github.com/Project-Silicium/Mu-Silicium",
+  "revision": "6b3d90b79e191e08171bfedd3980234a7e49d340",
+  "submodules": {
+    "Binaries": "9f4dbfd7d61acdae69fd5bb48720ce7e53711e25",
+    "Common/Mu": "566cf5c8c2c8adf8e1a337ced1d147bc6246856f",
+    "Common/Mu_OEM_Sample": "9292f9254adb94c5e5bb09a370b9662fcd66a953",
+    "Mu_Basecore": "42d6d889f7c1f27e3226b44074b8a0ffe21cd988",
+    "Silicium-ACPI": "f50bc115dccdea12e44efb550fd783d1daafc739",
+    "Silicon/Silicium/OpensslPkg/Library/OpensslLib/openssl": "67b5686b4419b4cb8caa502711c41815f5279751"
+  },
+  "pip_requirements_sha256": "2aff85508a32c03d6e09dba6433e5e0940dad8944974971f6ec4f8d3f1a0ff65",
+  "memory_patch": {
+    "path": "patches/mu-silicium/0001-cph2653-16.0.1.304-reserve-memory-holes.patch",
+    "sha256": "e1704c5fb2f9ae254d723fd0390f7fbe02e77c97fd8d1dae5ccb9c515bfa380f",
+    "target": "Platforms/OnePlus/dodgePkg/Library/MemoryMapLib/MemoryMapLib.c",
+    "before_sha256": "7516ffe8c689a127ff8cfdb8f1ce31d3df17d327a218c394f9a2df34f245a8bb",
+    "after_sha256": "71e096b88be2700c2bc92eb58f64dbfa2bca585ff5713de78179ca3ade557ab9"
+  },
+  "unixnu": {
+    "repository": "https://github.com/UniXNU/UniXNU",
+    "revision": "3fa5ff5f409398c0555a9561d6437ce5d4c3b3b7",
+    "path": "sources/UniXNU",
+    "patches": [
+      {
+        "path": "patches/unixnu/0001-device-ios-profiles-and-linux-target.patch",
+        "sha256": "1e59ec27264a4bfc07e09d985b9a90bbfdf4ea2bb41f123bd847d0a6205aca8e"
+      }
+    ]
+  },
+  "lzfse": {
+    "repository": "https://github.com/lzfse/lzfse",
+    "revision": "e634ca58b4821d9f3d560cdc6df5dec02ffc93fd"
+  },
+  "menu_patch": {
+    "path": "patches/mu-silicium/0002-dodge-embed-unixnu-menu.patch",
+    "sha256": "98fc0c623bb2ce863035385e11961d6aefefbcd2dfecbeea63f21bcfe84fad96",
+    "scope": "UniXNU menu, BootOrder registration, FDT initrd driver and DarwinBoot XNU loader. The XNU kernel is supplied separately in the payload."
+  },
+  "sm8750": {
+    "repository": "https://github.com/IssacL04/UniXNU-sm8750-common.git",
+    "revision": "669bceeaadc298e085f33d393c941eaca9e2c08c",
+    "path": "sources/UniXNU-sm8750-common"
+  },
+  "pagani_reference": {
+    "repository": "https://github.com/IssacL04/UniXNU-Pagani-Drivers.git",
+    "revision": "f5017376415268fd39dcf0b3fd68a94661cee078",
+    "path": "sources/UniXNU-Pagani-Drivers"
+  },
+  "xnu_ios16": {
+    "repository": "https://github.com/apple-oss-distributions/xnu.git",
+    "revision": "1b191cb58250d0705d8a51287127505aa4bc0789",
+    "path": "sources/xnu-ios16",
+    "tag": "xnu-8796.141.3"
+  },
+  "darwinboot": {
+    "repository": "https://github.com/UniXNU/DarwinBoot.git",
+    "revision": "3c75734014cdab0acd9541e88057b7606ee7ae08",
+    "path": "sources/UniXNU/drivers/DarwinBoot",
+    "patches": [
+      {
+        "path": "patches/darwinboot/0001-select-darwin22-boot-args.patch",
+        "sha256": "dea4b452e49dca6415f54c23360000101473fa05df660428a456dfd618fee82c"
+      }
+    ]
+  },
+  "unifdef": {
+    "repository": "https://github.com/fanf2/unifdef.git",
+    "revision": "99d17074b9ba66cc9da2ce60fb29c6b1beb0370a",
+    "tag": "unifdef-2.12",
+    "path": "sources/unifdef"
+  },
+  "iig_port": {
+    "repository": "https://github.com/Nyktis/iig-port.git",
+    "revision": "ea6d147d668ca15d490da638012243fcd705f30d",
+    "path": "sources/iig-port",
+    "patches": [
+      {
+        "path": "sources/UniXNU/scripts/linux/iig-port-darwin-target.patch",
+        "sha256": "07a649ca2fdef2ae401669668804e78ac192411e63f9e41f0988df02e84e1037"
+      }
+    ]
+  },
+  "boot_shim_patch": {
+    "path": "patches/mu-silicium/0003-bootshim-header-include-shim-size.patch",
+    "sha256": "4f65d92ee0e794ad2008a8f31b48ccbc48844bca27ec108aa9634bdd6d947dcc",
+    "target": "BootShim/BootShim.S",
+    "scope": "The ARM64 header covers shim plus FD; the copy-loop count remains FD_SIZE."
+  },
+  "vfs_backport": {
+    "repository": "https://github.com/apple-oss-distributions/xnu",
+    "tag": "xnu-10063.141.1",
+    "revision": "d8b80295118ef25ac3a784134bcf95cd8e88109f",
+    "files": {
+      "bsd/vfs/vfs_subr.c": {
+        "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/d8b80295118ef25ac3a784134bcf95cd8e88109f/bsd/vfs/vfs_subr.c",
+        "sha256": "a2f8ed1a2541b407364b4b237524e469ee1b19e330b33b8a382dbb9fc0e812d4"
+      },
+      "bsd/sys/mount.h": {
+        "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/d8b80295118ef25ac3a784134bcf95cd8e88109f/bsd/sys/mount.h",
+        "sha256": "b38ca2c352c66772fd8cbb2cd254aaac83f6647b3bc1dbd91844f36983acf1f2"
+      },
+      "config/BSDKernel.exports": {
+        "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/d8b80295118ef25ac3a784134bcf95cd8e88109f/config/BSDKernel.exports",
+        "sha256": "05f78ca199ff8202b049006da28b3e6c6f45b7a5fd5b88c3374c2166e6484061"
+      }
+    },
+    "function": "vfs_getvfs_with_vfsops",
+    "function_sha256": "e3ceaeb619f51b76c5351b36050ad4c748d280eb3f2684808dd3270ed1903807",
+    "original_review": {
+      "address": "0xfffffff00734c520",
+      "prefix_bytes": 160,
+      "prefix_sha256": "1cd9c8468d33c2d6e79e21ddb03a37d60728c465666fa1f4f7a4a77036c01336",
+      "mount_ops_offset": 40,
+      "mount_fsid_offset": 192,
+      "scope": "Reviewed original lookup/operations-comparison prefix, not a complete APFS layout audit."
+    }
+  },
+  "xnuprelink": {
+    "repository": "https://github.com/UniXNU/XnuPrelink",
+    "revision": "b1888c12456c46a2226d63c794465dfcee08d465",
+    "path": "sources/UniXNU/kits/XnuPrelink",
+    "patches": [
+      {
+        "path": "patches/xnuprelink/0001-iphone16-libm-literal-pool.patch",
+        "sha256": "beb121ce3c25da3d01e48e08813310d39feefeeba3f986fd8583cdddd18748f1"
+      },
+      {
+        "path": "patches/xnuprelink/0002-reviewed-early-security-initializers.patch",
+        "sha256": "76cc7a752d3e230914d81534a2b446244a5a9fb92884a180d8459b8068f1c94c"
+      }
+    ]
+  },
+  "iphone_libm_literal_pool": {
+    "va": "0xfffffff005b8c054",
+    "size": 1228,
+    "prefix": "0000807f0000004100008040db0f493f",
+    "sha256": "73df5b757c53532583e3686b7d93df11ec1f5dd8c201d05502654a7812cc385f",
+    "code_data_references": [
+      [
+        "0xfffffff005b8bc90",
+        "0xfffffff005b8c05c",
+        "0x18001e63"
+      ],
+      [
+        "0xfffffff005b8bc98",
+        "0xfffffff005b8c060",
+        "0x18001e43"
+      ],
+      [
+        "0xfffffff005b8bca8",
+        "0xfffffff005b8c070",
+        "0x1c001e42"
+      ],
+      [
+        "0xfffffff005b8bcc0",
+        "0xfffffff005b8c054",
+        "0x18001ca3"
+      ],
+      [
+        "0xfffffff005b8bcd8",
+        "0xfffffff005b8c0c4",
+        "0x10001f61"
+      ],
+      [
+        "0xfffffff005b8bcf4",
+        "0xfffffff005b8c064",
+        "0x18001b83"
+      ],
+      [
+        "0xfffffff005b8bd00",
+        "0xfffffff005b8c07c",
+        "0x10001be0"
+      ],
+      [
+        "0xfffffff005b8bd44",
+        "0xfffffff005b8c078",
+        "0x1c0019a2"
+      ],
+      [
+        "0xfffffff005b8bd48",
+        "0xfffffff005b8c074",
+        "0x1c001964"
+      ],
+      [
+        "0xfffffff005b8bd6c",
+        "0xfffffff005b8c058",
+        "0x18001763"
+      ],
+      [
+        "0xfffffff005b8bd74",
+        "0xfffffff005b8c060",
+        "0x18001763"
+      ],
+      [
+        "0xfffffff005b8bd84",
+        "0xfffffff005b8c070",
+        "0x1c001762"
+      ],
+      [
+        "0xfffffff005b8bd94",
+        "0xfffffff005b8c068",
+        "0x100016a1"
+      ],
+      [
+        "0xfffffff005b8bdb8",
+        "0xfffffff005b8c07c",
+        "0x10001621"
+      ],
+      [
+        "0xfffffff005b8be0c",
+        "0xfffffff005b8c088",
+        "0x100013e1"
+      ],
+      [
+        "0xfffffff005b8be50",
+        "0xfffffff005b8c054",
+        "0x18001023"
+      ],
+      [
+        "0xfffffff005b8be68",
+        "0xfffffff005b8c0c4",
+        "0x100012e1"
+      ],
+      [
+        "0xfffffff005b8be98",
+        "0xfffffff005b8c09c",
+        "0x10001020"
+      ],
+      [
+        "0xfffffff005b8becc",
+        "0xfffffff005b8c064",
+        "0x18000cc3"
+      ],
+      [
+        "0xfffffff005b8bed8",
+        "0xfffffff005b8c088",
+        "0x10000d80"
+      ],
+      [
+        "0xfffffff005b8bf0c",
+        "0xfffffff005b8c078",
+        "0x1c000b62"
+      ],
+      [
+        "0xfffffff005b8bf10",
+        "0xfffffff005b8c074",
+        "0x1c000b24"
+      ],
+      [
+        "0xfffffff005b8bf40",
+        "0xfffffff005b8c058",
+        "0x180008c3"
+      ],
+      [
+        "0xfffffff005b8bf48",
+        "0xfffffff005b8c064",
+        "0x180008e3"
+      ],
+      [
+        "0xfffffff005b8bf5c",
+        "0xfffffff005b8c4c4",
+        "0x5c002b42"
+      ],
+      [
+        "0xfffffff005b8bf78",
+        "0xfffffff005b8c4cc",
+        "0x10002aa1"
+      ],
+      [
+        "0xfffffff005b8bfdc",
+        "0xfffffff005b8c054",
+        "0x180003c3"
+      ],
+      [
+        "0xfffffff005b8bff8",
+        "0xfffffff005b8c0c4",
+        "0x10000661"
+      ],
+      [
+        "0xfffffff005b8c020",
+        "0xfffffff005b8c078",
+        "0x1c0002c2"
+      ],
+      [
+        "0xfffffff005b8c024",
+        "0xfffffff005b8c074",
+        "0x1c000284"
+      ]
+    ],
+    "branches_into_pool": [],
+    "original_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221"
+  },
+  "oneplus13t_reference": {
+    "repository": "https://github.com/IssacL04/UniXNU-Pagani_SM8750.git",
+    "revision": "ad022a2a3a2e0c71c340361392d30d424c66b4d2",
+    "path": "sources/UniXNU-Pagani_SM8750",
+    "reference_only": true,
+    "os_profile": "ipados-17.7.11-21H461",
+    "source_record": "https://unixnu.com/devices/oneplus13t"
+  },
+  "a830_backend_reference": {
+    "repository": "https://github.com/IssacL04/Adreno740.git",
+    "revision": "1baf6d3a1d0f133d284f8b8844cc98bf5aff1bbe",
+    "path": "sources/Adreno740-a830",
+    "reference_only": true,
+    "source_record": "OnePlus 13T device revision ad022a2a3a2e0c71c340361392d30d424c66b4d2 README publication record"
+  },
+  "a830_metal_reference": {
+    "repository": "https://github.com/IssacL04/AdrenoMetal.git",
+    "revision": "403e69e990871be939a15632cf619af6c8eb60a9",
+    "path": "sources/AdrenoMetal-a830",
+    "reference_only": true,
+    "source_record": "OnePlus 13T device revision ad022a2a3a2e0c71c340361392d30d424c66b4d2 README publication record"
+  },
+  "a830_firmware_reference": {
+    "repository": "https://github.com/IssacL04/AdrenoFirmware.git",
+    "revision": "505d0a1ac079339ee1486f0e19cfd8bd36a282a2",
+    "path": "sources/AdrenoFirmware-a830",
+    "reference_only": true,
+    "source_record": "OnePlus 13T device revision ad022a2a3a2e0c71c340361392d30d424c66b4d2 README publication record"
+  },
+  "iphoneos_sdk_reference": {
+    "repository": "https://github.com/theos/sdks.git",
+    "revision": "0222fd5413cf4b9af096f37b4621afa2688572f7",
+    "path": "sources/iphoneos-sdk",
+    "reference_only": true,
+    "sparse_paths": [
+      "iPhoneOS16.5.sdk"
+    ],
+    "scope": "Cross-build headers and stubs; patched third-party SDK, not proof of original iPhone 20H392 private ABI"
+  },
+  "metal2vulkan_reference": {
+    "repository": "https://github.com/steelbrain/metal2vulkan.git",
+    "revision": "624bab3918de5b978e1101517abca2b4fa426565",
+    "path": "sources/metal2vulkan",
+    "reference_only": true
+  },
+  "mesa_reference": {
+    "repository": "https://gitlab.freedesktop.org/mesa/mesa.git",
+    "revision": "85fda3b36405bcaea8bffc64aa4f2651dc90770d",
+    "path": "sources/mesa",
+    "reference_only": true,
+    "sparse_paths": [
+      "bin",
+      "include",
+      "build-support",
+      "subprojects",
+      "src/compiler",
+      "src/freedreno",
+      "src/util",
+      "src/c11",
+      "src/getopt",
+      "src/gtest",
+      "src/gallium/include",
+      "src/gallium/auxiliary/util",
+      "src/gallium/auxiliary/nir",
+      "src/gallium/auxiliary/tgsi",
+      "src/loader",
+      "src/mesa/main",
+      "src/android_stub",
+      "src/amd/common",
+      "src/amd/vulkan/bvh",
+      "src/amd/vulkan/tools",
+      "src/tool",
+      "src/virtio/virtio-gpu",
+      "src/gallium/frontends",
+      "src/gallium/drivers/llvmpipe",
+      "src/vulkan/runtime/bvh",
+      "src/mesa/program",
+      "src/vulkan/util",
+      "src/vulkan",
+      "src/gallium/auxiliary",
+      "src/gbm"
+    ],
+    "expected_tree": "b72ff1eb2138026ed6aba524770899faabf7d7c8",
+    "read_only_mirror": "https://chromium.googlesource.com/external/gitlab.freedesktop.org/mesa/mesa"
+  },
+  "gpu_rust_toolchain": {
+    "version": "1.98.0",
+    "manifest_url": "https://static.rust-lang.org/dist/channel-rust-1.98.0.toml",
+    "manifest_sha256": "3f7d139b73bbbd0004ef6e58b430831c68cdad2b1f64ee2eb35d54c09199489a",
+    "prefix": ".toolchains/rust-gpu",
+    "packages": [
+      {
+        "component": "rustc",
+        "target": "x86_64-unknown-linux-gnu",
+        "url": "https://static.rust-lang.org/dist/2026-08-20/rustc-1.98.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "0e37cb339f447fc44d6d781073bacacebfdc5612f2600e4c7e84c266f5f3aced"
+      },
+      {
+        "component": "cargo",
+        "target": "x86_64-unknown-linux-gnu",
+        "url": "https://static.rust-lang.org/dist/2026-08-20/cargo-1.98.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "2f512d170d3dd23e16ababcda32ee2e6d5172d861a7af1f504e0b1e270cafab9"
+      },
+      {
+        "component": "rust-std",
+        "target": "x86_64-unknown-linux-gnu",
+        "url": "https://static.rust-lang.org/dist/2026-08-20/rust-std-1.98.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "f5022e6c95a5ad23cca2513dc8281200f585fa188de6370aa37b128a43f876a3"
+      },
+      {
+        "component": "rust-std",
+        "target": "aarch64-apple-ios",
+        "url": "https://static.rust-lang.org/dist/2026-08-20/rust-std-1.98.0-aarch64-apple-ios.tar.xz",
+        "sha256": "8761fb83dfa3ad3e783ac65db6ff97e183183ca5ff3b9cebc03922becccd0233"
+      },
+      {
+        "component": "llvm-tools-preview",
+        "target": "x86_64-unknown-linux-gnu",
+        "url": "https://static.rust-lang.org/dist/2026-08-20/llvm-tools-1.98.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "100c9e4326c2526101c98e751893f5cc8448337a980395f89ebc8f99fc7ce392"
+      }
+    ]
+  },
+  "iphone_graphics_base_fixture": {
+    "path": "profiles/os/ios-16.7.16-20H392/graphics-abi.json",
+    "sha256": "6db8bb088e26a40c63ad86ec8b2dbadb431551fa3eab3d0889cbaed1c68036e3",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalAcceleratorABI.h",
+    "header_sha256": "b8f9068815934c675eed6a8c5f9b6a23e0ce8b1fdb432fdbac4ba959c8b3b652"
+  },
+  "gpu_python_requirements": {
+    "path": "requirements-gpu.lock",
+    "sha256": "b711be9021c0c23c3dcf1e776d89e8aa4ce827d48dc3627603e5799ae8c91294",
+    "input": "requirements-gpu.in"
+  },
+  "metal_runtime_patches": [
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0001-optional-constant-output-members.patch",
+      "sha256": "af8eadbab4c9bc2576b14abea5308abfbc95aafb33a3c53b72117d3b1e535919"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0002-resource-wait-storage-dependencies.patch",
+      "sha256": "bd36d4f0b8bf21a7b409bd65e5d6f1a24397fc1fb24113bbf215c68a9a71a29f"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0003-cache-device-entry-point-priming.patch",
+      "sha256": "f865084d147f3111d406a91d2d400fc29f75b9b7381250489efe04b1098f8839"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0004-fold-constant-global-field-loads.patch",
+      "sha256": "0783ad2223da6b7c5902c3a128b0cb489e2440cb6eec1ed1a196c2a304b3c4a3"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0005-skip-draws-without-a-pipeline.patch",
+      "sha256": "d99f4ef5fe5893b16c4d6aa3548ec8bacf8429a49b3395eee4e2b0f4ec6b290b"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0006-batch-barriers-and-key-hash-neutral-maps.patch",
+      "sha256": "bba26d2ef307234c4858b9906f5894e167e640d4bb48d68280e505407b3ac211"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0007-optional-shader-cache-directory.patch",
+      "sha256": "cd169276534ec265c10a2dd557ce986ab1d31989aa2624f4787e9a3f2082dcf3"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0008-llvm-bitreverse.patch",
+      "sha256": "62fe7871d3695277e46bc2020dd5e2dbd3c1f5ec4e631d2ca69f772b19a4d9dc"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0009-patch-with-no-control-points.patch",
+      "sha256": "f5d2a9a864064803a0dac4e9f3ada4235b08433edfe0587ebe023aed9f02e82f"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0010-core-image-kernel-libraries.patch",
+      "sha256": "8ca93e8f6e31ddfb502df5497ea68480dbcb2fdbafd7b0ea5c6f546e60dbe6e2"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0011-two-plane-shadow-as-memory-lies.patch",
+      "sha256": "2b7c8449367ab3a78268101d88640a4328be27ae9b96235c9a1dc1d3cdf20e4a"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0012-srgb-extended-range-blend-rounded-model.patch",
+      "sha256": "72ceaa0fff8f3e5d5ac62165eb92048ee6e99004d46f9a3fb067545267009e2d"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0013-growing-memory-blocks.patch",
+      "sha256": "f1e4b65499f1a65f135a18d23b3dd5ee61453f599f824c0913e5c6f35b2468c1"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0014-in-place-written-textures.patch",
+      "sha256": "22c5374e7672fe0eca9554611c9f0e7f6fa4097f4815d29bc9d75b622ba75673"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0015-in-place-written-host-page-textures.patch",
+      "sha256": "10aff3b6d9c31d14cc8486622afc7da53de29f359bc4b3edf0b5efcf9be47369"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0016-refuse-rebinds.patch",
+      "sha256": "13caa51b08f68622286de41b6e4232ad364114cf8c93b60336d6158706b36709"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0017-heap-texture-size-a-multiple-of-its-alignment.patch",
+      "sha256": "30233bfbd397aef5538a1b797ff1521c26c9d32c32c0f607fa35f53eb92058b0"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0018-memory-census-bytes.patch",
+      "sha256": "2fca303f0f9564e8debf7476e35733775ef4be542f107fd580813a68fd772612"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0019-allocation-sites.patch",
+      "sha256": "88b59f2bbfca27fbec78f846b3e3725acc616f596d5228633751e686adc25cb3"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0020-written-host-page-textures-in-place-at-any-size.patch",
+      "sha256": "fd01025c0f40fba6f8670c75f78b10047c08a442edb696130fa30d86f74faa55"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0021-spare-image-blocks-and-room-keeper.patch",
+      "sha256": "cbafb85f2f43fc2302d06bfe2c972283802fa50aa257db09e4dfcc3bf6b36b03"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0022-command-buffer-stage-trace.patch",
+      "sha256": "38dd5825a5665eada2a33d40d89881405cb88405feaa250a37a9e1c67ea62406"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0023-quality-of-service-on-ios.patch",
+      "sha256": "b134e9d5143ceed52a5c89ad4cc40b0f807b16442ea9ac03d95f2079f6ff17d9"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0024-diagnostics-switch-and-submit-steps.patch",
+      "sha256": "d04cd3a19ecd2697dfeccd70d4df998489caf7554acb441d030c34b61844672e"
+    }
+  ],
+  "a830_build_reference": {
+    "repository": "https://github.com/IssacL04/UniXNU_Enc3l.git",
+    "revision": "7422fe182ab0c7d540b129d32a85def16023cd6a",
+    "path": "sources/UniXNU-a830-build-reference",
+    "reference_only": true,
+    "scope": "Published A830 build and existing host-test integration only; target core/profile pins are unchanged"
+  },
+  "mesa_runtime_patches": [
+    {
+      "path": "sources/UniXNU/patches/mesa/freedreno-tools-nir.patch",
+      "sha256": "77e966b6e9a725892d10889a4d8deeefb03a32ae3a007904868132e56350191f"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/ir3-darwin-build-id.patch",
+      "sha256": "be3ca7840a16cb7696d8d7e67195c8d097cf0e38a3b5011edc674a5aed9c6975"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/ir3-portable-asm-roundtrip.patch",
+      "sha256": "bfc5552bc2bd6e1668d75773cce7bf62fd19065e6281bf7da49f9ddfc2e79339"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/offline-adreno-compiler-probe.patch",
+      "sha256": "b7d7a113beb5ef99edea24858d906194d4b4755c987520545ad2f7f3136bb4fb"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-darwin-kmd.patch",
+      "sha256": "da264be322fd914ead493fd24f056213d368c49ff800b79d980e68bc686971c6"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-graphics-cache-feedback.patch",
+      "sha256": "07f397e38d9acfb0085db4c19567c84fd8a3bcd63d6fd05192857abfbde5aed2"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-empty-scissor.patch",
+      "sha256": "dec657626dcd8e8d3f1447e44574f31e4afb8c90b6ebf7d589ba10ee0f8b6461"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-builtin-shader-pack.patch",
+      "sha256": "3c606dc99643c3ca3e4736c5783348cd85cbff3fbc55161e53226ab459f34473"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-host-import-images.patch",
+      "sha256": "8bc141db41848a59b16493b4ca8a359e0f18f1cad5f14147ff18d15f79c0c3c4"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-render-mode-for-attachment-memory.patch",
+      "sha256": "853c6f507b542e8e2d3c8314be0b69b485cde68709272cb9a46268c82a28d42a"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-gmem-mutable-swap.patch",
+      "sha256": "92fe61c73cad117c5d98040eee4aafe95c3863407688f00a443b67a19706bfd1"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-current-queue-priorities.patch",
+      "sha256": "25a64d842b26336b052720ababd5fa00ef4c6507351e5b75f51492b768593588"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-frame-diagnostics.patch",
+      "sha256": "5eb8dda6e381f10fa48b62a9a497fb74a8b08c7999dea5468585c9848b2af966"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-transient-attachments-in-gmem.patch",
+      "sha256": "89159ee0c7a24bff3c62c63f9d838711e184438ae630ff0893ec4d275fadafd8"
+    }
+  ],
+  "metal_bridge_dependencies": {
+    "path": "profiles/os/ios-16.7.16-20H392/graphics/bridge-Cargo.lock",
+    "sha256": "30552926ea905c1fb364f83a46a29552cc6e1772da3145f120b5e252fb89c7c7"
+  },
+  "gpu_host_tools": {
+    "prefix": ".toolchains/gpu-host",
+    "source": "Ubuntu 22.04 signed archive package metadata",
+    "packages": [
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/glslang/glslang-tools_11.8.0+1.3.204.0-1_amd64.deb",
+        "sha256": "f28d516d6d8bd2e6bf178084b21ec1bfef9a09c649b43a38503cc9cd30b4f191"
+      },
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/s/spirv-tools/spirv-tools_2022.1+1.3.204.0-2_amd64.deb",
+        "sha256": "6352e6fd6bd83acf5d28ffda892d637f79b28a5f1043b13487783e067373dd50"
+      },
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/autoconf/autoconf_2.71-2_all.deb",
+        "sha256": "96b528889794c4134015a63c75050f93d8aecdf5e3f2a20993c1433f4c61b80e"
+      },
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/automake-1.16/automake_1.16.5-1.3_all.deb",
+        "sha256": "59e3890fc8407bcf8ccc9f709d6513156346d5c942e8c624dc90435e58f6f978"
+      },
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libt/libtool/libtool_2.4.6-15build2_all.deb",
+        "sha256": "fb994bc0152f4e77a791b51bc54fd5e38963aa6473e60c45369ef373b6119124"
+      },
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/lz4/liblz4-dev_1.9.3-2build2_amd64.deb",
+        "sha256": "91d54edc101e30ca51de5fd6e19c49bf7e7e599e05f61bd59dd1c2856e2b8e68"
+      },
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/autotools-dev/autotools-dev_20220109.1_all.deb",
+        "sha256": "d909f0327b09d9a9136239caca975df89782fa28efd721c4eb4caea422d3fc5a"
+      },
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/lz4/liblz4-1_1.9.3-2build2_amd64.deb",
+        "sha256": "ac9b54d0feb840345060c74fb687675c5e1eb2b195effafae38c5f9991041e98"
+      }
+    ]
+  },
+  "erofs_tools": {
+    "repository": "https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git",
+    "revision": "d3fbccba6e409c100843563b416c47cd82c87ca0",
+    "tag": "v1.9.1",
+    "path": "sources/erofs-utils",
+    "reference_only": true
+  },
+  "glslang_tools": {
+    "repository": "https://github.com/KhronosGroup/glslang.git",
+    "revision": "1062752a891c95b2bfeed9e356562d88f9df84ac",
+    "tag": "15.1.0",
+    "path": "sources/glslang",
+    "reference_only": true
+  },
+  "iphone_metal_frontend_patches": [
+    {
+      "path": "patches/adreno-metal/0001-ios16-public-metal-interface.patch",
+      "sha256": "147d6b15b1d95b6c249d80117f43e252ac2d2987524dae38565d59f17aef1848"
+    }
+  ],
+  "oneplus13_gpu_firmware": {
+    "path": "hardware/dodge-gpu-firmware.json",
+    "sha256": "c5a8b6adb8c6f3137c6d0eceb6500c7c85b490a2d2067bfedc68fcf34f17ec3f"
+  },
+  "dodge_gpu_board_patch": {
+    "path": "patches/oneplus13/0001-a830-board-connection.patch",
+    "sha256": "ae4098710964df673af7ba3b9feb9e46fdb965ee9d13048db854b03429925923",
+    "source_revision": "ad022a2a3a2e0c71c340361392d30d424c66b4d2"
+  },
+  "iphone_display_fixture": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-abi.json",
+    "sha256": "1a62c8b115ce8a8a9961f7bec7a3aa3e10c74f5ed2b99337f3d750998961009b"
+  },
+  "iphone_display_interface": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-interface.json",
+    "sha256": "a1a41166d5d06e860569817a545e1ebaadad3f734baf2e1aef2bf2d2fb3399ab",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyFramebufferABI.h",
+    "header_sha256": "a1eee3ad14d295f4d0d4aa826fdb0de385113f5984f8c58e44b701169e074ea9"
+  },
+  "metal_translation_dependencies": {
+    "path": "profiles/os/ios-16.7.16-20H392/graphics/translation-Cargo.lock",
+    "sha256": "b3d29601c2656ca778d8020bc343bfda1f27ab7ec930a3690b06ceb62f4f807e"
+  },
+  "metal_translation_consumer_patch": {
+    "path": "patches/adreno-metal/0002-refresh-offline-probe-api.patch",
+    "sha256": "d574e58a56e3075c7b90c18923d3165e53f7d3e4371b982ec707ec212ce6f0de"
+  },
+  "iphone_display_swap": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-swap.json",
+    "sha256": "0bcdf418b8c6b107a560c477a4f2aafe2ecb1576de0f42635f99d047cac8bc89",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacySwapABI.h",
+    "header_sha256": "c94511515c3989b470fcce568cfaa349216a8ae5111718ab65030ce42d383ce4"
+  },
+  "iphone_surface_interface": {
+    "path": "profiles/os/ios-16.7.16-20H392/surface-abi.json",
+    "sha256": "a12fd3035980152d70f872dbbe4cb7569150699adca4c10aa50df0409f6dfd6e",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceABI.h",
+    "header_sha256": "62e50dafcc54843aaf8fcd29e9fdc09cefb148115bdac074525efd06dd2453db"
+  },
+  "oneplus13_stock_uefi": {
+    "path": "hardware/dodge-stock-uefi.json",
+    "sha256": "74f69562ed20e283ecc8581b5d40af8b44f662224a6d625a901ad8dcdbc5c9e4"
+  },
+  "simplefb_patch": {
+    "path": "patches/mu-silicium/0004-check-simplefb-errors-and-bounds.patch",
+    "sha256": "fc55aa50380212d239da0e39bb2e9c611fa395e0eddabf4605051fbe0f119a7d",
+    "target": "Silicon/Silicium/SiliciumPkg/Drivers/SimpleFbDxe/SimpleFb.c",
+    "before_sha256": "926136fbf45aef45fda9a18c797e21cc361c2dbe34003176eadf9e98034a05d6",
+    "after_sha256": "b21933b717999c49c66134be512f5096f8c1ada7cdd76e432d6a48f209d513f7",
+    "scope": "Static framebuffer region/geometry bounds, GOP mode output and allocation/registration failure propagation. No scanout programming or runtime geometry discovery."
+  },
+  "dodge_diagnostic_console_patch": {
+    "path": "patches/oneplus13/0002-darwin22-post-vm-console.patch",
+    "sha256": "a452cb5621870798cddfbe94b3c22e68a5425155b6d7aeb89b884a996d21ba1c",
+    "source_revision": "f5017376415268fd39dcf0b3fd68a94661cee078",
+    "scope": "Post-VM IOKit console binding, real overlay renderer and ownership callbacks; early boot entry/mapping excluded from this native candidate."
+  },
+  "iphone_display_completion": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-completion.json",
+    "sha256": "0f8aab7ca6b38ad60e5eea3d5fb49a1b8eb943f9bc6db2b590540798f4a0c255",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacySwapCompletionABI.h",
+    "header_sha256": "d92f93dcd20eebbc53714dc5776894230fb89b1a1759308516aebf4b5393e06a"
+  },
+  "iphone_display_refresh": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-refresh.json",
+    "sha256": "75e542a6d249091ce12472527882133aeb23a7a162506380ca78dfe74b3cc298",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyRefreshABI.h",
+    "header_sha256": "746c95a90d28313bbf6d34bc5672d3305f1e731ad00545f17527988679a7f7b7"
+  },
+  "dodge_optional_call_overlays": {
+    "backend": {
+      "path": "patches/oneplus13/0003-static-backend-optional-calls.patch",
+      "sha256": "c7eb1701fbcae0bc355ce80dcb9bbc78c7e5677e35d5d9d3b20617bd3e998d51",
+      "source_key": "a830_backend_reference",
+      "source_revision": "1baf6d3a1d0f133d284f8b8844cc98bf5aff1bbe",
+      "files": [
+        "NativeAdrenoMemory.cpp",
+        "NativeAdrenoPublish.cpp"
+      ]
+    },
+    "presenter": {
+      "path": "patches/oneplus13/0004-static-presenter-optional-calls.patch",
+      "sha256": "c6906493db3bc93105d6e239ee859dc16852121b9cea8e1c0b786a856afde728",
+      "source_key": "pagani_reference",
+      "source_revision": "f5017376415268fd39dcf0b3fd68a94661cee078",
+      "files": [
+        "NativeGOPPresenter.cpp",
+        "NativeGpuTrace.h"
+      ]
+    }
+  },
+  "iphone_request_fields": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-request-fields.json",
+    "sha256": "7e4a9a2421667fd034bf75f6b970d2d7d33711fd3f0e71bb846be29f3c6319ef",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyRequestFieldsABI.h",
+    "header_sha256": "e44bb87e734a0a80dad65cf1051a23f12540e791fd41af641fd7eefc7064391f"
+  },
+  "iphone_backend_discovery": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-backend-discovery.json",
+    "sha256": "c191fafdd284df220bcc2ddcd9487a3e6d40a9a34f3308812351bf3e178f2f26"
+  },
+  "iphone_display_producer": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-producer.json",
+    "sha256": "12ea9074d43628a48fcdb7af9ae2f28401463484b331d3d7df3eada8e297f4dd",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyProducerABI.h",
+    "header_sha256": "ae878f313babf3025ee8471d86a6ab110b87d26020546fa567753b91c131ca42"
+  },
+  "apfs_readonly_reference": {
+    "repository": "https://github.com/sgan81/apfs-fuse",
+    "revision": "66b86bd525e8cb90f9012543be89b1f092b75cf3",
+    "path": "sources/apfs-fuse",
+    "lzfse_submodule": "e634ca58b4821d9f3d560cdc6df5dec02ffc93fd",
+    "scope": "host-only read-only image extraction; not the kernel APFS implementation"
+  },
+  "apple_dyld_cache_format": {
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/dyld/c8a445f88f9fc1713db34674e79b00e30723e79d/cache-builder/dyld_cache_format.h",
+    "revision": "c8a445f88f9fc1713db34674e79b00e30723e79d",
+    "tag": "dyld-1042.1",
+    "path": ".cache/dyld-1042.1-cache-format.h",
+    "sha256": "b7861b7d0511946ebc067702b4b67a8bc77209b1bf35dd494240726e4cc628bb"
+  },
+  "apfs_host_bzip2_headers": {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/bzip2/libbz2-dev_1.0.8-5ubuntu0.1_amd64.deb",
+    "path": ".cache/libbz2-dev_1.0.8-5ubuntu0.1_amd64.deb",
+    "sha256": "7a6d810e55b250945d2dbb5f45d59551b2d50aa7ce140b6eda0928dd76ac9320"
+  },
+  "iphone_display_userland": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-userland.json",
+    "sha256": "62e6b4cebe56b3afcd11a3bab29d3ba83aa2c7e3bb7baec173e085f419991760"
+  },
+  "iphone_display_frontend": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-frontend.json",
+    "sha256": "1f091b76fed81484747a816b1444e3b9b45bc963c79d66a30c8832e0e397d24d",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyPacketABI.h",
+    "header_sha256": "b8d6511a700bf546ea75bdf0472a571eeb60e25578b507214a82f4c0103e0b92"
+  },
+  "iphone_gpu_prelink_profile": {
+    "path": "profiles/os/ios-16.7.16-20H392/gpu-prelink.json",
+    "sha256": "eeb742dfd5ede60ca2d1869e2b04dfef79b905689ac0f9e8bbec85c9a9ba06f7"
+  },
+  "dodge_adreno_display_timeline": {
+    "path": "patches/oneplus13/0005-adreno-locked-display-timeline.patch",
+    "sha256": "a57b8090e56cd4c5e2174dbf14f1a6a42038ac0616966b6ec6014548b124b5c0",
+    "header": "drivers/DodgeDisplay/DodgeAdrenoTimeline.h",
+    "header_sha256": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61",
+    "source_revision": "1baf6d3a1d0f133d284f8b8844cc98bf5aff1bbe"
+  },
+  "iphone_display_lifecycle": {
+    "path": "profiles/os/ios-16.7.16-20H392/display-lifecycle.json",
+    "sha256": "34a9395c7b18efd09169f0fe7f7839bf0c4bf56dbea44a350ec6cfe1de96ab7b",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyLifecycleABI.h",
+    "header_sha256": "c91a88ce3bb4d21f61be4b42bf2b7d7139d8343ede515bdd9b5590f65c810b52"
+  },
+  "iphone_graphics_module_lifecycle": {
+    "path": "profiles/os/ios-16.7.16-20H392/graphics-modules.json",
+    "sha256": "2755bef2455f569cfa9a0db7c76fd1c3b01c22984165082a6c6252069ec58573",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalGraphicsModulesABI.h",
+    "header_sha256": "a3c5723beb74810418c23c9c5ede849631d9e9a2c876483310e2cda8bc0c0c1b"
+  },
+  "iphone_gop_provider": {
+    "path": "profiles/os/ios-16.7.16-20H392/gop-provider.json",
+    "sha256": "4bbde6151ab6ed9afe66d802dffcd5897c20f271d2ecf2dfbc8161ab39648886",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalGopProviderABI.h",
+    "header_sha256": "ccce38e4119cb0e26711fbf08f18ec9914b6d574182323ad73b1e5b5260dcdbb",
+    "product": "iPhone10,3",
+    "build": "20H392",
+    "scope": "Original AppleARMIODevice allocator, inherited public init and complete 178-slot vtable; no private Apple bus initializer or hardware qualification"
+  },
+  "dodge_graphics_late_overlay": {
+    "path": "patches/oneplus13/0002-ios16-late-graphics.patch",
+    "sha256": "375bc77ba8799ed2b6eba883c66c77a08e8d428961e50a682fcf1b9c9008b1ea",
+    "base_source_sha256": "1b401aa000a769a4acb3afe51ec8167b314b515ed73e9b45099058bad3d882aa",
+    "scope": "Only the separate display candidate: schedule an opt-in worker after real IOBSD publication; default source/kernel/object/filelist untouched",
+    "reference_source_sha256": "e35916c887ad13109b8a40b6cddb2d3381407e945a2ad587585beb64dcfebd27"
+  },
+  "iostorage_headers_reference": {
+    "repository": "https://github.com/apple-oss-distributions/IOStorageFamily.git",
+    "revision": "a944358b8e52edd292d619086705e7a1bebc8f51",
+    "path": "sources/IOStorageFamily-ios16",
+    "tag": "IOStorageFamily-290.100.6",
+    "license": "APSL-2.0",
+    "scope": "Public iOS block-storage headers for native iOS16 compilation; original iPhone class size and every virtual slot independently checked, no macOS layout substitution"
+  },
+  "dodge_ufs_root_overlay": {
+    "path": "patches/oneplus13/0003-ios16-ufs-root.patch",
+    "sha256": "54973cdad882851a3ead0582ffd1bf217d0a8df81e6a3651dfb4f2f59823d026",
+    "base_source_sha256": "b6fb207e8d89d70bc3ab22df9b9dae2bf30a1499a22b2e868999baf6114c6933",
+    "scope": "Independent iOS16 read-only root candidate: SM8750 matching, diagnostics available without owner-verification mode, explicit deferred-class adapters; no default/hardware activation"
+  },
+  "iphone_storage_abi": {
+    "path": "profiles/os/ios-16.7.16-20H392/storage-abi.json",
+    "sha256": "e80be68386b9d0ca90dfa499f3b2ba244be09431bac22242d51f06a56aa40833",
+    "product": "iPhone10,3",
+    "build": "20H392",
+    "scope": "Original 144-byte IOBlockStorageDevice and all 190 virtual methods; public headers are annotation inputs, not replacement implementation",
+    "header": "profiles/os/ios-16.7.16-20H392/storage/OriginalStorageABI.h",
+    "header_sha256": "3f09901ae0b6570c4408a789633fe293ffc6ef2afcca604d7c33d675df62345a"
+  },
+  "dodge_system_late_overlay": {
+    "path": "patches/oneplus13/0004-ios16-storage-before-graphics.patch",
+    "sha256": "a7cc7fd00eaee7f7bc30c6e987b539e4e1509420e05f7508ab18046ffe1c0f96",
+    "base_source_sha256": "a955779d61d0d9626d4153af4be3292517f3f06a2808d3822218660da6aef5dd",
+    "scope": "Only combined storage/display candidate: after IOBSD, explicit root argument queues read-only UFS startup before opt-in graphics; defaults and existing display candidate untouched"
+  },
+  "iohid_headers_reference": {
+    "repository": "https://github.com/apple-oss-distributions/IOHIDFamily.git",
+    "revision": "f9edab5e6cc6b2cf01ec8dfc6f2a41fd60e3a0bc",
+    "path": "sources/IOHIDFamily-ios16",
+    "tag": "IOHIDFamily-1787.140.2",
+    "scope": "Public reference headers and annotation only; exact iPhone private ABI is independently audited, never inferred from this source"
+  },
+  "iographics_headers_reference": {
+    "repository": "https://github.com/apple-oss-distributions/IOGraphics.git",
+    "revision": "13f6671b014a6d9bba393fff567b3f6d1f9ab601",
+    "path": "sources/IOGraphics-ios16",
+    "tag": "IOGraphics-597",
+    "scope": "Only public graphics type headers required by the HID annotation; no original or reference graphics implementation is linked"
+  },
+  "iphone_hid_abi": {
+    "path": "profiles/os/ios-16.7.16-20H392/hid-device-abi.json",
+    "sha256": "933cbe4a2cdf641bc88325e70ed8c53f2555744130fa3b97d486eade9d7ea535",
+    "header": "profiles/os/ios-16.7.16-20H392/input/OriginalHidDeviceFacts.h",
+    "header_sha256": "c177606c50c5e3cd026bae7ca645867b6863d5bebe2e1c18898729f6b83c6a34",
+    "scope": "Exact original iPhone IOHIDDevice facts only; public 205-slot reference differs from original 207-slot class, complete source driver ABI remains unqualified"
+  },
+  "iphone_hid_source_interface": {
+    "path": "profiles/os/ios-16.7.16-20H392/hid-source-interface.json",
+    "sha256": "6ec9974235a77fadde9189ddc2975517637e4987c5296add6b254e85eb0ba52e",
+    "header": "profiles/os/ios-16.7.16-20H392/input/OriginalHidDeviceABI.h",
+    "header_sha256": "364d159f633fbb0812f33e6566d33fc330f1cfd90da8596d2d4c67d8cbb8d344",
+    "scope": "Exact 208-byte/207-slot bounded source view; only additional HID slots 171/173/180/181 callable, 35 opaque slots forbidden to source, all inherited pointers require actual link readback"
+  },
+  "dodge_input_register_references": {
+    "files": [
+      {
+        "path": ".cache/input-reference/hbp_power.c",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/tp/hbp/hbp/hbp_power.c",
+        "sha256": "0d1819ee7a4fb0f6dec20e85d590e5ad25cb44c1e1d008389aa1dfaf4a08e0e4"
+      },
+      {
+        "path": ".cache/input-reference/hbp_power.h",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/tp/hbp/hbp/hbp_power.h",
+        "sha256": "9d99ce9c792ca5af9691689db779eb6df74d1a666a30e2b1eae631914bb9a5fe"
+      },
+      {
+        "path": ".cache/input-reference/hbp_platform.c",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/tp/hbp/hbp/utils/platform.c",
+        "sha256": "fcb6cb3edf86629cbada7958a63bacb5af11a5922e814842a41181b6e61fdcca"
+      },
+      {
+        "path": ".cache/input-reference/s3910.c",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/tp/hbp/hbp/chips/synaptics/s3910/syna_tcm2.c",
+        "sha256": "9daa12bd26b280fcd885217fd41cebd9a092cf7049dc781dcab99df108337d10"
+      },
+      {
+        "path": ".cache/input-reference/spmi-gpio.c",
+        "url": "https://raw.githubusercontent.com/torvalds/linux/v6.12/drivers/pinctrl/qcom/pinctrl-spmi-gpio.c",
+        "sha256": "5b410d9972e1d3ac1ff99002e6d74db21397ea552beee00b9c2d3c9f486415bc"
+      },
+      {
+        "path": ".cache/input-reference/spmi-pmic-arb.c",
+        "url": "https://raw.githubusercontent.com/torvalds/linux/v6.12/drivers/spmi/spmi-pmic-arb.c",
+        "sha256": "37913bfb3d7678bbb87f4f4ab6445d1910bd6d1259c7f6a45ce3970a62c7c0f2"
+      },
+      {
+        "path": ".cache/input-reference/s3910-platform-spi.c",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/touchpanel/synaptics_hbp/syna_tcm2_platform_spi.c",
+        "sha256": "5319a808d5d08c8fb5606acfc85a29201085131845804465dc8177a2363cfda6"
+      },
+      {
+        "path": ".cache/input-reference/s3910-platform.h",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_modules_and_devicetree_oneplus_sm8750/6a196f79f77acd55cf302e1696c038e4cad99254/vendor/oplus/kernel/touchpanel/synaptics_hbp/syna_tcm2_platform.h",
+        "sha256": "2811889c31d2e6ccef1e462d166cc19e1b66e9f7a9bc0aa090da382a47fb7a17"
+      }
+    ],
+    "scope": "Pinned public OnePlus HBP power path and upstream Linux register facts; reference-only, not a vendor driver binary or target runtime qualification"
+  },
+  "dodge_input_overlay": {
+    "path": "patches/oneplus13/0006-ios16-dodge-input.patch",
+    "sha256": "a6569b4dcbd7114d529f32af24ee0dc2895572f81e5342953509237777384e49",
+    "base_source_sha256": "d6363b9fde015a70f9741aa3a175f49243935e306e94adba5e970385aade68c3",
+    "output_source": "drivers/DodgeInput/DodgeInput.cpp",
+    "output_source_sha256": "45235ca498af9899e796bba818425d1742d78ab00078e912f983731182f97d25",
+    "scope": "Exact reviewed overlay from pinned reference to source iPhone HID + CPH2653 power/mapping lifetime; original event vtables/fields are not accessed"
+  },
+  "iphone_input_prelink": {
+    "path": "profiles/os/ios-16.7.16-20H392/input-prelink.json",
+    "sha256": "04686f0d95e68a5f6e769af30053f51f44623f820ee035390ed03377d8987a3d",
+    "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+    "scope": "Independent declared IOHIDFamily closure added to existing reviewed graphics/storage roots; no runtime qualification"
+  },
+  "dodge_spi_firmware": {
+    "path": "hardware/dodge-spi-firmware.json",
+    "sha256": "4a81b70c1e508103889dc2b986f2f43dfff0d80b854c37b42f1a80bb89cf376e"
+  },
+  "dodge_input_cold_references": {
+    "files": [
+      {
+        "path": ".cache/input-reference/linux-geni-se.c",
+        "url": "https://raw.githubusercontent.com/torvalds/linux/v6.18/drivers/soc/qcom/qcom-geni-se.c",
+        "sha256": "1459cccdb7d3566624d136a041d970492c4dbdd29e2220686ce6450283606fdb"
+      },
+      {
+        "path": ".cache/input-reference/linux-geni-se.h",
+        "url": "https://raw.githubusercontent.com/torvalds/linux/v6.18/include/linux/soc/qcom/geni-se.h",
+        "sha256": "3f188bff00d4e39b73e8949e8bdb7e2456de7c0b630f6ed6fb852733b4147c24"
+      },
+      {
+        "path": ".cache/input-reference/linux-spi-geni.c",
+        "url": "https://raw.githubusercontent.com/torvalds/linux/v6.18/drivers/spi/spi-geni-qcom.c",
+        "sha256": "d22f453ad5471c9b41793b2f3cb671b522e0fb1dd24efded61e24795ad8f4ef5"
+      },
+      {
+        "path": ".cache/input-reference/oneplus-qcom-geni-se.h",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/6028f47faddaa27700f8dd3a1d83906ea8f27170/include/linux/soc/qcom/geni-se.h",
+        "sha256": "01755a42d7f7bd79d1b66906e76b38145b11f0e3617ab85c705de6a9fe87ea09"
+      }
+    ],
+    "scope": "Public Linux v6.18 SEFW/QUP register and clock-programming facts. GPL sources stay in ignored caches, not copied into the kernel implementation."
+  },
+  "dodge_input_clock_references": {
+    "files": [
+      {
+        "path": ".cache/input-reference/clock-gcc-sun.c",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/gcc-sun.c",
+        "sha256": "8e2198b7ee9dfd306bafb5ff2343d38128ceb2bae98b676f7ebbcb0f16ad1326"
+      },
+      {
+        "path": ".cache/input-reference/clock-clk-rcg2.c",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-rcg2.c",
+        "sha256": "d3756a86b4508a590bc913f90881a0b61d4dd2e93a863f15c5e794fbf24018f6"
+      },
+      {
+        "path": ".cache/input-reference/clock-clk-rcg.h",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-rcg.h",
+        "sha256": "40add84badd583bbf658688a6abbd92589698a1b7d0149913fd51697fdae574d"
+      },
+      {
+        "path": ".cache/input-reference/clock-clk-branch.c",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-branch.c",
+        "sha256": "57c4f292cf0094e56ab5dece1a01feeff64fab2054dde1feea05c7157da23fa1"
+      },
+      {
+        "path": ".cache/input-reference/clock-clk-branch.h",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-branch.h",
+        "sha256": "9697654ab7a6efbd1d06eafd2cbed36573a8a8ea3aa8330240abe382c195cfc0"
+      },
+      {
+        "path": ".cache/input-reference/clock-clk-regmap.c",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-regmap.c",
+        "sha256": "e52aeb36613dbf0baa7c29f7ddc4aedb5c62951073304f2fca39a9cbdfaba772"
+      },
+      {
+        "path": ".cache/input-reference/clock-clk-alpha-pll.c",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-alpha-pll.c",
+        "sha256": "ebd76d6fb71f52a1da38b7e630e0d617f58ca79c19efaa33dcc238f8bde88eea"
+      },
+      {
+        "path": ".cache/input-reference/clock-clk-alpha-pll.h",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-alpha-pll.h",
+        "sha256": "9052ffcde0c0e3ba03e7dba747f8186830883962fa2d1403fc5fe37373c2aa22"
+      },
+      {
+        "path": ".cache/input-reference/clock-clk-rpmh.c",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/drivers/clk/qcom/clk-rpmh.c",
+        "sha256": "c28a8363be580037e86b5cdafdc76edb44be5375af626dde984585199ef2ca2e"
+      },
+      {
+        "path": ".cache/input-reference/clock-qcom,gcc-sun.h",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/include/dt-bindings/clock/qcom,gcc-sun.h",
+        "sha256": "b97f5ed148f51920328ca5bf082de1b6e033bff3032fbe7823d8f8002eb652fe"
+      },
+      {
+        "path": ".cache/input-reference/clock-qcom,rpmh.h",
+        "url": "https://raw.githubusercontent.com/OnePlusOSS/android_kernel_oneplus_sm8750/745702d5ed2c0435f2b1d3bb78bc4f48422d4191/include/dt-bindings/clock/qcom,rpmh.h",
+        "sha256": "44c3255e0589feb822aa92681869ed649813ca350cb35b2de3fa51817ecaeb1b"
+      }
+    ],
+    "scope": "Pinned OnePlus clock register, RCG/PLL/branch/rpmh and DT-binding facts. GPL source remains in ignored reference caches; independently written device clock code only."
+  },
+  "dodge_input_clock": {
+    "path": "hardware/dodge-touch-clock.json",
+    "sha256": "9d0213b83ed04382045ff7bcc063e9e7c12298e7c851040b5c2f061c55604674"
+  },
+  "dodge_geni_transfer_overlay": {
+    "path": "patches/oneplus13/0008-geni-transfer-completion.patch",
+    "sha256": "55b8ec3dade55201c7ccdbd5b7cb4f4af5d7e8ec1aa4d9994c74bf22beee332b",
+    "base_source": "sources/UniXNU/drivers/QcomGeniSpi/GeniSpi.c",
+    "base_source_sha256": "2042cfc9647391e24d5a558202046425ac62a05adfc73afe769367b8374e3f91",
+    "output_source": "drivers/DodgeInput/geni/GeniSpi.c",
+    "output_source_sha256": "c8926a67f8119b2c8caaa6ac711e8cd5a21f1d5b6eacc4d08b55df99e65b25a3",
+    "scope": "Device-local BSD derivative: command/data/idle completion, bounded cancel/abort/reset ACK and FIFO extent validation; shared source/revision unchanged."
+  },
+  "iphone_hid_event_interface": {
+    "path": "profiles/os/ios-16.7.16-20H392/hid-event-interface.json",
+    "sha256": "cc64aba4b3b000a0db9e8dbbf8c1327c24ab216d61942f6e17e45edf79de6198",
+    "header": "profiles/os/ios-16.7.16-20H392/input/OriginalHidEventABI.h",
+    "header_sha256": "956fa7b0d4a5be2ab443b99995b3e34fe938a1d360283a93661533b694e3dfaf",
+    "scope": "Bounded original iPhone10,3/20H392 event80/37 and driver264/219 declarations; only used operations callable; CPU body qualification and edge source integration separate"
+  },
+  "apfs_writer_reference": {
+    "repository": "https://github.com/deploymenttheory/go-apfs-v2",
+    "revision": "2bd8a20b6bd2a4b6db2857d3f1d3412ca82ce036",
+    "path": "sources/go-apfs-v2",
+    "scope": "MIT host-only regular-file APFS v2 construction, not a kernel or replacement iPhone volume"
+  },
+  "apfs_checker_reference": {
+    "repository": "https://github.com/linux-apfs/apfsprogs",
+    "revision": "1bd1c1c2140d13d1b6d2e03379316572bee70aa3",
+    "path": "sources/apfsprogs",
+    "scope": "GPL-2.0 host-only APFS integrity checks; no code linked into XNU"
+  },
+  "fajita_data_reference": {
+    "repository": "https://github.com/johnpanos/UniXNU-fajita",
+    "revision": "fb8c389bd9877d4db0ef6e09170b83752dec7259",
+    "path": "sources/UniXNU-fajita",
+    "scope": "Reference only for Linux seed format and no-role unencrypted seed; no OnePlus 6T board policy or identity copied"
+  },
+  "apfs_go_toolchain": {
+    "url": "https://go.dev/dl/go1.27.2.linux-amd64.tar.gz",
+    "path": ".toolchains/go-apfs/go1.27.2.linux-amd64.tar.gz",
+    "sha256": "ecbadb99091a3f46e31f5f934b068b1864eafa7995211b39eaddf76996045fe5",
+    "bytes": 70590635,
+    "version": "go1.27.2",
+    "scope": "Host-only Linux/amd64 APFS builder; no iOS target change"
+  },
+  "iphone_data_image": {
+    "path": "profiles/os/ios-16.7.16-20H392/data-image.json",
+    "sha256": "de8ade081a167e6d4cf38e246a9e3fd24939f440ebbeb7a52ba2fdc9a2cbc1dc"
+  },
+  "iphone_volatile_data_image": {
+    "path": "profiles/os/ios-16.7.16-20H392/data-volatile-image.json",
+    "sha256": "d52d103c9b40e6ccb608ce013cbb78e1a10af0cd090369caf81b47bb6a23f722"
+  },
+  "ramblock_reference": {
+    "repository": "https://github.com/UniXNU/RamBlock.git",
+    "revision": "4be2d7eb05ef5a98126c91e0302c149140c0e3e1",
+    "path": "sources/UniXNU/drivers/RamBlock",
+    "scope": "Pinned source, seed helpers and native class; compiled against the separate measured iPhone IOStorageFamily ABI, without copying the catalog iPadOS ABI identity"
+  },
+  "apfs_checker_apple_signature_overlay": {
+    "path": "patches/apfsprogs/0001-recognize-apple-decmpfs-signature.patch",
+    "sha256": "150cd8865ed03db549329c52ba9e3bddc4ff797ba2a2d5d0638a7a6aef6118a0",
+    "base_source_sha256": "3cebd2309632b821ea91886aed9e0d0b61074c51fe03303a4c67e9a8286b8988",
+    "output_source_sha256": "b6ee36984edc7ed130f8cc8b283086dfd5b29deecadeaf82fa2b152829d0bc5e",
+    "scope": "Host-only GPL-2.0 checker work-copy: recognize exactly Apple fpmc and historical zero compression signatures; retain unknown-signature refusals and all other strict checks."
+  },
+  "dodge_data_startup_hook_overlay": {
+    "path": "patches/oneplus13/0009-ios16-queue-data.patch",
+    "sha256": "2fa0ac8c1bdc391d232ecbd1c7084d62b45c84df15506f9789ea7d95777ff5d5",
+    "base_source_sha256": "7bb121f2bc5f2265117c9925767072a290b34de2f0d9829794bd589e80139afe",
+    "output_source_sha256": "e5babb673140d7d7fb9076ae2447672d23f67d0e7a19531e23d158db9eaf79cd",
+    "scope": "Separate BSD source overlay: queue system, then Data, then input after IOBSD publication; default candidates and sources are not changed."
+  },
+  "iphone_apfs_mount_abi": {
+    "path": "profiles/os/ios-16.7.16-20H392/apfs-mount.json",
+    "sha256": "79076ac3871784b4016ce42db5e562de3c6a32ebb669f3c91cc00e00902f72b9",
+    "product": "iPhone10,3",
+    "build": "20H392",
+    "scope": "Exact original ordinary ARM64 mount_apfs and APFS 2142.140.9 ordinary-volume mount ABI; no filesystem mount qualification",
+    "header": "profiles/os/ios-16.7.16-20H392/storage/OriginalApfsMountABI.h",
+    "header_sha256": "c2f10704f665ad4645961d89337225f098a4b921a1596eda1f03fa07f3228e06"
+  },
+  "dodge_data_mount_init_overlay": {
+    "path": "patches/oneplus13/0010-ios16-init-data-mount.patch",
+    "sha256": "db524261e05db8da38ade0af8533c211dca6159e7f39682ca0bf70d4f5189308",
+    "base_source_sha256": "29dd04c61a7fc59d955f0eb42062fb8afb31b0aa44816ae1ba51597b741c7fff",
+    "output_source_sha256": "2b928067f710ef18a2a382ad3ed49009074311a348b29165aea086fb7136c12a",
+    "scope": "Device-local PID 1 Data mount call after scratch allocation in load_init_program; original root path and default Data boot flags are preserved"
+  },
+  "apfs_mount_options_reference": {
+    "path": "sources/libutil-mount-reference",
+    "repository": "https://github.com/apple-oss-distributions/libutil.git",
+    "revision": "244c76b2610adc6bbfceceea7028665be6df560e",
+    "tag": "libutil-57",
+    "reference_only": true,
+    "license": "BSD-3-Clause (getmntopts.c); Apple/NetBSD source notices retained in the reference checkout",
+    "scope": "Host-only original Apple getmntopts option parser for ARM64 mount_apfs library peers; never linked into target XNU"
+  },
+  "iphone_pmgr_contract": {
+    "path": "profiles/os/ios-16.7.16-20H392/pmgr-contract.json",
+    "sha256": "832a0fd43504f8cb1b710423237f1830cd76a884b7724dc676bc38e3f1ddbdab",
+    "product": "iPhone10,3",
+    "build": "20H392",
+    "scope": "Exact original PMGR class, AMFI provider slots 312/313 and T8015 real register path; no Qualcomm latch mapping, substitute provider or hardware qualification"
+  },
+  "iphone_crypto_contract": {
+    "path": "profiles/os/ios-16.7.16-20H392/crypto-contract.json",
+    "sha256": "979b7654adf7a07e310c399a4f4b25ef8604801f115b76b6a4fc47d89cae6a9f",
+    "header": "profiles/os/ios-16.7.16-20H392/security/OriginalCryptoABI.h",
+    "header_sha256": "92f42b47e74bf8181453af91f982e69267cb4b6395f53cb03cadfdd47e48f957",
+    "product": "iPhone10,3",
+    "build": "20H392",
+    "scope": "Exact original crypto packed record, seven measured inputs and native used KPI/PRNG boundaries; full provider ABI and POST unqualified"
+  },
+  "iphone_crypto_execution": {
+    "path": "profiles/os/ios-16.7.16-20H392/crypto-execution.json",
+    "sha256": "2957da717b4c840b5fbbbee18be5d39ec44184df2258b7af257fc5699951e870",
+    "product": "iPhone10,3",
+    "build": "20H392",
+    "scope": "Exact original full default POST caller, dispatcher and HMAC expected-answer boundaries for ARM64 model execution; target entropy and hardware remain unqualified"
+  },
+  "dodge_crypto_owner_overlay": {
+    "path": "patches/oneplus13/0011-ios16-single-crypto-owner.patch",
+    "sha256": "2635c01242d8cd62d74677fe13e9f75dcd56dad6d5f833b07429f61e8f02b88d",
+    "files": {
+      "prng": {
+        "path": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/osfmk/prng/prng_random.c",
+        "base_sha256": "5acff83e93b6b84284158c6b62c51a23d1a00e6da9f3189da377d6129af0992d",
+        "output_sha256": "2188dbc64c5e6c281908a438dcbb40fea18f3c7d459246178c39a3555b63c89a"
+      },
+      "kext": {
+        "path": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/c++/OSKext.cpp",
+        "base_sha256": "7a19afba181b487b9b52f8bbd54c5952f56daf13ebe0c1cc69fc292ac7214fb7",
+        "output_sha256": "f9e262d684938a2308ab150f0c7d96e50592c20c2499ed6736b5a615a49471dc"
+      }
+    },
+    "scope": "Isolated Darwin 22 SYSCTL original crypto bootstrap and actual OSKext start reuse; preserve default/source candidates and original initialization/POST"
+  },
+  "dodge_boot_entropy_overlay": {
+    "path": "patches/darwinboot/0002-refresh-firmware-entropy.patch",
+    "sha256": "3430cea779b9a952ad7557f8346c13d7fca4af5b4e65ab1dcb219564bd75a1dd",
+    "header": "drivers/DodgeBoot/DodgeBootEntropy.h",
+    "header_sha256": "47612a059c3e18f15ae14ba8180488f4e2033fc01b41d957c997eab7912d5567",
+    "revision": "3c75734014cdab0acd9541e88057b7606ee7ae08",
+    "files": {
+      "DarwinBoot.c": {
+        "base_sha256": "4fd5b08848b4ca6af6bea534eefac4e04a5aa5a6175efe516bafadebf8dd31da",
+        "output_sha256": "aaec6ed9ea795e47287f0518e5d2e76e65c83f2e6699e45912d5bf77b8503988"
+      },
+      "DarwinBoot.inf": {
+        "base_sha256": "cb10851277b53b355794c1bca3fa16d3bf18a0dc2dee857091837b63599019df",
+        "output_sha256": "05248d62d1d1b5c4241a820f737ea9afb374791e5031e658a5a79b4775ec402e"
+      }
+    },
+    "scope": "Isolated Darwin22 EFI entropy handoff; exact 256-byte /chosen/random-seed refreshed through RAW EFI_RNG per attempt; no target entropy/hardware qualification or existing image replacement"
+  },
+  "iphone_surface_sync": {
+    "path": "profiles/os/ios-16.7.16-20H392/surface-sync.json",
+    "sha256": "f2a98554df4847c4d8216c7c4f56b224aa30f21a3ae23bb3a14de2319f078e9d",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceSyncABI.h",
+    "header_sha256": "701349c93592117af8d92a5f3595d4d196faa490870262d210f0459759793990",
+    "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221"
+  },
+  "dodge_display_fresh_gpu": {
+    "path": "patches/oneplus13/0012-ios16-recheck-gpu-before-display.patch",
+    "sha256": "dc7b01eab23826e5d8518ca709a97d46cf3160faae254ca01115e52c0ad465db",
+    "source": "drivers/DodgeDisplay/DodgeDisplayFrontend.cpp",
+    "base_sha256": "9224eecd34cd4b93a89c73b705fe5c97619d1b6b64264e1a0dd50ac8586dfac8",
+    "output_sha256": "364fb9ee8b5da452c2108bc9a653599f267c43a7d22313d2229bdd59ba047df8"
+  },
+  "adreno_mapped_lease": {
+    "base": ".cache/gpu-work/kernel-display-timeline/backend",
+    "path": "patches/oneplus13/0013-adreno-hold-mapped-resources.patch",
+    "sha256": "17857a1617dd1a2408bba2717b2e9fa11d466d23028fc5ed336ca68491fd3f3a",
+    "implementation": "drivers/DodgeGpu/DodgeMappedLease.inc",
+    "implementation_sha256": "596dac2eb95cb2011bcfe17b9f8316c9a37db3b8d545f8acecb4865b5617b014",
+    "base_sha256": {
+      "NativeAdrenoVm.h": "fe1db135e2384e86890d0b81e99b3b5e388c565e85a784559a4486b34926af0f",
+      "NativeAdrenoVm.cpp": "4d20ad7727b00bdb451e0b716f586f7c15974df9a9eba83f33cbf16c7bb9d14c",
+      "NativeAdrenoSubmit.h": "e4f927730345de1f1e35336e72bcb160995ccd7daf12c12336cf86cc67d3b5cd",
+      "NativeAdrenoSubmit.cpp": "ee32cefcdc458dc92d558c858c5cd2d35599fe86b8b6170af8e7ddd9a92ea6f7",
+      "NativeAdrenoUserClient.h": "9b210d0cd583bfc1443ad8f4da7dc0cbc2476a989c1845adf37e23142de21f08",
+      "NativeAdrenoUserClient.cpp": "565bdd2da2b23f9c0e8ee16657b1d1672e38341db7a12b50939e294a65606e5d",
+      "NativeAdrenoPublish.cpp": "5850cd2c824c957726c47b5cd855286cd976e80ecdb6a33869ef161a1d7b3b93"
+    },
+    "output_sha256": {
+      "NativeAdrenoVm.h": "8f4b071c1c706b9e7a332b29454923f31fd349fed477c1aab31acf53319f52af",
+      "NativeAdrenoVm.cpp": "bde78ebfd6342ae0c1fa34e4aba4d209cd5ccd31719e8ef0e8f79afc324e188b",
+      "NativeAdrenoSubmit.h": "8df97dc3774d472cd274e97107d00bcbeb0240327c84fd3a45884afbf217b60d",
+      "NativeAdrenoSubmit.cpp": "72f97add35be5c4d7aea4c7e74c7e24255cac40c1629287e0b2cef5d729a790b",
+      "NativeAdrenoUserClient.h": "7448c6ba4d0368f1e3448bfa11e93ccf2cc24d9caaa5881b5d8fbd6dddc9ca23",
+      "NativeAdrenoUserClient.cpp": "574600cb0025719465239468f287bca9ce207f925704540eb804f5752f54fae9",
+      "NativeAdrenoPublish.cpp": "d554b11ca25079cb6a026b2610d24d95ea5f58665f505f8bfef55fbdf82fa5dc"
+    },
+    "default_selected": false,
+    "hardware_qualified": false,
+    "wait": "drivers/DodgeGpu/DodgeMapWait.inc",
+    "wait_sha256": "5796d82fc13a482bbf5ede166824827d5b474697fa407520d82e86c73f4c9484"
+  },
+  "iphone_surface_identity": {
+    "path": "profiles/os/ios-16.7.16-20H392/surface-identity.json",
+    "sha256": "b424dd4692ba61d2bd135dccc1f856bba19735481ea9f69e5aa5981002b95eb7",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceIdentityABI.h",
+    "header_sha256": "38dd14832e0e0ceee262941e21e8f515189940baa71919c332765596b07b6a2c"
+  },
+  "iphone_surface_memory": {
+    "path": "profiles/os/ios-16.7.16-20H392/surface-memory.json",
+    "sha256": "c1eaff53583f352cd45c7111d0fc5a00c068c5e60a3590b5d88031a3b0951975",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceMemoryABI.h",
+    "header_sha256": "56e16346889c937419bf0a93a236172be2191ee232228e47997647e8186649dc"
+  },
+  "iphone_surface_backing": {
+    "path": "profiles/os/ios-16.7.16-20H392/surface-backing-owner.json",
+    "sha256": "9d9fd699606b25ceace3f1f38ef784dd1b8f135333a2d1e91e3e8845687c0232",
+    "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceBackingABI.h",
+    "header_sha256": "8a947a038d44168ff922cebfdc23963290557f43b695b88cff79846742c69cb1"
+  }
+}

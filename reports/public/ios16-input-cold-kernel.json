@@ -1,0 +1,213 @@
+{
+  "result": "IOS16_PRELINKED_STOCK_SPI_FIRMWARE_PARSER_AND_COLD_LOADER_CPU_PASS",
+  "builder_sha256": "5e56929ffe74614c6319e9880ede9ac63bda4af5e9417c84ad99164c27320041",
+  "source_sha256": {
+    "scripts/check_input_cold_kernel.py": "5e56929ffe74614c6319e9880ede9ac63bda4af5e9417c84ad99164c27320041",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "drivers/DodgeInput/DodgeGeniFirmware.cpp": "951ba487f3ec10ada9665e87c2e6351ceafe58c2f225ad1f0365678978af306d",
+    "drivers/DodgeInput/DodgeGeniFirmware.h": "8c6354e187fc27784c839deb4b48b8f6d85fe6a4db46ffc948ffbe1c51d8be8c"
+  },
+  "source_report_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
+  "prelink_report_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+  "candidate": "build/cph2653-input-prelink/kernel.macho",
+  "candidate_sha256": "be0b18ce8c30d2b9a257477aadb51795dcd7165523520e19372998c7688c3b7e",
+  "case_count": 18,
+  "cases": [
+    {
+      "case": "parse-stock",
+      "result": "PASS",
+      "return": 0,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": false,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "parse-short-header",
+      "result": "PASS",
+      "return": -22,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": false,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "parse-short-tail",
+      "result": "PASS",
+      "return": -71,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": false,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "parse-bad-protocol",
+      "result": "PASS",
+      "return": -71,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": false,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "parse-bad-core",
+      "result": "PASS",
+      "return": -71,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": false,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "parse-odd-words",
+      "result": "PASS",
+      "return": -71,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": false,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-cold",
+      "result": "PASS",
+      "return": 0,
+      "register_writes": 535,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-adopt",
+      "result": "PASS",
+      "return": 0,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-adopt-dma",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-adopt-fifo",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-busy",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-foreign-protocol",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-foreign-dma",
+      "result": "PASS",
+      "return": -16,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-wrong-core",
+      "result": "PASS",
+      "return": -19,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-rx-depth",
+      "result": "PASS",
+      "return": -19,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-rx-width",
+      "result": "PASS",
+      "return": -19,
+      "register_writes": 0,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-write-failure",
+      "result": "PASS",
+      "return": -5,
+      "register_writes": 300,
+      "delay_calls": 0,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    },
+    {
+      "case": "prepare-mirror-timeout",
+      "result": "PASS",
+      "return": -110,
+      "register_writes": 535,
+      "delay_calls": 99,
+      "full_native_loader_body": true,
+      "register_operations_and_bzero_are_peers": true
+    }
+  ],
+  "compiler_derived_layout": {
+    "spi_bytes": 264,
+    "spi_se": 0,
+    "spi_wrapper": 32,
+    "io_bytes": 32,
+    "io_context": 0,
+    "io_read": 8,
+    "io_write": 16,
+    "io_delay": 24,
+    "result_bytes": 20,
+    "result_phase": 0,
+    "result_writes": 4,
+    "result_before": 8,
+    "result_after": 12,
+    "result_loaded": 16,
+    "image_bytes": 40,
+    "image_data": 0,
+    "image_size": 8,
+    "image_core": 16,
+    "image_words": 24,
+    "image_word_offset": 26,
+    "image_configurations": 28,
+    "image_index_offset": 30,
+    "image_value_offset": 32
+  },
+  "reference_object": "build/ios16-input-cold-abi/DodgeColdLayout.o",
+  "reference_object_sha256": "2d8afd3981174d4d4e2a8cd4275b50a073ee5788c246190690cdb24a7f6231dc",
+  "cpu_cases": "build/cph2653-input-prelink/cold-cpu-cases.json",
+  "cpu_cases_sha256": "81b99c9a0832f371ce1a881aff0de974b4c62c0d66fc82cd2caddb6b721bc3ff",
+  "register_operations_and_bzero_are_peers": true,
+  "source_firmware_instruction_words_executed_on_a_serial_engine": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Actual current prelinked ARM64 parser, full GENI loader and real geni_spi_read_info with compiler-derived structure offsets and canaries. All 442 RAM words are checked against embedded stock bytes, early refusals write nothing, failed RAM write stops, mirror timeout remains bounded. Callback MMIO/clock behavior and bzero are peers; serial-engine microcode is never executed."
+}

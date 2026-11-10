@@ -1,0 +1,71 @@
+diff --git a/DarwinBootPkg/Driver/BootArgs.h b/DarwinBootPkg/Driver/BootArgs.h
+index aefcd90..421aa44 100644
+--- a/DarwinBootPkg/Driver/BootArgs.h
++++ b/DarwinBootPkg/Driver/BootArgs.h
+@@ -4,7 +4,15 @@
+ 
+ #include <Base.h>
+ 
+-// Darwin 23 pexpert/pexpert/arm64/boot.h ABI; all fields are little-endian.
++// Match the selected kernel's pexpert/pexpert/arm64/boot.h ABI.
++// Darwin 22 uses 608 command-line bytes; later profiles use 1024.
++#ifndef DARWIN_BOOT_COMMAND_LINE_LENGTH
++#define DARWIN_BOOT_COMMAND_LINE_LENGTH 1024
++#endif
++#if (DARWIN_BOOT_COMMAND_LINE_LENGTH != 608) && (DARWIN_BOOT_COMMAND_LINE_LENGTH != 1024)
++#error Unsupported Darwin boot_args command-line ABI
++#endif
++
+ typedef struct {
+   UINT16  Revision;
+   UINT16  Version;
+@@ -18,7 +26,7 @@ typedef struct {
+   UINT32  TreePadding;
+   UINT64  DeviceTree;
+   UINT32  DeviceTreeLength;
+-  CHAR8   CommandLine[1024];
++  CHAR8   CommandLine[DARWIN_BOOT_COMMAND_LINE_LENGTH];
+   UINT32  FlagsPadding;
+   UINT64  BootFlags;
+   UINT64  MemorySizeActual;
+@@ -27,7 +35,8 @@ typedef struct {
+ STATIC_ASSERT (OFFSET_OF (DARWIN_BOOT_ARGS, DeviceTree) == 0x60, "DT ABI");
+ STATIC_ASSERT (OFFSET_OF (DARWIN_BOOT_ARGS, Video) == 0x28, "video ABI");
+ STATIC_ASSERT (OFFSET_OF (DARWIN_BOOT_ARGS, CommandLine) == 0x6c, "command line ABI");
+-STATIC_ASSERT (OFFSET_OF (DARWIN_BOOT_ARGS, MemorySizeActual) == 0x478, "memory ABI");
+-STATIC_ASSERT (sizeof (DARWIN_BOOT_ARGS) == 0x480, "boot_args ABI");
++STATIC_ASSERT (OFFSET_OF (DARWIN_BOOT_ARGS, BootFlags) == DARWIN_BOOT_COMMAND_LINE_LENGTH + 0x70, "flags ABI");
++STATIC_ASSERT (OFFSET_OF (DARWIN_BOOT_ARGS, MemorySizeActual) == DARWIN_BOOT_COMMAND_LINE_LENGTH + 0x78, "memory ABI");
++STATIC_ASSERT (sizeof (DARWIN_BOOT_ARGS) == DARWIN_BOOT_COMMAND_LINE_LENGTH + 0x80, "boot_args ABI");
+ 
+ #endif
+diff --git a/DarwinBootPkg/Driver/DarwinBoot.c b/DarwinBootPkg/Driver/DarwinBoot.c
+index 3b6cafc..dc4e469 100644
+--- a/DarwinBootPkg/Driver/DarwinBoot.c
++++ b/DarwinBootPkg/Driver/DarwinBoot.c
+@@ -597,7 +597,7 @@ Boot (
+   UINTN                           Stride;
+   UINT32                          Version;
+   UINTN                           Attempt;
+-  CHAR8                           CommandLine[1024];
++  CHAR8                           CommandLine[DARWIN_BOOT_COMMAND_LINE_LENGTH];
+   UINT64                          Video[6];
+ 
+   (VOID)This;
+diff --git a/README.md b/README.md
+index 3645a7e..0a50975 100644
+--- a/README.md
++++ b/README.md
+@@ -2,6 +2,12 @@
+ 
+ UEFI XNU loader with packed RAM disk handoff support.
+ 
++The platform must select the kernel's `boot_args` layout. Define
++`DARWIN_BOOT_COMMAND_LINE_LENGTH=608` in this module's EDK II build options
++for Darwin 22; the default remains 1024 for the existing newer profiles.
++The command-line input bound and trailing flags/memory fields use the same
++selection. Do not boot a kernel with a mismatched layout.
++
+ The Mach-O parser accepts arm64 and arm64e MH_EXECUTE kernels, including
+ the capability bits in the arm64e CPU subtype. XNU initializes pointer
+ authentication and applies its own chained fixups. MH_FILESET input is

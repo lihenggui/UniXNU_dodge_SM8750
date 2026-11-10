@@ -1,0 +1,126 @@
+{
+  "result": "CPH2653_ISOLATED_TASK_AWARE_SURFACE_IDENTITY_ROUTE_PASS",
+  "builder_sha256": "ebdd61caa0c1906bae89bd07521d706895422251dde0869bb19910ec6b1c2f99",
+  "stages": {
+    "source": {
+      "report": "reports/ios16-surface-identity-source.json",
+      "sha256": "2650f872a3f38360c03eca8a4123794ca4bcb7d71b2e64615fb5eefb36e013c9",
+      "builder": "scripts/build_surface_identity.py",
+      "builder_sha256": "7001e4c3014c0ad361949e7f6c2ebbe34bfed7c098554413ee2fe31cb01c0277"
+    },
+    "prelink": {
+      "report": "reports/ios16-surface-identity-prelink.json",
+      "sha256": "9fdb57648fb73ff7b0c56c5bcffb36fd2518d1718063e6127ef0045bc32bcf30",
+      "builder": "scripts/build_surface_identity_prelink.py",
+      "builder_sha256": "54128e51de1b6d5e50befbed39e5dd9bf9e3a9ffa74995b0a8b9075f53178166"
+    },
+    "kernel": {
+      "report": "reports/ios16-surface-identity-kernel.json",
+      "sha256": "38928fbe9af4666d4bc446f648e799aee3e48ef931becd31559a33e86b45da99",
+      "builder": "scripts/check_surface_identity_kernel.py",
+      "builder_sha256": "bd825cb359423650f1d9ce6ec05958456cdad91197339a5d27ab076d3b85e0d2"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "build/cph2653-surface-identity/native/DodgeSurfaceIdentity.o",
+      "sha256": "562b9a1fc61d3bf94959b63d9584c186c192dcc2ce98cf4e380d8470b3a9086b"
+    },
+    {
+      "path": "build/cph2653-surface-identity/surface-identity-bindings.o",
+      "sha256": "a439c2c4b45d97c97ca71c3665368c71b47707fa58461f1585dca5c79b5df0c8"
+    },
+    {
+      "path": "build/cph2653-surface-identity/libDodgeSurfaceIdentity.a",
+      "sha256": "11c94ff049359213e2f0a75c1fa4582eec7c2bb08f50f64c9768613b1c8c6813"
+    },
+    {
+      "path": "build/cph2653-surface-identity/native/compile-commands.json",
+      "sha256": "ddd58e368f22c48b5aa41ba17dfcbcfd8f176ca6cefabbdc326c14706febb691"
+    },
+    {
+      "path": "build/cph2653-surface-identity/mach.surface-identity",
+      "sha256": "0a829d260e90644bac68850c035e1cb066e56c56d0ae26eb02ba472a698fe5b9"
+    },
+    {
+      "path": "build/cph2653-surface-identity/link-command.json",
+      "sha256": "36398902b67c60f0925aebdd25812132eb7d995d2c1dc88fa8773640580a3fa9"
+    },
+    {
+      "path": "build/cph2653-surface-identity/host/identity-test",
+      "sha256": "0344f7d1bd92f1277b15e1c06af972d65c4d3ace5dfdb29fc1c8a8210ef9d7c2"
+    },
+    {
+      "path": "build/cph2653-surface-identity/host/identity-tests.log",
+      "sha256": "f8f8e6a747d020fe5b40b3511b506b50affab8089ffd461f58c4367037344aa5"
+    },
+    {
+      "path": "reports/ios16-surface-identity-source.json",
+      "sha256": "2650f872a3f38360c03eca8a4123794ca4bcb7d71b2e64615fb5eefb36e013c9"
+    },
+    {
+      "path": "build/cph2653-surface-identity-prelink/kernel.macho",
+      "sha256": "0a5ddf0d9dec1e070ba891e27188ab0833467b809aee6e126b3896ce47265c29"
+    },
+    {
+      "path": "build/cph2653-surface-identity-prelink/emission.json",
+      "sha256": "6cacf73bfe60518a612526b91e1e8f7cffd259aa08186db8726f72b4ab5dce92"
+    },
+    {
+      "path": "reports/ios16-surface-identity-prelink.json",
+      "sha256": "9fdb57648fb73ff7b0c56c5bcffb36fd2518d1718063e6127ef0045bc32bcf30"
+    },
+    {
+      "path": "build/cph2653-surface-identity-kernel/probe/IdentityProbe.o",
+      "sha256": "069ec482a833890439dcbc926a4b697c42115b559bd48118355908bce7796910"
+    },
+    {
+      "path": "build/cph2653-surface-identity-kernel/probe/compile-commands.json",
+      "sha256": "c47c78349a4e391d49365ce7770be2611cef6c0c3e4e760624d043b2522cbe4c"
+    },
+    {
+      "path": "build/cph2653-surface-identity-kernel/identity-layout.o",
+      "sha256": "562b9a1fc61d3bf94959b63d9584c186c192dcc2ce98cf4e380d8470b3a9086b"
+    },
+    {
+      "path": "build/cph2653-surface-identity-kernel/identity-layout.log",
+      "sha256": "2ef1dafc52464ea7f768861385b56c4007bd77bca264f6e91a0859063409df5e"
+    },
+    {
+      "path": "build/cph2653-surface-identity-kernel/cpu-cases.json",
+      "sha256": "428bc01d501d384c02694faa742d0cb5dda48168127887694a6bcf8f59d96d8f"
+    },
+    {
+      "path": "reports/ios16-surface-identity-kernel.json",
+      "sha256": "38928fbe9af4666d4bc446f648e799aee3e48ef931becd31559a33e86b45da99"
+    }
+  ],
+  "host_cases": 13,
+  "host_source_rejection_controls": 3,
+  "original_identity_ARM64_cases": 20,
+  "source_to_original_identity_ARM64_cases": 17,
+  "existing_regression_ARM64_cases": 112,
+  "linked_kernel_cpu_paths": 149,
+  "kernel_instruction_rejection_controls": 7,
+  "original_invariant_refusals": 5,
+  "combined_source_objects": 92,
+  "native_source_entries": 99,
+  "original_aliases": 342,
+  "original_components": 28,
+  "original_interfaces": 7,
+  "original_pointer_readbacks": 63889,
+  "candidate": "build/cph2653-surface-identity-prelink/kernel.macho",
+  "candidate_sha256": "0a5ddf0d9dec1e070ba891e27188ab0833467b809aee6e126b3896ce47265c29",
+  "current_task_authorized_lookup_and_custom_reference_lifetime_executed": true,
+  "IOKit_task_lock_matching_type_process_and_base_client_refs_are_peers": true,
+  "actual_original_surface_allocator_or_root_initialization_executed": false,
+  "GPU_import_backing_associated": false,
+  "iosurface_producer_connected": false,
+  "default_artifacts_selected_or_replaced": false,
+  "phone_operations": "none",
+  "new_boot_image_built": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "A kernel-callable current-task bridge, its original IOSurfaceRoot binding and their real source-to-original permission/custom-reference chain are implemented in an isolated full kernel. Original lookup/table/cache/client membership and +1000 CAS reference algorithms execute; +12 remains the surface ID. Existing GPU/surface/display regressions pass in the new prelink. Provider/mutex/task/process/base-client primitives remain explicit peers. The helper is not connected to user GPU import/submit; backing association/stability, producer grant/callback/cancel, physical cache/reset and iOS boot remain incomplete. Previous development images remain preserved; no new image is packaged."
+}

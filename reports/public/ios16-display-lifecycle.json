@@ -1,0 +1,461 @@
+{
+  "result": "IPHONE16_ORIGINAL_DISPLAY_LIFECYCLE_CPU_PASS",
+  "builder_sha256": "214e92084f6896225a8e5347a985a85db2d085876a7211bdcc8d82315d22f8d9",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "contract": "profiles/os/ios-16.7.16-20H392/display-lifecycle.json",
+  "contract_sha256": "34a9395c7b18efd09169f0fe7f7839bf0c4bf56dbea44a350ec6cfe1de96ab7b",
+  "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyLifecycleABI.h",
+  "header_sha256": "c91a88ce3bb4d21f61be4b42bf2b7d7139d8343ede515bdd9b5590f65c810b52",
+  "native_probe": "build/ios16-display-lifecycle/lifecycle.o",
+  "native_probe_sha256": "3d8130a0ba481ff54c7234d116cc7854fbc0f135b2825d2c0e154f41ceb1a068",
+  "source_sha256": {
+    "scripts/prepare_ios16_display_lifecycle.py": "214e92084f6896225a8e5347a985a85db2d085876a7211bdcc8d82315d22f8d9",
+    "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacyLifecycleABI.h": "c91a88ce3bb4d21f61be4b42bf2b7d7139d8343ede515bdd9b5590f65c810b52",
+    "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacySwapABI.h": "c94511515c3989b470fcce568cfaa349216a8ae5111718ab65030ce42d383ce4"
+  },
+  "cases": [
+    {
+      "case": "init-success",
+      "result": "PASS",
+      "original_init_result": true,
+      "callee_peers": [
+        "parent",
+        "bootarg",
+        "gate",
+        "loop",
+        "add"
+      ],
+      "original_display_writes": [
+        [
+          136,
+          4
+        ],
+        [
+          5660,
+          4
+        ],
+        [
+          5652,
+          4
+        ],
+        [
+          5648,
+          1
+        ],
+        [
+          5649,
+          1
+        ],
+        [
+          5040,
+          8
+        ],
+        [
+          5048,
+          8
+        ],
+        [
+          5056,
+          8
+        ],
+        [
+          5064,
+          8
+        ]
+      ]
+    },
+    {
+      "case": "parent-init-refusal",
+      "result": "PASS",
+      "original_init_result": false,
+      "callee_peers": [
+        "parent",
+        "bootarg",
+        "gate",
+        "loop",
+        "add"
+      ],
+      "original_display_writes": [
+        [
+          136,
+          4
+        ],
+        [
+          5660,
+          4
+        ],
+        [
+          5652,
+          4
+        ],
+        [
+          5648,
+          1
+        ],
+        [
+          5649,
+          1
+        ],
+        [
+          5040,
+          8
+        ],
+        [
+          5048,
+          8
+        ],
+        [
+          5056,
+          8
+        ],
+        [
+          5064,
+          8
+        ]
+      ]
+    },
+    {
+      "case": "gate-factory-refusal",
+      "result": "PASS",
+      "original_init_result": false,
+      "callee_peers": [
+        "parent",
+        "bootarg",
+        "gate",
+        "log"
+      ],
+      "original_display_writes": [
+        [
+          136,
+          4
+        ],
+        [
+          5660,
+          4
+        ],
+        [
+          5652,
+          4
+        ],
+        [
+          5648,
+          1
+        ],
+        [
+          5649,
+          1
+        ],
+        [
+          5040,
+          8
+        ]
+      ]
+    },
+    {
+      "case": "loop-factory-refusal",
+      "result": "PASS",
+      "original_init_result": false,
+      "callee_peers": [
+        "parent",
+        "bootarg",
+        "gate",
+        "loop",
+        "log"
+      ],
+      "original_display_writes": [
+        [
+          136,
+          4
+        ],
+        [
+          5660,
+          4
+        ],
+        [
+          5652,
+          4
+        ],
+        [
+          5648,
+          1
+        ],
+        [
+          5649,
+          1
+        ],
+        [
+          5040,
+          8
+        ],
+        [
+          5048,
+          8
+        ]
+      ]
+    },
+    {
+      "case": "add-source-refusal",
+      "result": "PASS",
+      "original_init_result": false,
+      "callee_peers": [
+        "parent",
+        "bootarg",
+        "gate",
+        "loop",
+        "add",
+        "log"
+      ],
+      "original_display_writes": [
+        [
+          136,
+          4
+        ],
+        [
+          5660,
+          4
+        ],
+        [
+          5652,
+          4
+        ],
+        [
+          5648,
+          1
+        ],
+        [
+          5649,
+          1
+        ],
+        [
+          5040,
+          8
+        ],
+        [
+          5048,
+          8
+        ]
+      ]
+    },
+    {
+      "case": "bootarg-zero",
+      "result": "PASS",
+      "original_init_result": true,
+      "callee_peers": [
+        "parent",
+        "bootarg",
+        "gate",
+        "loop",
+        "add"
+      ],
+      "original_display_writes": [
+        [
+          136,
+          4
+        ],
+        [
+          5660,
+          4
+        ],
+        [
+          5652,
+          4
+        ],
+        [
+          5648,
+          1
+        ],
+        [
+          5649,
+          1
+        ],
+        [
+          5040,
+          8
+        ],
+        [
+          5048,
+          8
+        ],
+        [
+          5056,
+          8
+        ],
+        [
+          5064,
+          8
+        ]
+      ]
+    },
+    {
+      "case": "bootarg-nonzero",
+      "result": "PASS",
+      "original_init_result": true,
+      "callee_peers": [
+        "parent",
+        "bootarg",
+        "gate",
+        "loop",
+        "add"
+      ],
+      "original_display_writes": [
+        [
+          136,
+          4
+        ],
+        [
+          5660,
+          4
+        ],
+        [
+          5652,
+          4
+        ],
+        [
+          5648,
+          1
+        ],
+        [
+          5649,
+          1
+        ],
+        [
+          5040,
+          8
+        ],
+        [
+          5048,
+          8
+        ],
+        [
+          5056,
+          8
+        ],
+        [
+          5064,
+          8
+        ]
+      ]
+    },
+    {
+      "case": "original-queue-to-native-startup--1",
+      "result": "PASS",
+      "accepted": true
+    },
+    {
+      "case": "original-queue-to-native-startup-0",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-1",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-2",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-3",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-4",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-5",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-6",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-7",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-8",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-9",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-10",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-11",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-12",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-13",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-14",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-15",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-16",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-17",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "original-queue-to-native-startup-18",
+      "result": "PASS",
+      "accepted": false
+    },
+    {
+      "case": "native-loop-add-0x0",
+      "result": "PASS",
+      "callee_peer": true
+    },
+    {
+      "case": "native-loop-add-0xe00002c7",
+      "result": "PASS",
+      "callee_peer": true
+    }
+  ],
+  "case_count": 29,
+  "original_init_and_queue_bytes_changed": false,
+  "startup_guard_read_only": true,
+  "registration_precedes_start_return": true,
+  "original_factory_or_event_loop_implementation_executed": false,
+  "original_full_start_stop_executed": false,
+  "initialization_failure_ownership_qualified": false,
+  "concrete_legacy_subclass_installed": false,
+  "hardware_tested": false,
+  "scope": "Unchanged full original Legacy init and queue initialization run on a bounded CPU fixture with explicit parent/factory/bootarg/log/add-event peers. The native startup guard consumes the original loop output and refuses occupied/malformed primary, unsubmitted or six notification queues. Actual native loop-add dispatch matches the original slot. Original start calls registerService before returning; concrete frontend setup must precede publication. Original IOKit allocation/refcounts, failure ownership, full start/stop, backend initialization and hardware remain unqualified."
+}

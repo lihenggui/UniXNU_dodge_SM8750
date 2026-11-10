@@ -1,0 +1,127 @@
+--- a/BootProgress.c
++++ b/BootProgress.c
+@@ -16,7 +16,7 @@
+                "Early framebuffer map requires the native 4 KiB bootstrap ABI");
+ #endif
+ #include <DiagFont.h>
+-#ifndef BOOT_PROGRESS_TEST
++#if !defined(BOOT_PROGRESS_TEST) && !defined(DODGE_POST_VM_CONSOLE)
+ #include <BootLogo.h>
+ #endif
+ 
+@@ -37,7 +37,10 @@
+ uint64_t early_boot_args_pa, early_boot_phys_base, early_boot_virt_base;
+ uint64_t early_boot_stage;
+ static const uint64_t font[] = GLYPH_FONT;
+-static uintptr_t framebuffer, framebuffer_pa;
++static uintptr_t framebuffer;
++#ifndef DODGE_POST_VM_CONSOLE
++static uintptr_t framebuffer_pa;
++#endif
+ static unsigned width, height, stride, column, row = 6;
+ static uint64_t poll_count;
+ static thread_call_t poll_call;
+@@ -190,6 +193,7 @@
+     }
+ }
+ 
++#ifndef DODGE_POST_VM_CONSOLE
+ static void render_boot_logo(void)
+ {
+     int left = ((int)width - BOOT_LOGO_WIDTH) / 2 + BOOT_LOGO_X;
+@@ -209,6 +213,8 @@
+     }
+     logo_visible = 1;
+ }
++
++#endif
+ 
+ static void glyph_pixels(unsigned char c, unsigned x, unsigned y, uint32_t color)
+ {
+@@ -307,6 +313,29 @@
+     if (flags == UINT64_MAX) return;
+     if (!panic_state) display_owned = 0;
+     irq_restore(flags);
++}
++
++// Bind an already mapped kernel console once, after VM/IOKit initialization.
++// The caller retains its IOMemoryMap for the boot lifetime. No early entry,
++// translation-table mutation or fabricated refresh event is involved.
++int boot_progress_bind_post_vm(uintptr_t base, unsigned w, unsigned h, unsigned pitch, unsigned depth)
++{
++    if (!geometry(base, w, h, pitch, depth)) return 0;
++    uint64_t flags = irq_disable();
++    if (__atomic_exchange_n(&console_lock, 1, __ATOMIC_ACQUIRE)) {
++        irq_enable(flags);
++        return 0;
++    }
++    if (framebuffer || panic_state || __atomic_load_n(&panic_cpu, __ATOMIC_ACQUIRE)) {
++        __atomic_store_n(&console_lock, 0, __ATOMIC_RELEASE);
++        irq_enable(flags);
++        return 0;
++    }
++    console_smp = 1;
++    boot_progress_bind(base, w, h, pitch, depth);
++    __atomic_store_n(&console_lock, 0, __ATOMIC_RELEASE);
++    irq_enable(flags);
++    return 1;
+ }
+ 
+ int boot_progress_active(void) { return framebuffer != 0; }
+@@ -670,7 +699,7 @@
+     __asm__ volatile("mrs %0, tcr_el1" : "=r"(tcr));
+     __asm__ volatile("mrs %0, ttbr1_el1" : "=r"(ttbr1));
+ #endif
+-    panic_open("OnePlus 13T / XNU PANIC");
++    panic_open("OnePlus 13 / XNU PANIC");
+     text_raw("panic entry reached; values below are hexadecimal\n");
+     value_raw("caller", caller); value_raw("MPIDR", mpidr);
+     text_raw("last stage: "); text_raw(stage_count ? stages[(stage_count - 1) % HISTORY] : "none"); putc_raw('\n');
+@@ -714,6 +743,7 @@
+     panic_footer("HALTED: no software reboot"); panic_halt();
+ }
+ 
++#ifndef DODGE_POST_VM_CONSOLE
+ // No kernel services, stack protector, SIMD, or relocated pointers on this path.
+ void early_boot_progress_init(boot_args *args)
+ {
+@@ -744,7 +774,7 @@
+     framebuffer_pa = framebuffer;
+     for (unsigned y = 0; y + LINE <= height; y += LINE) clear_line(y);
+     unsigned saved = row;
+-    row = 0; text_raw("OnePlus 13T / source XNU"); row = saved; column = 0;
++    row = 0; text_raw("OnePlus 13 / source XNU"); row = saved; column = 0;
+     boot_progress_stage("S1: XNU entry, MMU off");
+     value_raw("args PA", (uintptr_t)args);
+     value_raw("RAM PA", args->physBase);
+@@ -800,6 +830,8 @@
+     boot_progress_stage("S6: kernel VM and exception vectors ready");
+ }
+ 
++#endif
++
+ void boot_progress_init(void)
+ {
+     early_boot_stage = 5;
+@@ -808,17 +840,20 @@
+     barrier();
+ }
+ 
++#ifndef DODGE_POST_VM_CONSOLE
+ // The assembly fatal path re-enters with physical addresses and MMU/cache off.
+ void early_boot_progress_fatal(boot_args *args, uint64_t esr, uint64_t elr, uint64_t far, uint64_t spsr, uint64_t stage)
+ {
+     early_boot_progress_init(args);
+-    if (framebuffer) panic_open("OnePlus 13T / EARLY EXCEPTION");
++    if (framebuffer) panic_open("OnePlus 13 / EARLY EXCEPTION");
+     value_raw("last checkpoint", stage);
+     value_raw("ESR_EL1", esr); value_raw("ELR_EL1", elr);
+     value_raw("FAR_EL1", far); value_raw("SPSR_EL1", spsr);
+     if (framebuffer) panic_footer("HALTED: no software reboot");
+     panic_halt();
+ }
++
++#endif
+ 
+ void boot_progress_kernel_exception(uint64_t esr, uint64_t elr, uint64_t far)
+ {

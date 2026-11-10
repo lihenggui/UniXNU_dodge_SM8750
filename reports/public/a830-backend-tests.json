@@ -1,0 +1,71 @@
+{
+  "result": "A830_BACKEND_HOST_TESTS_PASS",
+  "builder_sha256": "9ec5b90767410d00d2c4b3511dd7eba0b7442aec737e6fd2be7e14b137eaafce",
+  "suites": [
+    "diagnostics",
+    "ring",
+    "cpinit",
+    "irq",
+    "timer",
+    "a830_hwinit",
+    "gpu",
+    "hfi-startup",
+    "system-memory",
+    "gmuctx",
+    "gpuctx",
+    "userclient"
+  ],
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "source_revisions": {
+    "a830_backend_reference": "1baf6d3a1d0f133d284f8b8844cc98bf5aff1bbe",
+    "a830_firmware_reference": "505d0a1ac079339ee1486f0e19cfd8bd36a282a2",
+    "a830_build_reference": "7422fe182ab0c7d540b129d32a85def16023cd6a"
+  },
+  "support_revisions": {
+    "AdrenoPM4": "282606b528b2595bc4274ea7490b62b323f35a5f",
+    "ArmSmmu4K": "83969cd874503e65997ff7639f7dcf3d0a92cd17"
+  },
+  "integration_script_sha256": "836a641252b66e18149ea640d3b4a7b0fa16fa48e74a19529e190f72261f46e2",
+  "optional_call_overlay": {
+    "patch": {
+      "path": "patches/oneplus13/0003-static-backend-optional-calls.patch",
+      "sha256": "c7eb1701fbcae0bc355ce80dcb9bbc78c7e5677e35d5d9d3b20617bd3e998d51",
+      "source_key": "a830_backend_reference",
+      "source_revision": "1baf6d3a1d0f133d284f8b8844cc98bf5aff1bbe",
+      "files": [
+        "NativeAdrenoMemory.cpp",
+        "NativeAdrenoPublish.cpp"
+      ]
+    },
+    "helper_sha256": "9ff7904efbec1c7363909155a051b62f218dbd7106fc60d2957dad2ec55de714",
+    "stage": ".cache/gpu-work/kernel-optional/backend",
+    "patched_source_sha256": {
+      "NativeAdrenoMemory.cpp": "57acead95f684afa52efc11ad061737c4c7fcb98bb3f2069864affd9d23c9ce2",
+      "NativeAdrenoPublish.cpp": "9bfb17ce6af8db5ba747c76e91d9b8af887d47494b9dfd32b382afec7c3ebaf5"
+    }
+  },
+  "display_timeline_overlay": {
+    "patch": {
+      "path": "patches/oneplus13/0005-adreno-locked-display-timeline.patch",
+      "sha256": "a57b8090e56cd4c5e2174dbf14f1a6a42038ac0616966b6ec6014548b124b5c0",
+      "header": "drivers/DodgeDisplay/DodgeAdrenoTimeline.h",
+      "header_sha256": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61",
+      "source_revision": "1baf6d3a1d0f133d284f8b8844cc98bf5aff1bbe"
+    },
+    "stage": ".cache/gpu-work/kernel-display-timeline/backend",
+    "stager_sha256": "04c637d98f1f1516511284002965fc5a18b400806946f5b2f38d1fcb20ad5420",
+    "base_publish_sha256": "9bfb17ce6af8db5ba747c76e91d9b8af887d47494b9dfd32b382afec7c3ebaf5",
+    "patched_source_sha256": {
+      "NativeAdrenoPublish.cpp": "5850cd2c824c957726c47b5cd855286cd976e80ecdb6a33869ef161a1d7b3b93",
+      "DodgeAdrenoTimeline.h": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61"
+    }
+  },
+  "log": "build/cph2653-a830-tests/tests.log",
+  "log_sha256": "904daf82ee149efebe3e7ff9bf43727daed63a3857397ae4b7f593d9d20437f1",
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "hardware_tested": false,
+  "scope": "Production command/memory/HFI paths over software peers, not device execution."
+}

@@ -1,0 +1,606 @@
+{
+  "result": "IOS16_REAL_CLASS_GOP_PROVIDER_SOURCE_AND_OWNERSHIP_PASS",
+  "builder_sha256": "1609a62f68c2352c7c08211eeeebec7a5ccb4b3b395ef431410a11564e9ab3fd",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "graphics_lifecycle_report_sha256": "0a256f560e8f77127e09a84066e033cac91ea02d4cb30dfa8d02219172cd66a4",
+  "source_sha256": {
+    "scripts/build_gop_provider.py": "1609a62f68c2352c7c08211eeeebec7a5ccb4b3b395ef431410a11564e9ab3fd",
+    "scripts/prepare_gop_provider.py": "d5dc7e45baf27bcf36c4090e77e78505bcc866e3683f73f7aaa6c59fbd34166e",
+    "scripts/check_gop_provider_host.py": "26dc8298b499f54f8c17a81ecfacffdffcf4a0d719ef9256bc0b24ff9a7914c3",
+    "scripts/check_gpu_link.py": "f3f1eefd63a7ed5e9c53122d479e991a54b3fb1bc0efbfe7ce90102eab4e61f5",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "profiles/os/ios-16.7.16-20H392/gop-provider.json": "4bbde6151ab6ed9afe66d802dffcd5897c20f271d2ecf2dfbc8161ab39648886",
+    "profiles/os/ios-16.7.16-20H392/graphics/OriginalGopProviderABI.h": "ccce38e4119cb0e26711fbf08f18ec9914b6d574182323ad73b1e5b5260dcdbb",
+    "drivers/DodgeDisplay/DodgeGopProvider.cpp": "67275dc78a51673becc358aa037e74ffaa1fff47ba29682b993276583fcd2340",
+    "drivers/DodgeDisplay/DodgeGopProvider.h": "bb149bea2d25715a8a7b254863faea5f3c7d024c326e39d039a3eb2a54b47ae1",
+    "drivers/DodgeDisplay/DodgeGraphicsBoot.h": "294bbdc266b889e52da5b64d9e87331a41e0f93aa7e9a9609616c09623d0c989",
+    "drivers/DodgeDisplay/DodgeGraphicsLifecycle.h": "d549af557435d75a97f992dbddeb4f3738d267575d8e9bf5f8c82c33abce0638",
+    "tests/DodgeGopProviderTest.cpp": "28718067bf19b7f750133c293905618181c9c574dea342f0254d5166be291a1f",
+    "tests/gop_provider_include/GopIOKitPeer.h": "e07b5a5605d4186ca8b3ac67ea6989ee938431ea4eb1600ef992f2ee696d260f",
+    "tests/gop_provider_include/IOKit/IODeviceMemory.h": "7af32b739e0b21e4521dfdb04558b7382e9356eb38bce8145fcfcf1f59139b33",
+    "tests/gop_provider_include/IOKit/IOPlatformExpert.h": "7af32b739e0b21e4521dfdb04558b7382e9356eb38bce8145fcfcf1f59139b33",
+    "tests/gop_provider_include/IOKit/IOService.h": "7af32b739e0b21e4521dfdb04558b7382e9356eb38bce8145fcfcf1f59139b33",
+    "tests/gop_provider_include/libkern/c++/OSArray.h": "7af32b739e0b21e4521dfdb04558b7382e9356eb38bce8145fcfcf1f59139b33",
+    "tests/gop_provider_include/libkern/c++/OSMetaClass.h": "7af32b739e0b21e4521dfdb04558b7382e9356eb38bce8145fcfcf1f59139b33",
+    "tests/gop_provider_include/libkern/c++/OSSymbol.h": "7af32b739e0b21e4521dfdb04558b7382e9356eb38bce8145fcfcf1f59139b33",
+    "tests/gop_provider_include/libkern/libkern.h": "62b1c316a47616a59a438f2f483ae2f14986de531079d5a8bac2353e3dfd8639",
+    "tests/gop_provider_include/pexpert/pexpert.h": "7af32b739e0b21e4521dfdb04558b7382e9356eb38bce8145fcfcf1f59139b33",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/Kernel/IOService.cpp": "f6052eea56933fb7960949de267f6b7434f22c65f1702baac7cf077eff17fcd9",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/IOKit/IOService.h": "098ea1df1d596ada6dcd031af8f6c3e9b66ff2f2a93e6631dbba6cac3dd2bfe8",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/IOKit/IODeviceMemory.h": "13127f899ead3da37394532afa6011b817f8b2070d1b3ea806db47b0cf2bccc9",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/c++/OSObject.cpp": "3ea523fe9066d63bb2943db4042c81ea062802087e2984a17360e09446c5b4c2",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/c++/OSMetaClass.cpp": "51756a6faa01cf564dd5761eb2113caa850a401b31806d2f87ca4e8a5a864243",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/libkern/c++/OSMetaClass.h": "0b47cb07db5854013123fce2972592d63997c8a7bced80b7365bb04af4614647"
+  },
+  "contract": "profiles/os/ios-16.7.16-20H392/gop-provider.json",
+  "contract_sha256": "4bbde6151ab6ed9afe66d802dffcd5897c20f271d2ecf2dfbc8161ab39648886",
+  "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalGopProviderABI.h",
+  "header_sha256": "ccce38e4119cb0e26711fbf08f18ec9914b6d574182323ad73b1e5b5260dcdbb",
+  "archive": "build/ios16-gop-provider/libDodgeGopProvider.a",
+  "archive_sha256": "ab4e18231f57360d0754c31753ec63a30a8b2bb6fdbdd8858655ac191aac5776",
+  "objects": [
+    {
+      "path": "build/ios16-gop-provider/DodgeGopProvider.o",
+      "sha256": "c45188f6f18eb8c34334087e0857f31f92996775fd1cc8ea2855dfd645b9c8ed"
+    },
+    {
+      "path": "build/ios16-gop-provider/original-gop-provider-metadata.o",
+      "sha256": "9308699a5cf1d9953e06d5d4029ad5dbbf377c1a3190e40cc28fac0586818919"
+    }
+  ],
+  "compile_manifest": "build/ios16-gop-provider/compile-commands.json",
+  "compile_manifest_sha256": "1b3fdc76a0294726613c89e85e95314530cd8696bdc66b008c29c019024002e8",
+  "imports": {
+    "defined": [
+      "_dodge_gop_provider_publish",
+      "_dodge_gop_provider_status",
+      "_dodge_graphics_boot_gop",
+      "_dodge_original_gop_provider_meta"
+    ],
+    "native_public_imports": [
+      "_PE_current_console",
+      "__ZN11OSMetaClass21copyMetaClassWithNameEPK8OSSymbol",
+      "__ZN14IODeviceMemory9withRangeEyy",
+      "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+      "__ZN18IOMemoryDescriptor18getPhysicalAddressEv",
+      "__ZN7OSArray12withCapacityEj",
+      "__ZN8OSSymbol17withCStringNoCopyEPKc",
+      "__ZN9IOService11getPlatformEv",
+      "__ZN9IOService9metaClassE",
+      "__ZNK11OSMetaClass12getClassSizeEv",
+      "__ZNK11OSMetaClass13getSuperClassEv",
+      "__ZNK11OSMetaClass16releaseMetaClassEv",
+      "__ZNK15OSMetaClassBase8metaCastEPKc",
+      "__ZNK9IOService10isInactiveEv",
+      "___stack_chk_fail",
+      "___stack_chk_guard",
+      "_strcmp"
+    ],
+    "native_static_link_only_imports": [],
+    "required_board_or_original_imports": [
+      "_dodge_graphics_boot",
+      "_dodge_graphics_prepare",
+      "_dodge_graphics_status"
+    ],
+    "optional_weak_imports": []
+  },
+  "original_metadata_aliases": {
+    "_dodge_original_gop_provider_meta": "0xfffffff006a09e20"
+  },
+  "host_tests": {
+    "result": "PASS",
+    "case_count": 60,
+    "cases": [
+      {
+        "case": "success",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "null-out",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "null-platform",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "modules-not-ready",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "wrong-platform",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "platform-inactive",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "platform-hierarchy",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "console-failure",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "zero-base",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "zero-width",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "zero-height",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "oversize-width",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "oversize-height",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "depth",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "rotation",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "short-stride",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "long-stride",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "physical-overflow",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "symbol-failure",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "metadata-missing",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "metadata-identity",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "metadata-size",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "metadata-parent",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "allocation-failure",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "allocation-wrong-class",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "object-wrong-metadata",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "init-failure",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "name-failure",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "memory-allocation-failure",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "memory-address-mismatch",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "memory-length-mismatch",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "array-allocation-failure",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "array-insert-failure",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "memory-install-failure",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "memory-count-mismatch",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "memory-index-mismatch",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "resources-failure",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "attach-failure",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "platform-dies-at-attach",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 1,
+        "reentries": 0
+      },
+      {
+        "case": "mode-change-at-attach",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 1,
+        "reentries": 0
+      },
+      {
+        "case": "mode-change-at-register",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "provider-dies-at-register",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "memory-change-at-register",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "cache-mode-change",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "cache-provider-inactive",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "cache-platform-inactive",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "cache-memory-change",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "cache-wrong-platform",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "reentry-metadata",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 1
+      },
+      {
+        "case": "reentry-init",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 1
+      },
+      {
+        "case": "reentry-attach",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 1
+      },
+      {
+        "case": "reentry-register",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 1
+      },
+      {
+        "case": "reentry-release",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 1
+      },
+      {
+        "case": "concurrent-create",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "concurrent-cold-start",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "wrapper-success",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "wrapper-prepare-failure",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "wrapper-publish-failure",
+        "result": "PASS",
+        "allocations": 0,
+        "publications": 0,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "wrapper-boot-failure",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      },
+      {
+        "case": "wrapper-retry",
+        "result": "PASS",
+        "allocations": 1,
+        "publications": 1,
+        "detach_calls": 0,
+        "reentries": 0
+      }
+    ],
+    "iokit_pe_allocation_and_boot_are_peers": true,
+    "original_allocator_executed": false,
+    "hardware_tested": false
+  },
+  "host_binary": "build/ios16-gop-provider/gop-provider-host",
+  "host_binary_sha256": "451391eaf5cf4e53ac30e05f8c413acced5bac0d03cfae7ec041a9f770c44d4f",
+  "real_original_metaclass_allocator_used": true,
+  "original_instance_bytes": 216,
+  "inherited_public_init_used": true,
+  "private_apple_fields_written": false,
+  "apple_bus_initializer_called": false,
+  "fake_meta_cast_implementation": false,
+  "actual_current_dt_platform_required": true,
+  "pe_console_memory_descriptor_required": true,
+  "device_memory_property_read_back": true,
+  "original_get_resources_fast_path_required": true,
+  "mode_and_resources_rechecked_after_publication": true,
+  "one_nub_published_per_boot": true,
+  "published_nub_and_original_metadata_pinned": true,
+  "unpublished_failures_unwound_and_retryable": true,
+  "explicit_late_provider_to_gpu_display_entry_built": true,
+  "early_initializer_present": false,
+  "native_entry_invoked": false,
+  "runtime_provider_registered": false,
+  "apple_bus_or_clock_functions_qualified": false,
+  "runtime_qualified": false,
+  "default_kernel_selected": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Actual ARM64 factory allocates the exact original AppleARMIODevice, invokes inherited public IOService init, installs a real PE-console physical-memory descriptor with readback, attaches the current IODTPlatformExpert and requests publication. An explicit late entry connects preparation, provider publication and the existing GPU/display coordinator. Sanitized source tests use explicit IOKit, PE, allocation and boot peers; original allocation and actual publication are not executed here. No Apple bus initializer, private fields, fake class hierarchy or automatic startup; runtime matching, memory mapping and hardware remain unqualified."
+}

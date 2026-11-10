@@ -1,0 +1,228 @@
+{
+  "result": "IOS16_LOCAL_APFS_DATA_IMAGE_PASS",
+  "builder_sha256": "9fef596a896352617d0cb68a6deb5979c28868281fcec94e65992e6c185f476d",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "profile": "profiles/os/ios-16.7.16-20H392/data-image.json",
+  "source_sha256": {
+    "scripts/prepare_data_image.py": "9fef596a896352617d0cb68a6deb5979c28868281fcec94e65992e6c185f476d",
+    "scripts/prepare_initial_data.py": "1cc4467bb4224632adea2a5ac87d602b285207b5c0d6bd63937a6bfdcf8d271c",
+    "tools/ApfsDataBuild.go": "724d883b538bf743b384d933b383e80b47c6cb27151096bc099d1f1562e4e035",
+    "tools/ApfsDataVerify.cpp": "38e8fa2564109bb894bb1c58874fa6f4a268b19640a58147450ea51e2b32c642",
+    "tools/ApfsDataInventory.cpp": "dee41b207cff7797fe8016f196fc626a5b38617ae327f144c53c0a903d0d68ef",
+    "tools/apfs-data.go.mod": "dfc79316d470dce28f76bfdb64d0704ca934251ce7a212c947b679b2b6be6579",
+    "tools/apfs-data.go.sum": "0f3915f00ac88cb1f2dfd27eea74cfe313d2d5c96429d55f1ba80eee89ea552e",
+    "patches/apfsprogs/0001-recognize-apple-decmpfs-signature.patch": "150cd8865ed03db549329c52ba9e3bddc4ff797ba2a2d5d0638a7a6aef6118a0",
+    "profiles/os/ios-16.7.16-20H392/data-image.json": "de8ade081a167e6d4cf38e246a9e3fd24939f440ebbeb7a52ba2fdc9a2cbc1dc",
+    "sources/UniXNU/drivers/DarwinBoot/Test/packed_ramdisk.py": "efb5fac21ae94dcb1aecd47da2b73a7112b487e43692ac6396858552d27a0e48"
+  },
+  "source_references": {
+    "apfs_writer_reference": {
+      "repository": "https://github.com/deploymenttheory/go-apfs-v2",
+      "revision": "2bd8a20b6bd2a4b6db2857d3f1d3412ca82ce036",
+      "path": "sources/go-apfs-v2",
+      "scope": "MIT host-only regular-file APFS v2 construction, not a kernel or replacement iPhone volume"
+    },
+    "apfs_checker_reference": {
+      "repository": "https://github.com/linux-apfs/apfsprogs",
+      "revision": "1bd1c1c2140d13d1b6d2e03379316572bee70aa3",
+      "path": "sources/apfsprogs",
+      "scope": "GPL-2.0 host-only APFS integrity checks; no code linked into XNU"
+    },
+    "apfs_readonly_reference": {
+      "repository": "https://github.com/sgan81/apfs-fuse",
+      "revision": "66b86bd525e8cb90f9012543be89b1f092b75cf3",
+      "path": "sources/apfs-fuse",
+      "lzfse_submodule": "e634ca58b4821d9f3d560cdc6df5dec02ffc93fd",
+      "scope": "host-only read-only image extraction; not the kernel APFS implementation"
+    },
+    "fajita_data_reference": {
+      "repository": "https://github.com/johnpanos/UniXNU-fajita",
+      "revision": "fb8c389bd9877d4db0ef6e09170b83752dec7259",
+      "path": "sources/UniXNU-fajita",
+      "scope": "Reference only for Linux seed format and no-role unencrypted seed; no OnePlus 6T board policy or identity copied"
+    }
+  },
+  "archive_report_sha256": "bf2a04448ba5861c2b6b4053753355570f9d1b254bba2db5c86480eca07353c2",
+  "source_archive_sha256": "c8260049b23bcc73abdf86104d7c055980dfbe271c3eaeb2b26fc2739488e73e",
+  "tool_dependencies_sha256": {
+    ".toolchains/go-apfs/go1.27.2.linux-amd64.tar.gz": "ecbadb99091a3f46e31f5f934b068b1864eafa7995211b39eaddf76996045fe5",
+    ".toolchains/go-apfs/go/bin/go": "548d3c32f83fa81152f543eb1526be7884cfe0526eb5e9ce29d3eca14786e7e0",
+    "/usr/bin/x86_64-linux-gnu-g++-11": "2360901d864cf10bfd6296e261cb2c14053552a80377761ab07146ec9ec9a2c0",
+    ".toolchains/apfs-readonly/libapfs.a": "ed90dddeba0ccfdbf369df6c3235759241ae74e715eb06e4f674ffdff1ad899c",
+    ".toolchains/apfs-readonly/liblzfse.a": "56be969f8b8b500c826789db6eeb134475e6afa75e3efa79eb23a6ea3edac8b9",
+    ".toolchains/apfs-readonly/libcrypto.a": "aa6bdad25c71c0e635cf87dae4e379ce4b3028338f66b42dd58d4ee02f207dbe",
+    ".toolchains/apfs-deps/usr/lib/x86_64-linux-gnu/libbz2.a": "1edd2e1321a5d878741b78cb8be0735523baa826eca9b7dba8b400d87f6c0eb7"
+  },
+  "artifacts": {
+    "build/ios16-data-apfs/data.apfs": "afb68554b7a849d85fa1562d6493f49aa59cc31648c7f137244478decc41b71e",
+    "build/ios16-data-apfs/data.dbr": "e559ad3252493008d053e0a9641ddb5eeaff9c3f5d121ee75ca1e23a31b1b0d6",
+    "build/ios16-data-apfs/readback.jsonl": "25644f600909607934324f9d4ce8f853afb2290ddb0a8542a7c30965c720ef9c",
+    "build/ios16-data-apfs/data-volume.config": "4dba3b1db501cdf372e608f40a7327cb64413f07a9e329a2c342bd8c8c63bc95",
+    "build/ios16-data-apfs/checker.json": "d734600722be2e8e385f85f8bbb6c2f6800256bbb9a5450b96278ac8ea16b39f",
+    "build/ios16-data-apfs/apfs-data-build": "4084cb00bb137f2973e4843a78d6f5d0a0f7196e0a19f95c14049236c5385f9f",
+    "build/ios16-data-apfs/apfs-data-verify": "8d09f7e1144087ad2e3f74a5235f7ee3f291e561444fca2d206dbb7488135874",
+    "build/ios16-data-apfs/apfsprogs-build/apfsck/apfsck": "f262da33a4c67da8d15ec71667c5b2c9d65d958e7768bf41a186a7637ebd6965",
+    "build/ios16-data-apfs/apfsprogs-apple-signature/apfsck/apfsck": "87fa42c7302c91373dcd8e89337a7627bffd83641f4231a19b1ee7003745628f"
+  },
+  "image": "build/ios16-data-apfs/data.apfs",
+  "image_bytes": 3221225472,
+  "image_sha256": "afb68554b7a849d85fa1562d6493f49aa59cc31648c7f137244478decc41b71e",
+  "packed_image": "build/ios16-data-apfs/data.dbr",
+  "packed_bytes": 721024,
+  "packed_metadata": {
+    "bytes": 3221225472,
+    "sha256": "9fae144d72304a2548d81f93701bc36e5db1b5c6a7500022e5112243c48633a8",
+    "encoded_bytes": 721024,
+    "encoded_sha256": "e559ad3252493008d053e0a9641ddb5eeaff9c3f5d121ee75ca1e23a31b1b0d6",
+    "packed": true
+  },
+  "packed_extents": 6,
+  "volume": {
+    "kind": "volume",
+    "container_uuid_hex": "1c7cf0c1916256a1b97dca43d84f9a77",
+    "volume_uuid_hex": "c5a60047cb255ef49fe844c65a1f0e63",
+    "block_bytes": 4096,
+    "bytes": 3221225472,
+    "role": 0,
+    "unencrypted": true,
+    "case_sensitive": true,
+    "normalization_insensitive": true,
+    "container_incompatible_features": 2,
+    "volume_features": 2,
+    "volume_incompatible_features": 8
+  },
+  "counts": {
+    "entries": 198,
+    "directories": 161,
+    "files": 36,
+    "symlinks": 1,
+    "unique_file_streams": 36,
+    "unique_file_bytes": 589907,
+    "extended_attribute_bytes": 27592
+  },
+  "compressed_files_preserved": 17,
+  "resource_forks_preserved": 5,
+  "volatile_sparse_ramblock_compatible_capacity": false,
+  "persistent_store_required_for_ramblock_writes": true,
+  "new_installation_uuid_profile_retained": true,
+  "original_inode_numbers_reassigned": true,
+  "original_file_contents_uid_gid_modes_four_timestamps_flags_protection_classes_xattrs_and_symlinks_preserved": true,
+  "all_contents_and_metadata_read_back": true,
+  "independent_apfsck_cw_passed": true,
+  "strict_apfsck_unknown_feature_qualification": true,
+  "strict_unmodified_apfsck_unknown_feature_qualification": false,
+  "strict_checker_overlay": {
+    "path": "patches/apfsprogs/0001-recognize-apple-decmpfs-signature.patch",
+    "sha256": "150cd8865ed03db549329c52ba9e3bddc4ff797ba2a2d5d0638a7a6aef6118a0",
+    "base_source_sha256": "3cebd2309632b821ea91886aed9e0d0b61074c51fe03303a4c67e9a8286b8988",
+    "output_source_sha256": "b6ee36984edc7ed130f8cc8b283086dfd5b29deecadeaf82fa2b152829d0bc5e",
+    "scope": "Host-only GPL-2.0 checker work-copy: recognize exactly Apple fpmc and historical zero compression signatures; retain unknown-signature refusals and all other strict checks."
+  },
+  "strict_checker_scope": "Pinned checker plus the locked exact fpmc signature compatibility edit, checked with -cuw and an unknown-signature refusal. The original unmodified checker passes -cw but reports fpmc as unknown with -u; no original file bytes were changed.",
+  "reproducible_image_verified": true,
+  "packed_entire_logical_image_read_back": true,
+  "negative_controls": [
+    {
+      "case": "parent-traversal",
+      "result": "REJECTED",
+      "reason": "invalid Data path"
+    },
+    {
+      "case": "negative-uid",
+      "result": "REJECTED",
+      "reason": "json: cannot unmarshal number -1 into Go struct field manifest.entries.10.uid of type uint32"
+    },
+    {
+      "case": "owner-overflow",
+      "result": "REJECTED",
+      "reason": "json: cannot unmarshal number 4294967296 into Go struct field manifest.entries.10.gid of type uint32"
+    },
+    {
+      "case": "blob-traversal",
+      "result": "REJECTED",
+      "reason": "invalid file blob"
+    },
+    {
+      "case": "file-content-pin",
+      "result": "REJECTED",
+      "reason": "file content differs"
+    },
+    {
+      "case": "protection-not-zero",
+      "result": "REJECTED",
+      "reason": "duplicate or unsupported Data metadata"
+    },
+    {
+      "case": "timestamp-overflow",
+      "result": "REJECTED",
+      "reason": "timestamp exceeds exact signed-nanosecond range"
+    },
+    {
+      "case": "inode-type-mismatch",
+      "result": "REJECTED",
+      "reason": "file mode differs"
+    },
+    {
+      "case": "unknown-flags",
+      "result": "REJECTED",
+      "reason": "duplicate or unsupported Data metadata"
+    },
+    {
+      "case": "compressed-without-xattr",
+      "result": "REJECTED",
+      "reason": "BSD compression flag disagrees with decmpfs storage: invalid argument"
+    },
+    {
+      "case": "symlink-target-mismatch",
+      "result": "REJECTED",
+      "reason": "symlink attribute differs"
+    },
+    {
+      "case": "existing-output",
+      "result": "REJECTED",
+      "existing_bytes_unchanged": true
+    },
+    {
+      "case": "symbolic-output",
+      "result": "REJECTED",
+      "existing_bytes_unchanged": true
+    },
+    {
+      "case": "container-checksum",
+      "result": "REJECTED",
+      "reason": "Command '[PosixPath('build/ios16-data-apfs/apfs-data-verify'), PosixPath('build/ios16-data-apfs/candidate-bihs4rst/container-checksum.apfs'), PosixPath('build/ios16-data-apfs/candidate-bihs4rst/container-checksum-readback/blobs')]' returned non-zero exit status 1."
+    },
+    {
+      "case": "plain-payload-byte",
+      "result": "REJECTED",
+      "reason": "Data content differs: MobileAsset/PreinstalledAssetsV2/InstallWithOs/com_apple_MobileAsset_CoreAS/1d2111630fc9db4987eac0118a22245c6b478a00.asset/AssetData/anchor.cfg"
+    },
+    {
+      "case": "volume-uuid-checksummed",
+      "result": "REJECTED",
+      "reason": "Data volume identity changed"
+    },
+    {
+      "case": "invalid-compression-signature-checksummed",
+      "result": "REJECTED",
+      "reason": "Data metadata differs: MobileAsset/PreinstalledAssetsV2/InstallWithOs/com_apple_MobileAsset_CarExperienceAssets/d2acc0c08510f6d15948758cf22a6ea6e6097e2a.asset/AssetData/CarPlayAppBlacklist.plist / xattrs_hex"
+    }
+  ],
+  "data_protection_keys_created": false,
+  "settings_or_activation_state_changed": false,
+  "source_symlinks_followed": false,
+  "host_ownership_or_xattrs_changed": false,
+  "original_os_modified": false,
+  "image_contains_gpt": false,
+  "physical_partition_created_or_modified": false,
+  "block_devices_opened": false,
+  "filesystem_mounted": false,
+  "phone_operations": "none",
+  "default_boot_image_replaced": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "writable_data_runtime_qualified": false,
+  "scope": "Linux user-space creation of a fresh reproducible APFS v2 regular-file Data container and DBRDISK1 seed. Exact original initial Data payloads, metadata, compressed representations and resource forks are read back by the independent pinned apfs-fuse implementation. One case-sensitive, unencrypted volume with no role and newly fixed installation UUIDs; this is a local seed, not a phone partition or authenticated/writable iOS runtime."
+}

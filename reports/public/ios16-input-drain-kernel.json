@@ -1,0 +1,1518 @@
+{
+  "result": "IOS16_PRELINKED_INPUT_GATED_STOP_AND_REENTRANT_TICK_DRAIN_CPU_PASS",
+  "builder_sha256": "e027b54e6b36cc4a862fc8c72301d5333413014c50b9e7662d1414940437a1a7",
+  "source_sha256": {
+    "scripts/check_input_drain_kernel.py": "e027b54e6b36cc4a862fc8c72301d5333413014c50b9e7662d1414940437a1a7",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "drivers/DodgeInput/DodgeInput.cpp": "45235ca498af9899e796bba818425d1742d78ab00078e912f983731182f97d25",
+    "sources/UniXNU-Pagani-Drivers/drivers/PaganiInput/S3910.c": "08f077408f77d12a46a4a1f55cf23fc80f796a87be054dbf64f7d5b99d6242b8",
+    "sources/UniXNU-Pagani-Drivers/drivers/PaganiInput/Mapping.h": "a05641f72a7d6a525dd1629055b7a2f6ce4f6f6458934f1ee9ac63308300e780"
+  },
+  "source_report_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
+  "prelink_report_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+  "candidate": "build/cph2653-input-prelink/kernel.macho",
+  "candidate_sha256": "be0b18ce8c30d2b9a257477aadb51795dcd7165523520e19372998c7688c3b7e",
+  "case_count": 27,
+  "cases": [
+    {
+      "case": "stop-keys",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "remove"
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 144,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "stop-touch",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "remove"
+        ],
+        [
+          "report",
+          "0302036400c80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0302036400c80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "native_instructions_visited": 230,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "stop-repeat",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "remove"
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 144,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "stop-unadded-timer",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 139,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "stop-no-timer",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 129,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "stop-parent-not-started",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "remove"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [],
+      "native_instructions_visited": 123,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "stop-no-loop",
+      "result": "PASS",
+      "events": [],
+      "reports": [],
+      "native_instructions_visited": 12,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "stop-null-provider",
+      "result": "PASS",
+      "events": [],
+      "reports": [],
+      "native_instructions_visited": 9,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "stop-reentrant-parent",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "remove"
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          2
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          2
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 144,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "tick-after-stop",
+      "result": "PASS",
+      "events": [],
+      "reports": [],
+      "native_instructions_visited": 27,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "tick-already-active",
+      "result": "PASS",
+      "events": [],
+      "reports": [],
+      "native_instructions_visited": 32,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "tick-touch-normal",
+      "result": "PASS",
+      "events": [
+        [
+          "poll"
+        ],
+        [
+          "report",
+          "030309d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        [
+          "reschedule",
+          8
+        ]
+      ],
+      "reports": [
+        "030309d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "native_instructions_visited": 208,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "tick-touch-send-failed",
+      "result": "PASS",
+      "events": [
+        [
+          "poll"
+        ],
+        [
+          "report",
+          "030309d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        [
+          "reschedule",
+          8
+        ]
+      ],
+      "reports": [
+        "030309d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "native_instructions_visited": 198,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "tick-touch-reentrant-stop",
+      "result": "PASS",
+      "events": [
+        [
+          "poll"
+        ],
+        [
+          "report",
+          "030309d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          2
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "remove"
+        ],
+        [
+          "retain",
+          1245248
+        ],
+        [
+          "gate-leave",
+          2
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "report",
+          "030209d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "release",
+          1245248
+        ]
+      ],
+      "reports": [
+        "030309d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "030209d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "native_instructions_visited": 407,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "tick-touch-reentrant-stop-send-failed",
+      "result": "PASS",
+      "events": [
+        [
+          "poll"
+        ],
+        [
+          "report",
+          "030309d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          2
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "remove"
+        ],
+        [
+          "retain",
+          1245248
+        ],
+        [
+          "gate-leave",
+          2
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "release",
+          1245248
+        ]
+      ],
+      "reports": [
+        "030309d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "native_instructions_visited": 361,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "tick-touch-reentrant-stop-twice",
+      "result": "PASS",
+      "events": [
+        [
+          "poll"
+        ],
+        [
+          "report",
+          "030309d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          2
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "remove"
+        ],
+        [
+          "retain",
+          1245248
+        ],
+        [
+          "gate-leave",
+          2
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          2
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          2
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "report",
+          "030209d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "release",
+          1245248
+        ]
+      ],
+      "reports": [
+        "030309d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "030209d2042e1600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "native_instructions_visited": 408,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "tick-touch-error",
+      "result": "PASS",
+      "events": [
+        [
+          "poll"
+        ],
+        [
+          "reschedule",
+          8
+        ]
+      ],
+      "reports": [],
+      "native_instructions_visited": 126,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "start-null-provider",
+      "result": "PASS",
+      "events": [],
+      "reports": [],
+      "native_instructions_visited": 3,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "start-existing-loop",
+      "result": "PASS",
+      "events": [],
+      "reports": [],
+      "native_instructions_visited": 13,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "start-stop-requested",
+      "result": "PASS",
+      "events": [],
+      "reports": [],
+      "native_instructions_visited": 15,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "start-live-success",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "memory",
+          205520896,
+          12288
+        ],
+        [
+          "release",
+          5242944
+        ],
+        [
+          "memory",
+          205705216,
+          16384
+        ],
+        [
+          "release",
+          5308480
+        ],
+        [
+          "memory",
+          205783040,
+          524288
+        ],
+        [
+          "release",
+          5374016
+        ],
+        [
+          "spmi-command",
+          1,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          4
+        ],
+        [
+          "spmi-command",
+          2,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          64
+        ],
+        [
+          "spmi-command",
+          2,
+          70
+        ],
+        [
+          "parent-start"
+        ],
+        [
+          "timer-create"
+        ],
+        [
+          "add"
+        ],
+        [
+          "reschedule",
+          1
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "remove"
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 656,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "start-live-parent-failure",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "memory",
+          205520896,
+          12288
+        ],
+        [
+          "release",
+          5242944
+        ],
+        [
+          "memory",
+          205705216,
+          16384
+        ],
+        [
+          "release",
+          5308480
+        ],
+        [
+          "memory",
+          205783040,
+          524288
+        ],
+        [
+          "release",
+          5374016
+        ],
+        [
+          "spmi-command",
+          1,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          4
+        ],
+        [
+          "spmi-command",
+          2,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          64
+        ],
+        [
+          "spmi-command",
+          2,
+          70
+        ],
+        [
+          "parent-start"
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 551,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "start-live-parent-failure-stop",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "memory",
+          205520896,
+          12288
+        ],
+        [
+          "release",
+          5242944
+        ],
+        [
+          "memory",
+          205705216,
+          16384
+        ],
+        [
+          "release",
+          5308480
+        ],
+        [
+          "memory",
+          205783040,
+          524288
+        ],
+        [
+          "release",
+          5374016
+        ],
+        [
+          "spmi-command",
+          1,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          4
+        ],
+        [
+          "spmi-command",
+          2,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          64
+        ],
+        [
+          "spmi-command",
+          2,
+          70
+        ],
+        [
+          "parent-start"
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          2
+        ],
+        [
+          "retain",
+          1245248
+        ],
+        [
+          "gate-leave",
+          2
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "release",
+          1245248
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 627,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "start-live-parent-failure-stop-twice",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "memory",
+          205520896,
+          12288
+        ],
+        [
+          "release",
+          5242944
+        ],
+        [
+          "memory",
+          205705216,
+          16384
+        ],
+        [
+          "release",
+          5308480
+        ],
+        [
+          "memory",
+          205783040,
+          524288
+        ],
+        [
+          "release",
+          5374016
+        ],
+        [
+          "spmi-command",
+          1,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          4
+        ],
+        [
+          "spmi-command",
+          2,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          64
+        ],
+        [
+          "spmi-command",
+          2,
+          70
+        ],
+        [
+          "parent-start"
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          2
+        ],
+        [
+          "retain",
+          1245248
+        ],
+        [
+          "gate-leave",
+          2
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          2
+        ],
+        [
+          "gate-leave",
+          2
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "release",
+          1245248
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 628,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "start-live-parent-success-stop",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "memory",
+          205520896,
+          12288
+        ],
+        [
+          "release",
+          5242944
+        ],
+        [
+          "memory",
+          205705216,
+          16384
+        ],
+        [
+          "release",
+          5308480
+        ],
+        [
+          "memory",
+          205783040,
+          524288
+        ],
+        [
+          "release",
+          5374016
+        ],
+        [
+          "spmi-command",
+          1,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          4
+        ],
+        [
+          "spmi-command",
+          2,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          64
+        ],
+        [
+          "spmi-command",
+          2,
+          70
+        ],
+        [
+          "parent-start"
+        ],
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          2
+        ],
+        [
+          "retain",
+          1245248
+        ],
+        [
+          "gate-leave",
+          2
+        ],
+        [
+          "release",
+          1114176
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "release",
+          1245248
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 620,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "start-live-timer-failure",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "memory",
+          205520896,
+          12288
+        ],
+        [
+          "release",
+          5242944
+        ],
+        [
+          "memory",
+          205705216,
+          16384
+        ],
+        [
+          "release",
+          5308480
+        ],
+        [
+          "memory",
+          205783040,
+          524288
+        ],
+        [
+          "release",
+          5374016
+        ],
+        [
+          "spmi-command",
+          1,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          4
+        ],
+        [
+          "spmi-command",
+          2,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          64
+        ],
+        [
+          "spmi-command",
+          2,
+          70
+        ],
+        [
+          "parent-start"
+        ],
+        [
+          "timer-create"
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 561,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    },
+    {
+      "case": "start-live-add-failure",
+      "result": "PASS",
+      "events": [
+        [
+          "retain",
+          1114176
+        ],
+        [
+          "gate-enter",
+          1
+        ],
+        [
+          "memory",
+          205520896,
+          12288
+        ],
+        [
+          "release",
+          5242944
+        ],
+        [
+          "memory",
+          205705216,
+          16384
+        ],
+        [
+          "release",
+          5308480
+        ],
+        [
+          "memory",
+          205783040,
+          524288
+        ],
+        [
+          "release",
+          5374016
+        ],
+        [
+          "spmi-command",
+          1,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          4
+        ],
+        [
+          "spmi-command",
+          2,
+          5
+        ],
+        [
+          "spmi-command",
+          2,
+          64
+        ],
+        [
+          "spmi-command",
+          2,
+          70
+        ],
+        [
+          "parent-start"
+        ],
+        [
+          "timer-create"
+        ],
+        [
+          "add"
+        ],
+        [
+          "report",
+          "0200"
+        ],
+        [
+          "parent-stop"
+        ],
+        [
+          "cancel"
+        ],
+        [
+          "gate-leave",
+          1
+        ],
+        [
+          "release",
+          1114176
+        ]
+      ],
+      "reports": [
+        "0200"
+      ],
+      "native_instructions_visited": 574,
+      "provider_and_resource_references_balanced": true,
+      "actual_source_stop_and_tick": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "source-stop-return-without-drain",
+      "result": "REJECTED",
+      "check": "Source stop did not serialize and drain the active device"
+    }
+  ],
+  "compiler_derived_layout": {
+    "instance_bytes": 1560,
+    "loop": 208,
+    "timer": 216,
+    "touch": 232,
+    "running": 233,
+    "timerAdded": 234,
+    "starting": 235,
+    "parentCleanupPending": 236,
+    "tickActive": 237,
+    "stopRequested": 238,
+    "parentStopping": 239,
+    "pendingStopProvider": 240,
+    "hardwareTouched": 514,
+    "previous": 1368,
+    "lastButtons": 1456,
+    "controller": 784,
+    "touchPhase": 1532,
+    "controller_ready": 828,
+    "attn_base": 496,
+    "frame_bytes": 60,
+    "contact_bytes": 6
+  },
+  "access_annotation_text_identical_to_production": true,
+  "reference_object": "build/ios16-input-drain-abi/DodgeInput.o",
+  "reference_object_sha256": "3d6fd4aaf0f4d575311a70e205b62fc2d4493f58db77de67c3ae58ff4696e1f5",
+  "cpu_cases": "build/cph2653-input-prelink/drain-cpu-cases.json",
+  "cpu_cases_sha256": "837d6f51d4af609040d077a612e9bffc0f7f1033c51d9d1548fdcee92dd8d367",
+  "gated_stop_and_tick_drain_implemented": true,
+  "reentrant_stop_defers_parent_until_tick_exit": true,
+  "deferred_provider_pin_balanced": true,
+  "no_timer_reschedule_after_stop": true,
+  "iokit_gate_timer_mapping_lifetime_original_parent_start_stop_and_hid_submission_are_peers": true,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "scope": "Actual current linked ARM64 source stop/actions/cleanup/timer callbacks and S3910 report construction, with production-identical compiler access annotation and owned allocation canaries. Reentrant report and parent-stop callbacks exercise deferred stop, final release, provider retention, repeats and timer policy. Concrete source key startup and SPMI discovery/read helper execute against an observer bus peer. IOKit gate/timer/mapping/refcount, native touch poll, HID submission, diagnostic formatting and original parent start/stop are explicit peers; no scheduler, full original start/stop or hardware qualification."
+}

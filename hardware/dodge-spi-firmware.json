@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "device": "OnePlus 13 CPH2653 / SM8750",
+  "stock_version": "CPH2653_16.0.1.304(EX01)",
+  "source_module": {
+    "path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/modules/uefi/7a32bd23-f735-4f57-aa1a-447d2fe3be0d/f0777383073f8699a021814bb74b907ae27ab8f7ff145f780c24fcb3717997ed.efi",
+    "sha256": "f0777383073f8699a021814bb74b907ae27ab8f7ff145f780c24fcb3717997ed",
+    "guid": "7a32bd23-f735-4f57-aa1a-447d2fe3be0d",
+    "name": "SPI",
+    "bytes": 61440
+  },
+  "payload": {
+    "module_file_offset": "0xc87c",
+    "bytes": 2141,
+    "sha256": "3ea1a3aa89bd68e76491e3a2a55f46ba674cf4f96f11b1eb10a46c5fe853951e",
+    "format": "raw SEFW v1",
+    "qup_hardware_version": "0x40000000",
+    "protocol": 1,
+    "firmware_version": 2818,
+    "configuration_version": 9,
+    "words": 442,
+    "configurations": 69
+  },
+  "independent_stock_module_comparison": {
+    "path": ".cache/stock-cph2653-16.0.1.304/boot-firmware/modules/uefi/04de8591-d2b3-4077-bbbe-b12070094eb6/bd5f804774194d7b4930ddcf624d88000090aed1934c584dc64b165cdf414830.efi",
+    "sha256": "bd5f804774194d7b4930ddcf624d88000090aed1934c584dc64b165cdf414830",
+    "offset": "0xc87c",
+    "payload_identical": true
+  },
+  "origin": "Same hash-pinned public OEM UEFI extracted by audit_stock_uefi.py; vendor.img has no named QUP/SPI firmware file in /firmware.",
+  "oem_signature_authenticated": false,
+  "runtime_loaded": false,
+  "hardware_tested": false,
+  "scope": "Exact original QUP4.0 SPI SEFW data; binary is not distributed. Loading is restricted to an empty idle matching serial engine with no GPI/DMA ownership."
+}

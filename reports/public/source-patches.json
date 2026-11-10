@@ -1,0 +1,73 @@
+{
+  "result": "PASS",
+  "sources": [
+    {
+      "source": "unixnu",
+      "revision": "3fa5ff5f409398c0555a9561d6437ce5d4c3b3b7",
+      "patches": [
+        {
+          "path": "patches/unixnu/0001-device-ios-profiles-and-linux-target.patch",
+          "sha256": "0a8b8ce61b18ef3a18ddce17afd95239f2502888f9dec3baaa3b8710ba2b8fc6"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "source": "darwinboot",
+      "revision": "3c75734014cdab0acd9541e88057b7606ee7ae08",
+      "patches": [
+        {
+          "path": "patches/darwinboot/0001-select-darwin22-boot-args.patch",
+          "sha256": "dea4b452e49dca6415f54c23360000101473fa05df660428a456dfd618fee82c"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "source": "iig_port",
+      "revision": "ea6d147d668ca15d490da638012243fcd705f30d",
+      "patches": [
+        {
+          "path": "sources/UniXNU/scripts/linux/iig-port-darwin-target.patch",
+          "sha256": "07a649ca2fdef2ae401669668804e78ac192411e63f9e41f0988df02e84e1037"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "source": "xnuprelink",
+      "revision": "b1888c12456c46a2226d63c794465dfcee08d465",
+      "patches": [
+        {
+          "path": "patches/xnuprelink/0001-iphone16-libm-literal-pool.patch",
+          "sha256": "beb121ce3c25da3d01e48e08813310d39feefeeba3f986fd8583cdddd18748f1"
+        },
+        {
+          "path": "patches/xnuprelink/0002-reviewed-early-security-initializers.patch",
+          "sha256": "76cc7a752d3e230914d81534a2b446244a5a9fb92884a180d8459b8068f1c94c"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "source": "uefi",
+      "revision": "6b3d90b79e191e08171bfedd3980234a7e49d340",
+      "patches": [
+        {
+          "path": "patches/mu-silicium/0001-cph2653-16.0.1.304-reserve-memory-holes.patch",
+          "sha256": "e1704c5fb2f9ae254d723fd0390f7fbe02e77c97fd8d1dae5ccb9c515bfa380f"
+        },
+        {
+          "path": "patches/mu-silicium/0002-dodge-embed-unixnu-menu.patch",
+          "sha256": "98fc0c623bb2ce863035385e11961d6aefefbcd2dfecbeea63f21bcfe84fad96"
+        },
+        {
+          "path": "patches/mu-silicium/0003-bootshim-header-include-shim-size.patch",
+          "sha256": "4f65d92ee0e794ad2008a8f31b48ccbc48844bca27ec108aa9634bdd6d947dcc"
+        }
+      ],
+      "result": "PASS"
+    }
+  ],
+  "scope": "Strict application on clean pinned copies, including the IIG patch restored by the core overlay; working source edits preserved."
+}

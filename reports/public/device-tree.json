@@ -1,0 +1,24 @@
+{
+  "result": "PASS",
+  "hardware_dtb": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/device-tree/hardware.dtb",
+  "adt": "build/unixnu/dodge/ios-16.7.16-20H392/dodge/device-tree/dodge-iphone.adt",
+  "bytes": 11524,
+  "sha256": "94f317eb373446c089fc0d21adb84a523c50ac139b04105bd514e382f5d6cb73",
+  "model": "iPhone10,3",
+  "target_type": "D22",
+  "idiom": "phone",
+  "display_scale": 3,
+  "compatible": [
+    "D22AP",
+    "iPhone10,3",
+    "AppleARM",
+    "oneplus,dodge",
+    "qcom,sm8750"
+  ],
+  "enabled_cpu_count": 1,
+  "owned_memory_bytes": 4294967296,
+  "private_platform_seed_persisted": true,
+  "private_platform_seed_disclosed": false,
+  "random_seed_regenerated": true,
+  "hardware_tested": false
+}

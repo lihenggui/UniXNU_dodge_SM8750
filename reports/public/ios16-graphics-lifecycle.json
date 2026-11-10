@@ -1,0 +1,530 @@
+{
+  "result": "IOS16_ORIGINAL_GRAPHICS_MODULE_PREPARATION_AND_ATTACHMENT_SOURCE_PASS",
+  "builder_sha256": "2a069cff70f79910a440ef13a2aeefe20e2f24fb3402bc148c71fea12e56fdb1",
+  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "source_sha256": {
+    "scripts/build_graphics_lifecycle.py": "2a069cff70f79910a440ef13a2aeefe20e2f24fb3402bc148c71fea12e56fdb1",
+    "scripts/prepare_graphics_lifecycle.py": "68fa113dab6269e203fff2722b2bc516d74946db50eef7b3634821d61b143c33",
+    "scripts/check_graphics_lifecycle_host.py": "5e9434b8a29facfcc6302d1136fa8431786340e876ec3f6073c52bf7dd1a44f9",
+    "scripts/check_ios16_graphics.py": "d73ad7da5a776132097a1e5c46e3f580be684d89d1439f6c0a3dca53b39f9b08",
+    "scripts/check_gpu_link.py": "f3f1eefd63a7ed5e9c53122d479e991a54b3fb1bc0efbfe7ce90102eab4e61f5",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "profiles/os/ios-16.7.16-20H392/graphics-modules.json": "2755bef2455f569cfa9a0db7c76fd1c3b01c22984165082a6c6252069ec58573",
+    "profiles/os/ios-16.7.16-20H392/graphics/OriginalGraphicsModulesABI.h": "a3c5723beb74810418c23c9c5ede849631d9e9a2c876483310e2cda8bc0c0c1b",
+    "drivers/DodgeDisplay/DodgeGraphicsLifecycle.cpp": "0ae31b963fa7968e4756918d2d242a624f9f17bc688b17ea62648800490462e7",
+    "drivers/DodgeDisplay/DodgeGraphicsLifecycle.h": "d549af557435d75a97f992dbddeb4f3738d267575d8e9bf5f8c82c33abce0638",
+    "drivers/DodgeDisplay/DodgeIPhoneFramebuffer.h": "111ab2d7649350095e66f0d436739a17c0e1d30c5f96a1ea23669181b10b0b0b",
+    "drivers/DodgeDisplay/DodgeGraphicsBoot.cpp": "c39d8c114444b149d5bdd22a9948258e923d1c5808fa359195b33cf8f636c279",
+    "drivers/DodgeDisplay/DodgeGraphicsBoot.h": "294bbdc266b889e52da5b64d9e87331a41e0f93aa7e9a9609616c09623d0c989",
+    "scripts/check_graphics_boot_host.py": "70e821eb05bc1867aa5d59f0defac976d10a910b7b407e1bf5dd557e345b759f",
+    "tests/DodgeGraphicsBootTest.cpp": "e8e841f45405a73d3452949bd055793098e6662a0ecdb4247b809d0b3ead4b53",
+    "tests/DodgeGraphicsLifecycleTest.cpp": "f5667e82a089e763660b521058858d3abdda7001a18b36d38e003cf280bc18c9",
+    "tests/graphics_lifecycle_include/IOKit/IOService.h": "1705a2b81afb03d078e5a5df70863a63412269c604f9204f292053faefd8681d",
+    "tests/graphics_lifecycle_include/libkern/c++/OSKext.h": "f5f0ade62aa85d3aeb3920f2ccbd6c76367ceb162e9500366379c9921abd2410",
+    "tests/graphics_lifecycle_include/libkern/c++/OSMetaClass.h": "28c45eed0d31d45b33a8d42cab1caf9edfae75b35604f64830f26ed18caf90eb",
+    "tests/graphics_lifecycle_include/libkern/c++/OSSymbol.h": "33126374d4f2d8001c07e126afc32ad20ea0bdc12d47266ca0ad6d3997b0a720",
+    "tests/graphics_lifecycle_include/mach/kmod.h": "ea8dcf8fe054294a5796f0e5850aedaaa982f4134ec6d86841eeabbfba8a6e35",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/c++/OSKext.cpp": "7a19afba181b487b9b52f8bbd54c5952f56daf13ebe0c1cc69fc292ac7214fb7",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/c++/OSRuntime.cpp": "afe4ed3a7d301627f5f9daac14991db67e043424e6f705476abb8a9476f5a5ad",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/c++/OSMetaClass.cpp": "51756a6faa01cf564dd5761eb2113caa850a401b31806d2f87ca4e8a5a864243",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/libkern/c++/OSKext.h": "8631ae1d96ac7de66e8e0e1e9c2b1567e2444e26713aab7134f1adee347aa5c7",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/libkern/c++/OSMetaClass.h": "0b47cb07db5854013123fce2972592d63997c8a7bced80b7365bb04af4614647",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/IOKit/IOService.h": "098ea1df1d596ada6dcd031af8f6c3e9b66ff2f2a93e6631dbba6cac3dd2bfe8",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/Kernel/IOService.cpp": "f6052eea56933fb7960949de267f6b7434f22c65f1702baac7cf077eff17fcd9"
+  },
+  "service_report_sha256": "f02c15124a1a0f722409f79c00ec554b4e10952b358157dfff73341db50f0c97",
+  "contract": "profiles/os/ios-16.7.16-20H392/graphics-modules.json",
+  "contract_sha256": "2755bef2455f569cfa9a0db7c76fd1c3b01c22984165082a6c6252069ec58573",
+  "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalGraphicsModulesABI.h",
+  "header_sha256": "a3c5723beb74810418c23c9c5ede849631d9e9a2c876483310e2cda8bc0c0c1b",
+  "archive": "build/ios16-graphics-lifecycle/libDodgeGraphicsLifecycle.a",
+  "archive_sha256": "98d1e5e927d0207c6ad5ad1ac35e54a754a74c50c323acbe89c72181fb547d59",
+  "objects": [
+    {
+      "path": "build/ios16-graphics-lifecycle/DodgeGraphicsLifecycle.o",
+      "sha256": "eac5a696c686336020c138dc6fa6719ba62991bc32719b0053a6526985e30f5c"
+    },
+    {
+      "path": "build/ios16-graphics-lifecycle/DodgeGraphicsBoot.o",
+      "sha256": "eeda64a4a0af4a22dfa1322e2e3ca38d009e5595382e0f2b99b2498baa3852ed"
+    },
+    {
+      "path": "build/ios16-graphics-lifecycle/original-graphics-metadata.o",
+      "sha256": "916bb346f210ecac092d7a2e9107fba13b393f8708088eb4e1f093543c949ab5"
+    }
+  ],
+  "compile_manifest": "build/ios16-graphics-lifecycle/compile-commands.json",
+  "compile_manifest_sha256": "3916e42f848dafce6992e8db608cb84b4a520896ba8a04e7eec08ceab6ecbab0",
+  "imports": {
+    "defined": [
+      "_dodge_graphics_acquire_root",
+      "_dodge_graphics_attach",
+      "_dodge_graphics_boot",
+      "_dodge_graphics_boot_status",
+      "_dodge_graphics_prepare",
+      "_dodge_graphics_status",
+      "_dodge_original_graphics_accelerator_meta",
+      "_dodge_original_graphics_legacy_meta",
+      "_dodge_original_graphics_surface_meta"
+    ],
+    "native_public_imports": [
+      "__ZN11OSMetaClass10preModLoadEPKc",
+      "__ZN11OSMetaClass11postModLoadEPv",
+      "__ZN11OSMetaClass21copyMetaClassWithNameEPK8OSSymbol",
+      "__ZN6OSKext22loadKextWithIdentifierEPKcbbhhP7OSArray",
+      "__ZN8OSSymbol17withCStringNoCopyEPKc",
+      "__ZN9IOService12nameMatchingEPKcP12OSDictionary",
+      "__ZN9IOService19copyMatchingServiceEP12OSDictionary",
+      "__ZNK11OSMetaClass12getClassSizeEv",
+      "__ZNK11OSMetaClass16releaseMetaClassEv",
+      "__ZNK15OSMetaClassBase8metaCastEPKc",
+      "__ZNK9IOService10isInactiveEv",
+      "_g_kernel_kmod_info"
+    ],
+    "native_static_link_only_imports": [],
+    "required_board_or_original_imports": [
+      "__Z33dodge_iphone_framebuffer_allocatev",
+      "__Z35dodge_iphone_framebuffer_initializev",
+      "__Z35dodge_iphone_framebuffer_registeredv",
+      "_dodge_gpu_start"
+    ],
+    "optional_weak_imports": []
+  },
+  "original_metadata_aliases": {
+    "_dodge_original_graphics_surface_meta": "0xfffffff006a1e578",
+    "_dodge_original_graphics_accelerator_meta": "0xfffffff006bb6448",
+    "_dodge_original_graphics_legacy_meta": "0xfffffff006a45540"
+  },
+  "host_tests": {
+    "result": "PASS",
+    "cases": [
+      {
+        "case": "loader-failure-0",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "loader-failure-1",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "loader-failure-2",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "symbol-failure-0",
+        "result": "PASS",
+        "loads": 1,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "symbol-failure-1",
+        "result": "PASS",
+        "loads": 2,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "symbol-failure-2",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "metadata-missing-0",
+        "result": "PASS",
+        "loads": 1,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "metadata-missing-1",
+        "result": "PASS",
+        "loads": 2,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "metadata-missing-2",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "metadata-wrong-0",
+        "result": "PASS",
+        "loads": 1,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "metadata-wrong-1",
+        "result": "PASS",
+        "loads": 2,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "metadata-wrong-2",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "metadata-size-0",
+        "result": "PASS",
+        "loads": 1,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "metadata-size-1",
+        "result": "PASS",
+        "loads": 2,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "metadata-size-2",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "success",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "reentrant-prepare",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "concurrent-prepare",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "pre-failure",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 0,
+        "post_calls": 0
+      },
+      {
+        "case": "constructor-refused",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "post-failure",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "registration-missing",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "allocate-failure",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "init-failure",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "attach-failure",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "start-failure",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "deferred-start-failure",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "reentrant-attach",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "surface-root-missing",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "surface-root-inactive",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "surface-root-wrong-class",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "matching-allocation-failed",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      },
+      {
+        "case": "provider-wrong-class",
+        "result": "PASS",
+        "loads": 3,
+        "constructors": 1,
+        "post_calls": 1
+      }
+    ],
+    "case_count": 33,
+    "loader_metadata_and_concrete_display_are_peers": true
+  },
+  "host_binary": "build/ios16-graphics-lifecycle/graphics-lifecycle-host",
+  "host_binary_sha256": "adf159f266937334b339fe80cabefa888b1332083598343a664e8651d532abf3",
+  "boot_host_tests": {
+    "result": "PASS",
+    "case_count": 24,
+    "cases": [
+      {
+        "case": "success",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "null-out",
+        "result": "PASS",
+        "hardware_calls": 0,
+        "display_calls": 0
+      },
+      {
+        "case": "null-provider",
+        "result": "PASS",
+        "hardware_calls": 0,
+        "display_calls": 0
+      },
+      {
+        "case": "prepare-cold-error",
+        "result": "PASS",
+        "hardware_calls": 0,
+        "display_calls": 0
+      },
+      {
+        "case": "prepare-loading-busy",
+        "result": "PASS",
+        "hardware_calls": 0,
+        "display_calls": 0
+      },
+      {
+        "case": "prepare-latched-error",
+        "result": "PASS",
+        "hardware_calls": 0,
+        "display_calls": 0
+      },
+      {
+        "case": "root-missing",
+        "result": "PASS",
+        "hardware_calls": 0,
+        "display_calls": 0
+      },
+      {
+        "case": "root-wrong-provider",
+        "result": "PASS",
+        "hardware_calls": 0,
+        "display_calls": 0
+      },
+      {
+        "case": "root-allocation-fail",
+        "result": "PASS",
+        "hardware_calls": 0,
+        "display_calls": 0
+      },
+      {
+        "case": "root-null-on-success",
+        "result": "PASS",
+        "hardware_calls": 0,
+        "display_calls": 0
+      },
+      {
+        "case": "gpu-failure",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 0
+      },
+      {
+        "case": "gpu-refused",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 0
+      },
+      {
+        "case": "attach-failure",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "display-null-on-success",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "root-disappears-after-gpu",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "retry-root",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "retry-prepare",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "reentry-prepare",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "reentry-root",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "reentry-gpu",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "reentry-attach",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "reentry-retain",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "reentry-release",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      },
+      {
+        "case": "concurrent-gpu",
+        "result": "PASS",
+        "hardware_calls": 1,
+        "display_calls": 1
+      }
+    ],
+    "module_gpu_display_and_iokit_are_peers": true,
+    "real_hardware_started": false
+  },
+  "boot_host_binary": "build/ios16-graphics-lifecycle/graphics-boot-host",
+  "boot_host_binary_sha256": "04748b07525c2a9ed2b6b77f49c39d0feaaf93c92f98105710f6302e5a19cfd1",
+  "explicit_module_gpu_display_boot_coordinator_built": true,
+  "boot_preflight_before_hardware": true,
+  "boot_retains_provider_and_surface_root": true,
+  "boot_pre_hardware_failure_retryable": true,
+  "boot_hardware_attempt_and_failure_one_shot": true,
+  "boot_entry_invoked_on_kernel": false,
+  "loader_order": [
+    "com.apple.iokit.IOSurface",
+    "com.apple.iokit.IOGPUFamily",
+    "com.apple.iokit.IOMobileGraphicsFamily"
+  ],
+  "original_constructor_entries": 53,
+  "uses_real_OSKext_dependency_start_and_CPP_initialization": true,
+  "deferred_userspace_load_disabled": true,
+  "non_surface_personality_matching_disabled": true,
+  "surface_root_personality_matching_requested": true,
+  "surface_root_nonblocking_preflight": true,
+  "surface_root_retained_during_attach": true,
+  "exact_original_provider_hierarchy_required": true,
+  "surface_root_runtime_termination_race_qualified": false,
+  "exact_metaclass_identity_and_size_required": true,
+  "metaclass_unload_pins_held_after_owned_construction": true,
+  "preModLoad_uses_existing_kernel_owner": true,
+  "postModLoad_required_before_allocation": true,
+  "concurrent_and_reentrant_preparation_refused": true,
+  "metadata_phase_failure_latched": true,
+  "explicit_prepare_then_attach": true,
+  "one_display_start_attempt_per_boot": true,
+  "failed_start_uses_concrete_deferred_detach": true,
+  "early_initializer_present": false,
+  "gpu_hardware_started_by_prepare": false,
+  "original_loader_executed_on_kernel": false,
+  "original_full_start_stop_executed": false,
+  "runtime_provider_registered": false,
+  "default_kernel_selected": false,
+  "hardware_tested": false,
+  "scope": "Native source build and 33 sanitized orchestration plus 24 explicit boot ordering/ownership cases with API peers. Derives exact originals, loads real libraries before Kernel-owned deferred class registration, and exposes explicit init/attach/start with failure cleanup. Requests original IOSurfaceRoot matching and rejects absent/inactive/wrong-class roots before entering the original unbounded wait; requires the original provider hierarchy. Unified boot prepares modules, holds real provider/root through synchronous board startup, then attaches display; all hardware attempts are one-shot. No module entrypoint or service has been invoked on a kernel; matching/termination races, physical power, actual parent lifecycle and runtime ABI remain unqualified."
+}

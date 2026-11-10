@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "device": "CPH2653",
+  "firmware": "CPH2653_16.0.1.304(EX01)",
+  "ota_id": "CPH2653_11.F.80_2800_202511110338",
+  "catalog": "https://roms.danielspringer.at/index.php?view=ota&build=3fc47b0ff6658c2a79bd7d48",
+  "payload_manifest_sha256": "2d66787f14dc36189f661d9694690e874c53cb60f4943a445eae35487a03f731",
+  "partitions": {
+    "uefi": {
+      "bytes": 2797568,
+      "sha256": "4149f21bf572df020b035d30c9e308d499dd476a29e826a84d390461fb6f644e"
+    },
+    "xbl": {
+      "bytes": 1191936,
+      "sha256": "d72745c3e63e835f868b08a298f830ee143686b69cdca65c1a8e3dc30d2f2e61"
+    },
+    "imagefv": {
+      "bytes": 114688,
+      "sha256": "5b4ec3113a6f84be0f0458be9ddc281fe362c860be5780f75e8251920e7ea380"
+    }
+  },
+  "scope": "Public OEM full-OTA partitions; bounded extraction and donor comparison only. Whole-package signature authentication and hardware execution are not claimed."
+}

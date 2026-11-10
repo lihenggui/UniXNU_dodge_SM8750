@@ -1,0 +1,2061 @@
+{
+  "result": "IOS16_RAMBLOCK_ACTUAL_START_IO_AND_MEDIA_ARM64_PASS",
+  "builder_sha256": "bd95e4d80246d1b7995ac5c028b75eed9952c8bcea298bdee7592b7549eed4d5",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "source_sha256": {
+    "scripts/check_ramblock_start_kernel.py": "bd95e4d80246d1b7995ac5c028b75eed9952c8bcea298bdee7592b7549eed4d5",
+    "scripts/ramblock_live_io.py": "0205d2b414cbb86605bb63bb87e9ba7773c0c10b811bb4662cf7fc7ef2fe0990",
+    "scripts/ramblock_live_media.py": "c193a5b2d8e68c4fafc8888bd67269a11d684afb8aeb334275161aa46228e39e",
+    "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "scripts/prepare_initial_data.py": "1cc4467bb4224632adea2a5ac87d602b285207b5c0d6bd63937a6bfdcf8d271c",
+    "drivers/DodgeStorage/DodgeRamBlock.cpp": "3c79e4dd14843c197590c352e73d8202380ff0404b51dd5deece20a71e9f6caa",
+    "sources/UniXNU/drivers/RamBlock/NativeRamBlock.cpp": "17dcb4bac69e46346d5b100ac64a9371ec61281a4f84504e4d2f74f9e123a2e1",
+    "sources/UniXNU/drivers/RamBlock/SparseDisk.h": "5ab6516488b7daaef88e788fffef17195e7d2f74746da2206c6d9ed3a63c8c74",
+    "sources/UniXNU/drivers/RamBlock/SeedDisk.h": "d8a654529b5d56703bcf491c3834b407590995eebcb7a26004448990c200e4a0",
+    "sources/UniXNU/drivers/RamBlock/DirectDisk.h": "5ff2dd31787553182dc02ff7b8ff3478c8a268c2979763b52b72ca206a9d3f8c",
+    "sources/UniXNU/drivers/RamBlock/PersistOverlay.h": "d3de39a34bfeae5b2235a7bdde8653b658b395cd869300190c690e8b4f13616b"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-data-source.json": "519a5ddc73e2890214b7d097fec5e0c20c9bcac66f22ae661896eefec0a68c9e",
+    "reports/ios16-data-kernel.json": "c65a014332cbf39e77b2e92fa315822a3bd665ecebb44fed032491ac8af45eb8",
+    "reports/ios16-data-mount-prelink.json": "e189ac14f448523aefd9eaa40f8ffdc98d434ac430136d98bfb3723b3fdb8353",
+    "reports/data-mount-stack.json": "de2a02c705e445e60d15f8df14a8e93aa0d2417da7e88efbbeab15f261f1114b",
+    "reports/ios16-data-image.json": "7d99049bf8990e70f88cb2d991ff0c6e278d44bdd61d26b08782fad7b227b9f5",
+    "reports/ios16-data-volatile-image.json": "9d9907c749e3870f71f9944176331f76efd0392207afda3160141cf97f33bf37",
+    "reports/ios16-storage-abi.json": "c25f48ec96cd9fc56433431b8bcbd01a58180196ddb8eac1c47c659e6da1e24c"
+  },
+  "artifacts": {
+    "build/ios16-ramblock-start-kernel/abi/DodgeRamBlock.o": "56e46cbbe86ee07f527c07ddff90a78b23202e71682d4823a9fc2847ba912699",
+    "build/ios16-ramblock-start-kernel/cpu-cases.json": "a54a74602c0cae83ba60c66a7ac63d40d45e4bbd9434ee9cd4e2f2cf28f27524"
+  },
+  "candidate": "build/ios16-apfs-mount-prelink/kernel.macho",
+  "candidate_sha256": "81f6e6da769fcd3666da0af07d1b69e878064dbb7abccf2490d65d8e66b6da91",
+  "source_reference": {
+    "repository": "https://github.com/UniXNU/RamBlock.git",
+    "revision": "4be2d7eb05ef5a98126c91e0302c149140c0e3e1",
+    "path": "sources/UniXNU/drivers/RamBlock",
+    "scope": "Pinned source, seed helpers and native class; compiled against the separate measured iPhone IOStorageFamily ABI, without copying the catalog iPadOS ABI identity"
+  },
+  "instance_layout": {
+    "instance_bytes": 352,
+    "gate": 144,
+    "memory": 152,
+    "capacity": 160,
+    "online": 168,
+    "sparse": 176,
+    "big": 200,
+    "isBig": 248,
+    "direct": 345,
+    "directFailed": 346,
+    "overlay": 288,
+    "sparse_pages": 0,
+    "sparse_bytes": 8,
+    "sparse_resident": 16,
+    "big_bytes": 0,
+    "big_count": 8,
+    "big_index": 32,
+    "big_page": 40,
+    "completion_bytes": 24,
+    "completion_target": 0,
+    "completion_action": 8,
+    "completion_parameter": 16,
+    "success": 0,
+    "bad_argument": 3758097090,
+    "not_ready": 3758097112,
+    "io_error": 3758097098,
+    "no_memory": 3758097085,
+    "direction_in": 1,
+    "direction_out": 2,
+    "zero_alloc_flags": 4,
+    "overlay_readonly": 32,
+    "overlay_header": 36,
+    "seed_hash": 249,
+    "data_bytes": 40,
+    "data_length": 12,
+    "data_pointer": 24,
+    "string_bytes": 24,
+    "string_pointer": 16,
+    "number_bytes": 24,
+    "number_size": 12,
+    "number_value": 16
+  },
+  "annotation_text_identical_to_production": true,
+  "start_case_count": 28,
+  "post_start_io_case_count": 26,
+  "post_start_media_case_count": 68,
+  "start_cases": [
+    {
+      "case": "parent-start-failed",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 0,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 0,
+      "bytes_calls": 0,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": false,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN9IOService5startEPS_",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "missing-map",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 0,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 0,
+      "bytes_calls": 0,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "missing-property",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 0,
+      "bytes_calls": 0,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "wrong-property-type",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 0,
+      "bytes_calls": 0,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "wrong-range-length",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 0,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "both-range-properties",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 0,
+      "bytes_calls": 0,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "zero-bytes",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "oversize-input",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "unaligned-physical",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "raw-unaligned-size",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "physical-before-window",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "physical-after-window",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "input-larger-than-window",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "physical-address-overflow",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "mapping-failed",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 0,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "lock-failed",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 1,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "bad-magic",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 1,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "bad-version",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 1,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "bad-page-size",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 1,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "bad-count",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 1,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "trailing-data",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 1,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "unaligned-logical-size",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 1,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "pointer-array-failed",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 1,
+      "lock_allocations": 1,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "_IOMalloc_internal",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "first-page-failed",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 2,
+      "lock_allocations": 1,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 4194304,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "_IOMalloc_internal",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "later-page-failed",
+      "result": "PASS",
+      "source_start_return": 0,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 5,
+      "lock_allocations": 1,
+      "publications": 0,
+      "hash_updates": 0,
+      "hash_bytes": 0,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 4206592,
+      "logical_bytes": null,
+      "nonzero_pages": null,
+      "seed_sha256": null,
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "_IOMalloc_internal",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_memcpy",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "dense-small-fixture",
+      "result": "PASS",
+      "source_start_return": 1,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 0,
+      "lock_allocations": 1,
+      "publications": 1,
+      "hash_updates": 1,
+      "hash_bytes": 4096,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 0,
+      "logical_bytes": 4096,
+      "nonzero_pages": null,
+      "seed_sha256": "aebd8fdeafabfb765ce0f79c9c6532d656dbeb561f1317889f987f89fdace896",
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "_SHA256_Final",
+        "_SHA256_Init",
+        "_SHA256_Update",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZN9IOService15registerServiceEj",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false
+    },
+    {
+      "case": "actual-packed-2GiB",
+      "result": "PASS",
+      "source_start_return": 1,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 177,
+      "lock_allocations": 1,
+      "publications": 1,
+      "hash_updates": 524288,
+      "hash_bytes": 2147483648,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 4915200,
+      "logical_bytes": 2147483648,
+      "nonzero_pages": 176,
+      "seed_sha256": "8bbc59292a215c08fc40698dfe4c9b132633ae055afc956cf560626905c7a856",
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "_IOMalloc_internal",
+        "_SHA256_Final",
+        "_SHA256_Init",
+        "_SHA256_Update",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZN9IOService15registerServiceEj",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_memcpy",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false,
+      "post_start_io": {
+        "result": "PASS",
+        "case_count": 20,
+        "cases": [
+          {
+            "case": "container-superblock-from-started-disk",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "volume-superblock-from-started-disk",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "zero-hole-from-started-disk",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "cross-page-from-started-disk",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                5120
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "last-sector-from-started-disk",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                512
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "write-imported-page",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                512
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "read-modified-imported-page",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "write-new-hole-page",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                512
+              ]
+            ],
+            "new_allocated_pages": 1,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "read-new-page-and-zero-remainder",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "write-across-two-new-pages",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                1536
+              ]
+            ],
+            "new_allocated_pages": 2,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "read-both-new-pages",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                8192
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "allocation-failure",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                3758097085,
+                0
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "read-unallocated-page-after-failure",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "partial-allocation-failure",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                3758097085,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 1,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "read-partially-completed-write",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                8192
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "short-descriptor-read",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                3758097098,
+                29
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "short-descriptor-write",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                3758097098,
+                29
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "read-after-short-write",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "write-last-sector",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                512
+              ]
+            ],
+            "new_allocated_pages": 1,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "read-last-page-and-zero-prefix",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          }
+        ],
+        "actual_start_object_reused_without_field_reconstruction": true,
+        "descriptor_allocation_lock_and_completion_are_explicit_peers": true,
+        "volatile_writes_only": true,
+        "persistent_store_or_original_apfs_execution": false
+      },
+      "post_start_media": {
+        "result": "PASS",
+        "case_count": 34,
+        "cases": [
+          {
+            "case": "ordinary",
+            "result": "PASS",
+            "return": 1,
+            "provider_edges_visited": 2,
+            "balanced_lock_pairs": 2,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": true
+          },
+          {
+            "case": "foreign-object-skipped",
+            "result": "PASS",
+            "return": 1,
+            "provider_edges_visited": 2,
+            "balanced_lock_pairs": 2,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": true
+          },
+          {
+            "case": "no-media",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "duplicate-media",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 2,
+            "balanced_lock_pairs": 2,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "matching-allocation-failed",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "properties-allocation-failed",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "string-allocation-failed",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "uuid-filter-failed",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "property-filter-failed",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "missing-iterator",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "missing-uuid",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "wrong-uuid-type",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "wrong-uuid",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "missing-name",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "empty-name",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "long-name",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "short-path-buffer",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "missing-major",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "major-overflow",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "missing-minor",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "minor-overflow",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "no-ram-ancestor",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 2,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "provider-cycle",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 64,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "ancestor-at-depth-64",
+            "result": "PASS",
+            "return": 1,
+            "provider_edges_visited": 63,
+            "balanced_lock_pairs": 2,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": true
+          },
+          {
+            "case": "ancestor-at-depth-65",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 64,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "offline-disk",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 3,
+            "balanced_lock_pairs": 2,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "short-uuid",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-uuid",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-device",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-path",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "tiny-path-buffer",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-base",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-bytes",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-digest",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          }
+        ],
+        "source_selector_attach_store_and_seed_info_executed": true,
+        "native_string_and_number_getters_executed": true,
+        "registry_collection_allocation_class_membership_and_provider_edges_are_explicit_peers": true,
+        "persistent_store_mode_peer": 0,
+        "actual_iomedia_registration_or_matching_qualified": false
+      }
+    },
+    {
+      "case": "actual-packed-3GiB",
+      "result": "PASS",
+      "source_start_return": 1,
+      "map_refs": 0,
+      "map_releases": 1,
+      "allocations": 178,
+      "lock_allocations": 1,
+      "publications": 1,
+      "hash_updates": 353,
+      "hash_bytes": 722321,
+      "length_calls": 1,
+      "bytes_calls": 2,
+      "parent_start_calls": 1,
+      "allocated_bytes": 723712,
+      "logical_bytes": 3221225472,
+      "nonzero_pages": 176,
+      "seed_sha256": "9fae144d72304a2548d81f93701bc36e5db1b5c6a7500022e5112243c48633a8",
+      "native_parent_start_body_executed": true,
+      "source_constructor_and_original_storage_init_executed": true,
+      "allocation_mapping_metadata_registry_hash_and_registration_are_explicit_peers": true,
+      "explicit_peers": [
+        "_IOLockAlloc",
+        "_IOMalloc_internal",
+        "_SHA256_Final",
+        "_SHA256_Init",
+        "_SHA256_Update",
+        "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+        "__ZN15IORegistryEntry8fromPathEPKcPK15IORegistryPlanePcPiPS_",
+        "__ZN15OSMetaClassBase12safeMetaCastEPKS_PK11OSMetaClass",
+        "__ZN9IOService15registerServiceEj",
+        "__ZNK11OSMetaClass19instanceConstructedEv",
+        "_memcmp",
+        "_memcpy",
+        "_ml_static_ptovirt",
+        "_native_parent_init_peer",
+        "_range_property_peer",
+        "_range_release_peer"
+      ],
+      "phone_or_firmware_execution": false,
+      "post_start_io": {
+        "result": "PASS",
+        "case_count": 6,
+        "cases": [
+          {
+            "case": "container-superblock-from-started-disk",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "volume-superblock-from-started-disk",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "zero-hole-from-started-disk",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                4096
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "cross-page-from-started-disk",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                5120
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "last-sector-from-started-disk",
+            "result": "PASS",
+            "return": "0x0",
+            "completions": [
+              [
+                0,
+                512
+              ]
+            ],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          },
+          {
+            "case": "large-disk-write-without-store-refused",
+            "result": "PASS",
+            "return": "0xe00002d8",
+            "completions": [],
+            "new_allocated_pages": 0,
+            "balanced_lock_pairs": 1
+          }
+        ],
+        "actual_start_object_reused_without_field_reconstruction": true,
+        "descriptor_allocation_lock_and_completion_are_explicit_peers": true,
+        "volatile_writes_only": false,
+        "persistent_store_or_original_apfs_execution": false
+      },
+      "post_start_media": {
+        "result": "PASS",
+        "case_count": 34,
+        "cases": [
+          {
+            "case": "ordinary",
+            "result": "PASS",
+            "return": 1,
+            "provider_edges_visited": 2,
+            "balanced_lock_pairs": 2,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": true
+          },
+          {
+            "case": "foreign-object-skipped",
+            "result": "PASS",
+            "return": 1,
+            "provider_edges_visited": 2,
+            "balanced_lock_pairs": 2,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": true
+          },
+          {
+            "case": "no-media",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "duplicate-media",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 2,
+            "balanced_lock_pairs": 2,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "matching-allocation-failed",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "properties-allocation-failed",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "string-allocation-failed",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "uuid-filter-failed",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "property-filter-failed",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "missing-iterator",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "missing-uuid",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "wrong-uuid-type",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "wrong-uuid",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "missing-name",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "empty-name",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "long-name",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "short-path-buffer",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "missing-major",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "major-overflow",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "missing-minor",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "minor-overflow",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "no-ram-ancestor",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 2,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "provider-cycle",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 64,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "ancestor-at-depth-64",
+            "result": "PASS",
+            "return": 1,
+            "provider_edges_visited": 63,
+            "balanced_lock_pairs": 2,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": true
+          },
+          {
+            "case": "ancestor-at-depth-65",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 64,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "offline-disk",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 3,
+            "balanced_lock_pairs": 2,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "short-uuid",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-uuid",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-device",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-path",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "tiny-path-buffer",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-base",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-bytes",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          },
+          {
+            "case": "null-digest",
+            "result": "PASS",
+            "return": 0,
+            "provider_edges_visited": 0,
+            "balanced_lock_pairs": 0,
+            "owned_metadata_references_remaining": 0,
+            "actual_started_disk_seed_info": false
+          }
+        ],
+        "source_selector_attach_store_and_seed_info_executed": true,
+        "native_string_and_number_getters_executed": true,
+        "registry_collection_allocation_class_membership_and_provider_edges_are_explicit_peers": true,
+        "persistent_store_mode_peer": 0,
+        "actual_iomedia_registration_or_matching_qualified": false
+      }
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "start-RET",
+      "result": "REJECTED",
+      "reason": "Source start accepted/refused or published incorrectly: dense-small-fixture"
+    },
+    {
+      "case": "hash-peer-poison",
+      "result": "REJECTED",
+      "reason": "Source published before complete ready/hash state"
+    },
+    {
+      "case": "io-RET",
+      "result": "REJECTED",
+      "reason": "Started disk did not balance the I/O gate"
+    },
+    {
+      "case": "selector-RET",
+      "result": "REJECTED",
+      "reason": "Selector result, owned metadata lifetime or gate is incorrect: ordinary"
+    }
+  ],
+  "actual_start_object_reused_without_field_reconstruction": true,
+  "full_logical_2GiB_hash_loop_executed": true,
+  "large_seed_identity_scheme": "SHNGSEED2",
+  "native_osdata_string_number_getters_executed": true,
+  "constructor_original_storage_init_and_inherited_start_executed": true,
+  "source_selector_attach_store_and_seed_info_executed": true,
+  "original_iomedia_matching_qualified": false,
+  "original_apfs_data_mount_qualified": false,
+  "persistent_data_writes_qualified": false,
+  "source_data_default_enabled": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "The unchanged pinned source constructor, original storage init and inherited native parent start execute. Twenty-eight start paths include exact packed 2/3 GiB APFS seeds, full 2 GiB logical hashing and failure admission. Those actual objects then execute 26 I/O and 68 source volume-selector paths without reconstructing driver state. Native OSData/OSString/OSNumber getters execute using measured layouts. Allocation, mapping, class membership, registry collections/provider edges, SHA primitives, descriptor/completion/lock and registration/library calls remain explicit peers. SHA peers hash actual source-selected bytes. Store mode is explicitly zero. The 4 KiB dense fixture is a superblock diagnostic, not a complete APFS volume. Failed starts are retained by the separately checked lifecycle; no rollback/free qualification, actual IOMedia publication, original APFS mount, persistent writes, MMIO or phone operation is claimed."
+}

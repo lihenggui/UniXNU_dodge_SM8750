@@ -1,0 +1,129 @@
+--- a/PaganiGpu.cpp
++++ b/PaganiGpu.cpp
+@@ -1,6 +1,7 @@
+ /* SPDX-License-Identifier: MIT */
+-/* PKX110 A830 board connection. Called once, after synchronous peripheral
+- * startup. Every exposed allocation and hardware vote lives until reboot. */
++/* CPH2653 A830 candidate board connection, adapted from the pinned PKX110
++ * integration. Explicit startup only; not selected in the default kernel.
++ * Every exposed allocation and hardware vote lives until reboot. */
+ #include <IOKit/IODeviceMemory.h>
+ #include <IOKit/IOLib.h>
+ #include <IOKit/IOPlatformExpert.h>
+@@ -28,8 +29,10 @@
+ #include "Sm8750SocInfo.h"
+ #include "PaganiGpuVotes.h"
+ #include "PeripheralStatus.h"
++#include "DodgeGpuBoard.h"
++#include "DodgeOptionalCalls.h"
+ 
+-extern "C" void boot_progress_display_status(const char *,uint64_t);
++extern "C" void boot_progress_display_status(const char *,uint64_t) __attribute__((weak_import));
+ extern "C" void native_adreno_set_gpu_context(NativeAdrenoGpuContext *);
+ extern "C" IOReturn native_adreno_publish(NativeAdrenoVm *,NativeAdrenoSubmit *,NativeAdrenoRing *,
+     const NativeAdrenoRingClock *,const NativeAdrenoTimer *,const NativeAdrenoAbiDeviceInfo *,uint32_t,uint32_t);
+@@ -46,8 +49,7 @@
+ extern "C" volatile uint64_t native_gop_gpu_completions,native_gop_gpu_failures,native_gop_gpu_maps,native_gop_gpu_map_hits;
+ extern "C" volatile uint32_t native_gop_gpu_timing_us[6];
+ extern "C" volatile uint64_t native_gop_vsync[3];
+-extern "C" int boot_log_export_put(uint32_t,uint32_t,uint32_t,const void *,uint32_t) {return -1;}
+-extern "C" void pagani_gpu_trace_start();
++extern "C" void pagani_gpu_trace_start() __attribute__((weak_import));
+ 
+ namespace {
+ struct Window {
+@@ -120,7 +122,7 @@
+ const char *current_stage="GPU start";
+ int startup_result=kIOReturnNotReady;
+ void stage(const char *name,uint64_t value=0) {
+-    __atomic_store_n(&current_stage,name,__ATOMIC_RELEASE);boot_progress_display_status(name,value);
++    __atomic_store_n(&current_stage,name,__ATOMIC_RELEASE);if(boot_progress_display_status)dodge_optional_call(boot_progress_display_status,name,value);
+     IOLog("Pagani GPU: %s %llx\n",name,static_cast<unsigned long long>(value));
+ }
+ int hash(void *,const void *bytes,size_t count,uint8_t digest[32]) {
+@@ -219,8 +221,8 @@
+     return barrier(nullptr);
+ }
+ int prepare_inputs() {
+-    if(!g.cmddb.open(0x81c60000,0x20000,true) || !g.smem.open(0x81d00000,0x200000,true) ||
+-        !g.qfprom.open(0x221c8000,0x1000) || snapshot(g.cmddb,g.db_snapshot))return -1;
++    if(!g.cmddb.open(DodgeGpuBoard::CommandDbBase,DodgeGpuBoard::CommandDbBytes,true) || !g.smem.open(DodgeGpuBoard::SmemBase,DodgeGpuBoard::SmemBytes,true) ||
++        !g.qfprom.open(DodgeGpuBoard::QfpromBase,DodgeGpuBoard::QfpromBytes) || snapshot(g.cmddb,g.db_snapshot))return -1;
+     // Other SMEM partitions can abort reads; visit only global socinfo metadata and fields.
+     if(Sm8750GmuCommandDbInputs(static_cast<const uint8_t *>(g.db_snapshot.mapping()),g.db_snapshot.bytes(),&g.votes) ||
+         Sm8750SocInfoGpuCode(g.smem.cpu,g.smem.bytes,&g.soc_id,&g.soc_code))return -1;
+@@ -228,8 +230,8 @@
+     uint32_t second_id,second_code;
+     barrier(nullptr);
+     if(Sm8750SocInfoGpuCode(g.smem.cpu,g.smem.bytes,&second_id,&second_code) ||
+-        second_id!=g.soc_id || second_code!=g.soc_code || g.qfprom.read(0x138,&g.speed_bin))return -1;
+-    g.speed_bin&=511;
++        second_id!=g.soc_id || second_code!=g.soc_code || g.qfprom.read(DodgeGpuBoard::SpeedBinOffset,&g.speed_bin))return -1;
++    g.speed_bin&=DodgeGpuBoard::SpeedBinMask;
+     if(PaganiGpuBuildStartup(&g.votes,g.speed_bin,g.soc_code,&g.startup,&g.initial,&g.bandwidth))return -1;
+     return 0;
+ }
+@@ -269,7 +271,7 @@
+         if(m.spanCount()!=1 || !g.gpu_memory[i].open(m.spans()[0].physical,m.bytes(),true))return -1;
+     }
+     if(g.zap_metadata.allocate(0x4000,40,true,0x4000) || g.zap_metadata.spanCount()!=1 ||
+-        !g.zap.open(0x9b09a000,0x2000,true))return -1;
++        !g.zap.open(DodgeGpuBoard::ZapBase,DodgeGpuBoard::ZapBytes,true))return -1;
+     const uint8_t *images[]={sm8750_gpu_sqe,sm8750_gpu_aqe};
+     const size_t sizes[]={size_t(sm8750_gpu_sqe_size),size_t(sm8750_gpu_aqe_size)};
+     const unsigned indices[]={0,5};
+@@ -293,18 +295,21 @@
+     native_adreno_accelerator_static_init();
+     if(OSMetaClass::postModLoad(handle) || native_adreno_accelerator_instance_size()!=136)return -1;
+     IOService *service=native_adreno_accelerator_allocate();
+-    if(!service || !service->init())return -1;
+-    service->setProperty("MetalPluginName","NativeAdrenoMetal");
+-    service->setProperty("MetalPluginClassName","NativeAdrenoMetalDevice");
+-    service->setProperty("NativeSandboxGrantProcess","backboardd,iconservicesagent,WidgetRenderer_Default,PosterBoard");
+-    if(!service->attach(IOService::getPlatform()))return -1;
++    if(!service)return -1;
++    if(!service->init()) {service->release();return -1;}
++    if(!service->setProperty("MetalPluginName","NativeAdrenoMetal") ||
++        !service->setProperty("MetalPluginClassName","NativeAdrenoMetalDevice") ||
++        !service->setProperty("NativeSandboxGrantProcess","backboardd,iconservicesagent,WidgetRenderer_Default,PosterBoard")) {
++        service->release();return -1;
++    }
++    if(!service->attach(IOService::getPlatform())) {service->release();return -1;}
+     service->registerService();return 0;
+ }
+ int start() {
+     stage("GPU board inputs");if(prepare_inputs())return -1;
+     stage("GPU power",(uint64_t(g.speed_bin)<<32)|g.soc_code);
+-    if(!g.gcc.open(0x100000,0x1f5000) || !g.gpucc.open(0x3d90000,0xa000) ||
+-        !g.rsc.open(0x16520000,0x10000))return -1;
++    if(!g.gcc.open(DodgeGpuBoard::GccBase,DodgeGpuBoard::GccBytes) || !g.gpucc.open(DodgeGpuBoard::GpuCcBase,DodgeGpuBoard::GpuCcBytes) ||
++        !g.rsc.open(DodgeGpuBoard::RscBase,DodgeGpuBoard::RscBytes))return -1;
+     const Sm8750GpuPowerIo power={nullptr,power_read,power_write,delay,rails};
+     int power_rc=Sm8750GpuPowerOn(&power,&g.power);
+     if(power_rc)return power_rc;
+@@ -312,7 +317,7 @@
+         if(!g.core[i].open(sm8750_gmu_window_physical[i],sm8750_gmu_window_bytes[i]))return -1;
+         g.mmio.windows[i]={g.core[i].cpu,sm8750_gmu_window_physical[i],g.core[i].bytes};
+     }
+-    if(!g.smmu.open(0x3da0000,0x40000) || !g.cxmisc.open(0x3d9e000,0x2000) ||
++    if(!g.smmu.open(DodgeGpuBoard::SmmuBase,DodgeGpuBoard::SmmuBytes) || !g.cxmisc.open(DodgeGpuBoard::CxMiscBase,DodgeGpuBoard::CxMiscBytes) ||
+         Sm8750GmuBindMmio(&g.mmio,&g.gmu.io))return -1;
+     uint32_t reset;
+     if(gmu_read(nullptr,REG_GMU_CM3_SYSRESET,&reset) || reset!=1)return -1;
+@@ -364,12 +369,11 @@
+     stage("GPU Metal service");return metal();
+ }
+ }
+-extern "C" int pagani_gpu_start() {
+-    if(g.attempted)return kIOReturnBusy;
+-    g.attempted=true;
++extern "C" int dodge_gpu_start() {
++    if(__atomic_exchange_n(&g.attempted,true,__ATOMIC_ACQ_REL))return kIOReturnBusy;
+     int rc=start();
+-    if(rc) {boot_progress_display_status(current_stage,uint32_t(rc));IOLog("Pagani GPU stopped at %s: %d\n",current_stage,rc);}
+-    else {stage("GPU Metal registered",NativeAdrenoChipA830);pagani_gpu_trace_start();}
++    if(rc) {if(boot_progress_display_status)boot_progress_display_status(current_stage,uint32_t(rc));IOLog("Pagani GPU stopped at %s: %d\n",current_stage,rc);}
++    else {stage("GPU Metal registered",NativeAdrenoChipA830);if(pagani_gpu_trace_start)dodge_optional_call(pagani_gpu_trace_start);}
+     __atomic_store_n(&startup_result,rc,__ATOMIC_RELEASE);
+     return rc;
+ }

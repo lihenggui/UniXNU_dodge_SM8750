@@ -1,0 +1,41 @@
+{
+  "result": "IOS16_EXACT_ORIGINAL_APFS_MOUNT_ABI_STATIC_PASS",
+  "builder_sha256": "95bf3c69d1dbb1148282aa000f2c149a09a9191b16cb892fbfde6aa40e99e1d0",
+  "source_sha256": {
+    "scripts/prepare_apfs_mount_abi.py": "95bf3c69d1dbb1148282aa000f2c149a09a9191b16cb892fbfde6aa40e99e1d0",
+    "profiles/os/ios-16.7.16-20H392/apfs-mount.json": "79076ac3871784b4016ce42db5e562de3c6a32ebb669f3c91cc00e00902f72b9",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "profiles/os/ios-16.7.16-20H392/storage/OriginalApfsMountABI.h": "c2f10704f665ad4645961d89337225f098a4b921a1596eda1f03fa07f3228e06"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-volumes.json": "3d9eb5dc4f8e4c1cbcb588d7b140fb185dd45d932421334c6e5b6d02657fc7e7",
+    "reports/ios16-original-components.json": "3714cbc7e69a0086c4d63e66b580f3300b9e52725ebf5d3236858cedaabcbac1"
+  },
+  "artifacts": {
+    "build/ios16-apfs-mount-abi/mount_apfs-filesystem": "ccac6fa5b10c74ac9458212044bdc4115831c7a01be04d61d04e86bdec52dc27"
+  },
+  "contract": "profiles/os/ios-16.7.16-20H392/apfs-mount.json",
+  "contract_sha256": "79076ac3871784b4016ce42db5e562de3c6a32ebb669f3c91cc00e00902f72b9",
+  "original_program_path": "/System/Library/Filesystems/apfs.fs/mount_apfs",
+  "original_os_image_sha256": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906",
+  "user_buffer_bytes": 336,
+  "apfs_copyin_bytes": 324,
+  "original_program_or_kernel_executed": false,
+  "full_apfs_mount_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "negative_controls": [
+    {
+      "case": "program-mount-call",
+      "result": "REJECTED",
+      "reason": "Original mount program hash differs"
+    },
+    {
+      "case": "APFS-copyin-bound",
+      "result": "REJECTED",
+      "reason": "Original kernelcache hash differs"
+    }
+  ],
+  "scope": "Exact iPhone ordinary-arm64 mount_apfs and original APFS registration, vfsops and bounded copyin are derived. The user buffer includes an 8-byte device pointer removed by VFS, 324 bytes consumed by APFS and 4 bytes tail padding. Ordinary volume mode/owner semantics still require separate CPU/source checks; no original APFS filesystem is mounted."
+}

@@ -1,0 +1,375 @@
+{
+  "result": "IOS16_ORIGINAL_PMGR_GATE_AND_T8015_SYNTHETIC_REGISTER_CPU_PASS",
+  "builder_sha256": "6b0bab280637f2d2a1c485b3eb770544caa544a16bb5936b8928033ade7af408",
+  "source_sha256": {
+    "scripts/check_ios16_pmgr_kernel.py": "6b0bab280637f2d2a1c485b3eb770544caa544a16bb5936b8928033ade7af408",
+    "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
+    "scripts/prepare_ios16_pmgr.py": "e25027dee2f3992c64be46cd85f355e583efd489027b2b6487e472260d4406a1",
+    "profiles/os/ios-16.7.16-20H392/pmgr-contract.json": "832a0fd43504f8cb1b710423237f1830cd76a884b7724dc676bc38e3f1ddbdab"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-pmgr-contract.json": "7490bcfab17d3a23318f8208aa3a9648b637d79b6a41d7551d9fd7169113d235"
+  },
+  "artifacts": {
+    "build/ios16-pmgr-abi/cpu-cases.json": "25c31759f819c260b0d91c3d9c158bad4d18aafadc08e4378e5259a6df3c8115"
+  },
+  "case_count": 12,
+  "cases": [
+    {
+      "case": "zero-register",
+      "result": "PASS",
+      "boundary": "after-original-pmgr-gate",
+      "register_accesses": [
+        {
+          "operation": "read",
+          "bytes": 4,
+          "value": null
+        },
+        {
+          "operation": "write",
+          "bytes": 4,
+          "value": 4
+        }
+      ],
+      "initial_register_value": "0x0",
+      "logged_value": "0x4",
+      "executed_original_functions": [
+        "generic_read",
+        "generic_write",
+        "read_entry",
+        "read_wrapper",
+        "region_size",
+        "resource_lookup",
+        "target_read",
+        "target_write",
+        "target_write_override",
+        "write_entry",
+        "write_wrapper"
+      ],
+      "owned_references_remaining_at_terminal_boundary": 0,
+      "fault_boundary_may_retain_objects_until_original_panic": false,
+      "base_or_null_fallback_is_not_a_qualifying_provider": false,
+      "original_register_path_executed": true,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "mask-already-set",
+      "result": "PASS",
+      "boundary": "after-original-pmgr-gate",
+      "register_accesses": [
+        {
+          "operation": "read",
+          "bytes": 4,
+          "value": null
+        },
+        {
+          "operation": "write",
+          "bytes": 4,
+          "value": 4
+        }
+      ],
+      "initial_register_value": "0x4",
+      "logged_value": "0x4",
+      "executed_original_functions": [
+        "generic_read",
+        "generic_write",
+        "read_entry",
+        "read_wrapper",
+        "region_size",
+        "resource_lookup",
+        "target_read",
+        "target_write",
+        "target_write_override",
+        "write_entry",
+        "write_wrapper"
+      ],
+      "owned_references_remaining_at_terminal_boundary": 0,
+      "fault_boundary_may_retain_objects_until_original_panic": false,
+      "base_or_null_fallback_is_not_a_qualifying_provider": false,
+      "original_register_path_executed": true,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "all-ones",
+      "result": "PASS",
+      "boundary": "after-original-pmgr-gate",
+      "register_accesses": [
+        {
+          "operation": "read",
+          "bytes": 4,
+          "value": null
+        },
+        {
+          "operation": "write",
+          "bytes": 4,
+          "value": 4294967295
+        }
+      ],
+      "initial_register_value": "0xffffffff",
+      "logged_value": "0xffffffff",
+      "executed_original_functions": [
+        "generic_read",
+        "generic_write",
+        "read_entry",
+        "read_wrapper",
+        "region_size",
+        "resource_lookup",
+        "target_read",
+        "target_write",
+        "target_write_override",
+        "write_entry",
+        "write_wrapper"
+      ],
+      "owned_references_remaining_at_terminal_boundary": 0,
+      "fault_boundary_may_retain_objects_until_original_panic": false,
+      "base_or_null_fallback_is_not_a_qualifying_provider": false,
+      "original_register_path_executed": true,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "high-bits",
+      "result": "PASS",
+      "boundary": "after-original-pmgr-gate",
+      "register_accesses": [
+        {
+          "operation": "read",
+          "bytes": 4,
+          "value": null
+        },
+        {
+          "operation": "write",
+          "bytes": 4,
+          "value": 2271560485
+        }
+      ],
+      "initial_register_value": "0x87654321",
+      "logged_value": "0x87654325",
+      "executed_original_functions": [
+        "generic_read",
+        "generic_write",
+        "read_entry",
+        "read_wrapper",
+        "region_size",
+        "resource_lookup",
+        "target_read",
+        "target_write",
+        "target_write_override",
+        "write_entry",
+        "write_wrapper"
+      ],
+      "owned_references_remaining_at_terminal_boundary": 0,
+      "fault_boundary_may_retain_objects_until_original_panic": false,
+      "base_or_null_fallback_is_not_a_qualifying_provider": false,
+      "original_register_path_executed": true,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "lowest-bit",
+      "result": "PASS",
+      "boundary": "after-original-pmgr-gate",
+      "register_accesses": [
+        {
+          "operation": "read",
+          "bytes": 4,
+          "value": null
+        },
+        {
+          "operation": "write",
+          "bytes": 4,
+          "value": 5
+        }
+      ],
+      "initial_register_value": "0x1",
+      "logged_value": "0x5",
+      "executed_original_functions": [
+        "generic_read",
+        "generic_write",
+        "read_entry",
+        "read_wrapper",
+        "region_size",
+        "resource_lookup",
+        "target_read",
+        "target_write",
+        "target_write_override",
+        "write_entry",
+        "write_wrapper"
+      ],
+      "owned_references_remaining_at_terminal_boundary": 0,
+      "fault_boundary_may_retain_objects_until_original_panic": false,
+      "base_or_null_fallback_is_not_a_qualifying_provider": false,
+      "original_register_path_executed": true,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "null-provider",
+      "result": "PASS",
+      "boundary": "after-original-pmgr-gate",
+      "register_accesses": [],
+      "initial_register_value": "0x0",
+      "logged_value": "0xffffffff",
+      "executed_original_functions": [
+        "read_entry",
+        "write_entry"
+      ],
+      "owned_references_remaining_at_terminal_boundary": 0,
+      "fault_boundary_may_retain_objects_until_original_panic": false,
+      "base_or_null_fallback_is_not_a_qualifying_provider": true,
+      "original_register_path_executed": false,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "base-provider",
+      "result": "PASS",
+      "boundary": "after-original-pmgr-gate",
+      "register_accesses": [],
+      "initial_register_value": "0x0",
+      "logged_value": "0xffffffff",
+      "executed_original_functions": [
+        "read_entry",
+        "write_entry"
+      ],
+      "owned_references_remaining_at_terminal_boundary": 0,
+      "fault_boundary_may_retain_objects_until_original_panic": false,
+      "base_or_null_fallback_is_not_a_qualifying_provider": true,
+      "original_register_path_executed": false,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "missing-service",
+      "result": "PASS",
+      "boundary": "original-missing-nub-boundary",
+      "register_accesses": [],
+      "initial_register_value": "0x0",
+      "logged_value": null,
+      "executed_original_functions": [],
+      "owned_references_remaining_at_terminal_boundary": 1,
+      "fault_boundary_may_retain_objects_until_original_panic": true,
+      "base_or_null_fallback_is_not_a_qualifying_provider": false,
+      "original_register_path_executed": false,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "wrong-class",
+      "result": "PASS",
+      "boundary": "original-missing-nub-boundary",
+      "register_accesses": [],
+      "initial_register_value": "0x0",
+      "logged_value": null,
+      "executed_original_functions": [],
+      "owned_references_remaining_at_terminal_boundary": 2,
+      "fault_boundary_may_retain_objects_until_original_panic": true,
+      "base_or_null_fallback_is_not_a_qualifying_provider": false,
+      "original_register_path_executed": false,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "matching-allocation-failed",
+      "result": "PASS",
+      "boundary": "original-missing-nub-boundary",
+      "register_accesses": [],
+      "initial_register_value": "0x0",
+      "logged_value": null,
+      "executed_original_functions": [],
+      "owned_references_remaining_at_terminal_boundary": 0,
+      "fault_boundary_may_retain_objects_until_original_panic": true,
+      "base_or_null_fallback_is_not_a_qualifying_provider": false,
+      "original_register_path_executed": false,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "empty-bank",
+      "result": "PASS",
+      "boundary": "original-panic-boundary",
+      "register_accesses": [],
+      "initial_register_value": "0x0",
+      "logged_value": null,
+      "executed_original_functions": [
+        "generic_read",
+        "read_entry",
+        "read_wrapper",
+        "target_read"
+      ],
+      "owned_references_remaining_at_terminal_boundary": 2,
+      "fault_boundary_may_retain_objects_until_original_panic": true,
+      "base_or_null_fallback_is_not_a_qualifying_provider": false,
+      "original_register_path_executed": false,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    },
+    {
+      "case": "short-region",
+      "result": "PASS",
+      "boundary": "original-panic-boundary",
+      "register_accesses": [],
+      "initial_register_value": "0x0",
+      "logged_value": null,
+      "executed_original_functions": [
+        "generic_read",
+        "read_entry",
+        "read_wrapper",
+        "region_size",
+        "resource_lookup",
+        "target_read"
+      ],
+      "owned_references_remaining_at_terminal_boundary": 2,
+      "fault_boundary_may_retain_objects_until_original_panic": true,
+      "base_or_null_fallback_is_not_a_qualifying_provider": false,
+      "original_register_path_executed": false,
+      "service_allocation_matching_class_membership_logging_are_explicit_peers": true,
+      "objects_and_register_resources_are_synthetic": true,
+      "phone_or_actual_mmio_execution": false
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "nub-read-RET",
+      "result": "REJECTED",
+      "reason": "Original PMGR gate lost its value or owned service/matching references"
+    },
+    {
+      "case": "nub-write-RET",
+      "result": "REJECTED",
+      "reason": "Original T8015 gate stored a different value"
+    },
+    {
+      "case": "ipad-read-slot",
+      "result": "REJECTED",
+      "reason": "Original T8015 gate did not execute the exact read/write register operations"
+    },
+    {
+      "case": "wrong-update-mask",
+      "result": "REJECTED",
+      "reason": "Original PMGR gate lost its value or owned service/matching references"
+    }
+  ],
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "original_t8015_register_load_store_executed": true,
+  "sm8750_security_latch_mapping_derived": false,
+  "power_provider_implemented": false,
+  "original_policy_registration_qualified": false,
+  "hardware_tested": false,
+  "ready_for_ios_boot": false,
+  "all_ios_port_code_complete": false,
+  "scope": "Twelve paths execute the original AMFI PMGR subpath through original nub/target/bank dispatch and actual ARM64 loads/stores to a synthetic register, or original missing/error/fallback boundaries. Objects and resource descriptors are explicit fixtures; allocation/matching/class membership/logging are peers. No MMIO method or latch result is supplied by a success peer. Five target cases preserve every bit except the original OR 0x4 update. Null/base fallbacks are not qualifying replacements. Full AMFI policy initialization, original service start, Qualcomm security semantics and physical hardware remain unqualified."
+}

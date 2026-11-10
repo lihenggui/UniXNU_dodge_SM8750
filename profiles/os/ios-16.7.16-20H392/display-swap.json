@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "legacy_instance_bytes": 5728,
+  "request_class": "IOMFBSwapIORequest",
+  "request_instance_bytes": 2424,
+  "request_metadata_setup": "0xfffffff005c04a44",
+  "request_metadata_setup_sha256": "5e1f04159b49e71101f2a64f6315d9b69457086b49e5362d38d5b266ec5a8d9e",
+  "queue": {
+    "current": 4872,
+    "head": 4880,
+    "tail": 4888,
+    "request_next": 2408,
+    "request_previous_link": 2416
+  },
+  "request_surfaces": {
+    "offset": 2184,
+    "count": 4,
+    "element_bytes": 8
+  },
+  "native_private_dispatch": {
+    "complete_current": 281,
+    "validate_request": 282
+  },
+  "original_queue_blocks": [
+    {
+      "address": "0xfffffff005c0fec8",
+      "bytes": 12,
+      "sha256": "8fe96cd224003684c1167c762a55df059d61a1804e2ce30b48f853bf18ea694c"
+    },
+    {
+      "address": "0xfffffff005c0ffcc",
+      "bytes": 100,
+      "sha256": "86901fc3cd586be2cc4272feb9c078a254bd1e48039d6d6789fc37ab73671a00"
+    }
+  ],
+  "retirement_and_surface_array_body": {
+    "address": "0xfffffff005c19a14",
+    "bytes": 632,
+    "sha256": "ca45d9c2f27d3e2b04bdf78519b958b682486eef2b8e5e67bb5a2605340f8048"
+  },
+  "request_payload_geometry_qualified": false,
+  "producer_sync_qualified": false,
+  "provider_complete": false
+}

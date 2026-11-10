@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "slide": "-0x1000000",
+  "class": "AppleARMIODevice",
+  "instance_bytes": 216,
+  "metaclass": "0xfffffff007a09e20",
+  "linked_metaclass": "0xfffffff006a09e20",
+  "parent": "IOService",
+  "parent_metaclass": "0xfffffff0078baf08",
+  "metadata_vptr": "0xfffffff006c7e4e0",
+  "vptr": "0xfffffff006c7df38",
+  "vtable_entries": 178,
+  "vtable_sha256": "aa086029f71260e956ac5bec81df95524328bad8427876777a9a0da1db27f017",
+  "public_io_service_slots": {
+    "__ZN9IOService4initEP12OSDictionary": 21,
+    "__ZN9IOService6attachEPS_": 108,
+    "__ZN9IOService6detachEPS_": 109,
+    "__ZN9IOService15registerServiceEj": 84,
+    "__ZN9IOService15setDeviceMemoryEP7OSArray": 124,
+    "__ZN9IOService20getDeviceMemoryCountEv": 120,
+    "__ZN9IOService24getDeviceMemoryWithIndexEj": 121,
+    "__ZN9IOService24mapDeviceMemoryWithIndexEjj": 122
+  },
+  "overridden_io_service_slots": [
+    0,
+    1,
+    7,
+    64,
+    103,
+    119
+  ],
+  "blocks": {
+    "metadata_constructor": {
+      "address": "0xfffffff0055f83e8",
+      "bytes": 52,
+      "sha256": "2dafe9900abc4701bd7b32a3f0221089d71e5ba3c5541c0143caea308e066239"
+    },
+    "allocator": {
+      "address": "0xfffffff0055f7ba0",
+      "bytes": 84,
+      "sha256": "d7ef238ae831ff9957c501634dc97c61f16eeb33dea7713b2a1707ebe988fe32"
+    },
+    "get_resources": {
+      "address": "0xfffffff0055f8038",
+      "bytes": 156,
+      "sha256": "fd1f16de2f72ea7d13c00d7eb9250e23ef34c9a193f40027741a0149f562efe9"
+    },
+    "bus_initializer_not_called": {
+      "address": "0xfffffff0055f8178",
+      "bytes": 564,
+      "sha256": "724a1ac5783cfff145472368c736db4935e29f8451f1e8922709f1b8161c454b"
+    }
+  },
+  "alias": "_dodge_original_gop_provider_meta",
+  "public_init_inherited": true,
+  "original_bus_initializer_used": false,
+  "private_fields_written_by_source": false,
+  "apple_clock_and_bus_methods_qualified": false,
+  "hardware_tested": false
+}

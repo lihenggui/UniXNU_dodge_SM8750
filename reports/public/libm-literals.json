@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "original_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "address": "0xfffffff005b8c054",
+  "bytes": 1228,
+  "sha256": "73df5b757c53532583e3686b7d93df11ec1f5dd8c201d05502654a7812cc385f",
+  "previous_return_and_following_function": "matched",
+  "direct_branches_into_pool": 0,
+  "data_reference_count": 30,
+  "actual_libm_instruction_inventory": "PASS",
+  "altered_byte_negative_control": "rejected",
+  "recognized_libm_pools": 6,
+  "scope": "Static classification of unchanged pinned bytes only; full register dataflow, ABI and runtime remain unqualified."
+}
