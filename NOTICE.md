@@ -34,6 +34,7 @@ dependency lock files.
 | [SM8750 common](https://github.com/IssacL04/UniXNU-sm8750-common) | SoC support and topology |
 | [Pagani drivers](https://github.com/IssacL04/UniXNU-Pagani-Drivers) | Peripheral protocols, input code and console renderer |
 | [OnePlus 13T device](https://github.com/IssacL04/UniXNU-Pagani_SM8750) | Board integration reference |
+| [OnePlus 13T A830 device](https://github.com/Shad0w23333/UniXNU-Pagani_SM8750) | Standalone A830 board and startup reference |
 | [Native Adreno830](https://github.com/Shad0w23333/Adreno830) | Standalone Gen8 source candidate; MIT, copyright 2026 NativeAdreno contributors |
 | [Adreno740](https://github.com/IssacL04/Adreno740) | A830 backend and resource management |
 | [AdrenoMetal](https://github.com/IssacL04/AdrenoMetal) | Metal frontend |

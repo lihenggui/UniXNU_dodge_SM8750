@@ -1,7 +1,7 @@
 {
   "result": "NATIVE_A830_IPHONE_DARWIN22_ARCHIVE_PASS",
   "target": "arm64-apple-ios16.0",
-  "builder_sha256": "fe5cf2a5c1b567e7c0bbca63b4c97e3f4ce3cb234c42a6a8107983420255ec57",
+  "builder_sha256": "98d3f591f9f009867516f27573d7296d395ffa89330660bf4139b9d34c3f3f69",
   "source_revisions": {
     "native_a830_reference": "1a1321056ffc5428ae925f4680093718b46ca7c2",
     "native_a830_smmu_reference": "3ba92451bd44bb742d11758fbfcd3a446ecad685",
@@ -126,7 +126,7 @@
     "sources/UniXNU/kits/AdrenoPM4/AdrenoPM4.c": "c4b0227859a1e771c5f349524b718b08444f518ef960bfa4b50f6fd4ab30ad2f",
     "sources/UniXNU/kits/AdrenoPM4/AdrenoPM4.h": "86f4e84eece0f2e67f786d03cea8b82c696377fc5af9f890dd164bbfe24abd29",
     "patches/adreno830/0001-darwin22-template-data-free.patch": "f165ef3084a6a85a5f332c208b62493fd030a658d76366f7d963f8bd823ff441",
-    "scripts/build_native_a830.py": "fe5cf2a5c1b567e7c0bbca63b4c97e3f4ce3cb234c42a6a8107983420255ec57",
+    "scripts/build_native_a830.py": "98d3f591f9f009867516f27573d7296d395ffa89330660bf4139b9d34c3f3f69",
     "scripts/build_a830_backend.py": "f66f7a5266b156732c21cd14c4be4a6eca52b9899606f0f5eff97513730c58df",
     "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
     "sources/Adreno830-native/scripts/build-adreno830.py": "3dae2a76131a08f7d92ea4eee0cb44c502e314e942a4965c4b0efc39d62fe534"
@@ -139,6 +139,8 @@
     "after_sha256": "90c9b21e194be3d373ebbbd0a784a1dbb9189f5ffd7e5837f1ad70f9bbd67235",
     "scope": "Spell out IODeleteData allocation-size and pointer-erasure operations to avoid the Darwin 22 typed-pointer builtin on dependent template types; heap and bounds are unchanged."
   },
+  "board_firmware_overlay": null,
+  "generated_sha256": {},
   "archive": "build/cph2653-native-a830/libAdreno830.a",
   "archive_sha256": "239ebfa2f9cff106304b4125cf0d3474e5931907a93bf4ad21ed911c6e3bf483",
   "object_count": 51,
@@ -1512,10 +1514,14 @@
       18
     ]
   },
+  "board_inputs": null,
+  "target_firmware": null,
+  "isolated_link": null,
   "board_startup_included": false,
   "target_firmware_included": false,
+  "startup_invoked": false,
   "full_prelink_qualified": false,
   "selected_in_default_kernel": false,
   "hardware_tested": false,
-  "scope": "Standalone source archive with Gen8 orchestration, GMU/HFI, SMMU, CP, fences, recovery and DCVS, plus the exact iPhone accelerator base. Board inputs, Metal protocol extensions and complete lifecycle/prelink integration remain separate."
+  "scope": "Standalone source archive with Gen8 orchestration, GMU/HFI, SMMU, CP, fences, recovery and DCVS, plus the exact iPhone accelerator base. The board variant adds CPH2653 declarations, firmware pins and an explicit synchronous entry. Metal protocol extensions and complete lifecycle/prelink integration remain separate."
 }

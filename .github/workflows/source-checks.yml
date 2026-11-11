@@ -55,6 +55,8 @@ jobs:
         run: git diff --check
       - name: Check native A830 startup, submission, fences and recovery with software controllers
         run: python3 scripts/check_native_a830_host.py
+      - name: Check CPH2653 native A830 board, level selection and startup ownership
+        run: python3 scripts/check_native_a830_board.py
       - name: Check surface range and provider ownership with software IOKit peers
         run: python3 scripts/check_surface_backing_host.py
       - name: Check current-task surface identity ownership and refusal paths with software IOKit peers

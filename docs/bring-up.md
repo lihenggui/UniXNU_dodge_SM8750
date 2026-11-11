@@ -18,6 +18,17 @@ files and run host tests. A connected phone is not required.
 download URL, BuildManifest identity and hashes.
 [upstream.lock.json](../upstream.lock.json) pins source revisions and patches.
 
+The [official guide](https://unixnu.com/porting/) was reviewed on 2026-11-11
+against UniXNU `215672be984f511b0923cbc120ea24bb48fef87e`. Follow its order:
+resolve the board and OS profile, verify memory and firmware, build platform
+services, then add storage, display, input and GPU support. Keep host results
+and device observations separate in [porting.toml](../porting.toml).
+
+Recent mainline changes add `firmware_tools` for staging board-extracted files
+under a Data addon's `firmware/` directory, plus Mesa and macOS changes. This
+checkout keeps the source versions in the lock file. Its GPU microcode is
+embedded locally by the board build described below.
+
 ## Host setup
 
 The existing builds used Ubuntu 22.04 / WSL and Python 3.12. CI runs on
@@ -159,6 +170,7 @@ to check an existing build.
 | Route | Command |
 | --- | --- |
 | Standalone native A830 source archive | `.venv-uefi/bin/python scripts/build_native_a830.py` |
+| CPH2653 native A830 archive and isolated kernel | `.venv-uefi/bin/python scripts/build_native_a830.py --board --link` |
 | A830, Turnip, Metal and display | `.venv-uefi/bin/python scripts/build_gpu_stack.py` |
 | Read-only UFS and root storage | `.venv-uefi/bin/python scripts/build_storage_stack.py` |
 | S3910 touch and iPhone HID | `.venv-uefi/bin/python scripts/build_input_stack.py` |
@@ -175,8 +187,39 @@ to check an existing build.
 The standalone A830 route uses Shad0w23333's Gen8 driver and its matching SMMU
 library. `python3 scripts/check_native_a830_host.py` runs its software-controller
 tests. The driver compiles against Darwin 22 and binds the original iPhone accelerator
-base. Board startup, firmware embedding and the Metal selector extensions are
-separate integration work. The existing GPU route keeps its source pins.
+base. Both [13T implementations](https://unixnu.com/devices/models/oneplus13t)
+remain references; the target identity and original components come from the
+iPhone profile above.
+
+For the CPH2653 board candidate, prepare the pinned local firmware first:
+
+```sh
+.venv-uefi/bin/python scripts/prepare_gpu_firmware.py
+.venv-uefi/bin/python scripts/prepare_native_a830.py
+.venv-uefi/bin/python scripts/check_native_a830_board.py \
+  --firmware-dir build/cph2653-gpu-firmware
+.venv-uefi/bin/python scripts/build_native_a830.py --board --link
+```
+
+`prepare_native_a830.py` checks the saved runtime DTB against
+[hardware/dodge-native-a830.json](../hardware/dodge-native-a830.json). It records
+register windows, GIC INTIDs, stream IDs, all six power bins including ACD values,
+and the eight GPU temperature sensors. The firmware step needs the pinned vendor
+and vendor_boot images; [hardware/dodge-gpu-firmware.json](../hardware/dodge-gpu-firmware.json)
+records their hashes. Firmware and generated headers stay under `build/`.
+
+The board build writes a 54-object archive and `mach.native-a830` under
+`build/cph2653-native-a830-board/`. It reads every embedded firmware image back
+from the linked kernel and preserves the three original iPhone accelerator aliases.
+The explicit `dodge_native_a830_start(expected_soc)` entry uses `dodge-gpu-*`
+arguments and runs synchronously once per boot. Its expected SoC ID must be
+618 or 639 from the captured DT; S0 checks it against live SMEM. The DT ACTLR
+value is `0x32b`; a future runtime experiment can request another value explicitly.
+
+The existing Metal frontend's selectors 17/18, IOSurface leases and initialization
+order still need integration with this backend. The isolated kernel needs the
+original graphics prelink, POST seal and system image before boot preparation.
+The default kernel selection stays on the existing route.
 
 The firmware entropy route has three steps:
 

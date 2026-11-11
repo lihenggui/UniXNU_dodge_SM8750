@@ -1282,5 +1282,19 @@
     "before_sha256": "0813683d76330a935afe4920892bece58c5e22576d8083f567b95faaca034e08",
     "after_sha256": "90c9b21e194be3d373ebbbd0a784a1dbb9189f5ffd7e5837f1ad70f9bbd67235",
     "scope": "Spell out IODeleteData allocation-size and pointer-erasure operations to avoid the Darwin 22 typed-pointer builtin on dependent template types; heap and bounds are unchanged."
+  },
+  "native_a830_firmware_overlay": {
+    "path": "patches/adreno830/0002-board-firmware-pins.patch",
+    "sha256": "46efed5d8691651f050fae30db5f45acae3981421cc195917b104d7b23eae312",
+    "target": "NativeAdrenoFirmware.cpp",
+    "before_sha256": "0a2c553465d6fa093aaf0b58c32c9006b7b88fbcb56cd2d41c24f9b693856293",
+    "after_sha256": "ffcc5f7776d842ded54d0b4d4ee47032bf97c5833812d09e25118f287ebb60ff",
+    "scope": "Optional board-owned firmware pin table; standalone reference tests retain their original defaults."
+  },
+  "native_a830_board_inputs": {
+    "path": "hardware/dodge-native-a830.json",
+    "sha256": "55d02be6f27f62f2815ac015ee6ff4a37d489da0a8ba11e5fc3fe9b8be15d419",
+    "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+    "scope": "CPH2653 runtime DT declarations for the isolated native A830 board candidate."
   }
 }

@@ -91,6 +91,7 @@
 !/tests/ufs_lifecycle_include/
 !/tests/DodgeGpuMetalRegistrationTest.cpp
 !/tests/DodgeGpuStartupTest.cpp
+!/tests/DodgeNativeA830BoardTest.cpp
 !/tests/graphics_lifecycle_include/
 !/tests/gpu_swap_include/
 !/tests/diagnostic_console_include/
