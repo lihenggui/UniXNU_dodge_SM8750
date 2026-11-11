@@ -1,0 +1,39 @@
+--- a/Platforms/OnePlus/dodgePkg/dodge.dsc
++++ b/Platforms/OnePlus/dodgePkg/dodge.dsc
+@@ -96,3 +96,25 @@
+   # ACPI Tables
+   #
+   #dodge/AcpiTables.inf
++
++# DXE memory log and the UniXNU QR export plugin.
++[PcdsFixedAtBuild]
++  gUniXNUPkgTokenSpaceGuid.PcdUniXNUDeviceModel|"OnePlus13"
++  gAdvLoggerPkgTokenSpaceGuid.PcdAdvancedLoggerPages|512
++
++[LibraryClasses]
++  AdvancedLoggerAccessLib|AdvLoggerPkg/Library/AdvancedLoggerAccessLib/AdvancedLoggerAccessLib.inf
++  AdvancedLoggerHdwPortLib|AdvLoggerPkg/Library/AdvancedLoggerHdwPortLibNull/AdvancedLoggerHdwPortLibNull.inf
++  AssertLib|AdvLoggerPkg/Library/AssertLib/AssertLib.inf
++  QrEncoderLib|MsGraphicsPkg/Library/QrEncoderLib/QrEncoderLib.inf
++
++[LibraryClasses.common.DXE_CORE]
++  DebugLib|AdvLoggerPkg/Library/BaseDebugLibAdvancedLogger/BaseDebugLibAdvancedLogger.inf
++  AdvancedLoggerLib|AdvLoggerPkg/Library/AdvancedLoggerLib/DxeCore/AdvancedLoggerLib.inf
++
++[LibraryClasses.common.DXE_DRIVER, LibraryClasses.common.UEFI_DRIVER, LibraryClasses.common.UEFI_APPLICATION]
++  DebugLib|AdvLoggerPkg/Library/BaseDebugLibAdvancedLogger/BaseDebugLibAdvancedLogger.inf
++  AdvancedLoggerLib|AdvLoggerPkg/Library/AdvancedLoggerLib/Dxe/AdvancedLoggerLib.inf
++
++[Components]
++  UniXNUPkg/Driver/AdvancedLogDxe/AdvancedLogDxe.inf
+--- a/Platforms/OnePlus/dodgePkg/dodge.fdf
++++ b/Platforms/OnePlus/dodgePkg/dodge.fdf
+@@ -111,6 +111,8 @@
+     SECTION UI = "DeviceTreeBlob"
+   }
+ 
++  INF UniXNUPkg/Driver/AdvancedLogDxe/AdvancedLogDxe.inf
++
+   !include QcomPkg/Extra.fdf.inc
+ 
+ [FV.FVMAIN_COMPACT]

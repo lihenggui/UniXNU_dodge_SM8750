@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Read back the built dodge boot image and publish its local build manifest."""
 
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -18,6 +19,10 @@ def digest(data):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, help='Directory for this firmware variant')
+    parser.add_argument('--report', type=Path, default=ROOT / 'reports/uefi-build.json')
+    args = parser.parse_args()
     source = ROOT / 'uefi/Mu-Silicium'
     record = json.loads((ROOT / 'analysis/uefi-build-result.json').read_text())
     if record['returncode'] or not record['parallel_jobs_confirmed']:
@@ -51,6 +56,7 @@ def main():
     modules = []
     boot_abi = None
     simplefb = None
+    firmware_log = None
     if record['menu_integrated']:
         uncompressed = (fv / 'FVMAIN.Fv').read_bytes()
         required = {
@@ -72,6 +78,19 @@ def main():
         # Read the pinned application GUID rather than assuming its value.
         inf = ROOT / 'sources/UniXNU/package/UniXNUPkg/Application/UniXNU/UniXNU.inf'
         required['UniXNU'] = re.search(r'FILE_GUID\s*=\s*([0-9A-Fa-f-]+)', inf.read_text())[1]
+        if record.get('firmware_log_integrated'):
+            inf = ROOT / 'sources/UniXNU/package/UniXNUPkg/Driver/AdvancedLogDxe/AdvancedLogDxe.inf'
+            required['AdvancedLogDxe'] = re.search(r'FILE_GUID\s*=\s*([0-9A-Fa-f-]+)', inf.read_text())[1]
+            producer = source / 'Build/dodgePkg/DEBUG_CLANGPDB/AARCH64/MdeModulePkg/Core/Dxe/DxeMain'
+            libraries = (producer / 'OUTPUT/static_library_files.lst').read_text()
+            generated = (producer / 'DEBUG/AutoGen.c').read_text()
+            if ('/AdvancedLoggerLib/DxeCore/AdvancedLoggerLib/' not in libraries or
+                    'Status = DxeCoreAdvancedLoggerLibConstructor (ImageHandle, SystemTable);' not in generated or
+                    not re.search(r'#define _PCD_VALUE_PcdAdvancedLoggerPages\s+512U', generated)):
+                raise SystemExit('DXE Core is missing the configured 2 MiB Advanced Logger producer')
+            firmware_log = {'producer': 'DXE Core', 'buffer_bytes': 512 * 4096,
+                            'exporter': 'AdvancedLogDxe', 'format': 'OneSend QR',
+                            'sec_log_captured': False, 'hardware_capture_tested': False}
         if record.get('darwinboot_integrated'):
             inf = ROOT / 'sources/UniXNU/drivers/DarwinBoot/DarwinBootPkg/Driver/DarwinBoot.inf'
             required['DarwinBoot'] = re.search(r'FILE_GUID\s*=\s*([0-9A-Fa-f-]+)', inf.read_text())[1]
@@ -94,8 +113,9 @@ def main():
             if name == 'SimpleFbDxe' and binary not in uncompressed:
                 raise SystemExit('Built SimpleFb executable differs from the embedded firmware input')
             modules.append({'name': name, 'file_guid': guid, 'bytes': len(binary), 'sha256': digest(binary)})
-    output = ROOT / 'build/cph2653-uefi-menu' if modules else ROOT / 'build/cph2653-uefi-baseline'
-    output.mkdir(exist_ok=True)
+    output = args.output or (ROOT / 'build/cph2653-uefi-menu' if modules else ROOT / 'build/cph2653-uefi-baseline')
+    output = output.resolve()
+    output.mkdir(parents=True, exist_ok=True)
     artifacts = []
     for path in [fv / 'SILICIUM_UEFI.fd', source / 'Mu-dodge.img']:
         destination = output / path.name
@@ -111,6 +131,7 @@ def main():
                   firmware_dtb_sha256=digest(dtb),
                   darwinboot_abi=boot_abi,
                   simplefb_error_bounds=simplefb,
+                  firmware_log=firmware_log,
                   container_readback='PASS: header, sizes, gzip, shim, FD, DTB and ramdisk match',
                   kernel_included=False, hardware_boot='not-tested',
                   variable_writes='UniXNUDxe registers nonvolatile Boot#### and BootOrder variables; platform storage-write review pending.',
@@ -120,7 +141,7 @@ def main():
     record['planned_commands'] = [[part.replace(str(ROOT) + '/', '') for part in cmd]
                                   for cmd in record['planned_commands']]
     text = json.dumps(record, indent=2) + '\n'
-    (ROOT / 'reports/uefi-build.json').write_text(text)
+    args.report.write_text(text)
     (output / 'manifest.json').write_text(text)
     print(json.dumps({'result': 'PASS', 'artifacts': artifacts,
                       'embedded_modules': [m['name'] for m in modules],

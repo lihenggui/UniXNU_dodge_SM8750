@@ -96,7 +96,7 @@ def main():
     entries += [(name, lock[name]) for name in ('unixnu', 'sm8750', 'pagani_reference', 'xnu_ios16', 'unifdef', 'iig_port')]
     if 'oneplus13t_reference' in lock:
         entries.append(('oneplus13t_reference', lock['oneplus13t_reference']))
-    entries += [(name, lock[name]) for name in ('a830_backend_reference', 'a830_metal_reference',
+    entries += [(name, lock[name]) for name in ('native_a830_reference', 'native_a830_smmu_reference', 'a830_backend_reference', 'a830_metal_reference',
                                                'a830_firmware_reference', 'iphoneos_sdk_reference',
                                                'metal2vulkan_reference', 'mesa_reference',
                                                'a830_build_reference', 'erofs_tools', 'glslang_tools', 'apfs_readonly_reference',

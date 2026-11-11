@@ -13,7 +13,7 @@ def main():
     lock = json.loads((ROOT / 'upstream.lock.json').read_text())
     specs = {name: lock[name] for name in ('unixnu', 'darwinboot', 'iig_port', 'xnuprelink')}
     specs['uefi'] = {'path': 'uefi/Mu-Silicium', 'revision': lock['revision'],
-                     'patches': [lock['memory_patch'], lock['menu_patch'], lock['boot_shim_patch']]}
+                     'patches': [lock['memory_patch'], lock['menu_patch'], lock['boot_shim_patch'], lock['simplefb_patch'], lock['firmware_log_patch']]}
     result = []
     (ROOT / 'build').mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='source-patches-', dir=ROOT / 'build') as temporary:

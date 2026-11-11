@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 import subprocess
 
-from prepare_sources import patch_state
+from prepare_sources import patch_state, patch_series_state
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -45,18 +45,14 @@ def main():
                 raise SystemExit(f'{name} links to a different checkout')
         elif link.exists():
             raise SystemExit(f'Refusing to overwrite an existing {name} directory')
-    command = ['git', '-C', str(source), 'apply', '--check', str(patch)]
-    forward = subprocess.run(command, capture_output=True, text=True)
-    reverse = subprocess.run(command[:-1] + ['--reverse', str(patch)], capture_output=True, text=True)
-    if forward.returncode and reverse.returncode:
-        raise SystemExit('Menu patch does not match this source:\n' + forward.stderr)
+    series = [lock['menu_patch'], lock['firmware_log_patch']]
+    states = patch_series_state(source, series, args.apply)
+    for specification, state in zip(series, states):
+        print(specification['path'], state)
     if not args.apply:
-        print('MENU_PATCH_ALREADY_APPLIED' if reverse.returncode == 0 else 'MENU_PATCH_APPLICABLE')
         for name in packages:
             print(name, 'LINK_PRESENT' if (source / name).is_symlink() else 'LINK_REQUIRED')
         return
-    if forward.returncode == 0:
-        subprocess.run(['git', '-C', str(source), 'apply', str(patch)], check=True)
     for name, target in packages.items():
         if not (source / name).is_symlink():
             (source / name).symlink_to(target, target_is_directory=True)

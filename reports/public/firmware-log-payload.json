@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "target": "iPhone10,3 / iOS 16.7.16 / 20H392",
+  "firmware": "build/cph2653-uefi-logs/SILICIUM_UEFI.fd",
+  "firmware_sha256": "b36fdd1fa4c148b97778dbbf0db39cba9a6c513ef0794bd1923345450076fb7e",
+  "payload": "build/firmware-log-payload/dodge/ios-16.7.16-20H392/dodge/payload/payload.img",
+  "payload_sha256": "0f56cf13840543fed5da4ed802106cfef480c8b5e6a09cf6b68edb769b858ba7",
+  "boot_image": "build/firmware-log-payload/dodge/ios-16.7.16-20H392/dodge/boot/boot.img",
+  "boot_image_sha256": "b6396f73cbfd1892afe5dc1a4f803e199c5197e20fc7f673a4081caf9a304ef0",
+  "boot_image_bytes": 170569728,
+  "menu_entries": [
+    "xnu",
+    "reset",
+    "shutdown",
+    "tools"
+  ],
+  "tools_action_read_back": true,
+  "boot_header_version": 4,
+  "container_readback": "BootShim, FD, DTB and FAT match their packaged inputs",
+  "original_userspace_included": false,
+  "hardware_tested": false,
+  "scope": "Host firmware/payload integration and Android v4 readback. QR transfer and firmware log capture require a device."
+}

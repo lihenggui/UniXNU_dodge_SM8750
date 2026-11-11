@@ -170,7 +170,7 @@ class DodgeInput : public IOHIDDevice {
     int setupTouchPower() {
         observe("power map");
         if (!rsc.map(PAGANI_TOUCH_RSC,PAGANI_TOUCH_RSC_SIZE) ||
-            !cmddb.map(PAGANI_CMD_DB,PAGANI_CMD_DB_SIZE) ||
+            !cmddb.map(PAGANI_CMD_DB,PAGANI_CMD_DB_SIZE,kIOMapReadOnly) ||
             !core.map(PAGANI_SPMI_CORE,0x3000) || !cnfg.map(PAGANI_SPMI_CNFG,0x4000) ||
             !obs.map(PAGANI_SPMI_OBS,0x80000) || !channels.map(PAGANI_SPMI_CHANNELS,PAGANI_SPMI_CHANNEL_BYTES)) return -12;
         auto db=cmddb.io(),power=rsc.io(),c=core.io(),f=cnfg.io(),o=obs.io(),w=channels.io();

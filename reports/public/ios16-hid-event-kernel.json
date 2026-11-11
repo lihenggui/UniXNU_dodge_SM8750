@@ -168,9 +168,9 @@
     "profiles/os/ios-16.7.16-20H392/hid-event-interface.json": "cc64aba4b3b000a0db9e8dbbf8c1327c24ab216d61942f6e17e45edf79de6198"
   },
   "interface_report_sha256": "5a1f716e1413c17fa436dd6c6da8d94849e39a8eb1a1e459a3ebf74cf6faffca",
-  "prelink_report_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+  "prelink_report_sha256": "db221a3a178964e9a568c24a576f76446e95448e9ec1428f0e5f399d6a8084c6",
   "candidate": "build/cph2653-input-prelink/kernel.macho",
-  "candidate_sha256": "be0b18ce8c30d2b9a257477aadb51795dcd7165523520e19372998c7688c3b7e",
+  "candidate_sha256": "b5381ed683e08a68c477a5f5f24db4d8dfca55f0efc55d5189f2a6c1aa0b2dee",
   "negative_controls": [
     {
       "case": "integer-slot-replaced-with-event-getter",

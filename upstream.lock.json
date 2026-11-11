@@ -929,10 +929,10 @@
   },
   "dodge_input_overlay": {
     "path": "patches/oneplus13/0006-ios16-dodge-input.patch",
-    "sha256": "a6569b4dcbd7114d529f32af24ee0dc2895572f81e5342953509237777384e49",
+    "sha256": "98ce623ec030fa18051d4b602046483b6ffb8853e2339e7b261538a8c9526bd4",
     "base_source_sha256": "d6363b9fde015a70f9741aa3a175f49243935e306e94adba5e970385aade68c3",
     "output_source": "drivers/DodgeInput/DodgeInput.cpp",
-    "output_source_sha256": "45235ca498af9899e796bba818425d1742d78ab00078e912f983731182f97d25",
+    "output_source_sha256": "7b85f4020ccd382add26627f49d992caa5ee5144fef098b864f6f74ad27a87ee",
     "scope": "Exact reviewed overlay from pinned reference to source iPhone HID + CPH2653 power/mapping lifetime; original event vtables/fields are not accessed"
   },
   "iphone_input_prelink": {
@@ -1247,5 +1247,40 @@
     "sha256": "9d9fd699606b25ceace3f1f38ef784dd1b8f135333a2d1e91e3e8845687c0232",
     "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceBackingABI.h",
     "header_sha256": "8a947a038d44168ff922cebfdc23963290557f43b695b88cff79846742c69cb1"
+  },
+  "firmware_log_patch": {
+    "path": "patches/mu-silicium/0005-dodge-firmware-log-export.patch",
+    "sha256": "b388308f89dd628835baa39351e2247ee74231ff05dfabff383114f9f7afcac8",
+    "scope": "Board DXE Advanced Logger producer, 2 MiB reserved log and UniXNU QR export plugin; SEC logging remains on the platform console."
+  },
+  "dodge_input_mapping_reference": {
+    "repository": "https://github.com/IssacL04/UniXNU-Pagani-Drivers",
+    "revision": "c888efd3ce1b817d13f28783a77cf689cb2255c9",
+    "source": "drivers/PaganiInput/Mapping.h",
+    "path": "drivers/DodgeInput/Mapping.h",
+    "sha256": "3fe11088c93760131ff57c26b9190407e49fab256ef7ee9040dc9ac893e42200",
+    "scope": "Unchanged mapping helper with caller-selected access flags. CPH2653 maps its command database read-only; existing driver and SoC revisions remain pinned."
+  },
+  "native_a830_reference": {
+    "repository": "https://github.com/Shad0w23333/Adreno830.git",
+    "revision": "1a1321056ffc5428ae925f4680093718b46ca7c2",
+    "path": "sources/Adreno830-native",
+    "reference_only": true,
+    "scope": "Standalone Gen8 source candidate for the iPhone Darwin 22 build. Board startup and the iOS 16 integration are maintained separately."
+  },
+  "native_a830_smmu_reference": {
+    "repository": "https://github.com/UniXNU/ArmSmmu4K.git",
+    "revision": "3ba92451bd44bb742d11758fbfcd3a446ecad685",
+    "path": "sources/ArmSmmu4K-native-a830",
+    "reference_only": true,
+    "scope": "Contiguous table-arena API used by the standalone native A830 snapshot; separate from the existing GPU candidate."
+  },
+  "native_a830_darwin22_overlay": {
+    "path": "patches/adreno830/0001-darwin22-template-data-free.patch",
+    "sha256": "f165ef3084a6a85a5f332c208b62493fd030a658d76366f7d963f8bd823ff441",
+    "target": "NativeAdrenoHandleIndex.h",
+    "before_sha256": "0813683d76330a935afe4920892bece58c5e22576d8083f567b95faaca034e08",
+    "after_sha256": "90c9b21e194be3d373ebbbd0a784a1dbb9189f5ffd7e5837f1ad70f9bbd67235",
+    "scope": "Spell out IODeleteData allocation-size and pointer-erasure operations to avoid the Darwin 22 typed-pointer builtin on dependent template types; heap and bounds are unchanged."
   }
 }

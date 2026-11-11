@@ -1,0 +1,13 @@
+--- a/NativeAdrenoHandleIndex.h
++++ b/NativeAdrenoHandleIndex.h
+@@ -94,8 +94,8 @@
+     }
+     void release()
+     {
+-        if(queue_)IODeleteData(queue_,Free,Slots);
+-        if(generation_)IODeleteData(generation_,uint32_t,Slots);
++        if(queue_)IOFreeData(os_ptr_load_and_erase(queue_),IOMallocArraySize(0,sizeof(Free),Slots));
++        if(generation_)IOFreeData(os_ptr_load_and_erase(generation_),IOMallocArraySize(0,sizeof(uint32_t),Slots));
+         queue_=nullptr;generation_=nullptr;head_=count_=0;
+     }
+     /* The oldest free slot past its quarantine, or UINT32_MAX (none free, or the oldest freed too recently). */

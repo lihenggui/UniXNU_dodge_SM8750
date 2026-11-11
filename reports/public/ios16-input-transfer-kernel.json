@@ -9,10 +9,10 @@
     "drivers/DodgeInput/geni/GeniSpi.c": "c8926a67f8119b2c8caaa6ac711e8cd5a21f1d5b6eacc4d08b55df99e65b25a3",
     "sources/UniXNU/drivers/QcomGeniSpi/GeniSpi.h": "e73891e4571c5323bca27aaf987bafa002856dfa1dcee156ff31b119e2d3ae3c"
   },
-  "source_report_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
-  "prelink_report_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+  "source_report_sha256": "6aa39de67559bc1bf9c5d98434ec27f5b5344a322420e2267d237cbb221b4151",
+  "prelink_report_sha256": "db221a3a178964e9a568c24a576f76446e95448e9ec1428f0e5f399d6a8084c6",
   "candidate": "build/cph2653-input-prelink/kernel.macho",
-  "candidate_sha256": "be0b18ce8c30d2b9a257477aadb51795dcd7165523520e19372998c7688c3b7e",
+  "candidate_sha256": "b5381ed683e08a68c477a5f5f24db4d8dfca55f0efc55d5189f2a6c1aa0b2dee",
   "case_count": 20,
   "cases": [
     {

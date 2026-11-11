@@ -1,9 +1,15 @@
 {
   "schema_version": 1,
-  "kind": "sanitized-host-evidence-snapshots",
+  "kind": "host-build-and-test-reports",
   "target": "CPH2653 / iPhone10,3 / iOS 16.7.16 / 20H392",
-  "scope": "Publication copies of local reports, not build-cache inputs or a new validation run. Original report/dependency/artifact digests are retained. Resolve original report digests through this index; normalized snapshot hashes are listed separately. Host builds and CPU models do not establish hardware functionality.",
-  "exporter_sha256": "7f550edde734f8f6f4a9570f8be569a1bd254f9307db672b9a1a011b3d4438d7",
+  "scope": "Build and model-test snapshots. Artifact and dependency hashes identify their recorded run. Use previous_indexes to resolve earlier report versions.",
+  "previous_indexes": [
+    {
+      "revision": "067b04a9f4544296ecc03a6ba26aa52d8cb0f6be",
+      "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/067b04a9f4544296ecc03a6ba26aa52d8cb0f6be/reports/public/index.json"
+    }
+  ],
+  "exporter_sha256": "d269108c87dd1d3f96f4dcfc05ff7bb0066d8d61d4a746d13082bf5232da7f71",
   "reports": {
     "a830-backend-tests.json": {
       "local_report": "reports/a830-backend-tests.json",
@@ -75,6 +81,12 @@
       "local_report": "reports/device-tree.json",
       "original_sha256": "63e2277fdb7942695956c53953aeeb41dedc433c2753980187481b673e0636a7",
       "snapshot_sha256": "63e2277fdb7942695956c53953aeeb41dedc433c2753980187481b673e0636a7",
+      "paths_normalized": false
+    },
+    "firmware-log-payload.json": {
+      "local_report": "reports/firmware-log-payload.json",
+      "original_sha256": "c242eaf51a7113a6e9c42dfb29d92d82276ba4ee118493a16a4090a70475ff2d",
+      "snapshot_sha256": "c242eaf51a7113a6e9c42dfb29d92d82276ba4ee118493a16a4090a70475ff2d",
       "paths_normalized": false
     },
     "fresh-gpu-stack.json": {
@@ -157,8 +169,8 @@
     },
     "input-stack.json": {
       "local_report": "reports/input-stack.json",
-      "original_sha256": "6b56a882bb9b8f360f9c9b8a0fa703958411aabb6bb61c4a3e9caa408cbe1900",
-      "snapshot_sha256": "6b56a882bb9b8f360f9c9b8a0fa703958411aabb6bb61c4a3e9caa408cbe1900",
+      "original_sha256": "ddae808497071f7dae405d95ee9c855701cec752a04e47db1e223dd2044208e5",
+      "snapshot_sha256": "ddae808497071f7dae405d95ee9c855701cec752a04e47db1e223dd2044208e5",
       "paths_normalized": false
     },
     "ios-target.json": {
@@ -493,8 +505,8 @@
     },
     "ios16-hid-edge-kernel.json": {
       "local_report": "reports/ios16-hid-edge-kernel.json",
-      "original_sha256": "1ecd5bffa0f5eb6e3e457d92981de056c1287f84be17a188d54df9436c37fd73",
-      "snapshot_sha256": "1ecd5bffa0f5eb6e3e457d92981de056c1287f84be17a188d54df9436c37fd73",
+      "original_sha256": "e9a367d7663af1d0c1cfeb43dea40691fe6772d61132ff2ea7e817ec5908ad22",
+      "snapshot_sha256": "e9a367d7663af1d0c1cfeb43dea40691fe6772d61132ff2ea7e817ec5908ad22",
       "paths_normalized": false
     },
     "ios16-hid-edge-source.json": {
@@ -511,8 +523,8 @@
     },
     "ios16-hid-event-kernel.json": {
       "local_report": "reports/ios16-hid-event-kernel.json",
-      "original_sha256": "d25c0a8ca85d16536e74484469c8ddf322cc14ea7ce3c81052e2a501bbf771c1",
-      "snapshot_sha256": "d25c0a8ca85d16536e74484469c8ddf322cc14ea7ce3c81052e2a501bbf771c1",
+      "original_sha256": "dcb8ce4673f107aaef5e2ce48f2c18b79ba19f2d6fac0ad29f207a38ec76315e",
+      "snapshot_sha256": "dcb8ce4673f107aaef5e2ce48f2c18b79ba19f2d6fac0ad29f207a38ec76315e",
       "paths_normalized": false
     },
     "ios16-hid-object-lifetime.json": {
@@ -541,8 +553,8 @@
     },
     "ios16-input-clock-kernel.json": {
       "local_report": "reports/ios16-input-clock-kernel.json",
-      "original_sha256": "83b28bacb7f91463dd576e0d89b24df703f7946e5b98af191589b805faa90dee",
-      "snapshot_sha256": "83b28bacb7f91463dd576e0d89b24df703f7946e5b98af191589b805faa90dee",
+      "original_sha256": "56b0293781cd010ffe83724d325ee4dbbf6371da01733022e76b3f83f03db5cc",
+      "snapshot_sha256": "56b0293781cd010ffe83724d325ee4dbbf6371da01733022e76b3f83f03db5cc",
       "paths_normalized": false
     },
     "ios16-input-clock.json": {
@@ -559,14 +571,14 @@
     },
     "ios16-input-cold-kernel.json": {
       "local_report": "reports/ios16-input-cold-kernel.json",
-      "original_sha256": "d34dab98844b636337616533e6cf262e2272bfc578bc34303d203b8122e11aba",
-      "snapshot_sha256": "d34dab98844b636337616533e6cf262e2272bfc578bc34303d203b8122e11aba",
+      "original_sha256": "41ea2f1ade1005a675d2eabbc9f3d7e3370f77a0161fe68e5282b2b1d6044155",
+      "snapshot_sha256": "41ea2f1ade1005a675d2eabbc9f3d7e3370f77a0161fe68e5282b2b1d6044155",
       "paths_normalized": false
     },
     "ios16-input-drain-kernel.json": {
       "local_report": "reports/ios16-input-drain-kernel.json",
-      "original_sha256": "067e2b6ed016ff7bbb205e3cbf19f17abef28ca92ad20258c2e412165beb872a",
-      "snapshot_sha256": "067e2b6ed016ff7bbb205e3cbf19f17abef28ca92ad20258c2e412165beb872a",
+      "original_sha256": "d42ccc7c8ec6b1c04c1d426bb95415b302e0d5f657cf47488b68ca80d0d43183",
+      "snapshot_sha256": "d42ccc7c8ec6b1c04c1d426bb95415b302e0d5f657cf47488b68ca80d0d43183",
       "paths_normalized": false
     },
     "ios16-input-hardware.json": {
@@ -577,32 +589,32 @@
     },
     "ios16-input-hid-parser.json": {
       "local_report": "reports/ios16-input-hid-parser.json",
-      "original_sha256": "556a0c8b044f637045894c2796329a7f91f9f836d41c9830e6b47b6eeaf97a07",
-      "snapshot_sha256": "556a0c8b044f637045894c2796329a7f91f9f836d41c9830e6b47b6eeaf97a07",
+      "original_sha256": "b5cd65dffedadd961b7490601690558516f7841d4151ab7363985638798653e1",
+      "snapshot_sha256": "b5cd65dffedadd961b7490601690558516f7841d4151ab7363985638798653e1",
       "paths_normalized": false
     },
     "ios16-input-kernel.json": {
       "local_report": "reports/ios16-input-kernel.json",
-      "original_sha256": "7e34b74c937e073d71e1f949daa2ac52be393fade3c10975424847aff95f9820",
-      "snapshot_sha256": "7e34b74c937e073d71e1f949daa2ac52be393fade3c10975424847aff95f9820",
+      "original_sha256": "577c9c177b2df423a548b3c64df721c3762a29c81dfa68c3d9c10b94bb36ed19",
+      "snapshot_sha256": "577c9c177b2df423a548b3c64df721c3762a29c81dfa68c3d9c10b94bb36ed19",
       "paths_normalized": false
     },
     "ios16-input-native.json": {
       "local_report": "reports/ios16-input-native.json",
-      "original_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
-      "snapshot_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
+      "original_sha256": "6aa39de67559bc1bf9c5d98434ec27f5b5344a322420e2267d237cbb221b4151",
+      "snapshot_sha256": "6aa39de67559bc1bf9c5d98434ec27f5b5344a322420e2267d237cbb221b4151",
       "paths_normalized": false
     },
     "ios16-input-payload.json": {
       "local_report": "reports/ios16-input-payload.json",
-      "original_sha256": "ebaa0fb9429d0d87f817a4cd9fc462af1bbbf43b9bec94546813c160d1ebb710",
-      "snapshot_sha256": "ebaa0fb9429d0d87f817a4cd9fc462af1bbbf43b9bec94546813c160d1ebb710",
+      "original_sha256": "0bf84cb206482688f94d79fdb98aab6eb2fff2b7d42b8e7cd5a282d101d95390",
+      "snapshot_sha256": "0bf84cb206482688f94d79fdb98aab6eb2fff2b7d42b8e7cd5a282d101d95390",
       "paths_normalized": false
     },
     "ios16-input-prelink.json": {
       "local_report": "reports/ios16-input-prelink.json",
-      "original_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
-      "snapshot_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
+      "original_sha256": "db221a3a178964e9a568c24a576f76446e95448e9ec1428f0e5f399d6a8084c6",
+      "snapshot_sha256": "db221a3a178964e9a568c24a576f76446e95448e9ec1428f0e5f399d6a8084c6",
       "paths_normalized": false
     },
     "ios16-input-transfer-host.json": {
@@ -613,8 +625,8 @@
     },
     "ios16-input-transfer-kernel.json": {
       "local_report": "reports/ios16-input-transfer-kernel.json",
-      "original_sha256": "70c202a023304840617d448a48849d96511fc0fbce4b928dc3042a8a6ccf63cb",
-      "snapshot_sha256": "70c202a023304840617d448a48849d96511fc0fbce4b928dc3042a8a6ccf63cb",
+      "original_sha256": "e3ea94035aed6492036733dc9984f31ec2d5cd0e43ed051184ae881bd25a3888",
+      "snapshot_sha256": "e3ea94035aed6492036733dc9984f31ec2d5cd0e43ed051184ae881bd25a3888",
       "paths_normalized": false
     },
     "ios16-mapped-lease-host.json": {
@@ -911,6 +923,18 @@
       "snapshot_sha256": "0b273e3c1456e840507b81abffe2e4217ea8b404c53c6297c3b215ffaee9b9d9",
       "paths_normalized": false
     },
+    "native-a830-host.json": {
+      "local_report": "reports/native-a830-host.json",
+      "original_sha256": "be293f159082816ba68ecd06c17a9e127a542ebfba7a7aba52492ccb55347953",
+      "snapshot_sha256": "be293f159082816ba68ecd06c17a9e127a542ebfba7a7aba52492ccb55347953",
+      "paths_normalized": false
+    },
+    "native-a830.json": {
+      "local_report": "reports/native-a830.json",
+      "original_sha256": "7201f8781e8baf313033dc1fd8e17a17226e1493d232d5366783a583ebef525e",
+      "snapshot_sha256": "7201f8781e8baf313033dc1fd8e17a17226e1493d232d5366783a583ebef525e",
+      "paths_normalized": false
+    },
     "native-kernel.json": {
       "local_report": "reports/native-kernel.json",
       "original_sha256": "b1b8726c04b5e771bc2484e1110673aab92b88862435100043553377a0e7d4d2",
@@ -943,14 +967,14 @@
     },
     "simplefb-tests.json": {
       "local_report": "reports/simplefb-tests.json",
-      "original_sha256": "19e3dfa8f5689543abfb24b54dbcdeda2366ac15c94afa469f58110a60fec4ef",
-      "snapshot_sha256": "19e3dfa8f5689543abfb24b54dbcdeda2366ac15c94afa469f58110a60fec4ef",
+      "original_sha256": "26f09922d6387cf7b65910bfdb15b26e496ebcb313dd34ff75a2ba5d903bf40a",
+      "snapshot_sha256": "26f09922d6387cf7b65910bfdb15b26e496ebcb313dd34ff75a2ba5d903bf40a",
       "paths_normalized": false
     },
     "source-patches.json": {
       "local_report": "reports/source-patches.json",
-      "original_sha256": "3f35ad8e5833554c689f6dcfef73a407b1b2bab0501369849875d0fa9071e089",
-      "snapshot_sha256": "3f35ad8e5833554c689f6dcfef73a407b1b2bab0501369849875d0fa9071e089",
+      "original_sha256": "3d0f74a5a33664aa2e79441aab598d96712c41162c10435442fbc5279bb95d49",
+      "snapshot_sha256": "3d0f74a5a33664aa2e79441aab598d96712c41162c10435442fbc5279bb95d49",
       "paths_normalized": false
     },
     "stock-uefi-patch-candidates.json": {
@@ -993,6 +1017,12 @@
       "local_report": "reports/uefi-build.json",
       "original_sha256": "ff91576bea37b95841f0ebc6ab9b4cfdbbb887fad03957fbbfade7a660b8e06c",
       "snapshot_sha256": "ff91576bea37b95841f0ebc6ab9b4cfdbbb887fad03957fbbfade7a660b8e06c",
+      "paths_normalized": false
+    },
+    "uefi-logs.json": {
+      "local_report": "reports/uefi-logs.json",
+      "original_sha256": "c53b9ff8b0d8f23275b4595282a5da6a58d9a029e4e9771a17021fb63f3e76bd",
+      "snapshot_sha256": "c53b9ff8b0d8f23275b4595282a5da6a58d9a029e4e9771a17021fb63f3e76bd",
       "paths_normalized": false
     },
     "ufs-source-probe.json": {

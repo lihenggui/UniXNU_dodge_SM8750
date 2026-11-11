@@ -23,7 +23,7 @@
     "Height": 3168,
     "ColorDepth": 32
   },
-  "configured_geometry_source_sha256": "d23d0b2024855739ea483bac2ac903e0a613d325e51077e235ec973706076d64",
+  "configured_geometry_source_sha256": "9f3d70ece1a0c3a6646cd7dd237f6524eed4019ae16abbdb223afddc530f6b9b",
   "real_edk2_types": true,
   "software_boot_services": true,
   "framebuffer_accessed": false,

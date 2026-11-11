@@ -54,6 +54,7 @@ dram_size = "0x100000000"
 kernel_args = ["-v", "serial=0", "debug=0x14e", "cpus=1"]
 command_line_length = 608
 timeout = 10
+tools = true
 
 [payload.adt]
 chip_id = "0x8015"

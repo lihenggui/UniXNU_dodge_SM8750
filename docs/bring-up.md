@@ -73,6 +73,16 @@ this toolchain, the local Python environment and four jobs.
 .venv-uefi/bin/python scripts/check_ios16_patches.py
 ```
 
+Check the standard packaging entry point after fetching the sources:
+
+```sh
+PATH="$PWD/.venv-uefi/bin:$PATH" scripts/package.sh --check --no-deps --os 16 \
+  --out build/unixnu -j 4
+```
+
+This resolves the iPhone profile and its 61 patches. The full `release` build
+also needs the original-component closure and image inputs described below.
+
 [The CI workflow](../.github/workflows/source-checks.yml) also runs driver tests
 with software IOKit and register models. Its GENI tests use synthetic firmware.
 
@@ -113,6 +123,12 @@ Outputs are written to `build/cph2653-uefi-menu/` and
 `build/cph2653-native-bringup/`. The latter contains the kernel, iPhone device
 tree and FAT payload in an Android boot container.
 
+The firmware includes a 2 MiB DXE log buffer and the UniXNU QR exporter.
+Open **Tools > Advanced Logger** in the menu and receive the log with
+[OneSend](https://onesend.01mvp.com). The buffer starts in DXE; SEC still uses
+the platform's existing debug output. See the
+[firmware log guide](https://unixnu.com/porting/log-capture#firmware-setup).
+
 The board memory patch splits the DXE heap around the captured reserved ranges
 while keeping the SEC heap contiguous. The
 [before](../reports/public/memory-before.json) and
@@ -142,6 +158,7 @@ to check an existing build.
 
 | Route | Command |
 | --- | --- |
+| Standalone native A830 source archive | `.venv-uefi/bin/python scripts/build_native_a830.py` |
 | A830, Turnip, Metal and display | `.venv-uefi/bin/python scripts/build_gpu_stack.py` |
 | Read-only UFS and root storage | `.venv-uefi/bin/python scripts/build_storage_stack.py` |
 | S3910 touch and iPhone HID | `.venv-uefi/bin/python scripts/build_input_stack.py` |
@@ -154,6 +171,12 @@ to check an existing build.
 | GPU mapped-resource lifetime | `.venv-gpu/bin/python scripts/build_mapped_lease_stack.py` |
 | IOSurface task lookup | `.venv-gpu/bin/python scripts/build_surface_identity_stack.py` |
 | IOSurface/import page matching | `.venv-gpu/bin/python scripts/build_surface_pages_stack.py` |
+
+The standalone A830 route uses Shad0w23333's Gen8 driver and its matching SMMU
+library. `python3 scripts/check_native_a830_host.py` runs its software-controller
+tests. The driver compiles against Darwin 22 and binds the original iPhone accelerator
+base. Board startup, firmware embedding and the Metal selector extensions are
+separate integration work. The existing GPU route keeps its source pins.
 
 The firmware entropy route has three steps:
 
@@ -188,7 +211,8 @@ Component status and remaining integration work are tracked in
 Build scripts write local reports to `reports/*.json`. Published copies in
 `reports/public/` omit local machine paths. The
 [index](../reports/public/index.json) stores original and published hashes.
-Dependency hashes inside a report refer to the original local reports.
+Dependency hashes inside a report refer to the original local reports. Earlier
+versions remain available through the previous index linked from the current one.
 Snapshots record the source and host settings of their original run; CI checks
 the current source tree.
 

@@ -1,0 +1,182 @@
+{
+  "result": "NATIVE_A830_SOFTWARE_CONTROLLER_TESTS_PASS",
+  "suite_count": 15,
+  "builder_sha256": "9fc295139586d2c6c8644f3e73bb6f3f2ac84d63209d7f712b5a8775af265e5f",
+  "source_revisions": {
+    "native_a830_reference": "1a1321056ffc5428ae925f4680093718b46ca7c2",
+    "native_a830_smmu_reference": "3ba92451bd44bb742d11758fbfcd3a446ecad685"
+  },
+  "source_sha256": {
+    "sources/Adreno830-native/NativeAdrenoTimer.h": "93f6fdcaa7118c32d0014110be8cf36e9fd5ffdb077a00196240317ebe42bc54",
+    "sources/Adreno830-native/Adreno830Board.h": "d08711d9f08d42213d3fb0f896aeb443bae968e5cc568c58f4dc4d2d1e00e7ae",
+    "sources/Adreno830-native/Adreno830Status.h": "9626f67c6f430b06562fa1be64598e8956929541c7954d1e1c84a394bf49df8a",
+    "sources/Adreno830-native/NativeAdrenoUserClient.cpp": "e64292502b73086ae8a0e460c4a9f32014b0907fe8435e54c1c5c44c172b650d",
+    "sources/Adreno830-native/NativeAdrenoMemory.h": "40f40ae2a6c52e3a873dadbb21449a09506c6ae19a118f12a76ca85400173a56",
+    "sources/Adreno830-native/A830Votes.cpp": "d2e11d01e0a12c3cf65391bb4352dbfea9923dba567bad30d7994472f95e61ec",
+    "sources/Adreno830-native/A830Dcvs.cpp": "6e457f98e72fe052b4b7fb0057ea2a8003e78fbaa3cc8784b291270690a0f016",
+    "sources/Adreno830-native/A830Fence.cpp": "d9066fcc8a0b7bf514817cfa8d66f8190d55371694842897e489414939c2231b",
+    "sources/Adreno830-native/NativeAdrenoPwrup.cpp": "01530adba47bc21e8a07a8683fcf0048cd3674cc6713ed51ff927384e2c569d5",
+    "sources/Adreno830-native/NativeAdrenoSha256.cpp": "ee624a483a075b8ca44f1dff2efd66acee38c5ccd784192c23614cdb6605db1f",
+    "sources/Adreno830-native/A830Irq.cpp": "9068750a6a14406dc19c6fab8e718caa47f073099215963b587d2a1f7d281afc",
+    "sources/Adreno830-native/NativeAdrenoSmmuMemory.h": "aece605e4bdee36a92e6a84543abce92c85992d2c4e41b18eb96c591e3128e97",
+    "sources/Adreno830-native/A830GmuFirmware.cpp": "36d9c589cf5c492598df841ff7c9d825cb0a4f6f0407a9b2a7bd2d5313ed4d2e",
+    "sources/Adreno830-native/NativeAdrenoTimer.cpp": "7afc9e150dab9b36d944263299efa3d41d6ff27630a267defde78baf80d4928a",
+    "sources/Adreno830-native/NativeAdrenoRing.cpp": "b24eb9c33ba0be18591a9ac578f4d3256620e610d4e4a9a0d81fd2be876f7bb7",
+    "sources/Adreno830-native/NativeAdrenoVm.cpp": "20a64d996dc2b11747c3fea2a268b03a8ed313667fd378a2476aff7dcb25b263",
+    "sources/Adreno830-native/NativeAdrenoSmmuContext.cpp": "d6a70a923c3d54967cb6160b7138fb9360f698eb6973b68789eae54863cc3d72",
+    "sources/Adreno830-native/A830Cp.cpp": "e091686aa99de87b5db17c6544884a3120aaabf6733be99564a6d25b5400f06c",
+    "sources/Adreno830-native/NativeAdrenoGmuContext.cpp": "499b12a835391d2fd97ce454684ffb7bc2704383a98e731684300e2a042bc23e",
+    "sources/Adreno830-native/NativeAdrenoKernelTime.cpp": "72337bda9fc6ee11ff3c93176ba555158ccae5cf1fd5742538bdd397e74fb318",
+    "sources/Adreno830-native/A830Smmu.cpp": "d3fb3c385b16fdb98eeab9165c5d479f50d255dbf1339e68ecb7811d1c3b5e99",
+    "sources/Adreno830-native/NativeAdrenoVmAlias.h": "35fe908bd80389a18e395eb3bfdd5a40cb2c133fe6634dbead8d68cf2822eeea",
+    "sources/Adreno830-native/NativeAdrenoPwrup.h": "eb9b737309796d9d8d405f01ef66ad6e19caa317b06e60f390c6a5a6606d8e29",
+    "sources/Adreno830-native/Adreno830Device.h": "23ca64e8830e698aae5bdaf4715f0e466018dff0eaffd3337cc3fb0dabe9ae4c",
+    "sources/Adreno830-native/A830Dcvs.h": "2e3cfc36d1cedc7c912d42b5fdb743ca44326b7876f30379f0c9dabebd1944fa",
+    "sources/Adreno830-native/NativeAdrenoGmuContext.h": "432af032e179bdc303b2f04f8bca0fb95e2dc179411df665d9a49b0913329522",
+    "sources/Adreno830-native/A830Zap.cpp": "05b1b1272e2d999194131a645aca2a0425fefc0e7521a4e00d3a847e2a7303c2",
+    "sources/Adreno830-native/NativeAdrenoCpu.cpp": "f13b857c3f56494e409c98e62048399b9625bab34870eedb5ab1738b975cce0e",
+    "sources/Adreno830-native/A830Sched.h": "f5c51cdf9faf93573bd7a71a3ef1bb4ce78ed62a1ef1367d0d69a509933a1a80",
+    "sources/Adreno830-native/A830Hfi.cpp": "633be436e70bf9dc227e73340c80f931ae69296e5edfa423d600bf5d55198967",
+    "sources/Adreno830-native/NativeAdrenoKopt.h": "b069bf52c3e18436743554eb5690d15b6d7f0fcb4eed040e6bff0557925ee97d",
+    "sources/Adreno830-native/NativeAdrenoHandleIndex.h": "0813683d76330a935afe4920892bece58c5e22576d8083f567b95faaca034e08",
+    "sources/Adreno830-native/Adreno830Status.cpp": "0e4e7b2b218a0df73f9c688623658302f4ce5da8fba7dc716cad6afe8993e7b1",
+    "sources/Adreno830-native/NativeAdrenoKernelTime.h": "3d61449b0aeadd98eb7ba1f51c92e5dd7510dee92dd1859879c90bb9f6be300f",
+    "sources/Adreno830-native/A830SelfTest.cpp": "54f5ca0c3abbd4b14fe3e9eb5fe835acd0ab1db0713d06d641429c8a466a670e",
+    "sources/Adreno830-native/A830Cp.h": "056bfd2dc17f7225347c97e0b576fdfe9cc75abf507cdfc1c026e1fa56b6c173",
+    "sources/Adreno830-native/A830Smmu.h": "4a895a182df71633a54a048eee8677679867f1214ce78f2e5ce13c328dc420eb",
+    "sources/Adreno830-native/Adreno830Start.h": "0d8ca6ced22042e00a1935e98d459c6fc069bfcb8e8bf7e91665cfbded031d55",
+    "sources/Adreno830-native/A830Regs.h": "b940c61689f90b65a81e71b2cb9d3290240f37ddc64149e416778120cc20f2d4",
+    "sources/Adreno830-native/A830Votes.h": "655146c608a89d6d10839ed24ec75aa33c8c9c8a077f26c277d39db3a1bd281e",
+    "sources/Adreno830-native/NativeAdrenoClient.cpp": "f280ffcb2c31a195d3305b4c3ee272b624bce7f458dd3290fb0ef5a4bf1ff4b4",
+    "sources/Adreno830-native/A830Trace.h": "5608440d84a65f85abe5b429f5691c80726298e80e5f836cd46c75246470dbbb",
+    "sources/Adreno830-native/A830GmuFirmware.h": "e152ce94b4e0537653ca7137205a559ee1ee77e9ec9582a4e9c50941249e2765",
+    "sources/Adreno830-native/A830Irq.h": "09faf400b5f024d3f0bbdec0f830dbf4600b477dbc129dbffd9eee53b6779e0a",
+    "sources/Adreno830-native/A830HwInit.h": "7fcb9ca9565c7cf1a5d8317a3e1a9478f66a5e7a0795b34b887642f65e3a5035",
+    "sources/Adreno830-native/NativeAdrenoVm.h": "bc1cb145ab04473c45e639b9de4508179d5c25cc855ce7077596e51f26744a30",
+    "sources/Adreno830-native/NativeAdrenoSmmuMemory.cpp": "7b22ef92739971cd254771395c4fad1d1626105fe7d966deb50e378c4a584467",
+    "sources/Adreno830-native/NativeAdrenoPublish.cpp": "d2a85cbcb4ad29df03a05c9f4e3edc0120358ab90a731cb61b083accf93bd31f",
+    "sources/Adreno830-native/A830Profile.h": "9726dbf22916bc781a6094d748fcbc521840ec4b1ff7e8666c24cedbb3a3c86d",
+    "sources/Adreno830-native/NativeAdrenoFirmware.h": "ca6d66abb8819c92640ccc021f0f4cae15a4ffcffcef7594dfd11a6913b3f9a1",
+    "sources/Adreno830-native/A830Recovery.h": "be274c0781de5ed0e44c01da50f1e45467fbd89f6efdb8a5c3ab3d941284630c",
+    "sources/Adreno830-native/NativeAdrenoGpuContext.h": "79fb89ffce98a6ed7a105cace9fe3f0d878525137f86a1780e65bec0a01f7e2a",
+    "sources/Adreno830-native/NativeAdrenoGmuMemory.cpp": "74a82146fc72d9e7da6a7895dca8f1c41d6b5904f3da41cd4910608816d83176",
+    "sources/Adreno830-native/NativeAdrenoStatus.h": "2d1848b4edd67949311ac853ec59dfa2de57cfdb8e35164db08f325086bc40fe",
+    "sources/Adreno830-native/A830Recovery.cpp": "cd7dea01f12b3da1b3b5eaeccdcb86b7fe2a7ebb939905a50694776b9884d597",
+    "sources/Adreno830-native/A830Gmu.cpp": "bf368d8f76a453afbb1a3443c3eb698499f788057e35023fc0eb1db8d67efd13",
+    "sources/Adreno830-native/NativeAdrenoUserClient.h": "ca1be816d370d80a8b779aec209019bc86518b59917111a7c78445365f5f8fe0",
+    "sources/Adreno830-native/NativeAdrenoGmuMemory.h": "182037491e10bd8b99bb7931cfc762e470120cb2613481f3150d949caea2b573",
+    "sources/Adreno830-native/NativeAdrenoSubmit.h": "0bfa4c5d14a6fa551fc2d5b525da48ebf4c95dd84d11fc813b7b5170b9740a1f",
+    "sources/Adreno830-native/A830SelfTest.h": "16a3524a966e355659c0c996fd2635d6ee9719eb77dc928f1b9484fd78ae9d94",
+    "sources/Adreno830-native/NativeAdrenoSmmuContext.h": "28334f1c0621784be6868301bd96e8514e458ae61895aa3c7e7fe3daafd9651c",
+    "sources/Adreno830-native/A830PowerState.h": "0d0f10c3940e0be938714024fea1d13d51e311c0e8c45a8d8e8884a82adcb856",
+    "sources/Adreno830-native/NativeAdrenoSha256.h": "4c4f1a23f146c1370615ee52912b9bb0c2a3b919ccf14e07314460ffcdb34a74",
+    "sources/Adreno830-native/NativeAdrenoMeter.h": "f59934d183510cf5857715dfac29e1d88bc47c21fdecd2666b380e7f4c48a71d",
+    "sources/Adreno830-native/NativeAdrenoFirmwareDefaults.cpp": "651439f6eba9e5d5011195498a7a5faad7ae945226b5f92529e2166f72e17a86",
+    "sources/Adreno830-native/NativeAdrenoBoard.cpp": "273fedfdc89c64abab3195fadd27045f606bdd7868920842117a323c193cbd66",
+    "sources/Adreno830-native/NativeAdrenoMemory.cpp": "ea99b5e92be53377467c830bb63e5043597e543692ec20087711ba4d67770b1c",
+    "sources/Adreno830-native/NativeAdrenoClient.h": "009da3a34abbbbf1a2fb0ce7cb00fc0819c1a9cb479f9ba4182f305cd18a3ff8",
+    "sources/Adreno830-native/NativeAdrenoAccelerator.cpp": "0dc05a4a6e5ea9d7e320436454106ab0c9395a9617d34cb30db455939e525cfd",
+    "sources/Adreno830-native/A830Fence.h": "31c23067adfb2d7642e40546be3cffe85af0bfd912b50554f2e013506e688aac",
+    "sources/Adreno830-native/NativeAdrenoGpuContext.cpp": "b7edcf828acd90deb280b8f31e410f8b9b70683bdb1c2d2e151378bb50fd8ae0",
+    "sources/Adreno830-native/NativeAdrenoABI.h": "20ac9298bb390d86788c1fc58155e1f9581ffa942e222752efc95c67cb5670d2",
+    "sources/Adreno830-native/NativeAdrenoFirmware.cpp": "0a2c553465d6fa093aaf0b58c32c9006b7b88fbcb56cd2d41c24f9b693856293",
+    "sources/Adreno830-native/Adreno830Start.cpp": "215e565650d176cd28c2e11e79e098195474add04ea5ae054b15e9eaa4ff0b0f",
+    "sources/Adreno830-native/NativeAdrenoPublish.h": "b266fa844b199254611f2bb1fc0bfca6dedd1c73535cf442838b07527e74a854",
+    "sources/Adreno830-native/NativeAdrenoRing.h": "a47f3e63ff38f9cb09487e0867315f0865a5d088315dff981ad67ec6bc8760f3",
+    "sources/Adreno830-native/NativeAdrenoSubmit.cpp": "214588ef83516ee4f909a4f7714a041f47cb308e6fbd3bbb154ae063dd84faf7",
+    "sources/Adreno830-native/A830Hfi.h": "f8a0448f43f059861e967084a75a9c8c92ad5ac2f6a8818af94fb8317d645703",
+    "sources/Adreno830-native/A830Gmu.h": "763d7aff09edbaed80013f31c18875ba809a6fecc4a7cd9e18f722b9ca8126fa",
+    "sources/Adreno830-native/A830PowerState.cpp": "4ee2dc29829d0dacd6cf1e774a1a511a4ad91b1293e2664431ca8e8b4c15199c",
+    "sources/Adreno830-native/NativeAdrenoBoard.h": "67c80d10e95ef58188c94a544bf24227749d1c757cb14e8e06550e573633c630",
+    "sources/Adreno830-native/A830Zap.h": "94b94b31e7eab48be386f079a768818daf253bc9d36c478b88e6aba1a83cb8ae",
+    "sources/Adreno830-native/platform/sm8750/Sm8750GpuPower.h": "f6388f22f981a1dec78a7a61e56d0312e419103ccf77d98d6019d50019db8467",
+    "sources/Adreno830-native/platform/sm8750/Sm8750SocInfo.c": "a91bf43065a94c36eccf5375b4eea5cdc51e74220fa52c0f36783bf03c2d9652",
+    "sources/Adreno830-native/platform/sm8750/Sm8750AossQmp.c": "2cc5031ae6dba645ebbda33ef1f49d419c610ffecd5b60290a2332b157f8f288",
+    "sources/Adreno830-native/platform/sm8750/Sm8750Rpmh.h": "a39f9324d152faf7b83063d71784555031d5c4e4f142b359478ccf656562843f",
+    "sources/Adreno830-native/platform/sm8750/Sm8750Tsens.h": "31bfb95b347466bfe01151f7bba3b94159e974062ff09509f75dd60f59f26a79",
+    "sources/Adreno830-native/platform/sm8750/Sm8750GpuPower.c": "4d5f983f87f61b83015ebfa68c6349b46b085c8bb949cc2a636017dd9719b911",
+    "sources/Adreno830-native/platform/sm8750/Sm8750GpuLevels.h": "7d6fe65803bc96a76bb3630077badea2c1d84ae7430c4e2dd941e16906bb3dba",
+    "sources/Adreno830-native/platform/sm8750/Sm8750Tsens.c": "a395406398360589e88e467a1279a4ed490d2f57d477b20c6c8aa818e57c35b0",
+    "sources/Adreno830-native/platform/sm8750/Sm8750Scm.c": "6e2c36fc87b68e684223988973ad27ca0b591b3119838abf0d2553ed9c79cc2e",
+    "sources/Adreno830-native/platform/sm8750/Sm8750Rpmh.c": "5ef9d62301c3519eb447da85b475cf477367b9dc53b12ad1f1ef1ac82a1a7f1d",
+    "sources/Adreno830-native/platform/sm8750/Sm8750SocInfo.h": "61d1dd9026c6ca623eb4df82085e29b798280e4c4836ed9136347d60f0c9241a",
+    "sources/Adreno830-native/platform/sm8750/Sm8750Llcc.h": "271cf63f3d85ff2eff0e7c28ac85c6bd3978df92fc1be558035a172371fb4ac4",
+    "sources/Adreno830-native/platform/sm8750/Sm8750Llcc.c": "10c12d97169f3779d30d9feb144f35020c521664f70ea3f3cc39578676b0832b",
+    "sources/Adreno830-native/platform/sm8750/Sm8750AossQmp.h": "dbfd1d619e97ced90d9266915f65c657692fa153741a888467d853a6ec976591",
+    "sources/Adreno830-native/platform/sm8750/Sm8750Scm.h": "0715cbd4e24162ab2b20dcc3c600d8a5d6a7a3f254814afc1983c2deaee1ac7b",
+    "scripts/check_native_a830_host.py": "9fc295139586d2c6c8644f3e73bb6f3f2ac84d63209d7f712b5a8775af265e5f",
+    "scripts/build_native_a830.py": "fe5cf2a5c1b567e7c0bbca63b4c97e3f4ce3cb234c42a6a8107983420255ec57",
+    "patches/adreno830/0001-darwin22-template-data-free.patch": "f165ef3084a6a85a5f332c208b62493fd030a658d76366f7d963f8bd823ff441"
+  },
+  "tests": {
+    "test_a830cp": {
+      "returncode": 0,
+      "output": "PASS: A830Cp over a register-level CP model, design and annibale profiles: S6 sequences (2+2 configurations) against ARCHITECTURE 4.8, annibale 9.2 and A830HwInit.h, strict read-backs and the status check, cold ring, SQE_CNTL and sGFSR gates, ME_INIT criteria (2 s / 2000 x 100 us), dumps, secure exit with GMEM protect, power-up list, HWCG (10 x 1 us recorded / none, 3 x 1 us fatal), recovery halts and re-runs, fault reads (18 cases)"
+    },
+    "test_a830dcvs": {
+      "returncode": 0,
+      "output": "PASS: A830 DCVS on busy and temperature traces: up 90 %/x1.25 and x1.1, down 4/6 windows, idle 64 ms, wake/touch/late boosts, ACD ceiling; 11 composited-load cases (steady desktops at 75 % or less, a burst stops at 734 MHz, one level more per 12 saturated windows, late frames do not climb, a boost ends at the load's level); 244 frame-headroom cases (+-30 % frames in their 8.3 ms and no vote at every load up to 540 MHz of work, late frames at 85 % busy or past 734 MHz's target); design thermal loop: 8 heat cases (full load settles within one level 5 C under the 80 C target to 1 C above it for 1 s and 2 s hotspots, levels straddling the band cycle between those two only, down per 500 ms above it unless falling, the 5 C band, the 525 MHz floor, 389 MHz at 105 C and back to the floor per 500 ms below 100 C, up per 2 s, pagani-gpu-ttarget, 607 MHz without readings, the top from a cool first reading, one-level up steps under pressure, adreno830_thermal_state and adreno830_cpu_hint), fixed mode, votes on change, sleep without MMIO, TE windows, underrun floor and bus-max, watchdog, status; annibale profile: 342 MHz unless pagani-gpu-dcvs-max, 160 MHz at 70 C or unreadable until below 60 C, bw without 0xFFFF0000, an unacknowledged vote ends the changes; pagani-gpu-maxlevel: 9 ceiling cases (ramp 160/342/607/734 MHz with the DT bus, level n, the top beyond the table under ACD off, dcvs-max, thermal hold, fixed mode, design); the screen rule through the service thread (PaganiPanel's word, dark touches ignored, no window polling while dark, the display's refresh tick wakes it at the touch level) (835 checks)"
+    },
+    "test_a830fence": {
+      "returncode": 0,
+      "output": "PASS: job attribution: 13 cases (service from the later of stamp and previous completion, external time ahead of each render-server job without what the oldest had run by its stamp, n4 above 4 ms, external jobs and busy time, several completions under one interrupt (fw high with the external job first, low behind the render server's), kernel work ahead, more than 63 ahead, 128 or more ahead and a stampless job ahead unknown, a skip, context entries, polled periods, a caller's clock older than the last pass, 20000 completions by kind raced by three accountants)\nPASS: queue meter: 10 cases (stamps and ring depth, completions accounted once from the top half, a waiter or the polled take, average/maximum/16 ms counts per period, 40-bit stamp clock, 64 stamps with missed ones counted, recovery skips, the accountant's second pass with a fresh clock for a completion that came during its pass, 20000 completions raced by three accountants with nobody calling after the last)\nPASS: A830Fence 201 checks: 3000 racing interrupt wakeups without a lost one, timeout, interrupted -> Timeout, closing -> Aborted, lost -> NotResponding, no MMIO while waiting, watchdog hang/progress/disarm, recovery"
+    },
+    "test_a830gmu": {
+      "returncode": 0,
+      "output": "PASS: A830 GMU over a register model with a synthetic gen80000_gmu.bin: B1-B8 and its fatal/recorded conditions, OOB and GX confirmation, force-off in KGSL order, RSCC/GENERAL_9, slumber S2-S9, IFPC helpers, CX timer seed, 336/337 top/bottom halves and storm guard, DRV-2 GX vote (design); masked-and-polled GMU interrupts, RSC wake at boot, GENERAL_11, TCM read-back, fence 0x80C808C0, 500 ms HFI, no CX seed, read-back AHB timeouts (annibale) (232 groups of checks)"
+    },
+    "test_a830gmufw": {
+      "returncode": 0,
+      "output": "PASS: 3 parses of a synthetic gen80000_gmu.bin (15 blocks, 11 PREALLOC, 4 data, ends 0x15B40), 5 TCM/DDR loads, 29 parser/plan/loader refusals; design loads read nothing back, annibale loads read every TCM word back and compare every DDR block (8 groups of checks)"
+    },
+    "test_a830hfi": {
+      "returncode": 0,
+      "output": "PASS: A830Hfi queues, wrap and 0xFAFAFAFA padding, whole-header ACK match, v5 answers, F2H handling (reason 16/22), 1 s timeout, NMI and CM3 exits, M1-M9 encodings, perf/slumber votes, dbg drain under the lock (design); 4-entry perf table, no M7, M9 {1,1,2}, strict FEATURE_CTRL and short ACKs, bit 0/2 poll clear, bus-only votes, major version, 3 s late drain (annibale) (139433 checks)"
+    },
+    "test_a830irq": {
+      "returncode": 0,
+      "output": "PASS: A830Irq 3238 checks: 332 wiring and top half (0x6A/0x61/0x62 only), errors to faultWork, fatal masking and global loss, storm guards with and without armcpu_spi_disable, optional lines, cx_host, quiesce/restore, IFPC; pagani-gpu-irq (annibale): 4 own-mask cases (fence-only mask after attach and restore, fallBack for the boot, refused attach, stuck fence bit storm, design untouched)"
+    },
+    "test_a830powerstate": {
+      "returncode": 0,
+      "output": "PASS: A830 power states: P0 never sleeps, P1 slumber S1-S10 in order after 250 ms quiet, CX-keeping S1-S9, wake with CX/SMMU/timer restore only after a collapse, touch pre-wake, aborts, 13 failure steps to the fault sink, IFPC switch by GMU restart; the screen rule (pagani-screenoff): slumber 1 s after the display goes off and the GPU is quiet, dark touches ignored, submissions wake and it sleeps again, the display back wakes it at the touch level, a failed entry or wake ends the rule, the full variant, P1 alongside, off by default; a release stamped after the tick's clock reading still waits the quiet time (rule and P1); annibale profile: slumber and the IFPC cycle release the held OOB_GPU, an abort keeps it (292 checks)"
+    },
+    "test_a830recovery": {
+      "returncode": 0,
+      "output": "PASS: A830 recovery: gate, mask, snapshot, jobs failed, GBIF halt GX/client/arbiter, forceOff, S4-S7 without timer re-seed or SMMU while CX stayed up, fence waiters, irq restore; 3rd in 60 s and failed restarts final; reports coalesce; 2 s watchdog; slumber/wake faults recover; the same restart in the annibale and design profiles, the annibale slumber after it releasing the kept OOB_GPU (274 checks)"
+    },
+    "test_a830smmu": {
+      "returncode": 0,
+      "output": "PASS: A830Smmu over the hypervisor-emulated SMMU model: 37 cases, 18 per profile (design, annibale) and the MMIO binding (survey and slot choice, sACR/sGFSR record-only vs never stored, bank reset before 710/712 vs not attached, CB2/CB0/LPAC take-over at 4, 2 and 16 GiB with each profile's exact context stores, 16 GiB on a 32-bit UBS falls back to 4 GiB (a 32-bit IAS does not), VM TLB stores as 64-bit TLBIVAL/32-bit TLBIASID vs TLBIASID+TLBSYNC only, a VM map with no TLB store vs TLBIASID+TLBSYNC (sync_after_map), faults never poison the VM, the ring's fences on an interrupt's fault (none on a polled one), the aperture outcome on the S3 page, storm guard vs polling, TLB sync budget, restore after CX collapse)"
+    },
+    "test_sm8750_power": {
+      "returncode": 0,
+      "output": "power on: status 0 step 8 last block 0 offset 0x71010 value 0x80000003 reads 96 writes 37\n485 checks: power on 96 reads 37 writes 49 delays, power off 27 reads 24 writes 9 delays\nPASS: SM8750 GPU power-up follows the Linux clock semantics observed on PKX110"
+    },
+    "test_start": {
+      "returncode": 0,
+      "output": "PASS: pagani-diag: 5 cases (off when absent, its own name, no flag bit, S0 hands it over)\nPASS: pagani-gpu-kopt: 6 cases (all on when absent, stored by S0 as given, a bit past the known ones refused)\nPASS: pagani-screenoff: 24 full runs (bit 1 the screen rule with CX kept, bit 3 the full collapse, other bits ignored, never an S0 refusal, both profiles) and its boot argument by name\nPASS: annibale wiring: 14 CP health hook checks (sGFSR read only, GMU bit 15 or NMI poll or an earlier fatal, both profiles), 12 late-drain cases (S6-S8 failures and hang verdicts before the status block, S5 drains itself, none for S5/S9 or CX down), 2 S5 pages (TCM, GENERAL_11, RSC only in annibale)\nPASS: bring-up profiles (annibale default, design): 3 annibale/ahbto/dcvs-max full runs, 11 annibale pagani-gpu-stop runs, 52 annibale injected failures (S1 AHB timeouts, polled S8, S4 DDR read-back), 5 S0 profile/hwsched refusals (hwsched reason 24), 4 annibale power hooks (OOB_GPU kept, AHB after CX power-up), 9 profile boot-argument cases\nPASS: performance switches: 14 runs (pagani-gpu-maxlevel: whole DT table with the 160 MHz first vote, DCVS ceiling level; pagani-gpu-irq: 332 attached with the fence-only mask, polled after a refused attach or a missing fence interrupt, design unchanged; pagani-gpu-ttarget: 80 C by default, handed to the DCVS in deci-C), 5 RUN/DCVS rows with m<n> and i1/i0, 4 S0 refusals (ttarget outside 50..90 C among them), 4 boot-argument cases\nPASS: 17 full runs, 12 pagani-gpu-stop runs, 54 injected stage failures (each failing once with the module's step and reason, S5 cold boot at most 3 attempts), 120 S0 board faults, 12 power/recovery hooks and 26 boot-argument cases over host doubles"
+    },
+    "test_submit": {
+      "returncode": 0,
+      "output": "PASS: 1 fence history cases (the client range of each issued fence for the page-fault attribution: in-flight intervals, empty, past the issued fence, a kernel fence unknown, kept after retirement, forgotten after 64 and by a new attachment, more than 64 refused) and the stamp source passed through\nPASS: 12 execbuf cases over software SMMU/CP peers: exact framed IB packet and fence with no SMMU access, cache maintenance or TLBI on submit; 9 pre-reference refusals; 44 job slots with one reserved per range (32) and Busy only with work in flight; ring-full retry within 200 ms; teardown waits; halt/recover/resume; the hang's culprit range by fence (never a passed or poisoned job); poisoned-commit retention; lock hooks"
+    },
+    "test_userclient": {
+      "returncode": 0,
+      "output": "PASS: 14 pagani-gpu-kopt blocks: the contiguous attempt from 64 to 128 KiB with its 5 s backoff by the clock (any connection's, a smaller size still asks, a demand always does), a pooled BO's zero fill after the Memory lock and its failure given back under it, with each bit off the behaviour before them; the core's figures for the call meter\nPASS: 1 attribution blocks: render-server connections stamp their jobs as the render server's (only while open), the page fault charged to its FAR window's connection whatever was in flight (nobody for the kernel range), the jobs in flight only counted against it (alike, apart, undecided, polled)\nPASS: 22 user-client blocks over software SMMU/CP peers: transaction with wait_fence validated against the ring (no CPU wait), per-connection faults with FAR attribution, 32 slots with 4 GiB (1+3 large+8 small)/16 GiB (1+3 large+28 small)/2 GiB windows, slot classes (apps leave 3/4 small slots to the listed processes, which may borrow a large one; an app never takes a large one), terms per process (the render server's in any slot), per-name rows (an idle row without hangs given up), the grant and large-client lists and the open policy with the hang refusal, capacity 256..16384 and the render server's reserve (mapping records, table ranges, BO pool), imports with direction-split maintenance, M9 scanout import, FIFO handle quarantine (4096) and slot encoding, ring-full retry vs Busy, M10 lock use (no Memory lock outside the pool), dispatch sizes, refusals, teardown, device info, two clients, late scope, retire, contiguous fallback, poisoned commit, CPU leases, queues, connection bytes by kind, teardown past a refused object"
+    },
+    "test_vm": {
+      "returncode": 0,
+      "output": "VM alias preflight diagnostic: 8192 x 8192 different-class spans, preflight 2402 host us, table transaction with the pass once 1073 host us (not hardware timing)\nVM alias preflight diagnostic: 8192 x 8192 different-class spans, preflight 2576 host us, table transaction with the pass twice 2654 host us (not hardware timing)\nPASS: VM alias index/fallback preserve attribute-class refusals before MMIO/ownership with and without the table transaction's second pass; 8192-span different-class map/unmap\nPASS: VM alias pass: 2 maps (preflight's alone with pagani-gpu-kopt bit 2, the table transaction's as well without it)\nPASS: VM clock: 5 checks (kinds count without it, time with it; a contended VM lock's wait reaches the call meter)\nPASS: VM with the annibale programmer's sync_after_map: 5 checks (one TLBIASID + TLBSYNC per map, none for a refused map, unmap unchanged, a stuck sync poisons; none without the flag)\nPASS: VM over the A830 programmer: attach proves regions and routes once, 200 map/unmap rounds under pending faults never poison, per-buffer fence unmap, 64-bit TLBIVAL, 4 GiB (2053), 2 GiB (1027) and 16 GiB (8209, BOs across and past 4 GiB) apertures with reserved windows, 13 coherence-policy checks, coherent table walk, 3 poisoning paths, kit-stream attach, 600 locked concurrent transactions"
+    }
+  },
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "leak_sanitizer": false,
+  "host_barrier_peers": 6,
+  "host_architecture": "x86_64",
+  "hardware_tested": false,
+  "scope": "Production source through upstream controller/allocator peers. Six ARM barriers use host atomic fences; data-free calls use allocator peers. Kernel objects are built separately by build_native_a830.py."
+}

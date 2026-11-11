@@ -95,6 +95,8 @@ def main():
     pin=lock['iphone_hid_source_interface'];require(sha(HEADER)==pin['header_sha256'] and sha(CONTRACT)==pin['sha256'],'Bounded original HID interface pin changed')
     parent=json.loads(BASE.read_text());refs=pinned_sources(('pagani_reference','sm8750'));reference=refs['pagani_reference']/'drivers/PaganiInput'
     shared=refs['sm8750']/'kits/Sm8750Platform';source=ROOT/'drivers/DodgeInput/DodgeInput.cpp';overlay=lock['dodge_input_overlay'];patch=ROOT/overlay['path'];base=reference/'PaganiInput.cpp'
+    mapping=lock['dodge_input_mapping_reference'];mapping_header=ROOT/mapping['path']
+    require(sha(mapping_header)==mapping['sha256'],'Reviewed input mapping helper changed')
     require(sha(patch)==overlay['sha256'] and sha(base)==overlay['base_source_sha256'] and sha(source)==overlay['output_source_sha256'],'Reviewed input overlay/source changed')
     with tempfile.TemporaryDirectory(prefix='overlay-',dir=OUT) as temp:
         work=Path(temp);(work/'PaganiInput.cpp').write_bytes(base.read_bytes())
@@ -209,12 +211,14 @@ def main():
                   *sorted((ROOT/'drivers/DodgeInput').glob('*.h')),*sorted(reference.glob('*.h')),*sorted(shared.glob('*.h')),
                   ROOT/'tests/DodgeInputLifecycleTest.cpp',ROOT/'tests/DodgeTouchPowerTest.cpp',ROOT/'tests/DodgeInputLateTest.cpp',ROOT/'tests/DodgePmicGpioTest.cpp',ROOT/'tests/DodgeGeniFirmwareTest.cpp',ROOT/'tests/input_lifecycle_include/OriginalHidDeviceABI.h',
                   *[p for d in ('ufs_lifecycle_include','graphics_lifecycle_include','graphics_late_include') for p in sorted((ROOT/'tests'/d).rglob('*.h'))]]
+    source_files.append(mapping_header)
     source_files += [ROOT/p for p in edge['source_sha256'] if ROOT/p not in source_files]
     inputs={ROOT/p for p in json.loads((ROOT/root['link_manifest']).read_text())}|{archive,bsd,bsd_object,filelist,link_command,blob,ROOT/firmware['assembly'],*members,*source_files}
     manifest=OUT/'link-inputs.json';manifest.write_text(json.dumps({str(p.relative_to(ROOT)):sha(p) for p in sorted(inputs)},indent=2)+'\n')
     report={'result':'IOS16_CPH2653_INPUT_COMPLETE_SOURCE_AND_STRICT_NATIVE_LINK_PASS','builder_sha256':sha(Path(__file__)),
             'source_sha256':{str(p.relative_to(ROOT)):sha(p) for p in source_files},'dependency_report_sha256':{p.name:sha(p) for p in (source_report,calls_report,lifetime_report,firmware_report,cold_report,clock_report,transfer_report,edge_path,root_path,ROOT/'reports/ios16-input-hardware.json')},
             'source_reference_revision':lock['pagani_reference']['revision'],'source_overlay':overlay,
+            'mapping_reference':mapping,'command_database_mapping_read_only':True,
             'archive':str(archive.relative_to(ROOT)),'archive_sha256':sha(archive),'objects':[{'path':str(p.relative_to(ROOT)),'sha256':sha(p)} for p in members],
             'compiled_instance_bytes':size,'concrete_vtable_entries':207,'concrete_override_slots':owned,'concrete_vptr':hex(vptr),
             'original_bindings':{n:hex(a) for n,a in aliases.items()},'original_binding_count':len(aliases),

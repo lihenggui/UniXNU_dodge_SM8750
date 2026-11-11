@@ -5,7 +5,8 @@ OnePlus 13 CPH2653 (dodge, SM8750).
 
 The current target is iPhone10,3 running iOS 16.7.16 / 20H392, using arm64 and
 Darwin 22. The UEFI and kernel build locally. Full system boot and hardware
-bring-up are still in development.
+bring-up are still in development. The port follows the
+[UniXNU porting guide](https://unixnu.com/porting/).
 
 ## Getting started
 
@@ -19,8 +20,7 @@ python3.12 -m venv .venv-uefi
 cp local.toml.example local.toml
 ```
 
-Builds use four jobs and inherit the host's resource limits. The original build
-host had a 20 GiB cgroup limit; this is a host detail, not a build requirement.
+Builds use four jobs and inherit the host's resource limits.
 
 ## Repository layout
 

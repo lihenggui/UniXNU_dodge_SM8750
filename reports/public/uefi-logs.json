@@ -1,0 +1,136 @@
+{
+  "command": [
+    ".venv-uefi/bin/python",
+    "build_uefi.py",
+    "-d",
+    "dodge",
+    "-r",
+    "DEBUG"
+  ],
+  "returncode": 0,
+  "planned_commands": [
+    [
+      ".venv-uefi/bin/python",
+      "build_uefi.py",
+      "-d",
+      "dodge",
+      "-r",
+      "DEBUG"
+    ]
+  ],
+  "upstream_revision": "6b3d90b79e191e08171bfedd3980234a7e49d340",
+  "host_tools": {
+    "python": "3.12.13",
+    "clang": "Ubuntu clang version 14.0.0-1ubuntu1.1",
+    "llvm_bin": "/usr/lib/llvm-14/bin"
+  },
+  "memory_budget": {
+    "effective_memory_max_bytes": 21474836480,
+    "limit_source": "inherited-cgroup-v2"
+  },
+  "max_concurrent_threads": 4,
+  "phone_operations": "none",
+  "log": "analysis/uefi-build-20261111T155408.119093Z.log",
+  "parallel_jobs_confirmed": true,
+  "menu_integrated": true,
+  "darwinboot_integrated": true,
+  "firmware_log_integrated": true,
+  "artifacts": [
+    {
+      "path": "build/cph2653-uefi-logs/SILICIUM_UEFI.fd",
+      "bytes": 3145728,
+      "sha256": "b36fdd1fa4c148b97778dbbf0db39cba9a6c513ef0794bd1923345450076fb7e"
+    },
+    {
+      "path": "build/cph2653-uefi-logs/Mu-dodge.img",
+      "bytes": 2801664,
+      "sha256": "665e2b7c177295e890748a3ad4513896f6ccebbc97285b9c5de5f1b686365413"
+    }
+  ],
+  "embedded_modules": [
+    {
+      "name": "UniXNUDxe",
+      "file_guid": "29B950CF-586D-49EA-9D71-F88645CCDAF6",
+      "bytes": 15872,
+      "sha256": "972ce3717e99f403205f5710137297eb41e6f11e239ff8bfa6ff44b9381bde3b"
+    },
+    {
+      "name": "UniXNURamDiskDxe",
+      "file_guid": "75CA63AD-FBAE-4A06-92A0-F937C671251D",
+      "bytes": 15872,
+      "sha256": "fa7f8f5ecfd0cf8e562a092122badf03b63af4cee074ec803852fa473724406b"
+    },
+    {
+      "name": "SimpleFbDxe",
+      "file_guid": "DCFD1E6D-788D-4FFC-8E1B-CA2F75651A92",
+      "bytes": 19456,
+      "sha256": "45a0e2c3dcf6e4537506a4cb436d935799c066ab184fc7fc06458000bbc8ed9d"
+    },
+    {
+      "name": "UniXNU",
+      "file_guid": "9B665204-A133-47A2-9396-9E2B370A4E25",
+      "bytes": 97792,
+      "sha256": "826f266bcc4e8214923f84ed2fa2ad6238fa8a90a906e68de6b5d74a899941b8"
+    },
+    {
+      "name": "AdvancedLogDxe",
+      "file_guid": "8D4E7F50-3A2C-4C9A-9E1B-50C4C8472D41",
+      "bytes": 36352,
+      "sha256": "c220ab4c1fcf695e82e96ca43edecfc250da5a3caffb029857cfb12369c1c001"
+    },
+    {
+      "name": "DarwinBoot",
+      "file_guid": "1B64AF87-8415-4B57-9B16-680D70913B9F",
+      "bytes": 28160,
+      "sha256": "295bde0a973d64fd0e39de928639f67dbce98c9214e7b511e7095e2d6ef9d281"
+    }
+  ],
+  "efi_images_verified": 54,
+  "boot_header": {
+    "version": 4,
+    "kernel_bytes": 2787891,
+    "ramdisk_bytes": 5,
+    "signature_bytes": 4096
+  },
+  "firmware_dtb_sha256": "b6044e472020b26e5304173291afea80f5ebe4e2ccf48dadfe985cee2a52e90a",
+  "darwinboot_abi": {
+    "result": "PASS",
+    "xnu_revision": "1b191cb58250d0705d8a51287127505aa4bc0789",
+    "apple_header_sha256": "efdfec46319cb147297682a8faebe02873f845261b57f7511ab8e15c13ef3439",
+    "loader_header_sha256": "e870307657437022162e798d071f67ad393f514d512e9667d2b2b36eaa7ff241",
+    "command_line_bytes": 608,
+    "boot_args_bytes": 736,
+    "boot_flags_offset": 720,
+    "memory_size_actual_offset": 728,
+    "compared_field_count": 13,
+    "newer_layout_negative_control": "rejected",
+    "unknown_layout_negative_control": "rejected",
+    "scope": "Host compilation of production loader and actual Apple structure; no hardware handoff."
+  },
+  "simplefb_error_bounds": {
+    "patch": {
+      "path": "patches/mu-silicium/0004-check-simplefb-errors-and-bounds.patch",
+      "sha256": "fc55aa50380212d239da0e39bb2e9c611fa395e0eddabf4605051fbe0f119a7d",
+      "target": "Silicon/Silicium/SiliciumPkg/Drivers/SimpleFbDxe/SimpleFb.c",
+      "before_sha256": "926136fbf45aef45fda9a18c797e21cc361c2dbe34003176eadf9e98034a05d6",
+      "after_sha256": "b21933b717999c49c66134be512f5096f8c1ada7cdd76e432d6a48f209d513f7",
+      "scope": "Static framebuffer region/geometry bounds, GOP mode output and allocation/registration failure propagation. No scanout programming or runtime geometry discovery."
+    },
+    "host_report": "reports/simplefb-tests.json",
+    "host_report_sha256": "26f09922d6387cf7b65910bfdb15b26e496ebcb313dd34ff75a2ba5d903bf40a",
+    "runtime_geometry_qualified": false
+  },
+  "firmware_log": {
+    "producer": "DXE Core",
+    "buffer_bytes": 2097152,
+    "exporter": "AdvancedLogDxe",
+    "format": "OneSend QR",
+    "sec_log_captured": false,
+    "hardware_capture_tested": false
+  },
+  "container_readback": "PASS: header, sizes, gzip, shim, FD, DTB and ramdisk match",
+  "kernel_included": false,
+  "hardware_boot": "not-tested",
+  "variable_writes": "UniXNUDxe registers nonvolatile Boot#### and BootOrder variables; platform storage-write review pending.",
+  "scope": "Host compilation and binary readback only. Donor DXEs differ from the captured phone firmware. Not an iOS boot result."
+}

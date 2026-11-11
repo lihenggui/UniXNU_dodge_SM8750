@@ -139,6 +139,8 @@ def main():
         source / 'Platforms/OnePlus/dodgePkg/dodge.fdf').read_text()
     record['darwinboot_integrated'] = 'INF DarwinBootPkg/Driver/DarwinBoot.inf' in (
         source / 'Platforms/OnePlus/dodgePkg/dodge.fdf').read_text()
+    record['firmware_log_integrated'] = 'INF UniXNUPkg/Driver/AdvancedLogDxe/AdvancedLogDxe.inf' in (
+        source / 'Platforms/OnePlus/dodgePkg/dodge.fdf').read_text()
     if result.returncode == 0 and not record['parallel_jobs_confirmed']:
         raise SystemExit('The build did not confirm the requested EDK II -n 4 limit; inspect ' + str(log_path))
     (ROOT / 'analysis/uefi-build-result.json').write_text(json.dumps(record, indent=2) + '\n')

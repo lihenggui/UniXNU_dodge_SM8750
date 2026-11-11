@@ -7,7 +7,7 @@
       "patches": [
         {
           "path": "patches/unixnu/0001-device-ios-profiles-and-linux-target.patch",
-          "sha256": "0a8b8ce61b18ef3a18ddce17afd95239f2502888f9dec3baaa3b8710ba2b8fc6"
+          "sha256": "1e59ec27264a4bfc07e09d985b9a90bbfdf4ea2bb41f123bd847d0a6205aca8e"
         }
       ],
       "result": "PASS"
@@ -64,6 +64,14 @@
         {
           "path": "patches/mu-silicium/0003-bootshim-header-include-shim-size.patch",
           "sha256": "4f65d92ee0e794ad2008a8f31b48ccbc48844bca27ec108aa9634bdd6d947dcc"
+        },
+        {
+          "path": "patches/mu-silicium/0004-check-simplefb-errors-and-bounds.patch",
+          "sha256": "fc55aa50380212d239da0e39bb2e9c611fa395e0eddabf4605051fbe0f119a7d"
+        },
+        {
+          "path": "patches/mu-silicium/0005-dodge-firmware-log-export.patch",
+          "sha256": "b388308f89dd628835baa39351e2247ee74231ff05dfabff383114f9f7afcac8"
         }
       ],
       "result": "PASS"

@@ -3,14 +3,14 @@
   "builder_sha256": "f7e31e350b665fbbced92e86904188ec6bec2955bb2193a6b93e70d7a7756d00",
   "source_sha256": {
     "scripts/check_input_kernel.py": "f7e31e350b665fbbced92e86904188ec6bec2955bb2193a6b93e70d7a7756d00",
-    "scripts/build_input_native.py": "354d971d8a2d4a2aa6cce950361c3a7ec75a58f0635c5ab6aa447a34577ebd85",
+    "scripts/build_input_native.py": "fa9345427cadedc0963cba307dd28cdb04e13b0d578574c071dd796f0ed18b05",
     "scripts/build_input_prelink.py": "d9227262bb2579a581fbf1649c200b1dc0a9f86c9fea22cc8c043e342a667df0",
     "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078"
   },
-  "prelink_report_sha256": "cb36a85f39732eefdb1b81594af15a230a62da403aaa68a966a4e4c3cafa837a",
-  "source_report_sha256": "c07ee3603195182c9d99601fbf04bcdffa647b4ece2a0e285ce9ca68a59e4927",
+  "prelink_report_sha256": "db221a3a178964e9a568c24a576f76446e95448e9ec1428f0e5f399d6a8084c6",
+  "source_report_sha256": "6aa39de67559bc1bf9c5d98434ec27f5b5344a322420e2267d237cbb221b4151",
   "candidate": "build/cph2653-input-prelink/kernel.macho",
-  "candidate_sha256": "be0b18ce8c30d2b9a257477aadb51795dcd7165523520e19372998c7688c3b7e",
+  "candidate_sha256": "b5381ed683e08a68c477a5f5f24db4d8dfca55f0efc55d5189f2a6c1aa0b2dee",
   "case_count": 11,
   "cases": [
     {
@@ -81,7 +81,7 @@
       "source_original_native_chain_executed": false,
       "worker_entry_bodies_executed": false,
       "queues": [
-        "0xfffffff007a69698"
+        "0xfffffff007a696a4"
       ],
       "peers": "metaclass accounting, derived bzero, resource, boot flags, thread scheduling; no MMIO"
     },
@@ -92,7 +92,7 @@
       "worker_entry_bodies_executed": false,
       "queues": [
         "0xfffffff007a614bc",
-        "0xfffffff007a69698"
+        "0xfffffff007a696a4"
       ],
       "peers": "metaclass accounting, derived bzero, resource, boot flags, thread scheduling; no MMIO"
     },
@@ -103,7 +103,7 @@
       "worker_entry_bodies_executed": false,
       "queues": [
         "0xfffffff007a590cc",
-        "0xfffffff007a69698"
+        "0xfffffff007a696a4"
       ],
       "peers": "metaclass accounting, derived bzero, resource, boot flags, thread scheduling; no MMIO"
     },
@@ -114,7 +114,7 @@
       "worker_entry_bodies_executed": false,
       "queues": [
         "0xfffffff007a614bc",
-        "0xfffffff007a69698"
+        "0xfffffff007a696a4"
       ],
       "peers": "metaclass accounting, derived bzero, resource, boot flags, thread scheduling; no MMIO"
     }
@@ -127,7 +127,7 @@
     }
   ],
   "cpu_cases": "build/cph2653-input-prelink/cpu-cases.json",
-  "cpu_cases_sha256": "73ecac288c263aee6e18d55fbbac07a2f7a9fe5df08dd9650b4c44d4cda0b5f7",
+  "cpu_cases_sha256": "8968cf29bb93b4c7e17c3b1f496e68673ac338277f18e8c69e4ff90bcf5b568c",
   "original_protected_constructor_destructor_and_native_chain_executed": true,
   "eight_actual_iobsd_flag_combinations": true,
   "actual_hid_start_parser_or_hardware_executed": false,

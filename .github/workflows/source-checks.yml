@@ -21,7 +21,7 @@ jobs:
           from pathlib import Path
           import subprocess
           lock = json.loads(Path('upstream.lock.json').read_text())
-          for name in ('unixnu', 'darwinboot', 'xnu_ios16', 'iig_port', 'xnuprelink', 'uefi', 'pagani_reference', 'oneplus13t_reference', 'sm8750'):
+          for name in ('unixnu', 'darwinboot', 'xnu_ios16', 'iig_port', 'xnuprelink', 'uefi', 'pagani_reference', 'oneplus13t_reference', 'sm8750', 'native_a830_reference', 'native_a830_smmu_reference'):
               spec = lock[name] if name != 'uefi' else {
                   'path': 'uefi/Mu-Silicium', 'repository': lock['repository'],
                   'revision': lock['revision'], 'patches': [lock['boot_shim_patch'], lock['simplefb_patch']]}
@@ -36,7 +36,7 @@ jobs:
                   subprocess.run(['git', '-C', str(root), 'apply', '--check', str(path)], check=True)
                   subprocess.run(['git', '-C', str(root), 'apply', str(path)], check=True)
           PY
-          git -C sources/UniXNU submodule update --init --depth 1 drivers/QcomGeniSpi
+          git -C sources/UniXNU submodule update --init --depth 1 drivers/QcomGeniSpi kits/AdrenoPM4
           git -C uefi/Mu-Silicium submodule update --init --depth 1 Mu_Basecore
       - name: Check device record and iPhone profile selection
         run: |
@@ -53,6 +53,8 @@ jobs:
           python3 -m unittest discover -s sources/UniXNU/kits/XnuPrelink -p test_emit_prelink.py
       - name: Check whitespace
         run: git diff --check
+      - name: Check native A830 startup, submission, fences and recovery with software controllers
+        run: python3 scripts/check_native_a830_host.py
       - name: Check surface range and provider ownership with software IOKit peers
         run: python3 scripts/check_surface_backing_host.py
       - name: Check current-task surface identity ownership and refusal paths with software IOKit peers
