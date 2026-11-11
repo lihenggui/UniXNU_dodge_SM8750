@@ -5,11 +5,15 @@
   "scope": "Build and model-test snapshots. Artifact and dependency hashes identify their recorded run. Use previous_indexes to resolve earlier report versions.",
   "previous_indexes": [
     {
+      "revision": "0d35ef2af62d2f8585bf4373c7033f2ea245f77f",
+      "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/0d35ef2af62d2f8585bf4373c7033f2ea245f77f/reports/public/index.json"
+    },
+    {
       "revision": "067b04a9f4544296ecc03a6ba26aa52d8cb0f6be",
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/067b04a9f4544296ecc03a6ba26aa52d8cb0f6be/reports/public/index.json"
     }
   ],
-  "exporter_sha256": "d269108c87dd1d3f96f4dcfc05ff7bb0066d8d61d4a746d13082bf5232da7f71",
+  "exporter_sha256": "86db45146f36b84f019603991929d89199bbc37078e79810f3e5977b186f5148",
   "reports": {
     "a830-backend-tests.json": {
       "local_report": "reports/a830-backend-tests.json",
@@ -925,8 +929,8 @@
     },
     "native-a830-host.json": {
       "local_report": "reports/native-a830-host.json",
-      "original_sha256": "be293f159082816ba68ecd06c17a9e127a542ebfba7a7aba52492ccb55347953",
-      "snapshot_sha256": "be293f159082816ba68ecd06c17a9e127a542ebfba7a7aba52492ccb55347953",
+      "original_sha256": "2ed631ca1a2c1451edf7291c09170fdbc03218f4d5cd5a5027297e0881c2d22a",
+      "snapshot_sha256": "2ed631ca1a2c1451edf7291c09170fdbc03218f4d5cd5a5027297e0881c2d22a",
       "paths_normalized": false
     },
     "native-a830.json": {

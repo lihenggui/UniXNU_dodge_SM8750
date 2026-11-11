@@ -1,7 +1,7 @@
 {
   "result": "NATIVE_A830_SOFTWARE_CONTROLLER_TESTS_PASS",
   "suite_count": 15,
-  "builder_sha256": "9fc295139586d2c6c8644f3e73bb6f3f2ac84d63209d7f712b5a8775af265e5f",
+  "builder_sha256": "388a9beb7f39506b6f8d758857e86f831c18f842e8881beafcad1b44927b061f",
   "source_revisions": {
     "native_a830_reference": "1a1321056ffc5428ae925f4680093718b46ca7c2",
     "native_a830_smmu_reference": "3ba92451bd44bb742d11758fbfcd3a446ecad685"
@@ -104,7 +104,7 @@
     "sources/Adreno830-native/platform/sm8750/Sm8750Llcc.c": "10c12d97169f3779d30d9feb144f35020c521664f70ea3f3cc39578676b0832b",
     "sources/Adreno830-native/platform/sm8750/Sm8750AossQmp.h": "dbfd1d619e97ced90d9266915f65c657692fa153741a888467d853a6ec976591",
     "sources/Adreno830-native/platform/sm8750/Sm8750Scm.h": "0715cbd4e24162ab2b20dcc3c600d8a5d6a7a3f254814afc1983c2deaee1ac7b",
-    "scripts/check_native_a830_host.py": "9fc295139586d2c6c8644f3e73bb6f3f2ac84d63209d7f712b5a8775af265e5f",
+    "scripts/check_native_a830_host.py": "388a9beb7f39506b6f8d758857e86f831c18f842e8881beafcad1b44927b061f",
     "scripts/build_native_a830.py": "fe5cf2a5c1b567e7c0bbca63b4c97e3f4ce3cb234c42a6a8107983420255ec57",
     "patches/adreno830/0001-darwin22-template-data-free.patch": "f165ef3084a6a85a5f332c208b62493fd030a658d76366f7d963f8bd823ff441"
   },
@@ -167,7 +167,7 @@
     },
     "test_vm": {
       "returncode": 0,
-      "output": "VM alias preflight diagnostic: 8192 x 8192 different-class spans, preflight 2402 host us, table transaction with the pass once 1073 host us (not hardware timing)\nVM alias preflight diagnostic: 8192 x 8192 different-class spans, preflight 2576 host us, table transaction with the pass twice 2654 host us (not hardware timing)\nPASS: VM alias index/fallback preserve attribute-class refusals before MMIO/ownership with and without the table transaction's second pass; 8192-span different-class map/unmap\nPASS: VM alias pass: 2 maps (preflight's alone with pagani-gpu-kopt bit 2, the table transaction's as well without it)\nPASS: VM clock: 5 checks (kinds count without it, time with it; a contended VM lock's wait reaches the call meter)\nPASS: VM with the annibale programmer's sync_after_map: 5 checks (one TLBIASID + TLBSYNC per map, none for a refused map, unmap unchanged, a stuck sync poisons; none without the flag)\nPASS: VM over the A830 programmer: attach proves regions and routes once, 200 map/unmap rounds under pending faults never poison, per-buffer fence unmap, 64-bit TLBIVAL, 4 GiB (2053), 2 GiB (1027) and 16 GiB (8209, BOs across and past 4 GiB) apertures with reserved windows, 13 coherence-policy checks, coherent table walk, 3 poisoning paths, kit-stream attach, 600 locked concurrent transactions"
+      "output": "VM alias preflight diagnostic: 8192 x 8192 different-class spans, preflight 2422 host us, table transaction with the pass once 1191 host us (not hardware timing)\nVM alias preflight diagnostic: 8192 x 8192 different-class spans, preflight 2382 host us, table transaction with the pass twice 2524 host us (not hardware timing)\nPASS: VM alias index/fallback preserve attribute-class refusals before MMIO/ownership with and without the table transaction's second pass; 8192-span different-class map/unmap\nPASS: VM alias pass: 2 maps (preflight's alone with pagani-gpu-kopt bit 2, the table transaction's as well without it)\nPASS: VM clock: 5 checks (kinds count without it, time with it; a contended VM lock's wait reaches the call meter)\nPASS: VM with the annibale programmer's sync_after_map: 5 checks (one TLBIASID + TLBSYNC per map, none for a refused map, unmap unchanged, a stuck sync poisons; none without the flag)\nPASS: VM over the A830 programmer: attach proves regions and routes once, 200 map/unmap rounds under pending faults never poison, per-buffer fence unmap, 64-bit TLBIVAL, 4 GiB (2053), 2 GiB (1027) and 16 GiB (8209, BOs across and past 4 GiB) apertures with reserved windows, 13 coherence-policy checks, coherent table walk, 3 poisoning paths, kit-stream attach, 600 locked concurrent transactions"
     }
   },
   "sanitizers": [

@@ -58,7 +58,9 @@ inline void IOFreeData(void *p,size_t) {fixtureMetadataFree(p);}
     spec = importlib.util.spec_from_file_location('a830_host_tests', stage / 'tests/run-host-tests.py')
     tests = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(tests)
-    tests.FLAGS += ['-fno-pie', '-Wno-deprecated-volatile']
+    # The pinned status record and model configurations omit trailing zero
+    # fields. Clang 18 diagnoses these aggregate initializers under -Wextra.
+    tests.FLAGS += ['-fno-pie', '-Wno-deprecated-volatile', '-Wno-missing-field-initializers']
     original = tests.run
     commands, executions = [], {}
     cc = shutil.which('clang-14') or shutil.which('clang')
