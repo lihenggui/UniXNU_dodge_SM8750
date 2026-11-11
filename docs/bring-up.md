@@ -19,15 +19,16 @@ download URL, BuildManifest identity and hashes.
 [upstream.lock.json](../upstream.lock.json) pins source revisions and patches.
 
 The [official guide](https://unixnu.com/porting/) was reviewed on 2026-11-11
-against UniXNU `215672be984f511b0923cbc120ea24bb48fef87e`. Follow its order:
+against UniXNU `9248bdac8f06f6faa47a03304ad4e40cde5d5296`. Follow its order:
 resolve the board and OS profile, verify memory and firmware, build platform
 services, then add storage, display, input and GPU support. Keep host results
 and device observations separate in [porting.toml](../porting.toml).
 
-Recent mainline changes add `firmware_tools` for staging board-extracted files
-under a Data addon's `firmware/` directory, plus Mesa and macOS changes. This
-checkout keeps the source versions in the lock file. Its GPU microcode is
-embedded locally by the board build described below.
+Mainline now includes `firmware_tools` for Data-addon firmware staging and a
+Metal pipeline compilation policy that uses the calling thread when its stack
+has at least 2 MiB. The native route backports that policy and keeps the existing
+thread relay for smaller stacks. Source revisions remain pinned in the lock
+file; this board embeds its four stock GPU microcode files locally.
 
 ## Host setup
 
@@ -157,80 +158,126 @@ Optional stock firmware comparison:
 
 ## Driver builds
 
-Create the GPU/model-test environment:
+Create the GPU/model-test environment and install its pinned tools:
 
 ```sh
 .venv-uefi/bin/python -m venv .venv-gpu
 .venv-gpu/bin/python -m pip install --require-hashes -r requirements-gpu.lock
+.venv-uefi/bin/python scripts/prepare_gpu_tools.py
+.venv-uefi/bin/python scripts/build_gpu_shader_tools.py
 ```
 
-Each route keeps its own build directory. Use `--check-only` where supported
-to check an existing build.
+The native route uses Shad0w23333's [Adreno830 driver](https://github.com/Shad0w23333/Adreno830)
+and matching SMMU library. Both [OnePlus 13T ports](https://unixnu.com/devices/models/oneplus13t)
+provide integration references. Board registers, power bins, firmware and the
+`0x32b` ACTLR value come from the CPH2653 capture. Original component addresses
+and class layouts come from the pinned iPhone kernelcache.
 
-| Route | Command |
+Prepare the [system and Data inputs](#system-and-data-images) before the shared
+source stages. These stages supply storage, input, display and original crypto:
+
+| Order | Command |
 | --- | --- |
-| Standalone native A830 source archive | `.venv-uefi/bin/python scripts/build_native_a830.py` |
-| CPH2653 native A830 archive and isolated kernel | `.venv-uefi/bin/python scripts/build_native_a830.py --board --link` |
-| A830, Turnip, Metal and display | `.venv-uefi/bin/python scripts/build_gpu_stack.py` |
-| Read-only UFS and root storage | `.venv-uefi/bin/python scripts/build_storage_stack.py` |
-| S3910 touch and iPhone HID | `.venv-uefi/bin/python scripts/build_input_stack.py` |
-| APFS Data image and RamBlock | `.venv-uefi/bin/python scripts/build_data_stack.py` |
-| Data startup payload | `.venv-uefi/bin/python scripts/build_data_startup_stack.py` |
-| PID 1 Data mount | `.venv-uefi/bin/python scripts/build_data_mount_stack.py` |
-| Original crypto initialization | `.venv-uefi/bin/python scripts/build_crypto_stack.py` |
-| Original crypto/POST model | `.venv-gpu/bin/python scripts/check_original_crypto_kernel.py` |
-| GPU status at display time | `.venv-gpu/bin/python scripts/build_fresh_gpu_stack.py` |
-| GPU mapped-resource lifetime | `.venv-gpu/bin/python scripts/build_mapped_lease_stack.py` |
-| IOSurface task lookup | `.venv-gpu/bin/python scripts/build_surface_identity_stack.py` |
-| IOSurface/import page matching | `.venv-gpu/bin/python scripts/build_surface_pages_stack.py` |
+| 1 | `.venv-uefi/bin/python scripts/build_gpu_stack.py` |
+| 2 | `.venv-uefi/bin/python scripts/build_storage_stack.py` |
+| 3 | `.venv-uefi/bin/python scripts/build_input_stack.py` |
+| 4 | `.venv-uefi/bin/python scripts/build_data_stack.py` |
+| 5 | `.venv-uefi/bin/python scripts/build_data_startup_stack.py` |
+| 6 | `.venv-uefi/bin/python scripts/build_data_mount_stack.py` |
+| 7 | `.venv-gpu/bin/python scripts/check_ramblock_start_kernel.py` |
+| 8 | `.venv-uefi/bin/python scripts/prepare_ios16_pmgr.py` |
+| 9 | `.venv-gpu/bin/python scripts/check_ios16_pmgr_kernel.py` |
+| 10 | `.venv-uefi/bin/python scripts/build_crypto_stack.py` |
+| 11 | `.venv-uefi/bin/python scripts/prepare_crypto_execution.py` |
+| 12 | `.venv-gpu/bin/python scripts/check_original_crypto_kernel.py` |
 
-The standalone A830 route uses Shad0w23333's Gen8 driver and its matching SMMU
-library. `python3 scripts/check_native_a830_host.py` runs its software-controller
-tests. The driver compiles against Darwin 22 and binds the original iPhone accelerator
-base. Both [13T implementations](https://unixnu.com/devices/models/oneplus13t)
-remain references; the target identity and original components come from the
-iPhone profile above.
+Add the shared surface and mapped-resource source adapters:
 
-For the CPH2653 board candidate, prepare the pinned local firmware first:
+```sh
+.venv-gpu/bin/python scripts/prepare_surface_sync.py
+.venv-gpu/bin/python scripts/check_surface_sync_kernel.py
+.venv-gpu/bin/python scripts/build_fresh_gpu_source.py
+.venv-uefi/bin/python scripts/check_mapped_lease_host.py
+.venv-uefi/bin/python scripts/build_mapped_lease_source.py
+.venv-uefi/bin/python scripts/build_surface_identity.py
+.venv-uefi/bin/python scripts/build_surface_pages.py
+.venv-uefi/bin/python scripts/build_surface_acquire.py
+.venv-uefi/bin/python scripts/build_boot_entropy.py
+.venv-gpu/bin/python scripts/check_boot_entropy_kernel.py
+```
+
+This produces the 97-object source baseline used by the native kernel builder.
+The earlier `build_fresh_gpu_stack.py`, `build_mapped_lease_stack.py` and surface
+stack scripts also package or model their own older candidates. The commands
+above prepare the shared source inputs for the native route directly.
+
+Prepare the board's stock GPU files and captured declarations:
 
 ```sh
 .venv-uefi/bin/python scripts/prepare_gpu_firmware.py
 .venv-uefi/bin/python scripts/prepare_native_a830.py
-.venv-uefi/bin/python scripts/check_native_a830_board.py \
-  --firmware-dir build/cph2653-gpu-firmware
-.venv-uefi/bin/python scripts/build_native_a830.py --board --link
 ```
 
-`prepare_native_a830.py` checks the saved runtime DTB against
-[hardware/dodge-native-a830.json](../hardware/dodge-native-a830.json). It records
-register windows, GIC INTIDs, stream IDs, all six power bins including ACD values,
-and the eight GPU temperature sensors. The firmware step needs the pinned vendor
-and vendor_boot images; [hardware/dodge-gpu-firmware.json](../hardware/dodge-gpu-firmware.json)
-records their hashes. Firmware and generated headers stay under `build/`.
+The firmware step reads the pinned vendor and vendor_boot inputs.
+[hardware/dodge-gpu-firmware.json](../hardware/dodge-gpu-firmware.json) records
+their hashes. [hardware/dodge-native-a830.json](../hardware/dodge-native-a830.json)
+records the register windows, interrupts, streams, six frequency/ACD bins and
+eight temperature sensors. Generated headers and microcode stay under `build/`.
 
-The board build writes a 54-object archive and `mach.native-a830` under
-`build/cph2653-native-a830-board/`. It reads every embedded firmware image back
-from the linked kernel and preserves the three original iPhone accelerator aliases.
-The explicit `dodge_native_a830_start(expected_soc)` entry uses `dodge-gpu-*`
-arguments and runs synchronously once per boot. Its expected SoC ID must be
-618 or 639 from the captured DT; S0 checks it against live SMEM. The DT ACTLR
-value is `0x32b`; a future runtime experiment can request another value explicitly.
-
-The existing Metal frontend's selectors 17/18, IOSurface leases and initialization
-order still need integration with this backend. The isolated kernel needs the
-original graphics prelink, POST seal and system image before boot preparation.
-The default kernel selection stays on the existing route.
-
-The firmware entropy route has three steps:
+Build the native development candidate:
 
 ```sh
-.venv-uefi/bin/python scripts/build_boot_entropy.py
-.venv-gpu/bin/python scripts/check_boot_entropy_kernel.py
-.venv-gpu/bin/python scripts/build_entropy_payload.py
+.venv-gpu/bin/python scripts/build_native_a830_stack.py
+.venv-gpu/bin/python scripts/build_native_a830_stack.py --check-only
 ```
 
-Component status and remaining integration work are tracked in
-[porting.toml](../porting.toml).
+The builder runs each stage in order with four compiler jobs. It builds the
+57-object native GPU archive, links the 111-object source kernel and prelinks
+28 original iPhone executable components. It checks 63,889 pointer bindings,
+four IOSurface lifecycle hooks and the embedded firmware bytes. Turnip, the
+Rust bridge and the Metal plugin use separate native build directories.
+`--record-existing` validates completed stages and records them without a rebuild.
+
+The adapter adds task-authorized surface-ID import as selector 19. Selectors
+17/18 retain their known record sizes and return Unsupported; this backend
+uses its existing FIFO submission policy. Each job holds all current VM
+mappings. Original IOSurface writer grants precede GPU submission, and a
+deferred worker signals completion after the fence and cache acquisition.
+Cancellation keeps pending callback owners alive. Backing changes invalidate
+active work and the display health snapshot.
+
+The board entry reads the SoC ID from SMEM before startup and accepts 618 or
+639. An optional `dodge-gpu-soc` value must match that reading. The existing
+once-only startup gate and original-family initialization order are retained.
+
+| Output | Location |
+| --- | --- |
+| Prelinked iPhone kernel | `build/cph2653-native-a830-prelink/kernel.macho` |
+| Metal addon and iPhone trust inputs | `build/cph2653-native-a830-addon/` |
+| Fresh-entropy and DXE logger firmware | `build/cph2653-native-a830-firmware/` |
+| FAT payload and Android v4 container | `build/cph2653-native-a830-bringup/` |
+
+The addon uses the official NGPUADD2 format. Its trust bundle contains the
+three local executable hashes and the two unchanged 20H392 iPhone trust-cache
+payloads. The actual EFI loader runs in an ARM64 model with these files; their
+final memory-map addresses and bytes are read back. The model also checks fresh
+seed consumption and the original 18-test crypto POST.
+
+The development container retains the packed 2 GiB Data seed and boot arguments
+`-v serial=0 debug=0x14e cpus=1`. Graphics and Data startup remain opt-in through
+the existing `dodge-graphics`, `dodge-data` and `dodge-data-mount` arguments.
+It contains no original userspace or root image. Hardware power, cache/DMA
+visibility, Metal discovery, rendering and full iOS boot still need device
+validation. [porting.toml](../porting.toml) tracks those steps.
+
+The archive-only commands remain available for driver work:
+
+```sh
+.venv-uefi/bin/python scripts/build_native_a830.py
+.venv-uefi/bin/python scripts/build_native_a830.py --board --link
+python3 scripts/check_native_a830_host.py
+python3 scripts/check_native_a830_host.py --runtime
+```
 
 ## System and Data images
 

@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import sys
 
@@ -16,6 +17,7 @@ from prepare_sources import patch_series_state
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--configure-only', action='store_true')
+    parser.add_argument('--native-a830', action='store_true', help='build the native driver surface-ID protocol')
     args = parser.parse_args()
     sources = pinned_sources(('mesa_reference', 'iphoneos_sdk_reference', 'a830_backend_reference'))
     lock = json.loads((ROOT / 'upstream.lock.json').read_text())
@@ -65,11 +67,20 @@ def main():
     from mesa_patch_identity import validate_recorded_patches
     (ROOT / 'sources/UniXNU/.cache').mkdir(exist_ok=True)
     validate_recorded_patches(ROOT / 'sources/UniXNU', work, pins)
+    diff = subprocess.check_output(['git', '-C', work, 'diff', 'HEAD', '--binary'])
+    untracked = subprocess.check_output(['git', '-C', work, 'ls-files', '--others', '--exclude-standard', '-z']).split(b'\0')
+    extras = {name.decode(): sha(work / name.decode()) for name in untracked if name and (work / name.decode()).is_file()}
+    native_overlay = None
+    if args.native_a830:
+        from native_a830_userspace import overlay
+        work, native_overlay = overlay(work, ROOT / '.cache/gpu-work/mesa-native-a830', 'native_a830_mesa_surface_overlay')
+        diff += (ROOT / native_overlay['path']).read_bytes()
+        extras.update({name: digest for name, digest in native_overlay['after_sha256'].items()})
     sdk = sources['iphoneos_sdk_reference'] / 'iPhoneOS16.5.sdk'
     llvm = ROOT / '.toolchains/rust-gpu/lib/rustlib/x86_64-unknown-linux-gnu/bin'
     clang = ROOT / '.toolchains/xnu-linux/llvm/bin/clang'
     linker = ios_userspace_linker()
-    out = ROOT / 'build/cph2653-turnip-ios16'
+    out = ROOT / ('build/cph2653-native-a830-turnip' if args.native_a830 else 'build/cph2653-turnip-ios16')
     out.mkdir(parents=True, exist_ok=True)
     flags = ['-target', 'arm64-apple-ios16.0', '-isysroot', str(sdk), '-fstack-protector-strong', '-mlinker-version=1115']
     link_flags = flags + ['-fuse-ld=' + str(linker), '-Wl,-adhoc_codesign']
@@ -84,22 +95,28 @@ def main():
                      '[properties]\nneeds_exe_wrapper = true\n[built-in options]\n' +
                      ''.join(f'{name} = {flags!r}\n' for name in ('c_args', 'cpp_args', 'objc_args')) +
                      ''.join(f'{name} = {link_flags!r}\n' for name in ('c_link_args', 'cpp_link_args', 'objc_link_args')))
+    abi = sources['a830_backend_reference']
+    if args.native_a830:
+        native = pinned_sources(('native_a830_reference',))['native_a830_reference']
+        abi = out / 'abi';abi.mkdir(exist_ok=True)
+        shutil.copyfile(native / 'NativeAdrenoABI.h', abi / 'NativeAdrenoABI.h')
+        shutil.copyfile(ROOT / 'drivers/DodgeGpu/DodgeNativeA830ABI.h', abi / 'DodgeNativeA830ABI.h')
     options = ['-Dgallium-drivers=', '-Dvulkan-drivers=freedreno', '-Dfreedreno-kmds=darwin',
-               '-Dtu-darwin-abi-dir=' + str(sources['a830_backend_reference']), '-Dplatforms=macos',
+               '-Dtu-darwin-abi-dir=' + str(abi), '-Dplatforms=macos',
                '-Dglx=disabled', '-Degl=disabled', '-Dgbm=disabled', '-Dopengl=false', '-Dgles1=disabled',
                '-Dgles2=disabled', '-Dllvm=disabled', '-Dshared-glapi=disabled', '-Dxmlconfig=disabled',
                '-Dshader-cache=enabled', '-Dtools=', '-Dbuild-tests=false', '-Dvideo-codecs=', '-Dvulkan-layers=',
                '-Dlibunwind=disabled', '-Dlmsensors=disabled', '-Dvalgrind=disabled', '-Dexpat=disabled',
                '-Dzstd=disabled', '-Dbuildtype=release', '-Db_ndebug=true']
-    diff = subprocess.check_output(['git', '-C', work, 'diff', 'HEAD', '--binary'])
-    untracked = subprocess.check_output(['git', '-C', work, 'ls-files', '--others', '--exclude-standard', '-z']).split(b'\0')
-    extras = {name.decode(): sha(work / name.decode()) for name in untracked if name and (work / name.decode()).is_file()}
     profile = {'mesa_revision': pins['mesa']['commit'], 'target': 'arm64-apple-ios16.0',
                'source_diff_sha256': hashlib.sha256(diff).hexdigest(), 'extra_sources': extras,
                'patch_guard_sha256': sha(ROOT / 'sources/UniXNU/scripts/mesa_patch_identity.py'),
                'compiler': subprocess.check_output([clang, '--version'], text=True).strip(),
                'options': options, 'build_script_sha256': sha(Path(__file__)), 'cross_file_sha256': sha(cross),
                'sdk_revision': lock['iphoneos_sdk_reference']['revision']}
+    if args.native_a830:
+        profile['native_surface_overlay'] = native_overlay
+        profile['native_surface_abi_sha256'] = sha(abi / 'DodgeNativeA830ABI.h')
     source_id = hashlib.sha256(json.dumps(profile, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     build_id = hashlib.sha256(json.dumps({'mesa_revision': pins['mesa']['commit'],
         'source_diff_sha256': profile['source_diff_sha256'], 'extra_sources': extras}, sort_keys=True).encode()).hexdigest()[:40]
@@ -126,14 +143,18 @@ def main():
     library = out / 'src/freedreno/vulkan/libvulkan_freedreno.dylib'
     names = subprocess.check_output([llvm / 'llvm-nm', '--defined-only', '--extern-only', library], text=True)
     require('_vk_icdGetInstanceProcAddr' in names, 'The real Vulkan ICD entry is absent')
+    if args.native_a830:
+        require(all('_tu_darwin_surface_' + n in names for n in ('begin', 'end')), 'Native surface protocol exports are absent')
     report = {'result': 'IOS16_TURNIP_CROSS_BUILD_PASS', 'target': 'arm64-apple-ios16.0',
               'library': str(library.relative_to(ROOT)), 'library_sha256': sha(library),
               'mesa_revision': pins['mesa']['commit'], 'patches': specs, 'source_id': source_id,
               'build_id': build_id, 'profile': profile, 'backend': 'darwin',
-              'abi_header_sha256': sha(sources['a830_backend_reference'] / 'NativeAdrenoABI.h'),
+              'abi_header_sha256': sha(abi / 'NativeAdrenoABI.h'),
+              'native_surface_overlay': native_overlay,
               'hardware_tested': False, 'scope': 'Actual production Vulkan/IR3 library cross-build, not GPU shader execution.'}
     (out / 'manifest.json').write_text(json.dumps(report, indent=2) + '\n')
-    (ROOT / 'reports/turnip-ios16.json').write_text(json.dumps(report, indent=2) + '\n')
+    report_path = ROOT / ('reports/native-a830-turnip.json' if args.native_a830 else 'reports/turnip-ios16.json')
+    report_path.write_text(json.dumps(report, indent=2) + '\n')
     print('PASS: production iOS 16 Turnip/IR3 library with the Darwin IOKit backend')
 
 

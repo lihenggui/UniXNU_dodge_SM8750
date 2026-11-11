@@ -8,9 +8,10 @@ Darwin 22. The UEFI and kernel build locally. Full system boot and hardware
 bring-up are still in development. The port follows the
 [UniXNU porting guide](https://unixnu.com/porting/).
 
-The standalone Adreno 830 candidate builds for iOS 16 with CPH2653 board inputs
-and stock firmware. Its isolated kernel links locally; Metal integration and
-device testing are still in progress. See [GPU builds](docs/bring-up.md#driver-builds).
+The native Adreno 830 development build includes the CPH2653 board adapter,
+iPhone IOSurface producer handling, Turnip and Metal. The kernel, original
+iPhone components, GPU addon and entropy/logger firmware build and pass local
+readback and model tests. See [GPU builds](docs/bring-up.md#driver-builds).
 
 ## Getting started
 

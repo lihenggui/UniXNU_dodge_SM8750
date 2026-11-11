@@ -1,0 +1,955 @@
+{
+  "result": "NATIVE_A830_IPHONE_STRICT_PRELINK_PASS",
+  "candidate": "build/cph2653-native-a830-prelink/kernel.macho",
+  "candidate_sha256": "5410cfbfdef990f78928e31b8ece4730513e001ebd4a62b2a672233f92b3f157",
+  "unhooked_candidate": "build/cph2653-native-a830-prelink/kernel.unhooked.macho",
+  "source_sha256": {
+    "scripts/build_native_a830_prelink.py": "9cf76b4305e07f20318888f5de4f4b4c349afb6ba25a1b1d77152445899d6f50",
+    "scripts/build_native_a830_kernel.py": "c271ef4bfe67fba4c33338f3eac2fc0484688f10b8beb3ca39f9a7889edb25d0",
+    "scripts/build_crypto_prelink.py": "ec1fbbbdd7368c52d057b0b6c437b7dbff070d9bb2088649749a88995177457a",
+    "scripts/build_gpu_graphics_prelink.py": "ad5f6636a1761297a6936467b1140134ba934c86ea7de4c128f5546f26995293",
+    "scripts/build_ufs_prelink.py": "69c2fa86f9d51b3b8363abbecaf458deab3721b2c88fbe52840d67f98f53bfac",
+    "scripts/build_input_prelink.py": "d9227262bb2579a581fbf1649c200b1dc0a9f86c9fea22cc8c043e342a667df0",
+    "scripts/prepare_surface_backing.py": "0f2fea10ab5b89e544b77c1c4c5e6254992404b0e773b604a844d49231bc3318",
+    "scripts/surface_sync_execution.py": "7c287e31548061865ada9db071f47d078f075f31d5cecbe806dfc7def80f9feb",
+    "profiles/os/ios-16.7.16-20H392/profile.toml": "e3dbb5af9583405c62ce1e41dbe6ab0378dfb63f4ff7c9654c2dffa9091c6043",
+    "profiles/os/ios-16.7.16-20H392/input-prelink.json": "04686f0d95e68a5f6e769af30053f51f44623f820ee035390ed03377d8987a3d",
+    "profiles/os/ios-16.7.16-20H392/security-init.json": "f621e8196e923045d38a44040ddf543fe27c9a91838e9799e853a097655cf2fd",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/kits/XnuPrelink/emit_prelink.py": "49bb83cbf670307b1c11d080e384b620f608398db2f51545ba4d63f440bc12cb",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/kits/XnuPrelink/native_prelink.py": "5bd80b8c63deec29b747c28253e02308a56d5f8cdb37c9d315e7c8af7012d017",
+    "sources/UniXNU/drivers/DarwinBoot/Test/test-kernel-parser.py": "92be15ff6060ee1cd98e7feb8a021f1ebed477189375140dfc3ac8371f9b48d7"
+  },
+  "dependency_report_sha256": {
+    "reports/native-a830-kernel.json": "8306b0dffe16f65549d8fae9d411ad907a36347ab7c8c3b318ca705137d2312d"
+  },
+  "artifacts": {
+    "build/cph2653-native-a830-prelink/kernel.macho": "5410cfbfdef990f78928e31b8ece4730513e001ebd4a62b2a672233f92b3f157",
+    "build/cph2653-native-a830-prelink/kernel.unhooked.macho": "770595a54abc3c63e79723cdd175a78c58235ccfde34a13ed1b793299ab9664f",
+    "build/cph2653-native-a830-prelink/kernel.unhooked.json": "4bb80dddb06e8b34f319439aa11db2af85cb12aa124a8812102bcc4ae1a1fab4",
+    "build/ios16-surface-producer-execution/SurfaceSyncProbe.o": "2362b077cd92a5c2a86eda834dbfbbd09b3b69a0e8bca7ca3b6c4a469290adb0"
+  },
+  "combined_source_objects": 111,
+  "components": [
+    "com.apple.driver.AppleARMPlatform",
+    "com.apple.driver.AppleAudioClockLibs",
+    "com.apple.driver.AppleEffaceableStorage",
+    "com.apple.driver.AppleIISController",
+    "com.apple.driver.AppleM2ScalerCSCDriver",
+    "com.apple.driver.AppleMobileFileIntegrity",
+    "com.apple.driver.ApplePMGR",
+    "com.apple.driver.IODARTFamily",
+    "com.apple.filesystems.apfs",
+    "com.apple.iokit.CoreAnalyticsFamily",
+    "com.apple.iokit.IOAVFamily",
+    "com.apple.iokit.IOAudio2Family",
+    "com.apple.iokit.IOCECFamily",
+    "com.apple.iokit.IOCryptoAcceleratorFamily",
+    "com.apple.iokit.IOGPUFamily",
+    "com.apple.iokit.IOHDCPFamily",
+    "com.apple.iokit.IOHIDFamily",
+    "com.apple.iokit.IOMobileGraphicsFamily",
+    "com.apple.iokit.IOReportFamily",
+    "com.apple.iokit.IOSlowAdaptiveClockingFamily",
+    "com.apple.iokit.IOStorageFamily",
+    "com.apple.iokit.IOSurface",
+    "com.apple.kec.Libm",
+    "com.apple.kec.corecrypto",
+    "com.apple.kext.AppleMatch",
+    "com.apple.kext.CoreTrust",
+    "com.apple.security.AppleImage4",
+    "com.apple.security.sandbox"
+  ],
+  "kernel_interfaces": [
+    "com.apple.kpi.bsd",
+    "com.apple.kpi.dsep",
+    "com.apple.kpi.iokit",
+    "com.apple.kpi.libkern",
+    "com.apple.kpi.mach",
+    "com.apple.kpi.private",
+    "com.apple.kpi.unsupported"
+  ],
+  "pointer_sites_read_back": 63889,
+  "original_executable_segments": [
+    {
+      "module": "com.apple.driver.AppleARMPlatform",
+      "sha256": "247b8b77815f8c87b43290e52a6b3888053cb3763a60bf21a004cd65b341388b",
+      "bytes": 230100
+    },
+    {
+      "module": "com.apple.driver.AppleAudioClockLibs",
+      "sha256": "bdafd9a2ed24d3151f1119859cd74bf5d99fd4af7afd4e74610985bc11c57008",
+      "bytes": 1752
+    },
+    {
+      "module": "com.apple.driver.AppleEffaceableStorage",
+      "sha256": "2e7b3402cdb22319fa82544ab66a9a211799f3e970c5a66f53d3867270ae0d57",
+      "bytes": 17360
+    },
+    {
+      "module": "com.apple.driver.AppleIISController",
+      "sha256": "20a95cd71e2c81feb6d48230a83cdd7fe382a1396db6a02f14c5deb293f12fab",
+      "bytes": 20644
+    },
+    {
+      "module": "com.apple.driver.AppleM2ScalerCSCDriver",
+      "sha256": "617686e11f04636afa2989519498bef94349d6d2ed4e2b693a74994b4cecff62",
+      "bytes": 398888
+    },
+    {
+      "module": "com.apple.driver.AppleMobileFileIntegrity",
+      "sha256": "6cbea28deab02a2b848dfac28f11c3c00745b55e7b2a896bac3cf9a600a4c7b1",
+      "bytes": 120712
+    },
+    {
+      "module": "com.apple.driver.ApplePMGR",
+      "sha256": "74ac53a277da51806f323e8c7d765d4ce9baa443adf4e513be2cff52a245db0e",
+      "bytes": 232428
+    },
+    {
+      "module": "com.apple.driver.IODARTFamily",
+      "sha256": "8cc7ebf550bd7735985b5de8890e3079816842d2ec29d95646f20d553d6ad021",
+      "bytes": 66696
+    },
+    {
+      "module": "com.apple.filesystems.apfs",
+      "sha256": "ebc47d686c6917c7fb154a0b2e2ed19e3d6a277d994d1395b02d3214142577cc",
+      "bytes": 1050376
+    },
+    {
+      "module": "com.apple.iokit.CoreAnalyticsFamily",
+      "sha256": "29d73b6c2a37d9eb40712b9413db0790e7fe0122f202341852f7725e24b9ee1f",
+      "bytes": 25108
+    },
+    {
+      "module": "com.apple.iokit.IOAVFamily",
+      "sha256": "e80383975371f1552b9abab64476c4e530c49f1e43c187944b3728c3e7d9d506",
+      "bytes": 381580
+    },
+    {
+      "module": "com.apple.iokit.IOAudio2Family",
+      "sha256": "eed290eec9f3d05a362826ad559ba494ab71e48baf746a85d5586267822a7fd4",
+      "bytes": 16788
+    },
+    {
+      "module": "com.apple.iokit.IOCECFamily",
+      "sha256": "f440e646781cc39a6f6f21cfaec088cfb030a38af19e37e6c69c99860eb6f0f8",
+      "bytes": 6364
+    },
+    {
+      "module": "com.apple.iokit.IOCryptoAcceleratorFamily",
+      "sha256": "87758ce6148f662f31e20fb7a2ec645f90f3697084db0b04331f6b44036a06fb",
+      "bytes": 10852
+    },
+    {
+      "module": "com.apple.iokit.IOGPUFamily",
+      "sha256": "34aea2cba7f617ae031c37411027b34380c68bbe1e1a17d6abbf3bbabcc777cf",
+      "bytes": 153788
+    },
+    {
+      "module": "com.apple.iokit.IOHDCPFamily",
+      "sha256": "cce46cc1281541a02de180e05e53f03b5b927c6f4688dc7078624e26b7da1800",
+      "bytes": 48448
+    },
+    {
+      "module": "com.apple.iokit.IOHIDFamily",
+      "sha256": "bb044497e1fe4153f33094011868beb000378a744109c890af9a8d63fa7d3145",
+      "bytes": 276644
+    },
+    {
+      "module": "com.apple.iokit.IOMobileGraphicsFamily",
+      "sha256": "03e4c4d80e4f9c78d4ad03366cd3f1d5894d054ae53cdf06b1a43c81a2eab1cd",
+      "bytes": 214340
+    },
+    {
+      "module": "com.apple.iokit.IOReportFamily",
+      "sha256": "6dc8734b81f576c22bd9fd78a686b29b46ba5cac4bff0957a489c001ffbc08d1",
+      "bytes": 8496
+    },
+    {
+      "module": "com.apple.iokit.IOSlowAdaptiveClockingFamily",
+      "sha256": "e9c3a7337345297aa9282bdd5bda52c0a3ac39a997fb2c9de5ff0952cc39294b",
+      "bytes": 8972
+    },
+    {
+      "module": "com.apple.iokit.IOStorageFamily",
+      "sha256": "4c9e7e8f12306986dc124e9e2cd4f9126fa7dc61e89155d973767b88a0d5ce6f",
+      "bytes": 83976
+    },
+    {
+      "module": "com.apple.iokit.IOSurface",
+      "sha256": "201b4452233e5471fe88fb7a69e0e3c37a17df3d8eead51e2698ca663ef09bae",
+      "bytes": 145604
+    },
+    {
+      "module": "com.apple.kec.Libm",
+      "sha256": "4d56a6e6b3faf6d5a745cabc904ed6eea6f8872c80040c7e4074c15601f5151a",
+      "bytes": 14820
+    },
+    {
+      "module": "com.apple.kec.corecrypto",
+      "sha256": "0da4ca3127ef4ef272b776b932e8bb97855878845034ea1a2d58bb1f5fd6ddd9",
+      "bytes": 297788
+    },
+    {
+      "module": "com.apple.kext.AppleMatch",
+      "sha256": "11eb44b13b917ca2fe80984cc6309e819b8ef597cc9ef9601e96473af0d7fbd4",
+      "bytes": 7928
+    },
+    {
+      "module": "com.apple.kext.CoreTrust",
+      "sha256": "ffc005c8163fc83206f3b87720b512a3c7b438d64fa37fece7f437429fdaaa51",
+      "bytes": 31736
+    },
+    {
+      "module": "com.apple.security.AppleImage4",
+      "sha256": "1ad058c1e525926c1e5f99b80ee59a05e2ec96c5a9c4663f3e5196f43656099b",
+      "bytes": 90524
+    },
+    {
+      "module": "com.apple.security.sandbox",
+      "sha256": "ded8921e103c6597598c3d6b9d505748e096fb77936625d84f5dddde8ead47ca",
+      "bytes": 177728
+    }
+  ],
+  "native_source_entries_preserved": 124,
+  "original_aliases_preserved": 347,
+  "original_crypto_entry_identity_preserved": true,
+  "independent_source_provider_and_its_post_field_absent": true,
+  "original_crypto_post_executed": false,
+  "storage_checks": {
+    "original_aliases_read_back": 208,
+    "original_storage_aliases_read_back": 12,
+    "concrete_display_vtable_entries_read_back": 338,
+    "concrete_storage_vtable_entries_read_back": 190,
+    "original_display_parent_words_read_back": 340,
+    "original_storage_parent_words_read_back": 192,
+    "actual_iobsd_hook_read_back": {
+      "address": "0xfffffff007996f84",
+      "bytes": 80,
+      "sha256": "23beae7f13fdfa1525c1d9944275c3afd9a45edc83a8ca18653d9ee90240df2b",
+      "queue_call_order": [
+        "0xfffffff007996f98",
+        "0xfffffff007996f9c",
+        "0xfffffff007996fa0",
+        "0xfffffff007996fa4"
+      ],
+      "call_targets": [
+        "IOBSD publication",
+        "system scheduler",
+        "Data scheduler",
+        "input scheduler"
+      ]
+    }
+  },
+  "input_checks": {
+    "concrete_input_vtable_entries_read_back": 207,
+    "original_hid_parent_words_read_back": 209,
+    "original_hid_aliases_read_back": 53,
+    "concrete_edge_vtable_entries_read_back": 219,
+    "original_event_driver_parent_words_read_back": 221,
+    "original_event_aliases_read_back": 71,
+    "embedded_spi_firmware_bytes_read_back": 2141,
+    "embedded_spi_firmware_sha256": "3ea1a3aa89bd68e76491e3a2a55f46ba674cf4f96f11b1eb10a46c5fe853951e"
+  },
+  "negative_controls": [
+    {
+      "case": "original-pointer",
+      "result": "REJECTED",
+      "reason": "Crypto pointer readback differs"
+    },
+    {
+      "case": "native-surface-prepare",
+      "result": "REJECTED",
+      "reason": "Crypto native executable bytes changed"
+    }
+  ],
+  "original_lifecycle_hooks": {
+    "init": {
+      "entry": "0xfffffff004a4732c",
+      "wrapper": "0xfffffff007a788d4",
+      "trampoline": "0xfffffff007a78e84",
+      "resume": "0xfffffff004a47330",
+      "patched_word": "0x14c0c56a",
+      "displaced_word": "0xd10183ff",
+      "remaining_original_body_preserved": true
+    },
+    "replace": {
+      "entry": "0xfffffff004a548a8",
+      "wrapper": "0xfffffff007a78abc",
+      "trampoline": "0xfffffff007a78e8c",
+      "resume": "0xfffffff004a548ac",
+      "patched_word": "0x14c09085",
+      "displaced_word": "0xa9bd57f6",
+      "remaining_original_body_preserved": true
+    },
+    "clear": {
+      "entry": "0xfffffff004a54938",
+      "wrapper": "0xfffffff007a78b08",
+      "trampoline": "0xfffffff007a78e94",
+      "resume": "0xfffffff004a5493c",
+      "patched_word": "0x14c09074",
+      "displaced_word": "0xa9be4ff4",
+      "remaining_original_body_preserved": true
+    },
+    "free": {
+      "entry": "0xfffffff004a4c1d8",
+      "wrapper": "0xfffffff007a78c14",
+      "trampoline": "0xfffffff007a78e9c",
+      "resume": "0xfffffff004a4c1dc",
+      "patched_word": "0x14c0b28f",
+      "displaced_word": "0xd100c3ff",
+      "remaining_original_body_preserved": true
+    }
+  },
+  "original_sync_cpu_cases": [
+    {
+      "case": "writer-to-family-1-layers",
+      "result": "PASS",
+      "instructions": 2264,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [
+        1
+      ],
+      "producer_grant_callbacks": 0,
+      "notifiers": 2,
+      "notifier_deletes": 2,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "writer-to-family-2-layers",
+      "result": "PASS",
+      "instructions": 4345,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [
+        2,
+        3
+      ],
+      "producer_grant_callbacks": 0,
+      "notifiers": 4,
+      "notifier_deletes": 4,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "writer-to-family-3-layers",
+      "result": "PASS",
+      "instructions": 6467,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [
+        4,
+        6,
+        7
+      ],
+      "producer_grant_callbacks": 0,
+      "notifiers": 6,
+      "notifier_deletes": 6,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "writer-to-family-4-layers",
+      "result": "PASS",
+      "instructions": 8620,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [
+        8,
+        12,
+        14,
+        15
+      ],
+      "producer_grant_callbacks": 0,
+      "notifiers": 8,
+      "notifier_deletes": 8,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "immediate-family-1-layers",
+      "result": "PASS",
+      "instructions": 1216,
+      "original_entries_executed": [
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [],
+      "producer_grant_callbacks": 0,
+      "notifiers": 1,
+      "notifier_deletes": 1,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "immediate-family-2-layers",
+      "result": "PASS",
+      "instructions": 2259,
+      "original_entries_executed": [
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [],
+      "producer_grant_callbacks": 0,
+      "notifiers": 2,
+      "notifier_deletes": 2,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "immediate-family-3-layers",
+      "result": "PASS",
+      "instructions": 3302,
+      "original_entries_executed": [
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [],
+      "producer_grant_callbacks": 0,
+      "notifiers": 3,
+      "notifier_deletes": 3,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "immediate-family-4-layers",
+      "result": "PASS",
+      "instructions": 4340,
+      "original_entries_executed": [
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [],
+      "producer_grant_callbacks": 0,
+      "notifiers": 4,
+      "notifier_deletes": 4,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "serial-writers-different-label",
+      "result": "PASS",
+      "instructions": 2965,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [
+        1
+      ],
+      "producer_grant_callbacks": 1,
+      "notifiers": 3,
+      "notifier_deletes": 3,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "serial-writers-same-label",
+      "result": "PASS",
+      "instructions": 2911,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [
+        1
+      ],
+      "producer_grant_callbacks": 0,
+      "notifiers": 3,
+      "notifier_deletes": 3,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "shared-readers-are-immediate",
+      "result": "PASS",
+      "instructions": 1876,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [],
+      "producer_grant_callbacks": 0,
+      "notifiers": 2,
+      "notifier_deletes": 2,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "writer-error-does-not-propagate-0xe00002bc",
+      "result": "PASS",
+      "instructions": 2189,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [
+        1
+      ],
+      "producer_grant_callbacks": 0,
+      "notifiers": 2,
+      "notifier_deletes": 2,
+      "all_object_canaries_preserved": true,
+      "writer_error_propagated_to_reader": false
+    },
+    {
+      "case": "writer-error-does-not-propagate-0xe00002eb",
+      "result": "PASS",
+      "instructions": 2189,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [
+        1
+      ],
+      "producer_grant_callbacks": 0,
+      "notifiers": 2,
+      "notifier_deletes": 2,
+      "all_object_canaries_preserved": true,
+      "writer_error_propagated_to_reader": false
+    },
+    {
+      "case": "duplicate-signal-and-empty-root-worker",
+      "result": "PASS",
+      "instructions": 2236,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [
+        1
+      ],
+      "producer_grant_callbacks": 0,
+      "notifiers": 2,
+      "notifier_deletes": 2,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "callback-after-queue-replacement",
+      "result": "PASS",
+      "instructions": 2001,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [],
+      "producer_grant_callbacks": 0,
+      "notifiers": 2,
+      "notifier_deletes": 2,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "callback-after-dequeue",
+      "result": "PASS",
+      "instructions": 1985,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_ready_update",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [],
+      "producer_grant_callbacks": 0,
+      "notifiers": 2,
+      "notifier_deletes": 2,
+      "all_object_canaries_preserved": true
+    },
+    {
+      "case": "reader-own-error-cancels-family-request",
+      "result": "PASS",
+      "instructions": 1873,
+      "original_entries_executed": [
+        "access_compatible",
+        "family_callback",
+        "family_callback_action",
+        "family_enter_gate",
+        "family_registration",
+        "notification_record",
+        "notifier_allocate",
+        "notifier_delete",
+        "notifier_destroy",
+        "notifier_free",
+        "notifier_init",
+        "notifier_release",
+        "notifier_retain",
+        "register",
+        "register_inner",
+        "root_enqueue",
+        "root_worker",
+        "signal",
+        "surface_drain",
+        "surface_signal",
+        "surface_use_decrement",
+        "surface_use_increment"
+      ],
+      "display_kicks": [],
+      "producer_grant_callbacks": 0,
+      "notifiers": 2,
+      "notifier_deletes": 2,
+      "all_object_canaries_preserved": true,
+      "reader_status_is_explicit_fixture": true,
+      "family_cancellation_implementation_is_peer": true
+    }
+  ],
+  "firmware_pins": {
+    "gen80000_gmu.bin": {
+      "bytes": 88896,
+      "sha256": "1ad8175e6cd01ea76c64d20b83600038c52dd29844b48d57b11b769b038863a5"
+    },
+    "gen80000_sqe.fw": {
+      "bytes": 111476,
+      "sha256": "30ee3301534f95799d4afaf73864f3c369baa5a5dea8481e7f0cb8cc941f396c"
+    },
+    "gen80000_aqe.fw": {
+      "bytes": 25044,
+      "sha256": "67562ad5baae3a133c92a6e48a9d1b1a9a867fe2f85b49324e244e963f3b89c5"
+    },
+    "gen80000_zap.mbn": {
+      "bytes": 12088,
+      "sha256": "c11cc4f383a0b2a7aecab36aee59174d766530bdcef2d37ed8b082598ca8aeb1"
+    }
+  },
+  "firmware_readback": [
+    {
+      "name": "gen80000_gmu.bin",
+      "address": "0xfffffff007208000",
+      "bytes": 88896,
+      "sha256": "1ad8175e6cd01ea76c64d20b83600038c52dd29844b48d57b11b769b038863a5"
+    },
+    {
+      "name": "gen80000_sqe.fw",
+      "address": "0xfffffff00721e000",
+      "bytes": 111476,
+      "sha256": "30ee3301534f95799d4afaf73864f3c369baa5a5dea8481e7f0cb8cc941f396c"
+    },
+    {
+      "name": "gen80000_aqe.fw",
+      "address": "0xfffffff00723a000",
+      "bytes": 25044,
+      "sha256": "67562ad5baae3a133c92a6e48a9d1b1a9a867fe2f85b49324e244e963f3b89c5"
+    },
+    {
+      "name": "gen80000_zap.mbn",
+      "address": "0xfffffff007241000",
+      "bytes": 12088,
+      "sha256": "c11cc4f383a0b2a7aecab36aee59174d766530bdcef2d37ed8b082598ca8aeb1"
+    }
+  ],
+  "original_surface_producer_connected": true,
+  "surface_ID_import_connected": true,
+  "production_darwinboot_parser": "PASS",
+  "default_kernel_selected": false,
+  "runtime_qualified": false,
+  "hardware_tested": false,
+  "scope": "Exact iPhone component closure, all original pointer bindings, aliases, native instructions, class tables, firmware and storage/crypto hooks read back. Four IOSurface entry hooks are installed. The original sync queue executes 17 ARM64 model cases from this image. Full kernel and hardware execution remain untested."
+}

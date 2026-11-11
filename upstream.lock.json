@@ -1296,5 +1296,129 @@
     "sha256": "55d02be6f27f62f2815ac015ee6ff4a37d489da0a8ba11e5fc3fe9b8be15d419",
     "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
     "scope": "CPH2653 runtime DT declarations for the isolated native A830 board candidate."
+  },
+  "native_a830_runtime_overlay": {
+    "path": "patches/adreno830/0003-ios16-runtime.patch",
+    "sha256": "9ef6f2df484a8d5da7df62c932e7f962fbd7c910e1b22313346326ebb46041d6",
+    "source_revision": "1a1321056ffc5428ae925f4680093718b46ca7c2",
+    "before_sha256": {
+      "NativeAdrenoVm.h": "bc1cb145ab04473c45e639b9de4508179d5c25cc855ce7077596e51f26744a30",
+      "NativeAdrenoVm.cpp": "20a64d996dc2b11747c3fea2a268b03a8ed313667fd378a2476aff7dcb25b263",
+      "NativeAdrenoSubmit.h": "0bfa4c5d14a6fa551fc2d5b525da48ebf4c95dd84d11fc813b7b5170b9740a1f",
+      "NativeAdrenoSubmit.cpp": "214588ef83516ee4f909a4f7714a041f47cb308e6fbd3bbb154ae063dd84faf7",
+      "NativeAdrenoUserClient.h": "ca1be816d370d80a8b779aec209019bc86518b59917111a7c78445365f5f8fe0",
+      "NativeAdrenoUserClient.cpp": "e64292502b73086ae8a0e460c4a9f32014b0907fe8435e54c1c5c44c172b650d",
+      "NativeAdrenoPublish.cpp": "d2a85cbcb4ad29df03a05c9f4e3edc0120358ab90a731cb61b083accf93bd31f"
+    },
+    "after_sha256": {
+      "NativeAdrenoVm.h": "db477aec8e3a662d0deebac8609ed0940778ba96b017c298b01d6218c649f7ff",
+      "NativeAdrenoVm.cpp": "31ddd074792c251288fc751506776f068bc0ba4f9dbc1c08e747e0056274f402",
+      "NativeAdrenoSubmit.h": "77e8f74f1e7a11476b267be2804f0910673a84c98202e77ef0ae938d1ccaec17",
+      "NativeAdrenoSubmit.cpp": "8f53893a45b312487befde6a15180750cc7a8ad771ba9abfe1860ffe0eadf98f",
+      "NativeAdrenoUserClient.h": "7e5b83f2e168f2e7da535c7d4b0f285d2b7a50563073040a0406de4d81deedac",
+      "NativeAdrenoUserClient.cpp": "fa7d335371c6a010c4a9acf85496e3fe93207e6169396bb8c655de62bcc69020",
+      "NativeAdrenoPublish.cpp": "a00bf5ece3cf79b7168dde7f0fce86558a5e2c397e7f9ba64d4d732d5b5b9e8c"
+    },
+    "support_sha256": {
+      "drivers/DodgeGpu/DodgeNativeMappedLease.inc": "706ba1b0b5c12c9a7adeb09a1ea088c705bb31e4612bba5017953a86fe7c0b3d",
+      "drivers/DodgeGpu/DodgeNativeA830ABI.h": "8e0cfffdb84ed74065dc0a9ebcdac16cd5598d964b3736d0e984236b7f4557c5",
+      "drivers/DodgeGpu/DodgeNativeA830Timeline.inc": "e437513538c16ddc6b164c60ac2bac65e4682391d51ccc8d1be6dd76e9aa55dc",
+      "drivers/DodgeGpu/DodgeMapWait.inc": "5796d82fc13a482bbf5ede166824827d5b474697fa407520d82e86c73f4c9484",
+      "drivers/DodgeDisplay/DodgeAdrenoTimeline.h": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61"
+    },
+    "scope": "Whole-VM resource leases under the native split locks, bounded map wait, optional frontend records and recovery-aware display timeline. The base ABI and hardware startup sequences are unchanged."
+  },
+  "native_a830_surface_overlay": {
+    "path": "patches/adreno830/0004-ios16-surface-producers.patch",
+    "sha256": "a2e6b72abda6f20704576fb74b573a8bd453972da2148edba069819abb4313fc",
+    "source_revision": "1a1321056ffc5428ae925f4680093718b46ca7c2",
+    "before_sha256": {
+      "NativeAdrenoVm.h": "db477aec8e3a662d0deebac8609ed0940778ba96b017c298b01d6218c649f7ff",
+      "NativeAdrenoVm.cpp": "31ddd074792c251288fc751506776f068bc0ba4f9dbc1c08e747e0056274f402",
+      "NativeAdrenoSubmit.h": "77e8f74f1e7a11476b267be2804f0910673a84c98202e77ef0ae938d1ccaec17",
+      "NativeAdrenoSubmit.cpp": "8f53893a45b312487befde6a15180750cc7a8ad771ba9abfe1860ffe0eadf98f",
+      "NativeAdrenoUserClient.h": "7e5b83f2e168f2e7da535c7d4b0f285d2b7a50563073040a0406de4d81deedac",
+      "NativeAdrenoUserClient.cpp": "fa7d335371c6a010c4a9acf85496e3fe93207e6169396bb8c655de62bcc69020",
+      "NativeAdrenoPublish.cpp": "a00bf5ece3cf79b7168dde7f0fce86558a5e2c397e7f9ba64d4d732d5b5b9e8c",
+      "NativeAdrenoMemory.h": "40f40ae2a6c52e3a873dadbb21449a09506c6ae19a118f12a76ca85400173a56"
+    },
+    "after_sha256": {
+      "NativeAdrenoVm.h": "d12ec1280416e8c03e1a92d455d1153496d44b4b968e0d4be4d894c2b1187365",
+      "NativeAdrenoVm.cpp": "502c4ba70e02b5b67aef4acb8d76d3dba177ebfa017010f5069684de6d943c63",
+      "NativeAdrenoSubmit.h": "d0b6cd8c61a545cceeaeabf78a5c71940eceb85ee646f3e99bc5935990d09b9d",
+      "NativeAdrenoSubmit.cpp": "b31bd22dc2073e27cfa661b93ed2d6667c5bfe5146d8a188906e4754623c5b17",
+      "NativeAdrenoUserClient.h": "3d5be92e2c5a710b789df1f06a7d095ccbe638ccd55e44a35684244766e859e4",
+      "NativeAdrenoUserClient.cpp": "675bdbed42ec34e1e1a515869e369820bd464b7e90baf805d3d9d891b0b3d21f",
+      "NativeAdrenoPublish.cpp": "46106b69b8efffc6cbf7d28a3fdbddec78fb925e8d8edbaf936c597bfadac81d",
+      "NativeAdrenoMemory.h": "b5762a58ad6e0ddfec2baa1b60fe69393f3933caddb90c944d7f6d6dbae82088"
+    },
+    "support_sha256": {
+      "drivers/DodgeGpu/DodgeNativeSurface.cpp": "29df909ec08cd4dd5060e14814a71b66f9ef8ba69d04e5b72fb98d390466c08b",
+      "drivers/DodgeGpu/DodgeNativeSurface.h": "03417d2eddc143a04cc5112b64c15f610fd771433b9cfba68f75b8ffdb64bc0a",
+      "drivers/DodgeGpu/DodgeSurfacePages.h": "c837fdd2db15582ccee38b24f1fbbc9ec3d3d7a1d22918913225aa1ee7be1c3d",
+      "drivers/DodgeGpu/DodgeSurfaceIdentity.h": "811d94070a0decfa5f3e927407ba4d4eea58c673dc0585dd8e4dc3cbe2d9869d",
+      "drivers/DodgeGpu/DodgeSurfaceBacking.h": "ce22957e1808b66c2bac9ce35bb6b5fe4c7840c1d57dc3ede9ad6e3c7549f73f",
+      "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceSyncABI.h": "701349c93592117af8d92a5f3595d4d196faa490870262d210f0459759793990"
+    },
+    "scope": "Task-authorized surface-ID imports, exact backing association, single-flight original producer grants outside GPU locks, deferred fence/reset retirement and backing-mutation invalidation. Base ABI and hardware sequences remain pinned."
+  },
+  "native_a830_mesa_surface_overlay": {
+    "path": "patches/adreno830/0005-turnip-surface-import.patch",
+    "sha256": "421954d981accccd357f13feecda1cc7b0544cc5112eec1ad7370d02489892cb",
+    "before_sha256": {
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "e46d3b6a1d52701ef5a9bfff74777c9c9dcefb3910a2fc1a034aa2ca1b47d113"
+    },
+    "after_sha256": {
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "b3bd703866a42219dbf13ca39f959352d685809c9ad2bdbcceb721064f5339a3"
+    },
+    "support": {
+      "drivers/DodgeGpu/DodgeSurfaceImportHint.h": {
+        "sha256": "f5486e738c3010d6bb99fb03ba3dd15de4befc581ccc51df701035b4c24e5f48",
+        "destination": "src/freedreno/vulkan/DodgeSurfaceImportHint.h"
+      }
+    }
+  },
+  "native_a830_metal_surface_overlay": {
+    "path": "patches/adreno830/0006-metal-surface-identity.patch",
+    "sha256": "013e877085efb323ce541be7c8dbbb5e9518c8706c4d7572268dea63e9bea925",
+    "before_sha256": {
+      "NativeBridgeMetalFrontend.mm": "f62cc4ffda9e00759b856c60ff8e296614fd12eb7d2cb865ba5700be84bad3e4",
+      "bridge/NativeMetalObjects.rs": "bdfec3ccbd69fd0677be22db39ab803b8ad9914047578520bee84d7091b09047",
+      "bridge/NativeMetalObjects.h": "95c5b2cfcf9964a981b66373b88b216604edce74c838cbaf3e749b94832e7c64",
+      "NativeAdrenoMetalPlugin.mm": "3f7df03bca4c5f39df9e47a3cffcb5f08eeb5b66347015b61cb5156684ee1517"
+    },
+    "after_sha256": {
+      "NativeBridgeMetalFrontend.mm": "ebaa580e6301911d121e1d9fcec3b37437def2341ac90a92e2277cc4587e0556",
+      "bridge/NativeMetalObjects.rs": "cc603cfbecea64e8e70d8e41ebd7d1e496e2e07d187869688067493c65e49536",
+      "bridge/NativeMetalObjects.h": "2e60718544c118c9154d3bdcf8b1443c48edc13e8d038e38bf08e06c5d756a57",
+      "NativeAdrenoMetalPlugin.mm": "52fe9f68c1e9771983386ebc9574df94fe135a433a8ba5a10778ed04f0200a05"
+    },
+    "support": {}
+  },
+  "native_a830_backing_overlay": {
+    "path": "patches/adreno830/0007-surface-backing-notification.patch",
+    "sha256": "f297039fbe3d3bb9d991b2e043b0801dbee2700e564cff9acfc5bf3e3a9fefa6",
+    "target": "drivers/DodgeGpu/DodgeSurfaceBacking.cpp",
+    "before_sha256": "fe5bd83dc48e90eec966ca9f661227ab16248b55e385bf71e134b41e04d80af6",
+    "after_sha256": "c4365f405899d40be46b2ee6c54833f0b9c613f8ba9c6d3ea8ca35f9fa815b9a",
+    "scope": "Notify the native GPU before original backing replacement, clear or final free without taking a GPU lock or waiting for work."
+  },
+  "native_a830_compile_overlay": {
+    "path": "patches/adreno830/0008-runtime-compile-thread.patch",
+    "sha256": "8ff38135122e76ea4c038c21fa3453dc5667578bc8cf0ff823ed5e0e86e51463",
+    "before_sha256": {
+      "crates/metal2vulkan-runtime/src/device/compiles.rs": "5f7b730e5e39fb75ea986f5c5f0450547d8bd9391c2516c0b051a1350c2ae047"
+    },
+    "after_sha256": {
+      "crates/metal2vulkan-runtime/src/device/compiles.rs": "b33ba79d66c546d48a0221c8683a90c65e712cf453be2b0253b4edfe9a70a4ae"
+    },
+    "support": {},
+    "upstream": {
+      "repository": "https://github.com/IssacL04/AdrenoMetal.git",
+      "revision": "c1351337d7e4ca00c80e1b7efeaf404bddc1be9e",
+      "path": "bridge/patches/0041-compile-on-the-asking-thread.patch",
+      "sha256": "6f09cafb9d9c56dd724be366ac79ab9322bd4737311953eebb45a0cac9f2a502"
+    },
+    "scope": "Rebase the official asking-thread policy onto the pinned runtime; keep the 2 MiB stack guard and the existing relay."
   }
 }

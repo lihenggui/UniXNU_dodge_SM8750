@@ -1,0 +1,73 @@
+--- a/src/freedreno/vulkan/tu_knl_darwin.cc
++++ b/src/freedreno/vulkan/tu_knl_darwin.cc
+@@ -17,7 +17,8 @@
+ #include <dispatch/dispatch.h>
+ #include <mach/mach.h>
+ 
+-#include "NativeAdrenoABI.h"
++#include "DodgeNativeA830ABI.h"
++#include "DodgeSurfaceImportHint.h"
+ 
+ #include "util/os_time.h"
+ #include "util/u_atomic.h"
+@@ -159,6 +160,21 @@
+                                     out_size ? &out_bytes : NULL);
+ }
+ 
++// Surface scope is thread local: the bridge imports synchronously on the
++// constructing thread. Only a matching, successful SurfaceImport consumes it.
++static thread_local DodgeSurfaceImportHint dw_surface_hint;
++extern "C" __attribute__((visibility("default"))) bool tu_darwin_surface_begin(uint32_t,const void *,uint64_t);
++extern "C" __attribute__((visibility("default"))) bool tu_darwin_surface_end(void);
++extern "C" __attribute__((visibility("default"))) bool
++tu_darwin_surface_begin(uint32_t id,const void *pointer,uint64_t bytes)
++{
++   return dw.open && (dw.params.flags & NativeAdrenoParamsSurfaceImport) && dw_surface_hint.begin(id,pointer,bytes);
++}
++extern "C" __attribute__((visibility("default"))) bool tu_darwin_surface_end(void)
++{
++   return dw_surface_hint.end();
++}
++
+ /* Finds an admitted selector: the driver answers a tunnel probe (method 0xffffffff) with success for every selector the sandbox lets through. */
+ static bool
+ dw_probe_selector(void)
+@@ -231,8 +247,7 @@
+          priority.background = 2;
+       }
+       dw_priority = priority;
+-      dw_priority_known = true;
+-      (void)dw_call(NativeAdrenoMethodSetPriority, &priority, sizeof(priority), NULL, 0);
++      dw_priority_known = dw_call(NativeAdrenoMethodSetPriority, &priority, sizeof(priority), NULL, 0) == KERN_SUCCESS;
+    }
+    return VK_SUCCESS;
+ }
+@@ -959,6 +974,9 @@
+ {
+    if (!(dw.params.flags & NativeAdrenoParamsHostImport))
+       return vk_error(dev, VK_ERROR_INVALID_EXTERNAL_HANDLE);
++   const bool surface = dw_surface_hint.id != 0;
++   if (surface && !dw_surface_hint.matches(pointer,size))
++      return vk_error(dev,VK_ERROR_INVALID_EXTERNAL_HANDLE);
+    VkResult collected = darwin_collect_retired(dev);
+    if (collected != VK_SUCCESS)
+       return collected;
+@@ -969,7 +987,9 @@
+ 
+    NativeAdrenoAbiBoImport import = {.address = (uint64_t)(uintptr_t)pointer, .bytes = size};
+    NativeAdrenoAbiBoAllocReply reply = {};
+-   kern_return_t kr = dw_call(NativeAdrenoMethodBoImport, &import, sizeof(import), &reply, sizeof(reply));
++   const NativeAdrenoAbiSurfaceImport tagged = {import.address,import.bytes,dw_surface_hint.id,0};
++   kern_return_t kr = surface ? dw_call(NativeAdrenoMethodSurfaceImport,&tagged,sizeof(tagged),&reply,sizeof(reply)) :
++      dw_call(NativeAdrenoMethodBoImport, &import, sizeof(import), &reply, sizeof(reply));
+    if (kr != KERN_SUCCESS) {
+       darwin_free_iova(dev, iova, size);
+       return vk_errorf(dev, VK_ERROR_INVALID_EXTERNAL_HANDLE, "BoImport failed: 0x%x", kr);
+@@ -981,6 +1001,7 @@
+       return darwin_map_failure(dev, reply.handle, iova, size, kr);
+    }
+ 
++   if (surface) dw_surface_hint.used = true;
+    uint32_t gem_handle = (uint32_t)reply.handle;
+    struct tu_bo *bo = tu_device_lookup_bo(dev, gem_handle);
+    assert(bo && bo->gem_handle == 0);

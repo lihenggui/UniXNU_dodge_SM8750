@@ -1,0 +1,62 @@
+{
+  "result": "IOS16_METAL_PLUGIN_CROSS_BUILD_PASS",
+  "target": "arm64-apple-ios16.0",
+  "a740_replay_disabled": true,
+  "sp_topology": 6,
+  "sp_topology_is_active_measurement": false,
+  "shader_fixtures": {
+    "smoke_fill.comp": {
+      "glsl_sha256": "5bb908d398b6553790b167dd7dd78b7ab5865816c9f127856eebf6a30ce16931",
+      "spirv_sha256": "94dc94766902a6465d07b9722ffaf55d4ab64bffec0e3d57a6b0525a0b6d1353"
+    },
+    "smoke_triangle.frag": {
+      "glsl_sha256": "ce531f1b3679267823a0e587372e9f42445c0d6c2c767f3e531105f9d2ce9e0f",
+      "spirv_sha256": "7e06d00a1590c5029e243253d8fb42cf3ab51638e3a83b744a687903e9b5263a"
+    },
+    "smoke_triangle.vert": {
+      "glsl_sha256": "a4e37afa9e9065e556c5ea79dc0119e6621bebe39749aae83279bce9d15ab8de",
+      "spirv_sha256": "3b1f7b1d48144a6c32b7f4e94ef76989cbf08aa2ef83d789148d5c8e74342ddc"
+    }
+  },
+  "object_sha256": {
+    "NativeAdrenoMetalPlugin.o": "7679c08ac1c3fd6c78013104538fe91fe6fe2b0879743c63d6f722b2042e667b",
+    "NativeBridgeMetalFrontend.o": "0b161710501cfd3a50ffb591248585b818a5b61e4cb25d11b7658a5e017c46e9",
+    "NativeAdrenoProbeDaemon.o": "ce56e5969964d522c3866bbf0eef39473caa02cef97f42090ebc25158b3e5b96",
+    "NativeOsLogExport.o": "c9938aa10c8278fd159fc8bf8f72fcf96e977394ce4030eed3d26ffd7f64ee14",
+    "AdrenoPM4.o": "af66a0fd75f9f05e5bdd430c3bef76f445803a13b20186f6903781863f7f6277"
+  },
+  "frontend_revision": "403e69e990871be939a15632cf619af6c8eb60a9",
+  "ios16_interface_patches": [
+    {
+      "path": "patches/adreno-metal/0001-ios16-public-metal-interface.patch",
+      "sha256": "147d6b15b1d95b6c249d80117f43e252ac2d2987524dae38565d59f17aef1848"
+    }
+  ],
+  "native_surface_overlay": {
+    "path": "patches/adreno830/0006-metal-surface-identity.patch",
+    "sha256": "013e877085efb323ce541be7c8dbbb5e9518c8706c4d7572268dea63e9bea925",
+    "before_sha256": {
+      "NativeBridgeMetalFrontend.mm": "f62cc4ffda9e00759b856c60ff8e296614fd12eb7d2cb865ba5700be84bad3e4",
+      "bridge/NativeMetalObjects.rs": "bdfec3ccbd69fd0677be22db39ab803b8ad9914047578520bee84d7091b09047",
+      "bridge/NativeMetalObjects.h": "95c5b2cfcf9964a981b66373b88b216604edce74c838cbaf3e749b94832e7c64",
+      "NativeAdrenoMetalPlugin.mm": "3f7df03bca4c5f39df9e47a3cffcb5f08eeb5b66347015b61cb5156684ee1517"
+    },
+    "after_sha256": {
+      "NativeBridgeMetalFrontend.mm": "ebaa580e6301911d121e1d9fcec3b37437def2341ac90a92e2277cc4587e0556",
+      "bridge/NativeMetalObjects.rs": "cc603cfbecea64e8e70d8e41ebd7d1e496e2e07d187869688067493c65e49536",
+      "bridge/NativeMetalObjects.h": "2e60718544c118c9154d3bdcf8b1443c48edc13e8d038e38bf08e06c5d756a57",
+      "NativeAdrenoMetalPlugin.mm": "52fe9f68c1e9771983386ebc9574df94fe135a433a8ba5a10778ed04f0200a05"
+    },
+    "support": {}
+  },
+  "sdk_scope": "iOS 16.5 cross-build headers/stubs; runtime private ABI is not qualified.",
+  "hardware_tested": false,
+  "linked": true,
+  "bundle": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle",
+  "executable_sha256": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668",
+  "rust_bridge_sha256": "941393dc49798af220be3afcff3f3557ace40eeb054b9fd0b3a77868d3ae13f5",
+  "turnip_sha256": "a70a9c43ee7eb582533e6c7766a442e95c5a36d83f33127f46a3bf15056026bb",
+  "daemon_sha256": "6caaa5f0413d4a0d9d1810ea4b9fdf83555fcad17462f4c10a83edf659bbd5c3",
+  "original_discovery_abi_qualified": false,
+  "code_signature_independently_verified": false
+}

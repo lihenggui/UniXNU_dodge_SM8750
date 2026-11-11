@@ -122,8 +122,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--board', action='store_true', help='include CPH2653 board startup and local stock firmware')
     parser.add_argument('--link', action='store_true', help='link an isolated native kernel (requires --board)')
+    parser.add_argument('--runtime', action='store_true', help='include the iPhone resource and display adapter (requires --board)')
     args = parser.parse_args()
     require(not args.link or args.board, '--link requires the CPH2653 --board variant')
+    require(not args.runtime or args.board, '--runtime requires the CPH2653 --board variant')
+    require(not (args.runtime and args.link), 'Use build_native_a830_kernel.py to link the complete runtime variant')
     lock = json.loads((ROOT / 'upstream.lock.json').read_text())
     refs = pinned_sources(('native_a830_reference', 'native_a830_smmu_reference', 'sm8750'))
     source = refs['native_a830_reference']
@@ -139,7 +142,8 @@ def main():
     recipe = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(recipe)
     drivers, platform, _ = recipe.classify(source, [])
-    out = ROOT / ('build/cph2653-native-a830-board' if args.board else 'build/cph2653-native-a830')
+    out = ROOT / ('build/cph2653-native-a830-runtime' if args.runtime else
+                  'build/cph2653-native-a830-board' if args.board else 'build/cph2653-native-a830')
     stage = out / 'source'
     overlay = lock['native_a830_darwin22_overlay']
     patch = ROOT / overlay['path']
@@ -163,6 +167,19 @@ def main():
                                   INPUTS, FIRMWARE, board_overlay, ROOT / 'scripts/prepare_native_a830.py']
         includes += [out / 'generated', ROOT / 'drivers/DodgeGpu', ROOT / 'build/cph2653-gpu-firmware']
         extra += ['-DNATIVE_ADRENO_FIRMWARE_PINS="DodgeNativeA830FirmwarePins.inc"']
+    runtime = None
+    if args.runtime:
+        from native_a830_runtime import apply_runtime
+        runtime = apply_runtime(stage)
+        inputs += [ROOT / runtime['path'], ROOT / 'scripts/native_a830_runtime.py']
+        inputs += [ROOT / runtime['surface_overlay']['path']]
+        inputs += [ROOT / name for name in runtime['support_sha256']]
+        boot = ROOT / 'drivers/DodgeGpu/DodgeNativeA830Boot.cpp'
+        files += [boot]
+        console = ROOT / 'drivers/DodgeGpu/DodgeNativeA830Console.cpp'
+        files += [console]
+        files += [stage / 'DodgeNativeSurface.cpp']
+        inputs += [boot, console]
     objects = build_objects(files, out, includes, extra)
     accelerator, binding = build_accelerator(stage, out, includes)
     objects += accelerator
@@ -187,7 +204,8 @@ def main():
                 ROOT / 'scripts/build_a830_backend.py', ROOT / 'scripts/native_driver_build.py',
                 source / 'scripts/build-adreno830.py']
     report = {
-        'result': ('NATIVE_A830_CPH2653_KERNEL_LINK_PASS' if args.link else
+        'result': ('NATIVE_A830_IPHONE_RUNTIME_ARCHIVE_PASS' if args.runtime else
+                   'NATIVE_A830_CPH2653_KERNEL_LINK_PASS' if args.link else
                    'NATIVE_A830_CPH2653_BOARD_ARCHIVE_PASS' if args.board else 'NATIVE_A830_IPHONE_DARWIN22_ARCHIVE_PASS'),
         'target': 'arm64-apple-ios16.0', 'builder_sha256': sha(Path(__file__)),
         'source_revisions': {name: lock[name]['revision'] for name in refs},
@@ -195,25 +213,32 @@ def main():
         'source_sha256': {str(p.relative_to(ROOT)): sha(p) for p in sources},
         'darwin22_overlay': overlay,
         'board_firmware_overlay': lock['native_a830_firmware_overlay'] if args.board else None,
+        'runtime_overlay': runtime,
         'generated_sha256': {p.name: sha(p) for p in generated},
         'archive': str(archive.relative_to(ROOT)), 'archive_sha256': sha(archive),
         'object_count': len(objects), 'objects': {p.name: sha(p) for p in objects},
         'original_accelerator': binding, 'imports': imports,
-        'frontend_abi': {'version': 2, 'selectors': list(range(1, 17)),
-                         'existing_frontend_extensions_to_review': [17, 18]},
+        'frontend_abi': {'version': 2, 'selectors': list(range(1, 17)) + ([19] if args.runtime else []),
+                         'optional_unsupported_selectors': [17, 18] if args.runtime else [],
+                         'existing_frontend_extensions_to_review': [] if args.runtime else [17, 18]},
         'board_inputs': board_inputs, 'target_firmware': firmware,
         'isolated_link': kernel,
         'board_startup_included': args.board, 'target_firmware_included': args.board,
         'startup_invoked': False,
+        'original_surface_producer_connected': args.runtime,
         'full_prelink_qualified': False, 'selected_in_default_kernel': False,
         'hardware_tested': False,
-        'scope': 'Standalone source archive with Gen8 orchestration, GMU/HFI, SMMU, CP, fences, '
+        'scope': ('Native iPhone runtime archive with surface-ID import, original producer grants, whole-VM resource '
+                 'leases, deferred fence/reset completion and recovery-aware display snapshots. '
+                 'Original owners and bindings are supplied by the complete kernel build.' if args.runtime else
+                 'Standalone source archive with Gen8 orchestration, GMU/HFI, SMMU, CP, fences, '
                  'recovery and DCVS, plus the exact iPhone accelerator base. The board variant adds '
                  'CPH2653 declarations, firmware pins and an explicit synchronous entry. '
-                 'Metal protocol extensions and complete lifecycle/prelink integration remain separate.'}
+                 'Metal protocol extensions and complete lifecycle/prelink integration remain separate.')}
     text = json.dumps(report, indent=2) + '\n'
     (out / 'manifest.json').write_text(text)
-    report = ROOT / ('reports/native-a830-board.json' if args.board else 'reports/native-a830.json')
+    report = ROOT / ('reports/native-a830-runtime.json' if args.runtime else
+                     'reports/native-a830-board.json' if args.board else 'reports/native-a830.json')
     report.write_text(text)
     print(f'PASS: {len(objects)} native A830/iPhone objects; archive and accelerator bindings checked' +
           ('; strict kernel link and firmware readback' if args.link else ''))

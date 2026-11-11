@@ -57,6 +57,8 @@ jobs:
         run: python3 scripts/check_native_a830_host.py
       - name: Check CPH2653 native A830 board, level selection and startup ownership
         run: python3 scripts/check_native_a830_board.py
+      - name: Check native A830 surface producers, resource retention and map waiting
+        run: python3 scripts/check_native_a830_host.py --runtime
       - name: Check surface range and provider ownership with software IOKit peers
         run: python3 scripts/check_surface_backing_host.py
       - name: Check current-task surface identity ownership and refusal paths with software IOKit peers

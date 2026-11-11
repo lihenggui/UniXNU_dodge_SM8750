@@ -1,0 +1,133 @@
+{
+  "result": "NATIVE_A830_IPHONE_ADDON_AND_TRUST_INPUTS_PASS",
+  "addon": "build/cph2653-native-a830-addon/gpuaddon.bin",
+  "trust_bundle": "build/cph2653-native-a830-addon/owner-trust.bundle",
+  "files": {
+    "addons/NativeAdrenoMetal.bundle/Info.plist": {
+      "mode": 420,
+      "bytes": 622,
+      "sha256": "52c9659d7d1da9a46aaed8030634cf466d87e89f0a405eeb9bd8925906b4beae"
+    },
+    "addons/NativeAdrenoMetal.bundle/NativeAdrenoMetal": {
+      "mode": 493,
+      "bytes": 22565600,
+      "sha256": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668"
+    },
+    "addons/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib": {
+      "mode": 493,
+      "bytes": 17974352,
+      "sha256": "a70a9c43ee7eb582533e6c7766a442e95c5a36d83f33127f46a3bf15056026bb"
+    },
+    "addons/NativeAdrenoMetal.publish": {
+      "mode": 420,
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "bin/adrenoprobed": {
+      "mode": 493,
+      "bytes": 106768,
+      "sha256": "6caaa5f0413d4a0d9d1810ea4b9fdf83555fcad17462f4c10a83edf659bbd5c3"
+    }
+  },
+  "binaries": [
+    {
+      "path": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/NativeAdrenoMetal",
+      "sha256": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668",
+      "filetype": 8,
+      "minimum_os": "16.0",
+      "sdk_version_hex": "0x100400",
+      "signed_pages": 5467,
+      "signature_identifier": "NativeAdrenoMetal",
+      "cdhash": "29a5c960f0a0582360e124dc4a24028635d84cd1",
+      "hash_page_bytes": 4096,
+      "imports": [
+        "/usr/lib/libobjc.A.dylib",
+        "/System/Library/Frameworks/Foundation.framework/Foundation",
+        "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+        "/System/Library/Frameworks/Metal.framework/Metal",
+        "/System/Library/Frameworks/IOSurface.framework/IOSurface",
+        "/usr/lib/libc++.1.dylib",
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib",
+      "sha256": "a70a9c43ee7eb582533e6c7766a442e95c5a36d83f33127f46a3bf15056026bb",
+      "filetype": 6,
+      "minimum_os": "16.0",
+      "sdk_version_hex": "0x100400",
+      "signed_pages": 4355,
+      "signature_identifier": "libvulkan_freedreno.dylib",
+      "cdhash": "293bc2e415ffc626a6afbdd243c6befa6c41a20a",
+      "hash_page_bytes": 4096,
+      "imports": [
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libz.1.dylib",
+        "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+        "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics",
+        "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+        "/usr/lib/libobjc.A.dylib",
+        "/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
+        "/System/Library/Frameworks/Metal.framework/Metal",
+        "/usr/lib/libc++.1.dylib"
+      ]
+    },
+    {
+      "path": "build/cph2653-native-a830-metal-plugin/adrenoprobed",
+      "sha256": "6caaa5f0413d4a0d9d1810ea4b9fdf83555fcad17462f4c10a83edf659bbd5c3",
+      "filetype": 2,
+      "minimum_os": "16.0",
+      "sdk_version_hex": "0x100400",
+      "signed_pages": 26,
+      "signature_identifier": "adrenoprobed",
+      "cdhash": "833c1197749cad8438cf3bcacf7acbdaca3a0162",
+      "hash_page_bytes": 4096,
+      "imports": [
+        "/System/Library/Frameworks/Foundation.framework/Foundation",
+        "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+        "/usr/lib/libobjc.A.dylib",
+        "/usr/lib/libz.1.dylib",
+        "/usr/lib/libc++.1.dylib",
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    }
+  ],
+  "original_modules": [
+    {
+      "input": "build/unixnu/ipsw/20H392/087-86698-044.dmg.trustcache",
+      "sha256": "63e01c03b31e1532a5581a24865490673f0b5c297b0199fe0095637c6100ef4b",
+      "payload_sha256": "b7ab28e0009900326ae685a88748008a9653e6bcbd70674135dac4eb5231ad64",
+      "payload_bytes": 66264
+    },
+    {
+      "input": "build/unixnu/ipsw/20H392/087-86593-047.dmg.trustcache",
+      "sha256": "9cc478fe3525e2683b5b9ea1eea0851eaebebdab21d206556233400e59d2e361",
+      "payload_sha256": "8aae4c42fd70770d0d211c080982b3ef9ae5cf2cf98f918fd116fadb095b3f6a",
+      "payload_bytes": 1488
+    }
+  ],
+  "owner_cdhashes": [
+    "293bc2e415ffc626a6afbdd243c6befa6c41a20a",
+    "29a5c960f0a0582360e124dc4a24028635d84cd1",
+    "833c1197749cad8438cf3bcacf7acbdaca3a0162"
+  ],
+  "source_sha256": {
+    "scripts/build_native_a830_addon.py": "1566204a382ed7f115fa8a8485406c3ec1485fdc052ca650b43348e355bd500b",
+    "sources/UniXNU/scripts/make-gpu-addon.py": "614ed8ec93d9eb933b460c9be25aff18d6d9b8e1b8bb72db2e1a64c0ce1113f2",
+    "targets/iphone-x-ios16.toml": "4a33855a262ee3fe5e22d56f410e230b16ffc0c6f116f1b4aca07302855b606f",
+    "scripts/check_gpu_userspace.py": "f930204b279ebe6f5afbfc192ab6fb5c5293e07d4eab171ea504effed7497d5d",
+    "sources/UniXNU/scripts/unixnu/ipsw.py": "29f22e2ac422bf890b64cd2dc5ed4bd508fb902498ea9aeb8bc6e4efcd7ff273"
+  },
+  "artifacts": {
+    "build/cph2653-native-a830-addon/gpuaddon.bin": "a44fa79151db89569970e4bcac347f8fd7ae3e79bb589cf52cfe9a1145e529eb",
+    "build/cph2653-native-a830-addon/owner-trust.bundle": "f7bc9aae650e7603544878f9afc2da758ff7bc6108877de4ca0c5ebf77134cc1",
+    "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/NativeAdrenoMetal": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668",
+    "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib": "a70a9c43ee7eb582533e6c7766a442e95c5a36d83f33127f46a3bf15056026bb",
+    "build/cph2653-native-a830-metal-plugin/adrenoprobed": "6caaa5f0413d4a0d9d1810ea4b9fdf83555fcad17462f4c10a83edf659bbd5c3",
+    "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/Info.plist": "52c9659d7d1da9a46aaed8030634cf466d87e89f0a405eeb9bd8925906b4beae"
+  },
+  "original_iphone_modules_unchanged": true,
+  "owner_trust_installed": false,
+  "hardware_tested": false,
+  "scope": "Official NGPUADD2 layout with the native plugin, Turnip and probe; full decompressed file readback. One owner hash module precedes the exact two trust-cache payloads from iPhone 20H392. Runtime trust is untested."
+}

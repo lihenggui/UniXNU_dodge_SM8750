@@ -15,6 +15,7 @@ from prepare_sources import patch_series_state
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--objects-only', action='store_true')
+    parser.add_argument('--native-a830', action='store_true', help='build the native surface-ID frontend and libraries')
     args = parser.parse_args()
     sources = pinned_sources(('a830_metal_reference', 'a830_backend_reference', 'iphoneos_sdk_reference', 'pagani_reference'))
     lock = json.loads((ROOT / 'upstream.lock.json').read_text())
@@ -25,10 +26,14 @@ def main():
     require(subprocess.check_output(['git', '-C', frontend, 'rev-parse', 'HEAD'], text=True).strip() == lock['a830_metal_reference']['revision'],
             'Unexpected Metal frontend base')
     patch_series_state(frontend, lock['iphone_metal_frontend_patches'], True)
+    native_overlay = None
+    if args.native_a830:
+        from native_a830_userspace import metal
+        frontend, native_overlay = metal()
     sdk = sources['iphoneos_sdk_reference'] / 'iPhoneOS16.5.sdk'
     clang = ROOT / '.toolchains/xnu-linux/llvm/bin/clang'
     llvm = ROOT / '.toolchains/rust-gpu/lib/rustlib/x86_64-unknown-linux-gnu/bin'
-    out = ROOT / 'build/cph2653-metal-plugin'
+    out = ROOT / ('build/cph2653-native-a830-metal-plugin' if args.native_a830 else 'build/cph2653-metal-plugin')
     out.mkdir(parents=True, exist_ok=True)
     shader_lines = ['// Generated from the pinned GLSL, not recorded A740 commands.', '#pragma once', '#include <stdint.h>']
     compiler = ROOT / '.toolchains/gpu-host/usr/bin/glslangValidator'
@@ -78,14 +83,18 @@ def main():
               'shader_fixtures': shader_hashes, 'object_sha256': {name: sha(out / name) for name in results},
               'frontend_revision': lock['a830_metal_reference']['revision'],
               'ios16_interface_patches': lock['iphone_metal_frontend_patches'],
+              'native_surface_overlay': native_overlay,
               'sdk_scope': 'iOS 16.5 cross-build headers/stubs; runtime private ABI is not qualified.',
               'hardware_tested': False, 'linked': False}
     if args.objects_only:
-        (ROOT / 'reports/metal-plugin.json').write_text(json.dumps(report, indent=2) + '\n')
+        (ROOT / ('reports/native-a830-metal-plugin.json' if args.native_a830 else 'reports/metal-plugin.json')).write_text(json.dumps(report, indent=2) + '\n')
         print('PASS: actual iOS 16 Metal plugin/frontend/probe objects and validated shader fixtures')
         return
     bridge = ROOT / 'build/cph2653-metal-bridge/target/aarch64-apple-ios/release/libadreno_metal_bridge.a'
     turnip = ROOT / 'build/cph2653-turnip-ios16/src/freedreno/vulkan/libvulkan_freedreno.dylib'
+    if args.native_a830:
+        bridge = ROOT / 'build/cph2653-native-a830-metal-bridge/target/aarch64-apple-ios/release/libadreno_metal_bridge.a'
+        turnip = ROOT / 'build/cph2653-native-a830-turnip/src/freedreno/vulkan/libvulkan_freedreno.dylib'
     require(bridge.exists() and turnip.exists(), 'Build the pinned Rust bridge and Turnip first')
     bundle = out / 'NativeAdrenoMetal.bundle'
     bundle.mkdir(exist_ok=True)
@@ -114,7 +123,7 @@ def main():
                   daemon_sha256=sha(daemon),
                   original_discovery_abi_qualified=False, code_signature_independently_verified=False)
     (out / 'manifest.json').write_text(json.dumps(report, indent=2) + '\n')
-    (ROOT / 'reports/metal-plugin.json').write_text(json.dumps(report, indent=2) + '\n')
+    (ROOT / ('reports/native-a830-metal-plugin.json' if args.native_a830 else 'reports/metal-plugin.json')).write_text(json.dumps(report, indent=2) + '\n')
     print('PASS: A830 iOS 16 Metal bundle linked with the real Rust bridge and staged Turnip')
 
 

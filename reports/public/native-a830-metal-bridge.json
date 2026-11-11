@@ -1,0 +1,163 @@
+{
+  "result": "IOS16_METAL_RUST_BRIDGE_CROSS_BUILD_PASS",
+  "target": "aarch64-apple-ios",
+  "minimum_os": "16.0",
+  "archive": "build/cph2653-native-a830-metal-bridge/target/aarch64-apple-ios/release/libadreno_metal_bridge.a",
+  "archive_sha256": "941393dc49798af220be3afcff3f3557ace40eeb054b9fd0b3a77868d3ae13f5",
+  "translator_revision": "624bab3918de5b978e1101517abca2b4fa426565",
+  "frontend_revision": "403e69e990871be939a15632cf619af6c8eb60a9",
+  "runtime_patches": [
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0001-optional-constant-output-members.patch",
+      "sha256": "af8eadbab4c9bc2576b14abea5308abfbc95aafb33a3c53b72117d3b1e535919"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0002-resource-wait-storage-dependencies.patch",
+      "sha256": "bd36d4f0b8bf21a7b409bd65e5d6f1a24397fc1fb24113bbf215c68a9a71a29f"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0003-cache-device-entry-point-priming.patch",
+      "sha256": "f865084d147f3111d406a91d2d400fc29f75b9b7381250489efe04b1098f8839"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0004-fold-constant-global-field-loads.patch",
+      "sha256": "0783ad2223da6b7c5902c3a128b0cb489e2440cb6eec1ed1a196c2a304b3c4a3"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0005-skip-draws-without-a-pipeline.patch",
+      "sha256": "d99f4ef5fe5893b16c4d6aa3548ec8bacf8429a49b3395eee4e2b0f4ec6b290b"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0006-batch-barriers-and-key-hash-neutral-maps.patch",
+      "sha256": "bba26d2ef307234c4858b9906f5894e167e640d4bb48d68280e505407b3ac211"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0007-optional-shader-cache-directory.patch",
+      "sha256": "cd169276534ec265c10a2dd557ce986ab1d31989aa2624f4787e9a3f2082dcf3"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0008-llvm-bitreverse.patch",
+      "sha256": "62fe7871d3695277e46bc2020dd5e2dbd3c1f5ec4e631d2ca69f772b19a4d9dc"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0009-patch-with-no-control-points.patch",
+      "sha256": "f5d2a9a864064803a0dac4e9f3ada4235b08433edfe0587ebe023aed9f02e82f"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0010-core-image-kernel-libraries.patch",
+      "sha256": "8ca93e8f6e31ddfb502df5497ea68480dbcb2fdbafd7b0ea5c6f546e60dbe6e2"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0011-two-plane-shadow-as-memory-lies.patch",
+      "sha256": "2b7c8449367ab3a78268101d88640a4328be27ae9b96235c9a1dc1d3cdf20e4a"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0012-srgb-extended-range-blend-rounded-model.patch",
+      "sha256": "72ceaa0fff8f3e5d5ac62165eb92048ee6e99004d46f9a3fb067545267009e2d"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0013-growing-memory-blocks.patch",
+      "sha256": "f1e4b65499f1a65f135a18d23b3dd5ee61453f599f824c0913e5c6f35b2468c1"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0014-in-place-written-textures.patch",
+      "sha256": "22c5374e7672fe0eca9554611c9f0e7f6fa4097f4815d29bc9d75b622ba75673"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0015-in-place-written-host-page-textures.patch",
+      "sha256": "10aff3b6d9c31d14cc8486622afc7da53de29f359bc4b3edf0b5efcf9be47369"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0016-refuse-rebinds.patch",
+      "sha256": "13caa51b08f68622286de41b6e4232ad364114cf8c93b60336d6158706b36709"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0017-heap-texture-size-a-multiple-of-its-alignment.patch",
+      "sha256": "30233bfbd397aef5538a1b797ff1521c26c9d32c32c0f607fa35f53eb92058b0"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0018-memory-census-bytes.patch",
+      "sha256": "2fca303f0f9564e8debf7476e35733775ef4be542f107fd580813a68fd772612"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0019-allocation-sites.patch",
+      "sha256": "88b59f2bbfca27fbec78f846b3e3725acc616f596d5228633751e686adc25cb3"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0020-written-host-page-textures-in-place-at-any-size.patch",
+      "sha256": "fd01025c0f40fba6f8670c75f78b10047c08a442edb696130fa30d86f74faa55"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0021-spare-image-blocks-and-room-keeper.patch",
+      "sha256": "cbafb85f2f43fc2302d06bfe2c972283802fa50aa257db09e4dfcc3bf6b36b03"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0022-command-buffer-stage-trace.patch",
+      "sha256": "38dd5825a5665eada2a33d40d89881405cb88405feaa250a37a9e1c67ea62406"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0023-quality-of-service-on-ios.patch",
+      "sha256": "b134e9d5143ceed52a5c89ad4cc40b0f807b16442ea9ac03d95f2079f6ff17d9"
+    },
+    {
+      "path": "sources/AdrenoMetal-a830/bridge/patches/0024-diagnostics-switch-and-submit-steps.patch",
+      "sha256": "d04cd3a19ecd2697dfeccd70d4df998489caf7554acb441d030c34b61844672e"
+    }
+  ],
+  "runtime_id": "ee31796bc3c7fe6b520c2a6e86787d71",
+  "native_surface_overlay": {
+    "path": "patches/adreno830/0006-metal-surface-identity.patch",
+    "sha256": "013e877085efb323ce541be7c8dbbb5e9518c8706c4d7572268dea63e9bea925",
+    "before_sha256": {
+      "NativeBridgeMetalFrontend.mm": "f62cc4ffda9e00759b856c60ff8e296614fd12eb7d2cb865ba5700be84bad3e4",
+      "bridge/NativeMetalObjects.rs": "bdfec3ccbd69fd0677be22db39ab803b8ad9914047578520bee84d7091b09047",
+      "bridge/NativeMetalObjects.h": "95c5b2cfcf9964a981b66373b88b216604edce74c838cbaf3e749b94832e7c64",
+      "NativeAdrenoMetalPlugin.mm": "3f7df03bca4c5f39df9e47a3cffcb5f08eeb5b66347015b61cb5156684ee1517"
+    },
+    "after_sha256": {
+      "NativeBridgeMetalFrontend.mm": "ebaa580e6301911d121e1d9fcec3b37437def2341ac90a92e2277cc4587e0556",
+      "bridge/NativeMetalObjects.rs": "cc603cfbecea64e8e70d8e41ebd7d1e496e2e07d187869688067493c65e49536",
+      "bridge/NativeMetalObjects.h": "2e60718544c118c9154d3bdcf8b1443c48edc13e8d038e38bf08e06c5d756a57",
+      "NativeAdrenoMetalPlugin.mm": "52fe9f68c1e9771983386ebc9574df94fe135a433a8ba5a10778ed04f0200a05"
+    },
+    "support": {}
+  },
+  "native_compile_overlay": {
+    "path": "patches/adreno830/0008-runtime-compile-thread.patch",
+    "sha256": "8ff38135122e76ea4c038c21fa3453dc5667578bc8cf0ff823ed5e0e86e51463",
+    "before_sha256": {
+      "crates/metal2vulkan-runtime/src/device/compiles.rs": "5f7b730e5e39fb75ea986f5c5f0450547d8bd9391c2516c0b051a1350c2ae047"
+    },
+    "after_sha256": {
+      "crates/metal2vulkan-runtime/src/device/compiles.rs": "b33ba79d66c546d48a0221c8683a90c65e712cf453be2b0253b4edfe9a70a4ae"
+    },
+    "support": {},
+    "upstream": {
+      "repository": "https://github.com/IssacL04/AdrenoMetal.git",
+      "revision": "c1351337d7e4ca00c80e1b7efeaf404bddc1be9e",
+      "path": "bridge/patches/0041-compile-on-the-asking-thread.patch",
+      "sha256": "6f09cafb9d9c56dd724be366ac79ab9322bd4737311953eebb45a0cac9f2a502"
+    },
+    "scope": "Rebase the official asking-thread policy onto the pinned runtime; keep the 2 MiB stack guard and the existing relay."
+  },
+  "translator_source_tree": {
+    "git_tree": "70afeb54204b53bcd4e94cc32f377c993fb325b2",
+    "files_verified": 6371,
+    "bytes_verified": 1750241720,
+    "method": "Every blob matches HEAD plus hash-locked overlays via a private index; user index preserved"
+  },
+  "rust_version": "rustc 1.98.0 (88d9e12ae 2026-08-18)",
+  "cargo_lock_sha256": "30552926ea905c1fb364f83a46a29552cc6e1772da3145f120b5e252fb89c7c7",
+  "fixture_source_sha256": {
+    "NMB_FIXTURE_AIR": "186eea4a11433b2c5be5fd4e540199ef647b631d2280be07ea56937761de6679",
+    "NMB_FC_AIR": "8d84afb027a2b3a6b9f7c0ce2d6603bcc0871fb9e6e065466eae6ca87208c6b2",
+    "NMB_SCANOUT_AIR": "a7d2660ec3b3e0f88db02e1942f9b30f2df710020188d6f03d7b5cb0fb0df446"
+  },
+  "sdk_reference_revision": "0222fd5413cf4b9af096f37b4621afa2688572f7",
+  "sdk_scope": "Patched iOS 16.5 cross-build headers/stubs, not private ABI evidence for iPhone 20H392",
+  "objc_frontend_linked": false,
+  "turnip_linked": false,
+  "code_signed": false,
+  "hardware_tested": false,
+  "scope": "Actual Rust static library cross-build; no Metal device or shader execution."
+}

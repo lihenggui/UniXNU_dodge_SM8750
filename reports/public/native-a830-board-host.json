@@ -110,11 +110,15 @@
     "patches/adreno830/0002-board-firmware-pins.patch": "46efed5d8691651f050fae30db5f45acae3981421cc195917b104d7b23eae312",
     "scripts/check_native_a830_board.py": "dd202040a01140a04c9f6304dae9c8aa444a6079284a4b21977fcce2a785fb75",
     "scripts/prepare_native_a830.py": "4fa2905f6279823b7f1897cd48f80ae70611b1aecfb118cc95aa1dc06628e381",
-    "scripts/build_native_a830.py": "98d3f591f9f009867516f27573d7296d395ffa89330660bf4139b9d34c3f3f69",
+    "scripts/build_native_a830.py": "31dd6efe8a95adaabfdf96035216df76075269696d32af42fd419cc687d23f74",
     "tests/DodgeNativeA830BoardTest.cpp": "3b5d11bc89f35f9240e0e19c3e7a883736ac143d476ab37aa09b8667e258cb84",
+    "drivers/DodgeGpu/DodgeNativeA830ABI.h": "8e0cfffdb84ed74065dc0a9ebcdac16cd5598d964b3736d0e984236b7f4557c5",
     "drivers/DodgeGpu/DodgeNativeA830Board.cpp": "9ed3b867e236611abc8c2599a6f235a426b4e66db599ee3c8b6602e98df042e7",
     "drivers/DodgeGpu/DodgeNativeA830Board.h": "c5f78b2df4206648a4a3855dc0620b85da9a11e46827e5c9df3bc25a63dd234c",
-    "drivers/DodgeGpu/DodgeNativeA830Start.cpp": "7915fa3e0a39723898287045a537347958f1c8dede958f409a85d4e713e1e3fb"
+    "drivers/DodgeGpu/DodgeNativeA830Boot.cpp": "165a6ddae227d805c65110260b88cf1ee61467bff46b4441cfb52c92a9f47db5",
+    "drivers/DodgeGpu/DodgeNativeA830Console.cpp": "8c77fd67442fd43f83e13cee504cbab01765a6cd13af585a865bb2aa05296693",
+    "drivers/DodgeGpu/DodgeNativeA830Start.cpp": "7915fa3e0a39723898287045a537347958f1c8dede958f409a85d4e713e1e3fb",
+    "drivers/DodgeGpu/DodgeNativeA830Timeline.inc": "e437513538c16ddc6b164c60ac2bac65e4682391d51ccc8d1be6dd76e9aa55dc"
   },
   "stock_firmware_tested": true,
   "generated_sha256": {

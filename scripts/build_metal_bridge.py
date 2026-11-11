@@ -18,11 +18,16 @@ from reviewed_source_tree import reviewed_tree
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--prepare-only', action='store_true', help='Prepare patched inputs, fixtures and manifest')
+    parser.add_argument('--native-a830', action='store_true', help='build the native surface-ID bridge entry')
     args = parser.parse_args()
     lock = json.loads((ROOT / 'upstream.lock.json').read_text())
     sources = pinned_sources(('metal2vulkan_reference', 'a830_metal_reference', 'iphoneos_sdk_reference'))
     original = sources['metal2vulkan_reference']
     frontend = sources['a830_metal_reference']
+    native_overlay = None
+    if args.native_a830:
+        from native_a830_userspace import metal
+        frontend, native_overlay = metal()
     sdk = sources['iphoneos_sdk_reference'] / 'iPhoneOS16.5.sdk'
     work = ROOT / '.cache/gpu-work/metal2vulkan'
     if not work.exists():
@@ -33,7 +38,11 @@ def main():
             lock['metal2vulkan_reference']['revision'], 'Patched translator has an unexpected base')
     patch_series_state(work, lock['metal_runtime_patches'], True)
     source_tree = reviewed_tree(work, lock['metal_runtime_patches'])
-    out = ROOT / 'build/cph2653-metal-bridge'
+    compile_overlay = None
+    if args.native_a830:
+        from native_a830_userspace import overlay
+        work, compile_overlay = overlay(work, ROOT / '.cache/gpu-work/metal2vulkan-native-a830', 'native_a830_compile_overlay')
+    out = ROOT / ('build/cph2653-native-a830-metal-bridge' if args.native_a830 else 'build/cph2653-metal-bridge')
     out.mkdir(parents=True, exist_ok=True)
     rust = ROOT / lock['gpu_rust_toolchain']['prefix']
     tools = rust / 'lib/rustlib/x86_64-unknown-linux-gnu/bin'
@@ -66,6 +75,10 @@ def main():
         'libc = "0.2"', 'sha2 = { version = "0.10", features = ["asm"] }',
         '[profile.release]', 'panic = "unwind"', 'debug = 1', 'lto = "fat"', 'codegen-units = 1', '']))
     runtime_input = lock['metal2vulkan_reference']['revision'] + '\n' + '\n'.join(p['sha256'] for p in lock['metal_runtime_patches'])
+    if native_overlay:
+        runtime_input += '\n' + native_overlay['sha256']
+    if compile_overlay:
+        runtime_input += '\n' + compile_overlay['sha256']
     runtime_id = hashlib.sha256(runtime_input.encode()).hexdigest()[:32]
     clang = ROOT / '.toolchains/xnu-linux/llvm/bin/clang'
     env = dict(os.environ, PATH=str(rust / 'bin') + ':' + os.environ.get('PATH', ''),
@@ -89,6 +102,10 @@ def main():
     if args.prepare_only:
         print('PASS: 24 pinned runtime patches, real AIR fixtures, iOS 16 manifest and locked Rust dependencies')
         return
+    if args.native_a830 and not (out / 'target').exists():
+        cache = ROOT / 'build/cph2653-metal-bridge/target'
+        if cache.exists():
+            shutil.copytree(cache, out / 'target')
     with (out / 'build.log').open('w') as log:
         process = subprocess.run([cargo, 'build', '--release', '--locked', '--manifest-path', manifest,
                                   '--target', 'aarch64-apple-ios', '--target-dir', out / 'target'],
@@ -101,6 +118,8 @@ def main():
               'translator_revision': lock['metal2vulkan_reference']['revision'],
               'frontend_revision': lock['a830_metal_reference']['revision'],
               'runtime_patches': lock['metal_runtime_patches'], 'runtime_id': runtime_id,
+              'native_surface_overlay': native_overlay,
+              'native_compile_overlay': compile_overlay,
               'translator_source_tree': source_tree,
               'rust_version': subprocess.check_output([rust / 'bin/rustc', '--version'], text=True).strip(),
               'cargo_lock_sha256': sha(snapshot), 'fixture_source_sha256': {name: sha(path) for name, path in fixtures.items()},
@@ -109,7 +128,8 @@ def main():
               'objc_frontend_linked': False, 'turnip_linked': False, 'code_signed': False,
               'hardware_tested': False, 'scope': 'Actual Rust static library cross-build; no Metal device or shader execution.'}
     (out / 'manifest.json').write_text(json.dumps(report, indent=2) + '\n')
-    (ROOT / 'reports/metal-rust-bridge.json').write_text(json.dumps(report, indent=2) + '\n')
+    report_path = ROOT / ('reports/native-a830-metal-bridge.json' if args.native_a830 else 'reports/metal-rust-bridge.json')
+    report_path.write_text(json.dumps(report, indent=2) + '\n')
     print('PASS: actual iOS 16 Rust Metal bridge archive with the pinned runtime and 24 reviewed patches')
 
 

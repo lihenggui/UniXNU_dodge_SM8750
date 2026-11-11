@@ -1,0 +1,70 @@
+{
+  "result": "NATIVE_A830_COMPLETE_LOCAL_PAYLOAD_PASS",
+  "source_sha256": {
+    "scripts/build_native_a830_payload.py": "4be6578059e2ee3844fd55bf7b654fd70cea403322c00f97ec511501bd22f618",
+    "scripts/boot_entropy_execution.py": "6577bca169fc081a8bf14047e672ebd3b76cfed74be713e5a829c07193fadebb",
+    "scripts/check_boot_entropy_kernel.py": "e99b357d4031e99c4a8783d454564e0fc8c64d439396959ad5fccdb94d1576c1",
+    "scripts/build_mapped_lease_payload.py": "6d13202459702697af98b3e2c8e1807d4e907b53963f08ab74c321e083baec08",
+    "sources/UniXNU/scripts/unixnu/bootimg.py": "ebfc1856d7b0ed40df92cdaa491888e39c19d8d275018b65e7c7fe2b218c5289",
+    "scripts/prepare_device_tree.py": "e8215e5b9e79724354f8d18dcd03cb82116ec7007c096217b6c6eafbe90ebfc6",
+    "scripts/original_crypto_execution.py": "adb9c2b988b4eb477f414883fb9239440f6b887e76f5ccca78565536d54fba8c",
+    "scripts/prepare_crypto_execution.py": "46f269bbf7f079684d071a46706e9fa1d7b8f6d5fc4f5bab80431b61c0f05c56",
+    "profiles/os/ios-16.7.16-20H392/crypto-execution.json": "2957da717b4c840b5fbbbee18be5d39ec44184df2258b7af257fc5699951e870",
+    "profiles/os/ios-16.7.16-20H392/crypto-contract.json": "979b7654adf7a07e310c399a4f4b25ef8604801f115b76b6a4fc47d89cae6a9f",
+    "board.toml": "4658b1c2706a86e99013adbaf74792306de2ed5ec9cc79415c84fcf030dd39cf",
+    "uefi/Mu-Silicium/BootShim/BootShim.S": "ad1037dd5db2ceb66b9b714ec9821335f6a375b38b3242ea1f57c2a966f39e14",
+    "uefi/Mu-Silicium/Resources/Configs/dodge.toml": "f96c6e166eceea767ff0c7c2a9105b647f1f540364f70894a97eef26de752035"
+  },
+  "dependency_report_sha256": {
+    "reports/native-a830-prelink.json": "7fd94f3cfba4bdec86c709df9edbb770e2931f6e50a691f43e50b7d7bdd5b6eb",
+    "reports/native-a830-firmware.json": "d8853e10ce0be47bb86f714294119d9cc1e518ac2fe0e7e93ee9fca9da979766",
+    "reports/native-a830-addon.json": "d06f297dd4cfdf4a7b1a99acf16d5f2f4ee78b4330011ac81e8ab99643e43b27",
+    "reports/ios16-crypto-payload.json": "1e058c5ed732bd4ea11f4253569df66a6c046322526bf4d5c0aca8f1bbea84c7",
+    "reports/ios16-boot-entropy-kernel.json": "4dac94ef2283181edb8c91da272f8dcec8aa5773d0f66d49b9984baf3bc94e7e",
+    "reports/ios16-original-crypto-kernel.json": "764d3a4a6403a9ccd0c25e420de5b2100e361932bb6dd8e2ddb38e6cbfe04465"
+  },
+  "artifacts": {
+    "build/cph2653-native-a830-bringup/payload.img": "4faba4a62142c1d58c89865a682fdb6a9afc65889c6273ce7c8ae446afe1b011",
+    "build/cph2653-native-a830-bringup/boot.img": "48a7605d32bc2e09b12bcf77c0db082fc976fc4b7d352bcfac9dbd3deec7fb21",
+    "build/cph2653-native-a830-bringup/boot.json": "237cee75fd0e534acf7ad01d81ac880ec7303a1749366d9c28acc36f491b8f5b",
+    "build/cph2653-native-a830-bringup/cpu-cases.json": "8a712bc280acd5087a7d19d5b502ad284eebfd7e143007b92387f760469f6caa",
+    "build/cph2653-native-a830-bringup/stage/kernel.macho.adt": "7628abe4e7b0019d4f7eaf3e5f8e8dd0975ff22231d68e0f855c28a5b41ccaa5",
+    "build/cph2653-native-a830-bringup/stage/unixnu.toml": "6723d23b1c1bdc6a57993a6c08139e2d01f8fd6ee02245a3d803f7e9c1585ecb"
+  },
+  "payload": "build/cph2653-native-a830-bringup/payload.img",
+  "payload_sha256": "4faba4a62142c1d58c89865a682fdb6a9afc65889c6273ce7c8ae446afe1b011",
+  "payload_bytes": 167772160,
+  "boot_image": "build/cph2653-native-a830-bringup/boot.img",
+  "boot_image_sha256": "48a7605d32bc2e09b12bcf77c0db082fc976fc4b7d352bcfac9dbd3deec7fb21",
+  "boot_image_bytes": 170569728,
+  "firmware": "build/cph2653-native-a830-firmware/SILICIUM_UEFI.fd",
+  "firmware_sha256": "4334a58fd1f5128266e2b27419c912cccdd16879f66b5576bbe45e47f6f41358",
+  "linked_source_objects": 111,
+  "kernel_args": "-v serial=0 debug=0x14e cpus=1",
+  "boot_header_version": 4,
+  "fat_files": {
+    "EFI/UniXNU/unixnu.toml": "6723d23b1c1bdc6a57993a6c08139e2d01f8fd6ee02245a3d803f7e9c1585ecb",
+    "EFI/UniXNU/Payloads/kernel.macho.trustcache": "f7bc9aae650e7603544878f9afc2da758ff7bc6108877de4ca0c5ebf77134cc1",
+    "EFI/UniXNU/Payloads/kernel.macho.adt": "7628abe4e7b0019d4f7eaf3e5f8e8dd0975ff22231d68e0f855c28a5b41ccaa5",
+    "EFI/UniXNU/Payloads/scratch-data.img": "ad4cf27e8f1be50891d5549aabff7c4b28fbf17e7daacd3fbe3f9bcb03ee9cd3",
+    "EFI/UniXNU/Payloads/kernel.macho.gpuaddon": "a44fa79151db89569970e4bcac347f8fd7ae3e79bb589cf52cfe9a1145e529eb",
+    "EFI/UniXNU/Payloads/kernel.macho": "5410cfbfdef990f78928e31b8ece4730513e001ebd4a62b2a672233f92b3f157"
+  },
+  "handoff_files": {
+    "TrustCache": {
+      "bytes": 67864,
+      "sha256": "f7bc9aae650e7603544878f9afc2da758ff7bc6108877de4ca0c5ebf77134cc1"
+    },
+    "GpuAddon": {
+      "bytes": 12984800,
+      "sha256": "a44fa79151db89569970e4bcac347f8fd7ae3e79bb589cf52cfe9a1145e529eb"
+    }
+  },
+  "actual_EFI_handoff_model": "PASS",
+  "original_POST_tests_in_model": 18,
+  "original_userspace_included": false,
+  "default_kernel_selected": false,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Separate native A830 kernel, entropy/logger firmware, runtime addon and exact iPhone trust inputs. All FAT files, the actual EFI addon/trust memory handoff, native seed/POST model and Android v4 container are checked. The packed Data seed and original boot arguments are retained. System boot and hardware remain untested."
+}

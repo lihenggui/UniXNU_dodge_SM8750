@@ -1,0 +1,77 @@
+{
+  "result": "IOS16_GPU_USERSPACE_BINARY_READBACK_PASS",
+  "binaries": [
+    {
+      "path": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/NativeAdrenoMetal",
+      "bytes": 22565600,
+      "sha256": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668",
+      "filetype": 8,
+      "minimum_os": "16.0",
+      "sdk_version_hex": "0x100400",
+      "signed_pages": 5467,
+      "signature_identifier": "NativeAdrenoMetal",
+      "cdhash": "29a5c960f0a0582360e124dc4a24028635d84cd1",
+      "hash_page_bytes": 4096,
+      "imports": [
+        "/usr/lib/libobjc.A.dylib",
+        "/System/Library/Frameworks/Foundation.framework/Foundation",
+        "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+        "/System/Library/Frameworks/Metal.framework/Metal",
+        "/System/Library/Frameworks/IOSurface.framework/IOSurface",
+        "/usr/lib/libc++.1.dylib",
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "changed_code_negative_control": "rejected"
+    },
+    {
+      "path": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib",
+      "bytes": 17974352,
+      "sha256": "a70a9c43ee7eb582533e6c7766a442e95c5a36d83f33127f46a3bf15056026bb",
+      "filetype": 6,
+      "minimum_os": "16.0",
+      "sdk_version_hex": "0x100400",
+      "signed_pages": 4355,
+      "signature_identifier": "libvulkan_freedreno.dylib",
+      "cdhash": "293bc2e415ffc626a6afbdd243c6befa6c41a20a",
+      "hash_page_bytes": 4096,
+      "imports": [
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libz.1.dylib",
+        "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+        "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics",
+        "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+        "/usr/lib/libobjc.A.dylib",
+        "/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
+        "/System/Library/Frameworks/Metal.framework/Metal",
+        "/usr/lib/libc++.1.dylib"
+      ],
+      "changed_code_negative_control": "rejected"
+    },
+    {
+      "path": "build/cph2653-native-a830-metal-plugin/adrenoprobed",
+      "bytes": 106768,
+      "sha256": "6caaa5f0413d4a0d9d1810ea4b9fdf83555fcad17462f4c10a83edf659bbd5c3",
+      "filetype": 2,
+      "minimum_os": "16.0",
+      "sdk_version_hex": "0x100400",
+      "signed_pages": 26,
+      "signature_identifier": "adrenoprobed",
+      "cdhash": "833c1197749cad8438cf3bcacf7acbdaca3a0162",
+      "hash_page_bytes": 4096,
+      "imports": [
+        "/System/Library/Frameworks/Foundation.framework/Foundation",
+        "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+        "/usr/lib/libobjc.A.dylib",
+        "/usr/lib/libz.1.dylib",
+        "/usr/lib/libc++.1.dylib",
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "changed_code_negative_control": "rejected"
+    }
+  ],
+  "owner_trust_installed": false,
+  "bundle_resource_seal_created": false,
+  "original_metal_discovery_abi_qualified": false,
+  "hardware_tested": false,
+  "scope": "Own Mach-O target/import and embedded page-integrity checks; no Apple signature or runtime trust claim."
+}

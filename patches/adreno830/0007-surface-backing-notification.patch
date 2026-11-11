@@ -1,0 +1,29 @@
+--- a/drivers/DodgeGpu/DodgeSurfaceBacking.cpp
++++ b/drivers/DodgeGpu/DodgeSurfaceBacking.cpp
+@@ -1,5 +1,6 @@
+ // SPDX-License-Identifier: BSD-2-Clause-Patent
+ #include "DodgeSurfaceBacking.h"
++#include "DodgeNativeSurface.h"
+ #include "OriginalIOSurfaceBackingABI.h"
+ #include "OriginalIOSurfaceMemoryABI.h"
+ #include <IOKit/IOLib.h>
+@@ -90,16 +91,19 @@
+ }
+ extern "C" void dodge_iphone_surface_replace(OSObject *surface,IOMemoryDescriptor *backing)
+ {
++    dodge_native_surface_changed(surface);
+     if(backing)backing->retain();
+     dodge_original_surface_replace(surface,backing);
+     observe(surface,backing);
+ }
+ extern "C" void dodge_iphone_surface_clear(OSObject *surface)
+ {
++    dodge_native_surface_changed(surface);
+     dodge_original_surface_clear(surface);forget(surface);
+ }
+ extern "C" void dodge_iphone_surface_free(OSObject *surface)
+ {
++    dodge_native_surface_changed(surface);
+     // Drop the observer before the original destructor releases its descriptor.
+     // The registry does not retain surfaces and cannot keep them alive forever.
+     forget(surface);dodge_original_surface_free(surface);

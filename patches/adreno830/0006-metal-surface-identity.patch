@@ -1,0 +1,99 @@
+--- a/NativeBridgeMetalFrontend.mm
++++ b/NativeBridgeMetalFrontend.mm
+@@ -1110,6 +1110,14 @@
+  pruneHeldImports(false,gone);
+  gHeldImports[{identity,address,bytes}]={buffer,buffer.importedSurface};
+ }
++static bool nbBeginSurfaceImport(uint32_t id,void *base,size_t bytes,bool (**finish)()) {
++ if(gLoaderPath.empty() || bytes>UINT64_MAX-4095)return false;
++ void *library=dlopen(gLoaderPath.c_str(),RTLD_NOW|RTLD_NOLOAD);if(!library)return false;
++ auto begin=(bool (*)(uint32_t,const void *,uint64_t))dlsym(library,"tu_darwin_surface_begin");
++ auto end=(bool (*)())dlsym(library,"tu_darwin_surface_end");
++ const bool ready=begin && end && begin(id,base,(bytes+4095)&~UINT64_C(4095));
++ dlclose(library);if(ready)*finish=end;return ready;
++}
+ static NBBuffer *surfaceBuffer(IOSurfaceRef surface,void *base,size_t bytes) {
+  struct Key {uint64_t identity,address,bytes;};
+  const Key value={IOSurfaceGetID(surface),(uintptr_t)base,bytes};
+@@ -1121,8 +1129,12 @@
+  NBBuffer *buffer=key?[gSurfaceImports objectForKey:key]:nil;
+  if(buffer){if(key)holdImport(value.identity,value.address,value.bytes,buffer,gone);return buffer;}
+  // The surface keeps its CPU mapping (the imported pages) until the import is freed.
+- NmbBuffer *handle=nmb_buffer_new_no_copy_releasing(gDevice,base,bytes,MTLResourceStorageModeShared,releaseSurface,(void *)CFRetain(surface));
++ bool (*finish)()=nullptr;
++ if(!nbBeginSurfaceImport((uint32_t)value.identity,base,bytes,&finish))return nil;
++ NmbBuffer *handle=nmb_buffer_new_surface_releasing(gDevice,base,bytes,MTLResourceStorageModeShared,releaseSurface,(void *)CFRetain(surface));
++ const bool associated=finish();
+  if(!handle){CFRelease(surface);NBLOG(@"native-metal: surface import refused: %@",lastError());return nil;}
++ if(!associated){nmb_buffer_release(handle);return nil;}
+  gSurfaceImportsMade++;buffer=[NBBuffer new];buffer.handle=handle;buffer.options=MTLResourceStorageModeShared;buffer.importedSurface=surface;
+  if(key) {
+   // Associations whose import is gone are pruned whenever the table has doubled since the last pruning; a live one is never evicted.
+--- a/bridge/NativeMetalObjects.rs
++++ b/bridge/NativeMetalObjects.rs
+@@ -787,6 +787,23 @@
+     unsafe { no_copy(device, pointer, length, options_word, deallocator) }
+ }
+ 
++// A new IOSurface identity always gets a new kernel import.
++#[unsafe(no_mangle)]
++pub unsafe extern "C" fn nmb_buffer_new_surface_releasing(device: *mut NmbDevice, pointer: *mut c_void, length: u64, options_word: u64,
++                                                          release: Option<NmbRelease>, context: *mut c_void) -> *mut NmbBuffer {
++    let deallocator = release.map(|release| {
++        let context = ReleaseContext(context);
++        Box::new(move |pointer: NonNull<u8>, length: u64| {
++            let context = context;
++            // SAFETY: the caller's contract.
++            unsafe { release(context.0, pointer.as_ptr() as *mut c_void, length) }
++        }) as Deallocator
++    });
++    // SAFETY: the caller's contract.
++    unsafe { no_copy_refresh(device, pointer, length, options_word, deallocator, true) }
++}
++
++
+ /// The pages each no-copy range had when a buffer was last made over exactly it (`pages_identity`), under the device's no-copy gate.
+ /// The runtime puts a no-copy buffer over exactly the bytes a live one was made over in that one's import, so over the pages that
+ /// were there then (`host_aliases.rs`); Metal wires the pages at the address when it makes each buffer. CoreAnimation's render
+@@ -874,6 +891,10 @@
+ 
+ unsafe fn no_copy(device: *mut NmbDevice, pointer: *mut c_void, length: u64, options_word: u64, deallocator: Option<Deallocator>)
+                   -> *mut NmbBuffer {
++    unsafe { no_copy_refresh(device,pointer,length,options_word,deallocator,false) }
++}
++unsafe fn no_copy_refresh(device: *mut NmbDevice, pointer: *mut c_void, length: u64, options_word: u64,
++                         deallocator: Option<Deallocator>, refresh: bool) -> *mut NmbBuffer {
+     guard(std::ptr::null_mut(), || {
+         let device = get(device)?;
+         // SAFETY: the caller's contract.
+@@ -897,7 +918,7 @@
+             let mut gate = device.2.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+             let range = (pointer as u64, length);
+             let now = pages_identity(range.0, range.1);
+-            let changed = match gate.seen.get(&range) {
++            let changed = refresh || match gate.seen.get(&range) {
+                 Some(&noted) => now != Some(noted),
+                 None => gate.forgot || now.is_none(),
+             };
+--- a/bridge/NativeMetalObjects.h
++++ b/bridge/NativeMetalObjects.h
+@@ -94,6 +94,9 @@
+  * buffer and every command buffer using them are gone). A refused call (NULL) never runs it. */
+ NmbBuffer *nmb_buffer_new_no_copy_releasing(NmbDevice *, void *pointer, uint64_t length, uint64_t options,
+                                             void (*release)(void *context, void *pointer, uint64_t length), void *context);
++// A surface constructor imports fresh pages, preserving identity at the kernel boundary.
++NmbBuffer *nmb_buffer_new_surface_releasing(NmbDevice *, void *, uint64_t, uint64_t,
++    void (*release)(void *,void *,uint64_t),void *);
+ void nmb_buffer_release(NmbBuffer *);
+ bool nmb_buffer_make_aliasable(const NmbBuffer *);
+ bool nmb_buffer_is_aliasable(const NmbBuffer *);
+--- a/NativeAdrenoMetalPlugin.mm
++++ b/NativeAdrenoMetalPlugin.mm
+@@ -266,6 +266,7 @@
+     }
+     if (!device && !usable) {
+         setenv("METAL2VULKAN_SHADER_CACHE_OPTIONAL", "1", 1);
++        setenv("METAL2VULKAN_COMPILE_ON_ASKING_THREAD", "1", 1);
+         const char *path = candidates[0][0] ? candidates[0] : candidates[1][0] ? candidates[1] : "/var/mobile/tmp/m2v";
+         @try {
+             device = native_bridge_metal_open(turnip, path, registryID, nullptr);

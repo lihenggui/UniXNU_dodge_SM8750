@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Read back target, imports and every 4 KiB code-signature hash of own GPU binaries."""
 import hashlib
+import argparse
 import json
 from pathlib import Path
 import struct
@@ -53,7 +54,10 @@ def verify(data, kind):
 
 
 def main():
-    out = ROOT / 'build/cph2653-metal-plugin'
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--native-a830', action='store_true')
+    args = parser.parse_args()
+    out = ROOT / ('build/cph2653-native-a830-metal-plugin' if args.native_a830 else 'build/cph2653-metal-plugin')
     bundle = out / 'NativeAdrenoMetal.bundle'
     files = [(bundle / 'NativeAdrenoMetal', 8), (bundle / 'libvulkan_freedreno.dylib', 6), (out / 'adrenoprobed', 2)]
     results = []
@@ -78,7 +82,7 @@ def main():
               'owner_trust_installed': False, 'bundle_resource_seal_created': False,
               'original_metal_discovery_abi_qualified': False, 'hardware_tested': False,
               'scope': 'Own Mach-O target/import and embedded page-integrity checks; no Apple signature or runtime trust claim.'}
-    (ROOT / 'reports/gpu-userspace.json').write_text(json.dumps(report, indent=2) + '\n')
+    (ROOT / ('reports/native-a830-userspace.json' if args.native_a830 else 'reports/gpu-userspace.json')).write_text(json.dumps(report, indent=2) + '\n')
     print('PASS: three ordinary ARM64/iOS 16 binaries, all 4 KiB code hashes, and code-corruption controls')
 
 

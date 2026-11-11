@@ -24,13 +24,15 @@ REPORT = ROOT / 'reports/ios16-entropy-payload.json'
 RESULT = 'CPH2653_FRESH_ENTROPY_FIRMWARE_EFI_CPU_CHAIN_AND_ANDROID_V4_READBACK_PASS'
 
 
-def build_firmware():
+def build_firmware(output=None, expected_images=53):
     pin, changed = reviewed(); budget = memory_budget()
     lock = json.loads((ROOT / 'upstream.lock.json').read_text())
     require(subprocess.check_output(['git', '-C', str(MU), 'rev-parse', 'HEAD'], text=True).strip() == lock['revision'] and
             sha(MU / lock['memory_patch']['target']) == lock['memory_patch']['after_sha256'] and
             sha(MU / lock['simplefb_patch']['target']) == lock['simplefb_patch']['after_sha256'], 'Need the preserved pinned firmware and board patches')
-    workspace = OUT / 'tree'; workspace.mkdir(parents=True, exist_ok=True)
+    destination = output or OUT
+    destination.mkdir(parents=True, exist_ok=True)
+    workspace = destination / 'tree'; workspace.mkdir(parents=True, exist_ok=True)
     package = workspace / 'DarwinBootPkg'; shutil.copytree(BASE, package, dirs_exist_ok=True)
     for name, text in changed.items(): (package / 'Driver' / name).write_text(text)
     shutil.copy2(HEADER, package / 'Driver' / HEADER.name)
@@ -44,20 +46,20 @@ def build_firmware():
     env['PATH'] = os.pathsep.join([str(python.parent), str(llvm), str(tools / 'Source/C/bin'), str(tools / 'BinWrappers/PosixLike'),
                                  str(tools / 'Bin/Mu-Basetools_extdep/Linux-x86'), env.get('PATH', '')]); env.pop('LD_LIBRARY_PATH', None)
     command = [str(python), str(tools / 'Source/Python/build/build.py'), '-p', 'dodgePkg/dodge.dsc', '-b', 'DEBUG', '-t', 'CLANGPDB',
-               '-n', '4', '-a', 'AARCH64', '-y', str(OUT / 'BUILD_REPORT.TXT'), '-Y', 'HASH',
+               '-n', '4', '-a', 'AARCH64', '-y', str(destination / 'BUILD_REPORT.TXT'), '-Y', 'HASH',
                '-D', 'ONE_CRYPTO_PATH=' + str(MU / 'Mu_Basecore/CryptoPkg/Binaries/onecrypto-bin_extdep'),
                '-D', 'BUILDID_STRING=Unknown', '-D', 'MEMORY_PROTECTION=TRUE', '-D', 'SHIP_MODE=FALSE', '-D', 'ENABLE_SECUREBOOT=0',
                '-D', 'FD_BASE=0xa7100000', '-D', 'FD_SIZE=0x300000', '-D', 'FD_BLOCKS=0x300']
-    command_path = OUT / 'build-command.json'; command_path.write_text(json.dumps(command, indent=2) + '\n')
+    command_path = destination / 'build-command.json'; command_path.write_text(json.dumps(command, indent=2) + '\n')
     print('BUILD: isolated full dodge firmware / exact board patches / new entropy DarwinBoot / four jobs', flush=True)
-    with (OUT / 'build.log').open('w') as log:
+    with (destination / 'build.log').open('w') as log:
         process = subprocess.run(command, cwd=workspace, env=env, stdout=log, stderr=subprocess.STDOUT, timeout=900)
-    require(process.returncode == 0, 'Entropy firmware failed; inspect ' + str(OUT / 'build.log'))
+    require(process.returncode == 0, 'Entropy firmware failed; inspect ' + str(destination / 'build.log'))
     built = workspace / 'Build/dodgePkg/DEBUG_CLANGPDB'; module = built / 'AARCH64/DarwinBootPkg/Driver/DarwinBoot'
     makefile = module / 'GNUmakefile'
     require('-DDARWIN_BOOT_COMMAND_LINE_LENGTH=608' in makefile.read_text() and
             str(workspace / 'DarwinBootPkg/Driver') in makefile.read_text(), 'Full firmware used another DarwinBoot source or boot_args ABI')
-    fd, efi, mapping = OUT / 'SILICIUM_UEFI.fd', OUT / 'DarwinBoot.efi', OUT / 'DarwinBoot.map'
+    fd, efi, mapping = destination / 'SILICIUM_UEFI.fd', destination / 'DarwinBoot.efi', destination / 'DarwinBoot.map'
     for source, destination in ((built / 'FV/SILICIUM_UEFI.fd', fd), (module / 'DEBUG/DarwinBoot.efi', efi),
                                 (module / 'DEBUG/DarwinBoot.map', mapping)): shutil.copy2(source, destination)
     require(fd.stat().st_size == 0x300000, 'Entropy FD size differs from the board contract')
@@ -76,8 +78,8 @@ def build_firmware():
             images.append({'kind': image['kind'], 'sha256': hashlib.sha256(image['data']).hexdigest(), 'bytes': len(image['data']), **identity})
         modules.append({key: module[key] for key in ('guid', 'volume', 'file_type', 'ffs_sha256', 'ui')} | {'images': images})
     source_images = list((built / 'AARCH64').glob('*.efi'))
-    require(len(source_images) == 53 and all(image_identity(path.read_bytes(), 'PE32')['machine'] == '0xaa64' for path in source_images),
-            'Full firmware source EFI set differs from the 53-module baseline')
+    require(len(source_images) == expected_images and all(image_identity(path.read_bytes(), 'PE32')['machine'] == '0xaa64' for path in source_images),
+            'Full firmware source EFI set differs from the selected modules')
     artifacts = [fd, efi, mapping, command_path, makefile, package / 'Driver/DarwinBoot.c', package / 'Driver/DarwinBoot.inf',
                  package / 'Driver/DodgeBootEntropy.h']
     return fd, efi, mapping, {'source_efi_count': len(source_images), 'volumes': volumes.volumes, 'modules': modules,

@@ -1,0 +1,2752 @@
+{
+  "result": "CPH2653_ENTROPY_AND_LOGGER_FIRMWARE_PASS",
+  "firmware": "build/cph2653-native-a830-firmware/SILICIUM_UEFI.fd",
+  "firmware_sha256": "4334a58fd1f5128266e2b27419c912cccdd16879f66b5576bbe45e47f6f41358",
+  "efi": "build/cph2653-native-a830-firmware/DarwinBoot.efi",
+  "efi_sha256": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+  "mapping": "build/cph2653-native-a830-firmware/DarwinBoot.map",
+  "source_sha256": {
+    "scripts/build_native_a830_firmware.py": "5cb8070bd4f731c7d89122ddda2abe67392d49074162dfc6d034f4037050daec",
+    "scripts/build_entropy_payload.py": "eea0763f56bd8be073dc89b01cee8190539793f388ce88a729279b8f7f17f9bd",
+    "scripts/build_boot_entropy.py": "5934d375398437ff74899ae3407e419cc8b6e837cf1e11b3ba849e76277c8c96",
+    "patches/darwinboot/0002-refresh-firmware-entropy.patch": "3430cea779b9a952ad7557f8346c13d7fca4af5b4e65ab1dcb219564bd75a1dd",
+    "drivers/DodgeBoot/DodgeBootEntropy.h": "47612a059c3e18f15ae14ba8180488f4e2033fc01b41d957c997eab7912d5567",
+    "sources/UniXNU/package/UniXNUPkg/Driver/AdvancedLogDxe/AdvancedLogDxe.inf": "77dced57e7fad55121dbab8241db5bf92e2f31e396925bac91b65d2e5649b2de",
+    "uefi/Mu-Silicium/Platforms/OnePlus/dodgePkg/dodge.dsc": "9f3d70ece1a0c3a6646cd7dd237f6524eed4019ae16abbdb223afddc530f6b9b",
+    "uefi/Mu-Silicium/Platforms/OnePlus/dodgePkg/dodge.fdf": "4107c1f014820a9b90d1f365991e49282ac3e65c3060938b25b8e99377df24a0",
+    "uefi/Mu-Silicium/Platforms/OnePlus/dodgePkg/Include/DXE.inc": "48cc6c4c5507bbdf06b8b72528a47472e78f132d5b73b826d1b608cf0f8608f0",
+    "uefi/Mu-Silicium/Platforms/OnePlus/dodgePkg/Library/MemoryMapLib/MemoryMapLib.c": "71e096b88be2700c2bc92eb58f64dbfa2bca585ff5713de78179ca3ade557ab9"
+  },
+  "artifacts": {
+    "build/cph2653-native-a830-firmware/SILICIUM_UEFI.fd": "4334a58fd1f5128266e2b27419c912cccdd16879f66b5576bbe45e47f6f41358",
+    "build/cph2653-native-a830-firmware/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-native-a830-firmware/DarwinBoot.map": "3e3a670e123e61d852d2d07dd149dde7b43bccc7925510c2a1d8c6bf879eac37",
+    "build/cph2653-native-a830-firmware/build-command.json": "2b9ab0cfd3d6be69c7f7164e6a28f3139ce4b802caa377da4be40c1362ca0273",
+    "build/cph2653-native-a830-firmware/tree/Build/dodgePkg/DEBUG_CLANGPDB/AARCH64/DarwinBootPkg/Driver/DarwinBoot/GNUmakefile": "8d45e1b5fbadcb3c3a506ea145a07ca07a69d2528c1f53418bb3fd2f33318be8",
+    "build/cph2653-native-a830-firmware/tree/DarwinBootPkg/Driver/DarwinBoot.c": "aaec6ed9ea795e47287f0518e5d2e76e65c83f2e6699e45912d5bf77b8503988",
+    "build/cph2653-native-a830-firmware/tree/DarwinBootPkg/Driver/DarwinBoot.inf": "05248d62d1d1b5c4241a820f737ea9afb374791e5031e658a5a79b4775ec402e",
+    "build/cph2653-native-a830-firmware/tree/DarwinBootPkg/Driver/DodgeBootEntropy.h": "47612a059c3e18f15ae14ba8180488f4e2033fc01b41d957c997eab7912d5567"
+  },
+  "source_efi_count": 54,
+  "firmware_readback": {
+    "source_efi_count": 54,
+    "volumes": [
+      {
+        "location": "entropy-fd",
+        "filesystem_guid": "8c8ce578-8a3d-4f1c-9935-896185c32dd3",
+        "bytes": 3145728,
+        "sha256": "4334a58fd1f5128266e2b27419c912cccdd16879f66b5576bbe45e47f6f41358"
+      },
+      {
+        "location": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "filesystem_guid": "8c8ce578-8a3d-4f1c-9935-896185c32dd3",
+        "bytes": 7651328,
+        "sha256": "f21463a4150f2a1371e4a2eb72e8c38a7c8502e2fdc6eac11384abc14cb0fa81"
+      }
+    ],
+    "modules": [
+      {
+        "guid": "9affb503-e643-4141-8b90-17e8588b1d35",
+        "volume": "entropy-fd",
+        "file_type": 3,
+        "ffs_sha256": "5aa262de3f6cd6075cf7bd3343e53164f017d1274304f3f417710331fcef8a42",
+        "ui": null,
+        "images": [
+          {
+            "kind": "TE",
+            "sha256": "554837784c094a7a7b0cfa7712abdf9b71e51f9a2ef6cd452dd219afe57738f6",
+            "bytes": 65192,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x9ca0"
+          }
+        ]
+      },
+      {
+        "guid": "fc510ee7-ffdc-11d4-bd41-0080c73c8881",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "6d91c3bd5dd03eba0896f3dbd088a29953f0f0600082ca611e87c3199b73ba3a",
+        "ui": null,
+        "images": []
+      },
+      {
+        "guid": "d6a2cb7f-6a18-4e2f-b43b-9920a733700a",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 5,
+        "ffs_sha256": "8ab083f19f29c2a25bbe135dfe9c0dfb7a77e3244d2a199a905011dbab6a81fc",
+        "ui": "DxeCore",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "6dcf320cff91f2a9dbc54f934e9d9f08197f7f1cc1cf4433ca9636867bf70587",
+            "bytes": 173056,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x12f4",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 124928,
+                "raw_bytes": 124928,
+                "sha256": "2f6a34b9f0c9521fd50ba11054dd8b6ac144a41fd8241f6173b5e8043a736207"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "80cf7257-87ab-47f9-a3fe-d50b76d89541",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2ce22bcc5bddabe7295b2b4951a7e797dee16dab41f1849c25883aacba94bb79",
+        "ui": "PcdDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "9a6042d8a799bfbe79bdbcce9d10ab2b42ffda2552302ea812e2f369c6c4261e",
+            "bytes": 29184,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 18860,
+                "raw_bytes": 18944,
+                "sha256": "ec300a1d5ed75f39108bcf85c405ef7d6dd6d8cb722b9f042f2f39e36e10e57c"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "90a49afd-422f-08ae-9611-e788d3804845",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2a74ab77081cda8fb0180941d578d3576ed18dae55b456b159a10337f2d7af5c",
+        "ui": "EnvDxeEnhanced",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1405dddaed23c1ad6ceb62d5761563b04acba639e8fa6acda29d5d606cecdfb6",
+            "bytes": 77824,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 61440,
+                "raw_bytes": 61440,
+                "sha256": "18cac637c94751f830a5c8d34385c34fd4547441a2d160eb074b2fd9b6d116ec"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "d93ce3d8-a7eb-4730-8c8e-cc466a9ecc3c",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "137c8a1bfadd6fb8853e3e82ebe37ca3842770605829cfa640201e02144258b9",
+        "ui": "ReportStatusCodeRouterRuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "fd827faefe57887585a3886e469880f4b571609496453b482ca9cd0bb535a65c",
+            "bytes": 9216,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10104",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 5948,
+                "raw_bytes": 6144,
+                "sha256": "69a7b62ad72c3ab45e4fb11fb63a81aae145223da9e225e95384429afdec37bc"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "6c2004ef-4e0e-4be4-b14c-340eb4aa5891",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "5e8354d7b2419218955f3ea1ff52a3f1a9d03d877aae3fc232b1e0c0c4463dc1",
+        "ui": "StatusCodeHandlerRuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "d5e5ca23098a23b0a22b5d57ad513ac6800d8790451fead819ca6f5d314aacef",
+            "bytes": 19968,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 10416,
+                "raw_bytes": 10752,
+                "sha256": "8e26086e609543ffba0baaf4c8475a9eb35b8e8433ae5fc16377e766635096e2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b8d9777e-d72a-451f-9bdb-bafb52a68415",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "ebb90d476f8103a320e538334cb0af657f8ebb69eba9b02b42800192b3b5cdf6",
+        "ui": "ArmCpuDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "94f59ca50aa062193f4e001a34c365f082c0b665eda40cac3bc1d1e175df1a91",
+            "bytes": 45056,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x11ac",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 26624,
+                "raw_bytes": 26624,
+                "sha256": "6040b0524dfffbbf99057d8608bfe8b589d72bae70654150e38448121372020b"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b601f8c4-43b7-4784-95b1-f4226cb40cee",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1c04417cc86c7ebb1b08febbf21a34f7c3b67cbe7daa0ed68671d7051f167238",
+        "ui": "RuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "ee5dd5a591b001ba590c2e01d1af53f5e0f9f6f6fa29e44c013e19a79f7ca5a8",
+            "bytes": 20480,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 10208,
+                "raw_bytes": 10240,
+                "sha256": "79f7b7a1e5e5b0337e07e2071844be356cf0dad8832297a1760addf509e1d72e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f80697e9-7fd6-4665-8646-88e33ef71dfc",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "8d63a7f8e974c9362e0a2da1779dc46523edc2229ba2eff33349433b4fcfcad3",
+        "ui": "SecurityStubDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "3afce96552f726ae1c131bc42e0c0aa024a161a2837a061e9a19eaa7c4c8992f",
+            "bytes": 31232,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 17656,
+                "raw_bytes": 17920,
+                "sha256": "f279899724e6b2cf2d601c03c427cd2a47fd99f0489c40d95008e5f2edeb49a7"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "41ebb6a6-2c19-4c02-841d-848ce004a282",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "5b2a8554277a3c5028b07031473eeab0236a60f9846c201932d38b16c9e86c7c",
+        "ui": "ShmBridgeDxeLA",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "d7e6b4d2d20f71e3830f12995f41555fe686d8c7c03f6ebec428ca83798cb8ec",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "c4108237257788393f4d70dbe7f8827cd3b5ff0ecf1bbe10a8d5a4142bc0a89a"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "4b4973ee-401b-4f36-a6a9-533dfccdfc33",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "c861dad33bb191a7f3284668338e93bb3562d642b4ee0248a615518a18d6ca82",
+        "ui": "ScmDxeCompat",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "75a1b163d6a0d9bdea480e2bb9c0972a045ab4f882e5b0c02a213e9972f21415",
+            "bytes": 53248,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "d9f8ac55b7720b9630540674c72269db7c6e3d5bbcc3eb76cc287984e0a133e3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cf6dfc66-14ab-4e13-84db-9c02912d1404",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "dabd47c168ada4615d6f1b5b90536e27fb504ac7f0a0b9eea8a8ddd4ae2eb9e0",
+        "ui": "TzDxeLA",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "eeb415698bd4e6774d0b7ae831c35f849e68d132b8fe4cbeeb5850cbc4b55fd6",
+            "bytes": 69632,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 57344,
+                "raw_bytes": 57344,
+                "sha256": "79d2b42cb6cb562b4ffab10452dad545c12e1609b340a342258305e5833fe639"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f099d67f-71ae-4c36-b2a3-dceb0eb2b7d8",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1242b79db4001a5b61bfe106e2c8cabb60d72cd276700e8ae40059510c2d1cf5",
+        "ui": "WatchdogTimer",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "0181fb26447d77fdae0dc3ed3bb6817258c42e12686c582284aa5fdb4f422000",
+            "bytes": 10240,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 5112,
+                "raw_bytes": 5120,
+                "sha256": "911b6035a958e1cd40b52c1938836eb1aac93aed214dd7e15c7a19bc10a677e6"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "42857f0a-13f2-4b21-8a23-53d3f714b840",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "e682431d76f7859d254b9e205b67140339f00f16ebce303d1e75e76a886b6ac9",
+        "ui": "CapsuleRuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1086a55e71166b09c288cf6707333ec0f9bcfa5a2b9bdaec783a41c44bcde3ad",
+            "bytes": 19456,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 10152,
+                "raw_bytes": 10240,
+                "sha256": "355887b6cc3c2016466112c7d119c937149898164809d4e5eb9f92617c9fa41c"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cbd2e4d5-7068-4ff5-b462-9822b4ad8d60",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "fb34ec8ecf2e4cc1ac21ce4d98fda34d2cad6e36ce5700aaf14533c26845eb50",
+        "ui": "VariableRuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c9d1bcc0245697abd74e0ced42e43a6ff00e8eef4e390bda7ae7c9050500f076",
+            "bytes": 65024,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10104",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 44412,
+                "raw_bytes": 44544,
+                "sha256": "a3a9fdf298d0189b26e25ebcc88bc9b64ddd0e999269b88c42915b8b6df96994"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "fcabe6a7-7953-4a84-b7ec-d29e89b62e87",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "dd1c718e774c0ad9a730e354dc78389c597c53dc6fae519894b992b21c64668a",
+        "ui": "EmbeddedMonotonicCounter",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "7edbc6ac258a8ccc008c804f4347f3e0965c8c259dff6c759953feefdad3b9a2",
+            "bytes": 16896,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 8052,
+                "raw_bytes": 8192,
+                "sha256": "e167c5b0ae6ca5c41cf07dcab916913c95f0d8e2a940535ca54f08a8d016c399"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "4b28e4c7-ff36-4e10-93cf-a82159e777c5",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "ddf464a9e4bcb8bb2db2e7714c45ff7c602fc1d9c12f0ff09dededc721a237bf",
+        "ui": "ResetSystemRuntimeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "8dd29d925f019fa0ff01e9fa105024b9014beca0486afc824e844eef27892d7b",
+            "bytes": 22528,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 12020,
+                "raw_bytes": 12288,
+                "sha256": "be9464021bc5e08d444a61825976d119a58fd039065deefb43ce91738c9bcdb2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b336f62d-4135-4a55-ae4e-4971bbf0885d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "fc70ce3983ab2db6a6aeddfd7ed4fe5060fca025641c65d14ac1cff9290f1c3b",
+        "ui": "RealTimeClock",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2a2f5c71a1dfeaa4411d64d9b9f11e45ff334bba0472e5377cf5057dc786adba",
+            "bytes": 19456,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x10050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x10000",
+                "virtual_bytes": 9872,
+                "raw_bytes": 10240,
+                "sha256": "e37e30938d9889946d13b3c68a3769d3498fc813641fd35e5073a53a118737ea"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "4c6e0267-c77d-410d-8100-1495911a989d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2bc00761bdb00c329e8a9b10e2db4fd300f5ab1c79fd0bbd9a10da967271e5b1",
+        "ui": "MetronomeDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "b1e2dd2cf2b884833429b54f35006866173ced9edba0eada9a53aaf5c7c3619b",
+            "bytes": 10752,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 5132,
+                "raw_bytes": 5632,
+                "sha256": "62264e108c798f783b97cfbdbc2c4e7141587b9bfee73f0c011f8d2869aa3cb7"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "348c4d62-bfbd-4882-9ece-c80bb1c4783b",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "7df62ba556bf06ed89d73486678eab1c87e5b76da7d94873a6fc2a2c834cdd43",
+        "ui": "HiiDatabase",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4ad12455c7e72ce73621db6a0c3f07530c2ecb96927748595251e88febd332c2",
+            "bytes": 118272,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 97572,
+                "raw_bytes": 97792,
+                "sha256": "10bd810d4795cba231375ff5cb9d8cec957489923e51c51f30eee3afc9af81b8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "de371f7c-dec4-4d21-adf1-593abcc15882",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "00f90d70ff332a7334e89532803a39b6f7150964c76ecb90f32f8de628296ab5",
+        "ui": "ArmGicDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "fffa60d8b209f9ebe845d77128b2787378df257afda56ae5323b7365e1ffd6ee",
+            "bytes": 23552,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 15084,
+                "raw_bytes": 15360,
+                "sha256": "07cbdc704e54a5fc71de6b5d7ca229434591a7b9990694952377a9068ceb0c0e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "49ea041e-6752-42ca-b0b1-7344fe2546b7",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "a93c982c06dd2e3c6057ba525c6405c4c6acf1f4ec1e1d105fb3cb96e7d35f57",
+        "ui": "ArmTimerDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "5310186a799858d5d068cd045a0e5a9ee9a8e6c439f80456cee1de914b8adaff",
+            "bytes": 12800,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 7456,
+                "raw_bytes": 7680,
+                "sha256": "4a66bb4cc3e82e473a546dde672c98f8a78d46ecadf0261dac453a8f5561f949"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "10e193df-9966-44e7-b17c-59dd831e20fc",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "16bca08a3506a4291e6ec31a5c9e047261b37f639eaf607bd7bbe3728ffcce7c",
+        "ui": "ChipInfo",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "86dde5e8e4957d061a6a1375fed970abe5639f3b554df151bcf469781888410f",
+            "bytes": 49152,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 36864,
+                "raw_bytes": 36864,
+                "sha256": "632bd66a9f7fc2ddfc86577fa765c2029e6d612654004381965319403ef9faa6"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b105211b-bbbd-4add-a3b0-d1cf4a52154c",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "be403fa06b5cbc56bf11cf36f92146af767e6855a0fcaa76e2089841f1cd7100",
+        "ui": "PlatformInfoDxeDriver",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "094248ade9fd5d23c4f3faa405c57cbc5a91b77e238c4d35957d553d64113c1b",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "ad0ed889c044f3dd0f53950a96cfb86cb2772a0b7d185869eb444d9e4517920a"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "8e9bd160-b184-11df-94e2-0800200c9a66",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "921babcf427f2902495decce2444ff125dca46eb4f4655e6973ebf89a04d2236",
+        "ui": "DALSys",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2cd7616e8de046121b4161c096de9717f9d2ff18409fec9b6b0c7df4543149ce",
+            "bytes": 344064,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 204800,
+                "raw_bytes": 204800,
+                "sha256": "fde9bf7a2fb951823a6d6fab96c4f798dc87b3fe869c477ba2fbc21001776389"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "9a00771f-36d4-4dd5-8916-c48ed9b16b86",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "d72c9dacc8b28003445d19802b9ad5df6f2864b262ebf6f2883b41f2c634923c",
+        "ui": "HALIOMMU",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "624ff09858e34cc338d11ea2585f68748e26ab6d2b276f4ff4df2447f6ea25f5",
+            "bytes": 143360,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "9a7f6a41d9fbaf284a82780d93797a33b4fdcae2bc28082935bf1c8c41b11fcb"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "af9763a2-033b-4109-8e17-56a98d380c92",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "bebec5c762afb3e6bcf0dc00d5a5ec592e7b37da6cf17095530cb1ffc0e70f2f",
+        "ui": "HWIODxeDriver",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "e9eedfccc3e58e5afbca2257704b7c5e6ca3a1bc24efce45df9fa4f4996eee26",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "b57b59d46f8b02ad4b095fadcb7a50c99a953b6a11e6b7d99402a69d4196760b"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "04de8591-d2b3-4077-bbbe-b12070094eb6",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "c8b1abbae2bc79cf52e5d89e361b9810cb8673b64b43f9bcc1dc1890aa387de7",
+        "ui": "I2C",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "afa0170a1c358bd7bd1cd1e4b634924b63b49c0c463034e24b760d39aac4c52d",
+            "bytes": 61440,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 45056,
+                "raw_bytes": 45056,
+                "sha256": "7acdfb8bcccf617e40705074c3589b60bf0945dc6b2e39ea78ca389019754181"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "8681cc5a-0df6-441e-b4b8-e915c538f067",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "bad60d6a0449fce015eb662c8283eb48d37ece29852338da8895d3d2b258c897",
+        "ui": "DALTLMM",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a8f4ea786740f56f182c09a632243380fb6a412fa3af5c3e14a75ca69e979d89",
+            "bytes": 49152,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 36864,
+                "raw_bytes": 36864,
+                "sha256": "6985e8388b2e48deb3ec86b29809620882acfbba3c0e7df9c2995895ed877d73"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "a16b79d2-afe0-4aed-a3ab-8ce3fd0f8c71",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "38ce568c15ebfa3e12702b134719495e96b9208f30037a8c0c4ef48e9ba2e4b9",
+        "ui": "Qup",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "fd70e7dde3826452cff6829d9f36bb04eef6a8431ea05c83812f8df9ed99419c",
+            "bytes": 28672,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 16384,
+                "raw_bytes": 16384,
+                "sha256": "47f9baf9c06f800ca5527d0c94d3c8766bd1d678dd67b84bf28f94ce8449f38c"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5776232e-082d-4b75-9a0e-fe1d13f7a5d9",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "77bd27d904e01c4a9a4b24fb425b5a10f8aee103157a050f742c24a6123405b2",
+        "ui": "PmicDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "0fbecb29e2953ff2e73f5f793d642bfbc2b80fd8d5323a9bb1faca386aa9e27e",
+            "bytes": 282624,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 229376,
+                "raw_bytes": 229376,
+                "sha256": "42adb8b7398b4548caeb34140277b1418c3df4a7e6e80be5091d2afe70fc283d"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "9b680fce-ad6b-4f3a-b60b-f59899003443",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1444e70cbaf23251aca4a904ad8e37894afb7054b04c4377b7da7e2cc6591577",
+        "ui": "DevicePathDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "6e6d0ce5ee08a09fddff1e7dc17a07a0df79c278d5abe3eebf691d69fd5332d8",
+            "bytes": 73728,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 61440,
+                "raw_bytes": 61440,
+                "sha256": "a94f77d6e6736e851e25bd74259a4cf5592d5deb225df3504591aee602ff55c2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "6b38f7b4-ad98-40e9-9093-aca2b5a253c4",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "cdc2fe7c6bf45a7109dce77003c8bc6145b5691da09f15e744848766890a081d",
+        "ui": "DiskIoDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "3141115dfb23c8581f45584e5e9a34f9b3ab112ec8abd30a41cbd1c27e7579b6",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "c174fc135a005d5d94013eb56daa802ef61ee0e75b621ad9c536fb0241004660"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "1fa1f39e-feff-4aae-bd7b-38a070a3b609",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "d83b322ea40cd43fc9ab6dc4f0307b454d9b072d21b2f7b8d76612ac2af22ab8",
+        "ui": "PartitionDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "28a56dde03b4090ef294bc9ddc6037f7b3da81957e5c31487bedf956805fac64",
+            "bytes": 53248,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "8ddd4cf7bcf54938f1c6640f67c32ab9c7e7d9944d047a40fdc6a339ab89887a"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "961578fe-b6b7-44c3-af35-6bc705cd2b1f",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "8aa533d317b0c080dd015c8393512e49117fa50d26ee7d3a753e25a109582fbc",
+        "ui": "Fat",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "cb51891c38eb73ce0cd9e3bed63cd0ed508b4b63a8e793f59d344451c93e17d7",
+            "bytes": 46080,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x11dc",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 34332,
+                "raw_bytes": 34816,
+                "sha256": "f0c8133a99f6e1efec2fbe97ecd021a00b4108ee00c1c23c19c53c00e3589108"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cd3bafb6-50fb-4fe8-8e4e-ab74d2c1a600",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "e7aa1a5238fa7333a5eb32e268961028d43360f67ab86813107a8e3d6c0be7c5",
+        "ui": "EnglishDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "f98e12b3a538d638f182a7743270f646c10885cb64854166d67ed30894c9138f",
+            "bytes": 10752,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 5280,
+                "raw_bytes": 5632,
+                "sha256": "f520aee9d5a5a34214bb47553b30d81b781e7164bffe0614e5e81f8c8246cbd6"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "0d35cd8e-97ea-4f9a-96af-0f0d89f76567",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "5c1c127c6787e46c8917732c831a75e1083198d52b6eac5d889a0f33af0b1ea6",
+        "ui": "UFSDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "e76b555f7c855784cc03303ae1044c69b24f04f214a320a8e2ea101b4f3c85ef",
+            "bytes": 155648,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 126976,
+                "raw_bytes": 126976,
+                "sha256": "da2cb15de2c0eb0f9b7e45a27a0e61bb122cbb9f63ad5e9b5efba0e1669c9652"
+              },
+              {
+                "name": ".extra",
+                "rva": "0x25000",
+                "virtual_bytes": 4096,
+                "raw_bytes": 4096,
+                "sha256": "ef6ad6921202fc7872e031f40efaf20d891d9f2bda1162d3f4c97546dc9b1c15"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "aba01ff8-2ccb-4e12-8b2e-cd3f4a742993",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "78d76c908b49508685c8853bdd49a5c9935f5aa76a6ce0b4127e83961ee2c93e",
+        "ui": "CmdDbDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "521efa77750578266746249736c3aac68206a37eaed104a92c4b5147d56e0dad",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "807a6d8719bb1db293518ff33573c9dcf86631825d5d6b6a772acf7a9a4fffd5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "0401b830-bff9-44a2-a5f6-95734a33c017",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2517168891ae794de590b08b4892b22c9e2e457ba1ad1e4e1dfef8d0d0c559f4",
+        "ui": "PwrUtilsDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "52913574395a32d835d070d82b8fe1e3d07ff9ce7bc874ea507b4591b1b90e2d",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "49c63f23405a4c319d914edd06a56409037006126eca95c5bba36567ad53a400"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cb29f4d1-7f37-4692-a416-93e82e219766",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "24dacb1ecaf773ae3a3723b12f54a96ac0cadaddcf810749214e68151cfa549b",
+        "ui": "RpmhDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "7099a4ac886e48f61f737f8a85b324dc4027c43280078db6d414f25d8d1b42a1",
+            "bytes": 61440,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 49152,
+                "raw_bytes": 49152,
+                "sha256": "1d58bb172e8131144e75f35c03a626ea7b61760fd48d008a8f2b7b01ebacb70d"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cb29f4d1-7f37-4692-a416-93e82e219711",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1eef40418aa4af7da3f88d2457801a0be2597439e1296e6ce7fc01abb84eb44a",
+        "ui": "NpaDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c0556c168310bdb26b59a39e6a56e63936ae6c8df2fba4056e59c45a3767ff4e",
+            "bytes": 77824,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 65536,
+                "raw_bytes": 65536,
+                "sha256": "23fb88f6fa74b668b5dbd844e98281090976137cf197085a68bc55ba12c6b8d4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "e43128a8-8692-42b6-8afa-676158578d18",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2def7804968109b7e5d41e0b249547b2f7782897fceb1df9f117a79e36f949e2",
+        "ui": "ULogDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "e7b9142ed93978e038706de308876378bb1787aa6e3684994f06266161210973",
+            "bytes": 77824,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 65536,
+                "raw_bytes": 65536,
+                "sha256": "da1f3428ad5a0558d6d8fff29c23f21a1ebc884c401894e5c2307bdd1008ae6b"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "e3095547-34b8-4bd4-8d8f-c3223c30318d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "6ee9e53818d552b3ea9255d5b18c0426a7ad48e0dc05763e1de89d5d863d2a78",
+        "ui": "MailboxDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "441ee24901609f8bd2e9905a044d2e74b824154d884ddc92abe6b7dc0868c61a",
+            "bytes": 45056,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 32768,
+                "raw_bytes": 32768,
+                "sha256": "2f398adf1ac0fd77aa19af7baf96b0c3c7e946e05eeb22d9de4c3778b7c9b8a2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "9585984c-f027-45e9-afdf-adaa6dfaaac7",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "a60c965c18ac30709d3ea727ff62500658fbe61854a04f41c58d00e66b702af1",
+        "ui": "QcomScmiDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c2d0d1f549a4f9cc4d8d415c88b3f5d2d635d732d53c8b8d6ddd18f38768a04d",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "08ad7e5d8be0ea0f41ddf20f1659b8c9b06514b1aea7ea7a33ab836b2b65d046"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "8bd3b475-401a-4b0b-9315-edee61a1eae5",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "26262107c1fcfc6cfe19cff99998020acf691d26e98332ff4ebc0486e8498aff",
+        "ui": "VcsDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "6cb0a4f3d7409076d941a27133bbee67635237ab7a9579ea77f11316a8e8f553",
+            "bytes": 69632,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 36864,
+                "raw_bytes": 36864,
+                "sha256": "f080f2ab4a19b3267e7295dcbdf49b5851eb459788aaf53c6eeaacbf27184561"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "4db5dea6-5302-4d1a-8a82-677a683b0d29",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "040addcfb0846c9e654d8ed2b2701584672d85b93cba42b516df473717194a09",
+        "ui": "ClockDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "285d51331453f0d52476c6daf35bd594376ad95091590fe8d39310431fb2fb5b",
+            "bytes": 278528,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 159744,
+                "raw_bytes": 159744,
+                "sha256": "6e47c7004193bdedab7a44f851a9c662f580a57572e63c06614a34cd0e46b9b9"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "2a7b4bef-80cd-49e1-b473-374ba4d673fc",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "91416da360f09809eeda599c9aebc20c893be29290fe6e8cf9af9c04cc15d5c7",
+        "ui": "SPMI",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a4f1d44225dcf8d1d121109276e72508b8d2e491683e93d0079f797b8f7e5c35",
+            "bytes": 45056,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "6352416633753428d8e3a199735292e7a132387410678fd248e490f364c577c3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5824f9de-17d2-4b1f-a5fe-5eb77fa53093",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "949c76f91e07139e0b5765290db3767b9a9fdcd3fcecdaf1194ae373a089097f",
+        "ui": "ICBDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "b8cdd560f414dce941205f4c85c9635f0e3a7a3baecd1ba965ec47089ac3a0cf",
+            "bytes": 188416,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "1c1e9e747796ccc0372be5bbdab70035da51119f6c7d65a19a0114345b167880"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f541d663-4a48-40aa-aabf-ff158ccae34c",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "65dd4df227963f645dc51d5416fbff74d67d6f88497b890f3c13160dd610f667",
+        "ui": "SmemDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "011eb594d9f465a73c4ae7fb5dc61adea0d15cca62f105d2b1f4c60bdbb17ffd",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "e8644365ed11a171f9ea7439742b1d4467c0fc146690e1a3e15de67ff051ac86"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "6d33944a-ec75-4855-a54d-809c75241f6c",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "e924f75c916ba1212fb28d9868894ba004590de7b382a09c60cbaa277bebaf12",
+        "ui": "BdsDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a69d59d16665f5f307c50053c4ff7ac602917e7816ed7b3fdb58b56c91c3b307",
+            "bytes": 381440,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 82704,
+                "raw_bytes": 82944,
+                "sha256": "e8fe54d8c4a174c2e8b39bd509bb2702efa43935524559d836c3cc5138794301"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "ea888df7-d431-44af-844c-7b29390f2758",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "ed3f58fda5def9546c2793a0ba4f726e84d22e838116b788e3dffe3ad6dbf610",
+        "ui": "RscDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "ccfb769ce19c122e4f68103817e22b00e8a7b2717e6fe48bc9c757690efa0ef6",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "aa8c04daf30811669d621167c09d19bed945bc8783cdf28ed0a850e424016582"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "6696936d-3637-467c-87cb-14ea8248948c",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "6a2c7335a9b1b73c17cb1387784b4bd90a80171a989ab6ec470fa52c5bf0c5ad",
+        "ui": "SimpleTextInOutSerial",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "f963af9f1f00e1b75b16d7739820785e7d393006f083136bb260e08e4dde69a9",
+            "bytes": 19968,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 10164,
+                "raw_bytes": 10240,
+                "sha256": "f4c5d5ac585049514a0fef18f54c3b7deea3bc5d7003b5f7d931d13250f294df"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "79e4a61c-ed73-4312-94fe-e3e7563362a9",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "67e159c22a3f47309280acd990ae127d0812bf43cb560067252c2e84bb5d361c",
+        "ui": "PrintDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "7cd3bb346c24c2e590f6559c845925de2faedf6e396f66a293f25785816c9292",
+            "bytes": 14336,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 7504,
+                "raw_bytes": 7680,
+                "sha256": "1290af09200f68178b960485607c90725e2c7d86cbd025296fa8362429738ee7"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "51ccf399-4fdf-4e55-a45b-e123f84d456a",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "772bc63f356edc09fd3964725fac936fa8c5d45be1a4ee0c80a5e06c5c505bff",
+        "ui": "ConPlatformDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "8a8308b1e6e2e492136b818177bcb997c0eeec3ed7252a2166e9690ff363089c",
+            "bytes": 21504,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 13904,
+                "raw_bytes": 14336,
+                "sha256": "f7f4c3c47a945320e3e55178510d834d8e07cb2312a7f0567ab283c2cd803c41"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "408edcec-cf6d-477c-a5a8-b4844e3de281",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "6ec9690e5c368862c4aa79bdcd6eea69d251a4ee31dd26142ae721eef7e18ec8",
+        "ui": "ConSplitterDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "e7db6555ac2ff4e2b921b9cd4229fb61019b393979398af8dbcc62581c435d66",
+            "bytes": 31232,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 22176,
+                "raw_bytes": 22528,
+                "sha256": "906849b5f30113ac4b512732aac726a6c28021be5eba9c027dc863d9ae4672a8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cccb0c28-4b24-11d5-9a5a-0090273fc14d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "501ede9c654888c28d8494b108d843641fbb23e02b5a5ad87d1d35da483f97e3",
+        "ui": "GraphicsConsoleDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "9cd7e351ef6359ac6bbd3cf9d174acd11982076489bcd5a26052c9e02cb3b464",
+            "bytes": 26112,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 13340,
+                "raw_bytes": 13824,
+                "sha256": "4a524b9e70a21713db55a095e8da94f4a56fcfea82485ea298f9210f39fe4b12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "7a32bd23-f735-4f57-aa1a-447d2fe3be0d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "37c0eb8e173b35ad5133aa22074b8299e84a776344c7fef1752c4fba733d1dae",
+        "ui": "SPI",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "7a70c89627891b638f1521036d73b6bd9bf927c9347d85f5d5e78dbbf83ee7c0",
+            "bytes": 61440,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 45056,
+                "raw_bytes": 45056,
+                "sha256": "7b924e5275c2dc2423c2c3005a06bff2a5bdb27b3c585cc4fbddf27ca54e0779"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f10f76db-42c1-533f-34a8-69be24653110",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "00c3241430f0a3a2e98c7c66de13480321b9c656307d1045dd612f8536b9537a",
+        "ui": "SdccDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4218ea8fd711f50e4b2f3ab39fb564eef3db9e50c249c6e0299ec196ace7e133",
+            "bytes": 126976,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 102400,
+                "raw_bytes": 102400,
+                "sha256": "0da5192f122a08b6c0b6d86f8441cbdbeb6405c4936233efa64190bc41e02403"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "1c04f529-0612-4319-9315-b2e75c16810a",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "6224def9e81ebe1ec802027a84c486a6d78ddd717c744653d9e708187dfb48c7",
+        "ui": "FeatureEnablerDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4d89b2594d3c991e2a6de0d4a82c994a334d95cec6ae657b005fad7dfd7315e8",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "91ed061bad0330acae580a853302b72dd55c5cda75a6cce34119dccfeeac4913"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "dcfd1e6d-788d-4ffc-8e1b-ca2f75651a92",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "9b9f9ed956abe3aeaff77ae19d3bf3c3d4c3fa02cd267b623658c880b9c32482",
+        "ui": "SimpleFbDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "28c0c637973679cc15f470bc7a99e9ccc7c5a8ec56b76544a7c092443508ca8b",
+            "bytes": 19456,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 9716,
+                "raw_bytes": 9728,
+                "sha256": "f326dfdd897e1cd130f459cfe5debefeee75ebe199ade07c694c69a6171aaf9f"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5bd181db-0487-4f1a-ae73-820e165611b3",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "617f84f64d6a977a71355c0035462e4490164dc9b736924f6181ec8f2439779c",
+        "ui": "ButtonsDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c15573510f44b23c2807d3f0c3572cb70af5300b64037b1b4d16a49227a3e10f",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "10aec46d7e220e2412ac6402e48e4a1ac7dae2a9fbac79d043e3d3d026fb816d"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "2e3042f3-2bb9-463f-8866-56d75b7c4ab0",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "f3ae8f015757014242ca4ec518864530284bf92b79558d47ed917c75a2fee349",
+        "ui": "ChargerExDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2d881843fb7f6e99346ac8b78bfa559b5a00ac00f4c95e70f05bbe6cd9c8e37a",
+            "bytes": 32768,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 20480,
+                "raw_bytes": 20480,
+                "sha256": "7919628428a2cdeb356f7b231332ac77a98871bfe3f178652a04c95e80f152ca"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "42031f68-1f0b-429b-93f1-0eb0cf89ddbf",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "4412283881d1f0b0a8fac30a5e153a6d0d1a0820b09e6a8ee260ecbf6d1da466",
+        "ui": "IPCCDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "dd1cc5a4bddbb5280bf564bab4a3ab092aa2ae8d38fdefc15058336f42f7539e",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "4fcb32bbb2fef60476d3cd1cb484b3bf87726fb5a70a1f33cb8823a89b91d2cc"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "68a710ab-a58d-4c0b-be1e-5f6ee2c36ad8",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "a89a0ebbddd8e321cc526e146b5ea68c548bf4364989d2e566b303c97d53986e",
+        "ui": "OplusProject",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "97c0e275f90d9dbd10fc902d30349dcea25328a31e36bdf36faf7076eb832251",
+            "bytes": 53248,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 36864,
+                "raw_bytes": 36864,
+                "sha256": "a9f3797f1f318cc95b4819a1240ce59a780e836f1d239ca6b6d94bf3f9e2a498"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "6d4a9cf7-cc0c-42b0-aa89-f6a6a8d99273",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "c2ef8cbf268da27433559c44ae0dd85c6d01d8d965b73dc0869c7beb8250bf16",
+        "ui": "PmicGlinkDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "3a7cb058a94df7a9d42a4135f5b7a0cf77547154547e4ddc3bf216ec746484dd",
+            "bytes": 53248,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "fc93f24b80eedcff32a1c9bff5ccb4da3d6b692bf64d356ce6b1bea381d6137f"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "4bce7f36-428e-4393-99e3-7e0844404dba",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "3db10be44137031fe5d296cd39f844135406996cea1fe1a64f970b68dee3ecec",
+        "ui": "QcomChargerDxeLA",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "6f2e3797c50564460f728b6e45f97cb8237123e4af564702528e3bf371cbecee",
+            "bytes": 147456,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 131072,
+                "raw_bytes": 131072,
+                "sha256": "b0af00970de98ce1e10a7f0e048684e2899657d38be2b6e8c056c7ab2e687374"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "11faed4c-b21f-4d88-8e48-c4c28a1e50df",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "24aa6ad84c891b3e849499e65279510a6c72e183c90ebd6f7dd67ff503342524",
+        "ui": "UsbPwrCtrlDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "ab28667f6f3eee66baddf757ba313c76a3397fc713003166d9a78fab6f073976",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "da78ee583413fc9ac27eb4223f366ce0c7a09842f46c3cea7941e5113b6f9c79"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f09ad92e-485c-9cdb-3e05-3385c38f94cc",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "50235f5372873acb0d2592b5d38d6d232c87f6c420b8c4614f2f6ab360ab2585",
+        "ui": "TsensDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "e6c3827ccb74f15f8c2f38c49fc3f4ae83a517ddf40b1a80b6e05bd657c3a4bc",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "5ea57a04286059fc9e49bc5d8e513bc5e0fd5649ec576032ad44b397fd487ef6"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "7db0793a-4402-4be1-906e-d0fabad2707e",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "49ccc79970c679aa14f2de061b810ef26f12e84b2f69f31d4c3e5305b70c326f",
+        "ui": "DDRInfoDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1eb7130c0b3fba6d540567af0fa2d62aeeb7feee3865726c080f1e50a1fbcc7e",
+            "bytes": 45056,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 32768,
+                "raw_bytes": 32768,
+                "sha256": "4923302c3692a1b7e4f3bb78a4e267988e11cca992fc586b6004c58134b2826c"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "94f8a6a7-dc34-4101-88c1-99179cceae83",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "5ea1094bcdd312a320cc0b52c7c99536e6354e226b7261bd00ef1bf19b937693",
+        "ui": "UsbfnDwc3Dxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c1977e23c78721c4c8827080ff227909224f40e7134894bff347436b5a09ad54",
+            "bytes": 98304,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 86016,
+                "raw_bytes": 86016,
+                "sha256": "7a856e8d4f9010b19eb743441143809789de7b4914a91418d9de5d02e63364ea"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "beb12bee-f6e1-11e1-9fb8-6c626de4aeb1",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "faff243b29dde066b7a735f1d951018bcbedeee78bdb2a32c1e892b94c7ea36f",
+        "ui": "XhciPciEmulation",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "3bd89688b109faa1d5e5bc5f006698bf061bbecdf5255cbadee4e791cb9bb91e",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "79e927034e46e62898769586cb92991e54815d6d5b8c2a76a5dc81adcbe1643e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b7f50e91-a759-412c-ade4-dcd03e7f7c28",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "39e3b1d06779874f9324eac478fb339ec112b23d095744862e3993ff114d7259",
+        "ui": "XhciDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "bfa86fe4144e83d790e7adb2c2b8df9963d9d5bc4db01ed1ca276cbc76b5b91f",
+            "bytes": 90112,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 77824,
+                "raw_bytes": 77824,
+                "sha256": "6f44916e01cc6f01e47351293fd26ae48865a1d3db65f443e2bce3796ed897fc"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "240612b7-a063-11d4-9a3a-0090273fc14d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "b81ea5ba8a8de5b0bf8cc1f88ef14ba56108915a57fd53448eedda2eb1da79b7",
+        "ui": "UsbBusDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c01001ee10b289fc97b27b9bc01f024d2b380141bd860ccc1a61a8ef30b43f8a",
+            "bytes": 44544,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 30000,
+                "raw_bytes": 30208,
+                "sha256": "7e4ee6e3169da1ca12cffb9574e519fe430d95bdc0884821a7fe91ce325d8813"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "2d2e62cf-9ecf-43b7-8219-94e7fc713dfe",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "60c031c7168cf790df7d75a059e62d4562447aebe89291c54ee80562aba9e59b",
+        "ui": "UsbKbDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c90392025d0590b2f4a94e51fcebe302c40d48aedbc0bd3e67678d0fe5847bcf",
+            "bytes": 27648,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 17820,
+                "raw_bytes": 17920,
+                "sha256": "9306e3b95ef0758a182ef919a41295cc48b241ee219f6c4ccbdc89b5a5c8f3d5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "9fb4b4a7-42c0-4bcd-8540-9bcc6711f83e",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "dc25d321374e8e38cced4dcfca5746deb2e87a9b267bf2742f1b1c01e413db3f",
+        "ui": "UsbMassStorageDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "78d1d979c2ec1adb13d69f7723f0696308ba358167e6cb5ebf991d7540fdf0a7",
+            "bytes": 26624,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 17720,
+                "raw_bytes": 17920,
+                "sha256": "ed3a09523acc9db8dfd0f6c175b07ecaf027f9ac5b783306d5783bc72a044cf3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5af77f10-90df-4e7e-8325-a17ec09d5443",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "61326a15d966b0cb8347faaff60c3a36642f9071559af21474ef9bc927b4bd97",
+        "ui": "UsbMsdDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1ef3af51e1d9f3a4149c3cc9a73f40ffdb2286e65a221add1852d3100b9a995f",
+            "bytes": 61440,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 45056,
+                "raw_bytes": 45056,
+                "sha256": "1b20dc1c5742684d66d03fb42069bad63014cce380c5b10950ef2f36e13f14d4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "3299a266-15f0-4346-8318-716336736d3e",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "0f521890590c1c5f622e7f38ceaa19b52ab61a9f310b071794abcdb4efe0512c",
+        "ui": "UsbDeviceDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1f68e78043dd561e78979277e17e25f7e5f215a317b18d7f7bd19b999f1b1eae",
+            "bytes": 53248,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 40960,
+                "raw_bytes": 40960,
+                "sha256": "8be5544dc4901ecc9151ed6d11b690b1ab20465ecb6a699ab9c305fc19a4b1d9"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cd823a4d-7dec-4531-ae5d-4134fa4127b8",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "ece186e602f56a7526921e54bc1ad426e64325e14cd30ceb54ec03da4244d238",
+        "ui": "UsbConfigDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2525db2fc1cd135e08921bb805e175f4809770b81257eafa6d804501396433fa",
+            "bytes": 90112,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 73728,
+                "raw_bytes": 73728,
+                "sha256": "93b7e59f8ade22773d803225bef4b1f46d6aae174500d43d9d457f2f00fb08a2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "0a134f0e-075e-40b3-9c63-3b3906804663",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "d29749e16c7d0dc195a7dea50d963f8f0ff2e1c41ebd0f79cafc0e98f6d8886c",
+        "ui": "UsbInitDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4b5c0794f52316e8061617b9837c8e7780c0e855b85e6e67d2dae238b374bf5a",
+            "bytes": 28672,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 16384,
+                "raw_bytes": 16384,
+                "sha256": "250c2b5ca53cbca981c00eefa7e6c292d1019e9448b698e6ce1964f85bec0775"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5f0937cd-73f9-445e-b320-bb6fd5d3cbde",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1a61a6d2eadd4394fdb0e0c25b7dd9d5afc8ff7b829db10dbe3cca33315dd911",
+        "ui": "UCDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "9fc74b18270dbf0e7d8550bd19126f75c65a81a664e1fa7633fed43f29f26afd",
+            "bytes": 192512,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 180224,
+                "raw_bytes": 180224,
+                "sha256": "a5d492c32e262b2985d73aef92ac13b3a05faf03c68102a264d6e3f907f9cf0f"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b0d3689e-11f8-43c6-8ece-023a29cec35b",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "1a08cfb1872f795bc8c82a4ceb1f70c05617d311b4318f4e83d6b9a421fdafa1",
+        "ui": "RngDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "671bc6943c02401fc70ff5754d7df8c4eeca4a7cbc78a7125fe5babd6aeff55f",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "14dd5d7c7e8452ac5c8ac3a25bb0071af7a71dddd45995aff69de1cca3789f22"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "1d317734-4083-47c6-83ea-e3a42f2a6bff",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "0ea62e586cade838db6118d5b6aeed81fb054fb42d469f6dec9ed0a643591721",
+        "ui": "PILDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "c7260bcce55b30b4601b4485b93737f16065178376aaa0a076e750a641549500",
+            "bytes": 114688,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 81920,
+                "raw_bytes": 81920,
+                "sha256": "6632376b27b44905497942aa53693a2d9a254de06d240e21c1307a55d8e53f43"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "8cf9c920-d5e6-4dac-bef9-6e6a4eec7add",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "921296215b040c3f481d3ba966c9b03c54b12bf43caab5be8e470521e4a4d3e3",
+        "ui": "PILProxyDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4fbf96b4710895a899fd6d6f2d27841304b8acb7ed278cfaf8c339c4b03ea769",
+            "bytes": 40960,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 28672,
+                "raw_bytes": 28672,
+                "sha256": "556e4054d7726e70a414da6faec76663029714e522c513548e24a16aa8ab3609"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "5d787b6c-6254-43f5-a7a8-cb25329cf97e",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "c4b921c181a96a5fbb0deefb5e822d452f2bef78c26a90876fa7e40523032ff9",
+        "ui": "SPSSDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "364938f5c4ca2838ac51ede6075bd28c5fb7b3da16c3be88f382011ce0b8671a",
+            "bytes": 36864,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1000",
+            "section_count": 3,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 24576,
+                "raw_bytes": 24576,
+                "sha256": "d07977adb7f1a43cd8173dfdf4db22552ba1da7af170b076b1ab1fc7c5c1f3fd"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "a1e235de-e825-4591-9623-c43175811826",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "49fcbd6ad13d5b1d63bd80f07b77d47bcc580d00f358718b68d65bad05485b89",
+        "ui": "SecParti.cfg",
+        "images": []
+      },
+      {
+        "guid": "21e9bdd9-6c3f-4f10-84a5-bbec322741f1",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "b65af5358cf2e1c088741a512939f62650c572d2602d2fc52d336fad629e1755",
+        "ui": "uefipil.cfg",
+        "images": []
+      },
+      {
+        "guid": "9b665204-a133-47a2-9396-9e2b370a4e25",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "b47bac6aed7d1735af4a612f1d0de2e0ca99b744966cb5e8670e674e2ccb5f45",
+        "ui": "UniXNU",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+            "bytes": 97792,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 67648,
+                "raw_bytes": 68096,
+                "sha256": "9745e96fcbf6fc94ff09380a9b7c3aea239c665d09e07ce7e46f45dad32a0f2d"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "29b950cf-586d-49ea-9d71-f88645ccdaf6",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "2948bfa15edfd1196cc77bba4e7e0e605b695348a5dcbe3077de71f2720f11b7",
+        "ui": "UniXNUDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "cae0d4efab41d36b7b88fab92ce93fb4b3ee5dc75e5bc9a3ac04df8a1cb6a5b1",
+            "bytes": 15872,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 9268,
+                "raw_bytes": 9728,
+                "sha256": "bd7f595512028c368b72631f24ba09212c94aac8eca76216c530016eacb7b480"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "75ca63ad-fbae-4a06-92a0-f937c671251d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "45c8233f8542703b61124714d78e9884485a8e36cc22b0b6c98b001780b59234",
+        "ui": "UniXNURamDiskDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4a89632761ad24da44c1582136905502608aa76e8c521ca352baf4ea6a5778ad",
+            "bytes": 16384,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 9388,
+                "raw_bytes": 9728,
+                "sha256": "b9f233e234c6cdeb8b96fdd696efa5a6b9f5bd51fd14f66bb161bb0376ea5c6b"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "1b64af87-8415-4b57-9b16-680d70913b9f",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "87ca68af12a73c42a38475c81eb4a9a74250c159daf43f30ccba66d4ce1721e0",
+        "ui": "DarwinBoot",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+            "bytes": 29696,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 19136,
+                "raw_bytes": 19456,
+                "sha256": "34d6299ed03ca0a6f329ffbe64ed103d0a78b673c241a5a8d6489e50af270ba0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f4c010c0-96f1-4b49-bfda-e982b807f44e",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "bb755fda09d79d5330b006c25fa7aa27cf313de725ae7758b0ee87c75a4db2c2",
+        "ui": "RamManagerDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "a0304540ed912d230dfd0c53e406c3c01826227a898a65491ab207eede112278",
+            "bytes": 20480,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 13176,
+                "raw_bytes": 13312,
+                "sha256": "42cddb325c4a01398250394e6e3118e379b8cc8f303176195052b129b6603118"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "f9d88642-0737-49bc-81b5-6889cd57d9ea",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "b4845b8f6007f43a6be21b7bd231a79cb23d5e22e52cd5aa1086d26ca2e3039b",
+        "ui": "SmbiosDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "4fbfd1d4521d342d8c9c3adcbde1b7e222e743c329631cbd9ccaf08a1aa492ec",
+            "bytes": 23040,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 14200,
+                "raw_bytes": 14336,
+                "sha256": "e860b63b79a0ff9faf1a03d872e7e8ea32048ad7318a8df5bb42755b0bcad7de"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "50a15b6f-e3a9-4192-9640-369cb367c4de",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "0426739c41e013e85f5c39005c3ce3ed0ecf9727d438a261ac5ad4ad7ebc8f58",
+        "ui": "SmBiosTableDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "20f700eb91081eef57a1becc61bd19b0a1980737dc723b0cc1232f1db590324b",
+            "bytes": 20480,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 12124,
+                "raw_bytes": 12288,
+                "sha256": "6e1dd620ff9ca851b6db7ff8b413d1d3c81dc577c35a6d61c0f8e4383d0a6e51"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "17f55a7f-ddb8-4152-a280-e3984b6eea94",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "cf877258d3eb85c904ebde848103b605b71f032501e7aacdb1651cf142d15f56",
+        "ui": "IortDtDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "8688726ddf60d26454dfdd30c1a88814c12757cb2d9a8a83f12a95be2a1a8765",
+            "bytes": 19456,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 9520,
+                "raw_bytes": 9728,
+                "sha256": "d35b94402dbdd56d2955d41b8487817fa6bc52801f483da7fc2577ef30a3d2e9"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "fc097b3c-2ebd-4a75-a3da-121dcab365cc",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "ff3480ae2c14a1badc22db3d7fbd15e480678b4d857aafbeba406cdd90cece2d",
+        "ui": "DtPlatformDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "2e50043f92b889cf158d43282fa0203d9d772d68ec40453b0c2e8e71e7277d4b",
+            "bytes": 14336,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 7700,
+                "raw_bytes": 8192,
+                "sha256": "ae48c396aa1ee8b5db9a878116773bdde62104970fcb9839794654c42fb47ec4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "25462cda-221f-47df-ac1d-259cfaa4e326",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "91989635ea3a2fcfad6e0e902bc29e4cc41e016dc79f1a28c84da11dcc35f576",
+        "ui": "DeviceTreeBlob",
+        "images": []
+      },
+      {
+        "guid": "8d4e7f50-3a2c-4c9a-9e1b-50c4c8472d41",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "e82c836e6e8b7151ade10d232661f534d6c7e8c4b198bbbe865aac7af8e80152",
+        "ui": "AdvancedLogDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "8c7d5fcb02c0880645ab39dd44268016a2cda37f2b793928b87b5eac5780debc",
+            "bytes": 36352,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 21104,
+                "raw_bytes": 21504,
+                "sha256": "1baf52c88b90f0f3d93886604cbcc294f7d35363bf6fd2281420c9d456f323df"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "fb14ecd8-9432-48b8-a692-ae4bc19d568b",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "7c742bcd4cc8d902435da260afb0c7f0d2a60df100769c8dc5e47b2465c4332f",
+        "ui": "MassStorage",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1885ea7034278a1b0ccc033c3f628d146ecb405ea7891973636d1f1c82d8038d",
+            "bytes": 288256,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 17980,
+                "raw_bytes": 18432,
+                "sha256": "7a5030dc575e38cd1457229d9bd2bd13cfa3ec7e7e77bfe59e04ec4ea583ccd1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "b8e62775-bb0a-43f0-a843-5be8b14f8ccd",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "4f41ebf0ae124d5d3ea6063f75a777c99d3b75678f798390a435cf8a9feca42a",
+        "ui": "BootGraphicsResourceTableDxe",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "9fb170d60974edcd808dbba2eaa56193a531c0d6f733a17d2c89a9c21b9ef2f5",
+            "bytes": 13824,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 7184,
+                "raw_bytes": 7680,
+                "sha256": "abb4a9a1d8656ba3ada583b233e3308c693bed880c241fbc9db5e91de7dfc177"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "ebf342fe-b1d3-4ef8-957c-8048606ff671",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 7,
+        "ffs_sha256": "288d22dff0d22c3b35a9d98c726956d05595d50ed5a7864b25ed02de142be1b6",
+        "ui": "SetupBrowser",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "04ba573362b591532c2415d15ff423de864eca0afb7b1a6f66f842a3feda8166",
+            "bytes": 103424,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 85800,
+                "raw_bytes": 86016,
+                "sha256": "1673539b0b47e1cc53b414ac7c216420f89c56131c4c0e46462036fadc030231"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "eec25bdc-67f2-4d95-b1d5-f81b2039d11d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "12c3f4c2a10dc7793910b07224e765449a3b61aafdc94afa32ffd53d0899da45",
+        "ui": "BootManagerMenuApp",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "9a7270b91871835e9dec8c1a54ed87a363007a81e8d68ccb54350c55967c913b",
+            "bytes": 89088,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 62536,
+                "raw_bytes": 62976,
+                "sha256": "1724b130950825422d7369b888b5e386c38a289697cb402e834b329640338027"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "50670071-478f-4be7-ad13-8754f379c62f",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "101cadd63e4d6838e7cbe5b3d44a732269bde2d9a91f6f39d099ab6e10698690",
+        "ui": "MsBootPolicy",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "177c8ad6670f1155244686d7fe5973ce1070e545b90400dc9ebeb53714078eb3",
+            "bytes": 348672,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 5,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 61632,
+                "raw_bytes": 61952,
+                "sha256": "dfdc78a76f6a4e788c559404c48d23198c17cc1b9f274f1260cdc8fd40d5c18f"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "cc680c97-94ce-4c09-a377-4bed5e6e9cb9",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "3660f3cf8f1fc52f08fe45752e65bb2d66770c0db382c122adab60a2c64c48f0",
+        "ui": "UFPLoader",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "1d4f09d34d11c6ee8df588f922ada1c241766ed5190685de2abb8a9f8e31dc42",
+            "bytes": 14848,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1050",
+            "section_count": 4,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 9236,
+                "raw_bytes": 9728,
+                "sha256": "f65bfb9cc5b7d4528bcada0aacde844e31c041c498a75f9e4359c4cd9a525498"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "643d4788-63c8-40d2-bd7a-6842e66850d1",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 9,
+        "ffs_sha256": "b4b2a3f2407993d036222fb24db4e14b66507fc80d4870f4dedd24567cb2335b",
+        "ui": "ufpdevicefw",
+        "images": [
+          {
+            "kind": "PE32",
+            "sha256": "72de25543341ba515be3872749b5fe7501468019acb6d8d997ae4a5bb19493fa",
+            "bytes": 443904,
+            "machine": "0xaa64",
+            "entry_point_rva": "0x1500",
+            "section_count": 7,
+            "executable_sections": [
+              {
+                "name": ".text",
+                "rva": "0x1000",
+                "virtual_bytes": 257818,
+                "raw_bytes": 258048,
+                "sha256": "2c3a6f71559f95aa631c404312c6a9cbfa3cbdc9232284d4e3466de8e292ce18"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "7bb28b99-61bb-11d5-9a5d-0090273fc14d",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "66ebd6f4781efed17710d797ff233216e35313387a980cc0af880d1c34a20fc1",
+        "ui": "BootLogo.bmp",
+        "images": []
+      },
+      {
+        "guid": "1554fbbe-a3e6-7c40-97b3-9daf603a0250",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "a90db9a357cea7d65972dc6955d4cb7c9f9b2648dc2d75e7edd08a4bfe27fc33",
+        "ui": "NoBootOS.bmp",
+        "images": []
+      },
+      {
+        "guid": "1201f964-e3d0-c840-aed1-c46c3391dc43",
+        "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "file_type": 2,
+        "ffs_sha256": "243c8936e96282d6e79d066a52cbe1b7d9b2a41933475138118ae2c05a1237a3",
+        "ui": "MassStorage.bmp",
+        "images": []
+      },
+      {
+        "guid": "9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
+        "volume": "entropy-fd",
+        "file_type": 11,
+        "ffs_sha256": "b10481d12dd2beb45e59009f9a82156c674bf41dde1203cff2dd6eef8a12fd20",
+        "ui": null,
+        "images": []
+      }
+    ],
+    "embedded_executable_count": 101,
+    "exact_new_darwinboot_efi_read_back": true,
+    "rng_provider_matches_existing_donor": true,
+    "rng_provider_sha256": "671bc6943c02401fc70ff5754d7df8c4eeca4a7cbc78a7125fe5babd6aeff55f"
+  },
+  "logger_exporter_embedded": true,
+  "logger_guid": "8d4e7f50-3a2c-4c9a-9e1b-50c4c8472d41",
+  "DXE_log_bytes": 2097152,
+  "fresh_entropy_loader_embedded": true,
+  "resource_settings": {
+    "effective_memory_max_bytes": 21474836480,
+    "limit_source": "inherited-cgroup-v2"
+  },
+  "jobs": 4,
+  "hardware_tested": false,
+  "scope": "Separate full-board firmware with the existing memory layout, a fresh-seed DarwinBoot and the Advanced Logger QR exporter. Embedded loader and exporter identities are read back."
+}

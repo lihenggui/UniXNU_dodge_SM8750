@@ -1,0 +1,151 @@
+{
+  "result": "IOS16_TURNIP_CROSS_BUILD_PASS",
+  "target": "arm64-apple-ios16.0",
+  "library": "build/cph2653-native-a830-turnip/src/freedreno/vulkan/libvulkan_freedreno.dylib",
+  "library_sha256": "a70a9c43ee7eb582533e6c7766a442e95c5a36d83f33127f46a3bf15056026bb",
+  "mesa_revision": "85fda3b36405bcaea8bffc64aa4f2651dc90770d",
+  "patches": [
+    {
+      "path": "sources/UniXNU/patches/mesa/freedreno-tools-nir.patch",
+      "sha256": "77e966b6e9a725892d10889a4d8deeefb03a32ae3a007904868132e56350191f"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/ir3-darwin-build-id.patch",
+      "sha256": "be3ca7840a16cb7696d8d7e67195c8d097cf0e38a3b5011edc674a5aed9c6975"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/ir3-portable-asm-roundtrip.patch",
+      "sha256": "bfc5552bc2bd6e1668d75773cce7bf62fd19065e6281bf7da49f9ddfc2e79339"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/offline-adreno-compiler-probe.patch",
+      "sha256": "b7d7a113beb5ef99edea24858d906194d4b4755c987520545ad2f7f3136bb4fb"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-darwin-kmd.patch",
+      "sha256": "da264be322fd914ead493fd24f056213d368c49ff800b79d980e68bc686971c6"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-graphics-cache-feedback.patch",
+      "sha256": "07f397e38d9acfb0085db4c19567c84fd8a3bcd63d6fd05192857abfbde5aed2"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-empty-scissor.patch",
+      "sha256": "dec657626dcd8e8d3f1447e44574f31e4afb8c90b6ebf7d589ba10ee0f8b6461"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-builtin-shader-pack.patch",
+      "sha256": "3c606dc99643c3ca3e4736c5783348cd85cbff3fbc55161e53226ab459f34473"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-host-import-images.patch",
+      "sha256": "8bc141db41848a59b16493b4ca8a359e0f18f1cad5f14147ff18d15f79c0c3c4"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-render-mode-for-attachment-memory.patch",
+      "sha256": "853c6f507b542e8e2d3c8314be0b69b485cde68709272cb9a46268c82a28d42a"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-gmem-mutable-swap.patch",
+      "sha256": "92fe61c73cad117c5d98040eee4aafe95c3863407688f00a443b67a19706bfd1"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-current-queue-priorities.patch",
+      "sha256": "25a64d842b26336b052720ababd5fa00ef4c6507351e5b75f51492b768593588"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-frame-diagnostics.patch",
+      "sha256": "5eb8dda6e381f10fa48b62a9a497fb74a8b08c7999dea5468585c9848b2af966"
+    },
+    {
+      "path": "sources/UniXNU/patches/mesa/turnip-transient-attachments-in-gmem.patch",
+      "sha256": "89159ee0c7a24bff3c62c63f9d838711e184438ae630ff0893ec4d275fadafd8"
+    }
+  ],
+  "source_id": "476d9d7456939535936a4934adc1f4c60ea7f5c5028196ca6767445f10ca56c1",
+  "build_id": "89cef94415faf063557c9f6443a740dd5b2e4726",
+  "profile": {
+    "mesa_revision": "85fda3b36405bcaea8bffc64aa4f2651dc90770d",
+    "target": "arm64-apple-ios16.0",
+    "source_diff_sha256": "f2fc21b81ac0323c5076ae3ce05268b6207ad3b8bf94192b20708162405092bd",
+    "extra_sources": {
+      "src/freedreno/vulkan/tu_builtin_cache.cc": "ec56464c03c9a7e9dda8ca6fd7887445c7c9a277c9aca7654ba07fef3671bfbd",
+      "src/freedreno/vulkan/tu_builtin_cache.h": "4019dbc884f9a8c51d3ad6d71f46738303e5888b4ee5e65c1c820ec77977a151",
+      "src/freedreno/vulkan/tu_frame_diagnostic.h": "509028e4b2f4dfe6f1117e94a0b8ccaca7581b5eddc1ea4132ac704555031079",
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "b3bd703866a42219dbf13ca39f959352d685809c9ad2bdbcceb721064f5339a3"
+    },
+    "patch_guard_sha256": "60f03967f4d2b56807b7b3d984181792cb810abbbc6392161d4c82b03d4433a7",
+    "compiler": "clang version 24.0.0git (/var/tmp/unixnu-toolchain-6xlueghj/llvm-project/clang 58c46bae21181fb4240cf964461bea738d96d50e)\nTarget: unknown\nThread model: posix\nInstalledDir: .toolchains/xnu-linux/llvm/bin\nBuild config: +assertions",
+    "options": [
+      "-Dgallium-drivers=",
+      "-Dvulkan-drivers=freedreno",
+      "-Dfreedreno-kmds=darwin",
+      "-Dtu-darwin-abi-dir=build/cph2653-native-a830-turnip/abi",
+      "-Dplatforms=macos",
+      "-Dglx=disabled",
+      "-Degl=disabled",
+      "-Dgbm=disabled",
+      "-Dopengl=false",
+      "-Dgles1=disabled",
+      "-Dgles2=disabled",
+      "-Dllvm=disabled",
+      "-Dshared-glapi=disabled",
+      "-Dxmlconfig=disabled",
+      "-Dshader-cache=enabled",
+      "-Dtools=",
+      "-Dbuild-tests=false",
+      "-Dvideo-codecs=",
+      "-Dvulkan-layers=",
+      "-Dlibunwind=disabled",
+      "-Dlmsensors=disabled",
+      "-Dvalgrind=disabled",
+      "-Dexpat=disabled",
+      "-Dzstd=disabled",
+      "-Dbuildtype=release",
+      "-Db_ndebug=true",
+      "-Dtu-builtin-source-id=476d9d7456939535936a4934adc1f4c60ea7f5c5028196ca6767445f10ca56c1",
+      "-Dtu-builtin-pack-header=",
+      "-Dtu-build-id=89cef94415faf063557c9f6443a740dd5b2e4726"
+    ],
+    "build_script_sha256": "d09025a50594cf778ece13a77f3ff671ece74a07f55ff0c853df86d5620952fa",
+    "cross_file_sha256": "223e1d70adab2bcf874bc3676356be9b8ca3f78e3a094e22fac6947588455713",
+    "sdk_revision": "0222fd5413cf4b9af096f37b4621afa2688572f7",
+    "native_surface_overlay": {
+      "path": "patches/adreno830/0005-turnip-surface-import.patch",
+      "sha256": "421954d981accccd357f13feecda1cc7b0544cc5112eec1ad7370d02489892cb",
+      "before_sha256": {
+        "src/freedreno/vulkan/tu_knl_darwin.cc": "e46d3b6a1d52701ef5a9bfff74777c9c9dcefb3910a2fc1a034aa2ca1b47d113"
+      },
+      "after_sha256": {
+        "src/freedreno/vulkan/tu_knl_darwin.cc": "b3bd703866a42219dbf13ca39f959352d685809c9ad2bdbcceb721064f5339a3"
+      },
+      "support": {
+        "drivers/DodgeGpu/DodgeSurfaceImportHint.h": {
+          "sha256": "f5486e738c3010d6bb99fb03ba3dd15de4befc581ccc51df701035b4c24e5f48",
+          "destination": "src/freedreno/vulkan/DodgeSurfaceImportHint.h"
+        }
+      }
+    },
+    "native_surface_abi_sha256": "8e0cfffdb84ed74065dc0a9ebcdac16cd5598d964b3736d0e984236b7f4557c5"
+  },
+  "backend": "darwin",
+  "abi_header_sha256": "20ac9298bb390d86788c1fc58155e1f9581ffa942e222752efc95c67cb5670d2",
+  "native_surface_overlay": {
+    "path": "patches/adreno830/0005-turnip-surface-import.patch",
+    "sha256": "421954d981accccd357f13feecda1cc7b0544cc5112eec1ad7370d02489892cb",
+    "before_sha256": {
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "e46d3b6a1d52701ef5a9bfff74777c9c9dcefb3910a2fc1a034aa2ca1b47d113"
+    },
+    "after_sha256": {
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "b3bd703866a42219dbf13ca39f959352d685809c9ad2bdbcceb721064f5339a3"
+    },
+    "support": {
+      "drivers/DodgeGpu/DodgeSurfaceImportHint.h": {
+        "sha256": "f5486e738c3010d6bb99fb03ba3dd15de4befc581ccc51df701035b4c24e5f48",
+        "destination": "src/freedreno/vulkan/DodgeSurfaceImportHint.h"
+      }
+    }
+  },
+  "hardware_tested": false,
+  "scope": "Actual production Vulkan/IR3 library cross-build, not GPU shader execution."
+}

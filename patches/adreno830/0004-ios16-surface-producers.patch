@@ -1,0 +1,398 @@
+--- a/NativeAdrenoVm.h
++++ b/NativeAdrenoVm.h
+@@ -50,6 +50,7 @@
+  * DRAM (a fresh uncached mapping) read it. A line that differs is cleaned and invalidated and DRAM read again: when DRAM then holds the
+  * cached copy the line was dirty (*dirty), when DRAM is unchanged it was a stale clean copy (*stale). 0 on success. */
+ extern "C" int (*native_adreno_line_audit)(uint64_t physical,size_t bytes,uint32_t *dirty,uint32_t *stale);
++struct DodgeSurfacePages;
+ class NativeAdrenoVm final {
+     struct Mapping {
+         NativeAdrenoMemory *memory=nullptr;
+@@ -162,6 +163,8 @@
+     // false: only rollback of a command never published to the ring.
+     IOReturn retireMapped(uint64_t before,size_t expected,bool acquire_writes);
+     bool hasMappedJobs() const;
++    size_t mappedSurfaces(DodgeSurfacePages **out,size_t capacity) const;
++    bool hasSurfaceMappings() const;
+     /* Only a scheduler's actual successful GPU completion may call this.
+      * A timeout, interrupt bit alone or CPU-written timestamp is insufficient. */
+     IOReturn retireJobAfterCompletion(uint64_t handle);
+--- a/NativeAdrenoVm.cpp
++++ b/NativeAdrenoVm.cpp
+@@ -425,6 +425,7 @@
+ static bool needsSubmitMaintenance(const NativeAdrenoMemory *memory,unsigned permissions,unsigned writeback)
+ {
+     if(coherentMapping(writeback) || memory->scanout())return false;
++    if(memory->surfaceOwner())return true; // Publish only after the original producer grants access.
+     if(memory->imported())return !(permissions&ArmSmmu4KWrite);
+     return !memory->writeCombined() && memory->mapping();
+ }
+@@ -456,7 +457,7 @@
+     /* Once, before the GPU can see the pages: an import is cleaned (and invalidated when the GPU writes it) through its physical
+      * pages; a write-combined own BO and the scanout need nothing; a coherent mapping needs nothing. */
+     if(coherentMapping(writeback))native_adreno_coherent_skips[0]=native_adreno_coherent_skips[0]+1;
+-    else if(!memory->scanout()) {
++    else if(!memory->scanout() && !memory->surfaceOwner()) {
+         checked=memory->publishForDevice(0,memory->bytes(),permissions&ArmSmmu4KWrite,distrust_write_combined_);
+         if(checked)return fail(ArmSmmu4KIoError);
+     }
+@@ -665,7 +666,7 @@
+     if(poisoned_)return kIOReturnNotReady;
+     for(uint32_t slot=maintained_head_;slot!=UINT32_MAX;slot=mappings_[slot].next) {
+         const Mapping &m=mappings_[slot];
+-        if(m.memory->publishForDevice(0,m.memory->bytes(),false,distrust_write_combined_))return fail(ArmSmmu4KIoError);
++        if(m.memory->publishForDevice(0,m.memory->bytes(),m.memory->surfaceOwner() && (m.permissions&ArmSmmu4KWrite),distrust_write_combined_))return fail(ArmSmmu4KIoError);
+     }
+     native_adreno_coherent_skips[2]=native_adreno_coherent_skips[2]+(maintained_count_?0:1);
+     return kIOReturnSuccess;
+@@ -874,3 +875,23 @@
+ }
+ 
+ #include "DodgeNativeMappedLease.inc"
++
++size_t NativeAdrenoVm::mappedSurfaces(DodgeSurfacePages **out,size_t capacity) const
++{
++    if(!attached_ || !out)return SIZE_MAX;
++    VM_LOCKED;
++    if(poisoned_ || !mapped_leases_)return SIZE_MAX;
++    size_t count=0;
++    for(size_t i=0;i<high_;++i)if(mappings_[i].memory && mappings_[i].memory->surfaceOwner()) {
++        if(count==capacity)return SIZE_MAX;
++        out[count++]=static_cast<DodgeSurfacePages *>(mappings_[i].memory->surfaceOwner());
++    }
++    return count;
++}
++bool NativeAdrenoVm::hasSurfaceMappings() const
++{
++    if(!attached_)return false;
++    VM_LOCKED;
++    for(size_t i=0;i<high_;++i)if(mappings_[i].memory && mappings_[i].memory->surfaceOwner())return true;
++    return false;
++}
+--- a/NativeAdrenoSubmit.h
++++ b/NativeAdrenoSubmit.h
+@@ -65,6 +65,7 @@
+         uint32_t queue=0;
+         uint32_t count=0;
+         bool active=false;
++        void *surface_owner=nullptr;
+         uint64_t mapped_before=0;
+         size_t mapped_count=0;
+         uint64_t handles[NativeAdrenoSubmitMaxBuffers]{};
+@@ -85,7 +86,7 @@
+     Job *slotLocked(uint32_t range);
+     bool rangeOutstandingLocked(uint32_t first,uint32_t count) const;
+     size_t outstandingLocked() const;
+-    IOReturn releaseLocked(Job &);
++    IOReturn releaseLocked(Job &,bool abandoned=false);
+     IOReturn retireCompletedLocked();
+     IOReturn poison();
+     /* The CP's completed fence (memptrs + 4) and a fence's state without waiting: Complete, Timeout (not yet) or Argument (never
+@@ -117,7 +118,7 @@
+      * (NativeAdrenoRingSourceRender for the render server's connections, else External) goes with the words to the ring's stamp:
+      * the queue meter's attribution (ARCHITECTURE 4.13.5); it changes nothing else. */
+     IOReturn submit(const NativeAdrenoSubmitBuffer *,size_t,uint32_t queue,uint32_t *fence,uint32_t *retry_fence=nullptr,
+-        uint32_t context=0,uint32_t source=NativeAdrenoRingSourceExternal);
++        uint32_t context=0,uint32_t source=NativeAdrenoRingSourceExternal,void *surface_owner=nullptr);
+     bool queueOutstanding(uint32_t queue) const;
+     /* Queues [first, first+count): whether any of their jobs is outstanding, and a wait for every one of them (oldest first) that
+      * leaves other queues' jobs alone. Each client of the shared ring owns one such range. The waits poll with the clock's idle hook
+--- a/NativeAdrenoSubmit.cpp
++++ b/NativeAdrenoSubmit.cpp
+@@ -1,5 +1,6 @@
+ /* SPDX-License-Identifier: MIT */
+ #include "NativeAdrenoSubmit.h"
++#include "DodgeNativeSurface.h"
+ #include "AdrenoPM4.h"
+ #include <IOKit/IOLib.h>
+ 
+@@ -55,11 +56,12 @@
+ {
+     size_t count=0;for(const auto &job:jobs_)if(job.active)++count;return count;
+ }
+-IOReturn NativeAdrenoSubmit::releaseLocked(Job &job)
++IOReturn NativeAdrenoSubmit::releaseLocked(Job &job,bool abandoned)
+ {
+     const IOReturn status=vm_->retireMapped(job.mapped_before,job.mapped_count,true);
+     if(status)return poison();
+     stats_.references_retired+=job.mapped_count;
++    dodge_native_surface_completed(job.surface_owner,abandoned);
+     job=Job{};
+     return kIOReturnSuccess;
+ }
+@@ -115,7 +117,7 @@
+     return outstandingLocked();
+ }
+ IOReturn NativeAdrenoSubmit::submit(const NativeAdrenoSubmitBuffer *buffers,size_t count,uint32_t queue,uint32_t *fence,
+-    uint32_t *retry_fence,uint32_t context,uint32_t source)
++    uint32_t *retry_fence,uint32_t context,uint32_t source,void *surface_owner)
+ {
+     if(!fence)return kIOReturnBadArgument;
+     *fence=0;
+@@ -167,12 +169,14 @@
+         ++stats_.busy;
+         return kIOReturnBusy;
+     }
++    if((!surface_owner && vm_->hasSurfaceMappings()) || !dodge_native_surface_can_submit(surface_owner))return kIOReturnNotReady;
+     uint64_t mapped_before=0;size_t mapped_count=0;
+     const IOReturn held=vm_->holdMapped(&mapped_before,&mapped_count);
+     if(held)return held;
+     stats_.references_held+=mapped_count;
+     auto keepUncertain=[&]() -> IOReturn {
+         *job=Job{};job->active=true;job->queue=queue;job->count=uint32_t(handle_count);
++        job->surface_owner=surface_owner;dodge_native_surface_published(surface_owner,true);
+         job->mapped_before=mapped_before;job->mapped_count=mapped_count;
+         for(size_t i=0;i<handle_count;++i)job->handles[i]=handles[i];
+         ++stats_.poisoned_jobs;return poison();
+@@ -212,6 +216,7 @@
+     }
+     job->fence=value;job->queue=queue;job->count=(uint32_t)handle_count;job->active=true;
+     job->mapped_before=mapped_before;job->mapped_count=mapped_count;
++    job->surface_owner=surface_owner;dodge_native_surface_published(surface_owner,false);
+     /* Whose job this fence is, for a page fault's attribution (rangesInFlight): kept after the job retires. */
+     history_[value%NativeAdrenoSubmitHistory]=uint64_t(value)|uint64_t(range)<<32|uint64_t(1)<<63;
+     for(size_t i=0;i<handle_count;++i) {
+@@ -357,7 +362,7 @@
+     for(auto &job:jobs_) {
+         if(!job.active)continue;
+         ranges|=1u<<(job.queue/NativeAdrenoSubmitRangeQueues);
+-        const IOReturn status=releaseLocked(job);
++        const IOReturn status=releaseLocked(job,true);
+         if(status && !result)result=status;
+         if(!status)++stats_.abandoned;
+     }
+--- a/NativeAdrenoUserClient.h
++++ b/NativeAdrenoUserClient.h
+@@ -2,6 +2,7 @@
+ #ifndef NATIVE_ADRENO_USERCLIENT_H
+ #define NATIVE_ADRENO_USERCLIENT_H
+ #include "DodgeNativeA830ABI.h"
++#include "DodgeSurfacePages.h"
+ #include "NativeAdrenoSubmit.h"
+ #include "NativeAdrenoTimer.h"
+ #include "NativeAdrenoStatus.h"
+@@ -49,6 +50,7 @@
+     struct Queue {uint32_t id=0;bool active=false;};
+     struct Entry {
+         NativeAdrenoMemory memory;
++        DodgeSurfacePages *surface=nullptr;
+         uint64_t handle=0;
+         uint64_t mapped=0;
+         uint64_t iova=0;
+@@ -104,6 +106,7 @@
+     size_t keep_objects_=0,keep_spans_=0,keep_pool_=0;
+     uint64_t next_handle_=1;
+     bool open_=false;
++    void *submission_owner_=nullptr;
+     Entry *find(uint64_t);
+     const Entry *find(uint64_t) const;
+     Entry *free();
+@@ -172,6 +175,9 @@
+     IOReturn importBo(const NativeAdrenoAbiBoImport *,void *task,NativeAdrenoAbiBoAllocReply *);
+     /* M9: the scanout mapping of the calling task, as the wrapper found it right before an import (memory null or bytes 0: none). */
+     void setScanout(const NativeAdrenoScanoutMapping *);
++    IOReturn importSurface(const NativeAdrenoAbiSurfaceImport *,void *task,
++        DodgeSurfaceIdentity *,IOMemoryDescriptor *,NativeAdrenoAbiBoAllocReply *);
++    void setSubmissionOwner(void *owner) {submission_owner_=owner;}
+     /* Whether [address, address + bytes) of task lies inside its scanout mapping; *offset is then its offset in the scanout. */
+     bool isScanoutAddress(void *task,uint64_t address,uint64_t bytes,uint64_t *offset) const;
+     /* Unmaps if still mapped, then releases the backing object. A failure at
+--- a/NativeAdrenoUserClient.cpp
++++ b/NativeAdrenoUserClient.cpp
+@@ -282,7 +282,7 @@
+     if(!open_)return kIOReturnNotReady;
+     params->abi_version=NativeAdrenoAbiVersion;
+     params->input_bits=input_bits_;params->output_bits=output_bits_;
+-    params->flags=NativeAdrenoParamsHostImport;params->max_bo_bytes=UINT64_C(1)<<NativeAdrenoAbiMaxBoBytesShift;
++    params->flags=uint32_t(NativeAdrenoParamsHostImport)|uint32_t(NativeAdrenoParamsSurfaceImport);params->max_bo_bytes=UINT64_C(1)<<NativeAdrenoAbiMaxBoBytesShift;
+     return kIOReturnSuccess;
+ }
+ IOReturn NativeAdrenoUserClient::allocBo(const NativeAdrenoAbiBoAlloc *request,
+@@ -478,6 +478,12 @@
+         if(unmap) {noteFreeRefused(entry->imported,entry->handle,unmap);return unmap;}
+         entry->mapped_state=false;entry->mapped=0;entry->iova=0;
+     }
++    if(entry->surface) {
++        const IOReturn released=dodge_surface_pages_release(entry->surface);
++        if(released)return released;
++        entry->memory.setSurfaceOwner(nullptr);
++        IODeleteData(entry->surface,DodgeSurfacePages,1);
++    }
+     IOReturn release;
+     account(*entry,false);   /* while the backing object still describes itself */
+     {
+@@ -523,7 +529,7 @@
+     uint32_t fence=0,retry=0;
+     used_=true;
+     const IOReturn status=submit_->submit(buffers,request->buffer_count,queue_base_+static_cast<uint32_t>(request->queue),&fence,&retry,
+-        context_,source_);
++        context_,source_,submission_owner_);
+     if(status==NativeAdrenoSubmitRetry)retry_fence_=retry;
+     if(status)return status;
+     reply->fence=fence;
+@@ -585,6 +591,7 @@
+     case NativeAdrenoMethodBoAlloc:return sizeof(NativeAdrenoAbiBoAlloc);
+     case NativeAdrenoMethodBoMap:return sizeof(NativeAdrenoAbiBoMap);
+     case NativeAdrenoMethodBoImport:return sizeof(NativeAdrenoAbiBoImport);
++    case NativeAdrenoMethodSurfaceImport:return sizeof(NativeAdrenoAbiSurfaceImport);
+     case NativeAdrenoMethodSetPriority:return sizeof(NativeAdrenoAbiPriority);
+     case NativeAdrenoMethodNote:return sizeof(NativeAdrenoAbiNote);
+     case NativeAdrenoMethodBoFree:return sizeof(NativeAdrenoAbiBoFree);
+@@ -619,6 +626,7 @@
+     case NativeAdrenoMethodCloseQueue:return 0;
+     case NativeAdrenoMethodBoCpuMap:return sizeof(NativeAdrenoAbiBoCpuMapReply);
+     case NativeAdrenoMethodBoCpuUnmap:return 0;
++    case NativeAdrenoMethodSurfaceImport:
+     case NativeAdrenoMethodBoImport:return sizeof(NativeAdrenoAbiBoAllocReply);
+     default:return SIZE_MAX;
+     }
+@@ -847,3 +855,27 @@
+     const Entry *entry=find(handle);
+     return entry && !entry->unreleasable && !entry->mapped_state && vm_->hasMappedJobs();
+ }
++
++IOReturn NativeAdrenoUserClient::importSurface(const NativeAdrenoAbiSurfaceImport *request,void *task,
++    DodgeSurfaceIdentity *identity,IOMemoryDescriptor *backing,NativeAdrenoAbiBoAllocReply *reply)
++{
++    if(!request || !reply || !identity || !identity->surface || !backing || request->reserved ||
++       !request->id || request->id!=identity->id)return kIOReturnBadArgument;
++    reply->handle=0;
++    DodgeSurfacePages *pages=IONewData(DodgeSurfacePages,1);if(!pages)return kIOReturnNoMemory;
++    *pages={};const NativeAdrenoAbiBoImport range{request->address,request->bytes};
++    IOReturn status=importBo(&range,task,reply);
++    if(status) {IODeleteData(pages,DodgeSurfacePages,1);return status;}
++    Entry *entry=find(reply->handle);
++    status=dodge_surface_pages_bind(identity,backing,&entry->memory,pages);
++    if(!status || pages->memory) {
++        entry->surface=pages;entry->memory.setSurfaceOwner(pages);
++        if(status)entry->unreleasable=true;
++    } else {
++        IODeleteData(pages,DodgeSurfacePages,1);
++        const NativeAdrenoAbiBoFree cleanup{reply->handle};const IOReturn released=freeBo(&cleanup);
++        if(released)status=released;
++    }
++    if(status)reply->handle=0;
++    return status;
++}
+--- a/NativeAdrenoPublish.cpp
++++ b/NativeAdrenoPublish.cpp
+@@ -27,6 +27,8 @@
+ #include <kern/task.h>
+ #include "NativeAdrenoUserClient.h"
+ #include "DodgeMapWait.inc"
++#include "DodgeNativeSurface.h"
++#include "DodgeSurfaceBacking.h"
+ extern "C" void dodge_native_display_epoch_advance();
+ #include "NativeAdrenoPublish.h"
+ #include "NativeAdrenoMeter.h"
+@@ -284,6 +286,7 @@
+     IOReturn waitFence(const void *input,size_t input_size,void *output,size_t output_size);
+     IOReturn submit(const void *input,size_t input_size,void *output,size_t output_size);
+     IOReturn importBo(const void *input,size_t input_size,void *output,size_t output_size);
++    IOReturn importSurface(const void *,size_t,void *,size_t);
+ public:
+     void setHandoffOnly() {handoffOnly_=true;}
+     IOReturn mount(bool kernel);
+@@ -757,10 +760,15 @@
+     static uint32_t sampled;
+     const bool sample=!(__atomic_fetch_add(&sampled,1,__ATOMIC_RELAXED)&255);
+     const uint64_t t0=sample?nowUs():0;
++    if(!input || input_size!=sizeof(NativeAdrenoAbiSubmit) || !output || output_size!=sizeof(NativeAdrenoAbiSubmitReply))
++        return kIOReturnBadArgument;
++    void *surface_batch=nullptr;
+     const IOReturn status=NativeAdrenoSubmitWithRetry(
+         [&](uint32_t *retry_fence)->IOReturn {
+             if(lost())return NativeAdrenoReturnNotResponding;
+-            if(!lock_)return kIOReturnNotReady;
++            if(!lock_ || closing_)return kIOReturnNotReady;
++            const IOReturn prepared=dodge_native_surface_prepare(g.vm,&surface_batch);
++            if(prepared) {*retry_fence=0;return prepared;}
+             /* M13 (ARCHITECTURE 4.17): a submission holds the GPU awake; under P1/P2 acquire() wakes it from slumber, under
+              * the default P0 it is two atomics. A transition or a recovery in progress is waited out like a full ring. */
+             A830PowerState *power=adreno830_power_state();
+@@ -771,9 +779,11 @@
+                 return NativeAdrenoSubmitRetry;
+             }
+             lockMetered(lock_,Adreno830WaitConnection);
++            if(box_)box_->core.setSubmissionOwner(surface_batch);
+             IOReturn result=live_ && !closing_?box_->core.dispatch(NativeAdrenoMethodSubmit,input,input_size,output,output_size,&g.clock):
+                 kIOReturnNotReady;
+-            if(result==NativeAdrenoSubmitRetry)*retry_fence=box_->core.retryFence();
++            if(result==NativeAdrenoSubmitRetry && box_)*retry_fence=box_->core.retryFence();
++            if(box_)box_->core.setSubmissionOwner(nullptr);
+             IOLockUnlock(lock_);
+             if(power)power->release();
+             if(result==kIOReturnSuccess) {
+@@ -796,6 +806,7 @@
+                 IOSleep(1);
+         },
+         []{return nowUs();});
++    dodge_native_surface_end_call(&surface_batch);
+     if(status==kIOReturnSuccess) {
+         adreno830_status_add64(&adreno830_status.submits,1);
+         adreno830_dcvs_submit();
+@@ -966,6 +977,7 @@
+         return kIOReturnSuccess;
+     }
+     if(handoffOnly_)return kIOReturnUnsupported;   /* a hand-off connection mounts no GPU core */
++    if(method==NativeAdrenoMethodSurfaceImport)return importSurface(input,input_size,output,output_size);
+     if(method==NativeAdrenoMethodBoImport)return importBo(input,input_size,output,output_size);
+     return runCore(this,method,input,input_size,output,output_size);
+ }
+@@ -998,7 +1010,8 @@
+         {&action,0,0,0,sizeof(NativeAdrenoAbiDeviceInfo)},
+         {&action,0,sizeof(NativeAdrenoAbiBoImport),0,sizeof(NativeAdrenoAbiBoAllocReply)},
+         {&action,0,sizeof(NativeAdrenoAbiPriority),0,0},
+-        {&action,0,sizeof(NativeAdrenoAbiNote),0,0}};
++        {&action,0,sizeof(NativeAdrenoAbiNote),0,0},
++        {&action,0,sizeof(NativeAdrenoAbiSurfaceImport),0,sizeof(NativeAdrenoAbiBoAllocReply)}};
+     native_adreno_metal_diag.ext_entries=native_adreno_metal_diag.ext_entries+1;
+     if(selector<256)native_adreno_metal_diag.sel_bits[selector>>5]|=1u<<(selector&31);
+     /* Tunnel. The sandbox resolves a filter policy for this class at open time and then admits only the selectors its profile lists,
+@@ -1502,3 +1515,27 @@
+ }
+ 
+ #include "DodgeNativeA830Timeline.inc"
++
++IOReturn AGXDeviceUserClient::importSurface(const void *input,size_t input_size,void *output,size_t output_size)
++{
++    if(!input || input_size!=sizeof(NativeAdrenoAbiSurfaceImport) || !output ||
++       output_size!=sizeof(NativeAdrenoAbiBoAllocReply))return kIOReturnBadArgument;
++    NativeAdrenoAbiSurfaceImport request{};memcpy(&request,input,sizeof request);
++    if(!request.id || request.reserved)return kIOReturnBadArgument;
++    DodgeSurfaceIdentity identity{};IOMemoryDescriptor *backing=nullptr;
++    IOReturn status=dodge_copy_current_surface(request.id,&identity);
++    if(!status)status=dodge_copy_surface_backing(&identity,&backing);
++    NativeAdrenoAbiBoAllocReply reply{};
++    if(!status) {
++        if(!lock_)status=kIOReturnNotReady;
++        else {
++            lockMetered(lock_,Adreno830WaitConnection);
++            status=live_ && !closing_?box_->core.importSurface(&request,current_task(),&identity,backing,&reply):kIOReturnNotReady;
++            IOLockUnlock(lock_);
++        }
++    }
++    if(backing)backing->release();
++    dodge_release_surface_identity(&identity);
++    if(!status)memcpy(output,&reply,sizeof reply);
++    return status;
++}
+--- a/NativeAdrenoMemory.h
++++ b/NativeAdrenoMemory.h
+@@ -66,6 +66,7 @@
+     IOBufferMemoryDescriptor *descriptor_=nullptr;
+     IOMemoryDescriptor *imported_=nullptr;
+     bool read_only_=false,device_=false,live_import_=false;
++    void *surface_owner_=nullptr; // Immutable while this memory is mapped.
+     void *mapping_=nullptr;
+     NativeAdrenoPhysicalSpan *spans_=nullptr;
+     size_t bytes_=0,span_count_=0,span_capacity_=0;
+@@ -76,6 +77,8 @@
+     IOReturn maintainImported(size_t offset,size_t bytes,NativeAdrenoCacheOperation);
+     IOReturn takePooled(size_t bytes,uint64_t limit);
+ public:
++    void *surfaceOwner() const {return surface_owner_;}
++    void setSurfaceOwner(void *owner) {surface_owner_=owner;} // Only before map or after successful unmap.
+     NativeAdrenoMemory()=default;
+     ~NativeAdrenoMemory()=default;
+     NativeAdrenoMemory(const NativeAdrenoMemory &)=delete;

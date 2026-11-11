@@ -1,0 +1,280 @@
+--- a/NativeAdrenoVm.h
++++ b/NativeAdrenoVm.h
+@@ -61,6 +61,7 @@
+     };
+     Mapping *mappings_=nullptr;
+     NativeAdrenoHandleIndex<NativeAdrenoVmMaxObjects> index_;   /* live handle -> its mappings_ slot */
++    size_t mapped_leases_=0;   // Whole-VM submission snapshots; protected by the VM lock.
+     size_t free_hint_=0;   /* no free mappings_ slot below it */
+     size_t high_=0;   /* no live mappings_ slot at or above it: the walks over every mapping stop there */
+     size_t class_spans_[16]{};   /* ranges_ per alias class, so a map counts the other classes without a walk */
+@@ -154,6 +155,13 @@
+     /* Refused (kIOReturnBusy) while a job holds the mapping or the fence of its last use has not completed. */
+     IOReturn unmap(uint64_t handle);
+     IOReturn holdJob(uint64_t handle);
++    // The ABI lists IBs only. Hold every mapped resource, including textures
++    // and targets reached by commands. No new mapping while any lease lives.
++    IOReturn holdMapped(uint64_t *before,size_t *count);
++    // true: actual fence completion or successful quiescing hardware reset.
++    // false: only rollback of a command never published to the ring.
++    IOReturn retireMapped(uint64_t before,size_t expected,bool acquire_writes);
++    bool hasMappedJobs() const;
+     /* Only a scheduler's actual successful GPU completion may call this.
+      * A timeout, interrupt bit alone or CPU-written timestamp is insufficient. */
+     IOReturn retireJobAfterCompletion(uint64_t handle);
+--- a/NativeAdrenoVm.cpp
++++ b/NativeAdrenoVm.cpp
+@@ -433,6 +433,7 @@
+ {
+     if(!handle)return kIOReturnBadArgument;*handle=0;result_={};
+     if(!attached_ || poisoned_)return kIOReturnNotReady;
++    if(mapped_leases_)return kIOReturnBusy;
+     PhaseClock clock;
+     if(!memory)return kIOReturnBadArgument;
+     const unsigned cls=aliasClass(permissions,writeback,shareability)&15;
+@@ -871,3 +872,5 @@
+     IOReturn status=record->memory->retireAfterQuiescence();if(status)return status;
+     --record->jobs;return kIOReturnSuccess;
+ }
++
++#include "DodgeNativeMappedLease.inc"
+--- a/NativeAdrenoSubmit.h
++++ b/NativeAdrenoSubmit.h
+@@ -65,6 +65,8 @@
+         uint32_t queue=0;
+         uint32_t count=0;
+         bool active=false;
++        uint64_t mapped_before=0;
++        size_t mapped_count=0;
+         uint64_t handles[NativeAdrenoSubmitMaxBuffers]{};
+     } jobs_[NativeAdrenoSubmitJobs];
+     NativeAdrenoVm *vm_=nullptr;
+@@ -86,7 +88,6 @@
+     IOReturn releaseLocked(Job &);
+     IOReturn retireCompletedLocked();
+     IOReturn poison();
+-    void dropReferences(const uint64_t *handles,size_t count);
+     /* The CP's completed fence (memptrs + 4) and a fence's state without waiting: Complete, Timeout (not yet) or Argument (never
+      * issued). Lock-free reads: the ring publishes its issued count atomically. */
+     uint32_t completedValue() const;
+--- a/NativeAdrenoSubmit.cpp
++++ b/NativeAdrenoSubmit.cpp
+@@ -55,19 +55,12 @@
+ {
+     size_t count=0;for(const auto &job:jobs_)if(job.active)++count;return count;
+ }
+-void NativeAdrenoSubmit::dropReferences(const uint64_t *handles,size_t count)
+-{
+-    while(count) {vm_->retireJobAfterCompletion(handles[--count]);++stats_.references_retired;}
+-}
+ IOReturn NativeAdrenoSubmit::releaseLocked(Job &job)
+ {
+-    IOReturn status=kIOReturnSuccess;
+-    for(uint32_t i=0;i<job.count;++i) {
+-        const IOReturn retired=vm_->retireJobAfterCompletion(job.handles[i]);
+-        if(retired)status=retired;else ++stats_.references_retired;
+-    }
++    const IOReturn status=vm_->retireMapped(job.mapped_before,job.mapped_count,true);
+     if(status)return poison();
+-    job.active=false;job.count=0;job.fence=0;job.queue=0;
++    stats_.references_retired+=job.mapped_count;
++    job=Job{};
+     return kIOReturnSuccess;
+ }
+ IOReturn NativeAdrenoSubmit::retireCompletedLocked()
+@@ -174,26 +167,32 @@
+         ++stats_.busy;
+         return kIOReturnBusy;
+     }
+-    for(size_t i=0;i<handle_count;++i) {
+-        const IOReturn status=vm_->holdJob(handles[i]);
+-        if(status) {
+-            dropReferences(handles,i);
+-            return status;
+-        }
+-        ++stats_.references_held;
+-    }
++    uint64_t mapped_before=0;size_t mapped_count=0;
++    const IOReturn held=vm_->holdMapped(&mapped_before,&mapped_count);
++    if(held)return held;
++    stats_.references_held+=mapped_count;
++    auto keepUncertain=[&]() -> IOReturn {
++        *job=Job{};job->active=true;job->queue=queue;job->count=uint32_t(handle_count);
++        job->mapped_before=mapped_before;job->mapped_count=mapped_count;
++        for(size_t i=0;i<handle_count;++i)job->handles[i]=handles[i];
++        ++stats_.poisoned_jobs;return poison();
++    };
++    auto cancelUnpublished=[&]() -> IOReturn {
++        if(vm_->retireMapped(mapped_before,mapped_count,false))return keepUncertain();
++        stats_.references_retired+=mapped_count;return kIOReturnSuccess;
++    };
+     /* GPU-read-only imports that are not mapped coherent (the maintained list; empty from coherence level 1, ARCHITECTURE 4.14.1). */
+     IOReturn status=vm_->cleanForSubmission();
+     if(status) {
+-        dropReferences(handles,handle_count);
+-        return status;
++        const IOReturn rollback=cancelUnpublished();
++        return rollback?rollback:status;
+     }
+     if(context)ring_->useContext(context);
+     uint32_t value=0;
+     status=ring_->submitFramed(words,word_count,&value,source);
+     if(status==kIOReturnBusy) {
+         /* No room in the ring now. Room comes back as the CP consumes: the oldest outstanding submission's fence is the event. */
+-        dropReferences(handles,handle_count);
++        const IOReturn rollback=cancelUnpublished();if(rollback)return rollback;
+         if(rangeOutstandingLocked(range*NativeAdrenoSubmitRangeQueues,NativeAdrenoSubmitRangeQueues)) {++stats_.busy;return kIOReturnBusy;}
+         /* The ring completes in order: the next fence to complete is the one after the CP's completed fence. */
+         const uint32_t done=completedValue(),newest=ring_->lastSubmitted();
+@@ -205,16 +204,14 @@
+         /* A poisoned ring may already have consumed the WPTR write, so the referenced buffers cannot be retired here: the job is
+          * kept (with no fence) until recover() after a GPU reset. */
+         if(ring_->poisoned()) {
+-            job->fence=0;job->queue=queue;job->count=(uint32_t)handle_count;job->active=true;
+-            for(size_t i=0;i<handle_count;++i)job->handles[i]=handles[i];
+-            ++stats_.poisoned_jobs;
+-            return poison();
++            return keepUncertain();
+         }
+         /* kIOReturnNoResources: not even the drained ring takes it (only a larger submission than this object builds). */
+-        dropReferences(handles,handle_count);
+-        return status;
++        const IOReturn rollback=cancelUnpublished();
++        return rollback?rollback:status;
+     }
+     job->fence=value;job->queue=queue;job->count=(uint32_t)handle_count;job->active=true;
++    job->mapped_before=mapped_before;job->mapped_count=mapped_count;
+     /* Whose job this fence is, for a page fault's attribution (rangesInFlight): kept after the job retires. */
+     history_[value%NativeAdrenoSubmitHistory]=uint64_t(value)|uint64_t(range)<<32|uint64_t(1)<<63;
+     for(size_t i=0;i<handle_count;++i) {
+--- a/NativeAdrenoUserClient.h
++++ b/NativeAdrenoUserClient.h
+@@ -1,7 +1,7 @@
+ /* SPDX-License-Identifier: MIT */
+ #ifndef NATIVE_ADRENO_USERCLIENT_H
+ #define NATIVE_ADRENO_USERCLIENT_H
+-#include "NativeAdrenoABI.h"
++#include "DodgeNativeA830ABI.h"
+ #include "NativeAdrenoSubmit.h"
+ #include "NativeAdrenoTimer.h"
+ #include "NativeAdrenoStatus.h"
+@@ -214,6 +214,7 @@
+     IOReturn attachDeviceInfo(const NativeAdrenoAbiDeviceInfo *);
+     IOReturn deviceInfo(NativeAdrenoAbiDeviceInfo *);
+     bool mapped(uint64_t handle);
++    bool mapMayWait(uint64_t handle); // Caller holds this connection's lock.
+     /* Backing object of a live handle, for the IOKit wrapper's clientMemoryForType and for kernel self-tests;
+      * null for an unknown or unreleasable handle. The client keeps ownership. */
+     NativeAdrenoMemory *memoryOf(uint64_t handle);
+--- a/NativeAdrenoUserClient.cpp
++++ b/NativeAdrenoUserClient.cpp
+@@ -448,6 +448,7 @@
+      * GPU-read-only imports write-back inner-shareable from level 1, GPU-written imports and write-back requests for own BOs from
+      * level 2, the scanout and everything else non-cacheable. */
+     uint64_t handle=0;
++    const IOReturn swept=submit_->retireCompleted();if(swept)return swept;
+     const IOReturn status=vm_->mapClient(&entry->memory,request->iova,permissions,request->writeback,request->shareability,&handle,
+         keep_objects_,keep_spans_);
+     if(status)return status;
+@@ -584,6 +585,8 @@
+     case NativeAdrenoMethodBoAlloc:return sizeof(NativeAdrenoAbiBoAlloc);
+     case NativeAdrenoMethodBoMap:return sizeof(NativeAdrenoAbiBoMap);
+     case NativeAdrenoMethodBoImport:return sizeof(NativeAdrenoAbiBoImport);
++    case NativeAdrenoMethodSetPriority:return sizeof(NativeAdrenoAbiPriority);
++    case NativeAdrenoMethodNote:return sizeof(NativeAdrenoAbiNote);
+     case NativeAdrenoMethodBoFree:return sizeof(NativeAdrenoAbiBoFree);
+     case NativeAdrenoMethodSubmit:return sizeof(NativeAdrenoAbiSubmit);
+     case NativeAdrenoMethodSetMetadata:
+@@ -602,6 +605,8 @@
+     case NativeAdrenoMethodQuery:return sizeof(NativeAdrenoAbiParams);
+     case NativeAdrenoMethodBoAlloc:return sizeof(NativeAdrenoAbiBoAllocReply);
+     case NativeAdrenoMethodBoMap:return sizeof(NativeAdrenoAbiBoMapReply);
++    case NativeAdrenoMethodSetPriority:
++    case NativeAdrenoMethodNote:
+     case NativeAdrenoMethodBoFree:return 0;
+     case NativeAdrenoMethodSubmit:return sizeof(NativeAdrenoAbiSubmitReply);
+     case NativeAdrenoMethodWaitFence:return 0;
+@@ -835,3 +840,10 @@
+         (uint32_t)(request->timeout_ns/1000));
+     return submit_->wait((uint32_t)request->fence,clock,timeout_us);
+ }
++
++bool NativeAdrenoUserClient::mapMayWait(uint64_t handle)
++{
++    if(!open_ || !vm_)return false;
++    const Entry *entry=find(handle);
++    return entry && !entry->unreleasable && !entry->mapped_state && vm_->hasMappedJobs();
++}
+--- a/NativeAdrenoPublish.cpp
++++ b/NativeAdrenoPublish.cpp
+@@ -26,6 +26,8 @@
+ #include <kern/clock.h>
+ #include <kern/task.h>
+ #include "NativeAdrenoUserClient.h"
++#include "DodgeMapWait.inc"
++extern "C" void dodge_native_display_epoch_advance();
+ #include "NativeAdrenoPublish.h"
+ #include "NativeAdrenoMeter.h"
+ #include "Adreno830Status.h"
+@@ -889,7 +891,27 @@
+     if(method==NativeAdrenoMethodWaitFence)status=connection->waitFence(input,input_size,output,output_size);
+     else if(method==NativeAdrenoMethodSubmit)status=connection->submit(input,input_size,output,output_size);
+     else {
+-        status=connection->locked(method,input,input_size,output,output_size);
++        if(method==NativeAdrenoMethodBoMap && input && input_size==sizeof(NativeAdrenoAbiBoMap) &&
++           output && output_size==sizeof(NativeAdrenoAbiBoMapReply) && g.clock.now_us && g.clock.idle) {
++            struct MapCall {AGXDeviceUserClient *connection;NativeAdrenoAbiBoMap request;void *output;};
++            MapCall call{connection,{},output};memcpy(&call.request,input,sizeof(call.request));
++            const DodgeMapWaitOps ops{&call,
++                [](void *opaque,bool *pending)->IOReturn {
++                    MapCall &c=*static_cast<MapCall *>(opaque);
++                    const IOReturn result=c.connection->locked(NativeAdrenoMethodBoMap,&c.request,
++                        sizeof(c.request),c.output,sizeof(NativeAdrenoAbiBoMapReply));
++                    *pending=false;
++                    if(result==kIOReturnBusy && c.connection->lock_) {
++                        lockMetered(c.connection->lock_,Adreno830WaitConnection);
++                        *pending=c.connection->live_ && c.connection->box_->core.mapMayWait(c.request.handle);
++                        IOLockUnlock(c.connection->lock_);
++                    }
++                    return result;
++                },
++                [](void *)->uint64_t {return g.clock.now_us(g.clock.cookie);},
++                [](void *)->int {return g.clock.idle(g.clock.cookie);}};
++            status=dodge_adreno_wait_map(&ops,1000000,16384);
++        } else status=connection->locked(method,input,input_size,output,output_size);
+         if(method==NativeAdrenoMethodBoMap && !status && !connection->kernel_ && connection->lock_) {
+             lockMetered(connection->lock_,Adreno830WaitConnection);
+             const uint64_t peak=connection->live_?connection->box_->core.windowPeak():0;
+@@ -974,7 +996,9 @@
+         {&action,0,sizeof(NativeAdrenoAbiBoCpuMap),0,sizeof(NativeAdrenoAbiBoCpuMapReply)},
+         {&action,0,sizeof(NativeAdrenoAbiBoCpuUnmap),0,0},
+         {&action,0,0,0,sizeof(NativeAdrenoAbiDeviceInfo)},
+-        {&action,0,sizeof(NativeAdrenoAbiBoImport),0,sizeof(NativeAdrenoAbiBoAllocReply)}};
++        {&action,0,sizeof(NativeAdrenoAbiBoImport),0,sizeof(NativeAdrenoAbiBoAllocReply)},
++        {&action,0,sizeof(NativeAdrenoAbiPriority),0,0},
++        {&action,0,sizeof(NativeAdrenoAbiNote),0,0}};
+     native_adreno_metal_diag.ext_entries=native_adreno_metal_diag.ext_entries+1;
+     if(selector<256)native_adreno_metal_diag.sel_bits[selector>>5]|=1u<<(selector&31);
+     /* Tunnel. The sandbox resolves a filter policy for this class at open time and then admits only the selectors its profile lists,
+@@ -1233,6 +1257,7 @@
+     if(!reason)reason=A830ReasonHang;
+     uint32_t expected=0;
+     if(!__atomic_compare_exchange_n(&g.lost,&expected,reason,false,__ATOMIC_ACQ_REL,__ATOMIC_ACQUIRE))return;   /* already lost */
++    dodge_native_display_epoch_advance();
+     native_adreno_fault_stats[2]=native_adreno_fault_stats[2]+1;native_adreno_fault_stats[7]=reason;
+     adreno830_status_add32(&adreno830_status.faults,1);
+     if(!g.published)return;
+@@ -1245,6 +1270,7 @@
+ extern "C" void native_adreno_recovery_begin(bool charge_culprit)
+ {
+     __atomic_store_n(&g.recovering,1u,__ATOMIC_RELEASE);
++    dodge_native_display_epoch_advance();
+     native_adreno_fault_stats[3]=native_adreno_fault_stats[3]+1;
+     if(!g.published)return;
+     /* Halt first, under the ring lock: from here no submission reaches the ring, and the snapshot of the ranges with work in flight is
+@@ -1474,3 +1500,5 @@
+ {
+     return g.service;
+ }
++
++#include "DodgeNativeA830Timeline.inc"
