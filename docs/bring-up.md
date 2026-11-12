@@ -429,6 +429,24 @@ cache and still needs attachment at its iPhone path. A wrong CBC answer prevents
 provider registration; an absent VM identifier produces the original unsupported
 key panic. See [the AES result](../reports/public/ios16-qemu-aes-entry.json).
 
+Mount SystemOS through the existing Darwin 22 owner union path:
+
+```sh
+.venv-uefi/bin/python scripts/build_qemu_systemos.py
+.venv-uefi/bin/python scripts/build_qemu_systemos.py --wrong-uuid
+.venv-gpu/bin/python scripts/check_qemu_systemos.py
+.venv-gpu/bin/python scripts/check_qemu_systemos.py --check-only
+```
+
+The build selects the observed SystemOS UUID and keeps ignition enabled. The
+volume mounts read-only over `/` as a native union. Its mounted device matches
+the signed policy, and the original OS root passes a second authorization check.
+Original dyld maps the shared cache; its live 512-byte header matches the local
+original file. Execution reaches `launchd` main, where 16 entry bytes match the
+original executable. The check follows the initial demand-page fault and stops
+at that entry. The wrong-UUID control stops before mounting. See
+[the SystemOS result](../reports/public/ios16-qemu-systemos-entry.json).
+
 ## System and Data images
 
 ```sh

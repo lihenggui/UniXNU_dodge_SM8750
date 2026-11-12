@@ -15,8 +15,9 @@ enters `bsd_init` with EL1 and 4 KiB page tables. Original AppleImage4, AMFI
 and Sandbox register successfully. Separate QEMU storage builds mount the
 original APFS root through an owner-signed block policy. With the original
 filesystem decompressor, PID 1 enters the iPhone dyld and executes in EL0.
-The software AES fixture lets dyld finish its Image4 query and reach shared-cache
-loading. Attaching SystemOS and starting system services are the next steps.
+The software AES fixture lets dyld finish its Image4 query. A SystemOS union
+build maps the original shared cache and reaches `launchd` main. Data and
+system-service startup remain in development.
 See [GPU builds](docs/bring-up.md#driver-builds) and [QEMU entry](docs/bring-up.md#qemu-entry).
 
 ## Getting started

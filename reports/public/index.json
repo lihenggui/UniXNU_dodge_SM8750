@@ -5,6 +5,10 @@
   "scope": "Build, model-test and QEMU snapshots. Artifact and dependency hashes identify their recorded run. Use previous_indexes to resolve earlier report versions.",
   "previous_indexes": [
     {
+      "revision": "dd6824b3b0508ffbf3916577edcd7ddfc61078e8",
+      "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/dd6824b3b0508ffbf3916577edcd7ddfc61078e8/reports/public/index.json"
+    },
+    {
       "revision": "6bef425051a0cf53f6c81f5356aa0e81b879e136",
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/6bef425051a0cf53f6c81f5356aa0e81b879e136/reports/public/index.json"
     },
@@ -45,7 +49,7 @@
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/067b04a9f4544296ecc03a6ba26aa52d8cb0f6be/reports/public/index.json"
     }
   ],
-  "exporter_sha256": "551580646df75b3bc4cd6f076ddd54e98034f3766c975c49b4b698049aeb9d32",
+  "exporter_sha256": "838719478acdb33a6e3f973ca7778e5145b0dc0c8a432d25eaa84ddf15b16f6e",
   "reports": {
     "a830-backend-tests.json": {
       "local_report": "reports/a830-backend-tests.json",
@@ -813,6 +817,24 @@
       "local_report": "reports/ios16-qemu-storage.json",
       "original_sha256": "95645c645fe5257d823d59f6dd6f70ffbed258ed72e2cfddfa593c44f783b1d4",
       "snapshot_sha256": "95645c645fe5257d823d59f6dd6f70ffbed258ed72e2cfddfa593c44f783b1d4",
+      "paths_normalized": false
+    },
+    "ios16-qemu-systemos-entry.json": {
+      "local_report": "reports/ios16-qemu-systemos-entry.json",
+      "original_sha256": "16b24df88096eaac9be34d6e335318d6b7e053a6635ee8b89651a3a8ad05b8b1",
+      "snapshot_sha256": "16b24df88096eaac9be34d6e335318d6b7e053a6635ee8b89651a3a8ad05b8b1",
+      "paths_normalized": false
+    },
+    "ios16-qemu-systemos-wrong-uuid.json": {
+      "local_report": "reports/ios16-qemu-systemos-wrong-uuid.json",
+      "original_sha256": "dde064346d9a8e89e7a851883d5c5c6a270a2a682467905b241fe90e003dd61f",
+      "snapshot_sha256": "dde064346d9a8e89e7a851883d5c5c6a270a2a682467905b241fe90e003dd61f",
+      "paths_normalized": false
+    },
+    "ios16-qemu-systemos.json": {
+      "local_report": "reports/ios16-qemu-systemos.json",
+      "original_sha256": "7917d8b8528a32e979ba98d005a3f3ca427dc9113b0492a1e8b4e0184867537e",
+      "snapshot_sha256": "7917d8b8528a32e979ba98d005a3f3ca427dc9113b0492a1e8b4e0184867537e",
       "paths_normalized": false
     },
     "ios16-ramblock-start-kernel.json": {
