@@ -54,9 +54,9 @@ def virtual_resources(tree, fdt, root_uuid):
     return encode_tree(nodes), [{'address': hex(address), 'bytes': size} for address, size in sorted(resources)]
 
 
-def run_case(case, paths, environment, kernel, names, images, board_tree, timeout):
+def run_case(case, paths, environment, kernel, names, images, board_tree, timeout, *, directory_root=OUT, remote_factory=Remote):
     qemu, firmware, variables, roms = paths
-    directory = OUT / case;esp = directory / 'esp'
+    directory = directory_root / case;esp = directory / 'esp'
     payloads = esp / 'EFI/UniXNU/Payloads'
     for path in (payloads, esp / 'EFI/BOOT', esp / 'EFI/UniXNU/Drivers'):
         path.mkdir(parents=True, exist_ok=True)
@@ -117,7 +117,7 @@ def run_case(case, paths, environment, kernel, names, images, board_tree, timeou
             require(stream is not None, 'QEMU GDB did not start')
             with stream:
                 def idle():require(process.poll() is None, 'QEMU exited before storage observation')
-                remote = Remote(stream, deadline, idle)
+                remote = remote_factory(stream, deadline, idle)
                 remote.packet('qSupported');require(remote.packet('?').startswith('T'), 'QEMU did not stop')
                 for name in targets:require(remote.packet(f'Z1,{names[name]:x},4') == 'OK', 'QEMU refused checkpoint')
                 while True:

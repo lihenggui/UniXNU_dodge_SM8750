@@ -364,6 +364,34 @@ The candidate stays in `build/cph2653-qemu-storage/kernel.macho` and its logs in
 `build/cph2653-qemu-storage-entry/`. It preserves the existing packaged payload.
 See [the storage result](../reports/public/ios16-qemu-storage-entry.json).
 
+The owner-root fixture adds signed block policies to that transport:
+
+```sh
+.venv-uefi/bin/python scripts/prepare_qemu_root_policy.py
+.venv-uefi/bin/python scripts/build_qemu_owner_root.py
+for fault in signature dma uuid; do
+  .venv-uefi/bin/python scripts/build_qemu_owner_root.py --fault "$fault"
+done
+.venv-gpu/bin/python scripts/check_qemu_owner_root.py
+.venv-gpu/bin/python scripts/check_qemu_owner_root.py --check-only
+```
+
+Preparation verifies all 2,045,449 original OS/SystemOS blocks with the C
+implementation. In QEMU, the original iPhone RSA callbacks verify both policies,
+and the transport checks each completed read before exposing it. The independent
+owner policy requires the mounted root to be read-only and match the signed
+volume UUID and selected device. The original Apple ioctl still returns `EAUTH`.
+With owner authorization, the kernel reaches `load_init_program`; this fixture
+stops before user instructions execute. Damaged signatures, changed DMA buffers
+and a valid signature for the wrong UUID are refused.
+
+The local RSA3072 key stays under `.cache/qemu-root-owner/`. Policies and kernels
+stay under `build/`. Generation 1 is the minimum for this development fixture;
+persistent rollback protection and hardware trust have separate implementation
+work. The [owner-root result](../reports/public/ios16-qemu-owner-root-entry.json)
+records the original callback addresses, mounted-device checks and controls.
+CI runs the nine C/signature test groups with `--host-only` and no iPhone files.
+
 ## System and Data images
 
 ```sh

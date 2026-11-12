@@ -21,7 +21,7 @@ jobs:
           from pathlib import Path
           import subprocess
           lock = json.loads(Path('upstream.lock.json').read_text())
-          for name in ('unixnu', 'darwinboot', 'xnu_ios16', 'iig_port', 'xnuprelink', 'uefi', 'pagani_reference', 'oneplus13t_reference', 'sm8750', 'native_a830_reference', 'native_a830_smmu_reference'):
+          for name in ('unixnu', 'darwinboot', 'xnu_ios16', 'iig_port', 'xnuprelink', 'uefi', 'pagani_reference', 'oneplus13t_reference', 'sm8750', 'native_a830_reference', 'native_a830_smmu_reference', 'verified_root_reference'):
               spec = lock[name] if name != 'uefi' else {
                   'path': 'uefi/Mu-Silicium', 'repository': lock['repository'],
                   'revision': lock['revision'], 'patches': [lock['boot_shim_patch'], lock['simplefb_patch']]}
@@ -90,6 +90,8 @@ jobs:
         run: python3 scripts/check_ufs_lifecycle_host.py
       - name: Check QEMU storage registration, registry snapshots and retained starts
         run: python3 scripts/check_qemu_storage_host.py
+      - name: Check owner root signatures and block integrity using the C verifier
+        run: python3 scripts/prepare_qemu_root_policy.py --host-only
       - name: Check Data registration, pre-init retention, failure latching and concurrent starts with API peers
         run: python3 scripts/check_data_lifecycle.py
       - name: Check bounded Data scheduling, dependency waits and owned-reference completion with API peers

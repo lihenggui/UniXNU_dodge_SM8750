@@ -1486,5 +1486,18 @@
     "base_source_sha256": "e5babb673140d7d7fb9076ae2447672d23f67d0e7a19531e23d158db9eaf79cd",
     "output_source_sha256": "cd782c416a0b8882289f1b11cd1c398a10b0c4070861b13108b5bcc0ac9f5f7c",
     "scope": "Separate iPhone QEMU storage candidate; IOBSD starts the deferred read-only transport after existing source schedulers."
+  },
+  "verified_root_reference": {
+    "repository": "https://github.com/UniXNU/VerifiedRoot.git",
+    "revision": "974f043d0c71ba2e60331483a41c6c6d35274ee3",
+    "path": "sources/UniXNU/kits/VerifiedRoot",
+    "reference_only": true
+  },
+  "dodge_verified_virtio_overlay": {
+    "path": "patches/oneplus13/0014-ios16-verified-virtio.patch",
+    "sha256": "54b135b4355c233d51180b1a7d41c4f24a023f7b1a6e4049e3fd6856f9e243cc",
+    "base_source_sha256": "bfd6eac739590583f3154c248a153f02e84b0ce888185a0bfe73a697e4a842c5",
+    "output_source_sha256": "7e09381f5ca7af37ac62dd3c2bda39e73e911c366ee267985cc2ef3c5afc3069",
+    "scope": "Keep the optional verified UFS callback indirect in the static arm64 iPhone kernel."
   }
 }

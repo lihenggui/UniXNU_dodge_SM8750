@@ -1,0 +1,112 @@
+{
+  "result": "IOS16_QEMU_OWNER_ROOT_POLICY_INPUTS_PASS",
+  "scope": "owner-development",
+  "reference": {
+    "repository": "https://github.com/UniXNU/VerifiedRoot.git",
+    "revision": "974f043d0c71ba2e60331483a41c6c6d35274ee3",
+    "path": "sources/UniXNU/kits/VerifiedRoot",
+    "reference_only": true
+  },
+  "source_sha256": {
+    "scripts/prepare_qemu_root_policy.py": "28436f0f13117cfa669198c417deab340eda29d505ee328e5af8244254d7d21c",
+    "sources/UniXNU/kits/VerifiedRoot/tests/check.py": "251c7da5e7950ff2390034bd98320fa976bc89ea3c3d1cce4516df9a67b6295e",
+    "sources/UniXNU/kits/VerifiedRoot/tools/manifest.py": "707d0a4d967c2e8ab381bf1cc7eb760ec72f348d450b187a2bffa47988379354",
+    "sources/UniXNU/kits/VerifiedRoot/tools/verify_image.py": "ba0fa6ba818f51767ed064a4d1f0e385809d7308cc3a738dc29486ad39bd2a20",
+    "sources/UniXNU/kits/VerifiedRoot/src/verified_root.c": "9f61a30277c28eec8d11b4ac088275389917894349bb18e2cf09f697eec1e1e3",
+    "sources/UniXNU/kits/VerifiedRoot/tests/openssl_provider.c": "06e3371366d92e5fe6723d7a5e7bcfaf5cb1a93437bc1c27451af45da389344f",
+    "sources/UniXNU/kits/VerifiedRoot/include/verified_root.h": "f2adaf66667c291123b850564a778db1618f96cd8d5b3c0122ac7d9c3882da9b",
+    "profiles/os/ios-16.7.16-20H392/crypto-contract.json": "979b7654adf7a07e310c399a4f4b25ef8604801f115b76b6a4fc47d89cae6a9f",
+    "sources/xnu-ios16/libkern/crypto/corecrypto_rsa.c": "e25f483a1f259d1e1536c6e9db80d647552cad60b831abeb3dc1eb0345583957",
+    "sources/xnu-ios16/libkern/libkern/crypto/rsa.h": "247cb00eb6648ddbca4ec99151c3d1fc14bc2db9866cf1f93c8d5b49f9eb77d3",
+    "sources/xnu-ios16/libkern/libkern/crypto/register_crypto.h": "0b730a71f549a92857083e9c8c0f54a2b13b2066b170cdf1f04836cf428729b8",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "scripts/prepare_ios16_pmgr.py": "e25027dee2f3992c64be46cd85f355e583efd489027b2b6487e472260d4406a1"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-volumes.json": "3d9eb5dc4f8e4c1cbcb588d7b140fb185dd45d932421334c6e5b6d02657fc7e7"
+  },
+  "artifacts": {
+    "build/qemu-owner-root-policy/RsaLayout.c": "9e59f489f66b407cf0037a47802db6730e7c5ac948954aa6c3c63b882df0bdbb",
+    "build/qemu-owner-root-policy/RsaLayout.o": "95e06e4cc54f7bb8ef2fb7c4e750c566a044927998cc20233745ebd22c3f7223",
+    "build/qemu-owner-root-policy/compile-commands.json": "96aff411c1b0f42a848de68b4cbc5e39cb6e372738142d122b66055d67b68471",
+    "build/ios16-volumes/OS.raw": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906",
+    "build/qemu-owner-root-policy/OS/manifest.bin": "0b6078d92f9ddf36a71208295de8f2fdfed9043949e929485698da6a807e4448",
+    "build/qemu-owner-root-policy/OS/manifest.json": "4b831a796ea293eeb3ee574ba979d77e9311a5cd1e56e6ecaf658c6a72e5b670",
+    "build/qemu-owner-root-policy/OS/verification.json": "c14c46fd5b565fd85cb9de2533b91a18c45728d843e4a9765b04ce9b84564c56",
+    "build/qemu-owner-root-policy/OS/trusted-key.bin": "b7d46534102f87d86fb4d1a5f9393b0c4ae4639e859fc269e6cfb2a1f90c182d",
+    "build/ios16-volumes/SystemOS.raw": "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849",
+    "build/qemu-owner-root-policy/SystemOS/manifest.bin": "5bade390e8269f150eed33ac09c2a1f1b4952d39098ae228bfb54134e3645bae",
+    "build/qemu-owner-root-policy/SystemOS/manifest.json": "bf1f6842dd3f19563754d01b337220e963040db93b6f459f12fb22aa12a7d036",
+    "build/qemu-owner-root-policy/SystemOS/verification.json": "ba01b27d6550fdd0f1fb4ddf074c164f00f807aaf5593577fc1970e7473a8106",
+    "build/qemu-owner-root-policy/SystemOS/trusted-key.bin": "b7d46534102f87d86fb4d1a5f9393b0c4ae4639e859fc269e6cfb2a1f90c182d",
+    "build/qemu-owner-root-policy/host-tests.py": "2b43031d4bb316a87fdd1a4d19e3b6e5230f60b47961e33d2268df4330632ab8",
+    "build/qemu-owner-root-policy/host/checks.json": "c6adc27ac484cb210c913f10634f91eca3fe33836e8e2c35ccb10033739e9ea4",
+    "build/qemu-owner-root-policy/host/verified-root.so": "22520b469f6bc71d1d407c8294a637656bdc16b9e424664e065b4e4b351801c0",
+    "build/qemu-owner-root-policy/host-tests.log": "12a94835dd86f62cf98933f4f55e3eeafc6c166495afd09181024f5005ac27f3"
+  },
+  "images": [
+    {
+      "version": 1,
+      "block_bytes": 4096,
+      "image_bytes": 5635081728,
+      "block_count": 1375753,
+      "volume_uuid": "DADD93F8-DBBF-4B17-A1DF-0F11E64172F7",
+      "generation": 1,
+      "image_sha256": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906",
+      "hash_table_sha256": "0ad98b1447ccd5326326fa264554a8ed4a74d5f5d3f66c588d1413d2fff6e24e",
+      "trusted_key_sha256": "b7d46534102f87d86fb4d1a5f9393b0c4ae4639e859fc269e6cfb2a1f90c182d",
+      "signature_algorithm": "RSA3072-PKCS1v1.5-SHA256",
+      "signature_verified_by_openssl": true,
+      "image_modified": false,
+      "hardware_tested": false,
+      "boot_root_authenticated": false,
+      "name": "OS",
+      "image": "build/ios16-volumes/OS.raw",
+      "manifest": "build/qemu-owner-root-policy/OS/manifest.bin",
+      "anchor": "build/qemu-owner-root-policy/OS/trusted-key.bin"
+    },
+    {
+      "version": 1,
+      "block_bytes": 4096,
+      "image_bytes": 2743074816,
+      "block_count": 669696,
+      "volume_uuid": "96096B28-B6DC-4BC7-9D3A-2632A0FE53F1",
+      "generation": 1,
+      "image_sha256": "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849",
+      "hash_table_sha256": "276c3563e6d5b71e87e63a908a747ccab4fb31fc8b220a82f1a43ba6027ca56c",
+      "trusted_key_sha256": "b7d46534102f87d86fb4d1a5f9393b0c4ae4639e859fc269e6cfb2a1f90c182d",
+      "signature_algorithm": "RSA3072-PKCS1v1.5-SHA256",
+      "signature_verified_by_openssl": true,
+      "image_modified": false,
+      "hardware_tested": false,
+      "boot_root_authenticated": false,
+      "name": "SystemOS",
+      "image": "build/ios16-volumes/SystemOS.raw",
+      "manifest": "build/qemu-owner-root-policy/SystemOS/manifest.bin",
+      "anchor": "build/qemu-owner-root-policy/SystemOS/trusted-key.bin"
+    }
+  ],
+  "Darwin22_RSA_contract": {
+    "rsa_bytes": 1584,
+    "rsa_alignment": 8,
+    "make_offset": 304,
+    "verify_offset": 312,
+    "original_registration": {
+      "address": "0xfffffff0056d67e0",
+      "bytes": 20,
+      "sha256": "c303e06b3fb8c7699f23fd7faec8728698c34d962a28f95bb4a30c08a943163a"
+    },
+    "original_make_public": "0xfffffff0056b2668",
+    "original_verify": "0xfffffff0056cf8c0",
+    "original_callback_prefix_sha256": [
+      "11014ca284c8b9df1e59bc69b1419f65352b2ee937920f70e23af41505a0c75a",
+      "4c3dd6d0d315541ad77e2404ff46b75db930c74fe6dcf3b8954377977b05f2ba"
+    ]
+  },
+  "original_images_modified": false,
+  "host_test_groups": 9,
+  "kernel_RSA_executed": false,
+  "Apple_root_authentication": false,
+  "hardware_tested": false,
+  "generation_policy": "Minimum generation 1 for this development image; persistent anti-rollback state is separate."
+}

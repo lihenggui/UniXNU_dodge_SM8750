@@ -1,0 +1,457 @@
+{
+  "result": "IOS16_QEMU_OWNER_VERIFIED_ROOT_KERNEL_PASS",
+  "source_sha256": {
+    "scripts/build_qemu_owner_root.py": "273c879b2eb56bfbf60790c43906310c9a51b4eab362320c6f1023f8f9cdde59",
+    "scripts/prepare_qemu_root_policy.py": "28436f0f13117cfa669198c417deab340eda29d505ee328e5af8244254d7d21c",
+    "scripts/build_qemu_storage.py": "46d8f0cf902c62be46989702bae2170a341d0f6f6eedc18d369d9c9f0d262f4a",
+    "drivers/DodgeStorage/DodgeVirtioBlock.cpp": "3b9fa412b283e6ff2347d9b7c0d70110d81def54b109f792c4c79c827703d74e",
+    "drivers/DodgeStorage/DodgeQemuStorage.cpp": "b1a0b5cfa90caca4b7c5e8b87279c51e3ab0d25aed4e4449045b80b9230cc21e",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/bsd/kern/bsd_init.c": "013fa42f9a2a82251c0ef3d4605ca2e269ac768cdb80b7accd28e6b5ee9e9be9",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/bsd/DEVELOPMENT/bsd_init.o.json": "e583ec332672b8ce725a7a98656bc5412af75da9c118389431ec09a8212e2f91",
+    "sources/UniXNU/kits/VerifiedRoot/src/verified_root.c": "9f61a30277c28eec8d11b4ac088275389917894349bb18e2cf09f697eec1e1e3",
+    "sources/UniXNU/kits/VerifiedRoot/adapters/xnu_crypto.c": "af24f73b42dbbd3d99d346fda62596bd2f6e525d7185d435a712b2b8a66d21b7",
+    "sources/UniXNU/kits/VerifiedRoot/include/verified_root.h": "f2adaf66667c291123b850564a778db1618f96cd8d5b3c0122ac7d9c3882da9b",
+    "sources/UniXNU/drivers/VirtioMmioBlock/NativeVirtioBlock.cpp": "bfd6eac739590583f3154c248a153f02e84b0ce888185a0bfe73a697e4a842c5",
+    "sources/UniXNU/drivers/VirtioMmioBlock/VerifiedBlockPolicy.h": "2c4b27b46ab7263a37f6f6f341fb492ca3b23f9052d63db191ea778c3b501376",
+    "patches/oneplus13/0014-ios16-verified-virtio.patch": "54b135b4355c233d51180b1a7d41c4f24a023f7b1a6e4049e3fd6856f9e243cc",
+    "build/cph2653-qemu-owner-root-signature/transport/NativeVirtioBlock.cpp": "7e09381f5ca7af37ac62dd3c2bda39e73e911c366ee267985cc2ef3c5afc3069",
+    "drivers/DodgeDisplay/DodgeOptionalCalls.h": "9ff7904efbec1c7363909155a051b62f218dbd7106fc60d2957dad2ec55de714"
+  },
+  "dependency_report_sha256": {
+    "reports/native-a830-kernel.json": "04388341f24b2db26f86d2876d4926f1dfc8d25a7de857abebdd8035b4ea545d",
+    "reports/ios16-qemu-storage.json": "95645c645fe5257d823d59f6dd6f70ffbed258ed72e2cfddfa593c44f783b1d4",
+    "reports/ios16-qemu-root-policy.json": "20fe303594beafe3a6b30a7980f09eae59c249891429ec69eeccc310d87a364a"
+  },
+  "artifacts": {
+    "build/cph2653-qemu-owner-root-signature/driver/DodgeVirtioBlock.o": "cef7747880ac62c928a296c73ea8ec767d42b42fb293a22d7d8222b6521f3d15",
+    "build/cph2653-qemu-owner-root-signature/driver/DodgeQemuStorage.o": "a5bb5442a14c4ba08b02be6e3703229ee03a98936c9eaf65411551c8f85f96ad",
+    "build/cph2653-qemu-owner-root-signature/DodgeVirtioBlock.late.o": "b3ec37d3adcda9b82ccfcf08595ff6559ba81f719d929d32c0c206cc6d82e371",
+    "build/cph2653-qemu-owner-root-signature/crypto/verified_root.o": "aab8474e014816f4514906db7e161fd74b1f4d6152b2771435311d220f4e2b4e",
+    "build/cph2653-qemu-owner-root-signature/crypto/xnu_crypto.o": "9a2f090fba5c329717768fe7cb369876eb4a410d56c4acdd11078187ed606785",
+    "build/cph2653-qemu-owner-root-signature/root-policies.o": "3a9a00a5def3e5050859f0128ccf609454bd5c4a00ab2befe53053f7480e36c8",
+    "build/cph2653-qemu-owner-root-signature/absent-verified-ufs.o": "afa507d98c5b4dbc1102bbbf7223c20e7cba7d3e53eec3731c73368c24314a73",
+    "build/cph2653-qemu-owner-root-signature/manifest-0.bin": "3e1366b2e6f88e839ac5f9e124d7e3e594f0b14f8681ee3dc9b7606da1c50932",
+    "build/cph2653-qemu-owner-root-signature/manifest-1.bin": "0827f6537ad6438a53c5f7f8a3dcf1e468168056d5862a7168ef68ddc884f59b",
+    "build/cph2653-qemu-owner-root-signature/libDodgeQemuOwnerRoot.a": "a06305c78f5f7f128cb620208fa434b6e9fb5e34c16743cccd7ce5f0a60626bf",
+    "build/cph2653-qemu-owner-root-signature/root-policies.S": "ce2d81577ebdbfb91f0adea9c6dc28824f3ff653f40bb9850bb9f32c12fc7773",
+    "build/cph2653-qemu-owner-root-signature/bsd_init.owner.o": "b15f7efcea87e228cd9b15b1b638c2e4fc05145959b723f81d0f21a0b695ff55",
+    "build/cph2653-qemu-owner-root-signature/native.filelist": "304e17b7e23c4788eea149d51d457963afec157d6b9e295ca6406db0f3530b2d",
+    "build/cph2653-qemu-owner-root-signature/mach.owner-root": "ee70690353d4f85f45efc147afdfd46805e1110602a775ddb205d878bb19745f",
+    "build/cph2653-qemu-owner-root-signature/kernel.macho": "7e0df631f84ca31e254b76d05d49a4e45d70bf83e4eb00ad5bdfaa6f29da2d34",
+    "build/cph2653-qemu-owner-root-signature/driver/compile-commands.json": "4e17177dad6f65f53a35694593e128977fd49740b1cba0457e9a5c4e05154ba2",
+    "build/cph2653-qemu-owner-root-signature/crypto/compile-commands.json": "fd3056d6c848d2b93104e6e2e00d2c8d7c17bd2a9d39d4b47747e58e76fa1ae8",
+    "build/cph2653-qemu-owner-root-signature/security-init.json": "54c500f04e0578dbba0b6d54ee94e565fe608de48bfbe7f6a7b8d69efdc440f8"
+  },
+  "candidate": "build/cph2653-qemu-owner-root-signature/kernel.macho",
+  "candidate_sha256": "7e0df631f84ca31e254b76d05d49a4e45d70bf83e4eb00ad5bdfaa6f29da2d34",
+  "class_readback": {
+    "storage_base_bytes": 144,
+    "driver_bytes": 328,
+    "vtable_entries": 190,
+    "deferred_constructor": "0xfffffff00b8e741c",
+    "IOBSD_calls": [
+      "0xfffffff00b78146c",
+      "0xfffffff00b8d4970",
+      "0xfffffff00b8e3508",
+      "0xfffffff00b8dcb6c",
+      "0xfffffff00b8e745c"
+    ]
+  },
+  "concrete_methods": [
+    "__ZN17NativeVirtioBlockD1Ev",
+    "__ZN17NativeVirtioBlockD0Ev",
+    "__ZNK8OSObject7releaseEi",
+    "__ZNK8OSObject14getRetainCountEv",
+    "__ZNK8OSObject6retainEv",
+    "__ZNK8OSObject7releaseEv",
+    "__ZNK8OSObject9serializeEP11OSSerialize",
+    "__ZNK17NativeVirtioBlock12getMetaClassEv",
+    "__ZNK15OSMetaClassBase9isEqualToEPKS_",
+    "__ZNK8OSObject12taggedRetainEPKv",
+    "__ZNK8OSObject13taggedReleaseEPKv",
+    "__ZNK8OSObject13taggedReleaseEPKvi",
+    "__ZN9IOService8DispatchE5IORPC",
+    "__ZN8OSObject4initEv",
+    "__ZN17NativeVirtioBlock4freeEv",
+    "__ZNK15IORegistryEntry12copyPropertyEPKcPK15IORegistryPlanej",
+    "__ZNK15IORegistryEntry12copyPropertyEPK8OSStringPK15IORegistryPlanej",
+    "__ZNK15IORegistryEntry12copyPropertyEPK8OSSymbolPK15IORegistryPlanej",
+    "__ZNK15IORegistryEntry15copyParentEntryEPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry14copyChildEntryEPK15IORegistryPlane",
+    "__ZN15IORegistryEntry17runPropertyActionEPFiP8OSObjectPvS2_S2_S2_ES1_S2_S2_S2_S2_",
+    "__ZN20IOBlockStorageDevice4initEP12OSDictionary",
+    "__ZN15IORegistryEntry16setPropertyTableEP12OSDictionary",
+    "__ZN15IORegistryEntry11setPropertyEPK8OSSymbolP8OSObject",
+    "__ZN15IORegistryEntry11setPropertyEPK8OSStringP8OSObject",
+    "__ZN15IORegistryEntry11setPropertyEPKcP8OSObject",
+    "__ZN15IORegistryEntry11setPropertyEPKcS1_",
+    "__ZN15IORegistryEntry11setPropertyEPKcb",
+    "__ZN15IORegistryEntry11setPropertyEPKcyj",
+    "__ZN15IORegistryEntry11setPropertyEPKcPvj",
+    "__ZN15IORegistryEntry14removePropertyEPK8OSSymbol",
+    "__ZN15IORegistryEntry14removePropertyEPK8OSString",
+    "__ZN15IORegistryEntry14removePropertyEPKc",
+    "__ZNK20IOBlockStorageDevice11getPropertyEPK8OSSymbol",
+    "__ZNK15IORegistryEntry11getPropertyEPK8OSString",
+    "__ZNK15IORegistryEntry11getPropertyEPKc",
+    "__ZNK15IORegistryEntry11getPropertyEPK8OSSymbolPK15IORegistryPlanej",
+    "__ZNK15IORegistryEntry11getPropertyEPK8OSStringPK15IORegistryPlanej",
+    "__ZNK15IORegistryEntry11getPropertyEPKcPK15IORegistryPlanej",
+    "__ZNK15IORegistryEntry12copyPropertyEPK8OSSymbol",
+    "__ZNK15IORegistryEntry12copyPropertyEPK8OSString",
+    "__ZNK15IORegistryEntry12copyPropertyEPKc",
+    "__ZNK15IORegistryEntry24dictionaryWithPropertiesEv",
+    "__ZNK9IOService19serializePropertiesEP11OSSerialize",
+    "__ZN20IOBlockStorageDevice13setPropertiesEP8OSObject",
+    "__ZNK15IORegistryEntry17getParentIteratorEPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry14applyToParentsEPFvPS_PvES1_PK15IORegistryPlane",
+    "__ZNK15IORegistryEntry14getParentEntryEPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry16getChildIteratorEPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry15applyToChildrenEPFvPS_PvES1_PK15IORegistryPlane",
+    "__ZNK15IORegistryEntry13getChildEntryEPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry7isChildEPS_PK15IORegistryPlaneb",
+    "__ZNK15IORegistryEntry8isParentEPS_PK15IORegistryPlaneb",
+    "__ZNK15IORegistryEntry7inPlaneEPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry8getDepthEPK15IORegistryPlane",
+    "__ZN15IORegistryEntry14attachToParentEPS_PK15IORegistryPlane",
+    "__ZN15IORegistryEntry16detachFromParentEPS_PK15IORegistryPlane",
+    "__ZN15IORegistryEntry13attachToChildEPS_PK15IORegistryPlane",
+    "__ZN15IORegistryEntry15detachFromChildEPS_PK15IORegistryPlane",
+    "__ZN15IORegistryEntry11detachAboveEPK15IORegistryPlane",
+    "__ZN15IORegistryEntry9detachAllEPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry7getNameEPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry8copyNameEPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry12compareNamesEP8OSObjectPP8OSString",
+    "__ZNK15IORegistryEntry11compareNameEP8OSStringPS1_",
+    "__ZN15IORegistryEntry7setNameEPK8OSSymbolPK15IORegistryPlane",
+    "__ZN15IORegistryEntry7setNameEPKcPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry11getLocationEPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry12copyLocationEPK15IORegistryPlane",
+    "__ZN15IORegistryEntry11setLocationEPK8OSSymbolPK15IORegistryPlane",
+    "__ZN15IORegistryEntry11setLocationEPKcPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry7getPathEPcPiPK15IORegistryPlane",
+    "__ZNK15IORegistryEntry16getPathComponentEPcPiPK15IORegistryPlane",
+    "__ZN15IORegistryEntry13childFromPathEPKcPK15IORegistryPlanePcPi",
+    "__ZN9IOService4initEP15IORegistryEntryPK15IORegistryPlane",
+    "__ZN9IOService16requestTerminateEPS_j",
+    "__ZN9IOService13willTerminateEPS_j",
+    "__ZN9IOService12didTerminateEPS_jPb",
+    "__ZN9IOService15nextIdleTimeoutEyyj",
+    "__ZN9IOService18systemWillShutdownEj",
+    "__ZN9IOService22copyClientWithCategoryEPK8OSSymbol",
+    "__ZN9IOService15configureReportEP19IOReportChannelListjPvS2_",
+    "__ZN9IOService12updateReportEP19IOReportChannelListjPvS2_",
+    "__ZNK9IOService8getStateEv",
+    "__ZN9IOService15registerServiceEj",
+    "__ZN17NativeVirtioBlock5probeEP9IOServicePi",
+    "__ZN17NativeVirtioBlock5startEP9IOService",
+    "__ZN17NativeVirtioBlock4stopEP9IOService",
+    "__ZN9IOService4openEPS_jPv",
+    "__ZN9IOService5closeEPS_j",
+    "__ZNK9IOService6isOpenEPKS_",
+    "__ZN9IOService10handleOpenEPS_jPv",
+    "__ZN9IOService11handleCloseEPS_j",
+    "__ZNK9IOService12handleIsOpenEPKS_",
+    "__ZN9IOService9terminateEj",
+    "__ZN9IOService8finalizeEj",
+    "__ZN9IOService18lockForArbitrationEb",
+    "__ZN9IOService20unlockForArbitrationEv",
+    "__ZN9IOService15terminateClientEPS_j",
+    "__ZN9IOService12getBusyStateEv",
+    "__ZN9IOService10adjustBusyEi",
+    "__ZN9IOService18matchPropertyTableEP12OSDictionaryPi",
+    "__ZN9IOService18matchPropertyTableEP12OSDictionary",
+    "__ZN9IOService13matchLocationEPS_",
+    "__ZN9IOService17addNeededResourceEPKc",
+    "__ZN9IOService15comparePropertyEP12OSDictionaryPKc",
+    "__ZN9IOService15comparePropertyEP12OSDictionaryPK8OSString",
+    "__ZN9IOService17comparePropertiesEP12OSDictionaryP12OSCollection",
+    "__ZN9IOService6attachEPS_",
+    "__ZN9IOService6detachEPS_",
+    "__ZNK9IOService11getProviderEv",
+    "__ZNK9IOService11getWorkLoopEv",
+    "__ZNK9IOService19getProviderIteratorEv",
+    "__ZNK9IOService23getOpenProviderIteratorEv",
+    "__ZNK9IOService9getClientEv",
+    "__ZNK9IOService17getClientIteratorEv",
+    "__ZNK9IOService21getOpenClientIteratorEv",
+    "__ZN9IOService20callPlatformFunctionEPK8OSSymbolbPvS3_S3_S3_",
+    "__ZN9IOService20callPlatformFunctionEPKcbPvS2_S2_S2_",
+    "__ZN9IOService12getResourcesEv",
+    "__ZN9IOService20getDeviceMemoryCountEv",
+    "__ZN9IOService24getDeviceMemoryWithIndexEj",
+    "__ZN9IOService24mapDeviceMemoryWithIndexEjj",
+    "__ZN9IOService15getDeviceMemoryEv",
+    "__ZN9IOService15setDeviceMemoryEP7OSArray",
+    "__ZN9IOService17registerInterruptEiP8OSObjectPFvS1_PvPS_iES2_",
+    "__ZN9IOService19unregisterInterruptEi",
+    "__ZN9IOService16getInterruptTypeEiPi",
+    "__ZN9IOService15enableInterruptEi",
+    "__ZN9IOService16disableInterruptEi",
+    "__ZN9IOService14causeInterruptEi",
+    "__ZN9IOService12requestProbeEj",
+    "__ZN9IOService7messageEjPS_Pv",
+    "__ZN9IOService13messageClientEjP8OSObjectPvm",
+    "__ZN9IOService14messageClientsEjPvm",
+    "__ZN9IOService16registerInterestEPK8OSSymbolPFiPvS3_jPS_S3_mES3_S3_",
+    "__ZN9IOService16applyToProvidersEPFvPS_PvES1_",
+    "__ZN9IOService14applyToClientsEPFvPS_PvES1_",
+    "__ZN9IOService17applyToInterestedEPK8OSSymbolPFvP8OSObjectPvES5_",
+    "__ZN9IOService23acknowledgeNotificationEPvj",
+    "__ZN9IOService13newUserClientEP4taskPvjP12OSDictionaryPP12IOUserClient",
+    "__ZN9IOService13newUserClientEP4taskPvjPP12IOUserClient",
+    "__ZN9IOService16stringFromReturnEi",
+    "__ZN9IOService15errnoFromReturnEi",
+    "__ZN9IOService6PMinitEv",
+    "__ZN9IOService6PMstopEv",
+    "__ZN9IOService10joinPMtreeEPS_",
+    "__ZN9IOService19registerPowerDriverEPS_P14IOPMPowerStatem",
+    "__ZN9IOService23requestPowerDomainStateEmP17IOPowerConnectionm",
+    "__ZN9IOService14activityTickleEmm",
+    "__ZN9IOService17setAggressivenessEmm",
+    "__ZN9IOService17getAggressivenessEmPm",
+    "__ZN9IOService13addPowerChildEPS_",
+    "__ZN9IOService16removePowerChildEP17IOPowerConnection",
+    "__ZN9IOService18setIdleTimerPeriodEm",
+    "__ZN9IOService13setPowerStateEmPS_",
+    "__ZN9IOService27maxCapabilityForDomainStateEm",
+    "__ZN9IOService31initialPowerStateForDomainStateEm",
+    "__ZN9IOService24powerStateForDomainStateEm",
+    "__ZN9IOService22powerStateWillChangeToEmmPS_",
+    "__ZN9IOService21powerStateDidChangeToEmmPS_",
+    "__ZN9IOService13askChangeDownEm",
+    "__ZN9IOService14tellChangeDownEm",
+    "__ZN9IOService16tellNoChangeDownEm",
+    "__ZN9IOService12tellChangeUpEm",
+    "__ZN9IOService16allowPowerChangeEm",
+    "__ZN9IOService17cancelPowerChangeEm",
+    "__ZN9IOService15powerChangeDoneEm",
+    "__ZN17NativeVirtioBlock12doEjectMediaEv",
+    "__ZN17NativeVirtioBlock13doFormatMediaEy",
+    "__ZNK17NativeVirtioBlock21doGetFormatCapacitiesEPyj",
+    "__ZN17NativeVirtioBlock18doSynchronizeCacheEv",
+    "__ZN17NativeVirtioBlock15getVendorStringEv",
+    "__ZN17NativeVirtioBlock16getProductStringEv",
+    "__ZN17NativeVirtioBlock17getRevisionStringEv",
+    "__ZN17NativeVirtioBlock29getAdditionalDeviceInfoStringEv",
+    "__ZN17NativeVirtioBlock15reportBlockSizeEPy",
+    "__ZN17NativeVirtioBlock18reportEjectabilityEPb",
+    "__ZN17NativeVirtioBlock19reportMaxValidBlockEPy",
+    "__ZN17NativeVirtioBlock16reportMediaStateEPbS0_",
+    "__ZN17NativeVirtioBlock18reportRemovabilityEPb",
+    "__ZN17NativeVirtioBlock21reportWriteProtectionEPb",
+    "__ZN17NativeVirtioBlock18getWriteCacheStateEPb",
+    "__ZN17NativeVirtioBlock18setWriteCacheStateEb",
+    "__ZN17NativeVirtioBlock16doAsyncReadWriteEP18IOMemoryDescriptoryyP19IOStorageAttributesP19IOStorageCompletion",
+    "__ZN20IOBlockStorageDevice11requestIdleEv",
+    "__ZN20IOBlockStorageDevice7doUnmapEP26IOBlockStorageDeviceExtentjj",
+    "__ZN20IOBlockStorageDevice13doSetPriorityEP26IOBlockStorageDeviceExtentjh",
+    "__ZN17NativeVirtioBlock13doSynchronizeEyyj",
+    "__ZN20IOBlockStorageDevice20doGetProvisionStatusEyyPjP35IOBlockStorageProvisionDeviceExtenty"
+  ],
+  "security_start_readback": {
+    "normal_starts": [
+      "com.apple.security.sandbox"
+    ],
+    "explicit_initializers": [
+      "com.apple.driver.AppleMobileFileIntegrity"
+    ],
+    "original_wrappers_preserved": true
+  },
+  "pointer_sites_read_back": 63889,
+  "original_executable_segments": [
+    {
+      "module": "com.apple.driver.AppleARMPlatform",
+      "sha256": "247b8b77815f8c87b43290e52a6b3888053cb3763a60bf21a004cd65b341388b",
+      "bytes": 230100
+    },
+    {
+      "module": "com.apple.driver.AppleAudioClockLibs",
+      "sha256": "bdafd9a2ed24d3151f1119859cd74bf5d99fd4af7afd4e74610985bc11c57008",
+      "bytes": 1752
+    },
+    {
+      "module": "com.apple.driver.AppleEffaceableStorage",
+      "sha256": "2e7b3402cdb22319fa82544ab66a9a211799f3e970c5a66f53d3867270ae0d57",
+      "bytes": 17360
+    },
+    {
+      "module": "com.apple.driver.AppleIISController",
+      "sha256": "20a95cd71e2c81feb6d48230a83cdd7fe382a1396db6a02f14c5deb293f12fab",
+      "bytes": 20644
+    },
+    {
+      "module": "com.apple.driver.AppleM2ScalerCSCDriver",
+      "sha256": "617686e11f04636afa2989519498bef94349d6d2ed4e2b693a74994b4cecff62",
+      "bytes": 398888
+    },
+    {
+      "module": "com.apple.driver.AppleMobileFileIntegrity",
+      "sha256": "6cbea28deab02a2b848dfac28f11c3c00745b55e7b2a896bac3cf9a600a4c7b1",
+      "bytes": 120712
+    },
+    {
+      "module": "com.apple.driver.ApplePMGR",
+      "sha256": "74ac53a277da51806f323e8c7d765d4ce9baa443adf4e513be2cff52a245db0e",
+      "bytes": 232428
+    },
+    {
+      "module": "com.apple.driver.IODARTFamily",
+      "sha256": "8cc7ebf550bd7735985b5de8890e3079816842d2ec29d95646f20d553d6ad021",
+      "bytes": 66696
+    },
+    {
+      "module": "com.apple.filesystems.apfs",
+      "sha256": "ebc47d686c6917c7fb154a0b2e2ed19e3d6a277d994d1395b02d3214142577cc",
+      "bytes": 1050376
+    },
+    {
+      "module": "com.apple.iokit.CoreAnalyticsFamily",
+      "sha256": "29d73b6c2a37d9eb40712b9413db0790e7fe0122f202341852f7725e24b9ee1f",
+      "bytes": 25108
+    },
+    {
+      "module": "com.apple.iokit.IOAVFamily",
+      "sha256": "e80383975371f1552b9abab64476c4e530c49f1e43c187944b3728c3e7d9d506",
+      "bytes": 381580
+    },
+    {
+      "module": "com.apple.iokit.IOAudio2Family",
+      "sha256": "eed290eec9f3d05a362826ad559ba494ab71e48baf746a85d5586267822a7fd4",
+      "bytes": 16788
+    },
+    {
+      "module": "com.apple.iokit.IOCECFamily",
+      "sha256": "f440e646781cc39a6f6f21cfaec088cfb030a38af19e37e6c69c99860eb6f0f8",
+      "bytes": 6364
+    },
+    {
+      "module": "com.apple.iokit.IOCryptoAcceleratorFamily",
+      "sha256": "87758ce6148f662f31e20fb7a2ec645f90f3697084db0b04331f6b44036a06fb",
+      "bytes": 10852
+    },
+    {
+      "module": "com.apple.iokit.IOGPUFamily",
+      "sha256": "34aea2cba7f617ae031c37411027b34380c68bbe1e1a17d6abbf3bbabcc777cf",
+      "bytes": 153788
+    },
+    {
+      "module": "com.apple.iokit.IOHDCPFamily",
+      "sha256": "cce46cc1281541a02de180e05e53f03b5b927c6f4688dc7078624e26b7da1800",
+      "bytes": 48448
+    },
+    {
+      "module": "com.apple.iokit.IOHIDFamily",
+      "sha256": "bb044497e1fe4153f33094011868beb000378a744109c890af9a8d63fa7d3145",
+      "bytes": 276644
+    },
+    {
+      "module": "com.apple.iokit.IOMobileGraphicsFamily",
+      "sha256": "03e4c4d80e4f9c78d4ad03366cd3f1d5894d054ae53cdf06b1a43c81a2eab1cd",
+      "bytes": 214340
+    },
+    {
+      "module": "com.apple.iokit.IOReportFamily",
+      "sha256": "6dc8734b81f576c22bd9fd78a686b29b46ba5cac4bff0957a489c001ffbc08d1",
+      "bytes": 8496
+    },
+    {
+      "module": "com.apple.iokit.IOSlowAdaptiveClockingFamily",
+      "sha256": "e9c3a7337345297aa9282bdd5bda52c0a3ac39a997fb2c9de5ff0952cc39294b",
+      "bytes": 8972
+    },
+    {
+      "module": "com.apple.iokit.IOStorageFamily",
+      "sha256": "4c9e7e8f12306986dc124e9e2cd4f9126fa7dc61e89155d973767b88a0d5ce6f",
+      "bytes": 83976
+    },
+    {
+      "module": "com.apple.iokit.IOSurface",
+      "sha256": "201b4452233e5471fe88fb7a69e0e3c37a17df3d8eead51e2698ca663ef09bae",
+      "bytes": 145604
+    },
+    {
+      "module": "com.apple.kec.Libm",
+      "sha256": "4d56a6e6b3faf6d5a745cabc904ed6eea6f8872c80040c7e4074c15601f5151a",
+      "bytes": 14820
+    },
+    {
+      "module": "com.apple.kec.corecrypto",
+      "sha256": "0da4ca3127ef4ef272b776b932e8bb97855878845034ea1a2d58bb1f5fd6ddd9",
+      "bytes": 297788
+    },
+    {
+      "module": "com.apple.kext.AppleMatch",
+      "sha256": "11eb44b13b917ca2fe80984cc6309e819b8ef597cc9ef9601e96473af0d7fbd4",
+      "bytes": 7928
+    },
+    {
+      "module": "com.apple.kext.CoreTrust",
+      "sha256": "ffc005c8163fc83206f3b87720b512a3c7b438d64fa37fece7f437429fdaaa51",
+      "bytes": 31736
+    },
+    {
+      "module": "com.apple.security.AppleImage4",
+      "sha256": "1ad058c1e525926c1e5f99b80ee59a05e2ec96c5a9c4663f3e5196f43656099b",
+      "bytes": 90524
+    },
+    {
+      "module": "com.apple.security.sandbox",
+      "sha256": "ded8921e103c6597598c3d6b9d505748e096fb77936625d84f5dddde8ead47ca",
+      "bytes": 177728
+    }
+  ],
+  "native_source_entries_preserved": 129,
+  "original_aliases_preserved": 347,
+  "original_crypto_entry_identity_preserved": true,
+  "independent_source_provider_and_its_post_field_absent": true,
+  "original_crypto_post_executed": false,
+  "firmware_readback": [
+    {
+      "name": "gen80000_gmu.bin",
+      "address": "0xfffffff00b074000",
+      "bytes": 88896,
+      "sha256": "1ad8175e6cd01ea76c64d20b83600038c52dd29844b48d57b11b769b038863a5"
+    },
+    {
+      "name": "gen80000_sqe.fw",
+      "address": "0xfffffff00b08a000",
+      "bytes": 111476,
+      "sha256": "30ee3301534f95799d4afaf73864f3c369baa5a5dea8481e7f0cb8cc941f396c"
+    },
+    {
+      "name": "gen80000_aqe.fw",
+      "address": "0xfffffff00b0a6000",
+      "bytes": 25044,
+      "sha256": "67562ad5baae3a133c92a6e48a9d1b1a9a867fe2f85b49324e244e963f3b89c5"
+    },
+    {
+      "name": "gen80000_zap.mbn",
+      "address": "0xfffffff00b0ad000",
+      "bytes": 12088,
+      "sha256": "c11cc4f383a0b2a7aecab36aee59174d766530bdcef2d37ed8b082598ca8aeb1"
+    }
+  ],
+  "Darwin22_RSA_contract": {
+    "rsa_bytes": 1584,
+    "rsa_alignment": 8,
+    "make_offset": 304,
+    "verify_offset": 312,
+    "original_registration": {
+      "address": "0xfffffff0056d67e0",
+      "bytes": 20,
+      "sha256": "c303e06b3fb8c7699f23fd7faec8728698c34d962a28f95bb4a30c08a943163a"
+    },
+    "original_make_public": "0xfffffff0056b2668",
+    "original_verify": "0xfffffff0056cf8c0",
+    "original_callback_prefix_sha256": [
+      "11014ca284c8b9df1e59bc69b1419f65352b2ee937920f70e23af41505a0c75a",
+      "4c3dd6d0d315541ad77e2404ff46b75db930c74fe6dcf3b8954377977b05f2ba"
+    ]
+  },
+  "owner_trust_compiled": true,
+  "fault_control": "signature",
+  "Apple_authentication_check_preserved": true,
+  "hardware_tested": false,
+  "scope": "Separate QEMU development kernel. The original Apple root-authentication ioctl still executes; owner authorization additionally requires a read-only mount bound to a transport whose every read is checked against an independently anchored RSA3072 policy. Runtime authorization is not established by this build report."
+}

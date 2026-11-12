@@ -1,0 +1,17 @@
+--- a/NativeVirtioBlock.cpp
++++ b/NativeVirtioBlock.cpp
+@@ -1,4 +1,5 @@
+ // SPDX-License-Identifier: BSD-2-Clause-Patent
++#include "DodgeOptionalCalls.h"
+ #include <IOKit/IOBufferMemoryDescriptor.h>
+ #include <IOKit/IODeviceMemory.h>
+ #include <IOKit/IOLib.h>
+@@ -285,7 +286,7 @@
+       NativeVirtioBlock *block = OSDynamicCast(NativeVirtioBlock, provider);
+       if (!block) {
+         if (native_ufs_block_authenticates) {
+-          int ufs = native_ufs_block_authenticates(provider, uuid->getCStringNoCopy(), manifestDigest);
++          int ufs = dodge_optional_call(native_ufs_block_authenticates, provider, uuid->getCStringNoCopy(), manifestDigest);
+           if (ufs >= 0) {
+             authenticated = ufs == 1;
+             native_verified_block_root_uuid_match = authenticated;
