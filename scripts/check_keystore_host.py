@@ -42,7 +42,7 @@ def check(directory):
             text = peer.read_text().replace('size_t length = 512;', 'size_t length = 512, limit = 512;')
             text = text.replace('size_t n) { for (size_t i', 'size_t n) { if (n > limit) n = limit; for (size_t i')
             peer.write_text(text)
-            case = work / 'test.cpp';text = case.read_text()
+            case = work / 'test.cpp';text = '#include <cstdint>\n' + case.read_text()
             marker = '    assert(client->clientClose()'
             if text.count(marker) != 1:
                 raise ValueError('KeyStore host harness changed')
