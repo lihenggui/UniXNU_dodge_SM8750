@@ -5,7 +5,7 @@ schema_version = 1
 name = "dodge"
 soc = "SM8750"
 os_profile = "ios-16.7.16-20H392"
-summary = "OnePlus 13 CPH2653: native A830 iPhone development payload with local builds and QEMU entry through InitIOKit."
+summary = "OnePlus 13 CPH2653: native A830 iPhone development payload, local builds and a separate QEMU fixture executing the first PID 1 instruction."
 
 [[area]]
 id = "configuration"
@@ -195,6 +195,9 @@ paths = [
   "scripts/prepare_qemu_root_policy.py",
   "scripts/build_qemu_owner_root.py",
   "scripts/check_qemu_owner_root.py",
+  "scripts/build_qemu_exec.py",
+  "scripts/check_qemu_exec.py",
+  "reports/public/ios16-qemu-exec*.json",
   "reports/public/ios16-qemu-root-policy.json",
   "reports/public/ios16-qemu-owner-root*.json",
   "reports/public/ios16-qemu-storage*.json",
@@ -270,6 +273,7 @@ findings = [
   "QEMU now reaches bsd_init and then the genuine Failed to mount root device panic. This fixture has no root block transport; the prepared iPhone OS/SystemOS files remain local.",
   "A separate 113-object candidate connects the pinned read-only VirtioMmioBlock to the measured iPhone storage ABI. It waits for completed platform registration, snapshots all 32 actual VirtIO nubs and starts the two block devices after original IOStorageFamily loads. Actual DMA first-sector hashes and capacities match OS/SystemOS. Original APFS mounts the UUID-selected root, then XNU refuses its failed root-authentication ioctl. Disabled startup and writable-backend controls perform no disk reads.",
   "The owner-root fixture verifies all 2,045,449 original input blocks with C/OpenSSL and calls the exact original iPhone RSA make/verify callbacks twice each in QEMU. Every completed guest read is checked against immutable owner-signed policy. The mounted root is read-only, its signed UUID and actual BSD device match, and load_init_program is reached. The Apple ioctl still returns EAUTH. Damaged signatures, changed DMA and a genuinely signed wrong UUID are refused.",
+  "Adding the original iPhone AppleFSCompressionTypeZlib extends the separate VM candidate to 29 components and 64,635 checked pointer sites. PID 1 is launchd with the original executable UUID. Its first EL0 instruction and 64 entry bytes match the original dyld extracted from OS. The missing-decompressor control fails exec with ENOTSUP before EL0.",
 ]
 completion = [
   "Qualified storage ABI, read transport, authenticated root policy and original launchd execution.",
@@ -279,11 +283,12 @@ limits = [
 ]
 next_action = [
   "Qualify the implemented full read-only transport, original storage matching/completion and root publication; qualify authenticated-root, the implemented PID 1 Data mount route, original media matching, full parent/registry and crypto/power lifecycle. The default-off init route is wired and modeled; physical qualification remains outstanding.",
-  "Continue from the owner-authorized root into the original iPhone init program and user instructions; retain the separate Apple authentication result and physical-storage work.",
+  "Continue through the original iPhone dyld and system-service startup; integrate SystemOS and Data mounts while retaining the separate Apple authentication result and physical-storage work.",
 ]
 evidence = [
   {kind = "host", reference = "reports/public/ufs-source-probe.json", result = "The iOS 16 source probe compiles, 212 public native imports match by name, and the real local UBSAN runtime dependency is recorded for static linking. Eight existing read-only host suites pass ASan/UBSan.", command = ".venv-uefi/bin/python scripts/build_ufs_probe.py --partition unixnu", revision = "f5017376415268fd39dcf0b3fd68a94661cee078"},
   {kind = "host", reference = "reports/public/ios16-qemu-storage-entry.json", result = "Original storage, two read-only DMA disk reads and the UUID-selected APFS root mount execute in QEMU. XNU preserves its root-authentication refusal. Two transport refusal controls and 27 coordinator sanitizer cases pass.", command = ".venv-gpu/bin/python scripts/check_qemu_storage.py --check-only", revision = "4e1013eb8c45077b57f8d38d61b389fe899ea1c3", revision_scope = "Pinned VirtioMmioBlock; exact Darwin 22 kernel and local adapter sources are identified by report SHA256"},
+  {kind = "host", reference = "reports/public/ios16-qemu-exec-entry.json", result = "Original iPhone launchd PID 1 executes the first dyld instruction in EL0; process UUID, 64 entry bytes and original decompressor callback instructions match. The missing-component control fails before EL0.", command = ".venv-gpu/bin/python scripts/check_qemu_exec.py --check-only", revision = "1b191cb58250d0705d8a51287127505aa4bc0789", revision_scope = "Pinned Darwin 22; VM candidate and original iPhone input hashes are recorded in the report"},
   {kind = "host", reference = "reports/public/ios16-ufs-root.json", result = "Complete read-only root publisher, original iPhone ABI, 32 lifecycle and 25 combined startup host cases; strict 68-object/208-alias source and original-component prelink, no runtime activation", command = ".venv-uefi/bin/python scripts/build_ufs_root.py", revision = "f5017376415268fd39dcf0b3fd68a94661cee078"},
   {kind = "host", reference = "reports/public/data-stack.json", result = "Six Data stages pass: two exact original-content APFS seeds, 77 sanitizer cases, 30 ARM64 paths, 43 rejection controls and an 83-object/28-component strict prelink. Original Data matching/mount and writable runtime remain unqualified.", command = ".venv-uefi/bin/python scripts/build_data_stack.py --check-only", revision = "4be2d7eb05ef5a98126c91e0302c149140c0e3e1"},
   {kind = "host", reference = "reports/public/data-startup-stack.json", result = "Four startup stages, 84 objects, 30 scheduler sanitizer cases, 43 CPU paths and 24 rejection controls pass. Packed Data/ADT/FAT/Android readback passes; no phone or original Data mount qualification.", command = ".venv-uefi/bin/python scripts/build_data_startup_stack.py --check-only", revision = "4be2d7eb05ef5a98126c91e0302c149140c0e3e1"},

@@ -5,6 +5,10 @@
   "scope": "Build, model-test and QEMU snapshots. Artifact and dependency hashes identify their recorded run. Use previous_indexes to resolve earlier report versions.",
   "previous_indexes": [
     {
+      "revision": "53d127494a1735a2131c723438c47df12b56a49e",
+      "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/53d127494a1735a2131c723438c47df12b56a49e/reports/public/index.json"
+    },
+    {
       "revision": "7ab0edb0bbd6db52a6499b50bb8a979eab97154d",
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/7ab0edb0bbd6db52a6499b50bb8a979eab97154d/reports/public/index.json"
     },
@@ -37,7 +41,7 @@
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/067b04a9f4544296ecc03a6ba26aa52d8cb0f6be/reports/public/index.json"
     }
   ],
-  "exporter_sha256": "ee513fd4c78c8f2e42f0fbdc54f43b8fc11575c1a7561e97420c7ff28406989c",
+  "exporter_sha256": "ba72076eb0e309c537ad660b7901768b2e135f87c37b40fb3eede01bd41c794c",
   "reports": {
     "a830-backend-tests.json": {
       "local_report": "reports/a830-backend-tests.json",
@@ -727,6 +731,18 @@
       "local_report": "reports/ios16-producer.json",
       "original_sha256": "4eb711ad03991b765d056b03017341950877c7d29ddd8e030002da566f2633cf",
       "snapshot_sha256": "4eb711ad03991b765d056b03017341950877c7d29ddd8e030002da566f2633cf",
+      "paths_normalized": false
+    },
+    "ios16-qemu-exec-entry.json": {
+      "local_report": "reports/ios16-qemu-exec-entry.json",
+      "original_sha256": "3ef99a27a2108ba90850b7c1210eccd5321f71afd89528ab68efd8230fdbe490",
+      "snapshot_sha256": "3ef99a27a2108ba90850b7c1210eccd5321f71afd89528ab68efd8230fdbe490",
+      "paths_normalized": false
+    },
+    "ios16-qemu-exec.json": {
+      "local_report": "reports/ios16-qemu-exec.json",
+      "original_sha256": "77abb698b4191f9ae9e2740ea7d45fe7ddbc040b9959016a1d0cf9f5122a2f97",
+      "snapshot_sha256": "77abb698b4191f9ae9e2740ea7d45fe7ddbc040b9959016a1d0cf9f5122a2f97",
       "paths_normalized": false
     },
     "ios16-qemu-owner-root-dma.json": {

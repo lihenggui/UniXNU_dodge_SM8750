@@ -1,0 +1,697 @@
+{
+  "result": "IOS16_QEMU_ORIGINAL_INIT_FIRST_EL0_INSTRUCTION_PASS",
+  "source_sha256": {
+    "scripts/check_qemu_exec.py": "5e3e71e4bbf1b4c496fc4fc9685a2f5203517f0e03bded0cdfc852620518b6a7",
+    "scripts/check_qemu_storage.py": "b16575b372cffe0677e112fd0a2346ffac61a5e9bb8031f782bb982c440f0411",
+    "scripts/check_qemu_owner_root.py": "0df515b5f40daabecbe16de009fb680271e536f6e678140fb5bb46ec3b7fafac",
+    "scripts/check_native_a830_entry.py": "af75c9cfd4e3df0f6aaa2d9d27d8e79711895cbe7016b0bff85999a8810b6807",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "tools/ApfsExtract.cpp": "f90a9edb0b7fa9dc43cf75073ef155c11ef3f57a37ef41378f1d568482dfff45"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-display-cache.json": "50c9d66e5e8a3ed3e05a78fe586afc58fc0e6461b854bd40a1479b44d67454d9",
+    "reports/ios16-qemu-exec.json": "77abb698b4191f9ae9e2740ea7d45fe7ddbc040b9959016a1d0cf9f5122a2f97",
+    "reports/ios16-qemu-owner-root.json": "7d9f603b367ecd0cecab2f7c9369fd2ba218d66fa6eb9aa0361a6791f9ae2731",
+    "reports/ios16-qemu-root-policy.json": "20fe303594beafe3a6b30a7980f09eae59c249891429ec69eeccc310d87a364a",
+    "reports/native-a830-entry.json": "419d0485c972ee03806063b4d85eaf4cde472ccbc52456b505e77bbb5f5f6d2f",
+    "reports/ios16-volumes.json": "3d9eb5dc4f8e4c1cbcb588d7b140fb185dd45d932421334c6e5b6d02657fc7e7"
+  },
+  "artifacts": {
+    "build/cph2653-qemu-exec-entry/layout/ExecLayout.c": "8f3a64e1e94f4d82bdcd907401a7683c172b389626afaab9af3e4471f341de50",
+    "build/cph2653-qemu-exec-entry/layout/ExecLayout.o": "257bda192a9436b725e8481b39c32016118eca9547dbfedac062f509fa629810",
+    "build/cph2653-qemu-exec-entry/layout/compile-commands.json": "e9a394be146870706c41af59f148d20090331c4a0e7f5b38fc251dc58b95fc89",
+    ".toolchains/apfs-readonly/apfs-extract": "a64fd2535cc4bbe93f128948dad4c25a9940b75b7d4643146a9a83895c599cb3",
+    "build/cph2653-qemu-exec-entry/originals/dyld": "5806834564fe6462ae981d0915d612b1eb2f6f168822b5d278bee56254933757",
+    "build/cph2653-qemu-exec-entry/originals/launchd": "12370e5ee35bf28ae479b6c4b4455f4f4693ab803e37c5eb3032537c18cac61c",
+    "build/cph2653-qemu-exec-entry/positive/enabled/exec.json": "c6683e2e89d107ad8774ee1c6b511e565c76eadf15e762c6191ac552b5a35e78",
+    "build/cph2653-qemu-exec-entry/positive/enabled/serial.log": "c27a87f5a11453b741edeb561f4069141d6e051d1573596c81b994e40ce576e3",
+    "build/cph2653-qemu-exec-entry/positive/enabled/qemu.log": "0963a9b2235f49186dc2cde5eba1485e68d923a435c0b4a67153be2f350b6930",
+    "build/cph2653-qemu-exec-entry/positive/enabled/observation.json": "3644b681ce45d47dcd3c22fc1183b52d00ce9648ac27afc15b5c74d4483ff125",
+    "build/cph2653-qemu-exec-entry/positive/enabled/qemu.dtb": "913be0833808e4aa58bcd7ae61224182f0737c29976513925fb59c03a4f19ecd",
+    "build/cph2653-qemu-exec-entry/positive/enabled/image4-boot-policy.json": "33ec0901732e1cc4a8c1a89524beca633bd7e7b101136ff566866193a8132b6d",
+    "build/cph2653-qemu-exec-entry/positive/enabled/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+    "build/cph2653-qemu-exec-entry/positive/enabled/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-qemu-exec-entry/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho": "f9073d3b0b5c9ab4845358add500fd0f6927698de8ec389ce6d028fdc0c62ca4",
+    "build/cph2653-qemu-exec-entry/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "ac39b83e90f2f2469c95c8c055418106c41496bc26006266a10dc61f0469fd26",
+    "build/cph2653-qemu-exec-entry/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
+    "build/cph2653-qemu-exec-entry/positive/enabled/esp/EFI/UniXNU/unixnu.toml": "0de360fab3960883c22b71b99e0ed596fa0c6839e43b62adbed08fc9f04a939a",
+    "build/cph2653-qemu-exec/kernel.macho": "f9073d3b0b5c9ab4845358add500fd0f6927698de8ec389ce6d028fdc0c62ca4",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/exec.json": "83ebed1f3ec2b1b01a596a26c8b500de42974602f0742189ea0fd0500a797fe3",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/serial.log": "2f9e4869a2378d4ef9f5c601501c91bcfc01ef0edf2de2ca0ea51f0445c13ef9",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/qemu.log": "0963a9b2235f49186dc2cde5eba1485e68d923a435c0b4a67153be2f350b6930",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/observation.json": "b6e9e482d7979135ca8cc030d57c876f4f873df7134558bfb5dbb2fdb225d658",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/qemu.dtb": "a192cc37ecff89e7372bf03fae7bd820c68415f74d35b03a39bf6e1ff7a9fc07",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/image4-boot-policy.json": "c5160272e09b3dd3535f791aaa08cb3426045590a1a6e4f4c460eb298b28300f",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/esp/EFI/UniXNU/Payloads/kernel.macho": "76e606170310a859aba40470a66b199a75458ccf51f0aaaf6abd66b2c742bb27",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "dea3564d3bc7d46da6838025cfd643973bbb587e03fb912a449befa330b35a32",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
+    "build/cph2653-qemu-exec-entry/missing-decompressor/enabled/esp/EFI/UniXNU/unixnu.toml": "0de360fab3960883c22b71b99e0ed596fa0c6839e43b62adbed08fc9f04a939a",
+    "build/cph2653-qemu-owner-root/kernel.macho": "76e606170310a859aba40470a66b199a75458ccf51f0aaaf6abd66b2c742bb27",
+    ".toolchains/qemu/usr/bin/qemu-system-aarch64": "0a63468782d096485932acf6aa0a69d358b3e3a6f68f655e960e9f5e3fc578d8",
+    ".toolchains/qemu/usr/share/AAVMF/AAVMF_CODE.fd": "a5883fa6c93a3ca3e11d908ca906620ce9e4673d17ef9db35638aa7ea82c4cdf",
+    ".toolchains/qemu/usr/share/AAVMF/AAVMF_VARS.fd": "3b6a07d0d404fab4e23b6d34bc6696a6a312dd92821332385e5af7c01c421351",
+    ".toolchains/qemu/usr/share/seabios/vgabios-ramfb.bin": "0d522dc3c5cfc16d0f6030dc14c07da82b426e0bd573f03744bfee714348f02f",
+    "build/cph2653-native-a830-bringup/readback/EFI/UniXNU/Payloads/kernel.macho.adt": "2fe593e130636c2c7dee34a6c1948e0faba391eb43d26c7e3d5f8a9b6782e8b7",
+    "build/ios16-volumes/OS.raw": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906",
+    "build/ios16-volumes/SystemOS.raw": "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849"
+  },
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "Darwin22_layout": {
+    "proc_bytes": 1920,
+    "pid": 96,
+    "comm": 1464,
+    "comm_bytes": 17,
+    "name": 1481,
+    "name_bytes": 33,
+    "uuid": 1524,
+    "registration_bytes": 48,
+    "version": 0,
+    "validate": 8,
+    "adjust_fetch": 16,
+    "fetch": 24,
+    "free_data": 32,
+    "get_flags": 40,
+    "compression_types": 255,
+    "version_one": 1,
+    "version_three": 3
+  },
+  "original_files": {
+    "dyld": {
+      "path": "/usr/lib/dyld",
+      "local": "build/cph2653-qemu-exec-entry/originals/dyld",
+      "sha256": "5806834564fe6462ae981d0915d612b1eb2f6f168822b5d278bee56254933757",
+      "uuid": "199941a595ee30548e54ae6387a9fa9a",
+      "entry": 86448
+    },
+    "launchd": {
+      "path": "/sbin/launchd",
+      "local": "build/cph2653-qemu-exec-entry/originals/launchd",
+      "sha256": "12370e5ee35bf28ae479b6c4b4455f4f4693ab803e37c5eb3032537c18cac61c",
+      "uuid": "5c15db07b3bc3df3b62f3e498b993b8e"
+    }
+  },
+  "positive": {
+    "case": "positive",
+    "RSA_calls": [
+      {
+        "callback": "original_make_public",
+        "pc": "0xfffffff0046b2668"
+      },
+      {
+        "callback": "original_verify",
+        "pc": "0xfffffff0046cf8c0"
+      },
+      {
+        "callback": "original_make_public",
+        "pc": "0xfffffff0046b2668"
+      },
+      {
+        "callback": "original_verify",
+        "pc": "0xfffffff0046cf8c0"
+      }
+    ],
+    "init_loader_entered": true,
+    "EL0_entered": true,
+    "user_instruction_executed": true,
+    "kernel_return": "0xfffffff00b2ab994",
+    "kernel_return_sha256": "81439722658c47b57b3e933ce652eea37bca16c3a57a0ea4e28f2d0765603488",
+    "last_state": {
+      "native_owner_root_accepted": 1,
+      "native_owner_root_trust_enabled": 1,
+      "native_owner_root_apple_autherr": 80,
+      "native_owner_root_decision": 1,
+      "native_owner_root_readonly": 1,
+      "native_owner_root_mount_device": 16777222,
+      "native_owner_root_selected_device": 16777222,
+      "native_virtio_verified_devices": 2,
+      "native_virtio_integrity_failures": 0,
+      "native_verified_block_root_uuid_match": 1,
+      "native_verified_block_wrong_uuid_refused": 1,
+      "native_verified_block_root_media_matches": 1,
+      "dodge_qemu_storage_phase": 2,
+      "dodge_qemu_storage_started": 2,
+      "native_virtio_read_requests": 251,
+      "native_virtio_read_failures": 0,
+      "verified_blocks": 464,
+      "RSA_table": [
+        "0xfffffff0046b2668",
+        "0xfffffff0046cf8c0"
+      ]
+    },
+    "type_four_registration": "0xfffffff005f48ef8",
+    "decompressor": {
+      "version": 3,
+      "callbacks": {
+        "validate": "0xfffffff0056962a8",
+        "adjust_fetch": "0xfffffff0056965d8",
+        "fetch": "0xfffffff005696600",
+        "free_data": "0xfffffff005696a7c",
+        "get_flags": "0xfffffff005696a88"
+      },
+      "original_callback_instructions_match": true
+    },
+    "return_registers": {
+      "SPSR_EL1": "0x0",
+      "ELR_EL1": "0x1004cf1b0"
+    },
+    "process": {
+      "pid": 1,
+      "comm": "launchd",
+      "name": "launchd",
+      "uuid": "5c15db07b3bc3df3b62f3e498b993b8e"
+    },
+    "user_entry": {
+      "pc": "0x1004cf1b0",
+      "pstate": "0x0",
+      "dyld_slide": "0x1004ba000",
+      "code": "e00300911fec7c921d0080d21e0080d290faff171f00009140001fd6281440f9081400f9c0035fd600a00091a0ccff17ffc300d1fd7b02a9fd830091e20301aa",
+      "original_entry_code_matches": true
+    },
+    "after_instruction": {
+      "pc": "0x1004cf1b4",
+      "pstate": "0x0",
+      "x0": "0x16fbf5db8",
+      "original_sp": "0x16fbf5db8"
+    },
+    "execution": {
+      "case": "enabled",
+      "checkpoints": [
+        "_arm_init",
+        "_bsd_init",
+        "_dodge_qemu_storage_checkpoint",
+        "_IOFindBSDRoot"
+      ],
+      "reads": [
+        {
+          "device": "0xfffffff44e8da2f0",
+          "physical": "0xa003c00",
+          "sectors": 5357568,
+          "first_sector_sha256": "9d8a717d6b9b3d863a255b3755b121847a9bc9c2a7294c43b9f68524f55eb8b6",
+          "requests": 1,
+          "failures": 0
+        },
+        {
+          "device": "0xfffffff44e8dcb30",
+          "physical": "0xa003e00",
+          "sectors": 11006019,
+          "first_sector_sha256": "d9ce8c44219524305dd4b829498713a4bfea0d4bc1222547d465f5cca752b1ef",
+          "requests": 2,
+          "failures": 0
+        }
+      ],
+      "storage": {
+        "phase": 2,
+        "attempted": 32,
+        "started": 2,
+        "result": 0
+      },
+      "resources": [
+        {
+          "address": "0xa000000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003e00",
+          "bytes": 512
+        }
+      ],
+      "registers": {
+        "x0": "0xfffffff00b9bbd98",
+        "x1": "0x20",
+        "x2": "0xfffffff00b9bbd80",
+        "x3": "0xfffffffbde193de8",
+        "x4": "0xfffffff00b9f0738",
+        "x5": "0x0",
+        "x6": "0x0",
+        "x7": "0x0",
+        "x8": "0x96d98",
+        "x9": "0x0",
+        "x10": "0x9e2d7185d9b9ba22",
+        "x11": "0x0",
+        "x12": "0x44b82fa09b5a53",
+        "x13": "0x2b1ff",
+        "x14": "0x14",
+        "x15": "0x44b82fa09",
+        "x16": "0x0",
+        "x17": "0x3b9aca00",
+        "x18": "0x323c000",
+        "x19": "0xfffffff00b9bbd98",
+        "x20": "0xfffffff00b9bbd80",
+        "x21": "0xfffffff00af334a5",
+        "x22": "0xfffffff00af3369a",
+        "x23": "0xfffffff00af336e7",
+        "x24": "0xfffffff00b9bb000",
+        "x25": "0xfffffff00b2e4954",
+        "x26": "0x6000000",
+        "x27": "0x0",
+        "x28": "0xfffffff00b9a3ad0",
+        "x29": "0xfffffffbde193ed0",
+        "x30": "0xfffffff00b56d358",
+        "sp": "0xfffffffbde193dc0",
+        "pc": "0xfffffff00b803f30"
+      },
+      "policies": [
+        {
+          "name": "AppleImage4",
+          "registered": true,
+          "record": "0xfffffff005caf458",
+          "original_operations": "0xfffffff005caf4a8"
+        },
+        {
+          "name": "AMFI",
+          "registered": true,
+          "record": "0xfffffff005cb78a0",
+          "original_operations": "0xfffffff005cb6e28"
+        },
+        {
+          "name": "Sandbox",
+          "registered": true,
+          "record": "0xfffffff005ef8d38",
+          "original_operations": "0xfffffff005ef8d98"
+        }
+      ],
+      "translation_registers": {
+        "SCTLR_EL1": "0x3454593d",
+        "TTBR0_EL1": "0x488ac000",
+        "TTBR1_EL1": "0x488ad000",
+        "TCR_EL1": "0x22a51a251a"
+      },
+      "platform_device_count": 33
+    }
+  },
+  "negative_control": {
+    "case": "missing-decompressor",
+    "RSA_calls": [
+      {
+        "callback": "original_make_public",
+        "pc": "0xfffffff0046b2668"
+      },
+      {
+        "callback": "original_verify",
+        "pc": "0xfffffff0046cf8c0"
+      },
+      {
+        "callback": "original_make_public",
+        "pc": "0xfffffff0046b2668"
+      },
+      {
+        "callback": "original_verify",
+        "pc": "0xfffffff0046cf8c0"
+      }
+    ],
+    "init_loader_entered": true,
+    "EL0_entered": false,
+    "user_instruction_executed": false,
+    "kernel_return": "0xfffffff00b2ab994",
+    "kernel_return_sha256": "81439722658c47b57b3e933ce652eea37bca16c3a57a0ea4e28f2d0765603488",
+    "last_state": {
+      "native_owner_root_accepted": 1,
+      "native_owner_root_trust_enabled": 1,
+      "native_owner_root_apple_autherr": 80,
+      "native_owner_root_decision": 1,
+      "native_owner_root_readonly": 1,
+      "native_owner_root_mount_device": 16777222,
+      "native_owner_root_selected_device": 16777222,
+      "native_virtio_verified_devices": 2,
+      "native_virtio_integrity_failures": 0,
+      "native_verified_block_root_uuid_match": 1,
+      "native_verified_block_wrong_uuid_refused": 1,
+      "native_verified_block_root_media_matches": 1,
+      "dodge_qemu_storage_phase": 2,
+      "dodge_qemu_storage_started": 2,
+      "native_virtio_read_requests": 238,
+      "native_virtio_read_failures": 0,
+      "verified_blocks": 413,
+      "RSA_table": [
+        "0xfffffff0046b2668",
+        "0xfffffff0046cf8c0"
+      ]
+    },
+    "type_four_registration": "0x0",
+    "execution": {
+      "case": "enabled",
+      "checkpoints": [
+        "_arm_init",
+        "_bsd_init",
+        "_dodge_qemu_storage_checkpoint",
+        "_IOFindBSDRoot"
+      ],
+      "reads": [
+        {
+          "device": "0xfffffff29e489ca0",
+          "physical": "0xa003c00",
+          "sectors": 5357568,
+          "first_sector_sha256": "9d8a717d6b9b3d863a255b3755b121847a9bc9c2a7294c43b9f68524f55eb8b6",
+          "requests": 1,
+          "failures": 0
+        },
+        {
+          "device": "0xfffffff29e48a260",
+          "physical": "0xa003e00",
+          "sectors": 11006019,
+          "first_sector_sha256": "d9ce8c44219524305dd4b829498713a4bfea0d4bc1222547d465f5cca752b1ef",
+          "requests": 2,
+          "failures": 0
+        }
+      ],
+      "storage": {
+        "phase": 2,
+        "attempted": 32,
+        "started": 2,
+        "result": 0
+      },
+      "resources": [
+        {
+          "address": "0xa000000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003e00",
+          "bytes": 512
+        }
+      ],
+      "registers": {
+        "x0": "0xfffffff00af37c2c",
+        "x1": "0x716fbfc00040004",
+        "x2": "0x0",
+        "x3": "0xfffffffbf332f518",
+        "x4": "0x0",
+        "x5": "0x100000000",
+        "x6": "0x6468636e75616c",
+        "x7": "0x0",
+        "x8": "0x2d",
+        "x9": "0xfffffff00af378a7",
+        "x10": "0x8000",
+        "x11": "0x200000010000518",
+        "x12": "0x0",
+        "x13": "0x0",
+        "x14": "0x200000110000518",
+        "x15": "0x100000000",
+        "x16": "0x2",
+        "x17": "0x3",
+        "x18": "0x0",
+        "x19": "0x2d",
+        "x20": "0xfffffff00af37b69",
+        "x21": "0x1000",
+        "x22": "0xfffffff551397b00",
+        "x23": "0xfffffff5513977e8",
+        "x24": "0xfffffff00b948180",
+        "x25": "0xfffffff551459fb8",
+        "x26": "0xfffffff00b948180",
+        "x27": "0xffffffffffffffff",
+        "x28": "0x0",
+        "x29": "0xfffffff841193e10",
+        "x30": "0xfffffff00b599d1c",
+        "sp": "0xfffffff841193cf0",
+        "pc": "0xfffffff00b8e8d5c"
+      },
+      "policies": [
+        {
+          "name": "AppleImage4",
+          "registered": true,
+          "record": "0xfffffff005caf458",
+          "original_operations": "0xfffffff005caf4a8"
+        },
+        {
+          "name": "AMFI",
+          "registered": true,
+          "record": "0xfffffff005cb78a0",
+          "original_operations": "0xfffffff005cb6e28"
+        },
+        {
+          "name": "Sandbox",
+          "registered": true,
+          "record": "0xfffffff005ef8d38",
+          "original_operations": "0xfffffff005ef8d98"
+        }
+      ],
+      "translation_registers": {
+        "SCTLR_EL1": "0x3454593d",
+        "TTBR0_EL1": "0x488a8000",
+        "TTBR1_EL1": "0x488a9000",
+        "TCR_EL1": "0x22a51a251a"
+      },
+      "platform_device_count": 33,
+      "next_stop": {
+        "format": "Process 1 exec of %s failed, errno %d @%s:%d",
+        "arguments": [
+          "0xfffffff00af37b69",
+          "0x2d",
+          "0xfffffff00af378a7",
+          "0x1f30"
+        ],
+        "lr": "0xfffffff00b599d1c"
+      },
+      "total_read_requests": 238,
+      "read_failures": 0,
+      "root_vnode": "0xfffffff46ac323d0"
+    }
+  },
+  "system_booted": false,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "PID 1 executes the original iPhone dyld entry for launchd in EL0. The process UUID and 64 dyld entry bytes match read-only extraction from the pinned OS image. The original type-4 decompressor is registered with unchanged callback instructions. Without that component, the same owner-root chain fails exec with ENOTSUP before EL0. This check stops after one user instruction."
+}

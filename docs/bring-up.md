@@ -392,6 +392,23 @@ work. The [owner-root result](../reports/public/ios16-qemu-owner-root-entry.json
 records the original callback addresses, mounted-device checks and controls.
 CI runs the nine C/signature test groups with `--host-only` and no iPhone files.
 
+To run the original init executable, add its filesystem decompressor:
+
+```sh
+.venv-uefi/bin/python scripts/build_qemu_exec.py
+.venv-gpu/bin/python scripts/check_qemu_exec.py
+.venv-gpu/bin/python scripts/check_qemu_exec.py --check-only
+```
+
+This candidate adds `AppleFSCompressionTypeZlib` from the same iPhone kernelcache.
+All 64,635 pointer bindings and the original component instructions are checked.
+QEMU reaches PID 1, named `launchd`, with the original executable UUID. Its first
+EL0 instruction belongs to the original `/usr/lib/dyld`; 64 entry bytes match
+read-only extraction from the OS image. The check single-steps that instruction
+and stops. Without the decompressor, exec returns `ENOTSUP` before EL0.
+The [exec result](../reports/public/ios16-qemu-exec-entry.json) records both runs.
+Continuing through dyld, mounting Data and starting system services remain open.
+
 ## System and Data images
 
 ```sh
