@@ -1499,5 +1499,18 @@
     "base_source_sha256": "bfd6eac739590583f3154c248a153f02e84b0ce888185a0bfe73a697e4a842c5",
     "output_source_sha256": "7e09381f5ca7af37ac62dd3c2bda39e73e911c366ee267985cc2ef3c5afc3069",
     "scope": "Keep the optional verified UFS callback indirect in the static arm64 iPhone kernel."
+  },
+  "software_aes_reference": {
+    "repository": "https://github.com/UniXNU/SoftwareAES.git",
+    "revision": "da07dd5c7d62bbe960f5bd4fe7789574d3a49d8c",
+    "path": "sources/SoftwareAES",
+    "reference_only": true
+  },
+  "dodge_qemu_aes_overlay": {
+    "path": "patches/oneplus13/0015-ios16-qemu-aes.patch",
+    "sha256": "d5d0d61930b1ad3c2876edd1df18d41457d12a31141d6281012963947ce24ea1",
+    "base_source_sha256": "cd782c416a0b8882289f1b11cd1c398a10b0c4070861b13108b5bcc0ac9f5f7c",
+    "output_source_sha256": "f60a24a614543ce97924cbe99bffbb270dc086842c93723c197f77856e28ac80",
+    "scope": "Start the deferred iPhone SoftwareAES provider after read-only QEMU storage registration."
   }
 }

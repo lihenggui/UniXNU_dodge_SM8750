@@ -21,7 +21,7 @@ jobs:
           from pathlib import Path
           import subprocess
           lock = json.loads(Path('upstream.lock.json').read_text())
-          for name in ('unixnu', 'darwinboot', 'xnu_ios16', 'iig_port', 'xnuprelink', 'uefi', 'pagani_reference', 'oneplus13t_reference', 'sm8750', 'native_a830_reference', 'native_a830_smmu_reference', 'verified_root_reference'):
+          for name in ('unixnu', 'darwinboot', 'xnu_ios16', 'iig_port', 'xnuprelink', 'uefi', 'pagani_reference', 'oneplus13t_reference', 'sm8750', 'native_a830_reference', 'native_a830_smmu_reference', 'verified_root_reference', 'software_aes_reference'):
               spec = lock[name] if name != 'uefi' else {
                   'path': 'uefi/Mu-Silicium', 'repository': lock['repository'],
                   'revision': lock['revision'], 'patches': [lock['boot_shim_patch'], lock['simplefb_patch']]}

@@ -75,7 +75,8 @@ class UserInstructionReached(Exception):
     pass
 
 
-def execute(case, source, paths, environment, images, board, policy, layout, originals, timeout):
+def execute(case, source, paths, environment, images, board, policy, layout, originals, timeout, *,
+            directory_root=OUT, resource_factory=None, after_user_instruction=None):
     kernel = ROOT / source['candidate'];raw = kernel.read_bytes();parsed = macho(raw)
     names = {row['name']: row['value'] for row in symbols(raw) if row['kind'] & 14}
     start = names['_arm64_thread_exception_return'];offset = backed_offset(parsed['segments'], start, 8192, len(raw))
@@ -83,7 +84,7 @@ def execute(case, source, paths, environment, images, board, policy, layout, ori
     rsa = {int(policy['Darwin22_RSA_contract'][key], 0) - 0x1000000: key
            for key in ('original_make_public', 'original_verify')}
     points = {names[name]: name for name in ('_native_owner_root_accepted_checkpoint', '_load_init_program')}
-    directory = OUT / case / 'enabled';directory.mkdir(parents=True, exist_ok=True)
+    directory = directory_root / case / 'enabled';directory.mkdir(parents=True, exist_ok=True)
     trace_path = directory / 'exec.json'
     result = {'case': case, 'RSA_calls': [], 'init_loader_entered': False, 'EL0_entered': False,
         'user_instruction_executed': False, 'kernel_return': hex(eret),
@@ -186,6 +187,7 @@ def execute(case, source, paths, environment, images, board, policy, layout, ori
                         result['user_instruction_executed'] = True
                         result['after_instruction'] = {'pc': hex(after[32]), 'pstate': hex(after_pstate),
                             'x0': hex(after[0]), 'original_sp': hex(user[31])}
+                        if after_user_instruction is not None:after_user_instruction(self, result, names)
                         self.save();raise UserInstructionReached()
                 else:self.state()
                 self.save()
@@ -196,8 +198,9 @@ def execute(case, source, paths, environment, images, board, policy, layout, ori
             return reply
 
     try:
+        options = {'resource_factory': resource_factory} if resource_factory is not None else {}
         result['execution'], _ = run_case('enabled', paths, environment, kernel, names, images, board, timeout,
-            directory_root=OUT / case, remote_factory=ExecRemote)
+            directory_root=directory_root / case, remote_factory=ExecRemote, **options)
     except UserInstructionReached:
         result['execution'] = json.loads((directory / 'observation.json').read_text())
     state = result['last_state']

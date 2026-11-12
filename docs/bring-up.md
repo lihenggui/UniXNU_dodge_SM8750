@@ -407,7 +407,27 @@ EL0 instruction belongs to the original `/usr/lib/dyld`; 64 entry bytes match
 read-only extraction from the OS image. The check single-steps that instruction
 and stops. Without the decompressor, exec returns `ENOTSUP` before EL0.
 The [exec result](../reports/public/ios16-qemu-exec-entry.json) records both runs.
-Continuing through dyld, mounting Data and starting system services remain open.
+Add SoftwareAES to let the original Image4 service finish startup:
+
+```sh
+.venv-uefi/bin/python scripts/build_qemu_aes.py
+.venv-uefi/bin/python scripts/build_qemu_aes.py --negative-kat
+.venv-gpu/bin/python scripts/check_qemu_aes.py
+.venv-gpu/bin/python scripts/check_qemu_aes.py --check-only
+```
+
+The build derives the 288-byte AES class, all 181 dispatch slots and its original
+bindings from the iPhone kernelcache. The provider passes its CBC and memory
+descriptor self-tests. QEMU uses a separate identifier derived from the owner's
+public anchor for the software nonce key. This is a public development identity;
+Apple personalization and hardware keys have separate implementations.
+
+Original dyld returns from `security.mac.img4.ignition_blob`, enters `prepare`
+and calls the shared-cache loader. It then reports a missing
+`/usr/lib/libSystem.B.dylib` and no dyld cache. SystemOS contains the prepared
+cache and still needs attachment at its iPhone path. A wrong CBC answer prevents
+provider registration; an absent VM identifier produces the original unsupported
+key panic. See [the AES result](../reports/public/ios16-qemu-aes-entry.json).
 
 ## System and Data images
 

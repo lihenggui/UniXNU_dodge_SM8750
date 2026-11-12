@@ -54,7 +54,8 @@ def virtual_resources(tree, fdt, root_uuid):
     return encode_tree(nodes), [{'address': hex(address), 'bytes': size} for address, size in sorted(resources)]
 
 
-def run_case(case, paths, environment, kernel, names, images, board_tree, timeout, *, directory_root=OUT, remote_factory=Remote):
+def run_case(case, paths, environment, kernel, names, images, board_tree, timeout, *, directory_root=OUT, remote_factory=Remote,
+             resource_factory=virtual_resources):
     qemu, firmware, variables, roms = paths
     directory = directory_root / case;esp = directory / 'esp'
     payloads = esp / 'EFI/UniXNU/Payloads'
@@ -81,7 +82,7 @@ def run_case(case, paths, environment, kernel, names, images, board_tree, timeou
     process = subprocess.run(list(map(str, dump)), env=environment, capture_output=True, timeout=20)
     require(not process.returncode and fdt_path.is_file(), 'QEMU did not provide its actual FDT')
     root_uuid = images[0]['apfs']['observed_volumes'][0]['uuid']
-    tree, resources = virtual_resources(board_tree, fdt_path.read_bytes(), root_uuid)
+    tree, resources = resource_factory(board_tree, fdt_path.read_bytes(), root_uuid)
     components = {name: (payloads / name).read_bytes() for name in ('kernel.macho', 'kernel.macho.trustcache')}
     tree, policy = prepare_policy(tree, components)
     (payloads / 'kernel.macho.adt').write_bytes(tree)

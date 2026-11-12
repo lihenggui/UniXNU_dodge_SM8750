@@ -1,0 +1,18 @@
+--- a/IOKitBSDInit.cpp
++++ b/IOKitBSDInit.cpp
+@@ -110,6 +110,7 @@
+ extern "C" IOReturn dodge_input_schedule(void);
+ extern "C" IOReturn dodge_data_schedule(void);
+ extern "C" IOReturn dodge_qemu_storage_start(void);
++extern "C" IOReturn dodge_qemu_aes_start(void);
+ 
+ kern_return_t
+ IOKitBSDInit( void )
+@@ -119,6 +120,7 @@
+ 	(void)dodge_data_schedule();
+ 	(void)dodge_input_schedule();
+ 	(void)dodge_qemu_storage_start();
++	(void)dodge_qemu_aes_start();
+ 
+ #if IOPOLLED_COREFILE
+ 	corefile_open_call = thread_call_allocate_with_options(IOOpenPolledCoreFile, NULL, THREAD_CALL_PRIORITY_KERNEL, THREAD_CALL_OPTIONS_ONCE);

@@ -32,6 +32,7 @@ dependency lock files.
 | [UniXNU](https://github.com/UniXNU/UniXNU) | Build driver, DarwinBoot, XnuPrelink, native driver interfaces and RamBlock |
 | [VirtioMmioBlock](https://github.com/UniXNU/VirtioMmioBlock) | Read-only QEMU storage transport with the iPhone storage ABI |
 | [VerifiedRoot](https://github.com/UniXNU/VerifiedRoot) | Owner-signed block policies, XNU crypto adapter and C verification |
+| [SoftwareAES](https://github.com/UniXNU/SoftwareAES) | Software AES-CBC provider; BSD-2-Clause-Patent, copyright 2026 ArmVirtPlatform contributors |
 | [Apple XNU](https://github.com/apple-oss-distributions/xnu) | Darwin 22 kernel; selected VFS backport from XNU 10063.141.1 |
 | [SM8750 common](https://github.com/IssacL04/UniXNU-sm8750-common) | SoC support and topology |
 | [Pagani drivers](https://github.com/IssacL04/UniXNU-Pagani-Drivers) | Peripheral protocols, input code and console renderer |
