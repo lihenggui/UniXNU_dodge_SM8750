@@ -173,6 +173,7 @@ def main():
         runtime = apply_runtime(stage)
         inputs += [ROOT / runtime['path'], ROOT / 'scripts/native_a830_runtime.py']
         inputs += [ROOT / runtime['surface_overlay']['path']]
+        inputs += [ROOT / runtime['recovery_overlay']['path']]
         inputs += [ROOT / name for name in runtime['support_sha256']]
         boot = ROOT / 'drivers/DodgeGpu/DodgeNativeA830Boot.cpp'
         files += [boot]

@@ -110,7 +110,7 @@
     "patches/adreno830/0002-board-firmware-pins.patch": "46efed5d8691651f050fae30db5f45acae3981421cc195917b104d7b23eae312",
     "scripts/check_native_a830_board.py": "dd202040a01140a04c9f6304dae9c8aa444a6079284a4b21977fcce2a785fb75",
     "scripts/prepare_native_a830.py": "4fa2905f6279823b7f1897cd48f80ae70611b1aecfb118cc95aa1dc06628e381",
-    "scripts/build_native_a830.py": "31dd6efe8a95adaabfdf96035216df76075269696d32af42fd419cc687d23f74",
+    "scripts/build_native_a830.py": "6380a27775db8ed324d70df117d5f79b1a8b13c1a36368f088b81a7a6129b816",
     "tests/DodgeNativeA830BoardTest.cpp": "3b5d11bc89f35f9240e0e19c3e7a883736ac143d476ab37aa09b8667e258cb84",
     "drivers/DodgeGpu/DodgeNativeA830ABI.h": "8e0cfffdb84ed74065dc0a9ebcdac16cd5598d964b3736d0e984236b7f4557c5",
     "drivers/DodgeGpu/DodgeNativeA830Board.cpp": "9ed3b867e236611abc8c2599a6f235a426b4e66db599ee3c8b6602e98df042e7",

@@ -1,7 +1,7 @@
 {
   "result": "NATIVE_A830_IPHONE_RUNTIME_ARCHIVE_PASS",
   "target": "arm64-apple-ios16.0",
-  "builder_sha256": "31dd6efe8a95adaabfdf96035216df76075269696d32af42fd419cc687d23f74",
+  "builder_sha256": "6380a27775db8ed324d70df117d5f79b1a8b13c1a36368f088b81a7a6129b816",
   "source_revisions": {
     "native_a830_reference": "1a1321056ffc5428ae925f4680093718b46ca7c2",
     "native_a830_smmu_reference": "3ba92451bd44bb742d11758fbfcd3a446ecad685",
@@ -115,15 +115,16 @@
     "patches/adreno830/0002-board-firmware-pins.patch": "46efed5d8691651f050fae30db5f45acae3981421cc195917b104d7b23eae312",
     "scripts/prepare_native_a830.py": "4fa2905f6279823b7f1897cd48f80ae70611b1aecfb118cc95aa1dc06628e381",
     "patches/adreno830/0003-ios16-runtime.patch": "9ef6f2df484a8d5da7df62c932e7f962fbd7c910e1b22313346326ebb46041d6",
-    "scripts/native_a830_runtime.py": "d6fdcf926522b84b330c8b3253d8a0e7fbae6bb4604fc243e8e3dd6c152753ea",
+    "scripts/native_a830_runtime.py": "92a60263f6159cf6cdd8ad8bd90b52cf9ceff1dc5890413812570b11c61daaf6",
     "patches/adreno830/0004-ios16-surface-producers.patch": "a2e6b72abda6f20704576fb74b573a8bd453972da2148edba069819abb4313fc",
+    "patches/adreno830/0009-recovery-status.patch": "bebd1b0642641255d88928519f6dd41c7cc9f2697ed86f63f51f35b833402798",
     "drivers/DodgeGpu/DodgeNativeMappedLease.inc": "706ba1b0b5c12c9a7adeb09a1ea088c705bb31e4612bba5017953a86fe7c0b3d",
     "drivers/DodgeGpu/DodgeNativeA830ABI.h": "8e0cfffdb84ed74065dc0a9ebcdac16cd5598d964b3736d0e984236b7f4557c5",
     "drivers/DodgeGpu/DodgeNativeA830Timeline.inc": "e437513538c16ddc6b164c60ac2bac65e4682391d51ccc8d1be6dd76e9aa55dc",
     "drivers/DodgeGpu/DodgeMapWait.inc": "5796d82fc13a482bbf5ede166824827d5b474697fa407520d82e86c73f4c9484",
     "drivers/DodgeDisplay/DodgeAdrenoTimeline.h": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61",
-    "drivers/DodgeGpu/DodgeNativeSurface.cpp": "29df909ec08cd4dd5060e14814a71b66f9ef8ba69d04e5b72fb98d390466c08b",
-    "drivers/DodgeGpu/DodgeNativeSurface.h": "03417d2eddc143a04cc5112b64c15f610fd771433b9cfba68f75b8ffdb64bc0a",
+    "drivers/DodgeGpu/DodgeNativeSurface.cpp": "b34a64ddd6ae28d22f48c1daccdff973b740b8b38fce8100108313efcf438831",
+    "drivers/DodgeGpu/DodgeNativeSurface.h": "548d3fed15ec591167a242439a32f3a2447dd602dab073860a9d7f219aa09663",
     "drivers/DodgeGpu/DodgeSurfacePages.h": "c837fdd2db15582ccee38b24f1fbbc9ec3d3d7a1d22918913225aa1ee7be1c3d",
     "drivers/DodgeGpu/DodgeSurfaceIdentity.h": "811d94070a0decfa5f3e927407ba4d4eea58c673dc0585dd8e4dc3cbe2d9869d",
     "drivers/DodgeGpu/DodgeSurfaceBacking.h": "ce22957e1808b66c2bac9ce35bb6b5fe4c7840c1d57dc3ede9ad6e3c7549f73f",
@@ -149,7 +150,7 @@
     "sources/UniXNU/kits/AdrenoPM4/AdrenoPM4.c": "c4b0227859a1e771c5f349524b718b08444f518ef960bfa4b50f6fd4ab30ad2f",
     "sources/UniXNU/kits/AdrenoPM4/AdrenoPM4.h": "86f4e84eece0f2e67f786d03cea8b82c696377fc5af9f890dd164bbfe24abd29",
     "patches/adreno830/0001-darwin22-template-data-free.patch": "f165ef3084a6a85a5f332c208b62493fd030a658d76366f7d963f8bd823ff441",
-    "scripts/build_native_a830.py": "31dd6efe8a95adaabfdf96035216df76075269696d32af42fd419cc687d23f74",
+    "scripts/build_native_a830.py": "6380a27775db8ed324d70df117d5f79b1a8b13c1a36368f088b81a7a6129b816",
     "scripts/build_a830_backend.py": "f66f7a5266b156732c21cd14c4be4a6eca52b9899606f0f5eff97513730c58df",
     "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
     "sources/Adreno830-native/scripts/build-adreno830.py": "3dae2a76131a08f7d92ea4eee0cb44c502e314e942a4965c4b0efc39d62fe534"
@@ -198,8 +199,8 @@
       "drivers/DodgeGpu/DodgeNativeA830Timeline.inc": "e437513538c16ddc6b164c60ac2bac65e4682391d51ccc8d1be6dd76e9aa55dc",
       "drivers/DodgeGpu/DodgeMapWait.inc": "5796d82fc13a482bbf5ede166824827d5b474697fa407520d82e86c73f4c9484",
       "drivers/DodgeDisplay/DodgeAdrenoTimeline.h": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61",
-      "drivers/DodgeGpu/DodgeNativeSurface.cpp": "29df909ec08cd4dd5060e14814a71b66f9ef8ba69d04e5b72fb98d390466c08b",
-      "drivers/DodgeGpu/DodgeNativeSurface.h": "03417d2eddc143a04cc5112b64c15f610fd771433b9cfba68f75b8ffdb64bc0a",
+      "drivers/DodgeGpu/DodgeNativeSurface.cpp": "b34a64ddd6ae28d22f48c1daccdff973b740b8b38fce8100108313efcf438831",
+      "drivers/DodgeGpu/DodgeNativeSurface.h": "548d3fed15ec591167a242439a32f3a2447dd602dab073860a9d7f219aa09663",
       "drivers/DodgeGpu/DodgeSurfacePages.h": "c837fdd2db15582ccee38b24f1fbbc9ec3d3d7a1d22918913225aa1ee7be1c3d",
       "drivers/DodgeGpu/DodgeSurfaceIdentity.h": "811d94070a0decfa5f3e927407ba4d4eea58c673dc0585dd8e4dc3cbe2d9869d",
       "drivers/DodgeGpu/DodgeSurfaceBacking.h": "ce22957e1808b66c2bac9ce35bb6b5fe4c7840c1d57dc3ede9ad6e3c7549f73f",
@@ -231,14 +232,30 @@
         "NativeAdrenoMemory.h": "b5762a58ad6e0ddfec2baa1b60fe69393f3933caddb90c944d7f6d6dbae82088"
       },
       "support_sha256": {
-        "drivers/DodgeGpu/DodgeNativeSurface.cpp": "29df909ec08cd4dd5060e14814a71b66f9ef8ba69d04e5b72fb98d390466c08b",
-        "drivers/DodgeGpu/DodgeNativeSurface.h": "03417d2eddc143a04cc5112b64c15f610fd771433b9cfba68f75b8ffdb64bc0a",
+        "drivers/DodgeGpu/DodgeNativeSurface.cpp": "b34a64ddd6ae28d22f48c1daccdff973b740b8b38fce8100108313efcf438831",
+        "drivers/DodgeGpu/DodgeNativeSurface.h": "548d3fed15ec591167a242439a32f3a2447dd602dab073860a9d7f219aa09663",
         "drivers/DodgeGpu/DodgeSurfacePages.h": "c837fdd2db15582ccee38b24f1fbbc9ec3d3d7a1d22918913225aa1ee7be1c3d",
         "drivers/DodgeGpu/DodgeSurfaceIdentity.h": "811d94070a0decfa5f3e927407ba4d4eea58c673dc0585dd8e4dc3cbe2d9869d",
         "drivers/DodgeGpu/DodgeSurfaceBacking.h": "ce22957e1808b66c2bac9ce35bb6b5fe4c7840c1d57dc3ede9ad6e3c7549f73f",
         "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceSyncABI.h": "701349c93592117af8d92a5f3595d4d196faa490870262d210f0459759793990"
       },
       "scope": "Task-authorized surface-ID imports, exact backing association, single-flight original producer grants outside GPU locks, deferred fence/reset retirement and backing-mutation invalidation. Base ABI and hardware sequences remain pinned."
+    },
+    "recovery_overlay": {
+      "path": "patches/adreno830/0009-recovery-status.patch",
+      "sha256": "bebd1b0642641255d88928519f6dd41c7cc9f2697ed86f63f51f35b833402798",
+      "before_sha256": {
+        "NativeAdrenoStatus.h": "2d1848b4edd67949311ac853ec59dfa2de57cfdb8e35164db08f325086bc40fe",
+        "NativeAdrenoUserClient.cpp": "675bdbed42ec34e1e1a515869e369820bd464b7e90baf805d3d9d891b0b3d21f",
+        "NativeAdrenoPublish.cpp": "46106b69b8efffc6cbf7d28a3fdbddec78fb925e8d8edbaf936c597bfadac81d"
+      },
+      "after_sha256": {
+        "NativeAdrenoStatus.h": "76f7b73e437c96d161b099e03bbe301451940692112ad2a5438bbaa15a4c6ef6",
+        "NativeAdrenoUserClient.cpp": "6ac163e659126501a8bbdc3e00ae90c7d28c4ea84aedd4d0cce8f39e9da4bf81",
+        "NativeAdrenoPublish.cpp": "b529f1bd133a171a576957ff8f81c64a1346212b888f9fff9e3dc05edb7e99e9"
+      },
+      "support_sha256": {},
+      "scope": "Expose recovery-in-progress and permanent publisher loss through GetStatus without treating fault counters as permanent loss."
     }
   },
   "generated_sha256": {
@@ -246,11 +263,11 @@
     "DodgeNativeA830FirmwarePins.inc": "4275b02440a470496991f0c3938e73d561e2e94e476081eb24be74d9b914a97c"
   },
   "archive": "build/cph2653-native-a830-runtime/libAdreno830.a",
-  "archive_sha256": "ae12084306405925fb7fb4c504d154ccce75cfb0c535100ce3fcd883c2915920",
+  "archive_sha256": "ab062bd13fdd0cd62b8892dee7be3f32c6b61b5d36b77cfa06eb2ac3ebefa75e",
   "object_count": 57,
   "objects": {
-    "NativeAdrenoPublish.o": "9f5e5b745bdd7d9f490910a5cda526b86bc950f4a4b69de579b98fb1cd89311a",
-    "NativeAdrenoUserClient.o": "9d10658c35237747d2e6aae3db295c08d176741846c280b184d3dfa249af3086",
+    "NativeAdrenoPublish.o": "365bb7df2144caaab13678998923e4f7d9ccaf863278c94b6467fedc093581ce",
+    "NativeAdrenoUserClient.o": "44e90aeba7a29e488e65dac2029b2185ef19047f1e9d535bc4bfe45e8a05e454",
     "NativeAdrenoSubmit.o": "79a560ebdf2d6c2be9aba339a736b4dceeeaa9e2245b99777a60730a70c002a1",
     "NativeAdrenoRing.o": "0016ee1374075c4486e04c86bffc89a4efc892904ddb7e691918e551d8b820f3",
     "NativeAdrenoVm.o": "2a356e636563bf914720d030bde4d09a80f8635415ac6246def5583940e4a5af",
@@ -268,7 +285,7 @@
     "NativeAdrenoSha256.o": "be8d91cc425ef69bb060bea0a9f50ca32cbaa649d5b1ba977b84bc0432e2097a",
     "NativeAdrenoKernelTime.o": "cbcc77166d8da796fc06f0ed51dad7757bfb094b436834bc4926433c27d8c276",
     "Adreno830Status.o": "61a795c75183020dc1e2c886a5e5d4cbbb6c9c0caafb22a831c094106d3360c4",
-    "Adreno830Start.o": "089dbb428c15fb13d5138ceab3fd1bd956baa026d56365d39514fc0d49f68ad0",
+    "Adreno830Start.o": "e1cbe0aec396cee2acff0265ad498836efea4d165e8cf0feb20c5cf838f5189e",
     "A830Smmu.o": "99a3ca4297731cb764653c125dc011d202e2d637fd544ce4bf689cc2dec708db",
     "A830GmuFirmware.o": "30dac3b1cab67cf66d7675cc2f997eb01e5cb2ee7a212cdb91d02532f85a0bf1",
     "A830Gmu.o": "f2b61ea5d026816150548e87c2c594bd482a812ce8c71fd0ee6cc0b90c5992e5",
@@ -302,7 +319,7 @@
     "DodgeNativeA830Start.o": "037563061160c3f4aa1a216d7a12790900d0b37cd1d9e48ae426676a6ee17e4f",
     "DodgeNativeA830Boot.o": "e2aaee99a7527e8986fd14654455551c55965a2156967f6fde3cba0a0bd7cb25",
     "DodgeNativeA830Console.o": "858abacb17e77efd54f2cee6f2c362e26ff3ff45e57ad165bc07c4bff10bf0d7",
-    "DodgeNativeSurface.o": "51f60e55c7bd7e52b0eae4500afe47f86d759b8e62a9bc9225a83c36aec9f02c",
+    "DodgeNativeSurface.o": "b30ecfd04796541260836fcadd58ae15eecc463c147c3d3268a7cac70bd4d3d7",
     "NativeAdrenoAccelerator.late.o": "e866f0658f052dd758a0b39ff77abf1e03f28182fe7b1443c28358610d08a8c0",
     "original-bindings.o": "518f6aaf2910d187bc96d7d795cadfc984cdeac7e933a90e6605a136b67677a2",
     "firmware.o": "6b6b333f81bbf9128c7eca5785be6bff0030308aa3d885f9792aa5164fa69f7d"
@@ -1221,6 +1238,7 @@
       "_dodge_native_surface_initialize",
       "_dodge_native_surface_prepare",
       "_dodge_native_surface_published",
+      "_dodge_native_surface_visible",
       "_native_adreno_accelerator_allocate",
       "_native_adreno_accelerator_instance_size",
       "_native_adreno_accelerator_set_coherent_imports",

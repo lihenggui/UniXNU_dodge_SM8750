@@ -12,8 +12,9 @@ def overlay(base, stage, name):
     pin = json.loads((ROOT / 'upstream.lock.json').read_text())[name]
     patch = ROOT / pin['path']
     require(sha(patch) == pin['sha256'], 'Native A830 userspace adapter changed')
-    shutil.copytree(base, stage, dirs_exist_ok=True, ignore_dangling_symlinks=True,
-                    ignore=shutil.ignore_patterns('.git', '__pycache__', '*.pyc'))
+    if base.resolve() != stage.resolve():
+        shutil.copytree(base, stage, dirs_exist_ok=True, ignore_dangling_symlinks=True,
+                        ignore=shutil.ignore_patterns('.git', '__pycache__', '*.pyc'))
     for path, digest in pin['before_sha256'].items():
         require(sha(stage / path) == digest, 'Native A830 userspace base changed: ' + path)
     process = subprocess.run(['patch', '--batch', '--forward', '--fuzz=0', '-p1', '-i', str(patch)],
@@ -40,3 +41,11 @@ def metal():
             lock['a830_metal_reference']['revision'], 'Native Metal adapter has an unexpected base')
     patch_series_state(base, lock['iphone_metal_frontend_patches'], True)
     return overlay(base, ROOT / '.cache/gpu-work/AdrenoMetal-native-a830', 'native_a830_metal_surface_overlay')
+
+
+def display(stage):
+    from fresh_gpu_overlay import sources
+    _, source = sources()
+    stage.mkdir(parents=True, exist_ok=True)
+    (stage / 'DodgeDisplayFrontend.cpp').write_text(source)
+    return overlay(stage, stage, 'native_a830_display_recovery_overlay')

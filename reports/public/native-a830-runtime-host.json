@@ -1,7 +1,7 @@
 {
   "result": "NATIVE_A830_SOFTWARE_CONTROLLER_TESTS_PASS",
   "suite_count": 3,
-  "builder_sha256": "20f310e8aa4b198bd42b8ec6a3d5f1c821822f08d1961062898e13bfb8acbce8",
+  "builder_sha256": "dff57ae7f1447eb3d76293b93a75eecd5654505e92bcae960708bcce166da7fd",
   "source_revisions": {
     "native_a830_reference": "1a1321056ffc5428ae925f4680093718b46ca7c2",
     "native_a830_smmu_reference": "3ba92451bd44bb742d11758fbfcd3a446ecad685"
@@ -34,8 +34,8 @@
       "drivers/DodgeGpu/DodgeNativeA830Timeline.inc": "e437513538c16ddc6b164c60ac2bac65e4682391d51ccc8d1be6dd76e9aa55dc",
       "drivers/DodgeGpu/DodgeMapWait.inc": "5796d82fc13a482bbf5ede166824827d5b474697fa407520d82e86c73f4c9484",
       "drivers/DodgeDisplay/DodgeAdrenoTimeline.h": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61",
-      "drivers/DodgeGpu/DodgeNativeSurface.cpp": "29df909ec08cd4dd5060e14814a71b66f9ef8ba69d04e5b72fb98d390466c08b",
-      "drivers/DodgeGpu/DodgeNativeSurface.h": "03417d2eddc143a04cc5112b64c15f610fd771433b9cfba68f75b8ffdb64bc0a",
+      "drivers/DodgeGpu/DodgeNativeSurface.cpp": "b34a64ddd6ae28d22f48c1daccdff973b740b8b38fce8100108313efcf438831",
+      "drivers/DodgeGpu/DodgeNativeSurface.h": "548d3fed15ec591167a242439a32f3a2447dd602dab073860a9d7f219aa09663",
       "drivers/DodgeGpu/DodgeSurfacePages.h": "c837fdd2db15582ccee38b24f1fbbc9ec3d3d7a1d22918913225aa1ee7be1c3d",
       "drivers/DodgeGpu/DodgeSurfaceIdentity.h": "811d94070a0decfa5f3e927407ba4d4eea58c673dc0585dd8e4dc3cbe2d9869d",
       "drivers/DodgeGpu/DodgeSurfaceBacking.h": "ce22957e1808b66c2bac9ce35bb6b5fe4c7840c1d57dc3ede9ad6e3c7549f73f",
@@ -67,14 +67,30 @@
         "NativeAdrenoMemory.h": "b5762a58ad6e0ddfec2baa1b60fe69393f3933caddb90c944d7f6d6dbae82088"
       },
       "support_sha256": {
-        "drivers/DodgeGpu/DodgeNativeSurface.cpp": "29df909ec08cd4dd5060e14814a71b66f9ef8ba69d04e5b72fb98d390466c08b",
-        "drivers/DodgeGpu/DodgeNativeSurface.h": "03417d2eddc143a04cc5112b64c15f610fd771433b9cfba68f75b8ffdb64bc0a",
+        "drivers/DodgeGpu/DodgeNativeSurface.cpp": "b34a64ddd6ae28d22f48c1daccdff973b740b8b38fce8100108313efcf438831",
+        "drivers/DodgeGpu/DodgeNativeSurface.h": "548d3fed15ec591167a242439a32f3a2447dd602dab073860a9d7f219aa09663",
         "drivers/DodgeGpu/DodgeSurfacePages.h": "c837fdd2db15582ccee38b24f1fbbc9ec3d3d7a1d22918913225aa1ee7be1c3d",
         "drivers/DodgeGpu/DodgeSurfaceIdentity.h": "811d94070a0decfa5f3e927407ba4d4eea58c673dc0585dd8e4dc3cbe2d9869d",
         "drivers/DodgeGpu/DodgeSurfaceBacking.h": "ce22957e1808b66c2bac9ce35bb6b5fe4c7840c1d57dc3ede9ad6e3c7549f73f",
         "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceSyncABI.h": "701349c93592117af8d92a5f3595d4d196faa490870262d210f0459759793990"
       },
       "scope": "Task-authorized surface-ID imports, exact backing association, single-flight original producer grants outside GPU locks, deferred fence/reset retirement and backing-mutation invalidation. Base ABI and hardware sequences remain pinned."
+    },
+    "recovery_overlay": {
+      "path": "patches/adreno830/0009-recovery-status.patch",
+      "sha256": "bebd1b0642641255d88928519f6dd41c7cc9f2697ed86f63f51f35b833402798",
+      "before_sha256": {
+        "NativeAdrenoStatus.h": "2d1848b4edd67949311ac853ec59dfa2de57cfdb8e35164db08f325086bc40fe",
+        "NativeAdrenoUserClient.cpp": "675bdbed42ec34e1e1a515869e369820bd464b7e90baf805d3d9d891b0b3d21f",
+        "NativeAdrenoPublish.cpp": "46106b69b8efffc6cbf7d28a3fdbddec78fb925e8d8edbaf936c597bfadac81d"
+      },
+      "after_sha256": {
+        "NativeAdrenoStatus.h": "76f7b73e437c96d161b099e03bbe301451940692112ad2a5438bbaa15a4c6ef6",
+        "NativeAdrenoUserClient.cpp": "6ac163e659126501a8bbdc3e00ae90c7d28c4ea84aedd4d0cce8f39e9da4bf81",
+        "NativeAdrenoPublish.cpp": "b529f1bd133a171a576957ff8f81c64a1346212b888f9fff9e3dc05edb7e99e9"
+      },
+      "support_sha256": {},
+      "scope": "Expose recovery-in-progress and permanent publisher loss through GetStatus without treating fault counters as permanent loss."
     }
   },
   "source_sha256": {
@@ -175,14 +191,15 @@
     "sources/Adreno830-native/platform/sm8750/Sm8750Llcc.c": "10c12d97169f3779d30d9feb144f35020c521664f70ea3f3cc39578676b0832b",
     "sources/Adreno830-native/platform/sm8750/Sm8750AossQmp.h": "dbfd1d619e97ced90d9266915f65c657692fa153741a888467d853a6ec976591",
     "sources/Adreno830-native/platform/sm8750/Sm8750Scm.h": "0715cbd4e24162ab2b20dcc3c600d8a5d6a7a3f254814afc1983c2deaee1ac7b",
-    "tests/DodgeNativeA830RuntimeTest.cpp": "25c63b2ea29aec670a06948b97d0fe3db433a29375f412dbc6e0e0028d9279e4",
+    "tests/DodgeNativeA830RuntimeTest.cpp": "15077923cb7f8337f47b1dc99d0a6f969055e4ad222143af558db08c8d8d6426",
     "tests/DodgeMapWaitTest.cpp": "0ddd2192fe8c975e6951ba7f0d610d9ed5cb56fbb61b97130450708ffa8f940a",
     "patches/adreno830/0003-ios16-runtime.patch": "9ef6f2df484a8d5da7df62c932e7f962fbd7c910e1b22313346326ebb46041d6",
-    "scripts/native_a830_runtime.py": "d6fdcf926522b84b330c8b3253d8a0e7fbae6bb4604fc243e8e3dd6c152753ea",
+    "scripts/native_a830_runtime.py": "92a60263f6159cf6cdd8ad8bd90b52cf9ceff1dc5890413812570b11c61daaf6",
     "patches/adreno830/0004-ios16-surface-producers.patch": "a2e6b72abda6f20704576fb74b573a8bd453972da2148edba069819abb4313fc",
-    "tests/DodgeNativeSurfacePeers.cpp": "c137e43b144c782e0bec5a677888e7f39ab2259d3150a19e081741ff9edb2753",
-    "tests/DodgeNativeSurfacePeers.h": "71312d9a400bb63915b5239939e940a8260aa31aa65866b18fbabfb8782b5459",
-    "tests/native_surface_include/IOKit/IOLocks.h": "081a4223d6dd992e17284f99f43d1a8289aaf415c02132cffcd0e6108148c798",
+    "tests/DodgeNativeSurfacePeers.cpp": "98f5a3077fa701619c9098a5088ee1d0fdb37365192dd543a1c276b8d203214f",
+    "tests/DodgeNativeSurfacePeers.h": "20f78453ea03d84741c6feb72bbb9ec96da5cdea0f95a883cba3da031d85be50",
+    "patches/adreno830/0009-recovery-status.patch": "bebd1b0642641255d88928519f6dd41c7cc9f2697ed86f63f51f35b833402798",
+    "tests/native_surface_include/IOKit/IOLocks.h": "84202d33bf2b92e8d03d8116a1e5eddc6d4006a1dafcb3a7516f3406e701bb23",
     "tests/native_surface_include/libkern/c++/OSObject.h": "68c0ee24a884cad92192ad9a9da0b82d2fcd241289d29683b4237e55525d32ef",
     "drivers/DodgeGpu/DodgeSurfaceImportHint.h": "f5486e738c3010d6bb99fb03ba3dd15de4befc581ccc51df701035b4c24e5f48",
     "drivers/DodgeGpu/DodgeNativeA830Console.cpp": "8c77fd67442fd43f83e13cee504cbab01765a6cd13af585a865bb2aa05296693",
@@ -191,14 +208,14 @@
     "drivers/DodgeGpu/DodgeNativeA830Timeline.inc": "e437513538c16ddc6b164c60ac2bac65e4682391d51ccc8d1be6dd76e9aa55dc",
     "drivers/DodgeGpu/DodgeMapWait.inc": "5796d82fc13a482bbf5ede166824827d5b474697fa407520d82e86c73f4c9484",
     "drivers/DodgeDisplay/DodgeAdrenoTimeline.h": "d6ef465bacf3f69df330ceaab50b3b9ed95069733f328cb6c9cd408101936f61",
-    "drivers/DodgeGpu/DodgeNativeSurface.cpp": "29df909ec08cd4dd5060e14814a71b66f9ef8ba69d04e5b72fb98d390466c08b",
-    "drivers/DodgeGpu/DodgeNativeSurface.h": "03417d2eddc143a04cc5112b64c15f610fd771433b9cfba68f75b8ffdb64bc0a",
+    "drivers/DodgeGpu/DodgeNativeSurface.cpp": "b34a64ddd6ae28d22f48c1daccdff973b740b8b38fce8100108313efcf438831",
+    "drivers/DodgeGpu/DodgeNativeSurface.h": "548d3fed15ec591167a242439a32f3a2447dd602dab073860a9d7f219aa09663",
     "drivers/DodgeGpu/DodgeSurfacePages.h": "c837fdd2db15582ccee38b24f1fbbc9ec3d3d7a1d22918913225aa1ee7be1c3d",
     "drivers/DodgeGpu/DodgeSurfaceIdentity.h": "811d94070a0decfa5f3e927407ba4d4eea58c673dc0585dd8e4dc3cbe2d9869d",
     "drivers/DodgeGpu/DodgeSurfaceBacking.h": "ce22957e1808b66c2bac9ce35bb6b5fe4c7840c1d57dc3ede9ad6e3c7549f73f",
     "profiles/os/ios-16.7.16-20H392/graphics/OriginalIOSurfaceSyncABI.h": "701349c93592117af8d92a5f3595d4d196faa490870262d210f0459759793990",
-    "scripts/check_native_a830_host.py": "20f310e8aa4b198bd42b8ec6a3d5f1c821822f08d1961062898e13bfb8acbce8",
-    "scripts/build_native_a830.py": "31dd6efe8a95adaabfdf96035216df76075269696d32af42fd419cc687d23f74",
+    "scripts/check_native_a830_host.py": "dff57ae7f1447eb3d76293b93a75eecd5654505e92bcae960708bcce166da7fd",
+    "scripts/build_native_a830.py": "6380a27775db8ed324d70df117d5f79b1a8b13c1a36368f088b81a7a6129b816",
     "patches/adreno830/0001-darwin22-template-data-free.patch": "f165ef3084a6a85a5f332c208b62493fd030a658d76366f7d963f8bd823ff441"
   },
   "tests": {
@@ -208,11 +225,11 @@
     },
     "test_dodge_runtime": {
       "returncode": 0,
-      "output": "PASS: native-diagnostic-rows-bridge-with-bounded-padding-and-output-canary\nPASS: indirect-import-held-through-timeout-and-acquired-before-release\nPASS: overlapping-jobs-retire-only-their-own-holds\nPASS: new-map-waits-without-touching-pages-or-tables-then-reaps-fence\nPASS: quarantined-indirect-resource-refuses-before-publication\nPASS: uncertain-commit-kept-until-explicit-quiescing-recovery\nPASS: completion-cache-failure-keeps-the-entire-resource-set\nPASS: read-only-import-has-no-device-write-acquisition\nPASS: invalid-and-duplicate-retirement-cannot-release-a-lease\nPASS: optional-frontend-records-validated-without-false-capability-flags\nPASS: VM-lock-serializes-concurrent-snapshot-leases\nPASS: surface-hint-rejects-invalid-nested-mismatched-and-unconsumed-imports\nPASS: surface-ID-import-producer-grant-submit-fence-cache-signal-and-free\nPASS: pending-original-grant-refuses-GPU-publication-and-can-be-cancelled-after-grant\nPASS: cancelled-pending-callback-context-and-pages-retained-until-real-grant\nPASS: grant-and-cancellation-on-different-threads-preserve-callback-ownership\nPASS: aliased-surface-imports-share-one-original-producer-ticket\nPASS: stale-backing-before-registration-rolls-back-without-a-ticket\nPASS: original-registration-failure-releases-unpublished-snapshot\nPASS: completion-before-submit-caller-returns-keeps-owner-reference-valid\nPASS: inflight-backing-mutation-latches-display-failure-and-waits-for-GPU-fence\nPASS: 21 native iPhone resource and protocol cases"
+      "output": "PASS: status-distinguishes-recovery-terminal-loss-and-recovered-resource-use\nPASS: native-diagnostic-rows-bridge-with-bounded-padding-and-output-canary\nPASS: indirect-import-held-through-timeout-and-acquired-before-release\nPASS: overlapping-jobs-retire-only-their-own-holds\nPASS: new-map-waits-without-touching-pages-or-tables-then-reaps-fence\nPASS: quarantined-indirect-resource-refuses-before-publication\nPASS: uncertain-commit-kept-until-explicit-quiescing-recovery\nPASS: completion-cache-failure-keeps-the-entire-resource-set\nPASS: read-only-import-has-no-device-write-acquisition\nPASS: invalid-and-duplicate-retirement-cannot-release-a-lease\nPASS: optional-frontend-records-validated-without-false-capability-flags\nPASS: VM-lock-serializes-concurrent-snapshot-leases\nPASS: surface-hint-rejects-invalid-nested-mismatched-and-unconsumed-imports\nPASS: surface-ID-import-producer-grant-submit-fence-cache-signal-and-free\nPASS: pending-original-grant-refuses-GPU-publication-and-can-be-cancelled-after-grant\nPASS: cancelled-pending-callback-context-and-pages-retained-until-real-grant\nPASS: grant-and-cancellation-on-different-threads-preserve-callback-ownership\nPASS: aliased-surface-imports-share-one-original-producer-ticket\nPASS: stale-backing-before-registration-rolls-back-without-a-ticket\nPASS: original-registration-failure-releases-unpublished-snapshot\nPASS: completion-before-submit-caller-returns-keeps-owner-reference-valid\nPASS: reset-invalidates-failed-surface-until-its-own-successful-writer-and-supports-repeated-recovery\nPASS: inflight-backing-mutation-latches-display-failure-and-waits-for-GPU-fence\nPASS: unconfirmed-original-signal-keeps-callback-context-and-tickets-quarantined\nPASS: 24 native iPhone resource and protocol cases"
     },
     "test_vm": {
       "returncode": 0,
-      "output": "VM alias preflight diagnostic: 8192 x 8192 different-class spans, preflight 2240 host us, table transaction with the pass once 990 host us (not hardware timing)\nVM alias preflight diagnostic: 8192 x 8192 different-class spans, preflight 2288 host us, table transaction with the pass twice 2360 host us (not hardware timing)\nPASS: VM alias index/fallback preserve attribute-class refusals before MMIO/ownership with and without the table transaction's second pass; 8192-span different-class map/unmap\nPASS: VM alias pass: 2 maps (preflight's alone with pagani-gpu-kopt bit 2, the table transaction's as well without it)\nPASS: VM clock: 5 checks (kinds count without it, time with it; a contended VM lock's wait reaches the call meter)\nPASS: VM with the annibale programmer's sync_after_map: 5 checks (one TLBIASID + TLBSYNC per map, none for a refused map, unmap unchanged, a stuck sync poisons; none without the flag)\nPASS: VM over the A830 programmer: attach proves regions and routes once, 200 map/unmap rounds under pending faults never poison, per-buffer fence unmap, 64-bit TLBIVAL, 4 GiB (2053), 2 GiB (1027) and 16 GiB (8209, BOs across and past 4 GiB) apertures with reserved windows, 13 coherence-policy checks, coherent table walk, 3 poisoning paths, kit-stream attach, 600 locked concurrent transactions"
+      "output": "VM alias preflight diagnostic: 8192 x 8192 different-class spans, preflight 2272 host us, table transaction with the pass once 957 host us (not hardware timing)\nVM alias preflight diagnostic: 8192 x 8192 different-class spans, preflight 2376 host us, table transaction with the pass twice 2397 host us (not hardware timing)\nPASS: VM alias index/fallback preserve attribute-class refusals before MMIO/ownership with and without the table transaction's second pass; 8192-span different-class map/unmap\nPASS: VM alias pass: 2 maps (preflight's alone with pagani-gpu-kopt bit 2, the table transaction's as well without it)\nPASS: VM clock: 5 checks (kinds count without it, time with it; a contended VM lock's wait reaches the call meter)\nPASS: VM with the annibale programmer's sync_after_map: 5 checks (one TLBIASID + TLBSYNC per map, none for a refused map, unmap unchanged, a stuck sync poisons; none without the flag)\nPASS: VM over the A830 programmer: attach proves regions and routes once, 200 map/unmap rounds under pending faults never poison, per-buffer fence unmap, 64-bit TLBIVAL, 4 GiB (2053), 2 GiB (1027) and 16 GiB (8209, BOs across and past 4 GiB) apertures with reserved windows, 13 coherence-policy checks, coherent table walk, 3 poisoning paths, kit-stream attach, 600 locked concurrent transactions"
     }
   },
   "sanitizers": [

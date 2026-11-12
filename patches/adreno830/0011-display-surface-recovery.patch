@@ -1,0 +1,26 @@
+--- a/DodgeDisplayFrontend.cpp
++++ b/DodgeDisplayFrontend.cpp
+@@ -3,6 +3,7 @@
+ #include "DodgeGpuSwapBridge.h"
+ #include "DodgeSoftwareRefresh.h"
+ #include "DodgeAdrenoTimeline.h"
++extern "C" bool dodge_native_surface_visible(OSObject *,uint32_t);
+ #include "OriginalLegacyPacketABI.h"
+ #include "OriginalLegacyLifecycleABI.h"
+ #include "OriginalLegacySwapCompletionABI.h"
+@@ -74,6 +75,7 @@
+     // A completed historical fence does not establish current GPU health.
+     // IOSurface can grant this reader after its upstream writer failed.
+     if(!front->requiresAdreno)return true;
++    if(entry.surface && !dodge_native_surface_visible(entry.surface,entry.identity.surface))return false;
+     DodgeAdrenoTimeline snapshot={};
+     if(!dodge_adreno_display_timeline(&snapshot) || !snapshot.epoch)return false;
+     const uint32_t submitted=snapshot.submitted,retired=snapshot.retired;
+@@ -92,6 +94,7 @@
+ }
+ static bool gpuCurrent(const DodgeDisplayFrontend *front,const DodgeFrontendEntry &entry) {
+     if(!front->requiresAdreno)return true;
++    if(entry.surface && !dodge_native_surface_visible(entry.surface,entry.identity.surface))return false;
+     if(entry.gpuInvalid || !entry.gpuCaptured || !entry.gpuPassed)return false;
+     DodgeAdrenoTimeline snapshot={};
+     // Admission remains read-only and nonblocking. This samples the

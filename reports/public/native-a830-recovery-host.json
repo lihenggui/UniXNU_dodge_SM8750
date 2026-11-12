@@ -1,0 +1,53 @@
+{
+  "result": "NATIVE_A830_RECOVERY_AND_SURFACE_DISPLAY_HOST_PASS",
+  "source_sha256": {
+    "scripts/check_native_a830_recovery.py": "ac1cc1b916c55a8917a193744705f6cee7b837720a2825de18e4061e27d0c568",
+    "scripts/native_a830_userspace.py": "fc541601db755f877130fa881cb2ab5b9d16eba55b47e3895cdac091200c04bc",
+    "scripts/fresh_gpu_overlay.py": "a8be650d197a4d11a2628a1a168378450a82722686f22f1d85efcae014802129",
+    "tests/DodgeTurnipRecoveryTest.cpp": "1efa3387b79a34d888efc80fc8ecdacfe3a21a6da1881893011185c16249f765",
+    "tests/DodgeDisplayFrontendTest.cpp": "24dbda61538f7a14f22dea4fa629e9d31c6bb1ee8197671359018d19a09adc70",
+    "tests/DodgeDisplayFreshGpuCases.h": "14b77b5934ced7a4779c8e80ede7c7e5096772be86fa86d294ccad5fd6445802",
+    "tests/DodgeDisplayRecoveryCases.h": "fb727c36db9b8e47291cb2ebb397bf2a371f5ae4f4c0b039468ff4b7586d2729",
+    ".cache/gpu-work/mesa-native-a830/src/freedreno/vulkan/tu_knl_darwin.cc": "13b9b74ede75d20568ba5d45cadadb885051355a194c5129e97d43dc8fc5691b",
+    "patches/adreno830/0010-turnip-recovery.patch": "530b0cabd8708fe8e1d526310b50d7a7d41ecc56de6d5fed7a3078528f7f8632",
+    "patches/adreno830/0011-display-surface-recovery.patch": "258a3b11f73b0b829de42ac1b520cab8ea8d98dc1db72be3e3f2c3f3fee6ce87",
+    "drivers/DodgeDisplay/DodgeGpuSwapBridge.cpp": "d210fa110258c02243034ee94d8868d97c5464fb7a2c885bb60661e72867fc04",
+    "drivers/DodgeDisplay/DodgeSoftwareRefresh.cpp": "9d304b88f8405d23a420210a38a10a8888bf1d8267a0c84174a5a9029f270e02"
+  },
+  "artifacts": {
+    "build/cph2653-native-a830-recovery-host/recovered/TurnipRecovery.inc": "d5bdba98d5b292e686c586db05337335a4db2199614be4609b12344d107c7060",
+    "build/cph2653-native-a830-recovery-host/recovered/test": "3fb2d6d2722ff771befca0b7d784bc2d8d7d7ade5ccadda4a8d1f2a890d70c47",
+    "build/cph2653-native-a830-recovery-host/recovered/run.log": "6d4a4f87b99dc071c7c9abb05e2a7292d376275a9475dbe18eecc29d52561d87",
+    "build/cph2653-native-a830-recovery-host/loses-device/TurnipRecovery.inc": "b2b66a2c117df76a7369ef4d1ce42bb3407c316aef825d47a15619caf2aa78d0",
+    "build/cph2653-native-a830-recovery-host/loses-device/test": "287e4b726699175b9c7cc0e88b7880ce32eb183a27343de41026711c1daf4cf0",
+    "build/cph2653-native-a830-recovery-host/loses-device/run.log": "61ab0c2b5c8d72e3de105c748ebc41b8a93b3bad9065d47fb5868f6d26c018ab",
+    "build/cph2653-native-a830-recovery-host/loses-during-restart/TurnipRecovery.inc": "318da2a5fc0ecda31479162105bc71510d0c38f7825035e3f0cce8c714cd67b4",
+    "build/cph2653-native-a830-recovery-host/loses-during-restart/test": "854da2e912fd07193ce0b6f4947592cdc02119feda63f4f16ad579daad2b57ae",
+    "build/cph2653-native-a830-recovery-host/loses-during-restart/run.log": "d30fd5cd083fb289aca94d4705346c9ffd614d34c96528901ee0eb4e4037e2c6",
+    "build/cph2653-native-a830-recovery-host/DodgeDisplayFrontendTest.cpp": "0cce0b0a7b46f67be367387cc40d46da5a031cdbf0d5cd40129be7f5707f380f",
+    "build/cph2653-native-a830-recovery-host/frontend-source/DodgeDisplayFrontend.cpp": "ce3b8223009ff44adc694d58fb98c16edc8f4c094b805e850a7b7a3ee6963440",
+    "build/cph2653-native-a830-recovery-host/frontend": "ab769a9f8617a0ddcb7d7c03db1ab5de5f0fb5d37f03998d031e4b25fc5d69b5",
+    "build/cph2653-native-a830-recovery-host/frontend.log": "a0823358a7681d0485ecdeded7e573039549fb44bbfc00821f3067c1d80c5da8",
+    "build/cph2653-native-a830-recovery-host/compile-commands.json": "e9b467d9c46f5cf58ae056f6d45fab16b329249f1b90c8076a02f557f96f4068"
+  },
+  "turnip_status_calls": 11,
+  "frontend_cases": 136,
+  "packet_mutations": 1124,
+  "controls": [
+    {
+      "case": "loses-device",
+      "result": "REJECTED"
+    },
+    {
+      "case": "loses-during-restart",
+      "result": "REJECTED"
+    }
+  ],
+  "sanitizers": [
+    "address",
+    "undefined",
+    "leak"
+  ],
+  "hardware_tested": false,
+  "scope": "Actual staged Turnip status functions and native display frontend with transport, timeline and IOKit peers. Recovered devices retain their identity; terminal errors still lose them. Failed surfaces remain blocked until repaired, and old epochs cannot be reused. Physical reset, rendering and iOS boot remain untested."
+}

@@ -71,11 +71,15 @@ def main():
     untracked = subprocess.check_output(['git', '-C', work, 'ls-files', '--others', '--exclude-standard', '-z']).split(b'\0')
     extras = {name.decode(): sha(work / name.decode()) for name in untracked if name and (work / name.decode()).is_file()}
     native_overlay = None
+    recovery_overlay = None
     if args.native_a830:
         from native_a830_userspace import overlay
         work, native_overlay = overlay(work, ROOT / '.cache/gpu-work/mesa-native-a830', 'native_a830_mesa_surface_overlay')
         diff += (ROOT / native_overlay['path']).read_bytes()
         extras.update({name: digest for name, digest in native_overlay['after_sha256'].items()})
+        work, recovery_overlay = overlay(work, work, 'native_a830_mesa_recovery_overlay')
+        diff += (ROOT / recovery_overlay['path']).read_bytes()
+        extras.update(recovery_overlay['after_sha256'])
     sdk = sources['iphoneos_sdk_reference'] / 'iPhoneOS16.5.sdk'
     llvm = ROOT / '.toolchains/rust-gpu/lib/rustlib/x86_64-unknown-linux-gnu/bin'
     clang = ROOT / '.toolchains/xnu-linux/llvm/bin/clang'
@@ -116,6 +120,7 @@ def main():
                'sdk_revision': lock['iphoneos_sdk_reference']['revision']}
     if args.native_a830:
         profile['native_surface_overlay'] = native_overlay
+        profile['native_recovery_overlay'] = recovery_overlay
         profile['native_surface_abi_sha256'] = sha(abi / 'DodgeNativeA830ABI.h')
     source_id = hashlib.sha256(json.dumps(profile, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     build_id = hashlib.sha256(json.dumps({'mesa_revision': pins['mesa']['commit'],
@@ -144,13 +149,15 @@ def main():
     names = subprocess.check_output([llvm / 'llvm-nm', '--defined-only', '--extern-only', library], text=True)
     require('_vk_icdGetInstanceProcAddr' in names, 'The real Vulkan ICD entry is absent')
     if args.native_a830:
-        require(all('_tu_darwin_surface_' + n in names for n in ('begin', 'end')), 'Native surface protocol exports are absent')
+        require(all('_tu_darwin_surface_' + n in names for n in ('begin', 'end')) and
+                '_tu_darwin_restarts' in names, 'Native surface or recovery exports are absent')
     report = {'result': 'IOS16_TURNIP_CROSS_BUILD_PASS', 'target': 'arm64-apple-ios16.0',
               'library': str(library.relative_to(ROOT)), 'library_sha256': sha(library),
               'mesa_revision': pins['mesa']['commit'], 'patches': specs, 'source_id': source_id,
               'build_id': build_id, 'profile': profile, 'backend': 'darwin',
               'abi_header_sha256': sha(abi / 'NativeAdrenoABI.h'),
               'native_surface_overlay': native_overlay,
+              'native_recovery_overlay': recovery_overlay,
               'hardware_tested': False, 'scope': 'Actual production Vulkan/IR3 library cross-build, not GPU shader execution.'}
     (out / 'manifest.json').write_text(json.dumps(report, indent=2) + '\n')
     report_path = ROOT / ('reports/native-a830-turnip.json' if args.native_a830 else 'reports/turnip-ios16.json')

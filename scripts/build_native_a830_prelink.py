@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 import tomllib
 
 from build_native_a830_kernel import REPORT as SOURCE_REPORT, check_report as check_source, check_firmware
@@ -55,10 +56,15 @@ def main():
     for name in profile['kernel']['prelink']['early_security_init']:command += ['--early-security-init', name]
     command += ['--early-security-fixture', SECURITY]
     print('PRELINK: complete native A830 candidate and original iPhone components', flush=True)
-    result = subprocess.run(command, env=env, capture_output=True, text=True)
-    (OUT / 'emission.log').write_text(result.stdout + result.stderr)
-    require(not result.returncode, 'Native A830 strict prelink failed; inspect emission.log')
-    data = unhooked.read_bytes();record = json.loads(unhooked.with_suffix('.json').read_text())
+    # The emitter refuses an existing destination. Emit into a fresh directory
+    # so a rebuild can preserve the previous candidate until validation passes.
+    with tempfile.TemporaryDirectory(prefix='emit-', dir=OUT) as temporary:
+        pending = Path(temporary) / unhooked.name
+        command[command.index('--output') + 1] = pending
+        result = subprocess.run(command, env=env, capture_output=True, text=True)
+        (OUT / 'emission.log').write_text(result.stdout + result.stderr)
+        require(not result.returncode, 'Native A830 strict prelink failed; inspect emission.log')
+        data = pending.read_bytes();record = json.loads(pending.with_suffix('.json').read_text())
     require(record['candidate_sha256'] == hashlib.sha256(data).hexdigest() and
             record['native_sha256'] == sha(ROOT / source['candidate']) and record['original_sha256'] == sha(ORIGINAL),
             'Native A830 prelink provenance differs')
@@ -86,12 +92,17 @@ def main():
         else:raise ValueError('Changed native A830 prelink was accepted: ' + name)
     contract, _ = backing_checked();patched = apply_hooks(data, contract)
     require(restore_hooks(patched, contract) == data, 'Surface hook normalization changed unrelated bytes')
-    candidate = OUT / 'kernel.macho';candidate.write_bytes(patched)
-    result = subprocess.run([sys.executable, parser_path, candidate], env=env, capture_output=True, text=True)
-    (OUT / 'loader-parser.log').write_text(result.stdout + result.stderr)
-    require(not result.returncode, 'Production DarwinBoot parser refused native A830 candidate')
+    candidate = OUT / 'kernel.macho'
+    with tempfile.TemporaryDirectory(prefix='parser-', dir=OUT) as temporary:
+        pending = Path(temporary) / candidate.name;pending.write_bytes(patched)
+        result = subprocess.run([sys.executable, parser_path, pending], env=env, capture_output=True, text=True)
+        (OUT / 'loader-parser.log').write_text(result.stdout + result.stderr)
+        require(not result.returncode, 'Production DarwinBoot parser refused native A830 candidate')
     sync, _ = sync_checked();probe = ROOT / 'build/ios16-surface-producer-execution/SurfaceSyncProbe.o'
     cpu = run_cases(patched, sync, probe)
+    unhooked.write_bytes(data)
+    unhooked.with_suffix('.json').write_text(json.dumps(record, indent=2) + '\n')
+    candidate.write_bytes(patched)
     files = [Path(__file__), ROOT / 'scripts/build_native_a830_kernel.py', ROOT / 'scripts/build_crypto_prelink.py',
              ROOT / 'scripts/build_gpu_graphics_prelink.py', ROOT / 'scripts/build_ufs_prelink.py', ROOT / 'scripts/build_input_prelink.py',
              ROOT / 'scripts/prepare_surface_backing.py', ROOT / 'scripts/surface_sync_execution.py',

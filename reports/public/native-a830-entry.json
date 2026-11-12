@@ -1,0 +1,105 @@
+{
+  "result": "NATIVE_A830_QEMU_ENTRY_TO_INITIOKIT_PASS",
+  "source_sha256": {
+    "scripts/check_native_a830_entry.py": "a6d938ef51a6d15e41737755d3085a7c9500d752fc7447790892b4858c55c0be",
+    "scripts/prepare_device_tree.py": "e8215e5b9e79724354f8d18dcd03cb82116ec7007c096217b6c6eafbe90ebfc6",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
+    "sources/UniXNU/scripts/unixnu/devicetree.py": "cfda7d9aad326729d1e60bbf2db555c3d1af298d25747377b314dac007e8097d"
+  },
+  "dependency_report_sha256": {
+    "reports/native-a830-payload.json": "c39942a16c2d5037012352fa6723d413913a7ca814ba90ec59652ae279f0e124",
+    "reports/native-a830-firmware.json": "d8853e10ce0be47bb86f714294119d9cc1e518ac2fe0e7e93ee9fca9da979766"
+  },
+  "artifacts": {
+    "build/cph2653-native-a830-entry/entry/serial.log": "b32e9abd72cf5bfec0b8f1701fb789f24d7758028b3e0f601da961d0d3c679ac",
+    "build/cph2653-native-a830-entry/entry/qemu.log": "623ca2a3009cb72388140f6400935064e97d87b23e1c782449bfecff3762a2c4",
+    "build/cph2653-native-a830-entry/entry/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+    "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/Payloads/kernel.macho": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
+    "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "312750dacdb5c21b011c81955a0aa6a3eb896e1e5260949d7963f2b5749f57d1",
+    "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
+    "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/unixnu.toml": "cb0e2a70c501249f73f18c0a8b5ff9974d7723d4329cb88ca9507c02f45df992",
+    "build/cph2653-native-a830-entry/missing-seed/serial.log": "3529627d609b85efaf477033cdd3c110300f3e4db6275686d3c59fcc467b2b3f",
+    "build/cph2653-native-a830-entry/missing-seed/qemu.log": "623ca2a3009cb72388140f6400935064e97d87b23e1c782449bfecff3762a2c4",
+    "build/cph2653-native-a830-entry/missing-seed/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+    "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/Payloads/kernel.macho": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
+    "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "756a30b39332fbcd2f764631b1f84dad95722b83bbd304f377535bfcd971a5cc",
+    "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
+    "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/unixnu.toml": "cb0e2a70c501249f73f18c0a8b5ff9974d7723d4329cb88ca9507c02f45df992",
+    "build/cph2653-native-a830-prelink/kernel.macho": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
+    "build/cph2653-native-a830-firmware/tree/Build/dodgePkg/DEBUG_CLANGPDB/AARCH64/UniXNU.efi": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+    "build/cph2653-native-a830-firmware/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84"
+  },
+  "emulator_sha256": {
+    ".toolchains/qemu/usr/bin/qemu-system-aarch64": "0a63468782d096485932acf6aa0a69d358b3e3a6f68f655e960e9f5e3fc578d8",
+    ".toolchains/qemu/usr/share/AAVMF/AAVMF_CODE.fd": "a5883fa6c93a3ca3e11d908ca906620ce9e4673d17ef9db35638aa7ea82c4cdf",
+    ".toolchains/qemu/usr/share/AAVMF/AAVMF_VARS.fd": "3b6a07d0d404fab4e23b6d34bc6696a6a312dd92821332385e5af7c01c421351",
+    ".toolchains/qemu/usr/share/seabios/vgabios-ramfb.bin": "0d522dc3c5cfc16d0f6030dc14c07da82b426e0bd573f03744bfee714348f02f"
+  },
+  "qemu_version": "QEMU emulator version 6.2.0 (Debian 1:6.2+dfsg-2ubuntu6.31)",
+  "acceleration": "TCG",
+  "CPU": "max",
+  "CPUs": 1,
+  "RAM_bytes": 2147483648,
+  "DarwinBoot_owned_bytes": 1073741824,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "candidate_sha256": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
+  "checkpoints": [
+    {
+      "symbol": "_arm_init",
+      "pc": "0xfffffff007a848d4",
+      "lr": "0xfffffff007a848d4",
+      "pstate": "0x600003c4",
+      "translation_registers": {
+        "SCTLR_EL1": "0x3454593d",
+        "TTBR0_EL1": "0x43572000",
+        "TTBR1_EL1": "0x43573000",
+        "TCR_EL1": "0x22a51a251a"
+      }
+    },
+    {
+      "symbol": "_kernel_bootstrap",
+      "pc": "0xfffffff007303c1c",
+      "lr": "0xfffffff007a8527c",
+      "pstate": "0x604003c4",
+      "translation_registers": {
+        "SCTLR_EL1": "0x3454593d",
+        "TTBR0_EL1": "0x44a34000",
+        "TTBR1_EL1": "0x44a35000",
+        "TCR_EL1": "0x22a51a251a"
+      }
+    },
+    {
+      "symbol": "_InitIOKit",
+      "pc": "0xfffffff007900e2c",
+      "lr": "0xfffffff0079be76c",
+      "pstate": "0x804003c4",
+      "translation_registers": {
+        "SCTLR_EL1": "0x3454593d",
+        "TTBR0_EL1": "0x44a34000",
+        "TTBR1_EL1": "0x44a35000",
+        "TCR_EL1": "0x22a51a251a"
+      }
+    }
+  ],
+  "next_stop": {
+    "symbol": "_panic",
+    "pc": "0xfffffff007a79690",
+    "lr": "0xfffffff0046e9f60",
+    "format": "failed to get mix-n-match policy: %d",
+    "error": "0x30003"
+  },
+  "negative_control": {
+    "result": "REJECTED",
+    "case": "missing-entropy-reservation",
+    "kernel_entered": false
+  },
+  "kernel_or_register_patches": false,
+  "synthetic_boot_policy_supplied": false,
+  "system_booted": false,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Actual UniXNU.efi, fresh-entropy DarwinBoot and the packaged ordinary-arm64 iPhone kernel execute in QEMU TCG through three function-entry checkpoints. The fixture replaces board resources with QEMU RAM, CPU and GICv3 while retaining iPhone identity. Original Image4 then refuses the missing mix-n-match policy. Missing entropy is refused before ExitBootServices. Board firmware, GPU MMIO and original user space are not executed."
+}

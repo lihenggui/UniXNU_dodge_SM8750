@@ -55,7 +55,7 @@
   "bundle": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle",
   "executable_sha256": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668",
   "rust_bridge_sha256": "941393dc49798af220be3afcff3f3557ace40eeb054b9fd0b3a77868d3ae13f5",
-  "turnip_sha256": "a70a9c43ee7eb582533e6c7766a442e95c5a36d83f33127f46a3bf15056026bb",
+  "turnip_sha256": "33618b863fea464bb0ea73e0c96875bcf6b770dc756ed3a828d879eb12a30c21",
   "daemon_sha256": "6caaa5f0413d4a0d9d1810ea4b9fdf83555fcad17462f4c10a83edf659bbd5c3",
   "original_discovery_abi_qualified": false,
   "code_signature_independently_verified": false

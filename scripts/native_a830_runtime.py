@@ -9,7 +9,7 @@ from native_driver_build import ROOT, require, sha
 
 def apply_runtime(stage):
     lock = json.loads((ROOT / 'upstream.lock.json').read_text())
-    pins = [lock['native_a830_runtime_overlay'], lock['native_a830_surface_overlay']]
+    pins = [lock['native_a830_runtime_overlay'], lock['native_a830_surface_overlay'], lock['native_a830_recovery_overlay']]
     support = {}
     for pin in pins:
         patch = ROOT / pin['path']
@@ -27,4 +27,4 @@ def apply_runtime(stage):
             require(sha(source) == digest, 'Native A830 runtime support changed: ' + name)
             shutil.copyfile(source, stage / source.name)
         support.update(pin['support_sha256'])
-    return {**pins[0], 'surface_overlay': pins[1], 'support_sha256': support}
+    return {**pins[0], 'surface_overlay': pins[1], 'recovery_overlay': pins[2], 'support_sha256': support}

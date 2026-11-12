@@ -1,0 +1,41 @@
+--- a/NativeAdrenoStatus.h
++++ b/NativeAdrenoStatus.h
+@@ -30,7 +30,18 @@
+ };
+ class NativeAdrenoStatus final {
+     uint64_t faults_=0,suspends_=0;
++    const uint32_t *lost_=nullptr,*recovering_=nullptr;
+ public:
++    // Bind the publisher's boot-lifetime flags before exposing this connection.
++    // Counters describe ended work; they do not make a recovered device unusable.
++    void attachLifecycle(const uint32_t *lost,const uint32_t *recovering) {
++        lost_=lost;recovering_=recovering;
++    }
++    IOReturn availability() const {
++        if(lost_ && __atomic_load_n(lost_,__ATOMIC_ACQUIRE))return NativeAdrenoReturnNotResponding;
++        if(recovering_ && __atomic_load_n(recovering_,__ATOMIC_ACQUIRE))return kIOReturnBusy;
++        return kIOReturnSuccess;
++    }
+     void noteFault() {__atomic_fetch_add(&faults_,1,__ATOMIC_RELAXED);}
+     void noteSuspend() {__atomic_fetch_add(&suspends_,1,__ATOMIC_RELAXED);}
+     uint64_t faults() const {return __atomic_load_n(&faults_,__ATOMIC_RELAXED);}
+--- a/NativeAdrenoUserClient.cpp
++++ b/NativeAdrenoUserClient.cpp
+@@ -577,6 +577,7 @@
+     if(!reply)return kIOReturnBadArgument;*reply={};
+     if(!open_)return kIOReturnNotReady;
+     if(!status_)return kIOReturnUnsupported;
++    const IOReturn available=status_->availability();if(available)return available;
+     const NativeAdrenoStatusCounts counts=status_->counts();
+     reply->faults=counts.faults;reply->suspends=counts.suspends;
+     return kIOReturnSuccess;
+--- a/NativeAdrenoPublish.cpp
++++ b/NativeAdrenoPublish.cpp
+@@ -478,6 +478,7 @@
+     if(!status) {
+         if(g.timer)box->core.attachTimer(g.timer);
+         if(g.info)box->core.attachDeviceInfo(g.info);
++        box->status.attachLifecycle(&g.lost,&g.recovering);
+         box->core.attachStatus(&box->status);   /* counted per connection from here on (ARCHITECTURE 4.13.4) */
+         /* The queue meter's attribution (ARCHITECTURE 4.13.5): the render server's jobs, in whatever slot it got, against everyone's. */
+         box->core.setRenderServer(render_server);

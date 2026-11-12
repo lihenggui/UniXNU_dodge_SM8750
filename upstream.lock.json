@@ -1353,8 +1353,8 @@
       "NativeAdrenoMemory.h": "b5762a58ad6e0ddfec2baa1b60fe69393f3933caddb90c944d7f6d6dbae82088"
     },
     "support_sha256": {
-      "drivers/DodgeGpu/DodgeNativeSurface.cpp": "29df909ec08cd4dd5060e14814a71b66f9ef8ba69d04e5b72fb98d390466c08b",
-      "drivers/DodgeGpu/DodgeNativeSurface.h": "03417d2eddc143a04cc5112b64c15f610fd771433b9cfba68f75b8ffdb64bc0a",
+      "drivers/DodgeGpu/DodgeNativeSurface.cpp": "b34a64ddd6ae28d22f48c1daccdff973b740b8b38fce8100108313efcf438831",
+      "drivers/DodgeGpu/DodgeNativeSurface.h": "548d3fed15ec591167a242439a32f3a2447dd602dab073860a9d7f219aa09663",
       "drivers/DodgeGpu/DodgeSurfacePages.h": "c837fdd2db15582ccee38b24f1fbbc9ec3d3d7a1d22918913225aa1ee7be1c3d",
       "drivers/DodgeGpu/DodgeSurfaceIdentity.h": "811d94070a0decfa5f3e927407ba4d4eea58c673dc0585dd8e4dc3cbe2d9869d",
       "drivers/DodgeGpu/DodgeSurfaceBacking.h": "ce22957e1808b66c2bac9ce35bb6b5fe4c7840c1d57dc3ede9ad6e3c7549f73f",
@@ -1420,5 +1420,51 @@
       "sha256": "6f09cafb9d9c56dd724be366ac79ab9322bd4737311953eebb45a0cac9f2a502"
     },
     "scope": "Rebase the official asking-thread policy onto the pinned runtime; keep the 2 MiB stack guard and the existing relay."
+  },
+  "native_a830_recovery_overlay": {
+    "path": "patches/adreno830/0009-recovery-status.patch",
+    "sha256": "bebd1b0642641255d88928519f6dd41c7cc9f2697ed86f63f51f35b833402798",
+    "before_sha256": {
+      "NativeAdrenoStatus.h": "2d1848b4edd67949311ac853ec59dfa2de57cfdb8e35164db08f325086bc40fe",
+      "NativeAdrenoUserClient.cpp": "675bdbed42ec34e1e1a515869e369820bd464b7e90baf805d3d9d891b0b3d21f",
+      "NativeAdrenoPublish.cpp": "46106b69b8efffc6cbf7d28a3fdbddec78fb925e8d8edbaf936c597bfadac81d"
+    },
+    "after_sha256": {
+      "NativeAdrenoStatus.h": "76f7b73e437c96d161b099e03bbe301451940692112ad2a5438bbaa15a4c6ef6",
+      "NativeAdrenoUserClient.cpp": "6ac163e659126501a8bbdc3e00ae90c7d28c4ea84aedd4d0cce8f39e9da4bf81",
+      "NativeAdrenoPublish.cpp": "b529f1bd133a171a576957ff8f81c64a1346212b888f9fff9e3dc05edb7e99e9"
+    },
+    "support_sha256": {},
+    "scope": "Expose recovery-in-progress and permanent publisher loss through GetStatus without treating fault counters as permanent loss."
+  },
+  "native_a830_mesa_recovery_overlay": {
+    "path": "patches/adreno830/0010-turnip-recovery.patch",
+    "sha256": "530b0cabd8708fe8e1d526310b50d7a7d41ecc56de6d5fed7a3078528f7f8632",
+    "before_sha256": {
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "b3bd703866a42219dbf13ca39f959352d685809c9ad2bdbcceb721064f5339a3"
+    },
+    "after_sha256": {
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "13b9b74ede75d20568ba5d45cadadb885051355a194c5129e97d43dc8fc5691b"
+    },
+    "support": {},
+    "upstream": {
+      "repository": "https://github.com/UniXNU/UniXNU.git",
+      "revision": "c72a8a52589ef205bfbe4667fd7b01964468b5e9",
+      "path": "patches/mesa/turnip-darwin-keep-device-after-restart.patch",
+      "sha256": "55824a09087c6efd9eef9d4f505f2edf80441c000f721c7ac31a1b4d68794d65"
+    },
+    "scope": "Keep Vulkan resources after a native reset, tolerate Busy during recovery and preserve terminal GetStatus errors."
+  },
+  "native_a830_display_recovery_overlay": {
+    "path": "patches/adreno830/0011-display-surface-recovery.patch",
+    "sha256": "258a3b11f73b0b829de42ac1b520cab8ea8d98dc1db72be3e3f2c3f3fee6ce87",
+    "before_sha256": {
+      "DodgeDisplayFrontend.cpp": "364fb9ee8b5da452c2108bc9a653599f267c43a7d22313d2229bdd59ba047df8"
+    },
+    "after_sha256": {
+      "DodgeDisplayFrontend.cpp": "ce3b8223009ff44adc694d58fb98c16edc8f4c094b805e850a7b7a3ee6963440"
+    },
+    "support": {},
+    "scope": "Reject a recovered GPU surface until its own successful writer restores visibility, both before initial display admission and after callbacks."
   }
 }

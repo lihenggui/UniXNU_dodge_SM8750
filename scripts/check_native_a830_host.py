@@ -45,6 +45,7 @@ def main():
         files += [fixture, wait_fixture, ROOT / runtime['path'], ROOT / 'scripts/native_a830_runtime.py']
         files += [ROOT / runtime['surface_overlay']['path'], ROOT / 'tests/DodgeNativeSurfacePeers.cpp',
                   ROOT / 'tests/DodgeNativeSurfacePeers.h']
+        files += [ROOT / runtime['recovery_overlay']['path']]
         files += [p for p in (ROOT / 'tests/native_surface_include').rglob('*') if p.is_file()]
         shutil.copyfile(ROOT / 'tests/DodgeNativeSurfacePeers.h', stage / 'tests/DodgeNativeSurfacePeers.h')
         hint = ROOT / 'drivers/DodgeGpu/DodgeSurfaceImportHint.h'

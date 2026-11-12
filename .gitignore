@@ -93,6 +93,8 @@
 !/tests/DodgeGpuStartupTest.cpp
 !/tests/DodgeNativeA830BoardTest.cpp
 !/tests/DodgeNativeA830RuntimeTest.cpp
+!/tests/DodgeTurnipRecoveryTest.cpp
+!/tests/DodgeDisplayRecoveryCases.h
 !/tests/DodgeNativeSurfacePeers.cpp
 !/tests/DodgeNativeSurfacePeers.h
 !/tests/native_surface_include/

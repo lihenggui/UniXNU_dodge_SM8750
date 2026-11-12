@@ -2,8 +2,12 @@
   "schema_version": 1,
   "kind": "host-build-and-test-reports",
   "target": "CPH2653 / iPhone10,3 / iOS 16.7.16 / 20H392",
-  "scope": "Build and model-test snapshots. Artifact and dependency hashes identify their recorded run. Use previous_indexes to resolve earlier report versions.",
+  "scope": "Build, model-test and QEMU snapshots. Artifact and dependency hashes identify their recorded run. Use previous_indexes to resolve earlier report versions.",
   "previous_indexes": [
+    {
+      "revision": "b4a0fbfe316d62fb29c8c09d435e055a337cda38",
+      "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/b4a0fbfe316d62fb29c8c09d435e055a337cda38/reports/public/index.json"
+    },
     {
       "revision": "3bc668d2be636cf05cf64bf08e418292da707032",
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/3bc668d2be636cf05cf64bf08e418292da707032/reports/public/index.json"
@@ -21,7 +25,7 @@
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/067b04a9f4544296ecc03a6ba26aa52d8cb0f6be/reports/public/index.json"
     }
   ],
-  "exporter_sha256": "ef5b528031c662e2420f815e2c2bb32a564d0ff186200e78814e59d02899084f",
+  "exporter_sha256": "ff9f2f2c541e68829d93696bc46c5e4590170658df63e83ae659ec2abe680a8d",
   "reports": {
     "a830-backend-tests.json": {
       "local_report": "reports/a830-backend-tests.json",
@@ -937,20 +941,26 @@
     },
     "native-a830-addon.json": {
       "local_report": "reports/native-a830-addon.json",
-      "original_sha256": "d06f297dd4cfdf4a7b1a99acf16d5f2f4ee78b4330011ac81e8ab99643e43b27",
-      "snapshot_sha256": "d06f297dd4cfdf4a7b1a99acf16d5f2f4ee78b4330011ac81e8ab99643e43b27",
+      "original_sha256": "ec75121a76435cb5f0d69c1f3f09039f980baf4a38fa4487d82fd4fe767bee26",
+      "snapshot_sha256": "ec75121a76435cb5f0d69c1f3f09039f980baf4a38fa4487d82fd4fe767bee26",
       "paths_normalized": false
     },
     "native-a830-board-host.json": {
       "local_report": "reports/native-a830-board-host.json",
-      "original_sha256": "c6ebbc54f776fba33942b8aa0f0eeee679034830a8d8a493a2bd1ee86237af73",
-      "snapshot_sha256": "c6ebbc54f776fba33942b8aa0f0eeee679034830a8d8a493a2bd1ee86237af73",
+      "original_sha256": "b78be0c76b1d5a0a7451a6755f63b7c5ef8cfec891583078a88ae798486f2836",
+      "snapshot_sha256": "b78be0c76b1d5a0a7451a6755f63b7c5ef8cfec891583078a88ae798486f2836",
       "paths_normalized": false
     },
     "native-a830-board.json": {
       "local_report": "reports/native-a830-board.json",
       "original_sha256": "cee7fc360ffff77e0bc9258094331ea30a90405a29a7c35cdf94665ca1690ee5",
       "snapshot_sha256": "cee7fc360ffff77e0bc9258094331ea30a90405a29a7c35cdf94665ca1690ee5",
+      "paths_normalized": false
+    },
+    "native-a830-entry.json": {
+      "local_report": "reports/native-a830-entry.json",
+      "original_sha256": "d55aa08ab952b843f465e77af5d4cc0af398f44f37b62f518a445336d1251866",
+      "snapshot_sha256": "d55aa08ab952b843f465e77af5d4cc0af398f44f37b62f518a445336d1251866",
       "paths_normalized": false
     },
     "native-a830-firmware.json": {
@@ -961,14 +971,14 @@
     },
     "native-a830-host.json": {
       "local_report": "reports/native-a830-host.json",
-      "original_sha256": "efd54676c1d949da21ebecc88b91a68b995c9caf979bc58a4e2dbc45b6075bba",
-      "snapshot_sha256": "efd54676c1d949da21ebecc88b91a68b995c9caf979bc58a4e2dbc45b6075bba",
+      "original_sha256": "c8a9130fb957bbb44ebc335db2c27893a7a664e68c7d1fa56eb4b9e659f00ba9",
+      "snapshot_sha256": "c8a9130fb957bbb44ebc335db2c27893a7a664e68c7d1fa56eb4b9e659f00ba9",
       "paths_normalized": false
     },
     "native-a830-kernel.json": {
       "local_report": "reports/native-a830-kernel.json",
-      "original_sha256": "8306b0dffe16f65549d8fae9d411ad907a36347ab7c8c3b318ca705137d2312d",
-      "snapshot_sha256": "8306b0dffe16f65549d8fae9d411ad907a36347ab7c8c3b318ca705137d2312d",
+      "original_sha256": "04388341f24b2db26f86d2876d4926f1dfc8d25a7de857abebdd8035b4ea545d",
+      "snapshot_sha256": "04388341f24b2db26f86d2876d4926f1dfc8d25a7de857abebdd8035b4ea545d",
       "paths_normalized": false
     },
     "native-a830-metal-bridge.json": {
@@ -979,50 +989,56 @@
     },
     "native-a830-metal-plugin.json": {
       "local_report": "reports/native-a830-metal-plugin.json",
-      "original_sha256": "c5e4b47a6d4a614c565d35b53fd20a6e37e0de3a880435cdf74a447566c0b3b2",
-      "snapshot_sha256": "c5e4b47a6d4a614c565d35b53fd20a6e37e0de3a880435cdf74a447566c0b3b2",
+      "original_sha256": "ea6eee72452987c8c239cccd7f7d25daf60d7b0d4baa4e8f810031ad88128709",
+      "snapshot_sha256": "ea6eee72452987c8c239cccd7f7d25daf60d7b0d4baa4e8f810031ad88128709",
       "paths_normalized": false
     },
     "native-a830-payload.json": {
       "local_report": "reports/native-a830-payload.json",
-      "original_sha256": "d0e72d7359ed292f242c1856f0e385b7fde7ef290e012acccfb4c672dc004edd",
-      "snapshot_sha256": "d0e72d7359ed292f242c1856f0e385b7fde7ef290e012acccfb4c672dc004edd",
+      "original_sha256": "c39942a16c2d5037012352fa6723d413913a7ca814ba90ec59652ae279f0e124",
+      "snapshot_sha256": "c39942a16c2d5037012352fa6723d413913a7ca814ba90ec59652ae279f0e124",
       "paths_normalized": false
     },
     "native-a830-prelink.json": {
       "local_report": "reports/native-a830-prelink.json",
-      "original_sha256": "7fd94f3cfba4bdec86c709df9edbb770e2931f6e50a691f43e50b7d7bdd5b6eb",
-      "snapshot_sha256": "7fd94f3cfba4bdec86c709df9edbb770e2931f6e50a691f43e50b7d7bdd5b6eb",
+      "original_sha256": "09ce37cf68f5b09c69535d4864a0b634f0fa5e3a04d2f2b660d846cfd5938f83",
+      "snapshot_sha256": "09ce37cf68f5b09c69535d4864a0b634f0fa5e3a04d2f2b660d846cfd5938f83",
+      "paths_normalized": false
+    },
+    "native-a830-recovery-host.json": {
+      "local_report": "reports/native-a830-recovery-host.json",
+      "original_sha256": "444f5bc1e9d43b7e1ba9be16a4e5a207a4530b9f12608a651a2431760d58282a",
+      "snapshot_sha256": "444f5bc1e9d43b7e1ba9be16a4e5a207a4530b9f12608a651a2431760d58282a",
       "paths_normalized": false
     },
     "native-a830-runtime-host.json": {
       "local_report": "reports/native-a830-runtime-host.json",
-      "original_sha256": "ec9eb3b1cd1d6d4b151156cd097b07aed1c3299a2cf05ac89b04d86b192b5a62",
-      "snapshot_sha256": "ec9eb3b1cd1d6d4b151156cd097b07aed1c3299a2cf05ac89b04d86b192b5a62",
+      "original_sha256": "87180b919f5193cb821769b8782289f84e5ba017d8b8d98735fd973f6e551c77",
+      "snapshot_sha256": "87180b919f5193cb821769b8782289f84e5ba017d8b8d98735fd973f6e551c77",
       "paths_normalized": false
     },
     "native-a830-runtime.json": {
       "local_report": "reports/native-a830-runtime.json",
-      "original_sha256": "58ccc8cc9ee6b1da3b82428d6021e64cabc3c6c4c0fa8f349faa4e952e76586c",
-      "snapshot_sha256": "58ccc8cc9ee6b1da3b82428d6021e64cabc3c6c4c0fa8f349faa4e952e76586c",
+      "original_sha256": "71cb96bd2af9c7dd58728634a7c80fa3a8d15d82a9c16586c99bac20dea95289",
+      "snapshot_sha256": "71cb96bd2af9c7dd58728634a7c80fa3a8d15d82a9c16586c99bac20dea95289",
       "paths_normalized": false
     },
     "native-a830-stack.json": {
       "local_report": "reports/native-a830-stack.json",
-      "original_sha256": "2e99e78a7f87aec0a659838a3568c8396fe28a6163734774eb764b92e0d77504",
-      "snapshot_sha256": "2e99e78a7f87aec0a659838a3568c8396fe28a6163734774eb764b92e0d77504",
+      "original_sha256": "b9e64a0e1a104408247caecde683b9760a6db43dd0dbd696f351234631b27593",
+      "snapshot_sha256": "b9e64a0e1a104408247caecde683b9760a6db43dd0dbd696f351234631b27593",
       "paths_normalized": false
     },
     "native-a830-turnip.json": {
       "local_report": "reports/native-a830-turnip.json",
-      "original_sha256": "7b8e410550edaaf42b0fd1c3be0ac69afc51a2046aa904af528b12db70f7bafc",
-      "snapshot_sha256": "f06ebef4d65c0269eee452f92d7e3bb1671e840836d7cc08279c42f657633d19",
+      "original_sha256": "ef113112b214ce23fd3ee36f894183b08b55a75e7d131dc78f184379b78da2b6",
+      "snapshot_sha256": "7cf5b568dbba96c70ce940925d1b149de039ec29a7802253b3e10a8e2235a5a1",
       "paths_normalized": true
     },
     "native-a830-userspace.json": {
       "local_report": "reports/native-a830-userspace.json",
-      "original_sha256": "c5e8f6f4ebad5c0473254685f18099349c2ad7f27f2cf95261def121bb427323",
-      "snapshot_sha256": "c5e8f6f4ebad5c0473254685f18099349c2ad7f27f2cf95261def121bb427323",
+      "original_sha256": "4841364edba5c56b13d134281e7b5bb8e630260381059a65822ced4f555125eb",
+      "snapshot_sha256": "4841364edba5c56b13d134281e7b5bb8e630260381059a65822ced4f555125eb",
       "paths_normalized": false
     },
     "native-a830.json": {

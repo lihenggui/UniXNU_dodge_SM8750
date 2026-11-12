@@ -16,6 +16,8 @@ struct DodgeTestTicket : OSObject {
 };
 extern std::vector<DodgeTestTicket *> dodge_test_tickets;
 extern bool dodge_test_grant_immediately,dodge_test_pages_current,dodge_test_register_failure;
+extern int32_t dodge_test_signal_error;
+extern unsigned dodge_test_signal_calls;
 extern std::atomic_uint dodge_test_schedules,dodge_test_epoch;
 extern void (*dodge_test_signal_check)(void *);
 extern void *dodge_test_signal_context;

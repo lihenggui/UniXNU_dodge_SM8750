@@ -19,7 +19,7 @@ download URL, BuildManifest identity and hashes.
 [upstream.lock.json](../upstream.lock.json) pins source revisions and patches.
 
 The [official guide](https://unixnu.com/porting/) was reviewed on 2026-11-11
-against UniXNU `9248bdac8f06f6faa47a03304ad4e40cde5d5296`. Follow its order:
+against UniXNU `c72a8a52589ef205bfbe4667fd7b01964468b5e9`. Follow its order:
 resolve the board and OS profile, verify memory and firmware, build platform
 services, then add storage, display, input and GPU support. Keep host results
 and device observations separate in [porting.toml](../porting.toml).
@@ -27,8 +27,11 @@ and device observations separate in [porting.toml](../porting.toml).
 Mainline now includes `firmware_tools` for Data-addon firmware staging and a
 Metal pipeline compilation policy that uses the calling thread when its stack
 has at least 2 MiB. The native route backports that policy and keeps the existing
-thread relay for smaller stacks. Source revisions remain pinned in the lock
-file; this board embeds its four stock GPU microcode files locally.
+thread relay for smaller stacks. Its latest Turnip change keeps the Vulkan
+device after a GPU restart. The native route applies that behavior with
+per-surface failure tracking, because this backend abandons in-flight jobs
+during recovery. Source revisions remain pinned in the lock file; this board
+embeds its four stock GPU microcode files locally.
 
 ## Host setup
 
@@ -42,7 +45,8 @@ Install system packages:
 sudo apt-get install build-essential clang-14 lld-14 llvm-14 llvm-14-dev \
   libclang-14-dev uuid-dev libbsd-dev libssl-dev zlib1g-dev liblzma-dev \
   nasm mono-devel ca-certificates-mono device-tree-compiler mtools cmake \
-  ninja-build unifdef pkg-config flex bison cpio rsync tcsh patch ruby
+  ninja-build unifdef pkg-config flex bison cpio rsync tcsh patch ruby \
+  qemu-system-arm qemu-efi-aarch64 seabios
 ```
 
 Set up Python and restore the sources:
@@ -246,6 +250,14 @@ deferred worker signals completion after the fence and cache acquisition.
 Cancellation keeps pending callback owners alive. Backing changes invalidate
 active work and the display health snapshot.
 
+GetStatus distinguishes a restart in progress from permanent device loss.
+Turnip keeps the Vulkan device across a successful restart. Each surface whose
+writer was abandoned stays blocked from display until a successful writer to
+that same surface retires. Previously captured display epochs stay invalid.
+An uncertain original completion retains its callback context and tickets.
+The host tests cover 24 native runtime cases, 11 Turnip status calls and 136
+display frontend cases, alongside the backend, board and VM suites.
+
 The board entry reads the SoC ID from SMEM before startup and accepts 618 or
 639. An optional `dodge-gpu-soc` value must match that reading. The existing
 once-only startup gate and original-family initialization order are retained.
@@ -278,6 +290,33 @@ The archive-only commands remain available for driver work:
 python3 scripts/check_native_a830_host.py
 python3 scripts/check_native_a830_host.py --runtime
 ```
+
+## QEMU entry
+
+The native stack ends with the [official QEMU entry procedure](https://unixnu.com/reference/qemu).
+To repeat just that stage after building the payload:
+
+```sh
+.venv-gpu/bin/python scripts/check_native_a830_entry.py
+.venv-gpu/bin/python scripts/check_native_a830_entry.py --check-only
+```
+
+The runner uses AAVMF, the built UniXNU application and entropy loader, and the
+kernel read back from the packaged FAT. It preserves iPhone10,3 identity and
+substitutes QEMU RAM, CPU and GICv3 resources in a separate device tree. Its
+1 GiB owned window and 2 GiB VM RAM apply only to this fixture. Use `--qemu`,
+`--firmware`, `--firmware-vars` and `--rom-dir` for other installation paths.
+
+The current kernel reaches `arm_init`, `kernel_bootstrap` and `InitIOKit` at
+EL1 with the MMU enabled and 4 KiB translation tables. Original Image4 then
+panics with `failed to get mix-n-match policy: %d` (`0x30003`); the boot input
+still needs a defined `mix-n-match-prevention-status` policy. The runner also
+checks that an ADT without its entropy reservation is refused before
+ExitBootServices. Logs are under `build/cph2653-native-a830-entry/`, and the
+published result is [native-a830-entry.json](../reports/public/native-a830-entry.json).
+
+This run exercises early kernel startup under TCG. OnePlus firmware, board
+drivers and iOS userspace have separate bring-up work in `porting.toml`.
 
 ## System and Data images
 

@@ -38,6 +38,19 @@ static void freed(Path &p,uint64_t handle)
 int main()
 {
     {
+        Path p;CHECK(!exposed(p));NativeAdrenoStatus counters;uint32_t lost=0,recovering=0;
+        counters.attachLifecycle(&lost,&recovering);CHECK(!p.client.attachStatus(&counters));
+        NativeAdrenoAbiStatus status{};CHECK(!p.client.status(&status) && !status.faults);
+        __atomic_store_n(&recovering,1u,__ATOMIC_RELEASE);counters.noteFault();
+        CHECK(p.client.status(&status)==kIOReturnBusy && !status.faults && !status.suspends);
+        counters.noteSuspend();__atomic_store_n(&recovering,0u,__ATOMIC_RELEASE);
+        CHECK(!p.client.status(&status) && status.faults==1 && status.suspends==1);
+        const auto ib=allocMapped(p.client,4096,Base);const auto fence=commit(p,ib);finished(p,fence);freed(p,ib);
+        __atomic_store_n(&lost,1u,__ATOMIC_RELEASE);__atomic_store_n(&recovering,1u,__ATOMIC_RELEASE);
+        CHECK(p.client.status(&status)==NativeAdrenoReturnNotResponding && !status.faults && !status.suspends);
+        passed("status-distinguishes-recovery-terminal-loss-and-recovered-resource-use");
+    }
+    {
         struct Output {char rows[7][80];uint64_t canary=0x123456789abcdef;};Output out{};
         CHECK(!pagani_gpu_status(out.rows));char input[Adreno830StatusRows][Adreno830StatusRowBytes];
         memset(input,'x',sizeof input);boot_progress_gpu_rows(input,Adreno830StatusRows);
@@ -260,6 +273,36 @@ int main()
         passed("completion-before-submit-caller-returns-keeps-owner-reference-valid");
     }
     {
+        Path p;CHECK(!exposed(p));OSObject surface,other;const auto ib=allocMapped(p.client,4096,Base);
+        const auto target=surfaceImport(p,surface,Base+4096,4101);
+        for(unsigned repeat=0;repeat<2;++repeat) {
+            void *batch=nullptr;CHECK(dodge_native_surface_visible(&surface,4101));
+            CHECK(!dodge_native_surface_prepare(&p.vm,&batch));p.client.setSubmissionOwner(batch);
+            const auto fence=commit(p,ib);p.client.setSubmissionOwner(nullptr);dodge_native_surface_end_call(&batch);
+            uint32_t ranges=0;CHECK(!p.execbuf.halt(&ranges));uint32_t last=0;
+            CHECK(!p.ring.recover(&last) && last==fence);
+            uint32_t abandoned=0;const auto epoch=dodge_test_epoch.load();
+            CHECK(!p.execbuf.recover(&abandoned) && abandoned==1 && dodge_test_epoch>epoch);
+            p.execbuf.resume();
+            CHECK(!dodge_native_surface_healthy() && !dodge_test_tickets[0]->signalled);
+            dodge_native_surface_drain();CHECK(dodge_test_tickets[0]->result==kIOReturnAborted);
+            CHECK(dodge_native_surface_healthy() && !dodge_native_surface_visible(&surface,4101));
+            CHECK(dodge_native_surface_visible(&other,4102) && dodge_native_surface_visible(&surface,4102));
+            dodge_test_clear_tickets();
+            CHECK(!dodge_native_surface_prepare(&p.vm,&batch));
+            dodge_native_surface_end_call(&batch);dodge_native_surface_drain();
+            CHECK(!dodge_native_surface_visible(&surface,4101));dodge_test_clear_tickets();
+            CHECK(!dodge_native_surface_prepare(&p.vm,&batch));p.client.setSubmissionOwner(batch);
+            const auto repair=commit(p,ib);p.client.setSubmissionOwner(nullptr);dodge_native_surface_end_call(&batch);
+            CHECK(repair>fence && !dodge_native_surface_visible(&surface,4101));
+            finished(p,repair);CHECK(!dodge_native_surface_visible(&surface,4101));
+            dodge_native_surface_drain();CHECK(dodge_native_surface_visible(&surface,4101));
+            CHECK(dodge_test_tickets[0]->signalled && !dodge_test_tickets[0]->result);dodge_test_clear_tickets();
+        }
+        freed(p,target);freed(p,ib);
+        passed("reset-invalidates-failed-surface-until-its-own-successful-writer-and-supports-repeated-recovery");
+    }
+    {
         Path p;CHECK(!exposed(p));OSObject surface;const auto ib=allocMapped(p.client,4096,Base);
         const auto target=surfaceImport(p,surface,Base+4096);void *batch=nullptr;
         CHECK(!dodge_native_surface_prepare(&p.vm,&batch));p.client.setSubmissionOwner(batch);
@@ -270,6 +313,19 @@ int main()
         finished(p,fence);dodge_native_surface_drain();CHECK(dodge_test_tickets[0]->result==kIOReturnAborted);
         freed(p,target);freed(p,ib);dodge_test_clear_tickets();
         passed("inflight-backing-mutation-latches-display-failure-and-waits-for-GPU-fence");
+    }
+    {
+        Path p;CHECK(!exposed(p));OSObject surface;const auto ib=allocMapped(p.client,4096,Base);
+        const auto target=surfaceImport(p,surface,Base+4096,9801);void *batch=nullptr;
+        CHECK(!dodge_native_surface_prepare(&p.vm,&batch));p.client.setSubmissionOwner(batch);
+        const auto fence=commit(p,ib);p.client.setSubmissionOwner(nullptr);dodge_native_surface_end_call(&batch);
+        finished(p,fence);dodge_test_signal_error=kIOReturnNotReady;const auto epoch=dodge_test_epoch.load();
+        dodge_native_surface_drain();CHECK(!dodge_native_surface_healthy() && dodge_test_epoch>epoch);
+        CHECK(!dodge_test_tickets[0]->released && !dodge_test_tickets[0]->signalled && dodge_test_signal_calls==1);
+        CHECK(!p.vm.hasMappedJobs());dodge_native_surface_drain();CHECK(dodge_test_signal_calls==1);
+        CHECK(dodge_native_surface_prepare(&p.vm,&batch)==NativeAdrenoSubmitRetry && !batch);
+        freed(p,target);freed(p,ib);
+        passed("unconfirmed-original-signal-keeps-callback-context-and-tickets-quarantined");
     }
     std::printf("PASS: %u native iPhone resource and protocol cases\n",cases);
 }

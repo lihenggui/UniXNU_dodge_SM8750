@@ -2,7 +2,7 @@
   "result": "IOS16_TURNIP_CROSS_BUILD_PASS",
   "target": "arm64-apple-ios16.0",
   "library": "build/cph2653-native-a830-turnip/src/freedreno/vulkan/libvulkan_freedreno.dylib",
-  "library_sha256": "a70a9c43ee7eb582533e6c7766a442e95c5a36d83f33127f46a3bf15056026bb",
+  "library_sha256": "33618b863fea464bb0ea73e0c96875bcf6b770dc756ed3a828d879eb12a30c21",
   "mesa_revision": "85fda3b36405bcaea8bffc64aa4f2651dc90770d",
   "patches": [
     {
@@ -62,17 +62,17 @@
       "sha256": "89159ee0c7a24bff3c62c63f9d838711e184438ae630ff0893ec4d275fadafd8"
     }
   ],
-  "source_id": "476d9d7456939535936a4934adc1f4c60ea7f5c5028196ca6767445f10ca56c1",
-  "build_id": "89cef94415faf063557c9f6443a740dd5b2e4726",
+  "source_id": "7b20f44f93fa011cf81edfd45f837981bcd330e89cfb2f86af2bec7565b214c1",
+  "build_id": "dfed655f92dae7c3d3a087aa05a581b06f6054ad",
   "profile": {
     "mesa_revision": "85fda3b36405bcaea8bffc64aa4f2651dc90770d",
     "target": "arm64-apple-ios16.0",
-    "source_diff_sha256": "f2fc21b81ac0323c5076ae3ce05268b6207ad3b8bf94192b20708162405092bd",
+    "source_diff_sha256": "26bfb778b14652f378dea714382e2a5989404c6f37fe809aedab4452da995ec7",
     "extra_sources": {
       "src/freedreno/vulkan/tu_builtin_cache.cc": "ec56464c03c9a7e9dda8ca6fd7887445c7c9a277c9aca7654ba07fef3671bfbd",
       "src/freedreno/vulkan/tu_builtin_cache.h": "4019dbc884f9a8c51d3ad6d71f46738303e5888b4ee5e65c1c820ec77977a151",
       "src/freedreno/vulkan/tu_frame_diagnostic.h": "509028e4b2f4dfe6f1117e94a0b8ccaca7581b5eddc1ea4132ac704555031079",
-      "src/freedreno/vulkan/tu_knl_darwin.cc": "b3bd703866a42219dbf13ca39f959352d685809c9ad2bdbcceb721064f5339a3"
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "13b9b74ede75d20568ba5d45cadadb885051355a194c5129e97d43dc8fc5691b"
     },
     "patch_guard_sha256": "60f03967f4d2b56807b7b3d984181792cb810abbbc6392161d4c82b03d4433a7",
     "compiler": "clang version 24.0.0git (/var/tmp/unixnu-toolchain-6xlueghj/llvm-project/clang 58c46bae21181fb4240cf964461bea738d96d50e)\nTarget: unknown\nThread model: posix\nInstalledDir: .toolchains/xnu-linux/llvm/bin\nBuild config: +assertions",
@@ -103,11 +103,11 @@
       "-Dzstd=disabled",
       "-Dbuildtype=release",
       "-Db_ndebug=true",
-      "-Dtu-builtin-source-id=476d9d7456939535936a4934adc1f4c60ea7f5c5028196ca6767445f10ca56c1",
+      "-Dtu-builtin-source-id=7b20f44f93fa011cf81edfd45f837981bcd330e89cfb2f86af2bec7565b214c1",
       "-Dtu-builtin-pack-header=",
-      "-Dtu-build-id=89cef94415faf063557c9f6443a740dd5b2e4726"
+      "-Dtu-build-id=dfed655f92dae7c3d3a087aa05a581b06f6054ad"
     ],
-    "build_script_sha256": "d09025a50594cf778ece13a77f3ff671ece74a07f55ff0c853df86d5620952fa",
+    "build_script_sha256": "06157d6c85e0c98948ce63b116c0e6c99364877ca6088298a9d395db8eec00fe",
     "cross_file_sha256": "223e1d70adab2bcf874bc3676356be9b8ca3f78e3a094e22fac6947588455713",
     "sdk_revision": "0222fd5413cf4b9af096f37b4621afa2688572f7",
     "native_surface_overlay": {
@@ -125,6 +125,24 @@
           "destination": "src/freedreno/vulkan/DodgeSurfaceImportHint.h"
         }
       }
+    },
+    "native_recovery_overlay": {
+      "path": "patches/adreno830/0010-turnip-recovery.patch",
+      "sha256": "530b0cabd8708fe8e1d526310b50d7a7d41ecc56de6d5fed7a3078528f7f8632",
+      "before_sha256": {
+        "src/freedreno/vulkan/tu_knl_darwin.cc": "b3bd703866a42219dbf13ca39f959352d685809c9ad2bdbcceb721064f5339a3"
+      },
+      "after_sha256": {
+        "src/freedreno/vulkan/tu_knl_darwin.cc": "13b9b74ede75d20568ba5d45cadadb885051355a194c5129e97d43dc8fc5691b"
+      },
+      "support": {},
+      "upstream": {
+        "repository": "https://github.com/UniXNU/UniXNU.git",
+        "revision": "c72a8a52589ef205bfbe4667fd7b01964468b5e9",
+        "path": "patches/mesa/turnip-darwin-keep-device-after-restart.patch",
+        "sha256": "55824a09087c6efd9eef9d4f505f2edf80441c000f721c7ac31a1b4d68794d65"
+      },
+      "scope": "Keep Vulkan resources after a native reset, tolerate Busy during recovery and preserve terminal GetStatus errors."
     },
     "native_surface_abi_sha256": "8e0cfffdb84ed74065dc0a9ebcdac16cd5598d964b3736d0e984236b7f4557c5"
   },
@@ -145,6 +163,24 @@
         "destination": "src/freedreno/vulkan/DodgeSurfaceImportHint.h"
       }
     }
+  },
+  "native_recovery_overlay": {
+    "path": "patches/adreno830/0010-turnip-recovery.patch",
+    "sha256": "530b0cabd8708fe8e1d526310b50d7a7d41ecc56de6d5fed7a3078528f7f8632",
+    "before_sha256": {
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "b3bd703866a42219dbf13ca39f959352d685809c9ad2bdbcceb721064f5339a3"
+    },
+    "after_sha256": {
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "13b9b74ede75d20568ba5d45cadadb885051355a194c5129e97d43dc8fc5691b"
+    },
+    "support": {},
+    "upstream": {
+      "repository": "https://github.com/UniXNU/UniXNU.git",
+      "revision": "c72a8a52589ef205bfbe4667fd7b01964468b5e9",
+      "path": "patches/mesa/turnip-darwin-keep-device-after-restart.patch",
+      "sha256": "55824a09087c6efd9eef9d4f505f2edf80441c000f721c7ac31a1b4d68794d65"
+    },
+    "scope": "Keep Vulkan resources after a native reset, tolerate Busy during recovery and preserve terminal GetStatus errors."
   },
   "hardware_tested": false,
   "scope": "Actual production Vulkan/IR3 library cross-build, not GPU shader execution."

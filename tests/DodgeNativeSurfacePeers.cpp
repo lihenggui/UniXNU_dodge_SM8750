@@ -7,6 +7,8 @@
 #include <cassert>
 std::vector<DodgeTestTicket *> dodge_test_tickets;
 bool dodge_test_grant_immediately=true,dodge_test_pages_current=true,dodge_test_register_failure=false;
+int32_t dodge_test_signal_error;
+unsigned dodge_test_signal_calls;
 std::atomic_uint dodge_test_schedules,dodge_test_epoch;
 void (*dodge_test_signal_check)(void *);
 void *dodge_test_signal_context;
@@ -26,6 +28,7 @@ extern "C" bool native_iphone_surface_register_sync(OSObject *surface,OSObject *
 extern "C" int32_t native_iphone_surface_signal_sync(OSObject *object,int32_t result)
 {
     auto *ticket=static_cast<DodgeTestTicket *>(object);
+    ++dodge_test_signal_calls;if(dodge_test_signal_error)return dodge_test_signal_error;
     if(dodge_test_signal_check)dodge_test_signal_check(dodge_test_signal_context);
     assert(ticket->granted && !ticket->signalled);ticket->signalled=true;ticket->result=result;return 0;
 }
@@ -40,6 +43,7 @@ void dodge_test_clear_tickets()
     for(auto *ticket:dodge_test_tickets) {assert(ticket->signalled && ticket->released);delete ticket;}
     dodge_test_tickets.clear();dodge_test_grant_immediately=dodge_test_pages_current=true;
     dodge_test_register_failure=false;
+    dodge_test_signal_error=0;dodge_test_signal_calls=0;
     dodge_test_signal_check=nullptr;dodge_test_signal_context=nullptr;
 }
 extern "C" IOReturn dodge_surface_pages_current(const DodgeSurfacePages *)

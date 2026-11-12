@@ -89,6 +89,13 @@ def main():
         'original-refresh-binding.o', 'DodgeSurfaceBacking.o', 'original-surface-bindings.o',
         'DodgeDisplayFrontend.o', 'original-frontend-bindings.o'}]
     require(len(support) == 11, 'Display support inventory changed')
+    from native_a830_userspace import display as stage_display
+    frontend_stage, frontend_pin = stage_display(OUT / 'display-source')
+    frontend_objects = build_objects([frontend_stage / 'DodgeDisplayFrontend.cpp'], OUT / 'display',
+        [ROOT / 'drivers/DodgeDisplay', ROOT / 'drivers/DodgeGpu',
+         ROOT / 'profiles/os/ios-16.7.16-20H392/graphics',
+         ROOT / 'sources/UniXNU-Pagani-Drivers/drivers/NativeMobileDisplay'])
+    support = [frontend_objects[0] if p.name == 'DodgeDisplayFrontend.o' else p for p in support]
     support_archive = OUT / 'libDodgeDisplaySupport.a'
     support_archive.unlink(missing_ok=True)
     subprocess.run(['/usr/bin/llvm-ar-14', 'rcsD', support_archive, *support], check=True)
@@ -143,10 +150,12 @@ def main():
     entry_names = [*base['combined_native_entries'], '_dodge_native_a830_start', '_adreno830_start',
         '_dodge_adreno_wait_map', '_native_adreno_retire_completed', '_native_adreno_recovery_begin', '_native_adreno_recovery_end',
         '_dodge_native_surface_prepare', '_dodge_native_surface_published', '_dodge_native_surface_completed',
-        '_dodge_native_surface_changed', '_dodge_native_surface_drain', '_dodge_native_surface_healthy']
+        '_dodge_native_surface_changed', '_dodge_native_surface_drain', '_dodge_native_surface_healthy',
+        '_dodge_native_surface_visible']
     entries = {n: hex(table[n]['value']) for n in entry_names}
     link = OUT / 'link-command.json';link.write_text(json.dumps(command, indent=2) + '\n')
     artifacts = [candidate, link, weak, support_archive, pages_archive, *page_objects, *backing_objects, staged_backing]
+    artifacts += [*frontend_objects, frontend_stage / 'DodgeDisplayFrontend.cpp']
     artifacts += [ROOT / a.split(',',2)[2] for a in command if a.startswith('-Wl,-force_load,')]
     report = {'result': 'NATIVE_A830_COMPLETE_IPHONE_SOURCE_KERNEL_PASS',
         'candidate': str(candidate.relative_to(ROOT)), 'candidate_sha256': sha(candidate), 'link_command': str(link.relative_to(ROOT)),
@@ -154,16 +163,19 @@ def main():
         'combined_original_bindings': base['combined_original_bindings'], 'combined_native_entries': entries,
         'source_sha256': {str(p.relative_to(ROOT)): sha(p) for p in (Path(__file__), page_source,
             ROOT / 'scripts/native_driver_build.py', ROOT / 'drivers/DodgeGpu/DodgeSurfacePages.h', backing_patch,
-            ROOT / backing_pin['target'], ROOT / 'scripts/build_native_a830.py')},
+            ROOT / backing_pin['target'], ROOT / 'scripts/build_native_a830.py',
+            ROOT / 'scripts/native_a830_userspace.py', ROOT / frontend_pin['path'])},
         'dependency_report_sha256': {str(p.relative_to(ROOT)): sha(p) for p in (BASE_REPORT, gpu_report, host_report)},
         'artifacts': {str(p.relative_to(ROOT)): sha(p) for p in artifacts},
         'actual_crypto_hooks': hook_readbacks(data), 'actual_iobsd_hook': hook_readback(data), 'actual_init_hook': init_hook_readback(data),
-        'native_gpu_objects': len(gpu_objects), 'preserved_display_objects': len(support),
+        'native_gpu_objects': len(gpu_objects), 'display_support_objects': len(support),
+        'preserved_display_objects': len(support)-1, 'recompiled_display_objects': 1,
         'firmware_pins': gpu['target_firmware']['files'],
         'firmware_readback': check_firmware(data, gpu['target_firmware']['files']),
         'page_adapter_recompiled_for_native_memory': True, 'native_board_entry_connected': True,
         'surface_ID_import_connected': True, 'original_surface_producer_connected': True,
         'backing_mutations_notify_native_GPU': True, 'backing_overlay': backing_pin,
+        'display_recovery_overlay': frontend_pin,
         'original_components_embedded': False, 'default_kernel_selected': False, 'hardware_tested': False,
         'scope': 'Complete isolated source kernel with the native A830 runtime and all prior display/storage/input/startup components. '
                  'The graphics coordinator calls the native board entry after original-family preparation. '

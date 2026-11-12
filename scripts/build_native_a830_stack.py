@@ -18,12 +18,14 @@ STAGES = (
     ('kernel', 'build_native_a830_kernel', (), 'native-a830-kernel'),
     ('prelink', 'build_native_a830_prelink', (), 'native-a830-prelink'),
     ('turnip', 'build_turnip_ios16', ('--native-a830',), 'native-a830-turnip'),
+    ('recovery_host', 'check_native_a830_recovery', (), 'native-a830-recovery-host'),
     ('bridge', 'build_metal_bridge', ('--native-a830',), 'native-a830-metal-bridge'),
     ('plugin', 'build_metal_plugin', ('--native-a830',), 'native-a830-metal-plugin'),
     ('userspace', 'check_gpu_userspace', ('--native-a830',), 'native-a830-userspace'),
     ('firmware', 'build_native_a830_firmware', (), 'native-a830-firmware'),
     ('addon', 'build_native_a830_addon', (), 'native-a830-addon'),
     ('payload', 'build_native_a830_payload', (), 'native-a830-payload'),
+    ('entry', 'check_native_a830_entry', (), 'native-a830-entry'),
 )
 
 
@@ -61,6 +63,7 @@ def collect():
     for row, field, key in ((bridge, 'native_surface_overlay', 'native_a830_metal_surface_overlay'),
                             (plugin, 'native_surface_overlay', 'native_a830_metal_surface_overlay'),
                             (turnip, 'native_surface_overlay', 'native_a830_mesa_surface_overlay'),
+                            (turnip, 'native_recovery_overlay', 'native_a830_mesa_recovery_overlay'),
                             (bridge, 'native_compile_overlay', 'native_a830_compile_overlay')):
         require(row[field] == lock[key] and sha(ROOT / lock[key]['path']) == lock[key]['sha256'],
                 'Native userspace adapter differs: ' + key)
@@ -69,6 +72,8 @@ def collect():
             sha(ROOT / lock['metal_bridge_dependencies']['path']), 'Native Rust dependency inputs differ')
     require(plugin['linked'] and plugin['rust_bridge_sha256'] == bridge['archive_sha256'] and
             plugin['turnip_sha256'] == turnip['library_sha256'], 'Native plugin uses another bridge or Turnip')
+    require(reports['kernel']['display_recovery_overlay'] == lock['native_a830_display_recovery_overlay'],
+            'Native display uses another recovery adapter')
     for binary in reports['userspace']['binaries']:
         data = (ROOT / binary['path']).read_bytes()
         actual = verify(data, binary['filetype'])
@@ -78,6 +83,8 @@ def collect():
     require(payload['fat_files']['EFI/UniXNU/Payloads/kernel.macho'] == prelink['candidate_sha256'] and
             payload['firmware_sha256'] == firmware['firmware_sha256'] and
             payload['original_POST_tests_in_model'] == 18, 'Native payload mixes kernel or firmware stages')
+    require(reports['entry']['candidate_sha256'] == prelink['candidate_sha256'],
+            'QEMU entry tested a different iPhone kernel')
     sources = [Path(__file__), ROOT / 'scripts/native_a830_userspace.py', ROOT / 'scripts/native_a830_runtime.py']
     sources += [ROOT / value['builder'] for value in stages.values()]
     return {'result': 'CPH2653_NATIVE_A830_IPHONE_DEVELOPMENT_STACK_PASS',
@@ -90,12 +97,16 @@ def collect():
         'candidate': prelink['candidate'], 'candidate_sha256': prelink['candidate_sha256'],
         'boot_image': payload['boot_image'], 'boot_image_sha256': payload['boot_image_sha256'],
         'surface_ID_import_and_original_producers_connected': True,
+        'recovered_Vulkan_device_and_per_surface_visibility': True,
         'firmware_fresh_entropy_and_DXE_log_export': True,
+        'QEMU_entry_checkpoints': [row['symbol'] for row in reports['entry']['checkpoints']],
+        'QEMU_next_dependency': reports['entry']['next_stop'],
         'original_userspace_included': False, 'default_kernel_selected': False, 'hardware_tested': False,
         'phone_operations': 'none',
         'scope': 'Native A830 source/runtime, original iPhone prelink, Turnip/Metal, addon/trust inputs and '
-                 'entropy/logger firmware form one locally verified development payload. Host controllers and '
-                 'ARM64 instruction models do not qualify GPU power, DMA/cache visibility, rendering or system boot.'}
+                 'entropy/logger firmware form one locally verified development payload. Actual QEMU execution reaches '
+                 'InitIOKit, then original Image4 refuses missing startup policy. GPU power, DMA/cache visibility, '
+                 'rendering and system boot remain untested.'}
 
 
 def main():

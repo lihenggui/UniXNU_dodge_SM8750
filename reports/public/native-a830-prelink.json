@@ -1,11 +1,11 @@
 {
   "result": "NATIVE_A830_IPHONE_STRICT_PRELINK_PASS",
   "candidate": "build/cph2653-native-a830-prelink/kernel.macho",
-  "candidate_sha256": "5410cfbfdef990f78928e31b8ece4730513e001ebd4a62b2a672233f92b3f157",
+  "candidate_sha256": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
   "unhooked_candidate": "build/cph2653-native-a830-prelink/kernel.unhooked.macho",
   "source_sha256": {
-    "scripts/build_native_a830_prelink.py": "9cf76b4305e07f20318888f5de4f4b4c349afb6ba25a1b1d77152445899d6f50",
-    "scripts/build_native_a830_kernel.py": "c271ef4bfe67fba4c33338f3eac2fc0484688f10b8beb3ca39f9a7889edb25d0",
+    "scripts/build_native_a830_prelink.py": "f5fa931e302a3631c42a23d3903eccd43386fbb8a68fd2c5a7fb61ce19d89a8d",
+    "scripts/build_native_a830_kernel.py": "4b50ccd6c43f40465c08b303520830483efc9a5baaafe7671d93fbb5c1caeedc",
     "scripts/build_crypto_prelink.py": "ec1fbbbdd7368c52d057b0b6c437b7dbff070d9bb2088649749a88995177457a",
     "scripts/build_gpu_graphics_prelink.py": "ad5f6636a1761297a6936467b1140134ba934c86ea7de4c128f5546f26995293",
     "scripts/build_ufs_prelink.py": "69c2fa86f9d51b3b8363abbecaf458deab3721b2c88fbe52840d67f98f53bfac",
@@ -20,12 +20,12 @@
     "sources/UniXNU/drivers/DarwinBoot/Test/test-kernel-parser.py": "92be15ff6060ee1cd98e7feb8a021f1ebed477189375140dfc3ac8371f9b48d7"
   },
   "dependency_report_sha256": {
-    "reports/native-a830-kernel.json": "8306b0dffe16f65549d8fae9d411ad907a36347ab7c8c3b318ca705137d2312d"
+    "reports/native-a830-kernel.json": "04388341f24b2db26f86d2876d4926f1dfc8d25a7de857abebdd8035b4ea545d"
   },
   "artifacts": {
-    "build/cph2653-native-a830-prelink/kernel.macho": "5410cfbfdef990f78928e31b8ece4730513e001ebd4a62b2a672233f92b3f157",
-    "build/cph2653-native-a830-prelink/kernel.unhooked.macho": "770595a54abc3c63e79723cdd175a78c58235ccfde34a13ed1b793299ab9664f",
-    "build/cph2653-native-a830-prelink/kernel.unhooked.json": "4bb80dddb06e8b34f319439aa11db2af85cb12aa124a8812102bcc4ae1a1fab4",
+    "build/cph2653-native-a830-prelink/kernel.macho": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
+    "build/cph2653-native-a830-prelink/kernel.unhooked.macho": "432c2a4b977f8584baf09f151276bef84289400a03be14e6ab4a27d95d2d6753",
+    "build/cph2653-native-a830-prelink/kernel.unhooked.json": "4543ea217aec0dd1eacad8a96f73087f8c66f76794607409400951b0c3432618",
     "build/ios16-surface-producer-execution/SurfaceSyncProbe.o": "2362b077cd92a5c2a86eda834dbfbbd09b3b69a0e8bca7ca3b6c4a469290adb0"
   },
   "combined_source_objects": 111,
@@ -211,7 +211,7 @@
       "bytes": 177728
     }
   ],
-  "native_source_entries_preserved": 124,
+  "native_source_entries_preserved": 125,
   "original_aliases_preserved": 347,
   "original_crypto_entry_identity_preserved": true,
   "independent_source_provider_and_its_post_field_absent": true,
@@ -226,7 +226,7 @@
     "actual_iobsd_hook_read_back": {
       "address": "0xfffffff007996f84",
       "bytes": 80,
-      "sha256": "23beae7f13fdfa1525c1d9944275c3afd9a45edc83a8ca18653d9ee90240df2b",
+      "sha256": "5e3c539200a870ae57492f5994b5796b017509db197d3d3446d2d4f9334f2843",
       "queue_call_order": [
         "0xfffffff007996f98",
         "0xfffffff007996f9c",
@@ -266,37 +266,37 @@
   "original_lifecycle_hooks": {
     "init": {
       "entry": "0xfffffff004a4732c",
-      "wrapper": "0xfffffff007a788d4",
-      "trampoline": "0xfffffff007a78e84",
+      "wrapper": "0xfffffff007a78b3c",
+      "trampoline": "0xfffffff007a790ec",
       "resume": "0xfffffff004a47330",
-      "patched_word": "0x14c0c56a",
+      "patched_word": "0x14c0c604",
       "displaced_word": "0xd10183ff",
       "remaining_original_body_preserved": true
     },
     "replace": {
       "entry": "0xfffffff004a548a8",
-      "wrapper": "0xfffffff007a78abc",
-      "trampoline": "0xfffffff007a78e8c",
+      "wrapper": "0xfffffff007a78d24",
+      "trampoline": "0xfffffff007a790f4",
       "resume": "0xfffffff004a548ac",
-      "patched_word": "0x14c09085",
+      "patched_word": "0x14c0911f",
       "displaced_word": "0xa9bd57f6",
       "remaining_original_body_preserved": true
     },
     "clear": {
       "entry": "0xfffffff004a54938",
-      "wrapper": "0xfffffff007a78b08",
-      "trampoline": "0xfffffff007a78e94",
+      "wrapper": "0xfffffff007a78d70",
+      "trampoline": "0xfffffff007a790fc",
       "resume": "0xfffffff004a5493c",
-      "patched_word": "0x14c09074",
+      "patched_word": "0x14c0910e",
       "displaced_word": "0xa9be4ff4",
       "remaining_original_body_preserved": true
     },
     "free": {
       "entry": "0xfffffff004a4c1d8",
-      "wrapper": "0xfffffff007a78c14",
-      "trampoline": "0xfffffff007a78e9c",
+      "wrapper": "0xfffffff007a78e7c",
+      "trampoline": "0xfffffff007a79104",
       "resume": "0xfffffff004a4c1dc",
-      "patched_word": "0x14c0b28f",
+      "patched_word": "0x14c0b329",
       "displaced_word": "0xd100c3ff",
       "remaining_original_body_preserved": true
     }

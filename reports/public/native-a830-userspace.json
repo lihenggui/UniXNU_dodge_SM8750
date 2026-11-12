@@ -25,14 +25,14 @@
     },
     {
       "path": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib",
-      "bytes": 17974352,
-      "sha256": "a70a9c43ee7eb582533e6c7766a442e95c5a36d83f33127f46a3bf15056026bb",
+      "bytes": 17974432,
+      "sha256": "33618b863fea464bb0ea73e0c96875bcf6b770dc756ed3a828d879eb12a30c21",
       "filetype": 6,
       "minimum_os": "16.0",
       "sdk_version_hex": "0x100400",
       "signed_pages": 4355,
       "signature_identifier": "libvulkan_freedreno.dylib",
-      "cdhash": "293bc2e415ffc626a6afbdd243c6befa6c41a20a",
+      "cdhash": "3410cb48c63ac8a788b1e4e3dcc28512d3c1061a",
       "hash_page_bytes": 4096,
       "imports": [
         "/usr/lib/libSystem.B.dylib",

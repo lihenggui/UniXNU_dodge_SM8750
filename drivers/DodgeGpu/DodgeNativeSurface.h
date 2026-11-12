@@ -15,5 +15,8 @@ extern "C" void dodge_native_surface_published(void *batch,bool uncertain);
 extern "C" void dodge_native_surface_completed(void *batch,bool abandoned);
 extern "C" void dodge_native_surface_changed(OSObject *surface);
 extern "C" bool dodge_native_surface_healthy();
+// A failed writer's surface stays unavailable until a later successful GPU
+// writer completes for that same original identity. No object is dereferenced.
+extern "C" bool dodge_native_surface_visible(OSObject *,uint32_t);
 // Thread-call body. Kept callable for software-scheduler tests.
 extern "C" void dodge_native_surface_drain();

@@ -20,6 +20,7 @@ struct Access {
     Batch *batch;
     OSObject *surface,*ticket;
     int32_t grant; // 0 pending, 1 granted, negative original error
+    uint32_t id;
 };
 struct Batch {
     NativeAdrenoVm *vm;
@@ -34,6 +35,33 @@ struct Batch {
 IOLock *batch_gate;
 Batch *active;
 uint32_t visibility_fault;
+enum : uint32_t { BackingFault=1, RecoveryPending=2, RetirementFault=4 };
+struct FailedSurface {OSObject *surface;uint32_t id,state;};
+// Scalar keys only: an old failed identity cannot keep an original surface
+// alive. Reused keys conservatively need a successful writer before display.
+FailedSurface failed_surfaces[NativeAdrenoVmMaxObjects];
+size_t surfaceSlot(OSObject *surface,uint32_t id)
+{
+    const uintptr_t key=(reinterpret_cast<uintptr_t>(surface)>>4)^uint64_t(id)*0x9e3779b9u;
+    return (key^(key>>16))&(NativeAdrenoVmMaxObjects-1);
+}
+bool recordSurface(OSObject *surface,uint32_t id,bool failed)
+{
+    size_t hole=SIZE_MAX;
+    for(size_t i=0,at=surfaceSlot(surface,id);i<NativeAdrenoVmMaxObjects;
+        ++i,at=(at+1)&(NativeAdrenoVmMaxObjects-1)) {
+        auto &slot=failed_surfaces[at];
+        if(slot.state==1 && slot.surface==surface && slot.id==id) {
+            if(!failed)slot.state=2;
+            return true;
+        }
+        if(slot.state!=1 && hole==SIZE_MAX)hole=at;
+        if(!slot.state)break;
+    }
+    if(!failed)return true;
+    if(hole==SIZE_MAX)return false;
+    failed_surfaces[hole]={surface,id,1};return true;
+}
 #ifndef ADRENO830_HOST_TEST
 thread_call_t worker;
 void deferred(thread_call_param_t,thread_call_param_t) {dodge_native_surface_drain();}
@@ -111,7 +139,7 @@ extern "C" IOReturn dodge_native_surface_prepare(NativeAdrenoVm *vm,void **owner
             OSObject *surface=b->pages[i]->identity.surface;bool duplicate=false;
             for(uint32_t j=0;j<b->count;++j)if(b->accesses[j].surface==surface) {duplicate=true;break;}
             if(duplicate)continue;
-            auto &a=b->accesses[b->count];a.batch=b;a.surface=surface;a.grant=-1;
+            auto &a=b->accesses[b->count];a.batch=b;a.surface=surface;a.grant=-1;a.id=b->pages[i]->identity.id;
             __atomic_add_fetch(&b->count,1u,__ATOMIC_RELEASE);
         }
         if(!current(b))return kIOReturnNotReady;
@@ -149,7 +177,8 @@ extern "C" void dodge_native_surface_completed(void *opaque,bool abandoned)
     auto *b=static_cast<Batch *>(opaque);if(!b)return;
     if(abandoned) {
         __atomic_store_n(&b->failed,1u,__ATOMIC_RELEASE);
-        __atomic_store_n(&visibility_fault,1u,__ATOMIC_RELEASE);
+        __atomic_fetch_or(&visibility_fault,uint32_t(RecoveryPending),__ATOMIC_RELEASE);
+        dodge_native_display_epoch_advance();
     }
     __atomic_store_n(&b->state,uint32_t(Completed),__ATOMIC_RELEASE);schedule();
 }
@@ -172,13 +201,26 @@ extern "C" void dodge_native_surface_changed(OSObject *surface)
     if(b)for(uint32_t i=0;i<__atomic_load_n(&b->count,__ATOMIC_ACQUIRE);++i)
         if(b->accesses[i].surface==surface) {
             __atomic_store_n(&b->dirty,1u,__ATOMIC_RELEASE);
-            __atomic_store_n(&visibility_fault,1u,__ATOMIC_RELEASE);
+            __atomic_fetch_or(&visibility_fault,uint32_t(BackingFault),__ATOMIC_RELEASE);
             dodge_native_display_epoch_advance();break;
         }
     IOLockUnlock(batch_gate);
 }
 extern "C" bool dodge_native_surface_healthy()
 {return !__atomic_load_n(&visibility_fault,__ATOMIC_ACQUIRE);}
+extern "C" bool dodge_native_surface_visible(OSObject *surface,uint32_t id)
+{
+    if(!surface || !id || !batch_gate || !dodge_native_surface_healthy())return false;
+    if(!IOLockTryLock(batch_gate))return false;
+    bool visible=true;
+    for(size_t i=0,at=surfaceSlot(surface,id);i<NativeAdrenoVmMaxObjects;
+        ++i,at=(at+1)&(NativeAdrenoVmMaxObjects-1)) {
+        const auto &slot=failed_surfaces[at];
+        if(!slot.state)break;
+        if(slot.state==1 && slot.surface==surface && slot.id==id) {visible=false;break;}
+    }
+    visible=visible && dodge_native_surface_healthy();IOLockUnlock(batch_gate);return visible;
+}
 extern "C" void dodge_native_surface_drain()
 {
     if(!batch_gate)return;
@@ -195,16 +237,33 @@ extern "C" void dodge_native_surface_drain()
     failed=failed || !completed || __atomic_load_n(&b->failed,__ATOMIC_ACQUIRE) || !current(b);
     if(b->held && b->vm->retireMapped(b->boundary,b->mappings,completed)) {
         __atomic_store_n(&b->state,uint32_t(Quarantined),__ATOMIC_RELEASE);
-        __atomic_store_n(&visibility_fault,1u,__ATOMIC_RELEASE);
+        __atomic_fetch_or(&visibility_fault,uint32_t(RetirementFault),__ATOMIC_RELEASE);
         dodge_native_display_epoch_advance();put(b);return;
     }
+    b->held=false;
+    // Mark failed writers before signalling the original queue. Original
+    // reader grants alone do not carry an upstream writer's error.
+    IOLockLock(batch_gate);
+    if(completed)for(uint32_t i=0;i<b->count;++i)
+        if(!recordSurface(b->accesses[i].surface,b->accesses[i].id,failed))
+            __atomic_fetch_or(&visibility_fault,uint32_t(RetirementFault),__ATOMIC_RELEASE);
+    IOLockUnlock(batch_gate);
     // The snapshot no longer owns its page adapters. Only the independently
     // retained original tickets are accessed from this point onward.
     for(uint32_t i=0;i<b->count;++i)if(b->accesses[i].ticket) {
-        native_iphone_surface_signal_sync(b->accesses[i].ticket,failed?int32_t(kIOReturnAborted):0);
+        if(native_iphone_surface_signal_sync(b->accesses[i].ticket,failed?int32_t(kIOReturnAborted):0)) {
+            // An unconfirmed original completion may still own this callback
+            // context. Keep the registry/tickets until the boot ends.
+            __atomic_store_n(&b->state,uint32_t(Quarantined),__ATOMIC_RELEASE);
+            __atomic_fetch_or(&visibility_fault,uint32_t(RetirementFault),__ATOMIC_RELEASE);
+            dodge_native_display_epoch_advance();put(b);return;
+        }
         b->accesses[i].ticket->release();b->accesses[i].ticket=nullptr;
     }
-    IOLockLock(batch_gate);if(active==b)active=nullptr;IOLockUnlock(batch_gate);
+    IOLockLock(batch_gate);
+    if(active==b)active=nullptr;
+    __atomic_fetch_and(&visibility_fault,~uint32_t(RecoveryPending),__ATOMIC_RELEASE);
+    IOLockUnlock(batch_gate);
     put(b); // registry ownership
     put(b); // this worker's ownership
 }

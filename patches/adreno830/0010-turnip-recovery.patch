@@ -1,0 +1,34 @@
+--- a/src/freedreno/vulkan/tu_knl_darwin.cc
++++ b/src/freedreno/vulkan/tu_knl_darwin.cc
+@@ -1624,18 +1624,28 @@
+    return 0;
+ }
+ 
++// A diagnostic count of ended work; resources survive a successful native reset.
++static uint32_t darwin_restarts;
++extern "C" __attribute__((visibility("default"))) uint32_t tu_darwin_restarts(void);
++extern "C" __attribute__((visibility("default"))) uint32_t tu_darwin_restarts(void)
++{
++   return p_atomic_read(&darwin_restarts);
++}
++
+ static VkResult
+ darwin_device_check_status(struct tu_device *device)
+ {
+    NativeAdrenoAbiStatus reply = {};
+    kern_return_t kr = dw_call(NativeAdrenoMethodGetStatus, NULL, 0, &reply, sizeof(reply));
+-   if (kr == kIOReturnUnsupported)
+-      return VK_SUCCESS; /* counters not attached in this kernel */
++   if (kr == kIOReturnUnsupported || kr == kIOReturnBusy)
++      return VK_SUCCESS; /* no counters, or the native GPU is still restarting */
+    if (kr != KERN_SUCCESS)
+       return vk_device_set_lost(&device->vk, "error getting GPU status: 0x%x", kr);
+    if (reply.faults != device->fault_count) {
++      // Native A830 abandons in-flight jobs after quiescence, retaining BOs,
++      // mappings and queues. Submit/wait return their errors separately.
++      p_atomic_add(&darwin_restarts, (uint32_t)(reply.faults - device->fault_count));
+       device->fault_count = reply.faults;
+-      return vk_device_set_lost(&device->vk, "GPU faulted or hung");
+    }
+    return VK_SUCCESS;
+ }
