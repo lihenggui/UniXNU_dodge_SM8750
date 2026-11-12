@@ -5,6 +5,10 @@
   "scope": "Build, model-test and QEMU snapshots. Artifact and dependency hashes identify their recorded run. Use previous_indexes to resolve earlier report versions.",
   "previous_indexes": [
     {
+      "revision": "c789270726a971264b2095fdc5c9190290b19611",
+      "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/c789270726a971264b2095fdc5c9190290b19611/reports/public/index.json"
+    },
+    {
       "revision": "dd6824b3b0508ffbf3916577edcd7ddfc61078e8",
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/dd6824b3b0508ffbf3916577edcd7ddfc61078e8/reports/public/index.json"
     },
@@ -49,7 +53,7 @@
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/067b04a9f4544296ecc03a6ba26aa52d8cb0f6be/reports/public/index.json"
     }
   ],
-  "exporter_sha256": "838719478acdb33a6e3f973ca7778e5145b0dc0c8a432d25eaa84ddf15b16f6e",
+  "exporter_sha256": "aab3263da1dd22e8bed6a3a0ec937d798877a9ad227a1f35c9b05f41539c1ac8",
   "reports": {
     "a830-backend-tests.json": {
       "local_report": "reports/a830-backend-tests.json",
@@ -743,8 +747,8 @@
     },
     "ios16-qemu-aes-entry.json": {
       "local_report": "reports/ios16-qemu-aes-entry.json",
-      "original_sha256": "4657a0ef159a7b1e6315a7bc40a5832831222f061c6ff099b65e61b4672a3f1c",
-      "snapshot_sha256": "4657a0ef159a7b1e6315a7bc40a5832831222f061c6ff099b65e61b4672a3f1c",
+      "original_sha256": "23851754d5523d6ab43b9c1ea7ebee7981dc2abe6b15aec9c5c6a0e1d51dceec",
+      "snapshot_sha256": "23851754d5523d6ab43b9c1ea7ebee7981dc2abe6b15aec9c5c6a0e1d51dceec",
       "paths_normalized": false
     },
     "ios16-qemu-aes-negative.json": {
@@ -759,16 +763,58 @@
       "snapshot_sha256": "2a81bb12e261c24fe8a148f5b8c2d2bc3ae84a55f5773cf327b2ebcc5af7967d",
       "paths_normalized": false
     },
+    "ios16-qemu-data-entry.json": {
+      "local_report": "reports/ios16-qemu-data-entry.json",
+      "original_sha256": "7e886f0cfb02b9347c2e7fb26a88e067f801f5b4c54b236aa18f9cccaec0f10f",
+      "snapshot_sha256": "7e886f0cfb02b9347c2e7fb26a88e067f801f5b4c54b236aa18f9cccaec0f10f",
+      "paths_normalized": false
+    },
+    "ios16-qemu-data-image.json": {
+      "local_report": "reports/ios16-qemu-data-image.json",
+      "original_sha256": "f3b4ef64c897407f02013b453ca9851a7aa3e8bf5dabe591b9142388f1250b94",
+      "snapshot_sha256": "f3b4ef64c897407f02013b453ca9851a7aa3e8bf5dabe591b9142388f1250b94",
+      "paths_normalized": false
+    },
+    "ios16-qemu-data-kernel-wrong-seed.json": {
+      "local_report": "reports/ios16-qemu-data-kernel-wrong-seed.json",
+      "original_sha256": "89aac51b4df366a8ebcc3300ee6b544e7d60feed17c06ec3c76781a684475d85",
+      "snapshot_sha256": "89aac51b4df366a8ebcc3300ee6b544e7d60feed17c06ec3c76781a684475d85",
+      "paths_normalized": false
+    },
+    "ios16-qemu-data-kernel.json": {
+      "local_report": "reports/ios16-qemu-data-kernel.json",
+      "original_sha256": "fdbf83724d17c3d36a93451848cd631b528ca856b7bc73366a7c96cd0cd63ce9",
+      "snapshot_sha256": "fdbf83724d17c3d36a93451848cd631b528ca856b7bc73366a7c96cd0cd63ce9",
+      "paths_normalized": false
+    },
     "ios16-qemu-exec-entry.json": {
       "local_report": "reports/ios16-qemu-exec-entry.json",
-      "original_sha256": "9f4f0c3987b40294e0849d96f198d3d40c725d4bea860fa8c7ba74d5f3016889",
-      "snapshot_sha256": "9f4f0c3987b40294e0849d96f198d3d40c725d4bea860fa8c7ba74d5f3016889",
+      "original_sha256": "9c64ed06c98353010ed18cb5c822b947fc26ad50fb092b2e3ac5797f38084f4b",
+      "snapshot_sha256": "9c64ed06c98353010ed18cb5c822b947fc26ad50fb092b2e3ac5797f38084f4b",
       "paths_normalized": false
     },
     "ios16-qemu-exec.json": {
       "local_report": "reports/ios16-qemu-exec.json",
       "original_sha256": "77abb698b4191f9ae9e2740ea7d45fe7ddbc040b9959016a1d0cf9f5122a2f97",
       "snapshot_sha256": "77abb698b4191f9ae9e2740ea7d45fe7ddbc040b9959016a1d0cf9f5122a2f97",
+      "paths_normalized": false
+    },
+    "ios16-qemu-keystore-closed.json": {
+      "local_report": "reports/ios16-qemu-keystore-closed.json",
+      "original_sha256": "7c75e352328d964e203baa76d84b99f939a26114790dca5ea2b5355d677a672d",
+      "snapshot_sha256": "7c75e352328d964e203baa76d84b99f939a26114790dca5ea2b5355d677a672d",
+      "paths_normalized": false
+    },
+    "ios16-qemu-keystore-entry.json": {
+      "local_report": "reports/ios16-qemu-keystore-entry.json",
+      "original_sha256": "e504eaa7c21b022613dea23f580797fe7bd3f46963a420cfd10f5f845abc91d8",
+      "snapshot_sha256": "e504eaa7c21b022613dea23f580797fe7bd3f46963a420cfd10f5f845abc91d8",
+      "paths_normalized": false
+    },
+    "ios16-qemu-keystore.json": {
+      "local_report": "reports/ios16-qemu-keystore.json",
+      "original_sha256": "579d8cc45a5c2182dbcbf09f956f87c4bcb8fd1714db899a059406616d7cabb7",
+      "snapshot_sha256": "579d8cc45a5c2182dbcbf09f956f87c4bcb8fd1714db899a059406616d7cabb7",
       "paths_normalized": false
     },
     "ios16-qemu-owner-root-dma.json": {
@@ -779,8 +825,8 @@
     },
     "ios16-qemu-owner-root-entry.json": {
       "local_report": "reports/ios16-qemu-owner-root-entry.json",
-      "original_sha256": "0e49803db7e9230177cb7a237f484d20c4f3409b15689014f9afb15ef3723bcc",
-      "snapshot_sha256": "0e49803db7e9230177cb7a237f484d20c4f3409b15689014f9afb15ef3723bcc",
+      "original_sha256": "12e2456def33eb6a95a51003f65fca65cbea1f0a74c038ea5f5282a4e61a323f",
+      "snapshot_sha256": "12e2456def33eb6a95a51003f65fca65cbea1f0a74c038ea5f5282a4e61a323f",
       "paths_normalized": false
     },
     "ios16-qemu-owner-root-signature.json": {
@@ -809,8 +855,8 @@
     },
     "ios16-qemu-storage-entry.json": {
       "local_report": "reports/ios16-qemu-storage-entry.json",
-      "original_sha256": "8720a181a8260ac85ea083816e98e254e4b3888a1e5b87c10fb3dd9fc4174ca6",
-      "snapshot_sha256": "8720a181a8260ac85ea083816e98e254e4b3888a1e5b87c10fb3dd9fc4174ca6",
+      "original_sha256": "47d9f2f60cc9fc2ef4f0c055d74ca77b793ec9629ad105084cab72d30facf8dc",
+      "snapshot_sha256": "47d9f2f60cc9fc2ef4f0c055d74ca77b793ec9629ad105084cab72d30facf8dc",
       "paths_normalized": false
     },
     "ios16-qemu-storage.json": {
@@ -821,8 +867,8 @@
     },
     "ios16-qemu-systemos-entry.json": {
       "local_report": "reports/ios16-qemu-systemos-entry.json",
-      "original_sha256": "16b24df88096eaac9be34d6e335318d6b7e053a6635ee8b89651a3a8ad05b8b1",
-      "snapshot_sha256": "16b24df88096eaac9be34d6e335318d6b7e053a6635ee8b89651a3a8ad05b8b1",
+      "original_sha256": "6145c2d0d79d64023df4423eded3610c6e8cfcbc48e99f2b9a71235af1bc92f5",
+      "snapshot_sha256": "6145c2d0d79d64023df4423eded3610c6e8cfcbc48e99f2b9a71235af1bc92f5",
       "paths_normalized": false
     },
     "ios16-qemu-systemos-wrong-uuid.json": {

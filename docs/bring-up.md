@@ -447,6 +447,51 @@ original executable. The check follows the initial demand-page fault and stops
 at that entry. The wrong-UUID control stops before mounting. See
 [the SystemOS result](../reports/public/ios16-qemu-systemos-entry.json).
 
+Add the native development KeyStore state service:
+
+```sh
+.venv-uefi/bin/python scripts/check_keystore_host.py
+.venv-uefi/bin/python scripts/build_qemu_keystore.py
+.venv-uefi/bin/python scripts/build_qemu_keystore.py --closed
+.venv-gpu/bin/python scripts/check_qemu_keystore.py
+.venv-gpu/bin/python scripts/check_qemu_keystore.py --check-only
+```
+
+Both classes compile against Darwin 22; all 168 service and 186 user-client
+dispatch slots read back. ASan/UBSan checks the protocol, identity withdrawal
+and incomplete descriptor writes. In QEMU, original launchd runs all 20 userspace
+crypto self-tests, then keybagd accepts the open handshake and both system-handle
+queries. The closed control refuses the client. Each run stops at that result.
+See [the KeyStore result](../reports/public/ios16-qemu-keystore-entry.json).
+
+This service describes an unlocked VM without a passcode or keybag. Software key
+encoding uses its public development identity and provides no hardware data
+protection. Attach volatile Data to continue through the keybag boot task:
+
+```sh
+.venv-uefi/bin/python scripts/prepare_qemu_data.py
+.venv-uefi/bin/python scripts/build_qemu_data.py
+.venv-uefi/bin/python scripts/build_qemu_data.py --wrong-seed
+.venv-gpu/bin/python scripts/check_qemu_data.py
+.venv-gpu/bin/python scripts/check_qemu_data.py --check-only
+```
+
+The separate 2 GiB seed preserves all 198 initial Data entries and adds a
+root-owned `keybags/` directory and empty `KeyBagKeys` plist. Full readback and
+the APFS checker verify the contents, ownership and modes; two builds match.
+The VM device tree declares the absence of effaceable storage. No passcode,
+Apple keybag or device secret is generated.
+
+Original APFS mounts this volume read-write at `/private/var`. RamBlock records
+successful reads and writes; OS and SystemOS remain read-only. Original keybagd
+completes `MKB_INIT`, then usermanagerd creates kernel personas and completes
+`UMD_INIT`. The check stops there. A kernel compiled for a different seed hash
+refuses the input before mounting. See
+[the Data result](../reports/public/ios16-qemu-data-entry.json).
+
+Data writes disappear when QEMU exits. The default development payload and the
+existing 2/3 GiB Data seeds retain their original inputs. Later services,+persistence and physical storage remain in development.
+
 ## System and Data images
 
 ```sh

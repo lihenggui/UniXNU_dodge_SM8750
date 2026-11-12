@@ -1,0 +1,83 @@
+{
+  "result": "IOS16_QEMU_VOLATILE_DATA_IMAGE_PASS",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "source_sha256": {
+    "scripts/prepare_qemu_data.py": "9aae78d383ac5dc1c20b9db15c5c589e7366423c4739ba4eba57abe3f576b795",
+    "scripts/prepare_initial_data.py": "1cc4467bb4224632adea2a5ac87d602b285207b5c0d6bd63937a6bfdcf8d271c",
+    "scripts/prepare_data_image.py": "9fef596a896352617d0cb68a6deb5979c28868281fcec94e65992e6c185f476d",
+    "sources/UniXNU/drivers/DarwinBoot/Test/packed_ramdisk.py": "efb5fac21ae94dcb1aecd47da2b73a7112b487e43692ac6396858552d27a0e48",
+    "build/ios16-data-apfs-volatile/apfs-data-build": "4084cb00bb137f2973e4843a78d6f5d0a0f7196e0a19f95c14049236c5385f9f",
+    "build/ios16-data-apfs-volatile/apfs-data-verify": "8d09f7e1144087ad2e3f74a5235f7ee3f291e561444fca2d206dbb7488135874",
+    "build/ios16-data-apfs-volatile/apfsprogs-apple-signature/apfsck/apfsck": "87fa42c7302c91373dcd8e89337a7627bffd83641f4231a19b1ee7003745628f"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-data-volatile-image.json": "9d9907c749e3870f71f9944176331f76efd0392207afda3160141cf97f33bf37",
+    "reports/ios16-initial-data.json": "bf2a04448ba5861c2b6b4053753355570f9d1b254bba2db5c86480eca07353c2"
+  },
+  "artifacts": {
+    "build/ios16-qemu-data/data.apfs": "c75cc394edc5bbfdb3feb179551e506a0f9ec6daa78db7ba1a422833b3a4bada",
+    "build/ios16-qemu-data/data.dbr": "29913e6e69222bad6e203736f44e9b06def2e228caa0b9f701e21f67c2dbdb19",
+    "build/ios16-qemu-data/manifest.json": "231ca8db65e7f1bc8b8a7bd5d57b416f50b4a386997e1bd8c0033b4adedb508b",
+    "build/ios16-qemu-data/readback.jsonl": "c8e2b0e1946529bdb70146431928c04274e545fb39bf56cc1ef4d53b5014d267"
+  },
+  "image": "build/ios16-qemu-data/data.apfs",
+  "packed_image": "build/ios16-qemu-data/data.dbr",
+  "image_sha256": "c75cc394edc5bbfdb3feb179551e506a0f9ec6daa78db7ba1a422833b3a4bada",
+  "image_bytes": 2147483648,
+  "packed_metadata": {
+    "bytes": 2147483648,
+    "sha256": "c75cc394edc5bbfdb3feb179551e506a0f9ec6daa78db7ba1a422833b3a4bada",
+    "encoded_bytes": 725120,
+    "encoded_sha256": "29913e6e69222bad6e203736f44e9b06def2e228caa0b9f701e21f67c2dbdb19",
+    "packed": true
+  },
+  "volume": {
+    "kind": "volume",
+    "container_uuid_hex": "a1a6aab9298f57afa49353956ff86f72",
+    "volume_uuid_hex": "46a80ee464e555dba30e3c05a2ca222e",
+    "block_bytes": 4096,
+    "bytes": 2147483648,
+    "role": 0,
+    "unencrypted": true,
+    "case_sensitive": true,
+    "normalization_insensitive": true,
+    "container_incompatible_features": 2,
+    "volume_features": 2,
+    "volume_incompatible_features": 8
+  },
+  "profile": {
+    "schema_version": 1,
+    "product": "iPhone10,3",
+    "build": "20H392",
+    "container_uuid": "A1A6AAB9-298F-57AF-A493-53956FF86F72",
+    "volume_uuid": "46A80EE4-64E5-55DB-A30E-3C05A2CA222E",
+    "size_bytes": 2147483648,
+    "fixed_time_ns": 1777522284608194033,
+    "volume_name": "Data",
+    "case_sensitive": true,
+    "role": 0,
+    "encrypted": false,
+    "source_archive_sha256": "c8260049b23bcc73abdf86104d7c055980dfbe271c3eaeb2b26fc2739488e73e",
+    "source_metadata_sha256": "209a94c2c51982f4c45765199affb52726b6f0e336293ac7690b2dbba555e7b0",
+    "installation_identity": "Separate deterministic volatile bring-up installation. Its UUIDs differ from the 3 GiB seed; neither profile rewrites an existing image.",
+    "filename_admission": "All original names are ASCII. Writer profile macOS15 selects filename admission only; the APFS v2 feature set is independently checked, without changing the iPhone iOS target."
+  },
+  "counts": {
+    "entries": 200,
+    "directories": 162,
+    "files": 37,
+    "symlinks": 1,
+    "unique_file_streams": 37,
+    "unique_file_bytes": 590135,
+    "extended_attribute_bytes": 27592
+  },
+  "original_entries_preserved": 198,
+  "keybag_key_bytes": 0,
+  "reproducible": true,
+  "persistent": false,
+  "data_protection_keys_created": false,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Separate owner-VM Data seed with the original installation entries plus a root-owned empty KeyBagKeys plist. The file describes unprotected development state; it contains no Apple keybag or secret. The original seeds and physical storage are unchanged. Runtime acceptance is checked separately."
+}

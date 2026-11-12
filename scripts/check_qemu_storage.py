@@ -55,7 +55,7 @@ def virtual_resources(tree, fdt, root_uuid):
 
 
 def run_case(case, paths, environment, kernel, names, images, board_tree, timeout, *, directory_root=OUT, remote_factory=Remote,
-             resource_factory=virtual_resources):
+             resource_factory=virtual_resources, packed_data=None, extra_boot_args=()):
     qemu, firmware, variables, roms = paths
     directory = directory_root / case;esp = directory / 'esp'
     payloads = esp / 'EFI/UniXNU/Payloads'
@@ -66,6 +66,12 @@ def run_case(case, paths, environment, kernel, names, images, board_tree, timeou
         (ROOT / 'build/cph2653-native-a830-firmware/DarwinBoot.efi', esp / 'EFI/UniXNU/Drivers/DarwinBoot.efi'),
         (kernel, payloads / 'kernel.macho'), (original / 'kernel.macho.trustcache', payloads / 'kernel.macho.trustcache')):
         shutil.copyfile(source, dest)
+    if packed_data is not None:
+        require(stat.S_ISREG(packed_data.lstat().st_mode) and 64 <= packed_data.stat().st_size <= 16 << 20,
+            'Expected a bounded regular packed Data input')
+        shutil.copyfile(packed_data, payloads / 'scratch-data.img')
+    require(all(value and set(value) <= set('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._-=:')
+        for value in extra_boot_args), 'Invalid fixture boot argument')
     machine = 'virt,virtualization=off,secure=off,gic-version=3'
     base_command = [qemu, '-L', roms, '-M', machine, '-accel', 'tcg', '-cpu', 'max', '-m', '2048', '-smp', '1',
                     '-global', 'virtio-mmio.force-legacy=false']
@@ -83,15 +89,18 @@ def run_case(case, paths, environment, kernel, names, images, board_tree, timeou
     require(not process.returncode and fdt_path.is_file(), 'QEMU did not provide its actual FDT')
     root_uuid = images[0]['apfs']['observed_volumes'][0]['uuid']
     tree, resources = resource_factory(board_tree, fdt_path.read_bytes(), root_uuid)
-    components = {name: (payloads / name).read_bytes() for name in ('kernel.macho', 'kernel.macho.trustcache')}
+    component_names = ('kernel.macho', 'kernel.macho.trustcache') + (('scratch-data.img',) if packed_data is not None else ())
+    components = {name: (payloads / name).read_bytes() for name in component_names}
     tree, policy = prepare_policy(tree, components)
     (payloads / 'kernel.macho.adt').write_bytes(tree)
     policy_path = directory / 'image4-boot-policy.json';policy_path.write_text(json.dumps(policy, indent=2) + '\n')
     enabled = ' dodge-qemu-root=1' if case != 'disabled' else ''
+    if extra_boot_args:enabled += ' ' + ' '.join(extra_boot_args)
+    initrd = 'initrd = "Payloads/scratch-data.img"\n' if packed_data is not None else ''
     (esp / 'EFI/UniXNU/unixnu.toml').write_text('version = 1\n[boot]\ntimeout = 0\ndefault = "xnu"\n'
         '[kits]\nautoload = false\n[[driver]]\npath = "Drivers/DarwinBoot.efi"\n[[entry]]\nid = "xnu"\n'
-        'type = "xnu"\npath = "Payloads/kernel.macho"\nargs = "-v serial=3 debug=0x14e cpus=1' + enabled + '"\n')
-    require(len([path for path in esp.rglob('*') if path.is_file()]) == 6, 'Unexpected QEMU payload files')
+        'type = "xnu"\npath = "Payloads/kernel.macho"\n' + initrd + 'args = "-v serial=3 debug=0x14e cpus=1' + enabled + '"\n')
+    require(len([path for path in esp.rglob('*') if path.is_file()]) == 6 + int(packed_data is not None), 'Unexpected QEMU payload files')
     shutil.copyfile(variables, directory / 'vars.fd')
     with socket.socket() as reservation:
         reservation.bind(('127.0.0.1', 0));port = reservation.getsockname()[1]

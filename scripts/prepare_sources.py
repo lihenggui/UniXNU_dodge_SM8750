@@ -102,6 +102,7 @@ def main():
                                                'a830_build_reference', 'erofs_tools', 'glslang_tools', 'apfs_readonly_reference',
                                                'apfs_writer_reference', 'apfs_checker_reference', 'fajita_data_reference', 'ramblock_reference',
                                                'apfs_mount_options_reference', 'virtio_block_reference', 'verified_root_reference', 'software_aes_reference',
+                                               'apple_keystore_state_reference',
                                                'iostorage_headers_reference', 'iohid_headers_reference',
                                                'iographics_headers_reference') if name in lock]
     entries.append(('darwinboot', lock['darwinboot']))

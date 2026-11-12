@@ -76,7 +76,7 @@ class UserInstructionReached(Exception):
 
 
 def execute(case, source, paths, environment, images, board, policy, layout, originals, timeout, *,
-            directory_root=OUT, resource_factory=None, after_user_instruction=None):
+            directory_root=OUT, resource_factory=None, after_user_instruction=None, run_storage=run_case):
     kernel = ROOT / source['candidate'];raw = kernel.read_bytes();parsed = macho(raw)
     names = {row['name']: row['value'] for row in symbols(raw) if row['kind'] & 14}
     start = names['_arm64_thread_exception_return'];offset = backed_offset(parsed['segments'], start, 8192, len(raw))
@@ -199,7 +199,7 @@ def execute(case, source, paths, environment, images, board, policy, layout, ori
 
     try:
         options = {'resource_factory': resource_factory} if resource_factory is not None else {}
-        result['execution'], _ = run_case('enabled', paths, environment, kernel, names, images, board, timeout,
+        result['execution'], _ = run_storage('enabled', paths, environment, kernel, names, images, board, timeout,
             directory_root=directory_root / case, remote_factory=ExecRemote, **options)
     except UserInstructionReached:
         result['execution'] = json.loads((directory / 'observation.json').read_text())

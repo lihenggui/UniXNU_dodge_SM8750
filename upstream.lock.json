@@ -1512,5 +1512,25 @@
     "base_source_sha256": "cd782c416a0b8882289f1b11cd1c398a10b0c4070861b13108b5bcc0ac9f5f7c",
     "output_source_sha256": "f60a24a614543ce97924cbe99bffbb270dc086842c93723c197f77856e28ac80",
     "scope": "Start the deferred iPhone SoftwareAES provider after read-only QEMU storage registration."
+  },
+  "apple_keystore_state_reference": {
+    "repository": "https://github.com/UniXNU/AppleKeyStoreState.git",
+    "revision": "6ff4f11d8fdf853351f8d98e1bbe1373fb8da2e6",
+    "path": "sources/AppleKeyStoreState",
+    "reference_only": true
+  },
+  "dodge_qemu_keystore_overlay": {
+    "path": "patches/oneplus13/0016-ios16-qemu-keystore.patch",
+    "sha256": "9d2650adbf11d301502a9d03b6d6c0f25f02033d0a20e6424f124bd2c0cde195",
+    "base_source_sha256": "f60a24a614543ce97924cbe99bffbb270dc086842c93723c197f77856e28ac80",
+    "output_source_sha256": "1b2d406d0dc293572540e3041b08bd3d68e4ccaef6feabdfb44a46c4299fff1a",
+    "scope": "Start the native AppleKeyStoreState service only in the separate owner-identified QEMU development fixture."
+  },
+  "dodge_keystore_state_overlay": {
+    "path": "patches/oneplus13/0017-ios16-keystore-output.patch",
+    "sha256": "f4c0eef441faef055ce2dee76401e2826288a722b9234a606f7eb8a6433389fc",
+    "base_source_sha256": "6d564b710c5e2143c2ce99ee456b4d93f588b87b7de5599b79199e82fb497213",
+    "output_source_sha256": "f3b3d24c5553b9f1e89062db947534cc61fb39f18c03c829ea79d0e12dbfa64a",
+    "scope": "Derive the public development identity per call and refuse incomplete descriptor output."
   }
 }

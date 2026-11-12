@@ -21,7 +21,7 @@ jobs:
           from pathlib import Path
           import subprocess
           lock = json.loads(Path('upstream.lock.json').read_text())
-          for name in ('unixnu', 'darwinboot', 'xnu_ios16', 'iig_port', 'xnuprelink', 'uefi', 'pagani_reference', 'oneplus13t_reference', 'sm8750', 'native_a830_reference', 'native_a830_smmu_reference', 'verified_root_reference', 'software_aes_reference'):
+          for name in ('unixnu', 'darwinboot', 'xnu_ios16', 'iig_port', 'xnuprelink', 'uefi', 'pagani_reference', 'oneplus13t_reference', 'sm8750', 'native_a830_reference', 'native_a830_smmu_reference', 'verified_root_reference', 'software_aes_reference', 'apple_keystore_state_reference'):
               spec = lock[name] if name != 'uefi' else {
                   'path': 'uefi/Mu-Silicium', 'repository': lock['repository'],
                   'revision': lock['revision'], 'patches': [lock['boot_shim_patch'], lock['simplefb_patch']]}
@@ -54,6 +54,8 @@ jobs:
           python3 -m unittest discover -s sources/UniXNU/kits/XnuPrelink -p test_emit_prelink.py
       - name: Check whitespace
         run: git diff --check
+      - name: Check development KeyStore protocol and partial outputs with IOKit peers
+        run: python3 scripts/check_keystore_host.py
       - name: Check native A830 startup, submission, fences and recovery with software controllers
         run: python3 scripts/check_native_a830_host.py
       - name: Check CPH2653 native A830 board, level selection and startup ownership
