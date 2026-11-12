@@ -59,7 +59,7 @@ procedure = [
 findings = [
   "61 patches apply strictly on clean pinned Apple source. The original KC is 8796.142.1.703.8, a different minor revision.",
   "Public reports use separate original and publication hashes. Builds inherit host memory settings and use four jobs.",
-  "Reviewed the porting guide and both 13T ports against UniXNU c72a8a52589ef205bfbe4667fd7b01964468b5e9 on 2026-11-11. The native route backports calling-thread compilation and Vulkan device retention after recovery. Source revisions and the iPhone profile remain pinned; the standard package check resolves 61 patches.",
+  "Reviewed the porting guide and both 13T ports through UniXNU 13d0779e2ccd30d3caa1f8c9a15202730feace67 on 2026-11-11. The native route backports calling-thread compilation and Vulkan device retention after recovery. The latest core change updates Adreno740 address-space fault isolation. Source revisions and the iPhone profile remain pinned; the standard package check resolves 61 patches.",
   "The native prelink derives normal and explicit security startup from the original iPhone module records. Sandbox uses its existing module start; AMFI keeps its explicit early initializer. The shared source profile and original component code remain pinned.",
 ]
 completion = [
@@ -175,6 +175,7 @@ evidence = [{kind = "host", reference = "reports/public/memory-after.json", resu
 id = "storage"
 status = "implemented"
 components = [
+  "VirtioMmioBlock",
 ]
 paths = [
   "scripts/prepare_ios_volumes.py",
@@ -188,6 +189,10 @@ paths = [
   "profiles/os/ios-16.7.16-20H392/storage-abi.json",
   "scripts/prepare_storage_abi.py",
   "scripts/build_ufs_root.py",
+  "scripts/build_qemu_storage.py",
+  "scripts/check_qemu_storage.py",
+  "scripts/check_qemu_storage_host.py",
+  "reports/public/ios16-qemu-storage*.json",
   "scripts/build_ufs_prelink.py",
   "scripts/check_ufs_lifecycle_host.py",
   "scripts/check_system_late_host.py",
@@ -249,6 +254,7 @@ procedure = [
   "Run scripts/build_storage_stack.py with the local .venv-uefi Python; it selects .venv-gpu for linked CPU checks. Use --check-only to verify all five current stages without rebuilding.",
   "Run scripts/build_data_stack.py for both APFS seeds, real source lifecycle/helpers, the 83-object strict original prelink and CPU paths; --check-only verifies current reports/artifacts.",
   "Run .venv-gpu/bin/python scripts/check_ramblock_start_kernel.py for the actual startup/live chain; --check-only validates its current evidence.",
+  "Build the separate QEMU candidate with scripts/build_qemu_storage.py, then run scripts/check_qemu_storage.py with the GPU Python environment and local OS/SystemOS files. --check-only validates the recorded run.",
 ]
 findings = [
   "Original iPhone storage ABI, 12 storage aliases and the concrete 190-slot class are checked. Complete read-only UFS/ordered root-window publication and deferred original-module/native-class startup compile into a combined 68-object kernel. 32 lifecycle, 25 combined scheduling, eleven source probe matching and production root-publication host checks pass with explicit peers. Combined strict prelink reads 58962 original pointers, 208 aliases and both concrete/parent vtables. Eleven linked CPU paths execute native/source/original constructors and combined IOBSD plus three full display lifetime paths. The exact 8380219392-byte OS/SystemOS regular-file payload passes full hash readback and 32 production consumer cases. All 198 stock initial Data entries are archived with numeric ownership, permissions, links and xattr metadata, with eight corruption controls. Separate 2/3 GiB APFS v2 seeds now preserve all content/metadata and compression, pass independent read-back, strict compatible apfsck and 17 rejection controls each. The 352-byte/190-slot RamBlock and deferred registration/one-shot start link into a separate 83-object candidate retaining 332 aliases. 77 sanitizer and 30 ARM64 paths pass, including original protected constructors/destructors; 43 rejection controls pass across Data stages.",
@@ -257,6 +263,7 @@ findings = [
   "The unchanged RamBlock start now executes against exact 2/3 GiB seeds in the 87-object candidate: 28 start paths, full 524288-page 2 GiB hashing, then 26 live I/O and 68 selector paths on the actual started objects, plus four rejection controls. Native metadata getters execute; platform/registry/type/hash/descriptor peers remain explicit. Original media publication, full APFS and persistence remain unqualified.",
   "The native A830 integration preserves the existing storage/input/startup objects and their original bindings. Its 111-object strict link and prelink repeat the UFS, RamBlock and iPhone storage-table readbacks.",
   "QEMU now reaches bsd_init and then the genuine Failed to mount root device panic. This fixture has no root block transport; the prepared iPhone OS/SystemOS files remain local.",
+  "A separate 113-object candidate connects the pinned read-only VirtioMmioBlock to the measured iPhone storage ABI. It waits for completed platform registration, snapshots all 32 actual VirtIO nubs and starts the two block devices after original IOStorageFamily loads. Actual DMA first-sector hashes and capacities match OS/SystemOS. Original APFS mounts the UUID-selected root, then XNU refuses its failed root-authentication ioctl. Disabled startup and writable-backend controls perform no disk reads.",
 ]
 completion = [
   "Qualified storage ABI, read transport, authenticated root policy and original launchd execution.",
@@ -266,10 +273,11 @@ limits = [
 ]
 next_action = [
   "Qualify the implemented full read-only transport, original storage matching/completion and root publication; qualify authenticated-root, the implemented PID 1 Data mount route, original media matching, full parent/registry and crypto/power lifecycle. The default-off init route is wired and modeled; physical qualification remains outstanding.",
-  "Connect the existing read-only VirtioMmioBlock component to the measured iPhone storage ABI for QEMU, then bind the prepared OS/SystemOS inputs and continue root authentication.",
+  "Continue the separate QEMU root-authentication path from its genuine post-mount refusal, with original Apple authentication and independently verified owner block policy kept distinct.",
 ]
 evidence = [
   {kind = "host", reference = "reports/public/ufs-source-probe.json", result = "The iOS 16 source probe compiles, 212 public native imports match by name, and the real local UBSAN runtime dependency is recorded for static linking. Eight existing read-only host suites pass ASan/UBSan.", command = ".venv-uefi/bin/python scripts/build_ufs_probe.py --partition unixnu", revision = "f5017376415268fd39dcf0b3fd68a94661cee078"},
+  {kind = "host", reference = "reports/public/ios16-qemu-storage-entry.json", result = "Original storage, two read-only DMA disk reads and the UUID-selected APFS root mount execute in QEMU. XNU preserves its root-authentication refusal. Two transport refusal controls and 27 coordinator sanitizer cases pass.", command = ".venv-gpu/bin/python scripts/check_qemu_storage.py --check-only", revision = "4e1013eb8c45077b57f8d38d61b389fe899ea1c3", revision_scope = "Pinned VirtioMmioBlock; exact Darwin 22 kernel and local adapter sources are identified by report SHA256"},
   {kind = "host", reference = "reports/public/ios16-ufs-root.json", result = "Complete read-only root publisher, original iPhone ABI, 32 lifecycle and 25 combined startup host cases; strict 68-object/208-alias source and original-component prelink, no runtime activation", command = ".venv-uefi/bin/python scripts/build_ufs_root.py", revision = "f5017376415268fd39dcf0b3fd68a94661cee078"},
   {kind = "host", reference = "reports/public/data-stack.json", result = "Six Data stages pass: two exact original-content APFS seeds, 77 sanitizer cases, 30 ARM64 paths, 43 rejection controls and an 83-object/28-component strict prelink. Original Data matching/mount and writable runtime remain unqualified.", command = ".venv-uefi/bin/python scripts/build_data_stack.py --check-only", revision = "4be2d7eb05ef5a98126c91e0302c149140c0e3e1"},
   {kind = "host", reference = "reports/public/data-startup-stack.json", result = "Four startup stages, 84 objects, 30 scheduler sanitizer cases, 43 CPU paths and 24 rejection controls pass. Packed Data/ADT/FAT/Android readback passes; no phone or original Data mount qualification.", command = ".venv-uefi/bin/python scripts/build_data_startup_stack.py --check-only", revision = "4be2d7eb05ef5a98126c91e0302c149140c0e3e1"},
@@ -611,6 +619,7 @@ paths = [
   "reports/public/**",
   "docs/**",
   "scripts/check_native_a830_entry.py",
+  "scripts/check_qemu_storage.py",
 ]
 inputs = [
   "Pinned source platform expert, source kernel crypto provider and local build logs.",
@@ -625,6 +634,7 @@ procedure = [
 findings = [
   "The native full kernel and strict iPhone prelink pass local link and pointer checks. Its boot model executes the actual EFI loader, native seed consumption and original 18-test crypto POST. QEMU TCG separately executes the packaged kernel through arm_init, kernel_bootstrap, InitIOKit and bsd_init with EL1, MMU and 4 KiB tables. Its compiler-bound live MAC list contains AppleImage4, AMFI and Sandbox registered once. Missing policy, nonce, manifest and entropy controls preserve the original refusals. The next genuine panic is the absent root device.",
   "The QR exporter and 2 MiB DXE producer are present in the same firmware used by the native payload. Native GPU status rows feed the existing bounded boot console.",
+  "The separate QEMU storage fixture performs real DMA from both local original disks, publishes the original storage stack and mounts the APFS root. It retains the post-mount authentication panic and rejects disabled/writable transport inputs before any disk read.",
 ]
 completion = [
   "Build and runtime failures have reproducible inputs and bounded diagnostic records.",
@@ -633,7 +643,7 @@ limits = [
   "No OnePlus hardware logs or runtime observations have been collected in this task.",
 ]
 next_action = [
-  "Connect a real read-only root transport in QEMU and continue the iPhone root/Data and userspace paths. Keep hardware security-state and persistent nonce policy as separate target work.",
+  "Continue root authentication after the QEMU APFS mount, then the iPhone Data and userspace paths. Keep hardware security-state and persistent nonce policy as separate target work.",
 ]
 evidence = [
   {kind = "host", reference = "reports/public/native-a830-stack.json", result = "The native route records each build/test stage and verifies the exact combined kernel, Metal userspace and firmware inputs.", command = ".venv-gpu/bin/python scripts/build_native_a830_stack.py --check-only", revision = "1a1321056ffc5428ae925f4680093718b46ca7c2"},

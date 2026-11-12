@@ -86,6 +86,7 @@ this toolchain, the local Python environment and four jobs.
 .venv-uefi/bin/python scripts/test_ios_profile.py
 .venv-uefi/bin/python scripts/test_bootimg.py
 .venv-uefi/bin/python scripts/test_source_series.py
+.venv-uefi/bin/python scripts/test_image4_boot_policy.py
 .venv-uefi/bin/python scripts/check_ios16_patches.py
 ```
 
@@ -338,6 +339,30 @@ published result is [native-a830-entry.json](../reports/public/native-a830-entry
 
 This run exercises early kernel startup under TCG. OnePlus firmware, board
 drivers and iOS userspace have separate bring-up work in `porting.toml`.
+
+To continue into storage, prepare the system inputs below and build the
+separate VirtIO candidate:
+
+```sh
+.venv-uefi/bin/python scripts/build_qemu_storage.py
+.venv-gpu/bin/python scripts/check_qemu_storage.py
+.venv-gpu/bin/python scripts/check_qemu_storage.py --check-only
+```
+
+This adds the pinned read-only `VirtioMmioBlock` transport with the measured
+iPhone storage interface. Startup waits for platform registration before
+collecting the published devices, then loads original IOStorageFamily and APFS.
+QEMU attaches the local OS and SystemOS files read-only. Both first-sector DMA
+reads match those files, and original APFS mounts the selected root. XNU then
+stops at `rootvp not authenticated after mounting`; root authentication remains
+the next step. Runs with the startup argument absent or a writable backend
+perform no disk reads.
+The coordinator also passes 27 sanitizer cases with registry, clock and loader
+peers, including delayed registration and an iterator invalidated by startup.
+
+The candidate stays in `build/cph2653-qemu-storage/kernel.macho` and its logs in
+`build/cph2653-qemu-storage-entry/`. It preserves the existing packaged payload.
+See [the storage result](../reports/public/ios16-qemu-storage-entry.json).
 
 ## System and Data images
 

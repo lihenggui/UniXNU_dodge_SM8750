@@ -88,6 +88,8 @@ jobs:
         run: python3 scripts/check_graphics_late_host.py --reference-source
       - name: Check read-only UFS loader and one-shot controller ownership with API peers
         run: python3 scripts/check_ufs_lifecycle_host.py
+      - name: Check QEMU storage registration, registry snapshots and retained starts
+        run: python3 scripts/check_qemu_storage_host.py
       - name: Check Data registration, pre-init retention, failure latching and concurrent starts with API peers
         run: python3 scripts/check_data_lifecycle.py
       - name: Check bounded Data scheduling, dependency waits and owned-reference completion with API peers

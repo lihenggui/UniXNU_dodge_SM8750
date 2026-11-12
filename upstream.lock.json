@@ -1473,5 +1473,18 @@
     "product": "iPhone10,3",
     "build": "20H392",
     "scope": "Original Image4 startup inputs and measured normal versus explicit security initializers; owner development metadata is separate from Apple personalization."
+  },
+  "virtio_block_reference": {
+    "repository": "https://github.com/UniXNU/VirtioMmioBlock.git",
+    "revision": "4e1013eb8c45077b57f8d38d61b389fe899ea1c3",
+    "path": "sources/UniXNU/drivers/VirtioMmioBlock",
+    "reference_only": true
+  },
+  "dodge_qemu_storage_overlay": {
+    "path": "patches/oneplus13/0013-ios16-qemu-storage.patch",
+    "sha256": "fa54ce5f1c64ec00c330eb1edfa7353cee521f4d985fd0e3455fb7d66eaac5bb",
+    "base_source_sha256": "e5babb673140d7d7fb9076ae2447672d23f67d0e7a19531e23d158db9eaf79cd",
+    "output_source_sha256": "cd782c416a0b8882289f1b11cd1c398a10b0c4070861b13108b5bcc0ac9f5f7c",
+    "scope": "Separate iPhone QEMU storage candidate; IOBSD starts the deferred read-only transport after existing source schedulers."
   }
 }
