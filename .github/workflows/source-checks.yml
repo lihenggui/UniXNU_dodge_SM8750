@@ -92,6 +92,8 @@ jobs:
         run: python3 scripts/check_ufs_lifecycle_host.py
       - name: Check QEMU storage registration, registry snapshots and retained starts
         run: python3 scripts/check_qemu_storage_host.py
+      - name: Check QEMU Data transport, flush failures and completion validation
+        run: python3 scripts/check_qemu_store_host.py
       - name: Check owner root signatures and block integrity using the C verifier
         run: python3 scripts/prepare_qemu_root_policy.py --host-only
       - name: Check Data registration, pre-init retention, failure latching and concurrent starts with API peers

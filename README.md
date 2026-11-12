@@ -19,8 +19,9 @@ The software AES fixture lets dyld finish its Image4 query. A SystemOS union
 build maps the original shared cache and reaches `launchd` main. The native
 KeyStore fixture lets the original `keybagd` accept its development system handle;
 the original userspace crypto self-tests pass. A separate RAM Data build lets
-`keybagd` and `usermanagerd` complete early initialization. Later services remain
-in development.
+`keybagd` and `usermanagerd` complete early initialization. The persistent Data
+build saves writes in a local QEMU file and resumes the same persona state after
+a forced VM stop. Later services remain in development.
 See [GPU builds](docs/bring-up.md#driver-builds) and [QEMU entry](docs/bring-up.md#qemu-entry).
 
 ## Getting started

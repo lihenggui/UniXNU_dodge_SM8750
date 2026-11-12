@@ -45,7 +45,7 @@ def data_resources(anchor):
     return resources
 
 
-def follow_early_boot(originals, cache, layout):
+def follow_early_boot(originals, cache, layout, *, persistence=(0,)):
     dyld = (ROOT / originals['dyld']['local']).read_bytes()
     dyld_names = {row['name']: row['value'] for row in symbols(dyld) if row['kind'] & 14}
 
@@ -74,7 +74,7 @@ def follow_early_boot(originals, cache, layout):
                         current['device'] not in (0xffffffff, system['selected_device'], result['last_state']['native_owner_root_selected_device']) and
                         current['flags'] & 0x200001 == 0 and current['RamBlock']['ready'] == current['RamBlock']['sparse'] == 1 and
                         current['RamBlock']['bytes'] == 2 << 30 and current['RamBlock']['failures'] == 0 and
-                        current['persistent_state'] == 0 and system['stage'] == 6 and system['integrity_failures'] == 0,
+                        current['persistent_state'] in persistence and system['stage'] == 6 and system['integrity_failures'] == 0,
                         'Original APFS Data mount or independent read-only roots differ')
                     if first:result['Data_at_main'] = current;first = False
                     if done:

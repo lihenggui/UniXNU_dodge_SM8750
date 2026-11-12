@@ -71,6 +71,7 @@
 !/tests/graphics_late_include/
 !/tests/DodgeUfsLifecycleTest.cpp
 !/tests/DodgeQemuStorageTest.cpp
+!/tests/DodgeQemuStoreTest.cpp
 !/tests/DodgeUfsProbeTest.cpp
 !/tests/DodgeSystemLateTest.cpp
 !/tests/DodgeRootImageTest.cpp

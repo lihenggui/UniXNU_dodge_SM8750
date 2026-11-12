@@ -18,8 +18,8 @@ files and run host tests. A connected phone is not required.
 download URL, BuildManifest identity and hashes.
 [upstream.lock.json](../upstream.lock.json) pins source revisions and patches.
 
-The [official guide](https://unixnu.com/porting/) was reviewed on 2026-11-11
-against UniXNU `13d0779e2ccd30d3caa1f8c9a15202730feace67`. Follow its order:
+The [official guide](https://unixnu.com/porting/) was reviewed on 2026-11-12
+against [UniXNU `2366e33`](https://github.com/UniXNU/UniXNU/tree/2366e33e4934696424bb9f5aa7598df925fbc0c1). Follow its order:
 resolve the board and OS profile, verify memory and firmware, build platform
 services, then add storage, display, input and GPU support. Keep host results
 and device observations separate in [porting.toml](../porting.toml).
@@ -32,6 +32,10 @@ device after a GPU restart. The native route applies that behavior with
 per-surface failure tracking, because this backend abandons in-flight jobs
 during recovery. Source revisions remain pinned in the lock file; this board
 embeds its four stock GPU microcode files locally.
+
+Newer mainline GPU changes add tile-pipeline handling, shader sharing across
+pipeline caches and fewer retired-buffer sweeps. Those changes are pending
+integration into this pinned A830 route.
 
 ## Host setup
 
@@ -489,8 +493,33 @@ completes `MKB_INIT`, then usermanagerd creates kernel personas and completes
 refuses the input before mounting. See
 [the Data result](../reports/public/ios16-qemu-data-entry.json).
 
-Data writes disappear when QEMU exits. The default development payload and the
-existing 2/3 GiB Data seeds retain their original inputs. Later services,+persistence and physical storage remain in development.
+That candidate keeps Data in RAM. To save its writes across VM boots, build the
+separate persistent candidate:
+
+```sh
+.venv-uefi/bin/python scripts/check_qemu_store_host.py
+.venv-uefi/bin/python scripts/build_qemu_store.py
+.venv-gpu/bin/python scripts/check_qemu_store.py
+.venv-gpu/bin/python scripts/check_qemu_store.py --check-only
+```
+
+It uses a third VirtIO device backed by a local overlay file. The driver checks
+its identifier, exact capacity and FLUSH support before accepting it. Each write
+waits for a completed flush. The 23 transport sanitizer cases include malformed
+completions, timeouts and failed flushes.
+
+The runtime check starts two fresh VMs. After the first reaches `UMD_INIT`, it
+stops QEMU with `SIGKILL`. The second resumes the same overlay without resetting
+it and completes the same keybag and persona tasks. Independent APFS readback
+finds the same persona identifiers in both snapshots. An incorrect device
+identifier and a valid-CRC header for a different seed are refused before Data
+mounting; both rejected files remain byte-for-byte unchanged. See
+[the persistence result](../reports/public/ios16-qemu-store-entry.json).
+
+The runner creates a new private overlay for each test under
+`build/cph2653-qemu-store-entry/`. OS and SystemOS stay read-only. This exercises
+VM-file persistence; physical UFS, hardware data protection and later system
+services still need implementation and validation.
 
 ## System and Data images
 

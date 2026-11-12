@@ -39,6 +39,45 @@ def check_report(report):
     keystore.readback((ROOT / report['candidate']).read_bytes(), report['class_tables'], report['layout'])
 
 
+def prelink(native, parent, base, out, *, additional_entries=()):
+    linked = native.read_bytes();keystore.readback(linked, parent['class_tables'], parent['layout'])
+    aes = json.loads((ROOT / 'reports/ios16-qemu-systemos.json').read_text());aes_readback(linked, aes['concrete_methods'], aes['abi'])
+    names = {row['name']: row for row in symbols(linked) if not row['kind'] & 0xe0}
+    entries = [*base['combined_native_entries'], '_native_owner_root_checkpoint', '_native_owner_root_accepted_checkpoint',
+        '_native_virtio_read_checkpoint', '_native_verified_block_root_authorized', '_dodge_qemu_aes_start',
+        '_dodge_qemu_aes_checkpoint', '_dodge_aes_allocate', '_native_owner_cache_checkpoint', '_dodge_qemu_keystore_start',
+        '_dodge_qemu_keystore_checkpoint', '_native_keyevents_allocate', '_dodge_qemu_data_checkpoint', '_dodge_qemu_data_mount_impl']
+    entries += list(additional_entries)
+    source = {**base, 'actual_crypto_hooks': hook_readbacks(linked), 'actual_iobsd_hook': hook_readback(linked),
+        'actual_init_hook': init_hook_readback(linked), 'combined_original_bindings': {**base['combined_original_bindings'], **aes['abi']['bindings']},
+        'combined_native_entries': {name: hex(names[name]['value']) for name in entries}}
+    profile, config = tomllib.loads(PROFILE.read_text()), json.loads(CONFIG.read_text())
+    roots = profile['kernel']['prelink']['roots'] + config['additional_roots'];original = ORIGINAL.read_bytes()
+    base_context = original_context(original, roots, config)
+    config['expected_executables'] = sorted([*config['expected_executables'], MODULE]);context = original_context(original, [*roots, MODULE], config)
+    security, requests, normal = security_plan(profile, json.loads(SECURITY.read_text()))
+    security_path = out / 'security-init.json';security_path.write_text(json.dumps(security, indent=2) + '\n')
+    emitter = TREE / 'kits/XnuPrelink/emit_prelink.py'
+    environment = dict(os.environ, UNIXNU_XNU_ARCH='arm64', UNIXNU_IOS_VERSION='16.0', PATH='/usr/lib/llvm-14/bin' + os.pathsep + os.environ['PATH'])
+    with tempfile.TemporaryDirectory(prefix='emit-', dir=out) as temporary:
+        pending = Path(temporary) / 'kernel.macho'
+        command = [sys.executable, emitter, '--kernel', native, '--prelinked', ORIGINAL, '--slide=' + config['slide'], '--output', pending]
+        for name in [*roots, MODULE]:command += ['--root', name]
+        for request in requests:command += ['--early-security-init', request]
+        command += ['--early-security-fixture', security_path]
+        process = subprocess.run(command, env=environment, capture_output=True, text=True)
+        (out / 'emission.log').write_text(process.stdout + process.stderr);require(not process.returncode, 'QEMU Data prelink failed')
+        raw = pending.read_bytes();record = json.loads(pending.with_suffix('.json').read_text())
+    require(record['candidate_sha256'] == hashlib.sha256(raw).hexdigest() and record['native_sha256'] == sha(native) and
+        record['original_sha256'] == hashlib.sha256(original).hexdigest(), 'Data prelink inputs changed')
+    checked = validate_extension(raw, record, linked, original, context, base_context, config, source, security)
+    security_readback = check_security_starts(raw, record, normal)
+    backing, _ = backing_checked();candidate = out / 'kernel.macho';candidate.write_bytes(apply_hooks(raw, backing))
+    keystore.readback(candidate.read_bytes(), parent['class_tables'], parent['layout'])
+    emission = out / 'emission.json';emission.write_text(json.dumps(record, indent=2) + '\n')
+    return candidate, emission, security_path, security_readback, checked
+
+
 def main():
     global OUT, REPORT
     parser = argparse.ArgumentParser(description=__doc__);parser.add_argument('--check-only', action='store_true')
@@ -83,40 +122,7 @@ def main():
     for dependency in (OWNER_OUT / 'libDodgeQemuOwnerRoot.a', AES_OUT / 'libDodgeQemuAES.a', keystore.OUT / 'libDodgeQemuKeyStore.a'):
         command += ['-Wl,-force_load,' + str(dependency)]
     command += ['-o', str(native)];run(command, OUT / 'link.log', OBJDIR)
-    linked = native.read_bytes();keystore.readback(linked, parent['class_tables'], parent['layout'])
-    aes = json.loads((ROOT / 'reports/ios16-qemu-systemos.json').read_text());aes_readback(linked, aes['concrete_methods'], aes['abi'])
-    names = {row['name']: row for row in symbols(linked) if not row['kind'] & 0xe0}
-    entries = [*base['combined_native_entries'], '_native_owner_root_checkpoint', '_native_owner_root_accepted_checkpoint',
-        '_native_virtio_read_checkpoint', '_native_verified_block_root_authorized', '_dodge_qemu_aes_start',
-        '_dodge_qemu_aes_checkpoint', '_dodge_aes_allocate', '_native_owner_cache_checkpoint', '_dodge_qemu_keystore_start',
-        '_dodge_qemu_keystore_checkpoint', '_native_keyevents_allocate', '_dodge_qemu_data_checkpoint', '_dodge_qemu_data_mount_impl']
-    source = {**base, 'actual_crypto_hooks': hook_readbacks(linked), 'actual_iobsd_hook': hook_readback(linked),
-        'actual_init_hook': init_hook_readback(linked), 'combined_original_bindings': {**base['combined_original_bindings'], **aes['abi']['bindings']},
-        'combined_native_entries': {name: hex(names[name]['value']) for name in entries}}
-    profile, config = tomllib.loads(PROFILE.read_text()), json.loads(CONFIG.read_text())
-    roots = profile['kernel']['prelink']['roots'] + config['additional_roots'];original = ORIGINAL.read_bytes()
-    base_context = original_context(original, roots, config)
-    config['expected_executables'] = sorted([*config['expected_executables'], MODULE]);context = original_context(original, [*roots, MODULE], config)
-    security, requests, normal = security_plan(profile, json.loads(SECURITY.read_text()))
-    security_path = OUT / 'security-init.json';security_path.write_text(json.dumps(security, indent=2) + '\n')
-    emitter = TREE / 'kits/XnuPrelink/emit_prelink.py'
-    environment = dict(os.environ, UNIXNU_XNU_ARCH='arm64', UNIXNU_IOS_VERSION='16.0', PATH='/usr/lib/llvm-14/bin' + os.pathsep + os.environ['PATH'])
-    with tempfile.TemporaryDirectory(prefix='emit-', dir=OUT) as temporary:
-        pending = Path(temporary) / 'kernel.macho'
-        command = [sys.executable, emitter, '--kernel', native, '--prelinked', ORIGINAL, '--slide=' + config['slide'], '--output', pending]
-        for name in [*roots, MODULE]:command += ['--root', name]
-        for request in requests:command += ['--early-security-init', request]
-        command += ['--early-security-fixture', security_path]
-        process = subprocess.run(command, env=environment, capture_output=True, text=True)
-        (OUT / 'emission.log').write_text(process.stdout + process.stderr);require(not process.returncode, 'QEMU Data prelink failed')
-        raw = pending.read_bytes();record = json.loads(pending.with_suffix('.json').read_text())
-    require(record['candidate_sha256'] == hashlib.sha256(raw).hexdigest() and record['native_sha256'] == sha(native) and
-        record['original_sha256'] == hashlib.sha256(original).hexdigest(), 'Data prelink inputs changed')
-    checked = validate_extension(raw, record, linked, original, context, base_context, config, source, security)
-    security_readback = check_security_starts(raw, record, normal)
-    backing, _ = backing_checked();candidate = OUT / 'kernel.macho';candidate.write_bytes(apply_hooks(raw, backing))
-    keystore.readback(candidate.read_bytes(), parent['class_tables'], parent['layout'])
-    emission = OUT / 'emission.json';emission.write_text(json.dumps(record, indent=2) + '\n')
+    candidate, emission, security_path, security_readback, checked = prelink(native, parent, base, OUT)
     files = [Path(__file__), cpp, ROOT / 'drivers/DodgeStorage/DodgeDataMount.cpp', ROOT / 'drivers/DodgeStorage/DodgeDataMount.h']
     artifacts = [header, obj, archive, original_archive, native, candidate, emission, security_path, OUT / 'compile-commands.json']
     report = {'result': 'IOS16_QEMU_VOLATILE_DATA_KERNEL_PASS',

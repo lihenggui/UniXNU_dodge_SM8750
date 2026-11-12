@@ -55,7 +55,8 @@ def virtual_resources(tree, fdt, root_uuid):
 
 
 def run_case(case, paths, environment, kernel, names, images, board_tree, timeout, *, directory_root=OUT, remote_factory=Remote,
-             resource_factory=virtual_resources, packed_data=None, extra_boot_args=()):
+             resource_factory=virtual_resources, packed_data=None, extra_boot_args=(), data_store=None,
+             data_store_serial='UNIXNU-DODGE-DATA-1', crash_on_stop=False):
     qemu, firmware, variables, roms = paths
     directory = directory_root / case;esp = directory / 'esp'
     payloads = esp / 'EFI/UniXNU/Payloads'
@@ -83,6 +84,14 @@ def run_case(case, paths, environment, kernel, names, images, board_tree, timeou
             with path.open('wb') as stream:stream.truncate(1 << 20)
         disks += ['-drive', f'if=none,id=root{index},format=raw,readonly={"off" if case == "writable-backend" else "on"},file={path}',
                   '-device', f'virtio-blk-device,drive=root{index}']
+    if data_store is not None:
+        require(stat.S_ISREG(data_store.lstat().st_mode) and data_store.stat().st_size == 2147553280 and
+            ',' not in str(data_store) and not any(os.path.samefile(data_store, ROOT / image['path']) for image in images),
+            'Expected a separate regular QEMU overlay file')
+        require(0 < len(data_store_serial) <= 20 and set(data_store_serial) <= set('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-'),
+            'Invalid QEMU store identifier')
+        disks += ['-drive', f'if=none,id=data-store,format=raw,cache=writeback,readonly=off,file={data_store}',
+                  '-device', 'virtio-blk-device,drive=data-store,serial=' + data_store_serial]
     fdt_path = directory / 'qemu.dtb'
     dump = [*base_command, '-M', machine + ',dumpdtb=' + str(fdt_path), *disks, '-nographic', '-nodefaults']
     process = subprocess.run(list(map(str, dump)), env=environment, capture_output=True, timeout=20)
@@ -175,10 +184,13 @@ def run_case(case, paths, environment, kernel, names, images, board_tree, timeou
                     require(remote.packet(f'z1,{pc:x},4') == 'OK', 'Cannot release checkpoint')
                     print('QEMU:', name, flush=True)
         finally:
-            (directory / 'observation.json').write_text(json.dumps(observation, indent=2) + '\n')
-            process.terminate()
+            if crash_on_stop:process.kill()
+            else:process.terminate()
             try:process.wait(timeout=3)
             except subprocess.TimeoutExpired:process.kill();process.wait()
+            observation['vm_stop_signal'] = 'SIGKILL' if crash_on_stop else 'SIGTERM'
+            observation['vm_returncode'] = process.returncode
+            (directory / 'observation.json').write_text(json.dumps(observation, indent=2) + '\n')
     require('DARWINBOOT: inputs validated; exiting boot services' in serial.read_text(errors='replace'), 'Incomplete actual EFI handoff')
     return observation, [serial, directory / 'qemu.log', directory / 'observation.json', fdt_path, policy_path,
                          *sorted(path for path in esp.rglob('*') if path.is_file())]

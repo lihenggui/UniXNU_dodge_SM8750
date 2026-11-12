@@ -1,0 +1,10 @@
+--- a/DodgeQemuStorage.cpp
++++ b/DodgeQemuStorage.cpp
+@@ -112,6 +112,7 @@
+     // Capture the published providers before any start changes the registry.
+     for (unsigned index = 0; index < count; ++index) {
+         provider = providers[index];
++        if (provider->getProperty("dodge,qemu-store")) { provider->release();continue; }
+         IOService *driver = dodge_virtio_allocate();
+         if (!driver) {
+             for (unsigned pending = index; pending < count; ++pending) providers[pending]->release();

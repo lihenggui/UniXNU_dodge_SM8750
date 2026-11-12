@@ -3,51 +3,51 @@
   "source_sha256": {
     "scripts/check_qemu_aes.py": "893d06048dcc5f89795d290e5b3cc9bd3fceb9b47becc510eb4b2a8675453d1e",
     "scripts/check_qemu_exec.py": "b86fa77cdfa986f5981476f98581e6aabe07be83cb9953e0eb387855ad49b1aa",
-    "scripts/check_qemu_storage.py": "8e348555319a1547fa3022228bc9ae75d008cdf5a70473ea2ae7582811fbca97",
+    "scripts/check_qemu_storage.py": "6c7dc3ddf106a97e71b24b5b64d977c67b329783cb160396506e44599b804420",
     "scripts/check_native_a830_entry.py": "af75c9cfd4e3df0f6aaa2d9d27d8e79711895cbe7016b0bff85999a8810b6807"
   },
   "dependency_report_sha256": {
     "reports/ios16-qemu-aes.json": "2a81bb12e261c24fe8a148f5b8c2d2bc3ae84a55f5773cf327b2ebcc5af7967d",
     "reports/ios16-qemu-aes-negative.json": "4965be010af0345ca41b6481be456a9d2208b6c4535e001e02238eff8f6d041f",
-    "reports/ios16-qemu-exec-entry.json": "9c64ed06c98353010ed18cb5c822b947fc26ad50fb092b2e3ac5797f38084f4b",
+    "reports/ios16-qemu-exec-entry.json": "9204787da9bb43c0d940efe4d11bf6641aba06e4e47e5cec1853629da5f21beb",
     "reports/native-a830-entry.json": "419d0485c972ee03806063b4d85eaf4cde472ccbc52456b505e77bbb5f5f6d2f",
     "reports/ios16-qemu-root-policy.json": "20fe303594beafe3a6b30a7980f09eae59c249891429ec69eeccc310d87a364a"
   },
   "artifacts": {
-    "build/cph2653-qemu-aes-entry/positive/enabled/exec.json": "8707cd8da3588e908a7fc48c4d6e89f17eaa99263a03a9f5402bf6ac165d6b3e",
+    "build/cph2653-qemu-aes-entry/positive/enabled/exec.json": "b10d511899541e85fcdcfcc55d1ea2bb2089a29ab5925e01b08b9ab75ef5afa3",
     "build/cph2653-qemu-aes-entry/positive/enabled/serial.log": "53e4b1d097b92f6ccb7fb85fe00568c33eb47f9accc68c984a26cc4d6c1fdb97",
-    "build/cph2653-qemu-aes-entry/positive/enabled/qemu.log": "3df1240f19b64867f6bce109567c7eb1ffdbb2223f3ec620d1c23ecb093989b1",
-    "build/cph2653-qemu-aes-entry/positive/enabled/observation.json": "5a3c0263d022739fdeaf87fb1dde65287cfeff6d181007cd3d46afc246cd316d",
-    "build/cph2653-qemu-aes-entry/positive/enabled/qemu.dtb": "4ec78e9ab13d839714a054d0bb92fb00bf5dfec85e70d3d500be21f4bec40185",
-    "build/cph2653-qemu-aes-entry/positive/enabled/image4-boot-policy.json": "c915a91b8e6915239fb15742f58eb41d1c3e767c7c368e8ee140581c4bcd7ed5",
+    "build/cph2653-qemu-aes-entry/positive/enabled/qemu.log": "a646944fb1f9c9555f7d77df301ad606fad6b5539f4ae9edf4e8615814b285e2",
+    "build/cph2653-qemu-aes-entry/positive/enabled/observation.json": "4d182be9bb51a99224ad8d30bff1aea8c895656892922ecc7bc342bcb09da48f",
+    "build/cph2653-qemu-aes-entry/positive/enabled/qemu.dtb": "2d6093fcda0e623b02c26af831bdb0ac203738c375642afcf5f5af04b0e062e4",
+    "build/cph2653-qemu-aes-entry/positive/enabled/image4-boot-policy.json": "203e7b58c5df6028f831caeb846bdea9c61113958306010e3ebadb4b8a4b6446",
     "build/cph2653-qemu-aes-entry/positive/enabled/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
     "build/cph2653-qemu-aes-entry/positive/enabled/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
     "build/cph2653-qemu-aes-entry/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho": "809039701932cbe207f6c8da623248f33784151bafd78946212587c8c06119cc",
-    "build/cph2653-qemu-aes-entry/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "6f72b6895daca2c13c556ef7aac8daeea070a093004e0be70a0c1cddc25e0bfc",
+    "build/cph2653-qemu-aes-entry/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "7779dac98d376474143cda092590aec0e802e389d3d448b333b5d8d4a4c80b9d",
     "build/cph2653-qemu-aes-entry/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
     "build/cph2653-qemu-aes-entry/positive/enabled/esp/EFI/UniXNU/unixnu.toml": "0de360fab3960883c22b71b99e0ed596fa0c6839e43b62adbed08fc9f04a939a",
-    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/AES.json": "307b85e4cc473152d19852c5acefe77a701acfb70c427f662cbd660ed696095c",
+    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/AES.json": "664a2ea7085ac6f3caedc60bef41cd5882dcdf8bd7d5732bdec7ef490a7e6843",
     "build/cph2653-qemu-aes-entry/wrong-answer/enabled/serial.log": "53e4b1d097b92f6ccb7fb85fe00568c33eb47f9accc68c984a26cc4d6c1fdb97",
-    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/qemu.log": "3df1240f19b64867f6bce109567c7eb1ffdbb2223f3ec620d1c23ecb093989b1",
-    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/observation.json": "d2523d7619b34eebd729f4ff20a010ccc1e011673ad1114f42b37e4c8a183ace",
-    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/qemu.dtb": "196453b565db44532ecbb8f47d386b24e4e163b1dcb3d7ba69d8cff330d94fb9",
-    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/image4-boot-policy.json": "fcae2e8c5f3d438ad800cadf5cbfe9bc16e493846b337af157515acafe6e5aa8",
+    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/qemu.log": "a646944fb1f9c9555f7d77df301ad606fad6b5539f4ae9edf4e8615814b285e2",
+    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/observation.json": "3fffdeeeb1bb4266f781b9f48ef7807c6d56b77e4b033def7ad5ad765c5cb995",
+    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/qemu.dtb": "45352fbff3f22c09c738781ee5da1a5e56cb8f26c3728a44ad8fbd63157ac125",
+    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/image4-boot-policy.json": "3d63499ba0a393ab9285d349d36e827303fc1a7cdc31a38d5dcb1b43efc64b3f",
     "build/cph2653-qemu-aes-entry/wrong-answer/enabled/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
     "build/cph2653-qemu-aes-entry/wrong-answer/enabled/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
     "build/cph2653-qemu-aes-entry/wrong-answer/enabled/esp/EFI/UniXNU/Payloads/kernel.macho": "984b189b381986571753b2e354033730c578ee4a87459958f6f33a5b58f9ec24",
-    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "696ab2744fea2fc3069c5f831214421a067d6bf1b65becde42519c2dca84cd0e",
+    "build/cph2653-qemu-aes-entry/wrong-answer/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "d2b1af1c5543a3f02fecbd3b9dde951200240cefe745434fc9959216bd157a60",
     "build/cph2653-qemu-aes-entry/wrong-answer/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
     "build/cph2653-qemu-aes-entry/wrong-answer/enabled/esp/EFI/UniXNU/unixnu.toml": "0de360fab3960883c22b71b99e0ed596fa0c6839e43b62adbed08fc9f04a939a",
-    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/AES.json": "40bbad48f23a94211fab19ec57d7ad3aaedd5c23b3c630d1f66ebb41e5d2af27",
+    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/AES.json": "a8a8df1344cd944f091de2a3288dc5d9be9295fa77eda80215d2594df252d005",
     "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/serial.log": "53e4b1d097b92f6ccb7fb85fe00568c33eb47f9accc68c984a26cc4d6c1fdb97",
-    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/qemu.log": "3df1240f19b64867f6bce109567c7eb1ffdbb2223f3ec620d1c23ecb093989b1",
-    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/observation.json": "2afb83d4329dcb1b4a10dd25a57efae457eb3597d933234db82c5de1ea7d333f",
-    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/qemu.dtb": "a3c6475e56068d490e72346a3eb18d14331bbfb6eeb012c26b3fe8d46c9af522",
-    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/image4-boot-policy.json": "7ff5cd5fa4d4e041c44d5967a96d3d8392a83780e6b1aa7316f274f21aa11e34",
+    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/qemu.log": "a646944fb1f9c9555f7d77df301ad606fad6b5539f4ae9edf4e8615814b285e2",
+    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/observation.json": "aa160c975266457c66dde87e88db6c643c354eae9294a6b39326ce80c5605df3",
+    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/qemu.dtb": "3096d5b96e0678684c56aecdd3649823bbba92218bce48c448e5ec50bf4f8560",
+    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/image4-boot-policy.json": "5e8c812fdb1eb7f5b1889b2e65d6a226d06e255d387bd0383dea3d84dd3eb943",
     "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
     "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
     "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/esp/EFI/UniXNU/Payloads/kernel.macho": "809039701932cbe207f6c8da623248f33784151bafd78946212587c8c06119cc",
-    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "064f353ce31b8303eea54da61b07adfdc3a64f1923a1e657c472c0b21e767363",
+    "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "408e9693e46c1c3b7fae7b89830427fade6e081c66d5e2535bd5662510af376d",
     "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
     "build/cph2653-qemu-aes-entry/missing-vm-identity/enabled/esp/EFI/UniXNU/unixnu.toml": "0de360fab3960883c22b71b99e0ed596fa0c6839e43b62adbed08fc9f04a939a",
     ".toolchains/qemu/usr/bin/qemu-system-aarch64": "0a63468782d096485932acf6aa0a69d358b3e3a6f68f655e960e9f5e3fc578d8",
@@ -127,7 +127,7 @@
     },
     "return_registers": {
       "SPSR_EL1": "0x0",
-      "ELR_EL1": "0x10087a1b0"
+      "ELR_EL1": "0x10120f1b0"
     },
     "process": {
       "pid": 1,
@@ -136,17 +136,17 @@
       "uuid": "5c15db07b3bc3df3b62f3e498b993b8e"
     },
     "user_entry": {
-      "pc": "0x10087a1b0",
+      "pc": "0x10120f1b0",
       "pstate": "0x0",
-      "dyld_slide": "0x100865000",
+      "dyld_slide": "0x1011fa000",
       "code": "e00300911fec7c921d0080d21e0080d290faff171f00009140001fd6281440f9081400f9c0035fd600a00091a0ccff17ffc300d1fd7b02a9fd830091e20301aa",
       "original_entry_code_matches": true
     },
     "after_instruction": {
-      "pc": "0x10087a1b4",
+      "pc": "0x10120f1b4",
       "pstate": "0x0",
-      "x0": "0x16fa0bdb8",
-      "original_sp": "0x16fa0bdb8"
+      "x0": "0x16ef58db8",
+      "original_sp": "0x16ef58db8"
     },
     "AES_states": [
       {
@@ -164,14 +164,14 @@
     "dyld_events": [
       {
         "checkpoint": "sysctlbyname",
-        "pc": "0x1008c1fe0",
+        "pc": "0x101256fe0",
         "pstate": "0x60000000",
         "original_instruction_matches": true,
         "name": "kern.bootargs"
       },
       {
         "checkpoint": "sysctl",
-        "pc": "0x1008ca6a0",
+        "pc": "0x10125f6a0",
         "pstate": "0x60000000",
         "original_instruction_matches": true,
         "mib": [
@@ -182,7 +182,7 @@
       },
       {
         "checkpoint": "sysctl",
-        "pc": "0x1008ca6a0",
+        "pc": "0x10125f6a0",
         "pstate": "0x40000000",
         "original_instruction_matches": true,
         "mib": [
@@ -192,14 +192,14 @@
       },
       {
         "checkpoint": "sysctlbyname",
-        "pc": "0x1008c1fe0",
+        "pc": "0x101256fe0",
         "pstate": "0x60000000",
         "original_instruction_matches": true,
         "name": "security.mac.img4.ignition_blob"
       },
       {
         "checkpoint": "sysctl",
-        "pc": "0x1008ca6a0",
+        "pc": "0x10125f6a0",
         "pstate": "0x60000000",
         "original_instruction_matches": true,
         "mib": [
@@ -210,7 +210,7 @@
       },
       {
         "checkpoint": "sysctl",
-        "pc": "0x1008ca6a0",
+        "pc": "0x10125f6a0",
         "pstate": "0x40000000",
         "original_instruction_matches": true,
         "mib": [
@@ -222,26 +222,26 @@
       },
       {
         "checkpoint": "ignition-return",
-        "pc": "0x1008c2078",
+        "pc": "0x101257078",
         "pstate": "0x40000000",
         "x0": "0x0"
       },
       {
         "checkpoint": "ignition-return",
-        "pc": "0x1008c5be4",
+        "pc": "0x10125abe4",
         "pstate": "0x60000000",
         "x0": "0x0"
       },
       {
         "checkpoint": "sysctlbyname",
-        "pc": "0x1008c1fe0",
+        "pc": "0x101256fe0",
         "pstate": "0x80000000",
         "original_instruction_matches": true,
         "name": "hw.osenvironment"
       },
       {
         "checkpoint": "sysctl",
-        "pc": "0x1008ca6a0",
+        "pc": "0x10125f6a0",
         "pstate": "0x80000000",
         "original_instruction_matches": true,
         "mib": [
@@ -252,7 +252,7 @@
       },
       {
         "checkpoint": "sysctl",
-        "pc": "0x1008ca6a0",
+        "pc": "0x10125f6a0",
         "pstate": "0x80000000",
         "original_instruction_matches": true,
         "mib": [
@@ -262,14 +262,14 @@
       },
       {
         "checkpoint": "sysctlbyname",
-        "pc": "0x1008c1fe0",
+        "pc": "0x101256fe0",
         "pstate": "0x0",
         "original_instruction_matches": true,
         "name": "hw.target"
       },
       {
         "checkpoint": "sysctl",
-        "pc": "0x1008ca6a0",
+        "pc": "0x10125f6a0",
         "pstate": "0x0",
         "original_instruction_matches": true,
         "mib": [
@@ -280,7 +280,7 @@
       },
       {
         "checkpoint": "sysctl",
-        "pc": "0x1008ca6a0",
+        "pc": "0x10125f6a0",
         "pstate": "0x0",
         "original_instruction_matches": true,
         "mib": [
@@ -290,32 +290,32 @@
       },
       {
         "checkpoint": "cache",
-        "pc": "0x100876350",
+        "pc": "0x10120b350",
         "pstate": "0x60000000",
         "original_instruction_matches": true
       },
       {
         "checkpoint": "cache-return",
-        "pc": "0x10087661c",
+        "pc": "0x10120b61c",
         "pstate": "0x60000000",
         "x0": "0x0",
         "output_words": [
           "0x0",
           "0x0",
-          "0x1008da3c5"
+          "0x10126f3c5"
         ],
         "error": "shared cache file open() failed"
       },
       {
         "checkpoint": "sysctlbyname",
-        "pc": "0x1008c1fe0",
+        "pc": "0x101256fe0",
         "pstate": "0x20000000",
         "original_instruction_matches": true,
         "name": "kern.dyld_flags"
       },
       {
         "checkpoint": "sysctl",
-        "pc": "0x1008ca6a0",
+        "pc": "0x10125f6a0",
         "pstate": "0x20000000",
         "original_instruction_matches": true,
         "mib": [
@@ -326,7 +326,7 @@
       },
       {
         "checkpoint": "sysctl",
-        "pc": "0x1008ca6a0",
+        "pc": "0x10125f6a0",
         "pstate": "0x0",
         "original_instruction_matches": true,
         "mib": [
@@ -336,13 +336,13 @@
       },
       {
         "checkpoint": "prepare",
-        "pc": "0x10087a694",
+        "pc": "0x10120f694",
         "pstate": "0x60000000",
         "original_instruction_matches": true
       },
       {
         "checkpoint": "halt",
-        "pc": "0x10087cdd8",
+        "pc": "0x101211dd8",
         "pstate": "0x60000000",
         "original_instruction_matches": true,
         "message": "Library not loaded: /usr/lib/libSystem.B.dylib\n  Referenced from: <5C15DB07-B3BC-3DF3-B62F-3E498B993B8E> /sbin/launchd\n  Reason: tried: '/usr/lib/libSystem.B.dylib' (no such file, no dyld cache), '/usr/local/lib/libSystem.B.dylib' (no such file)"
@@ -358,7 +358,7 @@
       ],
       "reads": [
         {
-          "device": "0xfffffff398f20230",
+          "device": "0xfffffff68b2f6620",
           "physical": "0xa003c00",
           "sectors": 5357568,
           "first_sector_sha256": "9d8a717d6b9b3d863a255b3755b121847a9bc9c2a7294c43b9f68524f55eb8b6",
@@ -366,7 +366,7 @@
           "failures": 0
         },
         {
-          "device": "0xfffffff398f21090",
+          "device": "0xfffffff68b2f33d0",
           "physical": "0xa003e00",
           "sectors": 11006019,
           "first_sector_sha256": "d9ce8c44219524305dd4b829498713a4bfea0d4bc1222547d465f5cca752b1ef",
@@ -514,18 +514,18 @@
         "x0": "0xfffffff00b9c3d98",
         "x1": "0x20",
         "x2": "0xfffffff00b9c3d80",
-        "x3": "0xfffffffaa8bf7de8",
+        "x3": "0xfffffffbdbedbde8",
         "x4": "0xfffffff00b9f8738",
         "x5": "0x0",
         "x6": "0x0",
         "x7": "0x9",
-        "x8": "0x8f399",
+        "x8": "0xa4fdf",
         "x9": "0x0",
-        "x10": "0x962ea11f944c93be",
+        "x10": "0xad01b53f6ca32302",
         "x11": "0x0",
         "x12": "0x44b82fa09b5a53",
         "x13": "0x2b1ff",
-        "x14": "0x2060c000",
+        "x14": "0x9f98813c00",
         "x15": "0x44b82fa09",
         "x16": "0x0",
         "x17": "0x3b9aca00",
@@ -540,9 +540,9 @@
         "x26": "0x6000000",
         "x27": "0x0",
         "x28": "0xfffffff00b9abad0",
-        "x29": "0xfffffffaa8bf7ed0",
+        "x29": "0xfffffffbdbedbed0",
         "x30": "0xfffffff00b571358",
-        "sp": "0xfffffffaa8bf7dc0",
+        "sp": "0xfffffffbdbedbdc0",
         "pc": "0xfffffff00b807f34"
       },
       "policies": [
@@ -571,7 +571,9 @@
         "TTBR1_EL1": "0x488b5000",
         "TCR_EL1": "0x22a51a251a"
       },
-      "platform_device_count": 33
+      "platform_device_count": 33,
+      "vm_stop_signal": "SIGTERM",
+      "vm_returncode": 0
     }
   },
   "negative_controls": {
@@ -597,7 +599,7 @@
         ],
         "reads": [
           {
-            "device": "0xfffffff2ab66b7f0",
+            "device": "0xfffffff793e6e2c0",
             "physical": "0xa003c00",
             "sectors": 5357568,
             "first_sector_sha256": "9d8a717d6b9b3d863a255b3755b121847a9bc9c2a7294c43b9f68524f55eb8b6",
@@ -605,7 +607,7 @@
             "failures": 0
           },
           {
-            "device": "0xfffffff2ab66cef0",
+            "device": "0xfffffff793e70c70",
             "physical": "0xa003e00",
             "sectors": 11006019,
             "first_sector_sha256": "d9ce8c44219524305dd4b829498713a4bfea0d4bc1222547d465f5cca752b1ef",
@@ -751,8 +753,8 @@
         ],
         "registers": {
           "x0": "0x0",
-          "x1": "0xfffffff1780134c0",
-          "x2": "0xfffffff2ab422868",
+          "x1": "0xfffffff4941504c0",
+          "x2": "0xfffffff87a5774a8",
           "x3": "0x18",
           "x4": "0x20",
           "x5": "0x0",
@@ -762,26 +764,26 @@
           "x9": "0x0",
           "x10": "0x1",
           "x11": "0x1230",
-          "x12": "0xfffffff55e5b7740",
-          "x13": "0x1421",
-          "x14": "0x0",
+          "x12": "0xfffffff00b95cc40",
+          "x13": "0x1021",
+          "x14": "0x1",
           "x15": "0xfffffff0070094ac",
           "x16": "0xfffffff00b8ff8e0",
           "x17": "0x0",
           "x18": "0x323c000",
           "x19": "0x0",
-          "x20": "0xfffffff477e8db00",
-          "x21": "0xfffffff2ab66cef0",
-          "x22": "0xfffffffb7172fd40",
+          "x20": "0xfffffff794198240",
+          "x21": "0xfffffff793e70c70",
+          "x22": "0xfffffffa93f83d40",
           "x23": "0x20",
           "x24": "0xfffffff00b9ef000",
           "x25": "0x20",
           "x26": "0xfffffff00b9ef000",
           "x27": "0xfffffff00bd21cf0",
           "x28": "0xfffffff00b9ef060",
-          "x29": "0xfffffffb7172fda0",
+          "x29": "0xfffffffa93f83da0",
           "x30": "0xfffffff00b8eb94c",
-          "sp": "0xfffffffb7172fc30",
+          "sp": "0xfffffffa93f83c30",
           "pc": "0xfffffff00b8eb45c"
         },
         "policies": [
@@ -810,7 +812,9 @@
           "TTBR1_EL1": "0x488b5000",
           "TCR_EL1": "0x22a51a251a"
         },
-        "platform_device_count": 33
+        "platform_device_count": 33,
+        "vm_stop_signal": "SIGTERM",
+        "vm_returncode": 0
       }
     },
     "missing-vm-identity": {
@@ -836,7 +840,7 @@
         ],
         "reads": [
           {
-            "device": "0xfffffff43f5cbb60",
+            "device": "0xfffffff479eee0f0",
             "physical": "0xa003c00",
             "sectors": 5357568,
             "first_sector_sha256": "9d8a717d6b9b3d863a255b3755b121847a9bc9c2a7294c43b9f68524f55eb8b6",
@@ -844,7 +848,7 @@
             "failures": 0
           },
           {
-            "device": "0xfffffff43f5cf090",
+            "device": "0xfffffff479ef0ef0",
             "physical": "0xa003e00",
             "sectors": 11006019,
             "first_sector_sha256": "d9ce8c44219524305dd4b829498713a4bfea0d4bc1222547d465f5cca752b1ef",
@@ -991,36 +995,36 @@
         "registers": {
           "x0": "0xfffffff003e21f77",
           "x1": "0x50005",
-          "x2": "0xfffffff35908e708",
+          "x2": "0xfffffff1c709e488",
           "x3": "0xfffffff00b716764",
-          "x4": "0xfffffff6d1d17a68",
+          "x4": "0xfffffff07772fa68",
           "x5": "0x0",
-          "x6": "0xfffffff6d1d17a78",
+          "x6": "0xfffffff07772fa78",
           "x7": "0x0",
-          "x8": "0x2b73a736a1ce000d",
-          "x9": "0x2b73a736a1ce000d",
+          "x8": "0x2b25f304fdc50096",
+          "x9": "0x2b25f304fdc50096",
           "x10": "0x0",
           "x11": "0x0",
           "x12": "0x0",
           "x13": "0x2b1ff",
-          "x14": "0x1bfbf",
+          "x14": "0x7f",
           "x15": "0x0",
           "x16": "0xfffffff00b8ee264",
           "x17": "0x1",
           "x18": "0x323c000",
-          "x19": "0xfffffff6d1d17b78",
-          "x20": "0xfffffff272aa3600",
-          "x21": "0xfffffff43f5e9608",
-          "x22": "0xfffffff43f5e96f0",
+          "x19": "0xfffffff07772fb78",
+          "x20": "0xfffffff2ad5e48c0",
+          "x21": "0xfffffff393f09cf8",
+          "x22": "0xfffffff393f0a6f0",
           "x23": "0xfffffff005caea93",
           "x24": "0xfffffff005caea8b",
           "x25": "0xfffffff00b9e7288",
           "x26": "0x0",
-          "x27": "0xfffffff272aa3600",
+          "x27": "0xfffffff2ad5e48c0",
           "x28": "0x800000",
-          "x29": "0xfffffff6d1d17ae0",
+          "x29": "0xfffffff07772fae0",
           "x30": "0xfffffff0046ef62c",
-          "sp": "0xfffffff6d1d17a50",
+          "sp": "0xfffffff07772fa50",
           "pc": "0xfffffff00b8ee264"
         },
         "policies": [
@@ -1062,7 +1066,9 @@
         },
         "total_read_requests": 2,
         "read_failures": 0,
-        "root_vnode": "0x0"
+        "root_vnode": "0x0",
+        "vm_stop_signal": "SIGTERM",
+        "vm_returncode": 0
       }
     }
   },

@@ -1,7 +1,7 @@
 {
   "result": "IOS16_QEMU_VIRTIO_READ_ONLY_TRANSPORT_PASS",
   "source_sha256": {
-    "scripts/check_qemu_storage.py": "8e348555319a1547fa3022228bc9ae75d008cdf5a70473ea2ae7582811fbca97",
+    "scripts/check_qemu_storage.py": "6c7dc3ddf106a97e71b24b5b64d977c67b329783cb160396506e44599b804420",
     "scripts/check_native_a830_entry.py": "af75c9cfd4e3df0f6aaa2d9d27d8e79711895cbe7016b0bff85999a8810b6807",
     "scripts/image4_boot_policy.py": "6072c1b9c5c0ec1f1ea524f32c369b18dc063ea48c8764d21194b04d84cde5a1",
     "sources/UniXNU/scripts/unixnu/devicetree.py": "cfda7d9aad326729d1e60bbf2db555c3d1af298d25747377b314dac007e8097d"
@@ -13,36 +13,36 @@
   },
   "artifacts": {
     "build/cph2653-qemu-storage-entry/enabled/serial.log": "0b5be54a7692f33290ffb673a953d9668f6bf214180d6fda4117eb879ec6f59e",
-    "build/cph2653-qemu-storage-entry/enabled/qemu.log": "5c12951ef3842b3e20595d8d1d6d159c8db769bb00e13d2216d528a84b9fd19a",
-    "build/cph2653-qemu-storage-entry/enabled/observation.json": "31676becb61f388cbaca8d5e4d6a1c11faca37c449cf454120517a2629d86ba2",
-    "build/cph2653-qemu-storage-entry/enabled/qemu.dtb": "953f4412b5999a16e9988fc1685e9bb433656f1e0a170ac1fa47e76b5857ceb5",
-    "build/cph2653-qemu-storage-entry/enabled/image4-boot-policy.json": "b0e049b8b796e84474ea10b795e0058afb04a4e1949a521118f57ddaf490fe40",
+    "build/cph2653-qemu-storage-entry/enabled/qemu.log": "afa8b0a41c05db6e4cc198ff410552e54e336ac408e5bb1c1efbf3617bc667c7",
+    "build/cph2653-qemu-storage-entry/enabled/observation.json": "eb8f26e711f97a7e9ec6529f0ba24b8678c86e60b1da4fc112bd33c5b1554d57",
+    "build/cph2653-qemu-storage-entry/enabled/qemu.dtb": "24001d412841c60888122d9840a2e79223d906aec337b0e3190767f2e3bf5559",
+    "build/cph2653-qemu-storage-entry/enabled/image4-boot-policy.json": "cc1c019573b5a1d2ffa8c5cfcc11907cd7b83397b8410a99b54bd95a06d012ee",
     "build/cph2653-qemu-storage-entry/enabled/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
     "build/cph2653-qemu-storage-entry/enabled/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
     "build/cph2653-qemu-storage-entry/enabled/esp/EFI/UniXNU/Payloads/kernel.macho": "14025c22e4a7d782fe0da11f7a9449e5130ca692b394277021e198c9063eeff1",
-    "build/cph2653-qemu-storage-entry/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "404c864606be927e9d1f88bfeab4b90570b96a7b1de49870be5bfaeb438e6d13",
+    "build/cph2653-qemu-storage-entry/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "5735ab8f82e170fcf8f0e55cd359f49b0d93f7440688b4fd46ed21ce6b045085",
     "build/cph2653-qemu-storage-entry/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
     "build/cph2653-qemu-storage-entry/enabled/esp/EFI/UniXNU/unixnu.toml": "0de360fab3960883c22b71b99e0ed596fa0c6839e43b62adbed08fc9f04a939a",
     "build/cph2653-qemu-storage-entry/disabled/serial.log": "c4cea2024b00b413ea99fcf456482824cac8c60c39f7122d9a6864e0503cd16b",
-    "build/cph2653-qemu-storage-entry/disabled/qemu.log": "5c12951ef3842b3e20595d8d1d6d159c8db769bb00e13d2216d528a84b9fd19a",
-    "build/cph2653-qemu-storage-entry/disabled/observation.json": "60b64295662a954ed28cf4e352d55f52460ac9d6c7be43c4f5a8c8ffa3951197",
-    "build/cph2653-qemu-storage-entry/disabled/qemu.dtb": "10da35adbfd7cfd96148171f2a0e892b47ba50c5fadf105e46e46ebe9c51a451",
-    "build/cph2653-qemu-storage-entry/disabled/image4-boot-policy.json": "04a1327cf838b7749a26f6f8b46d744c5819f2d44755f0b0ae59017f5f6d840c",
+    "build/cph2653-qemu-storage-entry/disabled/qemu.log": "afa8b0a41c05db6e4cc198ff410552e54e336ac408e5bb1c1efbf3617bc667c7",
+    "build/cph2653-qemu-storage-entry/disabled/observation.json": "bf9acaff2f9a1c923ace5c4440b265eaeb6af9cf092afe0856be7ed57df94c20",
+    "build/cph2653-qemu-storage-entry/disabled/qemu.dtb": "dc65fffd17b1759cefb84ab5b467e08c8015d0e1a38dbe12f1eb74753789693d",
+    "build/cph2653-qemu-storage-entry/disabled/image4-boot-policy.json": "b554261ac9b47e90dfc0984dfb1b00e75f042591ceb53ef52b49671dcc5eb8b1",
     "build/cph2653-qemu-storage-entry/disabled/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
     "build/cph2653-qemu-storage-entry/disabled/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
     "build/cph2653-qemu-storage-entry/disabled/esp/EFI/UniXNU/Payloads/kernel.macho": "14025c22e4a7d782fe0da11f7a9449e5130ca692b394277021e198c9063eeff1",
-    "build/cph2653-qemu-storage-entry/disabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "77930197272f33e1ae0fb859fdf7ef9c162136123e3fecddbd9fca953a8b3bba",
+    "build/cph2653-qemu-storage-entry/disabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "5d6d1701fa2fbfac226a3c164950da7775026a0b5f90ee080803f219c2953645",
     "build/cph2653-qemu-storage-entry/disabled/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
     "build/cph2653-qemu-storage-entry/disabled/esp/EFI/UniXNU/unixnu.toml": "cb0e2a70c501249f73f18c0a8b5ff9974d7723d4329cb88ca9507c02f45df992",
     "build/cph2653-qemu-storage-entry/writable-backend/serial.log": "0b5be54a7692f33290ffb673a953d9668f6bf214180d6fda4117eb879ec6f59e",
-    "build/cph2653-qemu-storage-entry/writable-backend/qemu.log": "5c12951ef3842b3e20595d8d1d6d159c8db769bb00e13d2216d528a84b9fd19a",
-    "build/cph2653-qemu-storage-entry/writable-backend/observation.json": "f60f17f6e71363e3f30f1c07fce0b90b7c4d9254e86775f3444d7f23e9ec2a38",
-    "build/cph2653-qemu-storage-entry/writable-backend/qemu.dtb": "18f7844117414fc017eba74d599a76832a30cb8b864c6f8ab37709df3202983c",
-    "build/cph2653-qemu-storage-entry/writable-backend/image4-boot-policy.json": "14b1ad288dccb2456811210a57c2a660f7bc9be9e1577810a38fa3a28b5c6f17",
+    "build/cph2653-qemu-storage-entry/writable-backend/qemu.log": "afa8b0a41c05db6e4cc198ff410552e54e336ac408e5bb1c1efbf3617bc667c7",
+    "build/cph2653-qemu-storage-entry/writable-backend/observation.json": "7286edd53c2ba7927a69813f172a5b964b865040c2896703aee5600671dedc8c",
+    "build/cph2653-qemu-storage-entry/writable-backend/qemu.dtb": "9a7f9de2f3260b6db70d216b5562471bd74b031adb473141c1a2237be5045968",
+    "build/cph2653-qemu-storage-entry/writable-backend/image4-boot-policy.json": "b61a2c62133e8b1623b8dd41d72433a108c04241cd43619452dd9d75cc8ce643",
     "build/cph2653-qemu-storage-entry/writable-backend/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
     "build/cph2653-qemu-storage-entry/writable-backend/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
     "build/cph2653-qemu-storage-entry/writable-backend/esp/EFI/UniXNU/Payloads/kernel.macho": "14025c22e4a7d782fe0da11f7a9449e5130ca692b394277021e198c9063eeff1",
-    "build/cph2653-qemu-storage-entry/writable-backend/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "54ff2b8f3f24a07b61c94e05402cbfff25b3c1bbd88f704c2680b675e89a8c6c",
+    "build/cph2653-qemu-storage-entry/writable-backend/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "4b62fe29f4cdc4d7bd2078cdc405cdb4d960b383d1a13d7d416355baff9a4d56",
     "build/cph2653-qemu-storage-entry/writable-backend/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
     "build/cph2653-qemu-storage-entry/writable-backend/esp/EFI/UniXNU/unixnu.toml": "0de360fab3960883c22b71b99e0ed596fa0c6839e43b62adbed08fc9f04a939a",
     ".toolchains/qemu/usr/bin/qemu-system-aarch64": "0a63468782d096485932acf6aa0a69d358b3e3a6f68f655e960e9f5e3fc578d8",
@@ -65,7 +65,7 @@
     ],
     "reads": [
       {
-        "device": "0xfffffff31c92ba60",
+        "device": "0xfffffff9dddd6860",
         "physical": "0xa003c00",
         "sectors": 5357568,
         "first_sector_sha256": "9d8a717d6b9b3d863a255b3755b121847a9bc9c2a7294c43b9f68524f55eb8b6",
@@ -73,7 +73,7 @@
         "failures": 0
       },
       {
-        "device": "0xfffffff31c92a8e0",
+        "device": "0xfffffff9dddd6400",
         "physical": "0xa003e00",
         "sectors": 11006019,
         "first_sector_sha256": "d9ce8c44219524305dd4b829498713a4bfea0d4bc1222547d465f5cca752b1ef",
@@ -221,7 +221,7 @@
       "x0": "0xfffffff0070c7605",
       "x1": "0x0",
       "x2": "0xffffffffffffffe1",
-      "x3": "0xfffffffaaf830261",
+      "x3": "0xfffffff493372261",
       "x4": "0x0",
       "x5": "0x8",
       "x6": "0x3e",
@@ -238,7 +238,7 @@
       "x17": "0x3",
       "x18": "0x323c000",
       "x19": "0xfffffff007197f50",
-      "x20": "0xfffffff702bca800",
+      "x20": "0xfffffffbf7a33c00",
       "x21": "0xfffffff0070c75ba",
       "x22": "0xfffffff007b37ae8",
       "x23": "0xfffffff007197000",
@@ -247,9 +247,9 @@
       "x26": "0x0",
       "x27": "0x6000000",
       "x28": "0xfffffff007b37ad0",
-      "x29": "0xfffffff06c007ed0",
+      "x29": "0xfffffff5d9ec3ed0",
       "x30": "0xfffffff007701734",
-      "sp": "0xfffffff06c007dc0",
+      "sp": "0xfffffff5d9ec3dc0",
       "pc": "0xfffffff007a7adf0"
     },
     "policies": [
@@ -284,14 +284,16 @@
       "arguments": [
         "0xfffffff0070c74e7",
         "0x42c",
-        "0xfffffff402c8d6c0",
-        "0x869a60ec313c00a2"
+        "0xfffffff72aff6000",
+        "0xc2ce9be222630085"
       ],
       "lr": "0xfffffff007701734"
     },
     "total_read_requests": 224,
     "read_failures": 0,
-    "root_vnode": "0xfffffff402afa010"
+    "root_vnode": "0xfffffff8f7937a60",
+    "vm_stop_signal": "SIGTERM",
+    "vm_returncode": 0
   },
   "negative_controls": {
     "disabled": {
@@ -441,18 +443,18 @@
         "x0": "0xfffffff007b4fd98",
         "x1": "0x20",
         "x2": "0xfffffff007b4fd80",
-        "x3": "0xfffffffbe225bde8",
+        "x3": "0xfffffff0792efde8",
         "x4": "0xfffffff007b84738",
         "x5": "0x0",
         "x6": "0x0",
-        "x7": "0xfffffffbe1f7d190",
-        "x8": "0x603ef",
+        "x7": "0x9",
+        "x8": "0xdcd59",
         "x9": "0x0",
-        "x10": "0x64ebd5af252b7998",
+        "x10": "0xe78fc334a19e85ee",
         "x11": "0x0",
         "x12": "0x44b82fa09b5a53",
         "x13": "0x2b1ff",
-        "x14": "0x3ffffffff",
+        "x14": "0x8010003a",
         "x15": "0x44b82fa09",
         "x16": "0x0",
         "x17": "0x3b9aca00",
@@ -467,9 +469,9 @@
         "x26": "0x0",
         "x27": "0x6000000",
         "x28": "0xfffffff007b37ad0",
-        "x29": "0xfffffffbe225bed0",
+        "x29": "0xfffffff0792efed0",
         "x30": "0xfffffff007701358",
-        "sp": "0xfffffffbe225bdc0",
+        "sp": "0xfffffff0792efdc0",
         "pc": "0xfffffff007997e70"
       },
       "policies": [
@@ -503,7 +505,9 @@
       "next_stop": {
         "symbol": "_IOFindBSDRoot",
         "root_selection_entered": false
-      }
+      },
+      "vm_stop_signal": "SIGTERM",
+      "vm_returncode": 0
     },
     "writable-backend": {
       "case": "writable-backend",
@@ -653,18 +657,18 @@
         "x0": "0xfffffff007b4fd98",
         "x1": "0x20",
         "x2": "0xfffffff007b4fd80",
-        "x3": "0xfffffff7175fbde8",
+        "x3": "0xfffffffbdbf73de8",
         "x4": "0xfffffff007b84738",
         "x5": "0x0",
         "x6": "0x0",
         "x7": "0x9",
-        "x8": "0x3bf22",
+        "x8": "0xd85a6",
         "x9": "0x0",
-        "x10": "0x3edba3a1a66aa836",
+        "x10": "0xe2dce084fad03ce4",
         "x11": "0x0",
         "x12": "0x44b82fa09b5a53",
         "x13": "0x2b1ff",
-        "x14": "0xec000060000251",
+        "x14": "0xc83332f0",
         "x15": "0x44b82fa09",
         "x16": "0x0",
         "x17": "0x3b9aca00",
@@ -679,9 +683,9 @@
         "x26": "0x0",
         "x27": "0x6000000",
         "x28": "0xfffffff007b37ad0",
-        "x29": "0xfffffff7175fbed0",
+        "x29": "0xfffffffbdbf73ed0",
         "x30": "0xfffffff007701358",
-        "sp": "0xfffffff7175fbdc0",
+        "sp": "0xfffffffbdbf73dc0",
         "pc": "0xfffffff007997e70"
       },
       "policies": [
@@ -716,7 +720,9 @@
       "next_stop": {
         "symbol": "_IOFindBSDRoot",
         "root_selection_entered": false
-      }
+      },
+      "vm_stop_signal": "SIGTERM",
+      "vm_returncode": 0
     }
   },
   "hardware_tested": false,

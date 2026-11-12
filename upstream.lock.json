@@ -1532,5 +1532,12 @@
     "base_source_sha256": "6d564b710c5e2143c2ce99ee456b4d93f588b87b7de5599b79199e82fb497213",
     "output_source_sha256": "f3b3d24c5553b9f1e89062db947534cc61fb39f18c03c829ea79d0e12dbfa64a",
     "scope": "Derive the public development identity per call and refuse incomplete descriptor output."
+  },
+  "dodge_qemu_store_reservation_overlay": {
+    "path": "patches/oneplus13/0018-ios16-qemu-store-reservation.patch",
+    "sha256": "ff271de659a2379c56ec269a693f0418f15532aeac565019042f70db3e194608",
+    "base_source_sha256": "b1a0b5cfa90caca4b7c5e8b87279c51e3ab0d25aed4e4449045b80b9230cc21e",
+    "output_source_sha256": "8152966da1ca9ddaf928adb000400a2944e9843c8fd0c63c72348ae9685f2477",
+    "scope": "Reserve the marked QEMU Data backend from the read-only root driver in the separate persistence fixture."
   }
 }
