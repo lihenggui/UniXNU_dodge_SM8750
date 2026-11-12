@@ -5,6 +5,10 @@
   "scope": "Build, model-test and QEMU snapshots. Artifact and dependency hashes identify their recorded run. Use previous_indexes to resolve earlier report versions.",
   "previous_indexes": [
     {
+      "revision": "196c33a53faa6b1b8bbb1d9b4970ab14fe101b49",
+      "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/196c33a53faa6b1b8bbb1d9b4970ab14fe101b49/reports/public/index.json"
+    },
+    {
       "revision": "b4a0fbfe316d62fb29c8c09d435e055a337cda38",
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/b4a0fbfe316d62fb29c8c09d435e055a337cda38/reports/public/index.json"
     },
@@ -25,7 +29,7 @@
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/067b04a9f4544296ecc03a6ba26aa52d8cb0f6be/reports/public/index.json"
     }
   ],
-  "exporter_sha256": "ff9f2f2c541e68829d93696bc46c5e4590170658df63e83ae659ec2abe680a8d",
+  "exporter_sha256": "39436fb00acebe920865ddca2cf7c1cdc872896e36ca09286a65e8f29cfe28a6",
   "reports": {
     "a830-backend-tests.json": {
       "local_report": "reports/a830-backend-tests.json",
@@ -959,8 +963,8 @@
     },
     "native-a830-entry.json": {
       "local_report": "reports/native-a830-entry.json",
-      "original_sha256": "d55aa08ab952b843f465e77af5d4cc0af398f44f37b62f518a445336d1251866",
-      "snapshot_sha256": "d55aa08ab952b843f465e77af5d4cc0af398f44f37b62f518a445336d1251866",
+      "original_sha256": "419d0485c972ee03806063b4d85eaf4cde472ccbc52456b505e77bbb5f5f6d2f",
+      "snapshot_sha256": "419d0485c972ee03806063b4d85eaf4cde472ccbc52456b505e77bbb5f5f6d2f",
       "paths_normalized": false
     },
     "native-a830-firmware.json": {
@@ -995,14 +999,14 @@
     },
     "native-a830-payload.json": {
       "local_report": "reports/native-a830-payload.json",
-      "original_sha256": "c39942a16c2d5037012352fa6723d413913a7ca814ba90ec59652ae279f0e124",
-      "snapshot_sha256": "c39942a16c2d5037012352fa6723d413913a7ca814ba90ec59652ae279f0e124",
+      "original_sha256": "299008b84821bc57f43ff356473dac25ac388790d805b9256982162fa86b037a",
+      "snapshot_sha256": "299008b84821bc57f43ff356473dac25ac388790d805b9256982162fa86b037a",
       "paths_normalized": false
     },
     "native-a830-prelink.json": {
       "local_report": "reports/native-a830-prelink.json",
-      "original_sha256": "09ce37cf68f5b09c69535d4864a0b634f0fa5e3a04d2f2b660d846cfd5938f83",
-      "snapshot_sha256": "09ce37cf68f5b09c69535d4864a0b634f0fa5e3a04d2f2b660d846cfd5938f83",
+      "original_sha256": "7e296ab9a1cc60837f5f7e0a67f0e1debc3b91fb86ba599aa80b731bae084dbb",
+      "snapshot_sha256": "7e296ab9a1cc60837f5f7e0a67f0e1debc3b91fb86ba599aa80b731bae084dbb",
       "paths_normalized": false
     },
     "native-a830-recovery-host.json": {
@@ -1025,8 +1029,8 @@
     },
     "native-a830-stack.json": {
       "local_report": "reports/native-a830-stack.json",
-      "original_sha256": "b9e64a0e1a104408247caecde683b9760a6db43dd0dbd696f351234631b27593",
-      "snapshot_sha256": "b9e64a0e1a104408247caecde683b9760a6db43dd0dbd696f351234631b27593",
+      "original_sha256": "238095312c379499784804b8dd2f1faab2b36b3d752c22d2305152701c60bf88",
+      "snapshot_sha256": "238095312c379499784804b8dd2f1faab2b36b3d752c22d2305152701c60bf88",
       "paths_normalized": false
     },
     "native-a830-turnip.json": {

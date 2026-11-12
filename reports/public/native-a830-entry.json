@@ -1,35 +1,71 @@
 {
-  "result": "NATIVE_A830_QEMU_ENTRY_TO_INITIOKIT_PASS",
+  "result": "NATIVE_A830_QEMU_ENTRY_TO_BSD_INIT_PASS",
   "source_sha256": {
-    "scripts/check_native_a830_entry.py": "a6d938ef51a6d15e41737755d3085a7c9500d752fc7447790892b4858c55c0be",
+    "scripts/check_native_a830_entry.py": "af75c9cfd4e3df0f6aaa2d9d27d8e79711895cbe7016b0bff85999a8810b6807",
     "scripts/prepare_device_tree.py": "e8215e5b9e79724354f8d18dcd03cb82116ec7007c096217b6c6eafbe90ebfc6",
     "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
-    "sources/UniXNU/scripts/unixnu/devicetree.py": "cfda7d9aad326729d1e60bbf2db555c3d1af298d25747377b314dac007e8097d"
+    "sources/UniXNU/scripts/unixnu/devicetree.py": "cfda7d9aad326729d1e60bbf2db555c3d1af298d25747377b314dac007e8097d",
+    "scripts/image4_boot_policy.py": "6072c1b9c5c0ec1f1ea524f32c369b18dc063ea48c8764d21194b04d84cde5a1",
+    "profiles/os/ios-16.7.16-20H392/image4-boot.json": "69175873201e122e1399bab4466e87b5aa630e8c45a6d2b54c98b921fe891667",
+    "sources/xnu-ios16/security/mac_internal.h": "3f9400087ac1b680fc225b54b8449f03db429a989156eeea46ceff318f90b873",
+    "sources/xnu-ios16/security/mac_policy.h": "7f5b351bbdb15d0b9fa5d20fa95c60d127d115a37d5a2e404746184da523c20e"
   },
   "dependency_report_sha256": {
-    "reports/native-a830-payload.json": "c39942a16c2d5037012352fa6723d413913a7ca814ba90ec59652ae279f0e124",
+    "reports/native-a830-payload.json": "299008b84821bc57f43ff356473dac25ac388790d805b9256982162fa86b037a",
     "reports/native-a830-firmware.json": "d8853e10ce0be47bb86f714294119d9cc1e518ac2fe0e7e93ee9fca9da979766"
   },
   "artifacts": {
     "build/cph2653-native-a830-entry/entry/serial.log": "b32e9abd72cf5bfec0b8f1701fb789f24d7758028b3e0f601da961d0d3c679ac",
-    "build/cph2653-native-a830-entry/entry/qemu.log": "623ca2a3009cb72388140f6400935064e97d87b23e1c782449bfecff3762a2c4",
+    "build/cph2653-native-a830-entry/entry/qemu.log": "8901c787460b63e32d138ac04b27d7c60cf9726af5da4a502c25d17ee68ff44b",
+    "build/cph2653-native-a830-entry/entry/image4-boot-policy.json": "8a0608f483e46ae8831aca4333bfe9d597fab88c33b6f5aaa46402c19551730c",
     "build/cph2653-native-a830-entry/entry/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
     "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
-    "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/Payloads/kernel.macho": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
-    "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "312750dacdb5c21b011c81955a0aa6a3eb896e1e5260949d7963f2b5749f57d1",
+    "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/Payloads/kernel.macho": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
+    "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "98e34270c3113bef008f602afab42bd05442d1b8cc6e23a1840347312f7d1b9a",
     "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
     "build/cph2653-native-a830-entry/entry/esp/EFI/UniXNU/unixnu.toml": "cb0e2a70c501249f73f18c0a8b5ff9974d7723d4329cb88ca9507c02f45df992",
+    "build/cph2653-native-a830-entry/missing-policy/serial.log": "b32e9abd72cf5bfec0b8f1701fb789f24d7758028b3e0f601da961d0d3c679ac",
+    "build/cph2653-native-a830-entry/missing-policy/qemu.log": "8901c787460b63e32d138ac04b27d7c60cf9726af5da4a502c25d17ee68ff44b",
+    "build/cph2653-native-a830-entry/missing-policy/image4-boot-policy.json": "e20c29d05b250f8026af61f26a4ce8367e7dfdae094a34ff4ac5f2018a2f0828",
+    "build/cph2653-native-a830-entry/missing-policy/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+    "build/cph2653-native-a830-entry/missing-policy/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-native-a830-entry/missing-policy/esp/EFI/UniXNU/Payloads/kernel.macho": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
+    "build/cph2653-native-a830-entry/missing-policy/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "a671a900fbf9f6303ed2f94ef94ed296d2c1b1dd549cd51eae1190767587ef98",
+    "build/cph2653-native-a830-entry/missing-policy/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
+    "build/cph2653-native-a830-entry/missing-policy/esp/EFI/UniXNU/unixnu.toml": "cb0e2a70c501249f73f18c0a8b5ff9974d7723d4329cb88ca9507c02f45df992",
+    "build/cph2653-native-a830-entry/missing-nonce/serial.log": "b32e9abd72cf5bfec0b8f1701fb789f24d7758028b3e0f601da961d0d3c679ac",
+    "build/cph2653-native-a830-entry/missing-nonce/qemu.log": "8901c787460b63e32d138ac04b27d7c60cf9726af5da4a502c25d17ee68ff44b",
+    "build/cph2653-native-a830-entry/missing-nonce/image4-boot-policy.json": "f8e014dd2d230ab702af87204d6999ecd49bfd465a0a200e1e12f23316f48485",
+    "build/cph2653-native-a830-entry/missing-nonce/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+    "build/cph2653-native-a830-entry/missing-nonce/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-native-a830-entry/missing-nonce/esp/EFI/UniXNU/Payloads/kernel.macho": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
+    "build/cph2653-native-a830-entry/missing-nonce/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "dd7b15fc33407332b7a1859d70df1e533ab64298dcdb3cda8bb9bbe2b7dae892",
+    "build/cph2653-native-a830-entry/missing-nonce/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
+    "build/cph2653-native-a830-entry/missing-nonce/esp/EFI/UniXNU/unixnu.toml": "cb0e2a70c501249f73f18c0a8b5ff9974d7723d4329cb88ca9507c02f45df992",
+    "build/cph2653-native-a830-entry/missing-manifest/serial.log": "b32e9abd72cf5bfec0b8f1701fb789f24d7758028b3e0f601da961d0d3c679ac",
+    "build/cph2653-native-a830-entry/missing-manifest/qemu.log": "8901c787460b63e32d138ac04b27d7c60cf9726af5da4a502c25d17ee68ff44b",
+    "build/cph2653-native-a830-entry/missing-manifest/image4-boot-policy.json": "20002483994034ce7455bb50bd928571d268602164f78e64c1ef581dd57d7790",
+    "build/cph2653-native-a830-entry/missing-manifest/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+    "build/cph2653-native-a830-entry/missing-manifest/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-native-a830-entry/missing-manifest/esp/EFI/UniXNU/Payloads/kernel.macho": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
+    "build/cph2653-native-a830-entry/missing-manifest/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "da10ff0ac41bc1a5e3aebaf90446e55d819bb0bc1decdbc5fb978c9feb42ba8f",
+    "build/cph2653-native-a830-entry/missing-manifest/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
+    "build/cph2653-native-a830-entry/missing-manifest/esp/EFI/UniXNU/unixnu.toml": "cb0e2a70c501249f73f18c0a8b5ff9974d7723d4329cb88ca9507c02f45df992",
     "build/cph2653-native-a830-entry/missing-seed/serial.log": "3529627d609b85efaf477033cdd3c110300f3e4db6275686d3c59fcc467b2b3f",
-    "build/cph2653-native-a830-entry/missing-seed/qemu.log": "623ca2a3009cb72388140f6400935064e97d87b23e1c782449bfecff3762a2c4",
+    "build/cph2653-native-a830-entry/missing-seed/qemu.log": "8901c787460b63e32d138ac04b27d7c60cf9726af5da4a502c25d17ee68ff44b",
+    "build/cph2653-native-a830-entry/missing-seed/image4-boot-policy.json": "c08257b65055b86397b4168223b8548e359da4b2c8c1d0d2ea8ba9c9f42bf2d3",
     "build/cph2653-native-a830-entry/missing-seed/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
     "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
-    "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/Payloads/kernel.macho": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
-    "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "756a30b39332fbcd2f764631b1f84dad95722b83bbd304f377535bfcd971a5cc",
+    "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/Payloads/kernel.macho": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
+    "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "f48b461b168d21780ec89d1e3489effbfe3b053e999874edf95a295b6079b20e",
     "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
     "build/cph2653-native-a830-entry/missing-seed/esp/EFI/UniXNU/unixnu.toml": "cb0e2a70c501249f73f18c0a8b5ff9974d7723d4329cb88ca9507c02f45df992",
-    "build/cph2653-native-a830-prelink/kernel.macho": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
+    "build/cph2653-native-a830-prelink/kernel.macho": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
     "build/cph2653-native-a830-firmware/tree/Build/dodgePkg/DEBUG_CLANGPDB/AARCH64/UniXNU.efi": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
-    "build/cph2653-native-a830-firmware/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84"
+    "build/cph2653-native-a830-firmware/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-image4-abi/PolicyLayout.c": "f70f46add85f5f3e8d5b30cc19e7c93a9eaff68ad825c121d63c75432818d8f5",
+    "build/cph2653-image4-abi/PolicyLayout.o": "0c9de8b7a812cc566446fcb76223fa4c81b2f7ac0211213fe672465de0c16ef0",
+    "build/cph2653-image4-abi/compile-commands.json": "5b1ee95ea8cc083f7d3f31ae7b2137c42fb7cdde24e61f75a11a067b95a629a5"
   },
   "emulator_sha256": {
     ".toolchains/qemu/usr/bin/qemu-system-aarch64": "0a63468782d096485932acf6aa0a69d358b3e3a6f68f655e960e9f5e3fc578d8",
@@ -45,7 +81,7 @@
   "DarwinBoot_owned_bytes": 1073741824,
   "product": "iPhone10,3",
   "build": "20H392",
-  "candidate_sha256": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
+  "candidate_sha256": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
   "checkpoints": [
     {
       "symbol": "_arm_init",
@@ -82,24 +118,96 @@
         "TTBR1_EL1": "0x44a35000",
         "TCR_EL1": "0x22a51a251a"
       }
+    },
+    {
+      "symbol": "_bsd_init",
+      "pc": "0xfffffff007700c98",
+      "lr": "0xfffffff007304990",
+      "pstate": "0x80400204",
+      "translation_registers": {
+        "SCTLR_EL1": "0x3454593d",
+        "TTBR0_EL1": "0x44a34000",
+        "TTBR1_EL1": "0x44a35000",
+        "TCR_EL1": "0x22a51a251a"
+      }
     }
   ],
   "next_stop": {
     "symbol": "_panic",
     "pc": "0xfffffff007a79690",
-    "lr": "0xfffffff0046e9f60",
-    "format": "failed to get mix-n-match policy: %d",
-    "error": "0x30003"
+    "lr": "0xfffffff007998abc",
+    "format": "Failed to mount root device @%s:%d",
+    "source_line": 978
   },
   "negative_control": {
     "result": "REJECTED",
     "case": "missing-entropy-reservation",
     "kernel_entered": false
   },
+  "registered_MAC_policies": [
+    {
+      "name": "AppleImage4",
+      "registered": true,
+      "record": "0xfffffff005caf458",
+      "original_operations": "0xfffffff005caf4a8"
+    },
+    {
+      "name": "AMFI",
+      "registered": true,
+      "record": "0xfffffff005cb78a0",
+      "original_operations": "0xfffffff005cb6e28"
+    },
+    {
+      "name": "Sandbox",
+      "registered": true,
+      "record": "0xfffffff005ef8d38",
+      "original_operations": "0xfffffff005ef8d98"
+    }
+  ],
+  "compiler_MAC_layout": {
+    "list_bytes": 32,
+    "numloaded": 0,
+    "max": 4,
+    "maxindex": 8,
+    "entries": 24,
+    "element_bytes": 8,
+    "conf_bytes": 80,
+    "mpc_name": 0,
+    "mpc_ops": 32,
+    "mpc_runtime_flags": 56,
+    "registered_flag": 1
+  },
+  "policy_failure_controls": {
+    "missing-policy": {
+      "symbol": "_panic",
+      "pc": "0xfffffff007a79690",
+      "lr": "0xfffffff0046e9f60",
+      "format": "failed to get mix-n-match policy: %d",
+      "result": "REJECTED",
+      "error": "0x2"
+    },
+    "missing-nonce": {
+      "symbol": "_panic",
+      "pc": "0xfffffff007a79690",
+      "lr": "0xfffffff0046e9f8c",
+      "format": "failed to read boot nonce hash: secure boot level = %#llx: %d",
+      "result": "REJECTED",
+      "error": "0x2"
+    },
+    "missing-manifest": {
+      "symbol": "_panic",
+      "pc": "0xfffffff007a79690",
+      "lr": "0xfffffff0046e9f74",
+      "format": "failed to get previous stage manifest hash: %d",
+      "result": "REJECTED",
+      "error": "0x2"
+    }
+  },
   "kernel_or_register_patches": false,
-  "synthetic_boot_policy_supplied": false,
+  "owner_development_policy_supplied": true,
+  "Apple_personalization_supplied": false,
   "system_booted": false,
   "hardware_tested": false,
   "phone_operations": "none",
-  "scope": "Actual UniXNU.efi, fresh-entropy DarwinBoot and the packaged ordinary-arm64 iPhone kernel execute in QEMU TCG through three function-entry checkpoints. The fixture replaces board resources with QEMU RAM, CPU and GICv3 while retaining iPhone identity. Original Image4 then refuses the missing mix-n-match policy. Missing entropy is refused before ExitBootServices. Board firmware, GPU MMIO and original user space are not executed."
+  "scope": "Actual UniXNU.efi, fresh-entropy DarwinBoot and the packaged ordinary-arm64 iPhone kernel execute in QEMU TCG through bsd_init. The live MAC list contains original AppleImage4, AMFI and Sandbox registered once. A separate owner development manifest binds the virtual ADT, kernel and trust cache. Missing policy, nonce and manifest inputs still panic in original Image4, and missing entropy is refused before ExitBootServices. Root mounting fails because this fixture has no root device. Board firmware, GPU MMIO and original user space are not executed."
 }

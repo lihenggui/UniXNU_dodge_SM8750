@@ -19,7 +19,7 @@ download URL, BuildManifest identity and hashes.
 [upstream.lock.json](../upstream.lock.json) pins source revisions and patches.
 
 The [official guide](https://unixnu.com/porting/) was reviewed on 2026-11-11
-against UniXNU `c72a8a52589ef205bfbe4667fd7b01964468b5e9`. Follow its order:
+against UniXNU `13d0779e2ccd30d3caa1f8c9a15202730feace67`. Follow its order:
 resolve the board and OS profile, verify memory and firmware, build platform
 services, then add storage, display, input and GPU support. Keep host results
 and device observations separate in [porting.toml](../porting.toml).
@@ -242,6 +242,11 @@ four IOSurface lifecycle hooks and the embedded firmware bytes. Turnip, the
 Rust bridge and the Metal plugin use separate native build directories.
 `--record-existing` validates completed stages and records them without a rebuild.
 
+The native prelink derives security startup from the original module records.
+Sandbox's normal start already calls its policy initializer, so its extra
+early hook is omitted. AMFI retains the explicit initializer required by its
+empty start slot. Both original wrappers and their pointer slots are read back.
+
 The adapter adds task-authorized surface-ID import as selector 19. Selectors
 17/18 retain their known record sizes and return Unsupported; this backend
 uses its existing FIFO submission policy. Each job holds all current VM
@@ -275,6 +280,17 @@ payloads. The actual EFI loader runs in an ARM64 model with these files; their
 final memory-map addresses and bytes are read back. The model also checks fresh
 seed consumption and the original 18-test crypto POST.
 
+The development payload supplies Image4's boot inputs through an owner boot-set
+manifest. SHA-384 binds the kernel, trust cache, addon, packed Data seed and
+device tree. A private nonce generated per payload build supplies `BNCH`, and
+`mix-n-match-prevention-status = 1` keeps manifest mixing disabled. The manifest
+uses the `UniXNU.Dodge.Image4BootSet.v1` domain. It describes the development
+files; Apple personalization and hardware security state remain separate.
+The loader still obtains fresh kernel entropy on every handoff. Binding checks
+normalize that entropy and the loader's memory-map address/size records while keeping
+the static device tree covered. Twelve host cases check binding, changed inputs,
+nonce rotation and preservation of pre-existing firmware policy.
+
 The development container retains the packed 2 GiB Data seed and boot arguments
 `-v serial=0 debug=0x14e cpus=1`. Graphics and Data startup remain opt-in through
 the existing `dodge-graphics`, `dodge-data` and `dodge-data-mount` arguments.
@@ -307,12 +323,17 @@ substitutes QEMU RAM, CPU and GICv3 resources in a separate device tree. Its
 1 GiB owned window and 2 GiB VM RAM apply only to this fixture. Use `--qemu`,
 `--firmware`, `--firmware-vars` and `--rom-dir` for other installation paths.
 
-The current kernel reaches `arm_init`, `kernel_bootstrap` and `InitIOKit` at
-EL1 with the MMU enabled and 4 KiB translation tables. Original Image4 then
-panics with `failed to get mix-n-match policy: %d` (`0x30003`); the boot input
-still needs a defined `mix-n-match-prevention-status` policy. The runner also
-checks that an ADT without its entropy reservation is refused before
-ExitBootServices. Logs are under `build/cph2653-native-a830-entry/`, and the
+The current kernel reaches `arm_init`, `kernel_bootstrap`, `InitIOKit` and
+`bsd_init` at EL1 with the MMU enabled and 4 KiB translation tables. The runner
+reads the live MAC policy list using a layout compiled from Darwin 22 headers:
+AppleImage4, AMFI and Sandbox are each registered once. The next stop is
+`Failed to mount root device`, because this fixture has no root block device.
+
+The virtual device tree receives its own manifest after resource substitution.
+Three negative runs omit the mixing policy, `BNCH` or the previous-stage
+manifest hash; original Image4 refuses each input. A fourth run omits the
+entropy reservation and is refused before ExitBootServices.
+Logs are under `build/cph2653-native-a830-entry/`, and the
 published result is [native-a830-entry.json](../reports/public/native-a830-entry.json).
 
 This run exercises early kernel startup under TCG. OnePlus firmware, board

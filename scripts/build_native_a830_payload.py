@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import shutil
 import struct
+import subprocess
 import sys
 import tomllib
 from types import SimpleNamespace
@@ -20,6 +21,7 @@ from native_driver_build import ROOT, require, sha
 from prepare_device_tree import parse_adt
 from prepare_crypto_execution import FIXTURE as POST_FIXTURE
 from prepare_ios16_crypto import FIXTURE as OWNER_FIXTURE
+from image4_boot_policy import CONTRACT as IMAGE4_CONTRACT, prepare_policy, check_policy
 
 OUT = ROOT / 'build/cph2653-native-a830-bringup'
 REPORT = ROOT / 'reports/native-a830-payload.json'
@@ -56,6 +58,8 @@ def check_report(report):
             'Incomplete native payload report')
     for name, digest in {**report['source_sha256'], **report['dependency_report_sha256'], **report['artifacts']}.items():
         require(sha(ROOT / name) == digest, 'Native payload input changed: ' + name)
+    check_policy((ROOT / report['image4_adt']).read_bytes(), report['image4_boot_policy'],
+                 {name: (ROOT / path).read_bytes() for name, path in report['image4_boot_inputs'].items()})
 
 
 def main():
@@ -66,7 +70,13 @@ def main():
     check_prelink(prelink);check_firmware(firmware);check_addon(addon)
     baseline_path = ROOT / 'reports/ios16-crypto-payload.json';baseline = json.loads(baseline_path.read_text())
     old_fat = ROOT / baseline['payload'];require(sha(old_fat) == baseline['payload_sha256'], 'Baseline FAT changed')
-    OUT.mkdir(parents=True, exist_ok=True);fat = OUT / 'payload.img';shutil.copyfile(old_fat, fat)
+    OUT.mkdir(parents=True, exist_ok=True)
+    tests = subprocess.run([sys.executable, ROOT / 'scripts/test_image4_boot_policy.py'], capture_output=True, text=True)
+    test_log = OUT / 'boot-policy-tests.log';test_log.write_text(tests.stdout + tests.stderr)
+    require(not tests.returncode, 'Owner boot-policy tests failed; inspect boot-policy-tests.log')
+    policy_tests = json.loads(tests.stdout)
+    require(policy_tests['result'] == 'PASS' and policy_tests['test_cases'] >= 12, 'Owner boot-policy coverage is incomplete')
+    fat = OUT / 'payload.img';shutil.copyfile(old_fat, fat)
     old_files = extract_fat(old_fat, OUT / 'old-readback')
     directory = OUT / 'stage';directory.mkdir(exist_ok=True)
     original_adt = OUT / 'old-readback/EFI/UniXNU/Payloads/kernel.macho.adt'
@@ -87,9 +97,14 @@ def main():
         text += '[[entry]]\nid = "tools"\ntitle = "Tools"\ntype = "action"\naction = "tools"\n'
     configuration = directory / 'unixnu.toml';configuration.write_text(text)
     candidate = ROOT / prelink['candidate'];trust = ROOT / addon['trust_bundle'];gpu_addon = ROOT / addon['addon']
+    policy_inputs = {'kernel.macho': candidate, 'kernel.macho.trustcache': trust, 'kernel.macho.gpuaddon': gpu_addon,
+                     'scratch-data.img': OUT / 'old-readback/EFI/UniXNU/Payloads/scratch-data.img'}
+    policy_components = {name: path.read_bytes() for name, path in policy_inputs.items()}
+    policy_adt, policy = prepare_policy(adt.read_bytes(), policy_components)
+    adt.write_bytes(policy_adt)
+    policy_path = directory / 'image4-boot-policy.json';policy_path.write_text(json.dumps(policy, indent=2) + '\n')
     copies = [(candidate, 'Payloads/kernel.macho'), (adt, 'Payloads/kernel.macho.adt'),
               (trust, 'Payloads/kernel.macho.trustcache'), (gpu_addon, 'Payloads/kernel.macho.gpuaddon'), (configuration, 'unixnu.toml')]
-    import subprocess
     expected = dict(old_files)
     for path, name in copies:
         subprocess.run(['mcopy', '-o', '-i', fat, path, '::/EFI/UniXNU/' + name], capture_output=True, check=True)
@@ -107,6 +122,7 @@ def main():
              '\\kernel.macho.trustcache': trust.read_bytes(), '\\kernel.macho.gpuaddon': gpu_addon.read_bytes()}
     model = Firmware(efi.read_bytes(), mapping, facts, files, disk.read_bytes(), 'normal')
     handoff, tree, seed = model.run();properties = parse_adt(tree)['/chosen/memory-map'];handoff_files = {}
+    check_policy(tree, policy, policy_components)
     for name, path in (('TrustCache', trust), ('GpuAddon', gpu_addon)):
         address, length = struct.unpack('<QQ', properties[name])
         require(length == path.stat().st_size and model.read(address, length) == path.read_bytes(), 'Actual EFI handoff differs: ' + name)
@@ -126,9 +142,10 @@ def main():
     sources = [Path(__file__), ROOT / 'scripts/boot_entropy_execution.py', ROOT / 'scripts/check_boot_entropy_kernel.py',
         ROOT / 'scripts/build_mapped_lease_payload.py', ROOT / 'sources/UniXNU/scripts/unixnu/bootimg.py',
         ROOT / 'scripts/prepare_device_tree.py', ROOT / 'scripts/original_crypto_execution.py',
+        ROOT / 'scripts/image4_boot_policy.py', ROOT / 'scripts/test_image4_boot_policy.py', IMAGE4_CONTRACT,
         ROOT / 'scripts/prepare_crypto_execution.py', POST_FIXTURE, OWNER_FIXTURE,
         ROOT / 'board.toml', mu / 'BootShim/BootShim.S', mu / 'Resources/Configs/dodge.toml']
-    artifacts = [fat, boot, OUT / 'boot.json', cpu, adt, configuration]
+    artifacts = [fat, boot, OUT / 'boot.json', cpu, adt, configuration, policy_path, test_log]
     report = {'result': 'NATIVE_A830_COMPLETE_LOCAL_PAYLOAD_PASS',
         'source_sha256': {str(p.relative_to(ROOT)): sha(p) for p in sources},
         'dependency_report_sha256': {str(p.relative_to(ROOT)): sha(p) for p in
@@ -138,10 +155,16 @@ def main():
         'boot_image': str(boot.relative_to(ROOT)), 'boot_image_sha256': sha(boot), 'boot_image_bytes': boot.stat().st_size,
         'firmware': firmware['firmware'], 'firmware_sha256': sha(fd), 'linked_source_objects': prelink['combined_source_objects'],
         'kernel_args': entry['args'], 'boot_header_version': 4, 'fat_files': actual, 'handoff_files': handoff_files,
+        'image4_boot_policy': policy, 'image4_adt': str(adt.relative_to(ROOT)),
+        'boot_policy_host_tests': policy_tests,
+        'image4_boot_inputs': {name: str(path.relative_to(ROOT)) for name, path in policy_inputs.items()},
+        'Apple_personalization_supplied': False, 'owner_nonce_lifetime': 'payload-build',
         'actual_EFI_handoff_model': 'PASS', 'original_POST_tests_in_model': len(final_seed['actual_post_tests']),
         'original_userspace_included': False, 'default_kernel_selected': False, 'hardware_tested': False,
         'phone_operations': 'none', 'scope': 'Separate native A830 kernel, entropy/logger firmware, runtime addon and exact iPhone trust inputs. '
         'All FAT files, the actual EFI addon/trust memory handoff, native seed/POST model and Android v4 container are checked. '
+        'An owner development boot-set manifest binds kernel, trust cache, addon, Data seed and normalized ADT, with mixing disabled '
+        'and a nonce generated for this payload build. It is not an Apple personalized manifest or a hardware fuse report. '
         'The packed Data seed and original boot arguments are retained. System boot and hardware remain untested.'}
     check_report(report);REPORT.write_text(json.dumps(report, indent=2) + '\n')
     print('PASS: native A830 development FAT/Android v4 container; actual EFI addon/trust handoff and original 18-test POST model')

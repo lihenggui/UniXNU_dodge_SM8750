@@ -44,6 +44,7 @@ jobs:
           python3 scripts/test_ios_profile.py
           python3 scripts/test_bootimg.py
           python3 scripts/test_source_series.py
+          python3 scripts/test_image4_boot_policy.py
           python3 scripts/check_source_patches.py
           python3 scripts/check_ios16_patches.py
           mkdir -p build

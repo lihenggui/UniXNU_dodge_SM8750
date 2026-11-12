@@ -16,39 +16,48 @@ from build_native_a830_firmware import REPORT as FIRMWARE_REPORT, check_report a
 from native_driver_build import ROOT, require, sha, symbols
 from prepare_device_tree import parse_adt
 from unixnu.devicetree import node
+from image4_boot_policy import (CONTRACT as IMAGE4_CONTRACT, checked_contract, compile_policy_layout,
+                               encode_tree, prepare_policy, strip_policy)
 
 OUT = ROOT / 'build/cph2653-native-a830-entry'
 REPORT = ROOT / 'reports/native-a830-entry.json'
-CHECKPOINTS = ('_arm_init', '_kernel_bootstrap', '_InitIOKit')
+CHECKPOINTS = ('_arm_init', '_kernel_bootstrap', '_InitIOKit', '_bsd_init')
 POLICY_PANIC = 'failed to get mix-n-match policy: %d'
+ROOT_PANIC = 'Failed to mount root device @%s:%d'
+POLICY_FAILURES = {'missing-policy': POLICY_PANIC,
+    'missing-nonce': 'failed to read boot nonce hash: secure boot level = %#llx: %d',
+    'missing-manifest': 'failed to get previous stage manifest hash: %d'}
 MENU = ROOT / 'build/cph2653-native-a830-firmware/tree/Build/dodgePkg/DEBUG_CLANGPDB/AARCH64/UniXNU.efi'
 
 
 def check_report(report):
-    require(report['result'] == 'NATIVE_A830_QEMU_ENTRY_TO_INITIOKIT_PASS' and
+    require(report['result'] == 'NATIVE_A830_QEMU_ENTRY_TO_BSD_INIT_PASS' and
             [row['symbol'] for row in report['checkpoints']] == list(CHECKPOINTS) and
-            report['next_stop']['format'] == POLICY_PANIC and report['negative_control']['result'] == 'REJECTED' and
+            report['next_stop']['format'] == ROOT_PANIC and report['negative_control']['result'] == 'REJECTED' and
             not report['hardware_tested'] and not report['system_booted'], 'Incomplete native QEMU entry report')
+    require(len(report['registered_MAC_policies']) == 3 and
+            {row['name'] for row in report['registered_MAC_policies']} == {'AppleImage4', 'AMFI', 'Sandbox'} and
+            all(row['registered'] for row in report['registered_MAC_policies']) and
+            report['compiler_MAC_layout'] == checked_contract()['mac_policy_layout'] and
+            set(report['policy_failure_controls']) == set(POLICY_FAILURES) and
+            all(row['result'] == 'REJECTED' and row['format'] == POLICY_FAILURES[name]
+                for name, row in report['policy_failure_controls'].items()), 'Original security registration or refusal coverage differs')
     for name, digest in {**report['source_sha256'], **report['dependency_report_sha256'], **report['artifacts'],
                          **report['emulator_sha256']}.items():
         require(sha(ROOT / name) == digest, 'Native QEMU entry input changed: ' + name)
 
 
-def virtual_tree(board, missing_seed=False):
+def virtual_tree(board):
     """Retain the target identity; replace board resources with QEMU resources."""
-    original = parse_adt(board)
+    original = strip_policy(parse_adt(board))
     require(original['/']['model'] == b'iPhone10,3\0' and
             original['/chosen']['chip-id'] == struct.pack('<I', 0x8015), 'Entry fixture needs the pinned iPhone target')
     chosen = dict(original['/chosen'])
     chosen.update({'dram-base': struct.pack('<Q', 0x40000000), 'dram-size': struct.pack('<Q', 2 << 30),
                    'darwinboot-memory-size': struct.pack('<Q', 1 << 30), 'unique-chip-id': bytes(8)})
-    if missing_seed:
-        chosen.pop('random-seed')
-    else:
-        chosen['random-seed'] = os.urandom(256)
-    # No Image4 policy or fuse values are invented to pass the next startup
-    # dependency. In particular, do not copy the static IPSW's zero placeholders.
-    require('mix-n-match-prevention-status' not in chosen, 'Review the newly supplied boot policy before changing this fixture')
+    chosen['random-seed'] = os.urandom(256)
+    # The caller builds a separate owner manifest after changing resources.
+    # The VM does not reuse the handset's boot-set identity or private ECID.
 
     def properties(values):
         return [(key, value) for key, value in values.items() if key != 'name']
@@ -135,20 +144,54 @@ class Remote:
         return result
 
 
-def run_case(case, qemu, firmware, variables, roms, env, names, timeout, missing_seed):
+def registered_policies(remote, names, layout):
+    header = remote.memory(names['_mac_policy_list'], layout['list_bytes'])
+    loaded, maximum, last = [struct.unpack_from('<I', header, layout[key])[0] for key in ('numloaded', 'max', 'maxindex')]
+    entries, = struct.unpack_from('<Q', header, layout['entries'])
+    require(0 < loaded <= maximum <= 64 and last < maximum and entries, 'Invalid live MAC policy list')
+    result = []
+    for index in range(last + 1):
+        pointer, = struct.unpack('<Q', remote.memory(entries + index * layout['element_bytes'], 8))
+        if not pointer:
+            continue
+        data = remote.memory(pointer, layout['conf_bytes'])
+        label, = struct.unpack_from('<Q', data, layout['mpc_name'])
+        operations, = struct.unpack_from('<Q', data, layout['mpc_ops'])
+        flags, = struct.unpack_from('<I', data, layout['mpc_runtime_flags'])
+        text = remote.memory(label, 64)
+        require(b'\0' in text and operations, 'Incomplete live MAC policy')
+        result.append({'name': text.split(b'\0')[0].decode(), 'registered': bool(flags & layout['registered_flag']),
+                       'record': hex(pointer), 'original_operations': hex(operations)})
+    require(len(result) == loaded and len({row['name'] for row in result}) == loaded,
+            'MAC policies are missing or duplicated')
+    return result
+
+
+def run_case(case, qemu, firmware, variables, roms, env, names, timeout, missing_seed, layout):
     directory = OUT / case
     esp = directory / 'esp'
     payloads = esp / 'EFI/UniXNU/Payloads'
     for path in (payloads, esp / 'EFI/BOOT', esp / 'EFI/UniXNU/Drivers'):
         path.mkdir(parents=True, exist_ok=True)
     source = ROOT / 'build/cph2653-native-a830-bringup/readback/EFI/UniXNU/Payloads'
-    tree = virtual_tree((source / 'kernel.macho.adt').read_bytes(), missing_seed)
-    (payloads / 'kernel.macho.adt').write_bytes(tree)
     for src, dest in ((MENU, esp / 'EFI/BOOT/BOOTAA64.EFI'),
                       (ROOT / 'build/cph2653-native-a830-firmware/DarwinBoot.efi', esp / 'EFI/UniXNU/Drivers/DarwinBoot.efi'),
                       (source / 'kernel.macho', payloads / 'kernel.macho'),
                       (source / 'kernel.macho.trustcache', payloads / 'kernel.macho.trustcache')):
         shutil.copyfile(src, dest)
+    components = {name: (payloads / name).read_bytes() for name in ('kernel.macho', 'kernel.macho.trustcache')}
+    tree, policy = prepare_policy(virtual_tree((source / 'kernel.macho.adt').read_bytes()), components)
+    policy_path = directory / 'image4-boot-policy.json';policy_path.write_text(json.dumps(policy, indent=2) + '\n')
+    nodes = parse_adt(tree)
+    if missing_seed:
+        del nodes['/chosen']['random-seed']
+    if case == 'missing-policy':
+        del nodes['/chosen']['mix-n-match-prevention-status']
+    if case == 'missing-nonce':
+        del nodes['/chosen/manifest-properties']['BNCH']
+    if case == 'missing-manifest':
+        del nodes['/chosen']['boot-manifest-hash']
+    (payloads / 'kernel.macho.adt').write_bytes(encode_tree(nodes))
     configuration = esp / 'EFI/UniXNU/unixnu.toml'
     configuration.write_text('version = 1\n[boot]\ntimeout = 0\ndefault = "xnu"\n[kits]\nautoload = false\n'
         '[[driver]]\npath = "Drivers/DarwinBoot.efi"\n[[entry]]\nid = "xnu"\ntype = "xnu"\n'
@@ -165,7 +208,8 @@ def run_case(case, qemu, firmware, variables, roms, env, names, timeout, missing
         '-drive', f'if=none,id=esp,format=raw,readonly=on,file=fat:{esp}', '-device', 'virtio-blk-pci,drive=esp',
         '-device', 'virtio-rng-pci', '-device', 'ramfb', '-nic', 'none', '-display', 'none', '-monitor', 'none',
         '-no-reboot', '-serial', f'file:{serial}', '-gdb', f'tcp:127.0.0.1:{port}', '-S']
-    stopped, registers = [], {}
+    require(len([path for path in esp.rglob('*') if path.is_file()]) == 6, 'Unexpected extra files in the QEMU ESP')
+    stopped, registers, policies = [], {}, []
     deadline = time.monotonic() + timeout
     with (directory / 'qemu.log').open('w') as log:
         process = subprocess.Popen(list(map(str, command)), env=env, stdout=log, stderr=log)
@@ -192,7 +236,7 @@ def run_case(case, qemu, firmware, variables, roms, env, names, timeout, missing
                 remote = Remote(stream, deadline, idle)
                 remote.packet('qSupported')
                 require(remote.packet('?').startswith('T'), 'QEMU did not stop for GDB')
-                targets = (*CHECKPOINTS, '_bsd_init', '_panic')
+                targets = (*CHECKPOINTS, '_panic')
                 for name in targets:
                     require(remote.packet(f'Z1,{names[name]:x},4') == 'OK', 'QEMU refused an execution breakpoint')
                 try:
@@ -205,8 +249,17 @@ def run_case(case, qemu, firmware, variables, roms, env, names, timeout, missing
                         require(not missing_seed, 'Kernel entry accepted an ADT without an entropy reservation')
                         if name == '_panic':
                             message = remote.memory(values[0], 128).split(b'\0')[0].decode()
-                            require(message == POLICY_PANIC and values[1] == 0x30003, 'Unexpected startup panic: ' + message)
-                            stop = {'symbol': name, 'pc': hex(pc), 'lr': hex(lr), 'format': message, 'error': hex(values[1])}
+                            expected = POLICY_FAILURES.get(case, ROOT_PANIC)
+                            require(message == expected, 'Unexpected startup panic: ' + message)
+                            # Apple's arm64 ABI passes variadic arguments on the stack.
+                            arguments = struct.unpack('<2Q', remote.memory(values[31], 16))
+                            stop = {'symbol': name, 'pc': hex(pc), 'lr': hex(lr), 'format': message}
+                            if case in POLICY_FAILURES:
+                                require([row['symbol'] for row in stopped] == list(CHECKPOINTS[:3]), 'Unexpected policy-refusal depth')
+                                stop.update(result='REJECTED', error=hex(arguments[1] if case == 'missing-nonce' else arguments[0]))
+                            else:
+                                require([row['symbol'] for row in stopped] == list(CHECKPOINTS), 'Root refusal preceded BSD initialization')
+                                stop['source_line'] = arguments[1]
                             break
                         require(len(stopped) < len(CHECKPOINTS) and name == CHECKPOINTS[len(stopped)],
                                 'Unexpected kernel checkpoint: ' + name)
@@ -216,6 +269,10 @@ def run_case(case, qemu, firmware, variables, roms, env, names, timeout, missing
                                 (registers['TCR_EL1'] >> 30) & 3 == 2, 'XNU did not enter EL1 with 4 KiB translation tables')
                         stopped.append({'symbol': name, 'pc': hex(pc), 'lr': hex(lr), 'pstate': hex(pstate),
                                         'translation_registers': {key: hex(value) for key, value in registers.items()}})
+                        if name == '_bsd_init':
+                            policies = registered_policies(remote, names, layout)
+                            require({row['name'] for row in policies} == {'AppleImage4', 'AMFI', 'Sandbox'} and
+                                    all(row['registered'] for row in policies), 'Original security policies did not register')
                         print('QEMU:', name, 'EL1, MMU enabled, 4 KiB tables', flush=True)
                         require(remote.packet(f'z1,{pc:x},4') == 'OK', 'QEMU could not release a reached checkpoint')
                 except Refused:
@@ -231,11 +288,13 @@ def run_case(case, qemu, firmware, variables, roms, env, names, timeout, missing
     text = serial.read_text(errors='replace')
     require('DARWINBOOT: loader v2 installed EL1' in text, 'Actual DarwinBoot did not run')
     if not missing_seed:
-        require(len(stopped) == len(CHECKPOINTS) and 'DARWINBOOT: inputs validated; exiting boot services' in text,
+        require(len(stopped) == (3 if case in POLICY_FAILURES else len(CHECKPOINTS)) and
+                'DARWINBOOT: inputs validated; exiting boot services' in text,
                 'Actual EFI handoff or XNU checkpoints are incomplete')
     else:
         require('exiting boot services' not in text, 'Entropy refusal crossed ExitBootServices')
-    return stopped, stop, [serial, directory / 'qemu.log', *sorted(path for path in esp.rglob('*') if path.is_file())]
+    return stopped, stop, [serial, directory / 'qemu.log', policy_path,
+                          *sorted(path for path in esp.rglob('*') if path.is_file())], policies
 
 
 def main():
@@ -249,7 +308,7 @@ def main():
     args = parser.parse_args()
     if args.check_only:
         check_report(json.loads(REPORT.read_text()))
-        print('PASS: recorded QEMU iPhone entry through InitIOKit; startup policy remains unresolved')
+        print('PASS: recorded QEMU iPhone entry through bsd_init and three original MAC policies; root device remains absent')
         return
     require(10 <= args.timeout <= 300, 'Choose a 10..300 second timeout per QEMU case')
     payload = json.loads(PAYLOAD_REPORT.read_text())
@@ -282,12 +341,21 @@ def main():
     kernel = ROOT / 'build/cph2653-native-a830-prelink/kernel.macho'
     require(sha(kernel) == payload['fat_files']['EFI/UniXNU/Payloads/kernel.macho'], 'QEMU and packaged kernels differ')
     names = {row['name']: row['value'] for row in symbols(kernel.read_bytes()) if row['kind'] & 0xe}
-    checkpoints, stop, artifacts = run_case('entry', qemu, firmware, variables, roms, env, names, args.timeout, False)
-    _, control, extra = run_case('missing-seed', qemu, firmware, variables, roms, env, names, args.timeout, True)
+    layout, abi_artifacts = compile_policy_layout()
+    require(layout == checked_contract()['mac_policy_layout'], 'Actual Darwin 22 MAC ABI differs from the reviewed layout')
+    checkpoints, stop, artifacts, policies = run_case('entry', qemu, firmware, variables, roms, env, names, args.timeout, False, layout)
+    controls = {}
+    for case in POLICY_FAILURES:
+        _, controls[case], extra, _ = run_case(case, qemu, firmware, variables, roms, env, names, args.timeout, False, layout)
+        artifacts += extra
+    _, control, extra, _ = run_case('missing-seed', qemu, firmware, variables, roms, env, names, args.timeout, True, layout)
     artifacts += extra + [kernel, MENU, ROOT / 'build/cph2653-native-a830-firmware/DarwinBoot.efi']
-    report = {'result': 'NATIVE_A830_QEMU_ENTRY_TO_INITIOKIT_PASS',
+    artifacts += abi_artifacts
+    report = {'result': 'NATIVE_A830_QEMU_ENTRY_TO_BSD_INIT_PASS',
         'source_sha256': {str(p.relative_to(ROOT)): sha(p) for p in (Path(__file__), ROOT / 'scripts/prepare_device_tree.py',
-            ROOT / 'scripts/native_driver_build.py', ROOT / 'sources/UniXNU/scripts/unixnu/devicetree.py')},
+            ROOT / 'scripts/native_driver_build.py', ROOT / 'sources/UniXNU/scripts/unixnu/devicetree.py',
+            ROOT / 'scripts/image4_boot_policy.py', IMAGE4_CONTRACT, ROOT / 'sources/xnu-ios16/security/mac_internal.h',
+            ROOT / 'sources/xnu-ios16/security/mac_policy.h')},
         'dependency_report_sha256': {str(p.relative_to(ROOT)): sha(p) for p in (PAYLOAD_REPORT, FIRMWARE_REPORT)},
         'artifacts': {str(p.relative_to(ROOT)): sha(p) for p in artifacts},
         'emulator_sha256': {str(p.relative_to(ROOT) if p.is_relative_to(ROOT) else p): sha(p)
@@ -295,16 +363,18 @@ def main():
         'qemu_version': version, 'acceleration': 'TCG', 'CPU': 'max', 'CPUs': 1, 'RAM_bytes': 2 << 30,
         'DarwinBoot_owned_bytes': 1 << 30, 'product': 'iPhone10,3', 'build': '20H392',
         'candidate_sha256': sha(kernel), 'checkpoints': checkpoints, 'next_stop': stop, 'negative_control': control,
-        'kernel_or_register_patches': False, 'synthetic_boot_policy_supplied': False,
+        'registered_MAC_policies': policies, 'compiler_MAC_layout': layout, 'policy_failure_controls': controls,
+        'kernel_or_register_patches': False, 'owner_development_policy_supplied': True, 'Apple_personalization_supplied': False,
         'system_booted': False, 'hardware_tested': False, 'phone_operations': 'none',
         'scope': 'Actual UniXNU.efi, fresh-entropy DarwinBoot and the packaged ordinary-arm64 iPhone kernel execute '
-                 'in QEMU TCG through three function-entry checkpoints. The fixture replaces board resources with '
-                 'QEMU RAM, CPU and GICv3 while retaining iPhone identity. Original Image4 then refuses the missing '
-                 'mix-n-match policy. Missing entropy is refused before ExitBootServices. Board firmware, GPU MMIO '
-                 'and original user space are not executed.'}
+                 'in QEMU TCG through bsd_init. The live MAC list contains original AppleImage4, AMFI and Sandbox '
+                 'registered once. A separate owner development manifest binds the virtual ADT, kernel and trust cache. '
+                 'Missing policy, nonce and manifest inputs still panic in original Image4, and missing entropy is refused '
+                 'before ExitBootServices. Root mounting fails because this fixture has no root device. Board firmware, '
+                 'GPU MMIO and original user space are not executed.'}
     check_report(report)
     REPORT.write_text(json.dumps(report, indent=2) + '\n')
-    print('PASS: actual QEMU entry through InitIOKit, EL1/4 KiB MMU and missing-entropy refusal; Image4 policy is the next dependency')
+    print('PASS: actual QEMU entry through bsd_init, three original MAC policies and four refusal controls; root device is the next dependency')
 
 
 if __name__ == '__main__':

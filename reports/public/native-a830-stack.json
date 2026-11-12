@@ -1,14 +1,14 @@
 {
   "result": "CPH2653_NATIVE_A830_IPHONE_DEVELOPMENT_STACK_PASS",
   "source_sha256": {
-    "scripts/build_native_a830_stack.py": "2ecad1b747325a8db768b8ea05359ca891c7d877fd52941539a215b2803b42e0",
+    "scripts/build_native_a830_stack.py": "e16b5e63ead2cc032f465be2c57a62195753f37b5d44973bf07b04381dc24178",
     "scripts/native_a830_userspace.py": "fc541601db755f877130fa881cb2ab5b9d16eba55b47e3895cdac091200c04bc",
     "scripts/native_a830_runtime.py": "92a60263f6159cf6cdd8ad8bd90b52cf9ceff1dc5890413812570b11c61daaf6",
     "scripts/check_native_a830_host.py": "dff57ae7f1447eb3d76293b93a75eecd5654505e92bcae960708bcce166da7fd",
     "scripts/check_native_a830_board.py": "dd202040a01140a04c9f6304dae9c8aa444a6079284a4b21977fcce2a785fb75",
     "scripts/build_native_a830.py": "6380a27775db8ed324d70df117d5f79b1a8b13c1a36368f088b81a7a6129b816",
     "scripts/build_native_a830_kernel.py": "4b50ccd6c43f40465c08b303520830483efc9a5baaafe7671d93fbb5c1caeedc",
-    "scripts/build_native_a830_prelink.py": "f5fa931e302a3631c42a23d3903eccd43386fbb8a68fd2c5a7fb61ce19d89a8d",
+    "scripts/build_native_a830_prelink.py": "e46156524815dd267c44f0b40974e0d75e77a48dea45e3bfef2d568cdeefbdf2",
     "scripts/build_turnip_ios16.py": "06157d6c85e0c98948ce63b116c0e6c99364877ca6088298a9d395db8eec00fe",
     "scripts/check_native_a830_recovery.py": "ac1cc1b916c55a8917a193744705f6cee7b837720a2825de18e4061e27d0c568",
     "scripts/build_metal_bridge.py": "5e9bd9563615f9e0243da22cacadbed8c13da5fd0e2340efe06da3db99ead8f1",
@@ -16,8 +16,8 @@
     "scripts/check_gpu_userspace.py": "f930204b279ebe6f5afbfc192ab6fb5c5293e07d4eab171ea504effed7497d5d",
     "scripts/build_native_a830_firmware.py": "5cb8070bd4f731c7d89122ddda2abe67392d49074162dfc6d034f4037050daec",
     "scripts/build_native_a830_addon.py": "1566204a382ed7f115fa8a8485406c3ec1485fdc052ca650b43348e355bd500b",
-    "scripts/build_native_a830_payload.py": "4be6578059e2ee3844fd55bf7b654fd70cea403322c00f97ec511501bd22f618",
-    "scripts/check_native_a830_entry.py": "a6d938ef51a6d15e41737755d3085a7c9500d752fc7447790892b4858c55c0be"
+    "scripts/build_native_a830_payload.py": "f072acb84dc8e6ecc371ec79b8d723772bc57f28d6948c2bbbe3e1adc78ad567",
+    "scripts/check_native_a830_entry.py": "af75c9cfd4e3df0f6aaa2d9d27d8e79711895cbe7016b0bff85999a8810b6807"
   },
   "stages": {
     "backend_host": {
@@ -65,9 +65,9 @@
     },
     "prelink": {
       "report": "reports/native-a830-prelink.json",
-      "sha256": "09ce37cf68f5b09c69535d4864a0b634f0fa5e3a04d2f2b660d846cfd5938f83",
+      "sha256": "7e296ab9a1cc60837f5f7e0a67f0e1debc3b91fb86ba599aa80b731bae084dbb",
       "builder": "scripts/build_native_a830_prelink.py",
-      "builder_sha256": "f5fa931e302a3631c42a23d3903eccd43386fbb8a68fd2c5a7fb61ce19d89a8d",
+      "builder_sha256": "e46156524815dd267c44f0b40974e0d75e77a48dea45e3bfef2d568cdeefbdf2",
       "arguments": []
     },
     "turnip": {
@@ -129,16 +129,16 @@
     },
     "payload": {
       "report": "reports/native-a830-payload.json",
-      "sha256": "c39942a16c2d5037012352fa6723d413913a7ca814ba90ec59652ae279f0e124",
+      "sha256": "299008b84821bc57f43ff356473dac25ac388790d805b9256982162fa86b037a",
       "builder": "scripts/build_native_a830_payload.py",
-      "builder_sha256": "4be6578059e2ee3844fd55bf7b654fd70cea403322c00f97ec511501bd22f618",
+      "builder_sha256": "f072acb84dc8e6ecc371ec79b8d723772bc57f28d6948c2bbbe3e1adc78ad567",
       "arguments": []
     },
     "entry": {
       "report": "reports/native-a830-entry.json",
-      "sha256": "d55aa08ab952b843f465e77af5d4cc0af398f44f37b62f518a445336d1251866",
+      "sha256": "419d0485c972ee03806063b4d85eaf4cde472ccbc52456b505e77bbb5f5f6d2f",
       "builder": "scripts/check_native_a830_entry.py",
-      "builder_sha256": "a6d938ef51a6d15e41737755d3085a7c9500d752fc7447790892b4858c55c0be",
+      "builder_sha256": "af75c9cfd4e3df0f6aaa2d9d27d8e79711895cbe7016b0bff85999a8810b6807",
       "arguments": []
     }
   },
@@ -151,27 +151,48 @@
   "original_components": 28,
   "original_pointer_readbacks": 63889,
   "candidate": "build/cph2653-native-a830-prelink/kernel.macho",
-  "candidate_sha256": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
+  "candidate_sha256": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
   "boot_image": "build/cph2653-native-a830-bringup/boot.img",
-  "boot_image_sha256": "b9b6ad3752a9867e661bb0ecb154ce272752c152549b4ada8832740517edadcb",
+  "boot_image_sha256": "5d78dbad60fab573d70fdee8baf58b1198e35efd21a2323e9be94d570e489daf",
   "surface_ID_import_and_original_producers_connected": true,
   "recovered_Vulkan_device_and_per_surface_visibility": true,
   "firmware_fresh_entropy_and_DXE_log_export": true,
   "QEMU_entry_checkpoints": [
     "_arm_init",
     "_kernel_bootstrap",
-    "_InitIOKit"
+    "_InitIOKit",
+    "_bsd_init"
+  ],
+  "QEMU_registered_MAC_policies": [
+    {
+      "name": "AppleImage4",
+      "registered": true,
+      "record": "0xfffffff005caf458",
+      "original_operations": "0xfffffff005caf4a8"
+    },
+    {
+      "name": "AMFI",
+      "registered": true,
+      "record": "0xfffffff005cb78a0",
+      "original_operations": "0xfffffff005cb6e28"
+    },
+    {
+      "name": "Sandbox",
+      "registered": true,
+      "record": "0xfffffff005ef8d38",
+      "original_operations": "0xfffffff005ef8d98"
+    }
   ],
   "QEMU_next_dependency": {
     "symbol": "_panic",
     "pc": "0xfffffff007a79690",
-    "lr": "0xfffffff0046e9f60",
-    "format": "failed to get mix-n-match policy: %d",
-    "error": "0x30003"
+    "lr": "0xfffffff007998abc",
+    "format": "Failed to mount root device @%s:%d",
+    "source_line": 978
   },
   "original_userspace_included": false,
   "default_kernel_selected": false,
   "hardware_tested": false,
   "phone_operations": "none",
-  "scope": "Native A830 source/runtime, original iPhone prelink, Turnip/Metal, addon/trust inputs and entropy/logger firmware form one locally verified development payload. Actual QEMU execution reaches InitIOKit, then original Image4 refuses missing startup policy. GPU power, DMA/cache visibility, rendering and system boot remain untested."
+  "scope": "Native A830 source/runtime, original iPhone prelink, Turnip/Metal, addon/trust inputs and entropy/logger firmware form one locally verified development payload. Actual QEMU execution reaches bsd_init with three original MAC policies registered once, then refuses the absent root device. GPU power, DMA/cache visibility, rendering and system boot remain untested."
 }

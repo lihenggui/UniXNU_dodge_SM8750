@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "Image4_module": "com.apple.security.AppleImage4",
+  "Image4_version": "5.0.0",
+  "properties": {
+    "mix-n-match-prevention-status": {
+      "address": "0xfffffff004e204c8",
+      "value_bytes": 4
+    },
+    "BNCH": {
+      "address": "0xfffffff004e202c5",
+      "value_bytes": 48
+    },
+    "/chosen/manifest-properties": {
+      "address": "0xfffffff004e20287",
+      "value_bytes": null
+    }
+  },
+  "allow_mix_identifier": 12,
+  "prevention_value_for_disabled_mixing": 1,
+  "Image4_startup": {
+    "address": "0xfffffff0056e98cc",
+    "bytes": 1744,
+    "sha256": "74b9904cca061ef07ca64a28aa1c05f7d7ec4a493604eed0d4e7e0f36176a8e5"
+  },
+  "Image4_boolean_getter": {
+    "address": "0xfffffff0056efe7c",
+    "bytes": 384,
+    "sha256": "a50a4e1a7317ceb903db0820e66fa56f26fd670b1ca5a4d4c1435984fb41ef0b"
+  },
+  "security_starts": {
+    "com.apple.driver.AppleMobileFileIntegrity": {
+      "kmod_record": "0xfffffff007a11700",
+      "start": "0xfffffff00570b798",
+      "slot": "0xfffffff007a11a60",
+      "slot_value": "0x0",
+      "initializer": "0xfffffff005704320",
+      "wrapper": {
+        "address": "0xfffffff00570b798",
+        "bytes": 28,
+        "sha256": "8e5ce01eae17176cbd7b82561b1dd585527c1ca03d963a4fc264dac4a0f719ba"
+      },
+      "normal_start_runs_initializer": false
+    },
+    "com.apple.security.sandbox": {
+      "kmod_record": "0xfffffff007ae8d00",
+      "start": "0xfffffff0064ba258",
+      "slot": "0xfffffff007ae8dc8",
+      "slot_value": "0xfffffff0064bcd80",
+      "initializer": "0xfffffff0064bcd80",
+      "wrapper": {
+        "address": "0xfffffff0064ba258",
+        "bytes": 28,
+        "sha256": "18bdcc196fa96dd14436e586e469384e00e3daf481085b88237043f95254d50b"
+      },
+      "normal_start_runs_initializer": true
+    }
+  },
+  "mac_policy_layout": {
+    "list_bytes": 32,
+    "numloaded": 0,
+    "max": 4,
+    "maxindex": 8,
+    "entries": 24,
+    "element_bytes": 8,
+    "conf_bytes": 80,
+    "mpc_name": 0,
+    "mpc_ops": 32,
+    "mpc_runtime_flags": 56,
+    "registered_flag": 1
+  }
+}

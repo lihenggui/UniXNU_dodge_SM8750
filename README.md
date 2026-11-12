@@ -11,8 +11,8 @@ bring-up are still in development. The port follows the
 The native Adreno 830 development build includes the CPH2653 board adapter,
 iPhone IOSurface producer handling, Turnip and Metal. The kernel, original
 iPhone components, GPU addon and entropy/logger firmware build locally. QEMU
-enters the iPhone kernel through InitIOKit with EL1 and 4 KiB page tables;
-Image4 startup policy is the next unresolved dependency.
+enters `bsd_init` with EL1 and 4 KiB page tables. Original AppleImage4, AMFI
+and Sandbox register successfully; connecting a root device is the next step.
 See [GPU builds](docs/bring-up.md#driver-builds) and [QEMU entry](docs/bring-up.md#qemu-entry).
 
 ## Getting started

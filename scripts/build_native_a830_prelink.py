@@ -21,6 +21,7 @@ from native_prelink import backed_offset
 from prepare_surface_backing import checked as backing_checked, apply_hooks, restore_hooks, hook_readbacks
 from prepare_surface_sync import checked as sync_checked
 from surface_sync_execution import run_cases
+from image4_boot_policy import CONTRACT as IMAGE4_CONTRACT, security_plan, check_security_starts
 
 OUT = ROOT / 'build/cph2653-native-a830-prelink'
 REPORT = ROOT / 'reports/native-a830-prelink.json'
@@ -35,6 +36,9 @@ def check_report(report):
     require(hook_readbacks(data, contract) == report['original_lifecycle_hooks'] and
             restore_hooks(data, contract) == (ROOT / report['unhooked_candidate']).read_bytes(), 'Native surface hooks changed')
     require(check_firmware(data, report['firmware_pins']) == report['firmware_readback'], 'Prelinked firmware changed')
+    record = json.loads((ROOT / report['emission_record']).read_text())
+    require(check_security_starts(data, record, report['normal_security_starts']) == report['security_start_readback'],
+            'Original security start coverage changed')
 
 
 def main():
@@ -44,8 +48,11 @@ def main():
     source = json.loads(SOURCE_REPORT.read_text());check_source(source)
     native = (ROOT / source['candidate']).read_bytes();original = ORIGINAL.read_bytes()
     profile, config, security = tomllib.loads(PROFILE.read_text()), json.loads(CONFIG.read_text()), json.loads(SECURITY.read_text())
+    security, early_requests, normal_starts = security_plan(profile, security)
     context = original_context(original, profile['kernel']['prelink']['roots'] + config['additional_roots'], config)
     OUT.mkdir(parents=True, exist_ok=True);emitter = TREE / 'kits/XnuPrelink/emit_prelink.py'
+    security_fixture = OUT / 'security-init.json'
+    security_fixture.write_text(json.dumps(security, indent=2) + '\n')
     parser_path = ROOT / 'sources/UniXNU/drivers/DarwinBoot/Test/test-kernel-parser.py'
     env = dict(os.environ, UNIXNU_XNU_ARCH='arm64', UNIXNU_IOS_VERSION='16.0',
                PATH='/usr/lib/llvm-14/bin' + os.pathsep + os.environ['PATH'])
@@ -53,8 +60,8 @@ def main():
     command = [sys.executable, emitter, '--kernel', ROOT / source['candidate'], '--prelinked', ORIGINAL,
                '--slide=' + config['slide'], '--output', unhooked]
     for name in profile['kernel']['prelink']['roots'] + config['additional_roots']:command += ['--root', name]
-    for name in profile['kernel']['prelink']['early_security_init']:command += ['--early-security-init', name]
-    command += ['--early-security-fixture', SECURITY]
+    for name in early_requests:command += ['--early-security-init', name]
+    command += ['--early-security-fixture', security_fixture]
     print('PRELINK: complete native A830 candidate and original iPhone components', flush=True)
     # The emitter refuses an existing destination. Emit into a fresh directory
     # so a rebuild can preserve the previous candidate until validation passes.
@@ -69,6 +76,7 @@ def main():
             record['native_sha256'] == sha(ROOT / source['candidate']) and record['original_sha256'] == sha(ORIGINAL),
             'Native A830 prelink provenance differs')
     checked = validate(data, record, native, original, context, config, source, security)
+    security_readback = check_security_starts(data, record, normal_starts)
     checked['original_aliases_preserved'] = len(source['combined_original_bindings'])
     checked['native_source_entries_preserved'] = len(source['combined_native_entries'])
     storage = {**json.loads((ROOT / 'reports/ios16-ufs-root.json').read_text()), 'actual_iobsd_hook': source['actual_iobsd_hook']}
@@ -106,11 +114,14 @@ def main():
     files = [Path(__file__), ROOT / 'scripts/build_native_a830_kernel.py', ROOT / 'scripts/build_crypto_prelink.py',
              ROOT / 'scripts/build_gpu_graphics_prelink.py', ROOT / 'scripts/build_ufs_prelink.py', ROOT / 'scripts/build_input_prelink.py',
              ROOT / 'scripts/prepare_surface_backing.py', ROOT / 'scripts/surface_sync_execution.py',
+             ROOT / 'scripts/image4_boot_policy.py', IMAGE4_CONTRACT,
              PROFILE, CONFIG, SECURITY, emitter, emitter.parent / 'native_prelink.py', parser_path]
-    artifacts = [candidate, unhooked, unhooked.with_suffix('.json'), probe]
+    artifacts = [candidate, unhooked, unhooked.with_suffix('.json'), security_fixture, probe]
     report = {'result': 'NATIVE_A830_IPHONE_STRICT_PRELINK_PASS',
         'candidate': str(candidate.relative_to(ROOT)), 'candidate_sha256': sha(candidate),
         'unhooked_candidate': str(unhooked.relative_to(ROOT)),
+        'emission_record': str(unhooked.with_suffix('.json').relative_to(ROOT)),
+        'normal_security_starts': normal_starts, 'security_start_readback': security_readback,
         'source_sha256': {str(p.relative_to(ROOT)): sha(p) for p in files},
         'dependency_report_sha256': {str(SOURCE_REPORT.relative_to(ROOT)): sha(SOURCE_REPORT)},
         'artifacts': {str(p.relative_to(ROOT)): sha(p) for p in artifacts},

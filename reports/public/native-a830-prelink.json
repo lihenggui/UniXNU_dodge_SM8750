@@ -1,10 +1,35 @@
 {
   "result": "NATIVE_A830_IPHONE_STRICT_PRELINK_PASS",
   "candidate": "build/cph2653-native-a830-prelink/kernel.macho",
-  "candidate_sha256": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
+  "candidate_sha256": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
   "unhooked_candidate": "build/cph2653-native-a830-prelink/kernel.unhooked.macho",
+  "emission_record": "build/cph2653-native-a830-prelink/kernel.unhooked.json",
+  "normal_security_starts": {
+    "com.apple.security.sandbox": {
+      "kmod_record": "0xfffffff007ae8d00",
+      "start": "0xfffffff0064ba258",
+      "slot": "0xfffffff007ae8dc8",
+      "slot_value": "0xfffffff0064bcd80",
+      "initializer": "0xfffffff0064bcd80",
+      "wrapper": {
+        "address": "0xfffffff0064ba258",
+        "bytes": 28,
+        "sha256": "18bdcc196fa96dd14436e586e469384e00e3daf481085b88237043f95254d50b"
+      },
+      "normal_start_runs_initializer": true
+    }
+  },
+  "security_start_readback": {
+    "normal_starts": [
+      "com.apple.security.sandbox"
+    ],
+    "explicit_initializers": [
+      "com.apple.driver.AppleMobileFileIntegrity"
+    ],
+    "original_wrappers_preserved": true
+  },
   "source_sha256": {
-    "scripts/build_native_a830_prelink.py": "f5fa931e302a3631c42a23d3903eccd43386fbb8a68fd2c5a7fb61ce19d89a8d",
+    "scripts/build_native_a830_prelink.py": "e46156524815dd267c44f0b40974e0d75e77a48dea45e3bfef2d568cdeefbdf2",
     "scripts/build_native_a830_kernel.py": "4b50ccd6c43f40465c08b303520830483efc9a5baaafe7671d93fbb5c1caeedc",
     "scripts/build_crypto_prelink.py": "ec1fbbbdd7368c52d057b0b6c437b7dbff070d9bb2088649749a88995177457a",
     "scripts/build_gpu_graphics_prelink.py": "ad5f6636a1761297a6936467b1140134ba934c86ea7de4c128f5546f26995293",
@@ -12,6 +37,8 @@
     "scripts/build_input_prelink.py": "d9227262bb2579a581fbf1649c200b1dc0a9f86c9fea22cc8c043e342a667df0",
     "scripts/prepare_surface_backing.py": "0f2fea10ab5b89e544b77c1c4c5e6254992404b0e773b604a844d49231bc3318",
     "scripts/surface_sync_execution.py": "7c287e31548061865ada9db071f47d078f075f31d5cecbe806dfc7def80f9feb",
+    "scripts/image4_boot_policy.py": "6072c1b9c5c0ec1f1ea524f32c369b18dc063ea48c8764d21194b04d84cde5a1",
+    "profiles/os/ios-16.7.16-20H392/image4-boot.json": "69175873201e122e1399bab4466e87b5aa630e8c45a6d2b54c98b921fe891667",
     "profiles/os/ios-16.7.16-20H392/profile.toml": "e3dbb5af9583405c62ce1e41dbe6ab0378dfb63f4ff7c9654c2dffa9091c6043",
     "profiles/os/ios-16.7.16-20H392/input-prelink.json": "04686f0d95e68a5f6e769af30053f51f44623f820ee035390ed03377d8987a3d",
     "profiles/os/ios-16.7.16-20H392/security-init.json": "f621e8196e923045d38a44040ddf543fe27c9a91838e9799e853a097655cf2fd",
@@ -23,9 +50,10 @@
     "reports/native-a830-kernel.json": "04388341f24b2db26f86d2876d4926f1dfc8d25a7de857abebdd8035b4ea545d"
   },
   "artifacts": {
-    "build/cph2653-native-a830-prelink/kernel.macho": "8281ea66b7ee05aef87b6e93a208cb2a9d22c3343d72568fd7bb87f1dfd23563",
-    "build/cph2653-native-a830-prelink/kernel.unhooked.macho": "432c2a4b977f8584baf09f151276bef84289400a03be14e6ab4a27d95d2d6753",
-    "build/cph2653-native-a830-prelink/kernel.unhooked.json": "4543ea217aec0dd1eacad8a96f73087f8c66f76794607409400951b0c3432618",
+    "build/cph2653-native-a830-prelink/kernel.macho": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
+    "build/cph2653-native-a830-prelink/kernel.unhooked.macho": "8e44a4f6df5699e7b9ce4bb4efd48bddd32a8f620a9a7de87af15310ec281f15",
+    "build/cph2653-native-a830-prelink/kernel.unhooked.json": "857d8184c541d44cf7ece98d0b621b0a249a37f81677eec7f7eca1ccf21edad4",
+    "build/cph2653-native-a830-prelink/security-init.json": "54c500f04e0578dbba0b6d54ee94e565fe608de48bfbe7f6a7b8d69efdc440f8",
     "build/ios16-surface-producer-execution/SurfaceSyncProbe.o": "2362b077cd92a5c2a86eda834dbfbbd09b3b69a0e8bca7ca3b6c4a469290adb0"
   },
   "combined_source_objects": 111,

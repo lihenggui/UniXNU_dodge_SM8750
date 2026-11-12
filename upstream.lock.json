@@ -1466,5 +1466,12 @@
     },
     "support": {},
     "scope": "Reject a recovered GPU surface until its own successful writer restores visibility, both before initial display admission and after callbacks."
+  },
+  "iphone_image4_boot_contract": {
+    "path": "profiles/os/ios-16.7.16-20H392/image4-boot.json",
+    "sha256": "69175873201e122e1399bab4466e87b5aa630e8c45a6d2b54c98b921fe891667",
+    "product": "iPhone10,3",
+    "build": "20H392",
+    "scope": "Original Image4 startup inputs and measured normal versus explicit security initializers; owner development metadata is separate from Apple personalization."
   }
 }

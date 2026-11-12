@@ -85,6 +85,10 @@ def collect():
             payload['original_POST_tests_in_model'] == 18, 'Native payload mixes kernel or firmware stages')
     require(reports['entry']['candidate_sha256'] == prelink['candidate_sha256'],
             'QEMU entry tested a different iPhone kernel')
+    require(prelink['security_start_readback']['normal_starts'] == ['com.apple.security.sandbox'] and
+            prelink['security_start_readback']['explicit_initializers'] == ['com.apple.driver.AppleMobileFileIntegrity'] and
+            payload['boot_policy_host_tests']['result'] == 'PASS' and payload['boot_policy_host_tests']['test_cases'] >= 12 and
+            payload['image4_boot_policy']['scope'] == 'owner-development', 'Original security startup or owner boot policy differs')
     sources = [Path(__file__), ROOT / 'scripts/native_a830_userspace.py', ROOT / 'scripts/native_a830_runtime.py']
     sources += [ROOT / value['builder'] for value in stages.values()]
     return {'result': 'CPH2653_NATIVE_A830_IPHONE_DEVELOPMENT_STACK_PASS',
@@ -100,12 +104,13 @@ def collect():
         'recovered_Vulkan_device_and_per_surface_visibility': True,
         'firmware_fresh_entropy_and_DXE_log_export': True,
         'QEMU_entry_checkpoints': [row['symbol'] for row in reports['entry']['checkpoints']],
+        'QEMU_registered_MAC_policies': reports['entry']['registered_MAC_policies'],
         'QEMU_next_dependency': reports['entry']['next_stop'],
         'original_userspace_included': False, 'default_kernel_selected': False, 'hardware_tested': False,
         'phone_operations': 'none',
         'scope': 'Native A830 source/runtime, original iPhone prelink, Turnip/Metal, addon/trust inputs and '
                  'entropy/logger firmware form one locally verified development payload. Actual QEMU execution reaches '
-                 'InitIOKit, then original Image4 refuses missing startup policy. GPU power, DMA/cache visibility, '
+                 'bsd_init with three original MAC policies registered once, then refuses the absent root device. GPU power, DMA/cache visibility, '
                  'rendering and system boot remain untested.'}
 
 
