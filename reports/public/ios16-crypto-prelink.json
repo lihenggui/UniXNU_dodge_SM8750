@@ -15,14 +15,14 @@
     "sources/UniXNU/drivers/DarwinBoot/Test/test-kernel-parser.py": "92be15ff6060ee1cd98e7feb8a021f1ebed477189375140dfc3ac8371f9b48d7"
   },
   "dependency_report_sha256": {
-    "reports/ios16-crypto-source.json": "cc9cf58ee508415e2cf20db5b82ff1a684e3efdc2ea3f851d15e6c39d1f29ded"
+    "reports/ios16-crypto-source.json": "363b187741a31736a3134cf37ebc881b5378e7060b54b832dc6287c63d693328"
   },
   "artifacts": {
-    "build/cph2653-crypto-prelink/kernel.macho": "3315aae02eeea2b79a7340793c3cd0296fe385202de2d26ad1949707abdceee0",
-    "build/cph2653-crypto-prelink/emission.json": "a72d5a07cbb6bb7adf993cf7c0668e7987fe7d3dc4590248d00c0571bfc9eb7d"
+    "build/cph2653-crypto-prelink/kernel.macho": "06ad7621ea05f997a7e311823a22811055c7d4c798d3699dc8602bf33b5fbb11",
+    "build/cph2653-crypto-prelink/emission.json": "2a62119199232912db674b1fcc16c59887f88603325219838513db4fa4812c55"
   },
   "candidate": "build/cph2653-crypto-prelink/kernel.macho",
-  "candidate_sha256": "3315aae02eeea2b79a7340793c3cd0296fe385202de2d26ad1949707abdceee0",
+  "candidate_sha256": "06ad7621ea05f997a7e311823a22811055c7d4c798d3699dc8602bf33b5fbb11",
   "combined_source_objects": 89,
   "combined_original_aliases": 339,
   "native_source_entries_preserved": 97,
@@ -222,7 +222,7 @@
     "actual_iobsd_hook_read_back": {
       "address": "0xfffffff007996f84",
       "bytes": 80,
-      "sha256": "2f28dd7f453bb05a4cf5bdfed29ef6cb6cd6862f68699d0d752a54a9ca262c10",
+      "sha256": "a06e76d646634dd11c84bc1f03b53356beade443c09716e11c3f62bd6e2f0694",
       "queue_call_order": [
         "0xfffffff007996f98",
         "0xfffffff007996f9c",
@@ -288,7 +288,7 @@
   "actual_iobsd_hook": {
     "address": "0xfffffff007996f84",
     "bytes": 80,
-    "sha256": "2f28dd7f453bb05a4cf5bdfed29ef6cb6cd6862f68699d0d752a54a9ca262c10",
+    "sha256": "a06e76d646634dd11c84bc1f03b53356beade443c09716e11c3f62bd6e2f0694",
     "queue_call_order": [
       "0xfffffff007996f98",
       "0xfffffff007996f9c",
@@ -305,7 +305,7 @@
   "actual_init_hook": {
     "address": "0xfffffff00772da64",
     "bytes": 632,
-    "sha256": "0c0bc5cee69d531e1ab1388004cc83b33c17f465a63edfa675bef6eaf922917a",
+    "sha256": "01e5a92114fc96727c1fefe08936a62fa59d126bdd3b6222a0ce85da4821fbd6",
     "scratch_allocate_calls": [
       "0xfffffff00772dab4"
     ],

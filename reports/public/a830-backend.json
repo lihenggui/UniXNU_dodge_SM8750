@@ -11,7 +11,7 @@
     "ArmSmmu4K": "83969cd874503e65997ff7639f7dcf3d0a92cd17",
     "AdrenoPM4": "282606b528b2595bc4274ea7490b62b323f35a5f"
   },
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "optional_call_overlay": {
     "patch": {
       "path": "patches/oneplus13/0003-static-backend-optional-calls.patch",

@@ -3,7 +3,7 @@
   "target": "aarch64-apple-ios",
   "minimum_os": "16.0",
   "archive": "build/cph2653-native-a830-metal-bridge/target/aarch64-apple-ios/release/libadreno_metal_bridge.a",
-  "archive_sha256": "941393dc49798af220be3afcff3f3557ace40eeb054b9fd0b3a77868d3ae13f5",
+  "archive_sha256": "7b0e76b88e78deb60621e0e7d239e5d56aeb8b3fe6a37a96ce13244891dfaa25",
   "translator_revision": "624bab3918de5b978e1101517abca2b4fa426565",
   "frontend_revision": "403e69e990871be939a15632cf619af6c8eb60a9",
   "runtime_patches": [
@@ -104,7 +104,7 @@
       "sha256": "d04cd3a19ecd2697dfeccd70d4df998489caf7554acb441d030c34b61844672e"
     }
   ],
-  "runtime_id": "ee31796bc3c7fe6b520c2a6e86787d71",
+  "runtime_id": "4cd019bafdd39bae10f7dda3048ab735",
   "native_surface_overlay": {
     "path": "patches/adreno830/0006-metal-surface-identity.patch",
     "sha256": "013e877085efb323ce541be7c8dbbb5e9518c8706c4d7572268dea63e9bea925",
@@ -121,6 +121,26 @@
       "NativeAdrenoMetalPlugin.mm": "52fe9f68c1e9771983386ebc9574df94fe135a433a8ba5a10778ed04f0200a05"
     },
     "support": {}
+  },
+  "native_tile_overlay": {
+    "path": "patches/adreno830/0013-metal-tile-dispatch.patch",
+    "sha256": "5ce5800d633422fb805157c47d21658111ef5600a34900e9d8a355c795f88f82",
+    "before_sha256": {
+      "bridge/NativeMetalObjects.rs": "cc603cfbecea64e8e70d8e41ebd7d1e496e2e07d187869688067493c65e49536",
+      "bridge/NativeMetalObjects.h": "2e60718544c118c9154d3bdcf8b1443c48edc13e8d038e38bf08e06c5d756a57",
+      "NativeBridgeMetalFrontend.mm": "ebaa580e6301911d121e1d9fcec3b37437def2341ac90a92e2277cc4587e0556"
+    },
+    "after_sha256": {
+      "bridge/NativeMetalObjects.rs": "cb6286bf2162cef14fd92fba88051ce93b78c13917e70f18740d080c0f1ad470",
+      "bridge/NativeMetalObjects.h": "b122c21f99b8fc52447ce0ab584b36694466ccd7ecff3c65df5dc2d115b25c85",
+      "NativeBridgeMetalFrontend.mm": "8368dee834f9d703126ab87d8d230abe5ed4a089bdd4be982f698b7c0a4a4058"
+    },
+    "support": {},
+    "upstream": {
+      "repository": "https://github.com/IssacL04/AdrenoMetal.git",
+      "revision": "51b7003f9c05ec46f0aa4ed7e9bb47f8db893c04"
+    },
+    "scope": "Connect tile pipeline creation, resources, pass memory and dispatch to the pinned runtime. Keep device family and tile capability answers unchanged."
   },
   "native_compile_overlay": {
     "path": "patches/adreno830/0008-runtime-compile-thread.patch",

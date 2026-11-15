@@ -10,13 +10,13 @@
     },
     "addons/NativeAdrenoMetal.bundle/NativeAdrenoMetal": {
       "mode": 493,
-      "bytes": 22565600,
-      "sha256": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668"
+      "bytes": 22638784,
+      "sha256": "e26050f4cc0c3b1b3c888aa0782f9b4228c39c2f7f95ac5345eb8fa3f5abc342"
     },
     "addons/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib": {
       "mode": 493,
-      "bytes": 17974432,
-      "sha256": "33618b863fea464bb0ea73e0c96875bcf6b770dc756ed3a828d879eb12a30c21"
+      "bytes": 17991056,
+      "sha256": "342c0d669762054d6aef0355d49c1af2114ca53395ec855131834aafb38c3180"
     },
     "addons/NativeAdrenoMetal.publish": {
       "mode": 420,
@@ -32,13 +32,13 @@
   "binaries": [
     {
       "path": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/NativeAdrenoMetal",
-      "sha256": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668",
+      "sha256": "e26050f4cc0c3b1b3c888aa0782f9b4228c39c2f7f95ac5345eb8fa3f5abc342",
       "filetype": 8,
       "minimum_os": "16.0",
       "sdk_version_hex": "0x100400",
-      "signed_pages": 5467,
+      "signed_pages": 5485,
       "signature_identifier": "NativeAdrenoMetal",
-      "cdhash": "29a5c960f0a0582360e124dc4a24028635d84cd1",
+      "cdhash": "f45bac2a79bde0b8aa5ce369582a19faa7868821",
       "hash_page_bytes": 4096,
       "imports": [
         "/usr/lib/libobjc.A.dylib",
@@ -52,13 +52,13 @@
     },
     {
       "path": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib",
-      "sha256": "33618b863fea464bb0ea73e0c96875bcf6b770dc756ed3a828d879eb12a30c21",
+      "sha256": "342c0d669762054d6aef0355d49c1af2114ca53395ec855131834aafb38c3180",
       "filetype": 6,
       "minimum_os": "16.0",
       "sdk_version_hex": "0x100400",
-      "signed_pages": 4355,
+      "signed_pages": 4359,
       "signature_identifier": "libvulkan_freedreno.dylib",
-      "cdhash": "3410cb48c63ac8a788b1e4e3dcc28512d3c1061a",
+      "cdhash": "26960d5dc6173bf98dcc51623b9f054eab6f4985",
       "hash_page_bytes": 4096,
       "imports": [
         "/usr/lib/libSystem.B.dylib",
@@ -107,9 +107,9 @@
     }
   ],
   "owner_cdhashes": [
-    "29a5c960f0a0582360e124dc4a24028635d84cd1",
-    "3410cb48c63ac8a788b1e4e3dcc28512d3c1061a",
-    "833c1197749cad8438cf3bcacf7acbdaca3a0162"
+    "26960d5dc6173bf98dcc51623b9f054eab6f4985",
+    "833c1197749cad8438cf3bcacf7acbdaca3a0162",
+    "f45bac2a79bde0b8aa5ce369582a19faa7868821"
   ],
   "source_sha256": {
     "scripts/build_native_a830_addon.py": "1566204a382ed7f115fa8a8485406c3ec1485fdc052ca650b43348e355bd500b",
@@ -119,10 +119,10 @@
     "sources/UniXNU/scripts/unixnu/ipsw.py": "29f22e2ac422bf890b64cd2dc5ed4bd508fb902498ea9aeb8bc6e4efcd7ff273"
   },
   "artifacts": {
-    "build/cph2653-native-a830-addon/gpuaddon.bin": "f60dac52b9cdefe9036f12cc76f587f5150a968ee2fce0ddb967ce1d2f8fe03c",
-    "build/cph2653-native-a830-addon/owner-trust.bundle": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
-    "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/NativeAdrenoMetal": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668",
-    "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib": "33618b863fea464bb0ea73e0c96875bcf6b770dc756ed3a828d879eb12a30c21",
+    "build/cph2653-native-a830-addon/gpuaddon.bin": "889ad110d98e4d31c3c0dc71b6abde783ce5f15345203c6c7e6cd435deb2d064",
+    "build/cph2653-native-a830-addon/owner-trust.bundle": "03a25c236f211427ae21a3ba47d33e32662e17d928027df236e30889fb7bf1de",
+    "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/NativeAdrenoMetal": "e26050f4cc0c3b1b3c888aa0782f9b4228c39c2f7f95ac5345eb8fa3f5abc342",
+    "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib": "342c0d669762054d6aef0355d49c1af2114ca53395ec855131834aafb38c3180",
     "build/cph2653-native-a830-metal-plugin/adrenoprobed": "6caaa5f0413d4a0d9d1810ea4b9fdf83555fcad17462f4c10a83edf659bbd5c3",
     "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/Info.plist": "52c9659d7d1da9a46aaed8030634cf466d87e89f0a405eeb9bd8925906b4beae"
   },

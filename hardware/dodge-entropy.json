@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "device": "OnePlus 13 CPH2653 / SM8750",
+  "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "compatible": "qcom,trng",
+  "physical": "0x10c3000",
+  "bytes": 4096,
+  "clock_required": false,
+  "initialize_configuration": false,
+  "status_offset": 4,
+  "data_offset": 0,
+  "data_available_mask": 1,
+  "source_references": [
+    {
+      "path": ".cache/input-reference/qcom-rng-v6.12.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/v6.12/drivers/crypto/qcom-rng.c",
+      "sha256": "3cfdeee4b9cf585bcc8999b2c68fc7b770ed384a1e78e1db2e732240c411f111",
+      "license": "GPL-2.0, register-protocol reference only; no Linux implementation linked"
+    },
+    {
+      "path": ".cache/input-reference/qcom-prng-v6.12.yaml",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/v6.12/Documentation/devicetree/bindings/crypto/qcom,prng.yaml",
+      "sha256": "7c8ce0429bf4b52326e76a628c2a9653cd7d2d2c4d13927e91c4cf025205de9c",
+      "license": "GPL-2.0, register-protocol reference only; no Linux implementation linked"
+    }
+  ],
+  "iPhone_consumer": {
+    "OS_sha256": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906",
+    "path": "/usr/libexec/prng_seedctl",
+    "sha256": "321cbfba4b85f960cf1d153b27f9dbb35a5c14ab0044334fe78bb499e266b40b",
+    "uuid": "0c56e91e7cc33c6f9c652bff901ddeb4",
+    "sysctl_names": [
+      "kern.prng.user_reseed_count",
+      "kern.prng.scheduled_reseed_count",
+      "kern.prng.scheduled_reseed_max_sample_count",
+      "kern.prng.entropy_max_sample_count"
+    ],
+    "sysctl_output_bytes": 8,
+    "service_class": "AppleVirtIOEntropy",
+    "open_type": 0,
+    "selector": 0,
+    "structure_input_bytes": 0,
+    "structure_output_bytes": 32,
+    "seed_path": "/var/db/prng.seed",
+    "seed_bytes": 32,
+    "blocks": {
+      "sysctl_query": {
+        "address": "0x1000036b0",
+        "bytes": 64,
+        "sha256": "a3fc320e290e12fec551e859b9e9b2d0cfba29dae37493d7c40f56923ffd6b4f"
+      },
+      "entropy_query": {
+        "address": "0x1000038f0",
+        "bytes": 48,
+        "sha256": "98a1057602581d38d60b9f7ea9419d4f5126be963ac9e8fd0a275e21c99ab649"
+      },
+      "load_saved_seed": {
+        "address": "0x100003ba4",
+        "bytes": 304,
+        "sha256": "77d7cd773c82087697a0b4f72bb97bce2ac8ce66cd473e540c5f11430ce1b278"
+      },
+      "save_new_seed": {
+        "address": "0x100003a74",
+        "bytes": 300,
+        "sha256": "e76ef149a84a8c85e685faabc454929bb39b71e7c547aa78a750148a959395a5"
+      }
+    }
+  },
+  "hardware_tested": false,
+  "entropy_rate_qualified": false
+}

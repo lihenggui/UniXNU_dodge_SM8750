@@ -18,8 +18,8 @@
     "drivers/DodgeDisplay/DodgeOptionalCalls.h": "9ff7904efbec1c7363909155a051b62f218dbd7106fc60d2957dad2ec55de714"
   },
   "dependency_report_sha256": {
-    "reports/native-a830-kernel.json": "04388341f24b2db26f86d2876d4926f1dfc8d25a7de857abebdd8035b4ea545d",
-    "reports/ios16-qemu-storage.json": "95645c645fe5257d823d59f6dd6f70ffbed258ed72e2cfddfa593c44f783b1d4",
+    "reports/native-a830-kernel.json": "89b143a9ecf8c2bcae3ed0f8df334578ee8f59475f97a0e0c7d217cd73b05d7b",
+    "reports/ios16-qemu-storage.json": "d919587f325b131ed34c01b9559b27003b7436c7f1950fa655d9b887166534ea",
     "reports/ios16-qemu-root-policy.json": "20fe303594beafe3a6b30a7980f09eae59c249891429ec69eeccc310d87a364a"
   },
   "artifacts": {
@@ -34,14 +34,14 @@
     "build/cph2653-qemu-owner-root-dma/root-policies.S": "ec26073e9f751a6c34f090114da3454228052abed4858d184d336df0b324edde",
     "build/cph2653-qemu-owner-root-dma/bsd_init.owner.o": "b15f7efcea87e228cd9b15b1b638c2e4fc05145959b723f81d0f21a0b695ff55",
     "build/cph2653-qemu-owner-root-dma/native.filelist": "26b9c77d2d7bfb3f1a9e68d88967a8073d2031941e82c27a121385308f2625b7",
-    "build/cph2653-qemu-owner-root-dma/mach.owner-root": "69f34ed9dde9da47759512d4dd9d2f03bdc62fa68d994fa364ba97730e468256",
-    "build/cph2653-qemu-owner-root-dma/kernel.macho": "21d928c62cb4cee2afbce783445630b5092f7e5cb781420da0ad49eaab2c6f7f",
+    "build/cph2653-qemu-owner-root-dma/mach.owner-root": "6ab5f9ce8b2541d394d4ab2d776096da785ef960d601ed38d4fb1d58fd93acc3",
+    "build/cph2653-qemu-owner-root-dma/kernel.macho": "f71a1c106b20238ffa7e61c3b3261db80498e5194d9e5506cbde67499df5f6ac",
     "build/cph2653-qemu-owner-root-dma/driver/compile-commands.json": "29f0b7da1ae21dadfef1f1ddfa2d479467961adcde2ba2f0492cc46788620d11",
     "build/cph2653-qemu-owner-root-dma/crypto/compile-commands.json": "3dfbd3d68bddae62957f6b4a4ccf62810572cc8d4eb081dfc01eec68408ef537",
     "build/cph2653-qemu-owner-root-dma/security-init.json": "54c500f04e0578dbba0b6d54ee94e565fe608de48bfbe7f6a7b8d69efdc440f8"
   },
   "candidate": "build/cph2653-qemu-owner-root-dma/kernel.macho",
-  "candidate_sha256": "21d928c62cb4cee2afbce783445630b5092f7e5cb781420da0ad49eaab2c6f7f",
+  "candidate_sha256": "f71a1c106b20238ffa7e61c3b3261db80498e5194d9e5506cbde67499df5f6ac",
   "class_readback": {
     "storage_base_bytes": 144,
     "driver_bytes": 328,

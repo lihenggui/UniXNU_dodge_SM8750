@@ -4,12 +4,12 @@
   "stages": {
     "ios16-hid-source-interface": {
       "report": "reports/ios16-hid-source-interface.json",
-      "report_sha256": "ff9f20c4d1fd6a3b6349d83cb0281110318d79fb9bd1f61d674271b2e18d7ed5",
+      "report_sha256": "bd4312cfb673edfd4110b4a23540af173d3b748efe75220d3de4648eaa9fb292",
       "result": "IOS16_BOUNDED_HID_SOURCE_INTERFACE_AND_CONCRETE_TABLE_PASS"
     },
     "ios16-hid-source-calls": {
       "report": "reports/ios16-hid-source-calls.json",
-      "report_sha256": "5baec7763ef38922cea7d261bd851014925f89cc9af53c3384eadcedcf28ff9e",
+      "report_sha256": "de8b94f486f47cfdf07ededa6bab27dab59ad5e2382a06e5d147c53a8321e5a3",
       "result": "IOS16_ORIGINAL_HID_REPORT_AND_SOURCE_OVERRIDE_CALLERS_CPU_PASS"
     },
     "ios16-hid-object-lifetime": {
@@ -59,57 +59,57 @@
     },
     "ios16-input-native": {
       "report": "reports/ios16-input-native.json",
-      "report_sha256": "6aa39de67559bc1bf9c5d98434ec27f5b5344a322420e2267d237cbb221b4151",
+      "report_sha256": "1a9c9b91775980c1e73f0efd32593bbff7c7f42d25e6196061a17864a8c460bc",
       "result": "IOS16_CPH2653_INPUT_COMPLETE_SOURCE_AND_STRICT_NATIVE_LINK_PASS"
     },
     "ios16-input-prelink": {
       "report": "reports/ios16-input-prelink.json",
-      "report_sha256": "db221a3a178964e9a568c24a576f76446e95448e9ec1428f0e5f399d6a8084c6",
+      "report_sha256": "9b351a088d399a12ce4eb90dc9169241b37231ba98bd1bbb61006b4ee73eefec",
       "result": "IOS16_CPH2653_INPUT_STORAGE_DISPLAY_AND_ORIGINAL_COMPONENTS_STRICT_PRELINK_PASS"
     },
     "ios16-input-kernel": {
       "report": "reports/ios16-input-kernel.json",
-      "report_sha256": "577c9c177b2df423a548b3c64df721c3762a29c81dfa68c3d9c10b94bb36ed19",
+      "report_sha256": "0774626bb2ffa64d80fb1d566c775debd5f71f54d3053c3cbc77d7be0d47b0cb",
       "result": "IOS16_PRELINKED_INPUT_CONSTRUCTOR_AND_IOBSD_CPU_PASS"
     },
     "ios16-input-cold-kernel": {
       "report": "reports/ios16-input-cold-kernel.json",
-      "report_sha256": "41ea2f1ade1005a675d2eabbc9f3d7e3370f77a0161fe68e5282b2b1d6044155",
+      "report_sha256": "f673b8a1103e4dbab51390ccc583fe7997fae9712d4bf5ef9d2846560f12836d",
       "result": "IOS16_PRELINKED_STOCK_SPI_FIRMWARE_PARSER_AND_COLD_LOADER_CPU_PASS"
     },
     "ios16-input-clock-kernel": {
       "report": "reports/ios16-input-clock-kernel.json",
-      "report_sha256": "56b0293781cd010ffe83724d325ee4dbbf6371da01733022e76b3f83f03db5cc",
+      "report_sha256": "97d14543dea6f40f1d3f75f64bcd7e555ead088edf9ae8d802744eea461c2c03",
       "result": "IOS16_PRELINKED_TARGET_COLD_CLOCK_AND_OWNERSHIP_CPU_PASS"
     },
     "ios16-input-transfer-kernel": {
       "report": "reports/ios16-input-transfer-kernel.json",
-      "report_sha256": "e3ea94035aed6492036733dc9984f31ec2d5cd0e43ed051184ae881bd25a3888",
+      "report_sha256": "f954b2c1134907e4f33fd15eee0544799f26ed001203dd37b599bbfc0151985c",
       "result": "IOS16_PRELINKED_GENI_TRANSPORT_COMPLETION_RECOVERY_AND_TERMINAL_CPU_PASS"
     },
     "ios16-input-hid-parser": {
       "report": "reports/ios16-input-hid-parser.json",
-      "report_sha256": "b5cd65dffedadd961b7490601690558516f7841d4151ab7363985638798653e1",
+      "report_sha256": "388de5f18c2376388afe9e57fc5add6e800eb01e2c18c6694fb8ee43ff09afb1",
       "result": "IOS16_ORIGINAL_IPHONE_HID_DESCRIPTOR_PARSER_AND_NATIVE_REPORT_CPU_PASS"
     },
     "ios16-input-drain-kernel": {
       "report": "reports/ios16-input-drain-kernel.json",
-      "report_sha256": "d42ccc7c8ec6b1c04c1d426bb95415b302e0d5f657cf47488b68ca80d0d43183",
+      "report_sha256": "3fff5e145699c904f057cb5687c51a23e288fbd17a577d866ebfecc266353523",
       "result": "IOS16_PRELINKED_INPUT_GATED_STOP_AND_REENTRANT_TICK_DRAIN_CPU_PASS"
     },
     "ios16-hid-event-kernel": {
       "report": "reports/ios16-hid-event-kernel.json",
-      "report_sha256": "dcb8ce4673f107aaef5e2ce48f2c18b79ba19f2d6fac0ad29f207a38ec76315e",
+      "report_sha256": "c82989d9d1776128529b30c510c325462a869bb1943f4389dbc16ba9497d04ba",
       "result": "IOS16_TYPED_EVENT_ORIGINAL_GETTER_SETTER_AND_DRIVER_DISPATCH_CPU_PASS"
     },
     "ios16-hid-edge-kernel": {
       "report": "reports/ios16-hid-edge-kernel.json",
-      "report_sha256": "e9a367d7663af1d0c1cfeb43dea40691fe6772d61132ff2ea7e817ec5908ad22",
+      "report_sha256": "eaf78771a2d1a1c37f677c429cbe6faaaf0d87ee255bc08fdfe1ce9db1a6a773",
       "result": "IOS16_PRELINKED_SOURCE_EDGE_DRIVER_AND_ORIGINAL_EVENT_ACCESSOR_CPU_PASS"
     },
     "ios16-input-payload": {
       "report": "reports/ios16-input-payload.json",
-      "report_sha256": "0bf84cb206482688f94d79fdb98aab6eb2fff2b7d42b8e7cd5a282d101d95390",
+      "report_sha256": "7ba273674f4bdb13a0edee7cb32d67136eae5e9fd8ed70697eaebec013d0d43e",
       "result": "IOS16_ISOLATED_INPUT_STORAGE_DISPLAY_DEVELOPMENT_CONTAINER_READBACK_PASS"
     }
   },
@@ -134,8 +134,8 @@
     "build/ios16-hid-event-abi/original-hid-event-bindings.o": "74bd461fe1b0602ccd0164d1a3f952a543de18689fea078e5eac14e15fb3a059",
     "build/cph2653-input-native/compile-commands.json": "709eef9efef184ee4d8d234d030360caa666a20b7a15d6a9fc0ff76a80c8d226",
     "build/cph2653-input-native/libDodgeInput.a": "71e5fe81f051b26e2ce7fc6ddea929d09d77dc5e75b6b7ccb4f3a5040fc40938",
-    "build/cph2653-input-native/mach.input": "e059c64e3d1cf98bddbca17b66bae1bd8fd20162e9451e40560782e8d76dd0bd",
-    "build/cph2653-input-native/link-inputs.json": "4db54d09af9d6f62d182ac0064519271db40a1f5e6085778b5afe790ee45d999",
+    "build/cph2653-input-native/mach.input": "b90862fbbeb650f9b34323bb1eb076bf284492426fc7c6bee058a14d59ac9d80",
+    "build/cph2653-input-native/link-inputs.json": "5682637ea200c988e3e788a22395669a8d2923b8dcf3cee582ddb800b1d03763",
     "build/cph2653-input-native/link-command.json": "1b941985c8d10ceaf85a2c45ba13293593c8183e10800a7e7f9037fafb888304",
     "build/cph2653-input-native/DodgeInput.late.o": "84053b43cea00e0ca05d24ffef5c66a6e2bb2932da768099521d7a050b3749b5",
     "build/cph2653-input-native/S3910.o": "a74f9264f13fd60eb20142661b37e4e2b498c80f7efd29610474d745dad455cd",
@@ -148,11 +148,11 @@
     "build/cph2653-input-native/DodgeGeniTransfer.o": "3c5d88ec2b16ffebf177b6f99ae2c948829f0df1a4196c689785103733906265",
     "build/cph2653-input-native/stock-touch-firmware.o": "bc9e19027eac3d7d21046a7f70b3f1a40b401621105178a222cce7ee7cdb358e",
     "build/cph2653-input-native/original-hid-bindings.o": "b4a14c89d5bbac5a6854e702cdf71fea16b14e6b16356c71984371a2e6593bc2",
-    "build/cph2653-input-prelink/kernel.macho": "b5381ed683e08a68c477a5f5f24db4d8dfca55f0efc55d5189f2a6c1aa0b2dee",
-    "build/cph2653-input-prelink/mach.input.sealed": "35f9742124e18f7da2c02ef852a9aeb63882bb4bc208c1393100a222397b5555",
-    "build/cph2653-input-prelink/emission.json": "910ac10fb4288508736809be2469690b703ce178e0fc33223444bf2766c29556",
-    "build/cph2653-input-prelink/kernel.macho.crypto-hmac.json": "96c7ab042711f94450cefb2d3f6f7370e59692795737d4b025183f765e31060c",
-    "build/cph2653-input-prelink/mach.input.sealed.crypto-hmac.json": "118a5ca99162411e8ecc2995ccca7fe98faf98ba3dee171e13bfc206b6543669",
+    "build/cph2653-input-prelink/kernel.macho": "ee07624c4bc4e7eed7992448812faeeac401a897b71c2b57a49c4bb448a1eead",
+    "build/cph2653-input-prelink/mach.input.sealed": "4cd8824c0cedb9f7801d809567be910aab6eda44fdda16f85db5d481b41d872d",
+    "build/cph2653-input-prelink/emission.json": "4f3929473149bfcd0f9985ab27b352dc321c744e87fb4f42aa9af4273c5b56aa",
+    "build/cph2653-input-prelink/kernel.macho.crypto-hmac.json": "9cd431d898b4da9bde3a93d2b6a1fbf783a3814b3f2f6a8f22f309bc243770d0",
+    "build/cph2653-input-prelink/mach.input.sealed.crypto-hmac.json": "39a21ac4f117e09de1ec00a1efd15cdf7d268ffe0a06a2421895c547765d3b83",
     "build/cph2653-input-prelink/cpu-cases.json": "8968cf29bb93b4c7e17c3b1f496e68673ac338277f18e8c69e4ff90bcf5b568c",
     "build/ios16-input-cold-abi/DodgeColdLayout.o": "2d8afd3981174d4d4e2a8cd4275b50a073ee5788c246190690cdb24a7f6231dc",
     "build/cph2653-input-prelink/cold-cpu-cases.json": "81b99c9a0832f371ce1a881aff0de974b4c62c0d66fc82cd2caddb6b721bc3ff",
@@ -168,8 +168,8 @@
     "build/ios16-hid-event-cpu/cpu-cases.json": "21a1214760fae406364d9a141c018355b83923f58f513c5d6da27d01ec7bbdf8",
     "build/ios16-hid-edge-abi/DodgeHidEventDriver.o": "b42904e6ba05ef400b9fcb6e39d1586c5ee2f9c1645dae0fe631eeedc69b5622",
     "build/cph2653-input-prelink/edge-cpu-cases.json": "acad79790c95563c9a4c5b768e4bac998bcff9ca4813f1ceeef2848e4b7dac92",
-    "build/cph2653-input-bringup/payload.img": "540d40475158407bf94854d891d73192cf88727e3a0f7e1b9b88102d2c0ed67c",
-    "build/cph2653-input-bringup/boot.img": "b226f081d492233eddb694ba1a5e533f4cf3facc0b221dee9f98d07956b60d27",
+    "build/cph2653-input-bringup/payload.img": "fd6f973ce62ce7fb3d3234906af13f7bac3bc7843b26f703bd7693bad68757ea",
+    "build/cph2653-input-bringup/boot.img": "64b6e7293702f3eeaafbfa80022ced4ffd50ab6a907c856299dabd3685a14c9f",
     "build/cph2653-input-native/input-power-host": "fab47ab84f7eb01ec2064e99a5bb0c031b88e78622aa2f6556f36929c50537f9",
     "build/cph2653-input-native/input-lifecycle-host": "20f55c9ccf08ca8d22b0198a3e74be99392a65f75a193e870ba70cf91a7486c0",
     "build/cph2653-input-native/input-late-host": "b9fa641d5de118f18f95522a7f4c5e39b07c7a9d5c9368863eb471aef40abc22",
@@ -178,9 +178,9 @@
     "build/cph2653-input-transfer/original-control-transfer-host": "f8a1e2da0213eda0a8b83635ad13993952bc436f936abde92e54bd4c50b5b27e",
     "build/cph2653-input-cold/cold-gpio-host": "2fff3ab0245eb014bd83371f1d2140eae2c94f8f1f5b2a63f08cd785d7f81ff1",
     "build/cph2653-input-cold/cold-geni-host": "b7a03872efe68dabb47ea7e7bfb3155b7f370448bde6f3dc7b0c26600001c4f9",
-    "build/cph2653-input-bringup/boot.json": "3aac7db77521fdc556d7be90935b04379b85cad9cde5f48c8ce1405f88c7906a"
+    "build/cph2653-input-bringup/boot.json": "16ef7096b1763b01abc589fe3a761e96976fa21679f70c8b535d125e3042672b"
   },
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "combined_source_objects": 81,
   "combined_original_aliases": 332,
   "native_entries": 77,

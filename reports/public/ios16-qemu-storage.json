@@ -22,7 +22,7 @@
     "sources/iphoneos-sdk/iPhoneOS16.5.sdk/usr/include/TargetConditionals.h": "5696695811408ae61b2a98527480d4e0db74a685ff99c60b467cf12fc37d7f6b"
   },
   "dependency_report_sha256": {
-    "reports/native-a830-kernel.json": "04388341f24b2db26f86d2876d4926f1dfc8d25a7de857abebdd8035b4ea545d"
+    "reports/native-a830-kernel.json": "89b143a9ecf8c2bcae3ed0f8df334578ee8f59475f97a0e0c7d217cd73b05d7b"
   },
   "artifacts": {
     "build/cph2653-qemu-storage/DodgeVirtioBlock.o": "d944fff52e8d026cdb01de957c65822fec883b5508e0e4ae00506b504a9e13b9",
@@ -32,9 +32,9 @@
     "build/cph2653-qemu-storage/IOKitBSDInit.cpp": "cd782c416a0b8882289f1b11cd1c398a10b0c4070861b13108b5bcc0ac9f5f7c",
     "build/cph2653-qemu-storage/IOKitBSDInit.qemu.cpo": "0f4289aa6a6cf580d92570491bf9decd93c20fc6324a2ae3693790471cf45371",
     "build/cph2653-qemu-storage/native.filelist": "dd631bfe604252d65b8589b0dcc1e50d32983998da034f5c3ecb87b35aa6634c",
-    "build/cph2653-qemu-storage/mach.qemu-storage": "b146109da39e1a9f3bbb987e22bbde622b4943619c5ef43c12446afeead3630e",
-    "build/cph2653-qemu-storage/kernel.macho": "14025c22e4a7d782fe0da11f7a9449e5130ca692b394277021e198c9063eeff1",
-    "build/cph2653-qemu-storage/emission.json": "625ab2138c3fd634746673781b3477f07e5a40067877cb40d23969d7b8ce17cb",
+    "build/cph2653-qemu-storage/mach.qemu-storage": "3abb24e22a4d716dc5463fcfd9c33be359ced143f409afdd8d09e16e2b7a12a4",
+    "build/cph2653-qemu-storage/kernel.macho": "ac04138690e5f757ec02d44044785c9f0d2de61f0350936470244a8664168c90",
+    "build/cph2653-qemu-storage/emission.json": "2d7302c7bfc5f91312a20c710bebc0bf78ab1cb6ec49f8c80837a346f79a1a11",
     "build/cph2653-qemu-storage/security-init.json": "54c500f04e0578dbba0b6d54ee94e565fe608de48bfbe7f6a7b8d69efdc440f8",
     "build/cph2653-qemu-storage/compile-commands.json": "88b52f5a0115e29cd30ebfcb9135729723285bbb95263e0d91bb8cd0df879985",
     "build/cph2653-qemu-storage/host/qemu-storage-host": "c1a84342ab3555cde0f834ea13e871fb102a80914ae4b19b6158b2af608f9912",
@@ -42,7 +42,7 @@
     "build/cph2653-qemu-storage/host/DodgeQemuStorage.extracted.h": "ca45ff46c4782469f8ce5094b22987f93da7e279654092c87108c6c8778bf3a3"
   },
   "candidate": "build/cph2653-qemu-storage/kernel.macho",
-  "candidate_sha256": "14025c22e4a7d782fe0da11f7a9449e5130ca692b394277021e198c9063eeff1",
+  "candidate_sha256": "ac04138690e5f757ec02d44044785c9f0d2de61f0350936470244a8664168c90",
   "source_reference": {
     "repository": "https://github.com/UniXNU/VirtioMmioBlock.git",
     "revision": "4e1013eb8c45077b57f8d38d61b389fe899ea1c3",

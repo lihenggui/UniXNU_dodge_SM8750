@@ -20,7 +20,7 @@
   },
   "object_sha256": {
     "NativeAdrenoMetalPlugin.o": "7679c08ac1c3fd6c78013104538fe91fe6fe2b0879743c63d6f722b2042e667b",
-    "NativeBridgeMetalFrontend.o": "0b161710501cfd3a50ffb591248585b818a5b61e4cb25d11b7658a5e017c46e9",
+    "NativeBridgeMetalFrontend.o": "226fd47bbe4299052b56f9ddb740b285335cbd8c31751cf900e1393056efc7ea",
     "NativeAdrenoProbeDaemon.o": "ce56e5969964d522c3866bbf0eef39473caa02cef97f42090ebc25158b3e5b96",
     "NativeOsLogExport.o": "c9938aa10c8278fd159fc8bf8f72fcf96e977394ce4030eed3d26ffd7f64ee14",
     "AdrenoPM4.o": "af66a0fd75f9f05e5bdd430c3bef76f445803a13b20186f6903781863f7f6277"
@@ -49,13 +49,33 @@
     },
     "support": {}
   },
+  "native_tile_overlay": {
+    "path": "patches/adreno830/0013-metal-tile-dispatch.patch",
+    "sha256": "5ce5800d633422fb805157c47d21658111ef5600a34900e9d8a355c795f88f82",
+    "before_sha256": {
+      "bridge/NativeMetalObjects.rs": "cc603cfbecea64e8e70d8e41ebd7d1e496e2e07d187869688067493c65e49536",
+      "bridge/NativeMetalObjects.h": "2e60718544c118c9154d3bdcf8b1443c48edc13e8d038e38bf08e06c5d756a57",
+      "NativeBridgeMetalFrontend.mm": "ebaa580e6301911d121e1d9fcec3b37437def2341ac90a92e2277cc4587e0556"
+    },
+    "after_sha256": {
+      "bridge/NativeMetalObjects.rs": "cb6286bf2162cef14fd92fba88051ce93b78c13917e70f18740d080c0f1ad470",
+      "bridge/NativeMetalObjects.h": "b122c21f99b8fc52447ce0ab584b36694466ccd7ecff3c65df5dc2d115b25c85",
+      "NativeBridgeMetalFrontend.mm": "8368dee834f9d703126ab87d8d230abe5ed4a089bdd4be982f698b7c0a4a4058"
+    },
+    "support": {},
+    "upstream": {
+      "repository": "https://github.com/IssacL04/AdrenoMetal.git",
+      "revision": "51b7003f9c05ec46f0aa4ed7e9bb47f8db893c04"
+    },
+    "scope": "Connect tile pipeline creation, resources, pass memory and dispatch to the pinned runtime. Keep device family and tile capability answers unchanged."
+  },
   "sdk_scope": "iOS 16.5 cross-build headers/stubs; runtime private ABI is not qualified.",
   "hardware_tested": false,
   "linked": true,
   "bundle": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle",
-  "executable_sha256": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668",
-  "rust_bridge_sha256": "941393dc49798af220be3afcff3f3557ace40eeb054b9fd0b3a77868d3ae13f5",
-  "turnip_sha256": "33618b863fea464bb0ea73e0c96875bcf6b770dc756ed3a828d879eb12a30c21",
+  "executable_sha256": "e26050f4cc0c3b1b3c888aa0782f9b4228c39c2f7f95ac5345eb8fa3f5abc342",
+  "rust_bridge_sha256": "7b0e76b88e78deb60621e0e7d239e5d56aeb8b3fe6a37a96ce13244891dfaa25",
+  "turnip_sha256": "342c0d669762054d6aef0355d49c1af2114ca53395ec855131834aafb38c3180",
   "daemon_sha256": "6caaa5f0413d4a0d9d1810ea4b9fdf83555fcad17462f4c10a83edf659bbd5c3",
   "original_discovery_abi_qualified": false,
   "code_signature_independently_verified": false

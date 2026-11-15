@@ -1,0 +1,51 @@
+{
+  "result": "IOS16_USER_ENTROPY_RESEED_ACCOUNTING_PASS",
+  "source_sha256": {
+    "scripts/build_user_entropy.py": "fdc49a5e20a7bc6fa39c036cccde3ab1d5cb9f0f6004570df6edae8b3e466ca1",
+    "scripts/prepare_ios16_prng.py": "ba6b90a48ac37548246d5a60a50d4f5d0ea89224a2249daa7b1d95991ee6d06f",
+    "profiles/os/ios-16.7.16-20H392/prng-sysctl.json": "6d983f785aca4083ba4401cc42b8564508afb327c5501603287cbae0f85fd269",
+    "hardware/dodge-entropy.json": "55815c61f3663edb151886195e38703ea9ad6d46ef6aa81e2068ffefaaae887d",
+    "drivers/DodgeSecurity/DodgeUserEntropy.c": "9c17d2cbfe8fe1cef64fd3ad0d8343ce76c2715e7814d8cd06358f6e85421f91",
+    "drivers/DodgeSecurity/DodgePrngPools.c": "6afa17229655b950fe2b4e1e3f6fe81cad31f8c0dde8c53eb96aed1e0b89b7b9",
+    "tests/DodgeUserEntropyTest.cpp": "d7f43eed1a038d0923f3957253a7a1e2093836e1bc13871efe41b2f70853c08b",
+    "build/cph2653-crypto-source/prng_random.crypto.c": "2188dbc64c5e6c281908a438dcbb40fea18f3c7d459246178c39a3555b63c89a",
+    "build/cph2653-crypto-source/overlay-compile-commands.json": "9c3a004ca422dbdd9a01134268c60141096c49f1e0e73c36ba7335e84846317d",
+    "tests/entropy_include/sys/errno.h": "10e1ce4d54050487da1ab9b12429f57f1a30343c0b1f7f2ac074804dc5e44cbd",
+    "tests/entropy_include/sys/random.h": "dcdaa3c176213a4e38fed2b7958f99fdca7df1479f4303eda3e5401e6c9683c1",
+    "tests/entropy_include/sys/sysctl.h": "a3357f5ba394640733c1b0fda7c31f03834ab792751e9d4b3000b2be1104165e"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-crypto-source.json": "363b187741a31736a3134cf37ebc881b5378e7060b54b832dc6287c63d693328"
+  },
+  "artifacts": {
+    "build/cph2653-user-entropy/prng_random.original.o": "7d6ee81a355467125d8862d55aac258e2ea32159611ff8bb6670f3f5e0191950",
+    "build/cph2653-user-entropy/DodgeUserEntropy.o": "705ff00e9a7bb59f6e743b641140b2441743bd4a33a85d61bf9a280f58739452",
+    "build/cph2653-user-entropy/DodgePrngPools.o": "7c4f6ae12ea675e7d014ebad39a4f5eaa7fca7f083c6f74fa0a9d18487c12091",
+    "build/cph2653-user-entropy/original-prng-tree.o": "4b8361a20f23e75109841dc63d2a8be18318d8261187af3897405826ca9bf0ef",
+    "build/cph2653-user-entropy/libDodgeUserEntropy.a": "08482b9ca0a32c436346b6042c6976f7af51d2ea6dd566c0a8ca01e6a89acabe",
+    "build/cph2653-user-entropy/user-entropy-host": "9d854181ebf55fafde1cad50981bf8640d720ae8f0b32a295b741444452c0e7c",
+    "build/cph2653-user-entropy/host.log": "921a24348408b6c407ba36ea3cba5abb9044cd61ff3e84f9ca722aef9c9ea355",
+    "build/cph2653-user-entropy/compile-prng.json": "d266dc16499ef91eeb9dbe67aaf41358064e83570ce6d9a49ac419309e19cdd0",
+    "build/cph2653-user-entropy/compile-commands.json": "ee091260bc08557fa9a9f8e1d0bc58e9d00efd8632429670d92230b390ab3f33"
+  },
+  "original_object": "build/cph2653-user-entropy/prng_random.original.o",
+  "archive": "build/cph2653-user-entropy/libDodgeUserEntropy.a",
+  "PRNG_text_sha256": "87157687e5456579978d4e39c029d0d981fc1ad6a48850bc84bf5de558d24dd6",
+  "original_PRNG_instructions_preserved": true,
+  "host_concurrent_reseeds": 4000,
+  "sysctl": "kern.prng.user_reseed_count",
+  "sysctl_bytes": 8,
+  "read_only": true,
+  "original_bindings": {
+    "_sysctl__kern_prng_children": "0xfffffff006a10da0",
+    "_dodge_original_prng_pool_children": "0xfffffff006a10da8"
+  },
+  "original_sysctl_tree_shared": true,
+  "original_observation_count": 99,
+  "original_iPhone_consumer_sha256": "321cbfba4b85f960cf1d153b27f9dbb35a5c14ab0044334fe78bb499e266b40b",
+  "original_iPhone_consumer_width_derived": true,
+  "new_entropy_source": false,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Actual read-only user reseed counter increments only after nonempty input reaches the existing Darwin 22 hash/reseed/clear implementation. Its instructions, crypto owner hooks and registered iPhone PRNG remain unchanged. Concurrent requests, zero reads, empty/null input, backend errors and sysctl output errors are checked under ASan/UBSan. The counter shares the measured original PRNG child list; no second kern.prng root is defined. The unchanged iPhone owner supplies its own scheduled reseed and 32-pool observations. This provides accounting, not a virtual RNG or new hardware entropy source."
+}

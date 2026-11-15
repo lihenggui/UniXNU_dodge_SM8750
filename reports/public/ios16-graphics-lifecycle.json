@@ -1,7 +1,7 @@
 {
   "result": "IOS16_ORIGINAL_GRAPHICS_MODULE_PREPARATION_AND_ATTACHMENT_SOURCE_PASS",
   "builder_sha256": "2a069cff70f79910a440ef13a2aeefe20e2f24fb3402bc148c71fea12e56fdb1",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
   "source_sha256": {
     "scripts/build_graphics_lifecycle.py": "2a069cff70f79910a440ef13a2aeefe20e2f24fb3402bc148c71fea12e56fdb1",
@@ -33,7 +33,7 @@
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/IOKit/IOService.h": "098ea1df1d596ada6dcd031af8f6c3e9b66ff2f2a93e6631dbba6cac3dd2bfe8",
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/Kernel/IOService.cpp": "f6052eea56933fb7960949de267f6b7434f22c65f1702baac7cf077eff17fcd9"
   },
-  "service_report_sha256": "f02c15124a1a0f722409f79c00ec554b4e10952b358157dfff73341db50f0c97",
+  "service_report_sha256": "3462a2e80c0dc9c5d792e6d5032829ef5144186429381da75d3059eefc02651d",
   "contract": "profiles/os/ios-16.7.16-20H392/graphics-modules.json",
   "contract_sha256": "2755bef2455f569cfa9a0db7c76fd1c3b01c22984165082a6c6252069ec58573",
   "header": "profiles/os/ios-16.7.16-20H392/graphics/OriginalGraphicsModulesABI.h",

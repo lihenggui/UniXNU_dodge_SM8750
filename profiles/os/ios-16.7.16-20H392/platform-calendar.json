@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "repository": "https://github.com/UniXNU/ArmDTPlatform",
+  "source_revision": "417ff95d6a6e8607ddea9309ec45c3bfd4a67c60",
+  "reviewed_upstream": "e8bd8d5de395c6cbc00d762c1bef57dbd15a448d",
+  "patch": "patches/oneplus13/0025-ios16-platform-calendar.patch",
+  "patch_sha256": "d11cf43774c2a27f254624ab4d852f72f0f7ab6ae08f7f3ac56123dce634104a",
+  "before_sha256": "07f96a42bdd638022960f5fcaf9e3a07dd73a82c869a70815781cac6d4873b3b",
+  "after_sha256": "6a6bf7668af6c8f9f6b45349f0d2e31575edf7a1ab825d046b53807b0fecc6e8",
+  "scope": "Darwin 22 source backport of missing-RTC publication, calendar build-date floor and explicit board clock callbacks; bounded date parsing and callback range checks. No RTC hardware is invented; source pin and firmware memory patch are retained."
+}

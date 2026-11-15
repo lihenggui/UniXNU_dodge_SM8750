@@ -18,20 +18,20 @@
     "sources/UniXNU/drivers/RamBlock/PersistOverlay.h": "d3de39a34bfeae5b2235a7bdde8653b658b395cd869300190c690e8b4f13616b"
   },
   "dependency_report_sha256": {
-    "reports/ios16-data-source.json": "519a5ddc73e2890214b7d097fec5e0c20c9bcac66f22ae661896eefec0a68c9e",
-    "reports/ios16-data-kernel.json": "c65a014332cbf39e77b2e92fa315822a3bd665ecebb44fed032491ac8af45eb8",
-    "reports/ios16-data-mount-prelink.json": "e189ac14f448523aefd9eaa40f8ffdc98d434ac430136d98bfb3723b3fdb8353",
-    "reports/data-mount-stack.json": "de2a02c705e445e60d15f8df14a8e93aa0d2417da7e88efbbeab15f261f1114b",
-    "reports/ios16-data-image.json": "7d99049bf8990e70f88cb2d991ff0c6e278d44bdd61d26b08782fad7b227b9f5",
-    "reports/ios16-data-volatile-image.json": "9d9907c749e3870f71f9944176331f76efd0392207afda3160141cf97f33bf37",
-    "reports/ios16-storage-abi.json": "c25f48ec96cd9fc56433431b8bcbd01a58180196ddb8eac1c47c659e6da1e24c"
+    "reports/ios16-data-source.json": "3c54436edbab7aab5caacdfa54c5ee79892be281f03b6e1a7cd6a58ad31134b8",
+    "reports/ios16-data-kernel.json": "f9fec3068753adb156001fdefac6ab04182c77f2bd8428e29ae84737fe0e3ab2",
+    "reports/ios16-data-mount-prelink.json": "fca7866c31e918db37b84682ad2528b86d8074ff108c27ad5f57c0e6bbe31ec3",
+    "reports/data-mount-stack.json": "a964b55a3b2234e5523982c979dbedd0229b41058614494fcd8757c507fd5817",
+    "reports/ios16-data-image.json": "9bdc8e6b9eef2d652252358a2f80e25ab37bc3a20bdfd0f171958e7b84df7f5f",
+    "reports/ios16-data-volatile-image.json": "30afb33f6f6d6a516b3757101e84e9f083dd2a6087e27c90aa858b851cd544da",
+    "reports/ios16-storage-abi.json": "79ead1783edbc53a417e5def96efb28a3972e8bda029ac02385748b2e436805d"
   },
   "artifacts": {
     "build/ios16-ramblock-start-kernel/abi/DodgeRamBlock.o": "56e46cbbe86ee07f527c07ddff90a78b23202e71682d4823a9fc2847ba912699",
     "build/ios16-ramblock-start-kernel/cpu-cases.json": "a54a74602c0cae83ba60c66a7ac63d40d45e4bbd9434ee9cd4e2f2cf28f27524"
   },
   "candidate": "build/ios16-apfs-mount-prelink/kernel.macho",
-  "candidate_sha256": "81f6e6da769fcd3666da0af07d1b69e878064dbb7abccf2490d65d8e66b6da91",
+  "candidate_sha256": "31c346e7c7727477ac167658717d928fcda5f3ccc98938a15fb9dddd32516fb7",
   "source_reference": {
     "repository": "https://github.com/UniXNU/RamBlock.git",
     "revision": "4be2d7eb05ef5a98126c91e0302c149140c0e3e1",

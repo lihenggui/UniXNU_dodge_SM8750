@@ -1,0 +1,43 @@
+{
+  "result": "OWNER_SYSTEM_PORTABLE_SANITIZERS_PASS",
+  "tests": {
+    "DodgeOwnerBootPolicyTest": "PASS: 31 owner native boot policy cases",
+    "DodgeCalendarTest": "PASS: 598 calendar parsing, truncation and clock-range cases",
+    "DodgeUserEntropyTest": "PASS: 4000 concurrent reseeds, empty/null/backend failure controls and read-only sysctl",
+    "DodgeTrngTest": "PASS: 364 TRNG transaction, partial/error/stuck-output and original request-shape cases",
+    "DodgeRootPolicyFormatTest": "PASS: 4117 external root-policy bounds/truncation/overlap cases"
+  },
+  "source_sha256": {
+    "scripts/check_owner_system_host.py": "cff12796e1f1badaea9da9983e7c45303016a08962f4d7d863fdfaf331ed12bc",
+    "tests/DodgeOwnerBootPolicyTest.cpp": "cdd93b84db446fd7941c3c9b7267cd53c0446ae6b411ec8d5ac9403307796d2a",
+    "tests/DodgeCalendarTest.cpp": "09df8f7d7e06f0423b4c5593f38a31a4a013fb621f68e810f98d8cb88f40a646",
+    "tests/DodgeUserEntropyTest.cpp": "d7f43eed1a038d0923f3957253a7a1e2093836e1bc13871efe41b2f70853c08b",
+    "tests/DodgeTrngTest.cpp": "35fa298da77c5b6e9be5ecd2a2461a8f176eb5727a3a262195615cf296fedc2c",
+    "tests/DodgeRootPolicyFormatTest.cpp": "b689819c21bc3850c849418507f656ab5cb368dc9a64983ea645c17b8c71c892",
+    "drivers/DodgeSecurity/DodgeOwnerBootPolicy.h": "63f083def8f20254d500c812c4a951b363a1fdb9f1dcb28a62169c272801f738",
+    "drivers/DodgeSecurity/DodgeTrngRead.h": "d196dcd05e172a1804ea9816b259ac070efa1c5603e6e79c0b37bdef671cf117",
+    "drivers/DodgeSecurity/DodgeUserEntropy.c": "9c17d2cbfe8fe1cef64fd3ad0d8343ce76c2715e7814d8cd06358f6e85421f91",
+    "drivers/DodgePlatform/DodgeCalendar.h": "7644f5c94e32f3c92b4651cf6a8c4025b82e6b7f531ff8bb9bcf5098fea73586",
+    "drivers/DodgePlatform/DodgePlatformClock.inc": "39f0a7e4eec53887d38d37189adfd9672b0d14cbcac4d83e3c0b5da0e0915c15",
+    "tests/entropy_include/sys/errno.h": "10e1ce4d54050487da1ab9b12429f57f1a30343c0b1f7f2ac074804dc5e44cbd",
+    "tests/entropy_include/sys/random.h": "dcdaa3c176213a4e38fed2b7958f99fdca7df1479f4303eda3e5401e6c9683c1",
+    "tests/entropy_include/sys/sysctl.h": "a3357f5ba394640733c1b0fda7c31f03834ab792751e9d4b3000b2be1104165e"
+  },
+  "artifacts": {
+    "build/owner-system-host/DodgeOwnerBootPolicyTest": "13e53c976b9cae1bb7bfb96fbcfe49468e03ab6daa5a8667fbb8e70a774a47c2",
+    "build/owner-system-host/DodgeOwnerBootPolicyTest.log": "bd2155285df7134b616c443a0876696d53c3fec249fb935b9b5972b582b30640",
+    "build/owner-system-host/DodgeCalendarTest": "4624e762ebea1fa3ae70d975a20d54e7fdf752fb3036873765c4a1af03cad798",
+    "build/owner-system-host/DodgeCalendarTest.log": "b3de9a63aa3389ae712ff17bddb078e6abdb43b9fac99ff3e7bf0cfedddc8fb5",
+    "build/owner-system-host/DodgeUserEntropyTest": "9d854181ebf55fafde1cad50981bf8640d720ae8f0b32a295b741444452c0e7c",
+    "build/owner-system-host/DodgeUserEntropyTest.log": "921a24348408b6c407ba36ea3cba5abb9044cd61ff3e84f9ca722aef9c9ea355",
+    "build/owner-system-host/DodgeTrngTest": "eac5febe0c364ce0119ee65a644f8b455388d96e046625f4383c8261df32e5c8",
+    "build/owner-system-host/DodgeTrngTest.log": "d2b017eff04d96ffeae2f1b471bffe8b97777b5c4befde950e9aae288e13539d",
+    "build/owner-system-host/DodgeRootPolicyFormatTest": "ff882e401093fceb2219ee4fad841b552ea64396543198c2c8d5959fdb251975",
+    "build/owner-system-host/DodgeRootPolicyFormatTest.log": "9eeacdc707abe6549055370a9e848f66a3a00df6afda2464cb36419411b8679d"
+  },
+  "compiler": "/usr/bin/clang++-14",
+  "build_jobs": 4,
+  "original_system_inputs_required": false,
+  "hardware_tested": false,
+  "phone_operations": "none"
+}

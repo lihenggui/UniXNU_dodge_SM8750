@@ -1,0 +1,46 @@
+{
+  "result": "DARWIN22_UNSIGNED_PERCPU_ITERATION_HOST_PASS",
+  "cases_per_optimization": 38,
+  "optimizations": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "languages": [
+    "c",
+    "c++"
+  ],
+  "total_cases": 304,
+  "source_sha256": {
+    "scripts/check_percpu_iteration.py": "5db4e48c7a51bc5fb0319aea3e40a91614553d6c399816e9bcf0e6d9f5b245e6",
+    "tests/DodgePerCpuIterationTest.c": "32d352437159f693d870cddd06c1460c22b5b33b2f42e4717a9ded35751e5af2",
+    "patches/xnu/0004-percpu-unsigned-ranges.patch": "797c9e43e3e697ca448b4c6241f223328d14c41d7178faaa5c3200cfdad08630"
+  },
+  "artifacts": {
+    "build/ios16-percpu-iteration-host/source/osfmk/kern/percpu.h": "24503751379da8fc0565afaf7306cd1a60f7b25a9be1eff926f8612c05d81ba6",
+    "build/ios16-percpu-iteration-host/PerCpuMacros.inc": "c1da6eaff76c9f8c6b6fff145d2affe09ccd0544064e0f9a543acd5973ee58fa",
+    "build/ios16-percpu-iteration-host/test-c-O0": "88ced8a853d73b73fc380ed32a24a2505c119e48ddfa8d12c6cac9e808f6499e",
+    "build/ios16-percpu-iteration-host/test-c-O0.log": "84958dd520b2160328d7bda4caa31482656289c93e3c141ee2f2b7e5f4352597",
+    "build/ios16-percpu-iteration-host/test-c-O1": "b7e0deb290050225914ec38aa8c6579bafc1ccefcea764dc372fd239eda50ad7",
+    "build/ios16-percpu-iteration-host/test-c-O1.log": "84958dd520b2160328d7bda4caa31482656289c93e3c141ee2f2b7e5f4352597",
+    "build/ios16-percpu-iteration-host/test-c-O2": "fdb93faa699779fcf2146a293c4efe6d5b3157c8e63511fc93b0737a1d34e09b",
+    "build/ios16-percpu-iteration-host/test-c-O2.log": "84958dd520b2160328d7bda4caa31482656289c93e3c141ee2f2b7e5f4352597",
+    "build/ios16-percpu-iteration-host/test-c-O3": "a157d31b174b46cd558b6c16e3182f69e2093f1e58f49b1204f40defebeb39cb",
+    "build/ios16-percpu-iteration-host/test-c-O3.log": "84958dd520b2160328d7bda4caa31482656289c93e3c141ee2f2b7e5f4352597",
+    "build/ios16-percpu-iteration-host/test-cpp-O0": "fe44a65021355d335c3056f0556213596237ac4bd4ab1373219fd31dd3fab23d",
+    "build/ios16-percpu-iteration-host/test-cpp-O0.log": "84958dd520b2160328d7bda4caa31482656289c93e3c141ee2f2b7e5f4352597",
+    "build/ios16-percpu-iteration-host/test-cpp-O1": "b71ec467fe32a57e9b094dc7954374918aa3fb1c9487233abef8526bee661673",
+    "build/ios16-percpu-iteration-host/test-cpp-O1.log": "84958dd520b2160328d7bda4caa31482656289c93e3c141ee2f2b7e5f4352597",
+    "build/ios16-percpu-iteration-host/test-cpp-O2": "07b4e340d9b5cd6da3d6d8bcffafc718b12422b5ff630124b2ca68153e726ddf",
+    "build/ios16-percpu-iteration-host/test-cpp-O2.log": "84958dd520b2160328d7bda4caa31482656289c93e3c141ee2f2b7e5f4352597",
+    "build/ios16-percpu-iteration-host/test-cpp-O3": "7ba6630a1c26c8b246a8fe56027391799e020cf237063b6a41ad7beedf649a7a",
+    "build/ios16-percpu-iteration-host/test-cpp-O3.log": "84958dd520b2160328d7bda4caa31482656289c93e3c141ee2f2b7e5f4352597"
+  },
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "hardware_tested": false,
+  "scope": "Actual patched Darwin 22 macros over 1/2/3/8 synthetic per-CPU slots, master/secondary iteration, break, continue, nesting and three high unsigned sentinels for empty secondary ranges. Kernel execution is verified separately."
+}

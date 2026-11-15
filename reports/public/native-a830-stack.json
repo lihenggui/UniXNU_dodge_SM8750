@@ -1,18 +1,20 @@
 {
   "result": "CPH2653_NATIVE_A830_IPHONE_DEVELOPMENT_STACK_PASS",
   "source_sha256": {
-    "scripts/build_native_a830_stack.py": "e16b5e63ead2cc032f465be2c57a62195753f37b5d44973bf07b04381dc24178",
-    "scripts/native_a830_userspace.py": "fc541601db755f877130fa881cb2ab5b9d16eba55b47e3895cdac091200c04bc",
+    "scripts/build_native_a830_stack.py": "d503b53d696361c7a8abb62d0fd7c9b84b98bf14e771b92808be9518763f15ab",
+    "scripts/native_a830_userspace.py": "fd151bccdb515b8f5b88a2792a31d4ae49828274dacf55a864f5e7ffee37ec42",
     "scripts/native_a830_runtime.py": "92a60263f6159cf6cdd8ad8bd90b52cf9ceff1dc5890413812570b11c61daaf6",
     "scripts/check_native_a830_host.py": "dff57ae7f1447eb3d76293b93a75eecd5654505e92bcae960708bcce166da7fd",
     "scripts/check_native_a830_board.py": "dd202040a01140a04c9f6304dae9c8aa444a6079284a4b21977fcce2a785fb75",
     "scripts/build_native_a830.py": "6380a27775db8ed324d70df117d5f79b1a8b13c1a36368f088b81a7a6129b816",
     "scripts/build_native_a830_kernel.py": "4b50ccd6c43f40465c08b303520830483efc9a5baaafe7671d93fbb5c1caeedc",
     "scripts/build_native_a830_prelink.py": "e46156524815dd267c44f0b40974e0d75e77a48dea45e3bfef2d568cdeefbdf2",
-    "scripts/build_turnip_ios16.py": "06157d6c85e0c98948ce63b116c0e6c99364877ca6088298a9d395db8eec00fe",
-    "scripts/check_native_a830_recovery.py": "ac1cc1b916c55a8917a193744705f6cee7b837720a2825de18e4061e27d0c568",
-    "scripts/build_metal_bridge.py": "5e9bd9563615f9e0243da22cacadbed8c13da5fd0e2340efe06da3db99ead8f1",
-    "scripts/build_metal_plugin.py": "d0959c40658e9ddff6e5a8d6ca1858d9417a4abfca6c055d08e577ba618fd558",
+    "scripts/build_turnip_ios16.py": "46425a7cbc3b63d34dafde9c3b83b3a88907e20674d7d0aca455289eb3fb086e",
+    "scripts/check_native_a830_cache.py": "067486484851fee31f9ae8d6e970fc97c5782a48d8880e3f06afb64b802407af",
+    "scripts/check_native_a830_recovery.py": "5f73d943a349a40aa631faed1ded7706bc24c6699aac21a2e0a3d5b4b8d24e68",
+    "scripts/build_metal_bridge.py": "8cde6654d1b26c847d8fdf4a1956d161e85ac1a613940d9c9bf859f8246fad80",
+    "scripts/check_metal_translation.py": "435d59b47190316491aefbea0d757ae27c8134eeb6b3a2ab4fab51a65d77584b",
+    "scripts/build_metal_plugin.py": "42459d18cd6000a888702cdc5b3354c16ac2e6f5a15060ab62169420f99bf172",
     "scripts/check_gpu_userspace.py": "f930204b279ebe6f5afbfc192ab6fb5c5293e07d4eab171ea504effed7497d5d",
     "scripts/build_native_a830_firmware.py": "5cb8070bd4f731c7d89122ddda2abe67392d49074162dfc6d034f4037050daec",
     "scripts/build_native_a830_addon.py": "1566204a382ed7f115fa8a8485406c3ec1485fdc052ca650b43348e355bd500b",
@@ -22,7 +24,7 @@
   "stages": {
     "backend_host": {
       "report": "reports/native-a830-host.json",
-      "sha256": "c8a9130fb957bbb44ebc335db2c27893a7a664e68c7d1fa56eb4b9e659f00ba9",
+      "sha256": "be82b1fc97aeac3cda3ce64092a435cbd25cc10327de7d5155efbd38266d1e94",
       "builder": "scripts/check_native_a830_host.py",
       "builder_sha256": "dff57ae7f1447eb3d76293b93a75eecd5654505e92bcae960708bcce166da7fd",
       "arguments": []
@@ -39,7 +41,7 @@
     },
     "runtime_host": {
       "report": "reports/native-a830-runtime-host.json",
-      "sha256": "87180b919f5193cb821769b8782289f84e5ba017d8b8d98735fd973f6e551c77",
+      "sha256": "2dfa4c0809c1c985a843ce317ac765d01f4d82624647d4d921eea0aef0d0aa72",
       "builder": "scripts/check_native_a830_host.py",
       "builder_sha256": "dff57ae7f1447eb3d76293b93a75eecd5654505e92bcae960708bcce166da7fd",
       "arguments": [
@@ -48,7 +50,7 @@
     },
     "archive": {
       "report": "reports/native-a830-runtime.json",
-      "sha256": "71cb96bd2af9c7dd58728634a7c80fa3a8d15d82a9c16586c99bac20dea95289",
+      "sha256": "d23f04df4a23f2c103a2f46f6de58504644f71528e377eb14687b94c2dca5c40",
       "builder": "scripts/build_native_a830.py",
       "builder_sha256": "6380a27775db8ed324d70df117d5f79b1a8b13c1a36368f088b81a7a6129b816",
       "arguments": [
@@ -58,55 +60,69 @@
     },
     "kernel": {
       "report": "reports/native-a830-kernel.json",
-      "sha256": "04388341f24b2db26f86d2876d4926f1dfc8d25a7de857abebdd8035b4ea545d",
+      "sha256": "89b143a9ecf8c2bcae3ed0f8df334578ee8f59475f97a0e0c7d217cd73b05d7b",
       "builder": "scripts/build_native_a830_kernel.py",
       "builder_sha256": "4b50ccd6c43f40465c08b303520830483efc9a5baaafe7671d93fbb5c1caeedc",
       "arguments": []
     },
     "prelink": {
       "report": "reports/native-a830-prelink.json",
-      "sha256": "7e296ab9a1cc60837f5f7e0a67f0e1debc3b91fb86ba599aa80b731bae084dbb",
+      "sha256": "68165ea737a11d5a3c82995057de1826f57cd1a83f69c689c2814aafbf83078e",
       "builder": "scripts/build_native_a830_prelink.py",
       "builder_sha256": "e46156524815dd267c44f0b40974e0d75e77a48dea45e3bfef2d568cdeefbdf2",
       "arguments": []
     },
     "turnip": {
       "report": "reports/native-a830-turnip.json",
-      "sha256": "ef113112b214ce23fd3ee36f894183b08b55a75e7d131dc78f184379b78da2b6",
+      "sha256": "1465775e20ee9ba3d0f3992241d7586c6bb45b74831a003f53a98541b895f1dc",
       "builder": "scripts/build_turnip_ios16.py",
-      "builder_sha256": "06157d6c85e0c98948ce63b116c0e6c99364877ca6088298a9d395db8eec00fe",
+      "builder_sha256": "46425a7cbc3b63d34dafde9c3b83b3a88907e20674d7d0aca455289eb3fb086e",
       "arguments": [
         "--native-a830"
       ]
     },
+    "cache_host": {
+      "report": "reports/native-a830-cache-host.json",
+      "sha256": "3ba2aea833936cf6c4af67ab9d645067f332cc2afb368110f7f7dd4d1718bba0",
+      "builder": "scripts/check_native_a830_cache.py",
+      "builder_sha256": "067486484851fee31f9ae8d6e970fc97c5782a48d8880e3f06afb64b802407af",
+      "arguments": []
+    },
     "recovery_host": {
       "report": "reports/native-a830-recovery-host.json",
-      "sha256": "444f5bc1e9d43b7e1ba9be16a4e5a207a4530b9f12608a651a2431760d58282a",
+      "sha256": "eecfd92ab684b1b1ce17db968866e19282c6f4279f36cc09bbe0437477209a94",
       "builder": "scripts/check_native_a830_recovery.py",
-      "builder_sha256": "ac1cc1b916c55a8917a193744705f6cee7b837720a2825de18e4061e27d0c568",
+      "builder_sha256": "5f73d943a349a40aa631faed1ded7706bc24c6699aac21a2e0a3d5b4b8d24e68",
       "arguments": []
     },
     "bridge": {
       "report": "reports/native-a830-metal-bridge.json",
-      "sha256": "1b23290d5c539ae0327cb6be75adbfe0dfdd009096baaea4026d4c593a19554e",
+      "sha256": "139d13819e261c10cfef16615cdfd9d6dc5353c339787f593a0435f75c4c58d5",
       "builder": "scripts/build_metal_bridge.py",
-      "builder_sha256": "5e9bd9563615f9e0243da22cacadbed8c13da5fd0e2340efe06da3db99ead8f1",
+      "builder_sha256": "8cde6654d1b26c847d8fdf4a1956d161e85ac1a613940d9c9bf859f8246fad80",
       "arguments": [
         "--native-a830"
       ]
     },
+    "translation_host": {
+      "report": "reports/metal-translation-tests.json",
+      "sha256": "e88d63dbe37c964e4a81922977cc58e78008a5d3ca8f86f51274ca5b1208cb66",
+      "builder": "scripts/check_metal_translation.py",
+      "builder_sha256": "435d59b47190316491aefbea0d757ae27c8134eeb6b3a2ab4fab51a65d77584b",
+      "arguments": []
+    },
     "plugin": {
       "report": "reports/native-a830-metal-plugin.json",
-      "sha256": "ea6eee72452987c8c239cccd7f7d25daf60d7b0d4baa4e8f810031ad88128709",
+      "sha256": "dbdfbd695c3a84f6c1f1dc1dd5090605e6150bd8d4e9a56c0fd7dddd03427a04",
       "builder": "scripts/build_metal_plugin.py",
-      "builder_sha256": "d0959c40658e9ddff6e5a8d6ca1858d9417a4abfca6c055d08e577ba618fd558",
+      "builder_sha256": "42459d18cd6000a888702cdc5b3354c16ac2e6f5a15060ab62169420f99bf172",
       "arguments": [
         "--native-a830"
       ]
     },
     "userspace": {
       "report": "reports/native-a830-userspace.json",
-      "sha256": "4841364edba5c56b13d134281e7b5bb8e630260381059a65822ced4f555125eb",
+      "sha256": "dc334b3fe0eea03990ce6c93fb9df626424efef946388c16eacd7472de6c9efc",
       "builder": "scripts/check_gpu_userspace.py",
       "builder_sha256": "f930204b279ebe6f5afbfc192ab6fb5c5293e07d4eab171ea504effed7497d5d",
       "arguments": [
@@ -115,28 +131,28 @@
     },
     "firmware": {
       "report": "reports/native-a830-firmware.json",
-      "sha256": "d8853e10ce0be47bb86f714294119d9cc1e518ac2fe0e7e93ee9fca9da979766",
+      "sha256": "814df2533a1366c44cf775333dfc95d5acf94fb13c23db38caa1e35abdbdeb52",
       "builder": "scripts/build_native_a830_firmware.py",
       "builder_sha256": "5cb8070bd4f731c7d89122ddda2abe67392d49074162dfc6d034f4037050daec",
       "arguments": []
     },
     "addon": {
       "report": "reports/native-a830-addon.json",
-      "sha256": "ec75121a76435cb5f0d69c1f3f09039f980baf4a38fa4487d82fd4fe767bee26",
+      "sha256": "e38844cd367e28d759f5392bfa4e7a5956257a091e67d60bc3b23df445270a4d",
       "builder": "scripts/build_native_a830_addon.py",
       "builder_sha256": "1566204a382ed7f115fa8a8485406c3ec1485fdc052ca650b43348e355bd500b",
       "arguments": []
     },
     "payload": {
       "report": "reports/native-a830-payload.json",
-      "sha256": "299008b84821bc57f43ff356473dac25ac388790d805b9256982162fa86b037a",
+      "sha256": "c656ee12670937b15821d2efb8c05315502763de078e6c0d8a2ff9870462db5b",
       "builder": "scripts/build_native_a830_payload.py",
       "builder_sha256": "f072acb84dc8e6ecc371ec79b8d723772bc57f28d6948c2bbbe3e1adc78ad567",
       "arguments": []
     },
     "entry": {
       "report": "reports/native-a830-entry.json",
-      "sha256": "419d0485c972ee03806063b4d85eaf4cde472ccbc52456b505e77bbb5f5f6d2f",
+      "sha256": "a08c304e8429237fd93b71e9f5ea458033b24f029b6131705b196f81575b1064",
       "builder": "scripts/check_native_a830_entry.py",
       "builder_sha256": "af75c9cfd4e3df0f6aaa2d9d27d8e79711895cbe7016b0bff85999a8810b6807",
       "arguments": []
@@ -151,9 +167,9 @@
   "original_components": 28,
   "original_pointer_readbacks": 63889,
   "candidate": "build/cph2653-native-a830-prelink/kernel.macho",
-  "candidate_sha256": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
+  "candidate_sha256": "911dd28e865d14ac37de29c94f8c52a24dff0a8a6797259a9da858dd6c388d65",
   "boot_image": "build/cph2653-native-a830-bringup/boot.img",
-  "boot_image_sha256": "5d78dbad60fab573d70fdee8baf58b1198e35efd21a2323e9be94d570e489daf",
+  "boot_image_sha256": "024b39e0e66435fa782b85feb2782d7b0b7e8ef46fbbb000eaf2a0d9a9407984",
   "surface_ID_import_and_original_producers_connected": true,
   "recovered_Vulkan_device_and_per_surface_visibility": true,
   "firmware_fresh_entropy_and_DXE_log_export": true,

@@ -34,7 +34,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     lock = json.loads((ROOT / 'upstream.lock.json').read_text())
     mesa = ROOT / '.cache/gpu-work/mesa-native-a830/src/freedreno/vulkan/tu_knl_darwin.cc'
-    pin = lock['native_a830_mesa_recovery_overlay']
+    pin = lock['native_a830_mesa_cache_overlay']
     production = ''
     if not args.frontend_only:
         require(sha(mesa) == pin['after_sha256']['src/freedreno/vulkan/tu_knl_darwin.cc'], 'Build native Turnip before its recovery tests')

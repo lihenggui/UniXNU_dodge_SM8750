@@ -1,0 +1,25 @@
+{
+  "result": "NATIVE_A830_CACHE_AND_RETIREMENT_HOST_PASS",
+  "cases": 19,
+  "retirement": 13,
+  "shader_cache": 6,
+  "concurrent_lookups": 800,
+  "source_sha256": {
+    "scripts/check_native_a830_cache.py": "067486484851fee31f9ae8d6e970fc97c5782a48d8880e3f06afb64b802407af",
+    "tests/DodgeTurnipCacheTest.cpp": "533207e75d56a9280cd9b3c4de077653eef364c8719dd5181a257f4883927e21",
+    ".cache/gpu-work/mesa-native-a830/src/freedreno/vulkan/tu_pipeline.cc": "a73006a38f0a07b322dc76413bc8db1af6465b27011f08849a52f4f47eeac0ac",
+    ".cache/gpu-work/mesa-native-a830/src/freedreno/vulkan/tu_knl_darwin.cc": "6cd0436ec9bbf5e2d2b4a4ed16576af162732b27539e0cc807d2edf58a53ff6b",
+    "patches/adreno830/0012-turnip-shared-cache-and-retirement.patch": "6c3337f91d471936739f9b9ef6c992280a2b2c6a59c406227e2d36826a4b793a"
+  },
+  "artifacts": {
+    "build/cph2653-native-a830-cache-host/TurnipCache.inc": "19ab39ac83281462788495ec00df8b99cb51220bacc28a0eb0e7e6e9aa7d3d8b",
+    "build/cph2653-native-a830-cache-host/test": "fe989089189786edc1d727d246ff70a0c36e85b9804e0b7378ebc99ffdf40ccf",
+    "build/cph2653-native-a830-cache-host/run.log": "cc8dffaea31e01bf126f9d917df8c574f35295b94f4194d499dce1569b93c961"
+  },
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "hardware_tested": false,
+  "scope": "Production shader-cache and buffer-allocation/retirement functions with Vulkan reference-cache and kernel transport peers. Checks device isolation, reference release, concurrent lookup, cache-hit I/O avoidance, completed-buffer reuse, latched failures, allocation cleanup and opportunistic fence observation. No shader executes."
+}

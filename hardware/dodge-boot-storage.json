@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "device": "OnePlus 13 CPH2653 / dodge",
+  "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "boot_partitions": {
+    "boot_a": 100663296,
+    "boot_b": 100663296
+  },
+  "root_partition_label": "unixnu",
+  "root_partition_present_in_capture": false,
+  "phone_operations": "none",
+  "scope": "Offline captured partition capacity only; no current device or GPT changes."
+}

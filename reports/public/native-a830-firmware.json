@@ -1,7 +1,7 @@
 {
   "result": "CPH2653_ENTROPY_AND_LOGGER_FIRMWARE_PASS",
   "firmware": "build/cph2653-native-a830-firmware/SILICIUM_UEFI.fd",
-  "firmware_sha256": "4334a58fd1f5128266e2b27419c912cccdd16879f66b5576bbe45e47f6f41358",
+  "firmware_sha256": "9b86fdb5ba7f18ba55914d0b5b6bffbe2b17ffa60125aeb66602bc0236ddf4ce",
   "efi": "build/cph2653-native-a830-firmware/DarwinBoot.efi",
   "efi_sha256": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
   "mapping": "build/cph2653-native-a830-firmware/DarwinBoot.map",
@@ -18,11 +18,11 @@
     "uefi/Mu-Silicium/Platforms/OnePlus/dodgePkg/Library/MemoryMapLib/MemoryMapLib.c": "71e096b88be2700c2bc92eb58f64dbfa2bca585ff5713de78179ca3ade557ab9"
   },
   "artifacts": {
-    "build/cph2653-native-a830-firmware/SILICIUM_UEFI.fd": "4334a58fd1f5128266e2b27419c912cccdd16879f66b5576bbe45e47f6f41358",
+    "build/cph2653-native-a830-firmware/SILICIUM_UEFI.fd": "9b86fdb5ba7f18ba55914d0b5b6bffbe2b17ffa60125aeb66602bc0236ddf4ce",
     "build/cph2653-native-a830-firmware/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
     "build/cph2653-native-a830-firmware/DarwinBoot.map": "3e3a670e123e61d852d2d07dd149dde7b43bccc7925510c2a1d8c6bf879eac37",
     "build/cph2653-native-a830-firmware/build-command.json": "2b9ab0cfd3d6be69c7f7164e6a28f3139ce4b802caa377da4be40c1362ca0273",
-    "build/cph2653-native-a830-firmware/tree/Build/dodgePkg/DEBUG_CLANGPDB/AARCH64/DarwinBootPkg/Driver/DarwinBoot/GNUmakefile": "8d45e1b5fbadcb3c3a506ea145a07ca07a69d2528c1f53418bb3fd2f33318be8",
+    "build/cph2653-native-a830-firmware/tree/Build/dodgePkg/DEBUG_CLANGPDB/AARCH64/DarwinBootPkg/Driver/DarwinBoot/GNUmakefile": "6aa6df3c776df641a0c17df0ca2cea649963659cceb825b751ba08853bb97fd3",
     "build/cph2653-native-a830-firmware/tree/DarwinBootPkg/Driver/DarwinBoot.c": "aaec6ed9ea795e47287f0518e5d2e76e65c83f2e6699e45912d5bf77b8503988",
     "build/cph2653-native-a830-firmware/tree/DarwinBootPkg/Driver/DarwinBoot.inf": "05248d62d1d1b5c4241a820f737ea9afb374791e5031e658a5a79b4775ec402e",
     "build/cph2653-native-a830-firmware/tree/DarwinBootPkg/Driver/DodgeBootEntropy.h": "47612a059c3e18f15ae14ba8180488f4e2033fc01b41d957c997eab7912d5567"
@@ -35,13 +35,13 @@
         "location": "entropy-fd",
         "filesystem_guid": "8c8ce578-8a3d-4f1c-9935-896185c32dd3",
         "bytes": 3145728,
-        "sha256": "4334a58fd1f5128266e2b27419c912cccdd16879f66b5576bbe45e47f6f41358"
+        "sha256": "9b86fdb5ba7f18ba55914d0b5b6bffbe2b17ffa60125aeb66602bc0236ddf4ce"
       },
       {
         "location": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
         "filesystem_guid": "8c8ce578-8a3d-4f1c-9935-896185c32dd3",
         "bytes": 7651328,
-        "sha256": "f21463a4150f2a1371e4a2eb72e8c38a7c8502e2fdc6eac11384abc14cb0fa81"
+        "sha256": "48111a8853e6396694bad5fb22f78ffbc1ca333dabcb0ef5efb8208aa6460038"
       }
     ],
     "modules": [
@@ -49,12 +49,12 @@
         "guid": "9affb503-e643-4141-8b90-17e8588b1d35",
         "volume": "entropy-fd",
         "file_type": 3,
-        "ffs_sha256": "5aa262de3f6cd6075cf7bd3343e53164f017d1274304f3f417710331fcef8a42",
+        "ffs_sha256": "ba03f633b068f65fef86384b0cfd9a19c511765b25857da22026eac38c19717e",
         "ui": null,
         "images": [
           {
             "kind": "TE",
-            "sha256": "554837784c094a7a7b0cfa7712abdf9b71e51f9a2ef6cd452dd219afe57738f6",
+            "sha256": "b5b29ced09b660457a4c1b2ff635004757435c97f499e8d4bfd7289828244a1c",
             "bytes": 65192,
             "machine": "0xaa64",
             "entry_point_rva": "0x9ca0"
@@ -99,12 +99,12 @@
         "guid": "80cf7257-87ab-47f9-a3fe-d50b76d89541",
         "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
         "file_type": 7,
-        "ffs_sha256": "2ce22bcc5bddabe7295b2b4951a7e797dee16dab41f1849c25883aacba94bb79",
+        "ffs_sha256": "de929f853254f369d3be4d17bc93697856433d1969b9ef17336e833f9693a1b1",
         "ui": "PcdDxe",
         "images": [
           {
             "kind": "PE32",
-            "sha256": "9a6042d8a799bfbe79bdbcce9d10ab2b42ffda2552302ea812e2f369c6c4261e",
+            "sha256": "6f5eef92bcd29786103ad144f332cfd6b467dddee3e165d9f3ebeada97df3e95",
             "bytes": 29184,
             "machine": "0xaa64",
             "entry_point_rva": "0x1050",
@@ -2410,12 +2410,12 @@
         "guid": "50a15b6f-e3a9-4192-9640-369cb367c4de",
         "volume": "entropy-fd/9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
         "file_type": 7,
-        "ffs_sha256": "0426739c41e013e85f5c39005c3ce3ed0ecf9727d438a261ac5ad4ad7ebc8f58",
+        "ffs_sha256": "d5d62815d6a1245471ebc998af13d02bbe7daa7da6f73ea548d96f21da260f34",
         "ui": "SmBiosTableDxe",
         "images": [
           {
             "kind": "PE32",
-            "sha256": "20f700eb91081eef57a1becc61bd19b0a1980737dc723b0cc1232f1db590324b",
+            "sha256": "03bf22c08fb4389de296476f795dbed41a23c99b56c13ce741056e25315c4247",
             "bytes": 20480,
             "machine": "0xaa64",
             "entry_point_rva": "0x1050",
@@ -2728,7 +2728,7 @@
         "guid": "9e21fd93-9c72-4c15-8c4b-e77f1db2d792",
         "volume": "entropy-fd",
         "file_type": 11,
-        "ffs_sha256": "b10481d12dd2beb45e59009f9a82156c674bf41dde1203cff2dd6eef8a12fd20",
+        "ffs_sha256": "614de3c7ec456eaa00900cd7384779d8f71d3f89cb99c235a21903240f141f6b",
         "ui": null,
         "images": []
       }

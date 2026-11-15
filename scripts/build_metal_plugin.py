@@ -84,6 +84,7 @@ def main():
               'frontend_revision': lock['a830_metal_reference']['revision'],
               'ios16_interface_patches': lock['iphone_metal_frontend_patches'],
               'native_surface_overlay': native_overlay,
+              'native_tile_overlay': lock['native_a830_metal_tile_overlay'] if args.native_a830 else None,
               'sdk_scope': 'iOS 16.5 cross-build headers/stubs; runtime private ABI is not qualified.',
               'hardware_tested': False, 'linked': False}
     if args.objects_only:

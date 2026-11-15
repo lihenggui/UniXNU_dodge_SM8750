@@ -5,38 +5,38 @@
     "scripts/build_data_startup_stack.py": "a6917129e0937164b3a43d550a5f90b7b11e245ee20abd8ee830c51251f2e8d0"
   },
   "base_data_report": "reports/data-stack.json",
-  "base_data_report_sha256": "95898873bd3fe46a586a7d949b3ea5363e71668cb116bfddf80eee8b107b419e",
+  "base_data_report_sha256": "39a69e6a14a1bfcb22e0ec76dffd70055d731df19a2d16b11876e445fcf492e7",
   "stages": {
     "ios16-data-startup": {
       "report": "reports/ios16-data-startup.json",
-      "sha256": "c515635f4d7ab7d6aea87345b3b4952bb1f2530c58140d90167ec6216347bcc9",
+      "sha256": "5e543c640c3b01f6c06b4f0b92bb3e81c0901227d5120ccf4bcf166b72a23d81",
       "result": "IOS16_SEPARATE_DATA_STARTUP_SOURCE_AND_STRICT_LINK_PASS"
     },
     "ios16-data-startup-prelink": {
       "report": "reports/ios16-data-startup-prelink.json",
-      "sha256": "6f4deaf35a3bb398feef90a613d94b9567e2c19dbbc0be8fad6b2ee1445f0752",
+      "sha256": "e38b42f48308fddca9b616a2becba4fcb5d72d7a21baa57992dafb692759762d",
       "result": "IOS16_DATA_STARTUP_AND_ORIGINAL_IPHONE_STRICT_PRELINK_PASS"
     },
     "ios16-data-startup-kernel": {
       "report": "reports/ios16-data-startup-kernel.json",
-      "sha256": "29f7d829e01a449538e3e154d2f977327c2187be5c4f216a0ac7bbfc90145d45",
+      "sha256": "13ec13887a898bdc137439a98abc578ccd865fc6ae7b5dc8c991bfc19cf70813",
       "result": "IOS16_ACTUAL_DATA_STARTUP_AND_DATA_PATHS_ARM64_PASS"
     },
     "ios16-data-payload": {
       "report": "reports/ios16-data-payload.json",
-      "sha256": "db47e57a69562ff04ec4826e1f1366eefda73b1f710cbf00afa2a05a5fb3f811",
+      "sha256": "9dde4c9e0e30e408040185df563e2ce4209e34e6645e4cba74a3c3b24403d659",
       "result": "IOS16_DATA_STARTUP_PACKED_SEED_AND_CONTAINER_READBACK_PASS"
     }
   },
   "artifacts": [
     {
       "path": "build/cph2653-data-bringup/boot.img",
-      "sha256": "65f65a6da2b1b13d8aa2cfd89d822770410ae1e148b12e9a70a5bc099cb13927",
+      "sha256": "882ad3ba38ff46a721fce6b864c6ce23a82de12e177441a5631fa52b8fac65c1",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
       "path": "build/cph2653-data-bringup/boot.json",
-      "sha256": "6f4e91ccc03e6b8dfc3a71cbac32da8f3aff7923aec9862cae5e204b79c612bd",
+      "sha256": "b3515ed76c2c6d120a628e6ed7700af6d9f659c83cb78d1de7c16f97127b7fdd",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
@@ -56,7 +56,7 @@
     },
     {
       "path": "build/cph2653-data-bringup/payload.img",
-      "sha256": "236eb0a4a9cc6684298644d0bd5a71a4fbb19467a32c7af02b40111b3fd3e597",
+      "sha256": "4cc1e474d4cbeccc593456d065fe28fdb4533248b12fc68a4cf062b590282d47",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
@@ -71,27 +71,27 @@
     },
     {
       "path": "build/cph2653-data-startup-prelink/emission.json",
-      "sha256": "e9214885f8e68d604466604d0ad679bdcafd584fbb581b94e41889f17da4c4d2",
+      "sha256": "1482036b358330b69eae22515b56733fb8b8dbf52e030c032d4641c38cb9dca8",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
       "path": "build/cph2653-data-startup-prelink/kernel.macho",
-      "sha256": "2dd49342fc3cc52e948c7649aa848399a901c4f7a5b4ef3a735ce99c985a3b50",
+      "sha256": "804a161bfc292a680153bb931fc689631da7d89bca0306c2d37568a54d4e2c67",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
       "path": "build/cph2653-data-startup-prelink/kernel.macho.crypto-hmac.json",
-      "sha256": "fef14b86faceadfa20bf580eeb6373cc92db7fb9fe087d087941b76d98533c1b",
+      "sha256": "9b70d01351b0bba87cc23e6f6cd8e4897e2cd689f6933814bda8235e3083b77a",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
       "path": "build/cph2653-data-startup-prelink/mach.data-startup.sealed",
-      "sha256": "d24616f7572ddf9098941fbba3c4ce62075f89d849050d9672e78a29931dd115",
+      "sha256": "dac62d291a5a641edd78bc979696f06595cf0bf4c62ad8a0666d854bb51101e5",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
       "path": "build/cph2653-data-startup-prelink/mach.data-startup.sealed.crypto-hmac.json",
-      "sha256": "ca7312c6e1b67253cb8c41aab50c1acd40c7d25ebef85acb64272fe6f947f5f3",
+      "sha256": "aff5eb8f1e9ea9c09bfccf044561dd780cb2cee9c9a854f0462cdad1bd5caa47",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
@@ -136,27 +136,27 @@
     },
     {
       "path": "build/cph2653-data-startup/mach.data-startup",
-      "sha256": "7909b488f3c0cde345b5917267a600b91b5c64e608f6aa11408058688ff91c9c",
+      "sha256": "ce6f30e96998a0e3da87e143e977f269e2a0849ab86a61a7a57da84a2c383cf6",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
       "path": "reports/ios16-data-payload.json",
-      "sha256": "db47e57a69562ff04ec4826e1f1366eefda73b1f710cbf00afa2a05a5fb3f811",
+      "sha256": "9dde4c9e0e30e408040185df563e2ce4209e34e6645e4cba74a3c3b24403d659",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
       "path": "reports/ios16-data-startup-kernel.json",
-      "sha256": "29f7d829e01a449538e3e154d2f977327c2187be5c4f216a0ac7bbfc90145d45",
+      "sha256": "13ec13887a898bdc137439a98abc578ccd865fc6ae7b5dc8c991bfc19cf70813",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
       "path": "reports/ios16-data-startup-prelink.json",
-      "sha256": "6f4deaf35a3bb398feef90a613d94b9567e2c19dbbc0be8fad6b2ee1445f0752",
+      "sha256": "e38b42f48308fddca9b616a2becba4fcb5d72d7a21baa57992dafb692759762d",
       "role": "Separate default-off Data startup/loader/container evidence"
     },
     {
       "path": "reports/ios16-data-startup.json",
-      "sha256": "c515635f4d7ab7d6aea87345b3b4952bb1f2530c58140d90167ec6216347bcc9",
+      "sha256": "5e543c640c3b01f6c06b4f0b92bb3e81c0901227d5120ccf4bcf166b72a23d81",
       "role": "Separate default-off Data startup/loader/container evidence"
     }
   ],
@@ -174,7 +174,7 @@
   "original_pointer_sites_read_back": 63889,
   "boot_image": "build/cph2653-data-bringup/boot.img",
   "boot_image_bytes": 170557440,
-  "boot_image_sha256": "65f65a6da2b1b13d8aa2cfd89d822770410ae1e148b12e9a70a5bc099cb13927",
+  "boot_image_sha256": "882ad3ba38ff46a721fce6b864c6ce23a82de12e177441a5631fa52b8fac65c1",
   "packed_seed_bytes": 721024,
   "logical_data_bytes": 2147483648,
   "source_data_startup_and_payload_route_wired": true,

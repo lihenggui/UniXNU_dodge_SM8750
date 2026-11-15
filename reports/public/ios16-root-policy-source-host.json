@@ -1,0 +1,24 @@
+{
+  "result": "NATIVE_ROOT_POLICY_SOURCE_HOST_PASS",
+  "source_sha256": {
+    "scripts/check_root_policy_source_host.py": "c47a93e91bb36a000198d54c4f098c5f765f6b55a2bfba6986de447dca0b2a95",
+    "tests/DodgeRootPolicySourceTest.cpp": "53cf2cdc45f91b02c445dee436620412470eb55d0fcc8c29ff02d168037bdad0",
+    "tests/root_policy_include/DodgeOwnerIdentity.h": "31f02cfdf85989595520b2c94a465a98212d82476304e2193c557c5d70475309",
+    "tests/root_policy_include/libkern/crypto/sha2.h": "1e88cbf01a9d6b68f41f3eea079b9499d14d3e9b5bd06c98a7f9337409d68a8a",
+    "tests/root_policy_include/libkern/libkern.h": "58a85b79f5b52b815ed6fbd70e2143786500fd777a5cdfa4509cd0db246cd5a8",
+    "tests/root_policy_include/vm/vm_kern.h": "946f0184dfb7aa54e556a51b547a6a5b2e1d74fc096d1e0fc3a74d217c70580b",
+    "tests/root_policy_include/vm/vm_map.h": "2256cfbb6077aef522b44f1cc249bf5a78e6d78126e22423a2d179a405db4bcd",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeVirtioBlock/VerifiedBlockPolicy.h": "71deb378d00faec4b1df133f1346bb08352172736b7da7e8c0c745c3df5ca73f",
+    "drivers/DodgeStorage/DodgeRootPolicySource.cpp": "8a5aa748634bd690bb6b90505e2c37f30a469c119e43d62c745121cfc83481e6",
+    "drivers/DodgeStorage/DodgeRootPolicySource.h": "d8136805f0c161d5bcd25d044b36b9d01a59eaa9d205616093ed58b7387c1329",
+    "drivers/DodgeStorage/DodgeRootPolicyFormat.h": "7f23150a742d83c93479bb7cf0a6acf184a990c63dd304bfb8a18e457bc41adc"
+  },
+  "artifacts": {
+    "build/cph2653-root-policy-source-host/root-policy-source-host": "7f6fc2a11daf017633bb59f64becc8afc536d82217cd001b78e725f647a05e74",
+    "build/cph2653-root-policy-source-host/host.log": "0e8ad224f982fb98e2819a3218b3a4dda8a4963ade9eb5828293a9de65a10b14"
+  },
+  "case_count": 13,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Actual source loader runs with synthetic public policy bytes, host SHA-256, explicit UFS-read/VM peers and real host read-only mappings. Bad format/identity/digest, header/data mutation, read/alloc/protection failures, single-attempt latches, chunk bounds and immutable snapshot retention are checked. This does not execute Darwin VM, physical UFS or the separate RSA verification performed by each root window."
+}

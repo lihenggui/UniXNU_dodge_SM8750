@@ -1,6 +1,6 @@
 {
   "result": "CPH2653_IPHONE_DARWIN22_FRESH_BOOT_ENTROPY_SOURCE_EFI_BUILD_PASS",
-  "builder_sha256": "cb0680162316afd083e162baa023aef3391360597d627c40030910cd5b57ecc6",
+  "builder_sha256": "5934d375398437ff74899ae3407e419cc8b6e837cf1e11b3ba849e76277c8c96",
   "overlay_pin": {
     "path": "patches/darwinboot/0002-refresh-firmware-entropy.patch",
     "sha256": "3430cea779b9a952ad7557f8346c13d7fca4af5b4e65ab1dcb219564bd75a1dd",
@@ -20,10 +20,10 @@
     "scope": "Isolated Darwin22 EFI entropy handoff; exact 256-byte /chosen/random-seed refreshed through RAW EFI_RNG per attempt; no target entropy/hardware qualification or existing image replacement"
   },
   "source_sha256": {
-    "scripts/build_boot_entropy.py": "cb0680162316afd083e162baa023aef3391360597d627c40030910cd5b57ecc6",
+    "scripts/build_boot_entropy.py": "5934d375398437ff74899ae3407e419cc8b6e837cf1e11b3ba849e76277c8c96",
     "scripts/boot_entropy_overlay.py": "157a71c5341fe8b3de58fc280f74a375e16662a540b9150672124e55970203a9",
     "scripts/check_boot_entropy_host.py": "5c4eb7c44af0bbe5d25c0ed707fde75526d3fd40e11a800431bfc2ca62ed54c2",
-    "scripts/build_uefi.py": "7da02c844c40db7c3438f18c5e9e1241e7080948d368e09bf18410bfdffb69ea",
+    "scripts/build_uefi.py": "59dd6bea208bbf4f15b1b14d22b434f83d4fc3d6b6e057981a79cfbaf9e70d71",
     "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
     "scripts/prepare_initial_data.py": "1cc4467bb4224632adea2a5ac87d602b285207b5c0d6bd63937a6bfdcf8d271c",
     "tests/DodgeBootEntropyTest.c": "aad66595978e3aa164851e0b8f525381de092f15aab5d784e32805f8437d881f",
@@ -38,7 +38,7 @@
     "uefi/Mu-Silicium/Mu_Basecore/MdePkg/Include/Guid/Rng.h": "1d36864475d9820fb1fcf4d4724f214095b5301a839ef5086c59d64191c58fef"
   },
   "dependency_report_sha256": {
-    "reports/ios16-crypto-payload.json": "1e058c5ed732bd4ea11f4253569df66a6c046322526bf4d5c0aca8f1bbea84c7"
+    "reports/ios16-crypto-payload.json": "01a9a6e6487278ac7c5f3a68ad3f9fcd6a969c15acdb459a84e44183baa77ed8"
   },
   "artifacts": {
     "build/cph2653-boot-entropy/DarwinBoot.efi": "89e0076cd1b2589f53a0e1a08c0ccfb4e6b71e6d785e7820834bedf5d9380324",
@@ -75,8 +75,7 @@
   ],
   "memory_budget": {
     "effective_memory_max_bytes": 21474836480,
-    "requested_max_bytes": 21474836480,
-    "within_budget": true
+    "limit_source": "inherited-cgroup-v2"
   },
   "compiler_jobs": 4,
   "host_tests": {

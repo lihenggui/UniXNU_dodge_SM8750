@@ -41,13 +41,13 @@
   },
   "dependency_report_sha256": {
     "ios16-display-interface": "50a9773997035ce5645d871b2ddb4c21c2d68d872815786bdf2e80d88f61bcc7",
-    "ios16-display-subclass": "f4f059aa13c271f45f828b7bb6c4fc2c153d2fd76cf1848b110c4d75da64ec43",
-    "ios16-display-lifecycle": "06416bd6a72a4723d8822db4677be5ea86605577ee8381b4fb95a5810dc49083",
-    "ios16-display-frontend": "ce5d0df0227000188863305e759a91ff86eed630f8bada68ec1efaff6727fd83",
-    "gpu-link-probe": "1acf07872954bf3b5ba58f6d2ed6493a809f134db7f022c48841c6b8a06c5499"
+    "ios16-display-subclass": "ba8ddd4b8be1af05227b81663da3f4ee4a2cb3faaf681a27af557deb569ed630",
+    "ios16-display-lifecycle": "25be59c38ab8bdee225439db871adfc3176c879152b4dcea3e1537975cd9e269",
+    "ios16-display-frontend": "588a1c0322fdba2aebfd8aa74d828abb5d35f38ec7995da4ba38b98cf8ce243f",
+    "gpu-link-probe": "9b6e05396245ee4ba34da4a905bc6dda84982356740f6f5a96d7123079d8bcdd"
   },
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
-  "gpu_kernel_sha256": "ec41460411b00cd6f4a296c709277edd648f7c7245200788250c881ffb9ad997",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
+  "gpu_kernel_sha256": "24b52adb0c7df2e5e6220a7846c69ceb117e951358a701fd8d731de3ec468740",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
   "archive": "build/ios16-display-service/libDodgeIPhoneFramebuffer.a",
   "archive_sha256": "deed2cdf81f1f4a09bfe10d52ccaa3d0fa7d505e830391a80b0958dc72a4c586",
@@ -483,7 +483,7 @@
     "__ZTV25IOMobileFramebufferLegacy": "0xfffffff005def8d0"
   },
   "linked_fixture": "build/ios16-display-service/display-service.macho",
-  "linked_fixture_sha256": "5b49b8440d896e341837dd6b31ddd7c8126cd4f01a086afea20800cd41f4956e",
+  "linked_fixture_sha256": "c6d0151a80ad841fa6e742fa40c3446305c67edadd9171feea0096ecd612d25d",
   "strict_no_undefined": true,
   "compile_manifest": "build/ios16-display-service/compile-commands.json",
   "compile_manifest_sha256": "2c6b6f1382b6fa314541be12aa4247488e98014c1ae4ff3330c31425decf433c",

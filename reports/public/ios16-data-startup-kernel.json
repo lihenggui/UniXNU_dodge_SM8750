@@ -8,16 +8,16 @@
     "drivers/DodgeStorage/DodgeDataLate.h": "cb24acc3af548e9059c1055b9ec0cdc3adedf5846b0b2295e33565d6c6922f5f"
   },
   "dependency_report_sha256": {
-    "reports/ios16-data-startup-prelink.json": "6f4deaf35a3bb398feef90a613d94b9567e2c19dbbc0be8fad6b2ee1445f0752",
-    "reports/ios16-data-kernel.json": "c65a014332cbf39e77b2e92fa315822a3bd665ecebb44fed032491ac8af45eb8",
-    "reports/ios16-data-startup.json": "c515635f4d7ab7d6aea87345b3b4952bb1f2530c58140d90167ec6216347bcc9"
+    "reports/ios16-data-startup-prelink.json": "e38b42f48308fddca9b616a2becba4fcb5d72d7a21baa57992dafb692759762d",
+    "reports/ios16-data-kernel.json": "f9fec3068753adb156001fdefac6ab04182c77f2bd8428e29ae84737fe0e3ab2",
+    "reports/ios16-data-startup.json": "5e543c640c3b01f6c06b4f0b92bb3e81c0901227d5120ccf4bcf166b72a23d81"
   },
   "artifacts": {
     "build/cph2653-data-startup-kernel/abi/DataLateLayout.o": "56148442a9a4240657853a15cf7b2a94dc85e338810478003a847f6a18a13f7a",
     "build/cph2653-data-startup-kernel/cpu-cases.json": "7f960d15cd866efbb22d75f07f890eaa652ca905441c7d3de0393d6d0c7b5584"
   },
   "candidate": "build/cph2653-data-startup-prelink/kernel.macho",
-  "candidate_sha256": "2dd49342fc3cc52e948c7649aa848399a901c4f7a5b4ef3a735ce99c985a3b50",
+  "candidate_sha256": "804a161bfc292a680153bb931fc689631da7d89bca0306c2d37568a54d4e2c67",
   "case_count": 43,
   "scheduler_case_count": 13,
   "data_case_count": 30,

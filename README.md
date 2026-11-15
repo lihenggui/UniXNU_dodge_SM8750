@@ -8,21 +8,26 @@ Darwin 22. The UEFI and kernel build locally. Full system boot and hardware
 bring-up are still in development. The port follows the
 [UniXNU porting guide](https://unixnu.com/porting/).
 
-The native Adreno 830 development build includes the CPH2653 board adapter,
-iPhone IOSurface producer handling, Turnip and Metal. The kernel, original
-iPhone components, GPU addon and entropy/logger firmware build locally. QEMU
-enters `bsd_init` with EL1 and 4 KiB page tables. Original AppleImage4, AMFI
-and Sandbox register successfully. Separate QEMU storage builds mount the
-original APFS root through an owner-signed block policy. With the original
-filesystem decompressor, PID 1 enters the iPhone dyld and executes in EL0.
-The software AES fixture lets dyld finish its Image4 query. A SystemOS union
-build maps the original shared cache and reaches `launchd` main. The native
-KeyStore fixture lets the original `keybagd` accept its development system handle;
-the original userspace crypto self-tests pass. A separate RAM Data build lets
-`keybagd` and `usermanagerd` complete early initialization. The persistent Data
-build saves writes in a local QEMU file and resumes the same persona state after
-a forced VM stop. Later services remain in development.
+The native Adreno 830 build includes the CPH2653 board adapter, iPhone IOSurface
+handling, Turnip and Metal. Its userspace adapters share compiled shaders between
+pipeline caches and connect tile pipelines to the pinned runtime.
+
+The native system source now connects owner-verified UFS OS/SystemOS, Data,
+development AES/KeyStore and the captured Qualcomm TRNG. Separate read-only and
+persistent-Data-capable kernels produce local boot/root packages. These builds
+retain the iPhone source pins and firmware memory patch; native boot, graphics
+and hardware security remain unqualified.
+
+Separate QEMU builds mount the original iPhone OS and SystemOS images, run the
+original dyld, launchd and system services, including the SpringBoard process.
+They complete the userspace crypto and keybag/persona initialization tasks.
+Data survives a forced VM stop and cold resume. The graphical interface and
+complete system boot are still being brought up.
 See [GPU builds](docs/bring-up.md#driver-builds) and [QEMU entry](docs/bring-up.md#qemu-entry).
+See [native system packages](docs/bring-up.md#native-system-packages) for the new
+source build and its local checks.
+The guide lists [remaining source work](docs/bring-up.md#remaining-source-integration)
+and the [current upstream review](docs/bring-up.md#upstream-review).
 
 ## Getting started
 

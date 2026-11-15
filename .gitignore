@@ -41,6 +41,7 @@
 !/drivers/DodgeBoot/
 !/drivers/DodgeSecurity/
 !/drivers/DodgeGpu/
+!/drivers/DodgePlatform/
 !/tests/
 /tests/*
 !/tests/DodgeSurfaceLayoutTest.cpp
@@ -72,6 +73,18 @@
 !/tests/DodgeUfsLifecycleTest.cpp
 !/tests/DodgeQemuStorageTest.cpp
 !/tests/DodgeQemuStoreTest.cpp
+!/tests/DodgeTurnipCacheTest.cpp
+!/tests/DodgeMetalTilePassTest.cpp
+!/tests/DodgePerCpuIterationTest.c
+!/tests/DodgeOwnerBootPolicyTest.cpp
+!/tests/DodgeCalendarTest.cpp
+!/tests/DodgeUserEntropyTest.cpp
+!/tests/DodgeTrngTest.cpp
+!/tests/DodgeNativeStoreTest.cpp
+!/tests/DodgeRootPolicyFormatTest.cpp
+!/tests/DodgeRootPolicySourceTest.cpp
+!/tests/root_policy_include/
+!/tests/entropy_include/
 !/tests/DodgeUfsProbeTest.cpp
 !/tests/DodgeSystemLateTest.cpp
 !/tests/DodgeRootImageTest.cpp

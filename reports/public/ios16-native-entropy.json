@@ -1,0 +1,79 @@
+{
+  "result": "IOS16_NATIVE_TRNG_SOURCE_AND_SEEDCTL_ABI_PASS",
+  "source_sha256": {
+    "scripts/build_native_entropy.py": "5205962cbc6fa1f4817fb347f392bea0deb50a50bdab41e3a127e520b94ec366",
+    "hardware/dodge-entropy.json": "55815c61f3663edb151886195e38703ea9ad6d46ef6aa81e2068ffefaaae887d",
+    "drivers/DodgeSecurity/DodgeNativeEntropy.cpp": "86e0295ea03794ee05ccab58a1b2cca200f6a231e8c3d97139dcf2bd915887d9",
+    "drivers/DodgeSecurity/DodgeTrngRead.h": "d196dcd05e172a1804ea9816b259ac070efa1c5603e6e79c0b37bdef671cf117",
+    "drivers/DodgeSecurity/DodgeOwnerSystem.h": "4aa7a52516e1252c05fe3e9e795c7cca53c9684c3039992c9670f70bbc9d06b8",
+    "tests/DodgeTrngTest.cpp": "35fa298da77c5b6e9be5ecd2a2461a8f176eb5727a3a262195615cf296fedc2c",
+    ".cache/input-reference/qcom-rng-v6.12.c": "3cfdeee4b9cf585bcc8999b2c68fc7b770ed384a1e78e1db2e732240c411f111",
+    ".cache/input-reference/qcom-prng-v6.12.yaml": "7c8ce0429bf4b52326e76a628c2a9653cd7d2d2c4d13927e91c4cf025205de9c",
+    "<LOCAL_HOME>/Downloads/oneplus13-hardware-info-20261101-180423-250/device-tree.dtb": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-volumes.json": "3d9eb5dc4f8e4c1cbcb588d7b140fb185dd45d932421334c6e5b6d02657fc7e7",
+    "reports/ios16-display-cache.json": "50c9d66e5e8a3ed3e05a78fe586afc58fc0e6461b854bd40a1479b44d67454d9"
+  },
+  "artifacts": {
+    "build/cph2653-native-entropy/DodgeTrngHardware.h": "c22eb5590e25e55c93dca09bb3a8e7aa09ac7ef2d07b2656f9695fb680aa5ad8",
+    "build/cph2653-native-entropy/DodgeNativeEntropy.o": "97ff276405315f5f641963ac03484fea852d1c7e5c5481875f423ddc30172048",
+    "build/cph2653-native-entropy/DodgeNativeEntropy.late.o": "9cbf242c12cdc66e0a0e26378bdba16605f6df22e4d37325423bada646846cb9",
+    "build/cph2653-native-entropy/libDodgeNativeEntropy.a": "bd9eff8aecf7b0cfd2875d60c1b126e45c2d3a869f02abb29675a815a5bb14ff",
+    "build/cph2653-native-entropy/trng-host": "eac5febe0c364ce0119ee65a644f8b455388d96e046625f4383c8261df32e5c8",
+    "build/cph2653-native-entropy/host.log": "d2b017eff04d96ffeae2f1b471bffe8b97777b5c4befde950e9aae288e13539d",
+    "build/cph2653-native-entropy/prng_seedctl.original": "321cbfba4b85f960cf1d153b27f9dbb35a5c14ab0044334fe78bb499e266b40b",
+    "build/cph2653-native-entropy/compile-commands.json": "1ccc79de6dd41f2b97c678285808569c425698d37da74be3c163eaedea2ddc03",
+    ".toolchains/apfs-readonly/apfs-extract": "a64fd2535cc4bbe93f128948dad4c25a9940b75b7d4643146a9a83895c599cb3"
+  },
+  "object": "build/cph2653-native-entropy/DodgeNativeEntropy.late.o",
+  "archive": "build/cph2653-native-entropy/libDodgeNativeEntropy.a",
+  "host_cases": 364,
+  "original_consumer": {
+    "OS_sha256": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906",
+    "path": "/usr/libexec/prng_seedctl",
+    "sha256": "321cbfba4b85f960cf1d153b27f9dbb35a5c14ab0044334fe78bb499e266b40b",
+    "uuid": "0c56e91e7cc33c6f9c652bff901ddeb4",
+    "sysctl_names": [
+      "kern.prng.user_reseed_count",
+      "kern.prng.scheduled_reseed_count",
+      "kern.prng.scheduled_reseed_max_sample_count",
+      "kern.prng.entropy_max_sample_count"
+    ],
+    "sysctl_output_bytes": 8,
+    "service_class": "AppleVirtIOEntropy",
+    "open_type": 0,
+    "selector": 0,
+    "structure_input_bytes": 0,
+    "structure_output_bytes": 32,
+    "seed_path": "/var/db/prng.seed",
+    "seed_bytes": 32,
+    "blocks": {
+      "sysctl_query": {
+        "address": "0x1000036b0",
+        "bytes": 64,
+        "sha256": "a3fc320e290e12fec551e859b9e9b2d0cfba29dae37493d7c40f56923ffd6b4f"
+      },
+      "entropy_query": {
+        "address": "0x1000038f0",
+        "bytes": 48,
+        "sha256": "98a1057602581d38d60b9f7ea9419d4f5126be963ac9e8fd0a275e21c99ab649"
+      },
+      "load_saved_seed": {
+        "address": "0x100003ba4",
+        "bytes": 304,
+        "sha256": "77d7cd773c82087697a0b4f72bb97bce2ac8ce66cd473e540c5f11430ce1b278"
+      },
+      "save_new_seed": {
+        "address": "0x100003a74",
+        "bytes": 300,
+        "sha256": "e76ef149a84a8c85e685faabc454929bb39b71e7c547aa78a750148a959395a5"
+      }
+    }
+  },
+  "hardware_tested": false,
+  "entropy_rate_qualified": false,
+  "PRNG_used_as_entropy_source": false,
+  "phone_operations": "none",
+  "scope": "Independent native read-only Qualcomm TRNG register consumer, original iPhone AppleVirtIOEntropy class search and selector-0/32-byte user-client interface, root-only opens, bounded polling, all-or-nothing output and latched stuck-output rejection. Exact source compilation and sanitizer/model inputs pass. Firmware-initialized TRNG hardware, statistical entropy quality and real service dispatch remain unqualified."
+}

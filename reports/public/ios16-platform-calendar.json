@@ -1,0 +1,38 @@
+{
+  "result": "IOS16_PLATFORM_CALENDAR_BACKPORT_PASS",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "source_sha256": {
+    "scripts/build_platform_calendar.py": "3af93e788e1114cd8092e1978f0c8bae6b6f0bf044c93edb0bfec62cd3b8cc8d",
+    "profiles/os/ios-16.7.16-20H392/platform-calendar.json": "8d855be73f1e55a8fe3351a748a3dad18c91cce480b1d086664fb168e5a7cd99",
+    "patches/oneplus13/0025-ios16-platform-calendar.patch": "d11cf43774c2a27f254624ab4d852f72f0f7ab6ae08f7f3ac56123dce634104a",
+    "sources/UniXNU/drivers/ArmDTPlatform/ArmDTPlatform.cpp": "07f96a42bdd638022960f5fcaf9e3a07dd73a82c869a70815781cac6d4873b3b",
+    "drivers/DodgePlatform/DodgeCalendar.h": "7644f5c94e32f3c92b4651cf6a8c4025b82e6b7f531ff8bb9bcf5098fea73586",
+    "drivers/DodgePlatform/DodgePlatformClock.inc": "39f0a7e4eec53887d38d37189adfd9672b0d14cbcac4d83e3c0b5da0e0915c15",
+    "tests/DodgeCalendarTest.cpp": "09df8f7d7e06f0423b4c5593f38a31a4a013fb621f68e810f98d8cb88f40a646",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078"
+  },
+  "artifacts": {
+    "build/cph2653-platform-calendar/source/ArmDTPlatform.cpp": "6a6bf7668af6c8f9f6b45349f0d2e31575edf7a1ab825d046b53807b0fecc6e8",
+    "build/cph2653-platform-calendar/ArmDTPlatform.o": "00beeb0418a38cb7239c0b59a890082de9e725807b3d3c1deaea6c50efc60618",
+    "build/cph2653-platform-calendar/libArmDTPlatform.a": "746dff036a43caefc1dd543766c5b51218cf102dbedd8c739adb1410e1d9d4ed",
+    "build/cph2653-platform-calendar/calendar-host": "4624e762ebea1fa3ae70d975a20d54e7fdf752fb3036873765c4a1af03cad798",
+    "build/cph2653-platform-calendar/host.log": "b3de9a63aa3389ae712ff17bddb078e6abdb43b9fac99ff3e7bf0cfedddc8fb5",
+    "build/cph2653-platform-calendar/compile-commands.json": "063367cc7776e49ef5fddb3a1de1f95f34ecf5caec7e01dccc98f273a3809d7c"
+  },
+  "object": "build/cph2653-platform-calendar/ArmDTPlatform.o",
+  "archive": "build/cph2653-platform-calendar/libArmDTPlatform.a",
+  "upstream": {
+    "repository": "https://github.com/UniXNU/ArmDTPlatform",
+    "source_revision": "417ff95d6a6e8607ddea9309ec45c3bfd4a67c60",
+    "reviewed_upstream": "e8bd8d5de395c6cbc00d762c1bef57dbd15a448d"
+  },
+  "source_pin_retained": true,
+  "host_cases": 598,
+  "getGMTTimeOfDay": "Registered clock when valid, otherwise kernel build date minus one day",
+  "IORTC": "Publish only when /arm-io/rtc is absent; preserve real RTC matching when present",
+  "hardware_RTC_implemented": false,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Actual Darwin 22 ArmDTPlatform object with upstream calendar policy and missing-RTC resource publication. Bounded parsing, all truncated inputs and real clock callback bodies run under ASan/UBSan. The fallback is a calendar lower bound; battery-backed time needs an actual board RTC driver."
+}

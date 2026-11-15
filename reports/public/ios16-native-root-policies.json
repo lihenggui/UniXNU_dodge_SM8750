@@ -1,0 +1,73 @@
+{
+  "result": "IOS16_NATIVE_EXTERNAL_ROOT_POLICIES_PASS",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "source_sha256": {
+    "scripts/prepare_native_root_policies.py": "116b6723b5b2c2178dd7382ea768a1aef099d6c79f941e27d505f2f462af0a11",
+    "hardware/dodge-boot-storage.json": "5342b03ee83bdaecdc5ca1e05b41bbab49d718e62ab10a2b728d48afa60004ec",
+    "analysis/oneplus13-hardware-info.json": "ce168e73eb4c1e9a42740b09e81faeb7e03168bb624ebedfc834cc7224bd4475",
+    "drivers/DodgeStorage/DodgeRootPolicyFormat.h": "7f23150a742d83c93479bb7cf0a6acf184a990c63dd304bfb8a18e457bc41adc",
+    "tests/DodgeRootPolicyFormatTest.cpp": "b689819c21bc3850c849418507f656ab5cb368dc9a64983ea645c17b8c71c892"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-qemu-root-policy.json": "20fe303594beafe3a6b30a7980f09eae59c249891429ec69eeccc310d87a364a",
+    "reports/ios16-root-image.json": "c3b4191b752726be9b7c6e03c82d4ad5f99ee4aaf80d3657a33aa02206a66ea1"
+  },
+  "artifacts": {
+    "build/cph2653-native-root-policies/root-policies.bin": "4d22a6e83b505b6915c4d53dfbbb9180f967fd6d870c82925acb7530bb30af6e",
+    "build/cph2653-native-root-policies/iphone-root.img": "f7971599d49cabc79bcbfcd62dfb5f33c88cdbb4dbbf3b51267ad5e34365dd84",
+    "build/cph2653-native-root-policies/manifest.json": "de420f90b7ea121183354d9bdbf55c6e7bc92df53d2899fd1055edf5121fa8ad",
+    "build/cph2653-native-root-policies/root-policy-format-host": "ff882e401093fceb2219ee4fad841b552ea64396543198c2c8d5959fdb251975",
+    "build/cph2653-native-root-policies/host.log": "9eeacdc707abe6549055370a9e848f66a3a00df6afda2464cb36419411b8679d"
+  },
+  "image": "build/cph2653-native-root-policies/iphone-root.img",
+  "image_bytes": 8445685760,
+  "image_sha256": "f7971599d49cabc79bcbfcd62dfb5f33c88cdbb4dbbf3b51267ad5e34365dd84",
+  "windows": [
+    {
+      "name": "OS",
+      "path": "build/ios16-volumes/OS.raw",
+      "offset": 1048576,
+      "bytes": 5635081728,
+      "sha256": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906"
+    },
+    {
+      "name": "SystemOS",
+      "path": "build/ios16-volumes/SystemOS.raw",
+      "offset": 5637144576,
+      "bytes": 2743074816,
+      "sha256": "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849"
+    }
+  ],
+  "container": "build/cph2653-native-root-policies/root-policies.bin",
+  "container_sha256": "4d22a6e83b505b6915c4d53dfbbb9180f967fd6d870c82925acb7530bb30af6e",
+  "container_bytes": 65466368,
+  "container_offset": 8380219392,
+  "policies": [
+    {
+      "name": "OS",
+      "offset": 4096,
+      "bytes": 44024640,
+      "image_bytes": 5635081728,
+      "manifest": "build/qemu-owner-root-policy/OS/manifest.bin",
+      "manifest_sha256": "0b6078d92f9ddf36a71208295de8f2fdfed9043949e929485698da6a807e4448"
+    },
+    {
+      "name": "SystemOS",
+      "offset": 44032000,
+      "bytes": 21430816,
+      "image_bytes": 2743074816,
+      "manifest": "build/qemu-owner-root-policy/SystemOS/manifest.bin",
+      "manifest_sha256": "5bade390e8269f150eed33ac09c2a1f1b4952d39098ae228bfb54134e3645bae"
+    }
+  ],
+  "boot_partition_bytes": 100663296,
+  "root_partition_present_in_capture": false,
+  "host_cases": 4117,
+  "image_contains_gpt": false,
+  "original_volume_bytes_changed": false,
+  "hardware_tested": false,
+  "physical_storage_written": false,
+  "phone_operations": "none",
+  "scope": "Separate regular-file SHNGROOT image with unchanged original iPhone OS/SystemOS windows and appended owner policies. The kernel pins the entire policy-container digest; existing owner RSA signatures and every-block verification remain required. Moving hash tables out of the boot kernel permits a smaller FAT within the captured 96 MiB boot slots. The captured partition table has no unixnu root partition; preparation creates or changes no physical partition."
+}

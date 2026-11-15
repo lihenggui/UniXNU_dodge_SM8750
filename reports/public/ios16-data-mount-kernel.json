@@ -10,7 +10,7 @@
     "profiles/os/ios-16.7.16-20H392/apfs-mount.json": "79076ac3871784b4016ce42db5e562de3c6a32ebb669f3c91cc00e00902f72b9"
   },
   "dependency_report_sha256": {
-    "reports/ios16-data-mount-prelink.json": "e189ac14f448523aefd9eaa40f8ffdc98d434ac430136d98bfb3723b3fdb8353",
+    "reports/ios16-data-mount-prelink.json": "fca7866c31e918db37b84682ad2528b86d8074ff108c27ad5f57c0e6bbe31ec3",
     "reports/ios16-apfs-mount-program.json": "cde4b25b8e59639e7b3096d6ab9789543a470f17715a3121b429c3e5adad4fe4"
   },
   "artifacts": {
@@ -58,7 +58,7 @@
     "EIO": 5
   },
   "candidate": "build/ios16-apfs-mount-prelink/kernel.macho",
-  "candidate_sha256": "81f6e6da769fcd3666da0af07d1b69e878064dbb7abccf2490d65d8e66b6da91",
+  "candidate_sha256": "31c346e7c7727477ac167658717d928fcda5f3ccc98938a15fb9dddd32516fb7",
   "case_count": 80,
   "request_cases": [
     {

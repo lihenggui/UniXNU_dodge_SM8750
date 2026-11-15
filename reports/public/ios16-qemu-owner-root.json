@@ -18,8 +18,8 @@
     "drivers/DodgeDisplay/DodgeOptionalCalls.h": "9ff7904efbec1c7363909155a051b62f218dbd7106fc60d2957dad2ec55de714"
   },
   "dependency_report_sha256": {
-    "reports/native-a830-kernel.json": "04388341f24b2db26f86d2876d4926f1dfc8d25a7de857abebdd8035b4ea545d",
-    "reports/ios16-qemu-storage.json": "95645c645fe5257d823d59f6dd6f70ffbed258ed72e2cfddfa593c44f783b1d4",
+    "reports/native-a830-kernel.json": "89b143a9ecf8c2bcae3ed0f8df334578ee8f59475f97a0e0c7d217cd73b05d7b",
+    "reports/ios16-qemu-storage.json": "d919587f325b131ed34c01b9559b27003b7436c7f1950fa655d9b887166534ea",
     "reports/ios16-qemu-root-policy.json": "20fe303594beafe3a6b30a7980f09eae59c249891429ec69eeccc310d87a364a"
   },
   "artifacts": {
@@ -34,14 +34,14 @@
     "build/cph2653-qemu-owner-root/root-policies.S": "ec26073e9f751a6c34f090114da3454228052abed4858d184d336df0b324edde",
     "build/cph2653-qemu-owner-root/bsd_init.owner.o": "b15f7efcea87e228cd9b15b1b638c2e4fc05145959b723f81d0f21a0b695ff55",
     "build/cph2653-qemu-owner-root/native.filelist": "407c82cd470e92a06c368d0ba668e8f780664bbeca3ad54665b94fc512853c43",
-    "build/cph2653-qemu-owner-root/mach.owner-root": "3e72f947d475627854b14d2cc57b668d98c8a37850d6b06f3141b4df2e4c3568",
-    "build/cph2653-qemu-owner-root/kernel.macho": "76e606170310a859aba40470a66b199a75458ccf51f0aaaf6abd66b2c742bb27",
+    "build/cph2653-qemu-owner-root/mach.owner-root": "e9dc7fb4b7aea15028dc8f8862c3caceb3d3f4aa3c8782118500f0dfb5532ceb",
+    "build/cph2653-qemu-owner-root/kernel.macho": "f8528285eb9380deb19ff401302290f48910fe7f13a795e3eef8a0eb5668999c",
     "build/cph2653-qemu-owner-root/driver/compile-commands.json": "4df2fe4856439ce679eda2a7f448d510fbffe172e80ed53edb5e594ace0d4a61",
     "build/cph2653-qemu-owner-root/crypto/compile-commands.json": "137832844d4ae10b7b74585e7cb0f549b1eda2188cd996fea674097aa07774d6",
     "build/cph2653-qemu-owner-root/security-init.json": "54c500f04e0578dbba0b6d54ee94e565fe608de48bfbe7f6a7b8d69efdc440f8"
   },
   "candidate": "build/cph2653-qemu-owner-root/kernel.macho",
-  "candidate_sha256": "76e606170310a859aba40470a66b199a75458ccf51f0aaaf6abd66b2c742bb27",
+  "candidate_sha256": "f8528285eb9380deb19ff401302290f48910fe7f13a795e3eef8a0eb5668999c",
   "class_readback": {
     "storage_base_bytes": 144,
     "driver_bytes": 328,

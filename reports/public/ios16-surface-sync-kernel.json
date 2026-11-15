@@ -14,10 +14,10 @@
     "profiles/os/ios-16.7.16-20H392/graphics/OriginalLegacySwapABI.h": "c94511515c3989b470fcce568cfaa349216a8ae5111718ab65030ce42d383ce4"
   },
   "dependency_report_sha256": {
-    "ios16-crypto-prelink": "dfcaf6e82393b60841a205babd39830b423304982693a441d44d83bd78328e62",
-    "ios16-producer": "4eb711ad03991b765d056b03017341950877c7d29ddd8e030002da566f2633cf",
+    "ios16-crypto-prelink": "9256dae188ada44ea2bb244fb6725ed8d875f93b7ae20ea171f4b4aa88439b1e",
+    "ios16-producer": "03a55344b9daa7783623c6716f2ba3e4d45950745b849419f6b063937d0fe02e",
     "ios16-surface-interface": "47d1ec7ce9c6658d65b4d9d58bb8a391838d8f8dbbe2c0080060b3b59823d867",
-    "ios16-display-frontend": "ce5d0df0227000188863305e759a91ff86eed630f8bada68ec1efaff6727fd83"
+    "ios16-display-frontend": "588a1c0322fdba2aebfd8aa74d828abb5d35f38ec7995da4ba38b98cf8ce243f"
   },
   "artifacts": {
     "build/ios16-surface-producer-execution/SurfaceSyncProbe.o": "2362b077cd92a5c2a86eda834dbfbbd09b3b69a0e8bca7ca3b6c4a469290adb0",
@@ -27,7 +27,7 @@
     "build/ios16-surface-producer-execution/cpu-cases.json": "98126434d4d7e5d5df9bff50e6736db2280f8756623ddd7e3fac607d64024f19"
   },
   "candidate": "build/cph2653-crypto-prelink/kernel.macho",
-  "candidate_sha256": "3315aae02eeea2b79a7340793c3cd0296fe385202de2d26ad1949707abdceee0",
+  "candidate_sha256": "06ad7621ea05f997a7e311823a22811055c7d4c798d3699dc8602bf33b5fbb11",
   "sync_pin": {
     "path": "profiles/os/ios-16.7.16-20H392/surface-sync.json",
     "sha256": "f2a98554df4847c4d8216c7c4f56b224aa30f21a3ae23bb3a14de2319f078e9d",

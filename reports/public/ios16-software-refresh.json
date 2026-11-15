@@ -1,7 +1,7 @@
 {
   "result": "DARWIN22_SOFTWARE_REFRESH_SOURCE_CANDIDATE_PASS",
   "target": "arm64-apple-ios16.0",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
   "builder_sha256": "5ad4c9fac32f8b7abb5d8e8122075a30999cb22d41cf72557ed097947234fe55",
   "source_sha256": {
@@ -29,8 +29,8 @@
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/Kernel/IOTimerEventSource.cpp": "97ddf1e91351f4e034250412c81e8e6541c95a64435ef28a2529c316492b1141",
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/Kernel/IOWorkLoop.cpp": "10f6d04e18a5fb60fda7782b13c5b551d7e27bb191e798ad1011429c0ef66bc3"
   },
-  "refresh_interface_report_sha256": "e1a943b75307a07455487b2b43294c4f88bac060d454a3b054076c4eb92a1c46",
-  "workloop_audit_report_sha256": "24cfff4069d94d3a2e1f6f479014d4c111f089570ccb999a9aa0262b7c4ffbd2",
+  "refresh_interface_report_sha256": "3108b452ddf9fd98c6b39f3274e50dc9a3a737d48436e9ec7ee81103a590163e",
+  "workloop_audit_report_sha256": "8d9671c63e0525bf92c73ceebf58de254da28bc05a1799d640d82976bff10e00",
   "objects": [
     {
       "path": "build/ios16-software-refresh/DodgeSoftwareRefresh.o",

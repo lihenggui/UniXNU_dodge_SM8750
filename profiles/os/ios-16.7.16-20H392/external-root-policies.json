@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "patch": "patches/oneplus13/0027-ios16-external-root-policies.patch",
+  "patch_sha256": "112996a372d40935db66e67aaaa946c85ed048b43cf0cf98b0df83839edaa4ef",
+  "before_sha256": "f1c43261516f2babe3de43a329ecbfa4b05df81210d527d067e2a5b3720da4e3",
+  "after_sha256": "88f30032f1dd36918975ff2bac00852f65417129ca36e0dd46c5289c92d72541",
+  "scope": "Native system only, after the exact CPH2653 and Data-window overlays: load the kernel-digest-pinned policy container from the root image before preparing any root window; preserve owner RSA and per-block verification. No firmware memory patch or source pin changes."
+}

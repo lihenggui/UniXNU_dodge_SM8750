@@ -1,0 +1,68 @@
+{
+  "result": "IOS16_QEMU_SERVICES_SOURCE_AND_RUNTIME_STACK_PASS",
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "source_sha256": {
+    "scripts/build_qemu_services.py": "4c2659c3e3c4a17a4b83e71615ca6160b28d769b36883a87cfe8d6dbd81eda6a"
+  },
+  "stages": {
+    "percpu_host": {
+      "report": "reports/ios16-percpu-iteration-host.json",
+      "sha256": "e67b259fba197093a5fb082a252cfcb0e59ba93273495b906cda8c647035692f",
+      "builder": "scripts/check_percpu_iteration.py",
+      "builder_sha256": "5db4e48c7a51bc5fb0319aea3e40a91614553d6c399816e9bcf0e6d9f5b245e6",
+      "arguments": []
+    },
+    "exec": {
+      "report": "reports/ios16-qemu-exec-entry.json",
+      "sha256": "5427de2a1d38a6d17e5c4c0286b4a4a7437bf50818a5f2fb3951edb9a0a6a6a2",
+      "builder": "scripts/check_qemu_exec.py",
+      "builder_sha256": "b86fa77cdfa986f5981476f98581e6aabe07be83cb9953e0eb387855ad49b1aa",
+      "arguments": []
+    },
+    "kernel": {
+      "report": "reports/ios16-qemu-store-kernel.json",
+      "sha256": "0189d4ab24112f5ba5c8122619bb6a44f30a48101146088d8198e98143d77ef8",
+      "builder": "scripts/build_qemu_store.py",
+      "builder_sha256": "4b0e273bf2e846c787a2e513406ae9e5b62440bfe3dc3ee5db797bd4425ef0b8",
+      "arguments": []
+    },
+    "old_percpu_kernel": {
+      "report": "reports/ios16-qemu-store-kernel-old-percpu.json",
+      "sha256": "04f2276e69781d42889a20b6ff3cc1d621ba496072eadf97c22e40bf0071be0f",
+      "builder": "scripts/build_qemu_store.py",
+      "builder_sha256": "4b0e273bf2e846c787a2e513406ae9e5b62440bfe3dc3ee5db797bd4425ef0b8",
+      "arguments": [
+        "--old-percpu"
+      ]
+    },
+    "persistence": {
+      "report": "reports/ios16-qemu-store-entry.json",
+      "sha256": "75438416fa6e8bae320d0cd0b889336408827ef61c08d628ff1bd5e093708772",
+      "builder": "scripts/check_qemu_store.py",
+      "builder_sha256": "e95a5b1dde56e424b7a315badec06bd8c741206aa88f0770eabb3be391da5d4d",
+      "arguments": []
+    },
+    "services": {
+      "report": "reports/ios16-qemu-services-entry.json",
+      "sha256": "14d0a81dae90e318fba4f879834f16c93579ff0009e9b0fb8aa665c259f17e72",
+      "builder": "scripts/check_qemu_services.py",
+      "builder_sha256": "48a59d4960d900d00a55f86d2df1906edb332fc5d39111dd37c072329b0617b7",
+      "arguments": []
+    }
+  },
+  "candidate": "build/cph2653-qemu-store/kernel.macho",
+  "candidate_sha256": "cd4af4548890ac634f482de9283a471cd1c3d9411ed0351e71a421e1ca82795d",
+  "percpu_host_cases": 304,
+  "percpu_fault_reproduced_with_old_consumer": true,
+  "launchd_early_boot_complete": true,
+  "original_SpringBoard_process_executed": true,
+  "Data_cold_resume_verified": true,
+  "hardware_tested": false,
+  "graphical_interface_tested": false,
+  "full_system_booted": false,
+  "physical_storage_enabled": false,
+  "hardware_data_protection": false,
+  "phone_operations": "none",
+  "scope": "Four-job source compilation with inherited host limits, sanitizer tests of the real per-CPU macros, original iPhone exec, persistent VM Data crash/cold resume, and original system-service execution. The old mbuf consumer reproduces the kernel fault; the fixed consumer returns and launchd completes early boot. SpringBoard process execution is identified by its original UUID; graphics and phone functionality are unqualified."
+}

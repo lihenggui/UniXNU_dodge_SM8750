@@ -63,7 +63,7 @@
     ]
   },
   "native_comparison": {
-    "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+    "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
     "ioservice_named_virtual_slots_matched": 167,
     "ioservice_complete_destructor_bytes_matched": 12,
     "native_complete_destructor_tail_aliases": [

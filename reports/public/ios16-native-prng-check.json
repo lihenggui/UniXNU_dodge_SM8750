@@ -1,0 +1,1496 @@
+{
+  "result": "IOS16_NATIVE_ORIGINAL_PRNG_TREE_CPU_PASS",
+  "compiler_layout": {
+    "oid_bytes": 80,
+    "req_bytes": 80,
+    "req_oldlen": 24,
+    "req_oldfunc": 40,
+    "req_newptr": 48,
+    "req_newlen": 56
+  },
+  "execution": {
+    "result": "PASS",
+    "original_nodes_registered": 132,
+    "unique_paths_resolved": 228,
+    "real_counters_read": 99,
+    "entropy_model_requests": 40,
+    "scheduled_reseeds_in_model": 2,
+    "user_reseeds_in_model": 1,
+    "original_POST_tests": 18,
+    "actual_passed_POST_tests": [
+      "fipspost_post_hmac",
+      "fipspost_post_integrity",
+      "fipspost_post_indicator",
+      "fipspost_post_aes_ecb",
+      "fipspost_post_aes_cbc",
+      "fipspost_post_rsa_sig",
+      "fipspost_post_ecdsa",
+      "fipspost_post_ecdh",
+      "fipspost_post_aes_ccm",
+      "fipspost_post_aes_cmac",
+      "fipspost_post_hkdf",
+      "fipspost_post_pbkdf",
+      "fipspost_post_drbg_hmac",
+      "fipspost_post_kdf_ctr",
+      "fipspost_post_aes_gcm",
+      "fipspost_post_aes_xts",
+      "fipspost_post_tdes_ecb",
+      "fipspost_post_drbg_ctr"
+    ],
+    "output_error_controls": 2,
+    "paths": {
+      "kern.prng.scheduled_reseed_count": [
+        1,
+        100,
+        133
+      ],
+      "kern.prng.scheduled_reseed_max_sample_count": [
+        1,
+        100,
+        134
+      ],
+      "kern.prng.entropy_max_sample_count": [
+        1,
+        100,
+        135
+      ],
+      "kern.prng.pool_0": [
+        1,
+        100,
+        136
+      ],
+      "kern.prng.pool_0.sample_count": [
+        1,
+        100,
+        136,
+        100
+      ],
+      "kern.prng.pool_0.drain_count": [
+        1,
+        100,
+        136,
+        101
+      ],
+      "kern.prng.pool_0.max_sample_count": [
+        1,
+        100,
+        136,
+        102
+      ],
+      "kern.prng.pool_1": [
+        1,
+        100,
+        137
+      ],
+      "kern.prng.pool_1.sample_count": [
+        1,
+        100,
+        137,
+        100
+      ],
+      "kern.prng.pool_1.drain_count": [
+        1,
+        100,
+        137,
+        101
+      ],
+      "kern.prng.pool_1.max_sample_count": [
+        1,
+        100,
+        137,
+        102
+      ],
+      "kern.prng.pool_2": [
+        1,
+        100,
+        138
+      ],
+      "kern.prng.pool_2.sample_count": [
+        1,
+        100,
+        138,
+        100
+      ],
+      "kern.prng.pool_2.drain_count": [
+        1,
+        100,
+        138,
+        101
+      ],
+      "kern.prng.pool_2.max_sample_count": [
+        1,
+        100,
+        138,
+        102
+      ],
+      "kern.prng.pool_3": [
+        1,
+        100,
+        139
+      ],
+      "kern.prng.pool_3.sample_count": [
+        1,
+        100,
+        139,
+        100
+      ],
+      "kern.prng.pool_3.drain_count": [
+        1,
+        100,
+        139,
+        101
+      ],
+      "kern.prng.pool_3.max_sample_count": [
+        1,
+        100,
+        139,
+        102
+      ],
+      "kern.prng.pool_4": [
+        1,
+        100,
+        140
+      ],
+      "kern.prng.pool_4.sample_count": [
+        1,
+        100,
+        140,
+        100
+      ],
+      "kern.prng.pool_4.drain_count": [
+        1,
+        100,
+        140,
+        101
+      ],
+      "kern.prng.pool_4.max_sample_count": [
+        1,
+        100,
+        140,
+        102
+      ],
+      "kern.prng.pool_5": [
+        1,
+        100,
+        141
+      ],
+      "kern.prng.pool_5.sample_count": [
+        1,
+        100,
+        141,
+        100
+      ],
+      "kern.prng.pool_5.drain_count": [
+        1,
+        100,
+        141,
+        101
+      ],
+      "kern.prng.pool_5.max_sample_count": [
+        1,
+        100,
+        141,
+        102
+      ],
+      "kern.prng.pool_6": [
+        1,
+        100,
+        142
+      ],
+      "kern.prng.pool_6.sample_count": [
+        1,
+        100,
+        142,
+        100
+      ],
+      "kern.prng.pool_6.drain_count": [
+        1,
+        100,
+        142,
+        101
+      ],
+      "kern.prng.pool_6.max_sample_count": [
+        1,
+        100,
+        142,
+        102
+      ],
+      "kern.prng.pool_7": [
+        1,
+        100,
+        143
+      ],
+      "kern.prng.pool_7.sample_count": [
+        1,
+        100,
+        143,
+        100
+      ],
+      "kern.prng.pool_7.drain_count": [
+        1,
+        100,
+        143,
+        101
+      ],
+      "kern.prng.pool_7.max_sample_count": [
+        1,
+        100,
+        143,
+        102
+      ],
+      "kern.prng.pool_8": [
+        1,
+        100,
+        144
+      ],
+      "kern.prng.pool_8.sample_count": [
+        1,
+        100,
+        144,
+        100
+      ],
+      "kern.prng.pool_8.drain_count": [
+        1,
+        100,
+        144,
+        101
+      ],
+      "kern.prng.pool_8.max_sample_count": [
+        1,
+        100,
+        144,
+        102
+      ],
+      "kern.prng.pool_9": [
+        1,
+        100,
+        145
+      ],
+      "kern.prng.pool_9.sample_count": [
+        1,
+        100,
+        145,
+        100
+      ],
+      "kern.prng.pool_9.drain_count": [
+        1,
+        100,
+        145,
+        101
+      ],
+      "kern.prng.pool_9.max_sample_count": [
+        1,
+        100,
+        145,
+        102
+      ],
+      "kern.prng.pool_10": [
+        1,
+        100,
+        146
+      ],
+      "kern.prng.pool_10.sample_count": [
+        1,
+        100,
+        146,
+        100
+      ],
+      "kern.prng.pool_10.drain_count": [
+        1,
+        100,
+        146,
+        101
+      ],
+      "kern.prng.pool_10.max_sample_count": [
+        1,
+        100,
+        146,
+        102
+      ],
+      "kern.prng.pool_11": [
+        1,
+        100,
+        147
+      ],
+      "kern.prng.pool_11.sample_count": [
+        1,
+        100,
+        147,
+        100
+      ],
+      "kern.prng.pool_11.drain_count": [
+        1,
+        100,
+        147,
+        101
+      ],
+      "kern.prng.pool_11.max_sample_count": [
+        1,
+        100,
+        147,
+        102
+      ],
+      "kern.prng.pool_12": [
+        1,
+        100,
+        148
+      ],
+      "kern.prng.pool_12.sample_count": [
+        1,
+        100,
+        148,
+        100
+      ],
+      "kern.prng.pool_12.drain_count": [
+        1,
+        100,
+        148,
+        101
+      ],
+      "kern.prng.pool_12.max_sample_count": [
+        1,
+        100,
+        148,
+        102
+      ],
+      "kern.prng.pool_13": [
+        1,
+        100,
+        149
+      ],
+      "kern.prng.pool_13.sample_count": [
+        1,
+        100,
+        149,
+        100
+      ],
+      "kern.prng.pool_13.drain_count": [
+        1,
+        100,
+        149,
+        101
+      ],
+      "kern.prng.pool_13.max_sample_count": [
+        1,
+        100,
+        149,
+        102
+      ],
+      "kern.prng.pool_14": [
+        1,
+        100,
+        150
+      ],
+      "kern.prng.pool_14.sample_count": [
+        1,
+        100,
+        150,
+        100
+      ],
+      "kern.prng.pool_14.drain_count": [
+        1,
+        100,
+        150,
+        101
+      ],
+      "kern.prng.pool_14.max_sample_count": [
+        1,
+        100,
+        150,
+        102
+      ],
+      "kern.prng.pool_15": [
+        1,
+        100,
+        151
+      ],
+      "kern.prng.pool_15.sample_count": [
+        1,
+        100,
+        151,
+        100
+      ],
+      "kern.prng.pool_15.drain_count": [
+        1,
+        100,
+        151,
+        101
+      ],
+      "kern.prng.pool_15.max_sample_count": [
+        1,
+        100,
+        151,
+        102
+      ],
+      "kern.prng.pool_16": [
+        1,
+        100,
+        152
+      ],
+      "kern.prng.pool_16.sample_count": [
+        1,
+        100,
+        152,
+        100
+      ],
+      "kern.prng.pool_16.drain_count": [
+        1,
+        100,
+        152,
+        101
+      ],
+      "kern.prng.pool_16.max_sample_count": [
+        1,
+        100,
+        152,
+        102
+      ],
+      "kern.prng.pool_17": [
+        1,
+        100,
+        153
+      ],
+      "kern.prng.pool_17.sample_count": [
+        1,
+        100,
+        153,
+        100
+      ],
+      "kern.prng.pool_17.drain_count": [
+        1,
+        100,
+        153,
+        101
+      ],
+      "kern.prng.pool_17.max_sample_count": [
+        1,
+        100,
+        153,
+        102
+      ],
+      "kern.prng.pool_18": [
+        1,
+        100,
+        154
+      ],
+      "kern.prng.pool_18.sample_count": [
+        1,
+        100,
+        154,
+        100
+      ],
+      "kern.prng.pool_18.drain_count": [
+        1,
+        100,
+        154,
+        101
+      ],
+      "kern.prng.pool_18.max_sample_count": [
+        1,
+        100,
+        154,
+        102
+      ],
+      "kern.prng.pool_19": [
+        1,
+        100,
+        155
+      ],
+      "kern.prng.pool_19.sample_count": [
+        1,
+        100,
+        155,
+        100
+      ],
+      "kern.prng.pool_19.drain_count": [
+        1,
+        100,
+        155,
+        101
+      ],
+      "kern.prng.pool_19.max_sample_count": [
+        1,
+        100,
+        155,
+        102
+      ],
+      "kern.prng.pool_20": [
+        1,
+        100,
+        156
+      ],
+      "kern.prng.pool_20.sample_count": [
+        1,
+        100,
+        156,
+        100
+      ],
+      "kern.prng.pool_20.drain_count": [
+        1,
+        100,
+        156,
+        101
+      ],
+      "kern.prng.pool_20.max_sample_count": [
+        1,
+        100,
+        156,
+        102
+      ],
+      "kern.prng.pool_21": [
+        1,
+        100,
+        157
+      ],
+      "kern.prng.pool_21.sample_count": [
+        1,
+        100,
+        157,
+        100
+      ],
+      "kern.prng.pool_21.drain_count": [
+        1,
+        100,
+        157,
+        101
+      ],
+      "kern.prng.pool_21.max_sample_count": [
+        1,
+        100,
+        157,
+        102
+      ],
+      "kern.prng.pool_22": [
+        1,
+        100,
+        158
+      ],
+      "kern.prng.pool_22.sample_count": [
+        1,
+        100,
+        158,
+        100
+      ],
+      "kern.prng.pool_22.drain_count": [
+        1,
+        100,
+        158,
+        101
+      ],
+      "kern.prng.pool_22.max_sample_count": [
+        1,
+        100,
+        158,
+        102
+      ],
+      "kern.prng.pool_23": [
+        1,
+        100,
+        159
+      ],
+      "kern.prng.pool_23.sample_count": [
+        1,
+        100,
+        159,
+        100
+      ],
+      "kern.prng.pool_23.drain_count": [
+        1,
+        100,
+        159,
+        101
+      ],
+      "kern.prng.pool_23.max_sample_count": [
+        1,
+        100,
+        159,
+        102
+      ],
+      "kern.prng.pool_24": [
+        1,
+        100,
+        160
+      ],
+      "kern.prng.pool_24.sample_count": [
+        1,
+        100,
+        160,
+        100
+      ],
+      "kern.prng.pool_24.drain_count": [
+        1,
+        100,
+        160,
+        101
+      ],
+      "kern.prng.pool_24.max_sample_count": [
+        1,
+        100,
+        160,
+        102
+      ],
+      "kern.prng.pool_25": [
+        1,
+        100,
+        161
+      ],
+      "kern.prng.pool_25.sample_count": [
+        1,
+        100,
+        161,
+        100
+      ],
+      "kern.prng.pool_25.drain_count": [
+        1,
+        100,
+        161,
+        101
+      ],
+      "kern.prng.pool_25.max_sample_count": [
+        1,
+        100,
+        161,
+        102
+      ],
+      "kern.prng.pool_26": [
+        1,
+        100,
+        162
+      ],
+      "kern.prng.pool_26.sample_count": [
+        1,
+        100,
+        162,
+        100
+      ],
+      "kern.prng.pool_26.drain_count": [
+        1,
+        100,
+        162,
+        101
+      ],
+      "kern.prng.pool_26.max_sample_count": [
+        1,
+        100,
+        162,
+        102
+      ],
+      "kern.prng.pool_27": [
+        1,
+        100,
+        163
+      ],
+      "kern.prng.pool_27.sample_count": [
+        1,
+        100,
+        163,
+        100
+      ],
+      "kern.prng.pool_27.drain_count": [
+        1,
+        100,
+        163,
+        101
+      ],
+      "kern.prng.pool_27.max_sample_count": [
+        1,
+        100,
+        163,
+        102
+      ],
+      "kern.prng.pool_28": [
+        1,
+        100,
+        164
+      ],
+      "kern.prng.pool_28.sample_count": [
+        1,
+        100,
+        164,
+        100
+      ],
+      "kern.prng.pool_28.drain_count": [
+        1,
+        100,
+        164,
+        101
+      ],
+      "kern.prng.pool_28.max_sample_count": [
+        1,
+        100,
+        164,
+        102
+      ],
+      "kern.prng.pool_29": [
+        1,
+        100,
+        165
+      ],
+      "kern.prng.pool_29.sample_count": [
+        1,
+        100,
+        165,
+        100
+      ],
+      "kern.prng.pool_29.drain_count": [
+        1,
+        100,
+        165,
+        101
+      ],
+      "kern.prng.pool_29.max_sample_count": [
+        1,
+        100,
+        165,
+        102
+      ],
+      "kern.prng.pool_30": [
+        1,
+        100,
+        166
+      ],
+      "kern.prng.pool_30.sample_count": [
+        1,
+        100,
+        166,
+        100
+      ],
+      "kern.prng.pool_30.drain_count": [
+        1,
+        100,
+        166,
+        101
+      ],
+      "kern.prng.pool_30.max_sample_count": [
+        1,
+        100,
+        166,
+        102
+      ],
+      "kern.prng.pool_31": [
+        1,
+        100,
+        167
+      ],
+      "kern.prng.pool_31.sample_count": [
+        1,
+        100,
+        167,
+        100
+      ],
+      "kern.prng.pool_31.drain_count": [
+        1,
+        100,
+        167,
+        101
+      ],
+      "kern.prng.pool_31.max_sample_count": [
+        1,
+        100,
+        167,
+        102
+      ],
+      "kern.prng.user_reseed_count": [
+        1,
+        100,
+        100
+      ],
+      "kern.prng.pool0.sample_count": [
+        1,
+        100,
+        101,
+        100
+      ],
+      "kern.prng.pool0.drain_count": [
+        1,
+        100,
+        101,
+        101
+      ],
+      "kern.prng.pool0.max_sample_count": [
+        1,
+        100,
+        101,
+        102
+      ],
+      "kern.prng.pool1.sample_count": [
+        1,
+        100,
+        102,
+        100
+      ],
+      "kern.prng.pool1.drain_count": [
+        1,
+        100,
+        102,
+        101
+      ],
+      "kern.prng.pool1.max_sample_count": [
+        1,
+        100,
+        102,
+        102
+      ],
+      "kern.prng.pool2.sample_count": [
+        1,
+        100,
+        103,
+        100
+      ],
+      "kern.prng.pool2.drain_count": [
+        1,
+        100,
+        103,
+        101
+      ],
+      "kern.prng.pool2.max_sample_count": [
+        1,
+        100,
+        103,
+        102
+      ],
+      "kern.prng.pool3.sample_count": [
+        1,
+        100,
+        104,
+        100
+      ],
+      "kern.prng.pool3.drain_count": [
+        1,
+        100,
+        104,
+        101
+      ],
+      "kern.prng.pool3.max_sample_count": [
+        1,
+        100,
+        104,
+        102
+      ],
+      "kern.prng.pool4.sample_count": [
+        1,
+        100,
+        105,
+        100
+      ],
+      "kern.prng.pool4.drain_count": [
+        1,
+        100,
+        105,
+        101
+      ],
+      "kern.prng.pool4.max_sample_count": [
+        1,
+        100,
+        105,
+        102
+      ],
+      "kern.prng.pool5.sample_count": [
+        1,
+        100,
+        106,
+        100
+      ],
+      "kern.prng.pool5.drain_count": [
+        1,
+        100,
+        106,
+        101
+      ],
+      "kern.prng.pool5.max_sample_count": [
+        1,
+        100,
+        106,
+        102
+      ],
+      "kern.prng.pool6.sample_count": [
+        1,
+        100,
+        107,
+        100
+      ],
+      "kern.prng.pool6.drain_count": [
+        1,
+        100,
+        107,
+        101
+      ],
+      "kern.prng.pool6.max_sample_count": [
+        1,
+        100,
+        107,
+        102
+      ],
+      "kern.prng.pool7.sample_count": [
+        1,
+        100,
+        108,
+        100
+      ],
+      "kern.prng.pool7.drain_count": [
+        1,
+        100,
+        108,
+        101
+      ],
+      "kern.prng.pool7.max_sample_count": [
+        1,
+        100,
+        108,
+        102
+      ],
+      "kern.prng.pool8.sample_count": [
+        1,
+        100,
+        109,
+        100
+      ],
+      "kern.prng.pool8.drain_count": [
+        1,
+        100,
+        109,
+        101
+      ],
+      "kern.prng.pool8.max_sample_count": [
+        1,
+        100,
+        109,
+        102
+      ],
+      "kern.prng.pool9.sample_count": [
+        1,
+        100,
+        110,
+        100
+      ],
+      "kern.prng.pool9.drain_count": [
+        1,
+        100,
+        110,
+        101
+      ],
+      "kern.prng.pool9.max_sample_count": [
+        1,
+        100,
+        110,
+        102
+      ],
+      "kern.prng.pool10.sample_count": [
+        1,
+        100,
+        111,
+        100
+      ],
+      "kern.prng.pool10.drain_count": [
+        1,
+        100,
+        111,
+        101
+      ],
+      "kern.prng.pool10.max_sample_count": [
+        1,
+        100,
+        111,
+        102
+      ],
+      "kern.prng.pool11.sample_count": [
+        1,
+        100,
+        112,
+        100
+      ],
+      "kern.prng.pool11.drain_count": [
+        1,
+        100,
+        112,
+        101
+      ],
+      "kern.prng.pool11.max_sample_count": [
+        1,
+        100,
+        112,
+        102
+      ],
+      "kern.prng.pool12.sample_count": [
+        1,
+        100,
+        113,
+        100
+      ],
+      "kern.prng.pool12.drain_count": [
+        1,
+        100,
+        113,
+        101
+      ],
+      "kern.prng.pool12.max_sample_count": [
+        1,
+        100,
+        113,
+        102
+      ],
+      "kern.prng.pool13.sample_count": [
+        1,
+        100,
+        114,
+        100
+      ],
+      "kern.prng.pool13.drain_count": [
+        1,
+        100,
+        114,
+        101
+      ],
+      "kern.prng.pool13.max_sample_count": [
+        1,
+        100,
+        114,
+        102
+      ],
+      "kern.prng.pool14.sample_count": [
+        1,
+        100,
+        115,
+        100
+      ],
+      "kern.prng.pool14.drain_count": [
+        1,
+        100,
+        115,
+        101
+      ],
+      "kern.prng.pool14.max_sample_count": [
+        1,
+        100,
+        115,
+        102
+      ],
+      "kern.prng.pool15.sample_count": [
+        1,
+        100,
+        116,
+        100
+      ],
+      "kern.prng.pool15.drain_count": [
+        1,
+        100,
+        116,
+        101
+      ],
+      "kern.prng.pool15.max_sample_count": [
+        1,
+        100,
+        116,
+        102
+      ],
+      "kern.prng.pool16.sample_count": [
+        1,
+        100,
+        117,
+        100
+      ],
+      "kern.prng.pool16.drain_count": [
+        1,
+        100,
+        117,
+        101
+      ],
+      "kern.prng.pool16.max_sample_count": [
+        1,
+        100,
+        117,
+        102
+      ],
+      "kern.prng.pool17.sample_count": [
+        1,
+        100,
+        118,
+        100
+      ],
+      "kern.prng.pool17.drain_count": [
+        1,
+        100,
+        118,
+        101
+      ],
+      "kern.prng.pool17.max_sample_count": [
+        1,
+        100,
+        118,
+        102
+      ],
+      "kern.prng.pool18.sample_count": [
+        1,
+        100,
+        119,
+        100
+      ],
+      "kern.prng.pool18.drain_count": [
+        1,
+        100,
+        119,
+        101
+      ],
+      "kern.prng.pool18.max_sample_count": [
+        1,
+        100,
+        119,
+        102
+      ],
+      "kern.prng.pool19.sample_count": [
+        1,
+        100,
+        120,
+        100
+      ],
+      "kern.prng.pool19.drain_count": [
+        1,
+        100,
+        120,
+        101
+      ],
+      "kern.prng.pool19.max_sample_count": [
+        1,
+        100,
+        120,
+        102
+      ],
+      "kern.prng.pool20.sample_count": [
+        1,
+        100,
+        121,
+        100
+      ],
+      "kern.prng.pool20.drain_count": [
+        1,
+        100,
+        121,
+        101
+      ],
+      "kern.prng.pool20.max_sample_count": [
+        1,
+        100,
+        121,
+        102
+      ],
+      "kern.prng.pool21.sample_count": [
+        1,
+        100,
+        122,
+        100
+      ],
+      "kern.prng.pool21.drain_count": [
+        1,
+        100,
+        122,
+        101
+      ],
+      "kern.prng.pool21.max_sample_count": [
+        1,
+        100,
+        122,
+        102
+      ],
+      "kern.prng.pool22.sample_count": [
+        1,
+        100,
+        123,
+        100
+      ],
+      "kern.prng.pool22.drain_count": [
+        1,
+        100,
+        123,
+        101
+      ],
+      "kern.prng.pool22.max_sample_count": [
+        1,
+        100,
+        123,
+        102
+      ],
+      "kern.prng.pool23.sample_count": [
+        1,
+        100,
+        124,
+        100
+      ],
+      "kern.prng.pool23.drain_count": [
+        1,
+        100,
+        124,
+        101
+      ],
+      "kern.prng.pool23.max_sample_count": [
+        1,
+        100,
+        124,
+        102
+      ],
+      "kern.prng.pool24.sample_count": [
+        1,
+        100,
+        125,
+        100
+      ],
+      "kern.prng.pool24.drain_count": [
+        1,
+        100,
+        125,
+        101
+      ],
+      "kern.prng.pool24.max_sample_count": [
+        1,
+        100,
+        125,
+        102
+      ],
+      "kern.prng.pool25.sample_count": [
+        1,
+        100,
+        126,
+        100
+      ],
+      "kern.prng.pool25.drain_count": [
+        1,
+        100,
+        126,
+        101
+      ],
+      "kern.prng.pool25.max_sample_count": [
+        1,
+        100,
+        126,
+        102
+      ],
+      "kern.prng.pool26.sample_count": [
+        1,
+        100,
+        127,
+        100
+      ],
+      "kern.prng.pool26.drain_count": [
+        1,
+        100,
+        127,
+        101
+      ],
+      "kern.prng.pool26.max_sample_count": [
+        1,
+        100,
+        127,
+        102
+      ],
+      "kern.prng.pool27.sample_count": [
+        1,
+        100,
+        128,
+        100
+      ],
+      "kern.prng.pool27.drain_count": [
+        1,
+        100,
+        128,
+        101
+      ],
+      "kern.prng.pool27.max_sample_count": [
+        1,
+        100,
+        128,
+        102
+      ],
+      "kern.prng.pool28.sample_count": [
+        1,
+        100,
+        129,
+        100
+      ],
+      "kern.prng.pool28.drain_count": [
+        1,
+        100,
+        129,
+        101
+      ],
+      "kern.prng.pool28.max_sample_count": [
+        1,
+        100,
+        129,
+        102
+      ],
+      "kern.prng.pool29.sample_count": [
+        1,
+        100,
+        130,
+        100
+      ],
+      "kern.prng.pool29.drain_count": [
+        1,
+        100,
+        130,
+        101
+      ],
+      "kern.prng.pool29.max_sample_count": [
+        1,
+        100,
+        130,
+        102
+      ],
+      "kern.prng.pool30.sample_count": [
+        1,
+        100,
+        131,
+        100
+      ],
+      "kern.prng.pool30.drain_count": [
+        1,
+        100,
+        131,
+        101
+      ],
+      "kern.prng.pool30.max_sample_count": [
+        1,
+        100,
+        131,
+        102
+      ],
+      "kern.prng.pool31.sample_count": [
+        1,
+        100,
+        132,
+        100
+      ],
+      "kern.prng.pool31.drain_count": [
+        1,
+        100,
+        132,
+        101
+      ],
+      "kern.prng.pool31.max_sample_count": [
+        1,
+        100,
+        132,
+        102
+      ]
+    },
+    "observation_values_in_model": {
+      "kern.prng.scheduled_reseed_count": 2,
+      "kern.prng.scheduled_reseed_max_sample_count": 2048,
+      "kern.prng.entropy_max_sample_count": 1024,
+      "kern.prng.pool_0.sample_count": 0,
+      "kern.prng.pool_0.drain_count": 2,
+      "kern.prng.pool_0.max_sample_count": 1024,
+      "kern.prng.pool_1.sample_count": 1024,
+      "kern.prng.pool_1.drain_count": 1,
+      "kern.prng.pool_1.max_sample_count": 1024,
+      "kern.prng.pool_2.sample_count": 2048,
+      "kern.prng.pool_2.drain_count": 0,
+      "kern.prng.pool_2.max_sample_count": 2048,
+      "kern.prng.pool_3.sample_count": 2048,
+      "kern.prng.pool_3.drain_count": 0,
+      "kern.prng.pool_3.max_sample_count": 2048,
+      "kern.prng.pool_4.sample_count": 2048,
+      "kern.prng.pool_4.drain_count": 0,
+      "kern.prng.pool_4.max_sample_count": 2048,
+      "kern.prng.pool_5.sample_count": 2048,
+      "kern.prng.pool_5.drain_count": 0,
+      "kern.prng.pool_5.max_sample_count": 2048,
+      "kern.prng.pool_6.sample_count": 2048,
+      "kern.prng.pool_6.drain_count": 0,
+      "kern.prng.pool_6.max_sample_count": 2048,
+      "kern.prng.pool_7.sample_count": 2048,
+      "kern.prng.pool_7.drain_count": 0,
+      "kern.prng.pool_7.max_sample_count": 2048,
+      "kern.prng.pool_8.sample_count": 1024,
+      "kern.prng.pool_8.drain_count": 0,
+      "kern.prng.pool_8.max_sample_count": 1024,
+      "kern.prng.pool_9.sample_count": 1024,
+      "kern.prng.pool_9.drain_count": 0,
+      "kern.prng.pool_9.max_sample_count": 1024,
+      "kern.prng.pool_10.sample_count": 1024,
+      "kern.prng.pool_10.drain_count": 0,
+      "kern.prng.pool_10.max_sample_count": 1024,
+      "kern.prng.pool_11.sample_count": 1024,
+      "kern.prng.pool_11.drain_count": 0,
+      "kern.prng.pool_11.max_sample_count": 1024,
+      "kern.prng.pool_12.sample_count": 1024,
+      "kern.prng.pool_12.drain_count": 0,
+      "kern.prng.pool_12.max_sample_count": 1024,
+      "kern.prng.pool_13.sample_count": 1024,
+      "kern.prng.pool_13.drain_count": 0,
+      "kern.prng.pool_13.max_sample_count": 1024,
+      "kern.prng.pool_14.sample_count": 1024,
+      "kern.prng.pool_14.drain_count": 0,
+      "kern.prng.pool_14.max_sample_count": 1024,
+      "kern.prng.pool_15.sample_count": 1024,
+      "kern.prng.pool_15.drain_count": 0,
+      "kern.prng.pool_15.max_sample_count": 1024,
+      "kern.prng.pool_16.sample_count": 1024,
+      "kern.prng.pool_16.drain_count": 0,
+      "kern.prng.pool_16.max_sample_count": 1024,
+      "kern.prng.pool_17.sample_count": 1024,
+      "kern.prng.pool_17.drain_count": 0,
+      "kern.prng.pool_17.max_sample_count": 1024,
+      "kern.prng.pool_18.sample_count": 1024,
+      "kern.prng.pool_18.drain_count": 0,
+      "kern.prng.pool_18.max_sample_count": 1024,
+      "kern.prng.pool_19.sample_count": 1024,
+      "kern.prng.pool_19.drain_count": 0,
+      "kern.prng.pool_19.max_sample_count": 1024,
+      "kern.prng.pool_20.sample_count": 1024,
+      "kern.prng.pool_20.drain_count": 0,
+      "kern.prng.pool_20.max_sample_count": 1024,
+      "kern.prng.pool_21.sample_count": 1024,
+      "kern.prng.pool_21.drain_count": 0,
+      "kern.prng.pool_21.max_sample_count": 1024,
+      "kern.prng.pool_22.sample_count": 1024,
+      "kern.prng.pool_22.drain_count": 0,
+      "kern.prng.pool_22.max_sample_count": 1024,
+      "kern.prng.pool_23.sample_count": 1024,
+      "kern.prng.pool_23.drain_count": 0,
+      "kern.prng.pool_23.max_sample_count": 1024,
+      "kern.prng.pool_24.sample_count": 1024,
+      "kern.prng.pool_24.drain_count": 0,
+      "kern.prng.pool_24.max_sample_count": 1024,
+      "kern.prng.pool_25.sample_count": 1024,
+      "kern.prng.pool_25.drain_count": 0,
+      "kern.prng.pool_25.max_sample_count": 1024,
+      "kern.prng.pool_26.sample_count": 1024,
+      "kern.prng.pool_26.drain_count": 0,
+      "kern.prng.pool_26.max_sample_count": 1024,
+      "kern.prng.pool_27.sample_count": 1024,
+      "kern.prng.pool_27.drain_count": 0,
+      "kern.prng.pool_27.max_sample_count": 1024,
+      "kern.prng.pool_28.sample_count": 1024,
+      "kern.prng.pool_28.drain_count": 0,
+      "kern.prng.pool_28.max_sample_count": 1024,
+      "kern.prng.pool_29.sample_count": 1024,
+      "kern.prng.pool_29.drain_count": 0,
+      "kern.prng.pool_29.max_sample_count": 1024,
+      "kern.prng.pool_30.sample_count": 1024,
+      "kern.prng.pool_30.drain_count": 0,
+      "kern.prng.pool_30.max_sample_count": 1024,
+      "kern.prng.pool_31.sample_count": 1024,
+      "kern.prng.pool_31.drain_count": 0,
+      "kern.prng.pool_31.max_sample_count": 1024
+    },
+    "shared_original_child_list": true
+  },
+  "source_sha256": {
+    "scripts/check_native_prng.py": "811cbe8aac62ef2e29b41dfee73ddbd72598ccfd81ef7db835ea20f638e3472d",
+    "scripts/original_crypto_execution.py": "adb9c2b988b4eb477f414883fb9239440f6b887e76f5ccca78565536d54fba8c",
+    "scripts/prepare_ios16_prng.py": "ba6b90a48ac37548246d5a60a50d4f5d0ea89224a2249daa7b1d95991ee6d06f",
+    "profiles/os/ios-16.7.16-20H392/prng-sysctl.json": "6d983f785aca4083ba4401cc42b8564508afb327c5501603287cbae0f85fd269"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-native-system-kernel.json": "8f3a19a23d82d1d41e2e81dab36a0378f2b24166810e313c34552bc610937a17"
+  },
+  "artifacts": {
+    "build/cph2653-native-prng-check/PrngSysctlLayout.c": "cb333837165d852fd2c410bef455ed9e5159b557d25d2b0667bd5b184c7b0eda",
+    "build/cph2653-native-prng-check/PrngSysctlLayout.o": "8fd436d915e9d9490f53e2967a14aa4f30267872bf2070d172e6a8371cd3254d",
+    "build/cph2653-native-prng-check/compile-commands.json": "1e45ed6f369de397784697960656f62a5d6bd12a666ec1501284c5064b4fa66d",
+    "build/cph2653-native-system/kernel.macho": "702a352344269ce27ca4540e94b79ca933ac016450a68923dcff6cbcf079274a"
+  },
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Actual native registration, list insertion, OID allocation, name resolution and installed handlers expose the unchanged original iPhone scheduled/pool statistics beside the source user counter. Original initializer and all default POST tests execute. Forty synthetic entropy requests exercise real original PRNG accounting and one actual user reseed increments only its counter. Platform memory/locks/copy and entropy collection are explicit instruction-model peers; no target entropy quality or native hardware function is qualified."
+}

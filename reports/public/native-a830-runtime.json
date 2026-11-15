@@ -8,7 +8,7 @@
     "sm8750": "669bceeaadc298e085f33d393c941eaca9e2c08c"
   },
   "adreno_pm4_revision": "282606b528b2595bc4274ea7490b62b323f35a5f",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "source_sha256": {
     "sources/Adreno830-native/NativeAdrenoTimer.h": "93f6fdcaa7118c32d0014110be8cf36e9fd5ffdb077a00196240317ebe42bc54",
     "sources/Adreno830-native/Adreno830Board.h": "d08711d9f08d42213d3fb0f896aeb443bae968e5cc568c58f4dc4d2d1e00e7ae",

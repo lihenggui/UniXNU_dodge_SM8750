@@ -7,11 +7,11 @@
     "scripts/check_display_kernel_lifecycle.py": "1f9bb4d8cb5f28127aee44d83dab8084e24d01e2c83e2c2fbc27a31401867f8d",
     "profiles/os/ios-16.7.16-20H392/storage-abi.json": "e80be68386b9d0ca90dfa499f3b2ba244be09431bac22242d51f06a56aa40833"
   },
-  "prelink_report_sha256": "4c6f4194abf12396f5b8eb7f71fed29dc91c92bbbebb6007f451049df76f5a32",
-  "root_source_report_sha256": "b7f5ad4ad930af42bd95e18b19f5bbf9edc36de7b351495c96282b293f6b19ed",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "prelink_report_sha256": "2cdae560a35791e8f55f9618f2f22d784f42b3182423ce9b8644a9685eda3e71",
+  "root_source_report_sha256": "1fbe5cfa2a5735ed454b0b17cdd522f8b8f594def948de1464b411a89e8f8fc7",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "candidate": "build/cph2653-storage-prelink/kernel.macho",
-  "candidate_sha256": "350073b7ee82f813370eb6d238f5c72107d960a661297e58fdb6e32ccce3a3b2",
+  "candidate_sha256": "e5b25459ef4953fc5d1ba78451621ac3477d7f34fbe43c5d7b2df3c013f94d69",
   "unicorn_version": "2.1.4",
   "case_count": 11,
   "cases": [
@@ -406,12 +406,12 @@
   "actual_combined_iobsd_and_root_then_graphics_scheduling_executed": true,
   "metadata_accounting_allocation_registry_kernel_threads_and_controller_are_peers": true,
   "protected_default_artifact_sha256": {
-    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
-    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "5434b91d048c7ac3e72fdace018caf3f013bea656d5cdaae989fbc7404cff854",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
     "build/cph2653-native-bringup/boot.img": "18a04d167d6515640f3a180702d6c82d4dcfb9eb853d4a38416a05235f7bdb9e",
-    "build/cph2653-display-prelink/kernel.macho": "e35d399f79ec0bec13fe9b638acf365a667da9dd639f8685064b67593386bdef",
-    "build/cph2653-display-bringup/boot.img": "e1a5241b0424bd9d4976462d9cbbe943e68ced7d337dfd5e3bac71f04cb317a9",
-    "build/cph2653-ufs-root/mach.storage": "ef30b30dd044e091dcfacbec76c27eeb30c43c771f4983e217a22906720a44d6"
+    "build/cph2653-display-prelink/kernel.macho": "41e9d513e7a53990ae7bec3469320afcc4a1080cac87a30b7dc8229fbaf9b9cc",
+    "build/cph2653-display-bringup/boot.img": "6052ace7c04382020943592c13887a846c317a359234733c60b02353427ca12d",
+    "build/cph2653-ufs-root/mach.storage": "6a613083d0e059826f57bfca95caf16fb5ad46963b91fc41465baee2eb57a93f"
   },
   "default_artifacts_unchanged": true,
   "real_iokit_instance_constructed": false,

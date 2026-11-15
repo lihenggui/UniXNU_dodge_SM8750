@@ -9,7 +9,7 @@
     "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
     "scripts/prepare_initial_data.py": "1cc4467bb4224632adea2a5ac87d602b285207b5c0d6bd63937a6bfdcf8d271c",
     "scripts/prepare_ios16_pmgr.py": "e25027dee2f3992c64be46cd85f355e583efd489027b2b6487e472260d4406a1",
-    "scripts/prepare_ios16_crypto.py": "0e80f38244013495dacdfab9fbe93c6eed47b757d5fbdd1e86f06e17804a7a8f",
+    "scripts/prepare_ios16_crypto.py": "587aba98a8eb316b97498954b540b15b3cf3dcf5647167c5cda0e809fd93f7fd",
     "profiles/os/ios-16.7.16-20H392/crypto-execution.json": "2957da717b4c840b5fbbbee18be5d39ec44184df2258b7af257fc5699951e870",
     "profiles/os/ios-16.7.16-20H392/crypto-contract.json": "979b7654adf7a07e310c399a4f4b25ef8604801f115b76b6a4fc47d89cae6a9f",
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/libkern/crypto/sha2.h": "bf0d9f345cc763fe926d7b9394585df445df146d2f4bc1a844727c8033d2fb94",
@@ -19,12 +19,12 @@
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/libkern/crypto/corecrypto_rand.c": "0d9d4f036b8bc519701e5d0adeee72437ef79cade7187e4b716071942fa7c10f"
   },
   "dependency_report_sha256": {
-    "reports/crypto-stack.json": "5edf8d4b0f4b2fa604fe26855663ef4adb34879ff5731aa472421ce93b4cf5ea",
-    "reports/ios16-crypto-contract.json": "381aa80bdaef60deedbf21d78a102b2dd5a5a7700879a9c1fcc651989ce43a7f",
-    "reports/ios16-crypto-source.json": "cc9cf58ee508415e2cf20db5b82ff1a684e3efdc2ea3f851d15e6c39d1f29ded",
-    "reports/ios16-crypto-prelink.json": "dfcaf6e82393b60841a205babd39830b423304982693a441d44d83bd78328e62",
-    "reports/ios16-crypto-kernel.json": "6373f4eeb61a165416d4b4f1f9af4ca39b5950b166c1fa3a5d60cbc8a8ae7f05",
-    "reports/ios16-crypto-payload.json": "1e058c5ed732bd4ea11f4253569df66a6c046322526bf4d5c0aca8f1bbea84c7"
+    "reports/crypto-stack.json": "b6048aadb5e2f90c74bf7e0f952330fc4dd0ae2fc85bd529f2e8ded59fda6670",
+    "reports/ios16-crypto-contract.json": "2b5274a5b21533e4ff5e1d98a43eb764192b65ac71ed7085c302494870c57799",
+    "reports/ios16-crypto-source.json": "363b187741a31736a3134cf37ebc881b5378e7060b54b832dc6287c63d693328",
+    "reports/ios16-crypto-prelink.json": "9256dae188ada44ea2bb244fb6725ed8d875f93b7ae20ea171f4b4aa88439b1e",
+    "reports/ios16-crypto-kernel.json": "ea81e745243e92ff5682ae4d4440cb80eaa113512a9ba72b45876ae47ef44731",
+    "reports/ios16-crypto-payload.json": "01a9a6e6487278ac7c5f3a68ad3f9fcd6a969c15acdb459a84e44183baa77ed8"
   },
   "artifacts": {
     "build/cph2653-original-crypto-kernel/abi/OriginalCryptoContexts.c": "d00a5a5d0672f3a3c32d4fd61aae5209969f6e981c3b03b520de4e1128343c94",
@@ -33,7 +33,7 @@
     "build/cph2653-original-crypto-kernel/cpu-cases.json": "cf6c09f5303376ee0d5a14702435c512e90724036e1b68e3d94d08902d67a738"
   },
   "candidate": "build/cph2653-crypto-prelink/kernel.macho",
-  "candidate_sha256": "3315aae02eeea2b79a7340793c3cd0296fe385202de2d26ad1949707abdceee0",
+  "candidate_sha256": "06ad7621ea05f997a7e311823a22811055c7d4c798d3699dc8602bf33b5fbb11",
   "execution_pin": {
     "path": "profiles/os/ios-16.7.16-20H392/crypto-execution.json",
     "sha256": "2957da717b4c840b5fbbbee18be5d39ec44184df2258b7af257fc5699951e870",

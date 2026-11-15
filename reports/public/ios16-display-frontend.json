@@ -1,6 +1,6 @@
 {
   "result": "DARWIN22_BOUNDED_IPHONE_DISPLAY_FRONTEND_CANDIDATE_PASS",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
   "builder_sha256": "1dc72fa9d1ae4fe041e2f9621f1a57359a52f536f5939f353995000db6955671",
   "contract": "profiles/os/ios-16.7.16-20H392/display-frontend.json",
@@ -51,14 +51,14 @@
   "dependency_report_sha256": {
     "ios16-display-interface": "50a9773997035ce5645d871b2ddb4c21c2d68d872815786bdf2e80d88f61bcc7",
     "ios16-display-emulation": "7cc293536bb2d23e12f0c1923acf65a985aabd86395ceccfe22fde37c54e13fe",
-    "ios16-display-lifecycle": "06416bd6a72a4723d8822db4677be5ea86605577ee8381b4fb95a5810dc49083",
-    "ios16-producer": "4eb711ad03991b765d056b03017341950877c7d29ddd8e030002da566f2633cf",
-    "ios16-request-fields": "4e615312487c478d64608ec11844a0389c3c9c703b46c1d12e832997b20c16c4",
+    "ios16-display-lifecycle": "25be59c38ab8bdee225439db871adfc3176c879152b4dcea3e1537975cd9e269",
+    "ios16-producer": "03a55344b9daa7783623c6716f2ba3e4d45950745b849419f6b063937d0fe02e",
+    "ios16-request-fields": "9770856c785e0044d5ff2ff5bb98d6a652ad40e6554185161227837af96e4423",
     "ios16-display-userland": "a0654e8087779a5617f07dbe9ae20835bbec267928c79d09c530478634d0b12b",
-    "ios16-surface-backing": "75ced10fd2d20ebb34f19ce35555ced9522475254fc17bc88bfe2686d61c97b6",
-    "ios16-gpu-swap-bridge": "24cfff4069d94d3a2e1f6f479014d4c111f089570ccb999a9aa0262b7c4ffbd2",
-    "ios16-software-refresh": "8af2f16f32fd5dd1a0f321885bb72683a2163b9a9b7c56f1882ed6ded64ed2c1",
-    "a830-backend": "5376bc837c313104834f6dddcb8cc00fc414fab1cbfac3baedb922f12709b2e2"
+    "ios16-surface-backing": "0e34e64d36bce81575170b6d964ec26a5ded095f19c3955cf6fb4db7ed6b0c83",
+    "ios16-gpu-swap-bridge": "8d9671c63e0525bf92c73ceebf58de254da28bc05a1799d640d82976bff10e00",
+    "ios16-software-refresh": "de2f5c32cacbc68b9a925cd9275d9ddad8470cfdce8e5410d3ba7e2ffbb120f2",
+    "a830-backend": "26d733ca1a51feb2203c789162e5a04d8ddb4b379b0f604e7fd19a96ea8ee7e6"
   },
   "objects": [
     {

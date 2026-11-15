@@ -32,13 +32,24 @@ def check_report(report):
         report['store_callbacks'] == ['_dodge_qemu_store_' + name for name in CALLBACKS], 'Wrong persistent Data kernel')
     for path, digest in {**report['source_sha256'], **report['dependency_report_sha256'], **report['artifacts']}.items():
         require(sha(ROOT / path) == digest, 'QEMU store kernel input changed: ' + path)
+    pin = json.loads((ROOT / 'upstream.lock.json').read_text())['dodge_percpu_iteration_patch']
+    consumer = report['percpu_consumer']
+    require(consumer['header_sha256'] == pin['before_sha256' if report['old_percpu_control'] else 'after_sha256'] and
+        sha(ROOT / consumer['header']) == consumer['header_sha256'] and
+        sha(ROOT / consumer['object']) == consumer['object_sha256'] and
+        sha(ROOT / report['candidate']) == report['candidate_sha256'], 'Wrong per-CPU consumer or persistent kernel')
     raw = (ROOT / report['candidate']).read_bytes()
     require(check_table(raw, report['ramblock_methods']) == 352, 'Persistent RamBlock layout changed')
     data_kernel.keystore.readback(raw, report['class_tables'], report['layout'])
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__);parser.add_argument('--check-only', action='store_true');args = parser.parse_args()
+    global OUT, REPORT
+    parser = argparse.ArgumentParser(description=__doc__);parser.add_argument('--check-only', action='store_true')
+    parser.add_argument('--old-percpu', action='store_true', help='Build the old mbuf per-CPU consumer as a regression control')
+    args = parser.parse_args()
+    if args.old_percpu:
+        OUT = OUT.with_name(OUT.name + '-old-percpu');REPORT = REPORT.with_name(REPORT.stem + '-old-percpu.json')
     if args.check_only:
         check_report(json.loads(REPORT.read_text()));print('PASS: separate QEMU persistent Data kernel');return
     parent = json.loads(data_kernel.REPORT.read_text());data_kernel.check_report(parent)
@@ -111,6 +122,37 @@ def main():
     command = json.loads((ROOT / baseline['link_command']).read_text())[:-2]
     filelist, = [value for value in command if value.startswith('-Wl,-filelist,')]
     command[command.index(filelist)] = '-Wl,-filelist,' + str(data_kernel.keystore.OUT / 'native.filelist')
+    # Compile the real consumer for both variants. Neither build changes the
+    # shared kernel objects, headers or file list used by the native payload.
+    pin = json.loads((ROOT / 'upstream.lock.json').read_text())['dodge_percpu_iteration_patch']
+    percpu_source = OUT / 'percpu-source';percpu_header = percpu_source / pin['target']
+    percpu_header.parent.mkdir(parents=True, exist_ok=True)
+    original = ROOT / 'sources/xnu-ios16';percpu_patch = ROOT / pin['path']
+    require(sha(percpu_patch) == pin['sha256'], 'Per-CPU patch changed')
+    percpu_header.write_bytes(subprocess.check_output(['git', '-C', original, 'show', pin['source_revision'] + ':' + pin['target']]))
+    require(sha(percpu_header) == pin['before_sha256'], 'Wrong pinned per-CPU header')
+    if not args.old_percpu:
+        process = subprocess.run(['patch', '--batch', '--fuzz=0', '-p1', '-i', percpu_patch],
+            cwd=percpu_source, capture_output=True, text=True)
+        require(not process.returncode and 'offset' not in process.stdout.lower() and
+            sha(percpu_header) == pin['after_sha256'], 'Per-CPU source patch is not exact')
+    recipe = OBJDIR / 'bsd/DEVELOPMENT/uipc_mbuf.o.json'
+    record = json.loads(recipe.read_text().strip().rstrip(','))
+    mbuf = OUT / ('uipc_mbuf.old.o' if args.old_percpu else 'uipc_mbuf.patched.o')
+    compile_command = list(record['arguments']);compile_command[1:1] = ['-I', str(percpu_source / 'osfmk')]
+    require(compile_command.count('-o') == 1, 'Ambiguous mbuf compilation output')
+    compile_command[compile_command.index('-o') + 1] = str(mbuf)
+    run(compile_command, OUT / 'mbuf.log', record['directory']);inspect_object(mbuf.read_bytes())
+    commands.append(compile_command)
+    native_list = data_kernel.keystore.OUT / 'native.filelist';text = native_list.read_text()
+    original_mbuf = str(OBJDIR / 'bsd/DEVELOPMENT/uipc_mbuf.o')
+    if args.old_percpu:
+        require(sha(mbuf) != sha(Path(original_mbuf)), 'Old per-CPU header did not change its consumer')
+    require(text.splitlines().count(original_mbuf) == 1, 'Ambiguous per-CPU consumer')
+    local_list = OUT / 'native.percpu.filelist';local_list.write_text(text.replace(original_mbuf, str(mbuf)))
+    argument = '-Wl,-filelist,' + str(native_list)
+    command[command.index(argument)] = '-Wl,-filelist,' + str(local_list)
+    consumer_inputs = [percpu_header, recipe, Path(record['file']), mbuf, local_list]
     original_observers = str(ROOT / 'build/cph2653-native-a830-kernel/absent-observers.o')
     require(command.count(original_observers) == 1, 'Ambiguous observer input')
     command[command.index(original_observers)] = str(data_kernel.SYSTEM_OUT / 'absent-observers.o')
@@ -127,9 +169,10 @@ def main():
     compile_record = OUT / 'adapted-compile-commands.json';compile_record.write_text(json.dumps(commands, indent=2) + '\n')
     files = [Path(__file__), ROOT / 'scripts/build_qemu_data.py', ROOT / 'scripts/check_qemu_store_host.py',
         ROOT / 'tests/DodgeQemuStoreTest.cpp', ROOT / 'drivers/DodgeStorage/DodgeQemuStore.cpp',
-        ROOT / 'drivers/DodgeStorage/DodgeQemuStoreTransport.h', wrapper, ram_source, root_source, patch, ram_recipe, root_recipe]
+        ROOT / 'drivers/DodgeStorage/DodgeQemuStoreTransport.h', wrapper, ram_source, root_source, patch, ram_recipe, root_recipe, percpu_patch]
     artifacts = [backend, late, lifecycle, ram_archive, root_archive, mount_obj, mount_archive, backend_archive,
         header, native, candidate, emission, security, compile_record, OUT / 'host-test.log']
+    artifacts += consumer_inputs
     report = {'result': 'IOS16_QEMU_PERSISTENT_DATA_KERNEL_PASS',
         'source_sha256': {str(path.relative_to(ROOT)): sha(path) for path in files},
         'dependency_report_sha256': {str(data_kernel.REPORT.relative_to(ROOT)): sha(data_kernel.REPORT)},
@@ -138,6 +181,9 @@ def main():
         'class_tables': parent['class_tables'], 'layout': parent['layout'], 'ramblock_methods': methods,
         'store_callbacks': callbacks, 'root_archive_preserved_members': preserved,
         'root_transports_readonly': True, 'physical_storage_enabled': False, 'hardware_tested': False,
+        'old_percpu_control': args.old_percpu,
+        'percpu_consumer': {'header': str(percpu_header.relative_to(ROOT)), 'header_sha256': sha(percpu_header),
+            'object': str(mbuf.relative_to(ROOT)), 'object_sha256': sha(mbuf)},
         'security_start_readback': security_readback, **checked,
         'scope': 'QEMU-only persistent backend uses a separately marked VirtIO flat file and verifies its identifier, exact capacity and FLUSH support. '
                  'RamBlock store references are redirected to that backend; physical UFS callbacks remain outside its call graph. '

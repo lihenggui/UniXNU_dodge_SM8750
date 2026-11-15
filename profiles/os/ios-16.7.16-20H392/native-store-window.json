@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "patch": "patches/oneplus13/0026-ios16-native-store-window.patch",
+  "patch_sha256": "d3f603158fdfb7377e116459b0bb186e37f243617a3578025bcb687bdebc986f",
+  "before_sha256": "1c077c0346ee5fd7bc72533915e3d79729884a24558e76e971ae74ec01dda663",
+  "after_sha256": "f1c43261516f2babe3de43a329ecbfa4b05df81210d527d067e2a5b3720da4e3",
+  "scope": "Native owner-system source only, after the pinned Darwin 22/CPH2653 UFS overlay: reject reversed/overflowing geometry and enforce the existing documented one-quarter partition cap on the Data window. Root read-only block interfaces and the original source pin are retained."
+}

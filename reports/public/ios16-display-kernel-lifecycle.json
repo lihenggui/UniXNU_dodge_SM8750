@@ -12,15 +12,15 @@
     "profiles/os/ios-16.7.16-20H392/graphics-modules.json": "2755bef2455f569cfa9a0db7c76fd1c3b01c22984165082a6c6252069ec58573"
   },
   "dependency_report_sha256": {
-    "ios16-display-service": "f02c15124a1a0f722409f79c00ec554b4e10952b358157dfff73341db50f0c97",
-    "ios16-graphics-lifecycle": "0a256f560e8f77127e09a84066e033cac91ea02d4cb30dfa8d02219172cd66a4",
-    "ios16-display-kernel": "1d256d5592b1281d194ee03b305744a2cd6ea4258e5f8e5337fc13757ccaada4",
-    "ios16-display-prelink": "6f92eab86f87a553eab8d330fabfd6985de105b825b16a0f449076a6aeaff820"
+    "ios16-display-service": "3462a2e80c0dc9c5d792e6d5032829ef5144186429381da75d3059eefc02651d",
+    "ios16-graphics-lifecycle": "1f4e59d2c5586396e28fdc64fb9247177601728d159dd9048ab4f3a32d007cc1",
+    "ios16-display-kernel": "9178521017e89bae08da54e5ad0cd26274253046dec2809c69a8b5cb93681992",
+    "ios16-display-prelink": "739a2c89dddc17d28d87a48b0858ffa8fabf07071ed54d00643b2f73a419683d"
   },
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
   "candidate": "build/cph2653-display-prelink/kernel.macho",
-  "candidate_sha256": "e35d399f79ec0bec13fe9b638acf365a667da9dd639f8685064b67593386bdef",
+  "candidate_sha256": "41e9d513e7a53990ae7bec3469320afcc4a1080cac87a30b7dc8229fbaf9b9cc",
   "cpu_cases": "build/ios16-display-kernel-lifecycle/cpu-cases.json",
   "cpu_cases_sha256": "bf5b03117a5cf34f6ee58aff1db071486f6a32cd681a4e0ce2ab0a3d6cc68b01",
   "unicorn_version": "2.1.4",
@@ -2297,12 +2297,12 @@
   "original_instruction_bytes_unchanged": true,
   "native_instruction_bytes_unchanged": true,
   "protected_default_artifact_sha256": {
-    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
-    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "5434b91d048c7ac3e72fdace018caf3f013bea656d5cdaae989fbc7404cff854",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
     "build/cph2653-native-bringup/boot.img": "18a04d167d6515640f3a180702d6c82d4dcfb9eb853d4a38416a05235f7bdb9e",
-    "build/cph2653-gpu-link-probe/mach.gpu": "ec41460411b00cd6f4a296c709277edd648f7c7245200788250c881ffb9ad997",
-    "build/cph2653-gpu-graphics-prelink/kernel.macho": "3f88733611e58c595029778009f34f04f290b62cb937bdd861e9c60e73815c1e",
-    "build/cph2653-display-kernel/mach.display": "d8f7f6c03c7d1c19753c48c4988160768d52187e9502084727ce3457ce536c5c"
+    "build/cph2653-gpu-link-probe/mach.gpu": "24b52adb0c7df2e5e6220a7846c69ceb117e951358a701fd8d731de3ec468740",
+    "build/cph2653-gpu-graphics-prelink/kernel.macho": "b5dd05b59f0aab1dd251e2f8004073a9f1b595509476e83141e8a414d02a5ac0",
+    "build/cph2653-display-kernel/mach.display": "f755b2990bee4c2bd6bf60aec9bb76dc860346d99f3edd5ecff76ff5aba65e4f"
   },
   "default_artifacts_unchanged": true,
   "real_iokit_instance_constructed": false,

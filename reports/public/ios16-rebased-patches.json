@@ -4,7 +4,7 @@
   "baseline_tag": "xnu-8796.141.3",
   "baseline_revision": "1b191cb58250d0705d8a51287127505aa4bc0789",
   "upstream_unixnu_revision": "3fa5ff5f409398c0555a9561d6437ce5d4c3b3b7",
-  "rebased_patch_count": 61,
+  "rebased_patch_count": 62,
   "not_required": {
     "pgz-aligned-validation.patch": "Darwin 22 has no zone_id_require_aligned implementation; retain its size-aware zone_id_require.",
     "published-freezer-condition.patch": "The malformed Darwin 23 FREEZE_ENABLED_DEFAULT condition is absent from Darwin 22."
@@ -253,6 +253,10 @@
     {
       "path": "patches/xnu/0003-preserve-osmetaclass-destructor-poison.patch",
       "sha256": "2f87cce4b28b5621b96cfa1fd10c2e0e070f5fa987daa40c66f1bae0252ef8d4"
+    },
+    {
+      "path": "patches/xnu/0004-percpu-unsigned-ranges.patch",
+      "sha256": "797c9e43e3e697ca448b4c6241f223328d14c41d7178faaa5c3200cfdad08630"
     }
   ]
 }

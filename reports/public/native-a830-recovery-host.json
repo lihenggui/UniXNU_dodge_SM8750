@@ -1,15 +1,15 @@
 {
   "result": "NATIVE_A830_RECOVERY_AND_SURFACE_DISPLAY_HOST_PASS",
   "source_sha256": {
-    "scripts/check_native_a830_recovery.py": "ac1cc1b916c55a8917a193744705f6cee7b837720a2825de18e4061e27d0c568",
-    "scripts/native_a830_userspace.py": "fc541601db755f877130fa881cb2ab5b9d16eba55b47e3895cdac091200c04bc",
+    "scripts/check_native_a830_recovery.py": "5f73d943a349a40aa631faed1ded7706bc24c6699aac21a2e0a3d5b4b8d24e68",
+    "scripts/native_a830_userspace.py": "fd151bccdb515b8f5b88a2792a31d4ae49828274dacf55a864f5e7ffee37ec42",
     "scripts/fresh_gpu_overlay.py": "a8be650d197a4d11a2628a1a168378450a82722686f22f1d85efcae014802129",
     "tests/DodgeTurnipRecoveryTest.cpp": "1efa3387b79a34d888efc80fc8ecdacfe3a21a6da1881893011185c16249f765",
     "tests/DodgeDisplayFrontendTest.cpp": "24dbda61538f7a14f22dea4fa629e9d31c6bb1ee8197671359018d19a09adc70",
     "tests/DodgeDisplayFreshGpuCases.h": "14b77b5934ced7a4779c8e80ede7c7e5096772be86fa86d294ccad5fd6445802",
     "tests/DodgeDisplayRecoveryCases.h": "fb727c36db9b8e47291cb2ebb397bf2a371f5ae4f4c0b039468ff4b7586d2729",
-    ".cache/gpu-work/mesa-native-a830/src/freedreno/vulkan/tu_knl_darwin.cc": "13b9b74ede75d20568ba5d45cadadb885051355a194c5129e97d43dc8fc5691b",
-    "patches/adreno830/0010-turnip-recovery.patch": "530b0cabd8708fe8e1d526310b50d7a7d41ecc56de6d5fed7a3078528f7f8632",
+    ".cache/gpu-work/mesa-native-a830/src/freedreno/vulkan/tu_knl_darwin.cc": "6cd0436ec9bbf5e2d2b4a4ed16576af162732b27539e0cc807d2edf58a53ff6b",
+    "patches/adreno830/0012-turnip-shared-cache-and-retirement.patch": "6c3337f91d471936739f9b9ef6c992280a2b2c6a59c406227e2d36826a4b793a",
     "patches/adreno830/0011-display-surface-recovery.patch": "258a3b11f73b0b829de42ac1b520cab8ea8d98dc1db72be3e3f2c3f3fee6ce87",
     "drivers/DodgeDisplay/DodgeGpuSwapBridge.cpp": "d210fa110258c02243034ee94d8868d97c5464fb7a2c885bb60661e72867fc04",
     "drivers/DodgeDisplay/DodgeSoftwareRefresh.cpp": "9d304b88f8405d23a420210a38a10a8888bf1d8267a0c84174a5a9029f270e02"

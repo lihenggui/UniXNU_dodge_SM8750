@@ -19,17 +19,17 @@
     "sources/UniXNU/drivers/DarwinBoot/Test/test-kernel-parser.py": "92be15ff6060ee1cd98e7feb8a021f1ebed477189375140dfc3ac8371f9b48d7"
   },
   "dependency_report_sha256": {
-    "reports/ios16-data-mount-native.json": "cad94d45f1aa1a3b3c877a479d6bc833a0fa646f7aa31d9150f11c3b0e6b096a"
+    "reports/ios16-data-mount-native.json": "e5daa661d50afc1111345b7878910d697bba48b1faf2a8a5457e476a59a4d2b1"
   },
   "artifacts": {
-    "build/ios16-apfs-mount-prelink/mach.data-mount.sealed": "3358bd94f165f893d061ff05b01141db8fbb124b0eefff081c4667effbadd168",
-    "build/ios16-apfs-mount-prelink/kernel.macho": "81f6e6da769fcd3666da0af07d1b69e878064dbb7abccf2490d65d8e66b6da91",
-    "build/ios16-apfs-mount-prelink/emission.json": "24d431b2ebb65ab52c22b5ea4e2c31a78a7ed039c6ad99910e18a9aacf4433dc",
-    "build/ios16-apfs-mount-prelink/mach.data-mount.sealed.crypto-hmac.json": "97ffe9b35fe6c33da6aca0872881404879ff82523f46cfdbdfb036133389c9c1",
-    "build/ios16-apfs-mount-prelink/kernel.macho.crypto-hmac.json": "9c2e5dcf6523d96cf259b12e6be2da5dccdaa10ef6563d82fa3617700bab4706"
+    "build/ios16-apfs-mount-prelink/mach.data-mount.sealed": "681028a41aa1f5299c6ec0879f4b93dad8ff233bb63aa12510bcf491a058d0e5",
+    "build/ios16-apfs-mount-prelink/kernel.macho": "31c346e7c7727477ac167658717d928fcda5f3ccc98938a15fb9dddd32516fb7",
+    "build/ios16-apfs-mount-prelink/emission.json": "754c39b77699f849ed3c13c65d779fbb4f6a63ad1e2718d4ca29e291d99ca31e",
+    "build/ios16-apfs-mount-prelink/mach.data-mount.sealed.crypto-hmac.json": "a6b1c01f98a23523a75388c3eb9c8d6b8911b1e44f818ef35eb5899c583268f3",
+    "build/ios16-apfs-mount-prelink/kernel.macho.crypto-hmac.json": "4fa338682f37a70dfd1e98a192d4a17fc6ee7091b3dec16634b3703c2ae29afd"
   },
   "candidate": "build/ios16-apfs-mount-prelink/kernel.macho",
-  "candidate_sha256": "81f6e6da769fcd3666da0af07d1b69e878064dbb7abccf2490d65d8e66b6da91",
+  "candidate_sha256": "31c346e7c7727477ac167658717d928fcda5f3ccc98938a15fb9dddd32516fb7",
   "components": [
     "com.apple.driver.AppleARMPlatform",
     "com.apple.driver.AppleAudioClockLibs",
@@ -373,7 +373,7 @@
   "actual_iobsd_hook_read_back": {
     "address": "0xfffffff0079a6f6c",
     "bytes": 80,
-    "sha256": "b2da1b0f291ef1f22008d463c658ea67dfc80666a8d7ba8872409ed8c3633c29",
+    "sha256": "8646d66cfd645d6a6dbf5605986ec61807ce26d75303a2ff7801c5c5b5b5590f",
     "queue_call_order": [
       "0xfffffff0079a6f80",
       "0xfffffff0079a6f84",
@@ -402,7 +402,7 @@
   "actual_iobsd_hook": {
     "address": "0xfffffff0079a6f6c",
     "bytes": 80,
-    "sha256": "b2da1b0f291ef1f22008d463c658ea67dfc80666a8d7ba8872409ed8c3633c29",
+    "sha256": "8646d66cfd645d6a6dbf5605986ec61807ce26d75303a2ff7801c5c5b5b5590f",
     "queue_call_order": [
       "0xfffffff0079a6f80",
       "0xfffffff0079a6f84",
@@ -419,7 +419,7 @@
   "actual_init_hook": {
     "address": "0xfffffff00773da64",
     "bytes": 632,
-    "sha256": "e982c63960bfc19df7e6f2cf4412ab968ec950d7ff42434a22525b05e34f727f",
+    "sha256": "7243affb677fe7799954c7ec2f3716a1d8fe4ece66f10016e94fcf767831722e",
     "scratch_allocate_calls": [
       "0xfffffff00773dab4"
     ],

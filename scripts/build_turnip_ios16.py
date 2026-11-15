@@ -72,6 +72,7 @@ def main():
     extras = {name.decode(): sha(work / name.decode()) for name in untracked if name and (work / name.decode()).is_file()}
     native_overlay = None
     recovery_overlay = None
+    cache_overlay = None
     if args.native_a830:
         from native_a830_userspace import overlay
         work, native_overlay = overlay(work, ROOT / '.cache/gpu-work/mesa-native-a830', 'native_a830_mesa_surface_overlay')
@@ -80,6 +81,9 @@ def main():
         work, recovery_overlay = overlay(work, work, 'native_a830_mesa_recovery_overlay')
         diff += (ROOT / recovery_overlay['path']).read_bytes()
         extras.update(recovery_overlay['after_sha256'])
+        work, cache_overlay = overlay(work, work, 'native_a830_mesa_cache_overlay')
+        diff += (ROOT / cache_overlay['path']).read_bytes()
+        extras.update(cache_overlay['after_sha256'])
     sdk = sources['iphoneos_sdk_reference'] / 'iPhoneOS16.5.sdk'
     llvm = ROOT / '.toolchains/rust-gpu/lib/rustlib/x86_64-unknown-linux-gnu/bin'
     clang = ROOT / '.toolchains/xnu-linux/llvm/bin/clang'
@@ -121,6 +125,7 @@ def main():
     if args.native_a830:
         profile['native_surface_overlay'] = native_overlay
         profile['native_recovery_overlay'] = recovery_overlay
+        profile['native_cache_overlay'] = cache_overlay
         profile['native_surface_abi_sha256'] = sha(abi / 'DodgeNativeA830ABI.h')
     source_id = hashlib.sha256(json.dumps(profile, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     build_id = hashlib.sha256(json.dumps({'mesa_revision': pins['mesa']['commit'],
@@ -158,6 +163,7 @@ def main():
               'abi_header_sha256': sha(abi / 'NativeAdrenoABI.h'),
               'native_surface_overlay': native_overlay,
               'native_recovery_overlay': recovery_overlay,
+              'native_cache_overlay': cache_overlay,
               'hardware_tested': False, 'scope': 'Actual production Vulkan/IR3 library cross-build, not GPU shader execution.'}
     (out / 'manifest.json').write_text(json.dumps(report, indent=2) + '\n')
     report_path = ROOT / ('reports/native-a830-turnip.json' if args.native_a830 else 'reports/turnip-ios16.json')

@@ -3,14 +3,14 @@
   "binaries": [
     {
       "path": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/NativeAdrenoMetal",
-      "bytes": 22565600,
-      "sha256": "9ee6dbcb57303a23d493282011032499293b5efee089e1706f032039e7a5a668",
+      "bytes": 22638784,
+      "sha256": "e26050f4cc0c3b1b3c888aa0782f9b4228c39c2f7f95ac5345eb8fa3f5abc342",
       "filetype": 8,
       "minimum_os": "16.0",
       "sdk_version_hex": "0x100400",
-      "signed_pages": 5467,
+      "signed_pages": 5485,
       "signature_identifier": "NativeAdrenoMetal",
-      "cdhash": "29a5c960f0a0582360e124dc4a24028635d84cd1",
+      "cdhash": "f45bac2a79bde0b8aa5ce369582a19faa7868821",
       "hash_page_bytes": 4096,
       "imports": [
         "/usr/lib/libobjc.A.dylib",
@@ -25,14 +25,14 @@
     },
     {
       "path": "build/cph2653-native-a830-metal-plugin/NativeAdrenoMetal.bundle/libvulkan_freedreno.dylib",
-      "bytes": 17974432,
-      "sha256": "33618b863fea464bb0ea73e0c96875bcf6b770dc756ed3a828d879eb12a30c21",
+      "bytes": 17991056,
+      "sha256": "342c0d669762054d6aef0355d49c1af2114ca53395ec855131834aafb38c3180",
       "filetype": 6,
       "minimum_os": "16.0",
       "sdk_version_hex": "0x100400",
-      "signed_pages": 4355,
+      "signed_pages": 4359,
       "signature_identifier": "libvulkan_freedreno.dylib",
-      "cdhash": "3410cb48c63ac8a788b1e4e3dcc28512d3c1061a",
+      "cdhash": "26960d5dc6173bf98dcc51623b9f054eab6f4985",
       "hash_page_bytes": 4096,
       "imports": [
         "/usr/lib/libSystem.B.dylib",

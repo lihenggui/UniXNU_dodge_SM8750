@@ -2,9 +2,9 @@
   "result": "IOS16_ISOLATED_DISPLAY_DEVELOPMENT_CONTAINER_READBACK_PASS",
   "builder_sha256": "7e504a20d78318554e23ad77b1c116f8e8b6eb2a374cbad8b088de6a7b89910c",
   "dependency_report_sha256": {
-    "ios16-display-prelink": "6f92eab86f87a553eab8d330fabfd6985de105b825b16a0f449076a6aeaff820",
-    "ios16-display-kernel-lifecycle": "e93e2cfc7ad8632f42746f69436d5e2f06065a3fa58305bace86bfa6e1227f3c",
-    "ios16-gop-provider-kernel": "3b024806fd4a801b34c31ff7fc7b09bf8ae9e2066b6ed3b1563924ec2146248c",
+    "ios16-display-prelink": "739a2c89dddc17d28d87a48b0858ffa8fabf07071ed54d00643b2f73a419683d",
+    "ios16-display-kernel-lifecycle": "5d5f12d835e6eb081d989f431d0679d84dd1136602201e930c9978dd166a0b3d",
+    "ios16-gop-provider-kernel": "33c3721a357326f005220e45a23539bc90f1646cb36a140448714c5bf08530bf",
     "native-payload": "02ab73bffb6af491b496f47e326d394501dc388657f4473e4827af6cf5bdd3b5",
     "uefi-build": "ff91576bea37b95841f0ebc6ab9b4cfdbbb887fad03957fbbfade7a660b8e06c"
   },
@@ -16,7 +16,7 @@
     "sources/UniXNU/scripts/unixnu/payload.py": "f2c630238496020c7fc7e01a83bdfc66a167ba6e550da363861bf1956e0d8a85",
     "sources/UniXNU/scripts/unixnu/util.py": "1f6efa81051d67f7225783958f1f8e86a38a7d4e538299ce6aa639b3cb4a759d",
     "sources/UniXNU/scripts/unixnu/config.py": "f14d5745f8796b5c356280c1f4ee9550e513fea0a381b10ede84099295f6595d",
-    "board.toml": "fbd0228458405ff70d7703e993d70305e0582d65ace814af4e196d00975d0f9b",
+    "board.toml": "4658b1c2706a86e99013adbaf74792306de2ed5ec9cc79415c84fcf030dd39cf",
     "profiles/os/ios-16.7.16-20H392/gpu-prelink.json": "eeb742dfd5ede60ca2d1869e2b04dfef79b905689ac0f9e8bbec85c9a9ba06f7",
     "uefi/Mu-Silicium/BootShim/BootShim.S": "ad1037dd5db2ceb66b9b714ec9821335f6a375b38b3242ea1f57c2a966f39e14",
     "uefi/Mu-Silicium/Resources/Configs/dodge.toml": "f96c6e166eceea767ff0c7c2a9105b647f1f540364f70894a97eef26de752035",
@@ -24,22 +24,22 @@
     "uefi/Mu-Silicium/Resources/DTBs/dodge.dtb": "b6044e472020b26e5304173291afea80f5ebe4e2ccf48dadfe985cee2a52e90a"
   },
   "candidate": "build/cph2653-display-prelink/kernel.macho",
-  "candidate_sha256": "e35d399f79ec0bec13fe9b638acf365a667da9dd639f8685064b67593386bdef",
+  "candidate_sha256": "41e9d513e7a53990ae7bec3469320afcc4a1080cac87a30b7dc8229fbaf9b9cc",
   "host_tools_sha256": {
     "/usr/bin/clang-14": "31925065812631303cf9af9a30b2f56427d2102667a87a9fb4ba03a306104589",
     "/usr/bin/llvm-objcopy-14": "b130d3059c778edbbdbc8933ccb55a35096f1419606ddde8f179a556c4530384",
     "/usr/bin/llvm-nm-14": "7fa17b45f0ca7cf3599cc5fbb133a3ced8f41af0f67ace03664c4a65b8a445b3"
   },
   "artifacts": {
-    "build/cph2653-display-bringup/payload.img": "e2027b10b4ae34469576cd18697c33f9275fab745b59ae0f9992d0d3727a178b",
-    "build/cph2653-display-bringup/boot.img": "e1a5241b0424bd9d4976462d9cbbe943e68ced7d337dfd5e3bac71f04cb317a9",
-    "build/cph2653-display-bringup/boot.json": "7d1713f686b0e550eb792278e8eeed10d523a6e60c6cbbe994d109539b4f0ef2"
+    "build/cph2653-display-bringup/payload.img": "8c0e0bebc86bd4fbfbe208d5422a11f4f8f071fccc258e53ed077abde76e3bf6",
+    "build/cph2653-display-bringup/boot.img": "6052ace7c04382020943592c13887a846c317a359234733c60b02353427ca12d",
+    "build/cph2653-display-bringup/boot.json": "292ee722a793eb86e95333cc1ccdfdf31cfdd7d7a981ead9e5e0339331305a44"
   },
   "boot_image": "build/cph2653-display-bringup/boot.img",
-  "boot_image_sha256": "e1a5241b0424bd9d4976462d9cbbe943e68ced7d337dfd5e3bac71f04cb317a9",
+  "boot_image_sha256": "6052ace7c04382020943592c13887a846c317a359234733c60b02353427ca12d",
   "boot_image_bytes": 170557440,
   "payload": "build/cph2653-display-bringup/payload.img",
-  "payload_sha256": "e2027b10b4ae34469576cd18697c33f9275fab745b59ae0f9992d0d3727a178b",
+  "payload_sha256": "8c0e0bebc86bd4fbfbe208d5422a11f4f8f071fccc258e53ed077abde76e3bf6",
   "adt_sha256": "ce729b8507079ac0f382234c76aac40c2c766585b16a5e6554c632cfa999bf3e",
   "menu_sha256": "fe54a49f43f97381b4cf4935eb383b53d126461fddd29a95c75069255b20797e",
   "kernel_args": "-v serial=0 debug=0x14e cpus=1",
@@ -52,12 +52,12 @@
   "fat_readback": "kernel, iPhone ADT and experimental menu match",
   "android_container_readback": "actual production builder verified header, gzip, shim, FD, firmware DTB and complete FAT bytes",
   "protected_default_artifact_sha256": {
-    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
     "build/cph2653-native-bringup/boot.img": "18a04d167d6515640f3a180702d6c82d4dcfb9eb853d4a38416a05235f7bdb9e",
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/payload/payload.img": "5720f0d1250aea809b243794c599fecc2304aaa6154943284c23cfa6c711e9a6",
     "build/cph2653-uefi-menu/SILICIUM_UEFI.fd": "9f4d92ac4ab868d87e147bc0a4c1d02497bfda583a5d0e195f0a54376cb56c38",
-    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "5434b91d048c7ac3e72fdace018caf3f013bea656d5cdaae989fbc7404cff854",
-    "build/cph2653-display-prelink/kernel.macho": "e35d399f79ec0bec13fe9b638acf365a667da9dd639f8685064b67593386bdef"
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
+    "build/cph2653-display-prelink/kernel.macho": "41e9d513e7a53990ae7bec3469320afcc4a1080cac87a30b7dc8229fbaf9b9cc"
   },
   "default_artifacts_unchanged": true,
   "boot_payload_packaged": true,

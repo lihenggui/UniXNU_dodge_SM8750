@@ -1539,5 +1539,74 @@
     "base_source_sha256": "b1a0b5cfa90caca4b7c5e8b87279c51e3ab0d25aed4e4449045b80b9230cc21e",
     "output_source_sha256": "8152966da1ca9ddaf928adb000400a2944e9843c8fd0c63c72348ae9685f2477",
     "scope": "Reserve the marked QEMU Data backend from the read-only root driver in the separate persistence fixture."
+  },
+  "native_a830_mesa_cache_overlay": {
+    "path": "patches/adreno830/0012-turnip-shared-cache-and-retirement.patch",
+    "sha256": "6c3337f91d471936739f9b9ef6c992280a2b2c6a59c406227e2d36826a4b793a",
+    "before_sha256": {
+      "src/freedreno/vulkan/tu_pipeline.cc": "32de868fc6deaf17d5e6947f18b85a87a3c87ea3a7f324d4ac397399053c52b0",
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "13b9b74ede75d20568ba5d45cadadb885051355a194c5129e97d43dc8fc5691b"
+    },
+    "after_sha256": {
+      "src/freedreno/vulkan/tu_pipeline.cc": "a73006a38f0a07b322dc76413bc8db1af6465b27011f08849a52f4f47eeac0ac",
+      "src/freedreno/vulkan/tu_knl_darwin.cc": "6cd0436ec9bbf5e2d2b4a4ed16576af162732b27539e0cc807d2edf58a53ff6b"
+    },
+    "support": {},
+    "upstream": [
+      {
+        "repository": "https://github.com/UniXNU/UniXNU.git",
+        "revision": "2366e33e4934696424bb9f5aa7598df925fbc0c1",
+        "path": "patches/mesa/turnip-shaders-shared-across-pipeline-caches.patch",
+        "sha256": "54b2438548f90ee0f9a187725d4d58c31988f24b150f1020d1a9472284f0acee"
+      },
+      {
+        "repository": "https://github.com/UniXNU/UniXNU.git",
+        "revision": "2366e33e4934696424bb9f5aa7598df925fbc0c1",
+        "path": "patches/mesa/turnip-darwin-sweep-retired-on-cache-miss.patch",
+        "sha256": "acf17b799ee6954609d370a4a79a9758d82d331ecb1e10704ac658ed4d1c0872"
+      }
+    ],
+    "scope": "Share compiled shaders through the device cache and collect retired buffers on allocation cache misses; preserve latched failures and opportunistic fence observation."
+  },
+  "native_a830_metal_tile_overlay": {
+    "path": "patches/adreno830/0013-metal-tile-dispatch.patch",
+    "sha256": "5ce5800d633422fb805157c47d21658111ef5600a34900e9d8a355c795f88f82",
+    "before_sha256": {
+      "bridge/NativeMetalObjects.rs": "cc603cfbecea64e8e70d8e41ebd7d1e496e2e07d187869688067493c65e49536",
+      "bridge/NativeMetalObjects.h": "2e60718544c118c9154d3bdcf8b1443c48edc13e8d038e38bf08e06c5d756a57",
+      "NativeBridgeMetalFrontend.mm": "ebaa580e6301911d121e1d9fcec3b37437def2341ac90a92e2277cc4587e0556"
+    },
+    "after_sha256": {
+      "bridge/NativeMetalObjects.rs": "cb6286bf2162cef14fd92fba88051ce93b78c13917e70f18740d080c0f1ad470",
+      "bridge/NativeMetalObjects.h": "b122c21f99b8fc52447ce0ab584b36694466ccd7ecff3c65df5dc2d115b25c85",
+      "NativeBridgeMetalFrontend.mm": "8368dee834f9d703126ab87d8d230abe5ed4a089bdd4be982f698b7c0a4a4058"
+    },
+    "support": {},
+    "upstream": {
+      "repository": "https://github.com/IssacL04/AdrenoMetal.git",
+      "revision": "51b7003f9c05ec46f0aa4ed7e9bb47f8db893c04"
+    },
+    "scope": "Connect tile pipeline creation, resources, pass memory and dispatch to the pinned runtime. Keep device family and tile capability answers unchanged."
+  },
+  "metal_translation_tile_overlay": {
+    "path": "patches/adreno-metal/0003-offline-tile-pipelines.patch",
+    "sha256": "e8a06a3b68a0be2d168f5adb5e8f82f709313600f705fa887df894a25f256e6d",
+    "before_sha256": {
+      "MetalVulkanProbe.rs": "0b2b96211c21b600d8fade6d07660ce533c277e96bcc6eb1c396eaddb100160d"
+    },
+    "after_sha256": {
+      "MetalVulkanProbe.rs": "0b5cae7c313f0329db165e8aebe58562963dc21d325fa631138cd50633aceff7"
+    },
+    "support": {},
+    "scope": "Compile original public tile AIR through the pinned translator without opening a Vulkan device."
+  },
+  "dodge_percpu_iteration_patch": {
+    "path": "patches/xnu/0004-percpu-unsigned-ranges.patch",
+    "sha256": "797c9e43e3e697ca448b4c6241f223328d14c41d7178faaa5c3200cfdad08630",
+    "target": "osfmk/kern/percpu.h",
+    "before_sha256": "32cffa403da43aa95117a7b260ad8eb18b36f8d3501265fb6fd26a1ea0144d5a",
+    "after_sha256": "24503751379da8fc0565afaf7306cd1a60f7b25a9be1eff926f8612c05d81ba6",
+    "source_revision": "1b191cb58250d0705d8a51287127505aa4bc0789",
+    "scope": "Use unsigned integer base comparisons for typed per-CPU enumeration; preserve the master slot and empty secondary range without pointer arithmetic."
   }
 }

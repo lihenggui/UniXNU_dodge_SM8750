@@ -1,0 +1,58 @@
+--- a/MetalVulkanProbe.rs
++++ b/MetalVulkanProbe.rs
+@@ -5,7 +5,7 @@
+ use metal2vulkan::metal::PixelFormat;
+ use metal2vulkan::pipeline::{
+     ColorAttachmentDescriptor, ComputePipelineDescriptor, FunctionDescriptor,
+-    RenderPipelineDescriptor, StageModule, StageSource, VertexDescriptor,
++    RenderPipelineDescriptor, StageModule, StageSource, TileRenderPipelineDescriptor, VertexDescriptor,
+ };
+ use metal2vulkan::Budget;
+ use serde_json::{json, Value};
+@@ -30,7 +30,8 @@
+             "name": f.name, "stage": format!("{:?}", f.stage)
+         })).collect::<Vec<_>>(), "gpu_execution": false}));
+     }
+-    let mut args = args;
++    let tile = args.first().is_some_and(|arg| arg == "--tile");
++    let mut args = if tile { &args[1..] } else { args };
+     let mut vertex_descriptor = None;
+     let mut color_attachments = None;
+     while args.first().is_some_and(|v| v.starts_with("--")) {
+@@ -66,6 +67,27 @@
+     let function = library.function(&args[2])?;
+     let budget = Budget::standard();
+     let (stages, layout, interface, dependencies, requirements) = match function.info().stage {
++        FunctionStage::Kernel if tile && args.len() == 3 => {
++            if vertex_descriptor.is_some() {
++                return Err("tile pipeline does not take a vertex descriptor".into());
++            }
++            let mut descriptor = TileRenderPipelineDescriptor::new(StageSource::Function(
++                FunctionDescriptor::new(function),
++            ));
++            if let Some(colors) = &color_attachments {
++                for (&index, &format) in colors {
++                    descriptor.color_attachment_formats[index] = Some(format);
++                }
++            }
++            let p = device.compile_tile_pipeline(&descriptor, &budget)?;
++            (
++                vec![stage(&p.stage)],
++                format!("{:?}", p.layout),
++                format!("{:?}", p.interface),
++                format!("{:?}", p.dependencies),
++                format!("{:?}", p.requirements),
++            )
++        }
+         FunctionStage::Kernel if args.len() == 3 => {
+             if vertex_descriptor.is_some() || color_attachments.is_some() {
+                 return Err("compute pipeline does not take render descriptors".into());
+@@ -82,7 +104,7 @@
+                 format!("{:?}", p.requirements),
+             )
+         }
+-        FunctionStage::Vertex => {
++        FunctionStage::Vertex if !tile => {
+             let mut descriptor = RenderPipelineDescriptor::new(StageSource::Function(
+                 FunctionDescriptor::new(function),
+             ));

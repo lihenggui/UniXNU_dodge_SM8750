@@ -1,9 +1,9 @@
 {
   "result": "IOS16_REAL_CLASS_GOP_PROVIDER_SOURCE_AND_OWNERSHIP_PASS",
   "builder_sha256": "1609a62f68c2352c7c08211eeeebec7a5ccb4b3b395ef431410a11564e9ab3fd",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
-  "graphics_lifecycle_report_sha256": "0a256f560e8f77127e09a84066e033cac91ea02d4cb30dfa8d02219172cd66a4",
+  "graphics_lifecycle_report_sha256": "1f4e59d2c5586396e28fdc64fb9247177601728d159dd9048ab4f3a32d007cc1",
   "source_sha256": {
     "scripts/build_gop_provider.py": "1609a62f68c2352c7c08211eeeebec7a5ccb4b3b395ef431410a11564e9ab3fd",
     "scripts/prepare_gop_provider.py": "d5dc7e45baf27bcf36c4090e77e78505bcc866e3683f73f7aaa6c59fbd34166e",

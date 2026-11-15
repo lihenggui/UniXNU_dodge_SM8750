@@ -1,7 +1,7 @@
 {
   "result": "IOS16_QEMU_PERSISTENT_DATA_KERNEL_PASS",
   "source_sha256": {
-    "scripts/build_qemu_store.py": "7477bc44ac59db423bbc1dd9df469ab3e5d01e365dd5e43d65069a9b086f504a",
+    "scripts/build_qemu_store.py": "4b0e273bf2e846c787a2e513406ae9e5b62440bfe3dc3ee5db797bd4425ef0b8",
     "scripts/build_qemu_data.py": "1eda229330d4cc5ee86757c93124fda019644b46d08e867f34a268643c1a7a95",
     "scripts/check_qemu_store_host.py": "4b94b591c29ecd22451a33b7b10807f0e4f60a661ac1d8e25cb4b9ac83e90907",
     "tests/DodgeQemuStoreTest.cpp": "7a8bee743f3d7dae9d56942b96996a7dad0150ee2402b65029f58473ea6723f4",
@@ -12,10 +12,11 @@
     "build/cph2653-qemu-store/root/DodgeQemuStorage.cpp": "8152966da1ca9ddaf928adb000400a2944e9843c8fd0c63c72348ae9685f2477",
     "patches/oneplus13/0018-ios16-qemu-store-reservation.patch": "ff271de659a2379c56ec269a693f0418f15532aeac565019042f70db3e194608",
     "build/cph2653-data-source/compile-commands.json": "caece8143fca76bffb8ec89e37db32d8d0ebff13b9e89efc8ba581c83ff75f8d",
-    "build/cph2653-qemu-owner-root/driver/compile-commands.json": "4df2fe4856439ce679eda2a7f448d510fbffe172e80ed53edb5e594ace0d4a61"
+    "build/cph2653-qemu-owner-root/driver/compile-commands.json": "4df2fe4856439ce679eda2a7f448d510fbffe172e80ed53edb5e594ace0d4a61",
+    "patches/xnu/0004-percpu-unsigned-ranges.patch": "797c9e43e3e697ca448b4c6241f223328d14c41d7178faaa5c3200cfdad08630"
   },
   "dependency_report_sha256": {
-    "reports/ios16-qemu-data-kernel.json": "79b14c3e89e42b2b0cfda1564ce861e1a8056304f2126fa96581c40fe57968b8"
+    "reports/ios16-qemu-data-kernel.json": "7d17622255e31a967fe724baff8f7cc653a77d157f017460c0cb947fd40aa1d9"
   },
   "artifacts": {
     "build/cph2653-qemu-store/backend/DodgeQemuStore.o": "50e856957904730406112551d0f42ff237454efe688b2d5d00d14fa3e6251327",
@@ -27,15 +28,20 @@
     "build/cph2653-qemu-store/mount/libDodgeDataMount.a": "fd5952eed00c56d562f0acd3057e72280d891c45d4823397ab19b2eba86f56b3",
     "build/cph2653-qemu-store/libDodgeQemuStore.a": "8a1db5ccff4398d929f2dc047d17db5c21365a5ed8bde301f5871a9c45454550",
     "build/cph2653-qemu-store/mount/DodgeDataMountSeed.h": "84fc4f1b386d4806da82bc2cc4781137ba59eef099c8464b9cc36ce6435bbfce",
-    "build/cph2653-qemu-store/mach.qemu-store": "6c04045cba95daee31c598998654263232db060991d15f1641df47fee2ac3919",
-    "build/cph2653-qemu-store/kernel.macho": "4fc86e1ebc5a23718eff2c1124a01f0da17f50ab3b4b7f4c743997d70ddd0a26",
-    "build/cph2653-qemu-store/emission.json": "665f75a8f64198282775c9361aa9ab95a42cf696c41bd60b7aeed02ab68c97ff",
+    "build/cph2653-qemu-store/mach.qemu-store": "df15f36499d00d750b3b454f488d6d1a84821a84144c87c3fb621b01fcae2945",
+    "build/cph2653-qemu-store/kernel.macho": "cd4af4548890ac634f482de9283a471cd1c3d9411ed0351e71a421e1ca82795d",
+    "build/cph2653-qemu-store/emission.json": "d3ef77cd03362822cd97fe1ec212f087613a1cc48b46e3fab84daa93d5a2f0da",
     "build/cph2653-qemu-store/security-init.json": "54c500f04e0578dbba0b6d54ee94e565fe608de48bfbe7f6a7b8d69efdc440f8",
-    "build/cph2653-qemu-store/adapted-compile-commands.json": "a3a29907074decf804b017c9b6ab5c20eac0fafc5a62ea4d486ac0e8ad10f934",
-    "build/cph2653-qemu-store/host-test.log": "2a85614e45d557e9aaad984c7a67c7285dd67fdf593c80edd00ab520900ab9af"
+    "build/cph2653-qemu-store/adapted-compile-commands.json": "f8f6531a03e2f7311e124bbca315fd2f2634363aeccc3188ed9f802382aff3dd",
+    "build/cph2653-qemu-store/host-test.log": "2a85614e45d557e9aaad984c7a67c7285dd67fdf593c80edd00ab520900ab9af",
+    "build/cph2653-qemu-store/percpu-source/osfmk/kern/percpu.h": "24503751379da8fc0565afaf7306cd1a60f7b25a9be1eff926f8612c05d81ba6",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/bsd/DEVELOPMENT/uipc_mbuf.o.json": "dcb8ecc4508ef84653bb340796fa7ac216362e9b6ab26aab290b3a2edfe85913",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/bsd/kern/uipc_mbuf.c": "c3ae1c0ba51d9abfd42fa62cdbb342cd3898f2b22ebaca67ee623048748fc1fa",
+    "build/cph2653-qemu-store/uipc_mbuf.patched.o": "dcc5116d2fdc9748867f2efba0472ffbf24d7232aa11adf17565628575f64ac4",
+    "build/cph2653-qemu-store/native.percpu.filelist": "845cd840adbb470eca786fc5e809f1cf0b4d233bf43f4766b687615806d26926"
   },
   "candidate": "build/cph2653-qemu-store/kernel.macho",
-  "candidate_sha256": "4fc86e1ebc5a23718eff2c1124a01f0da17f50ab3b4b7f4c743997d70ddd0a26",
+  "candidate_sha256": "cd4af4548890ac634f482de9283a471cd1c3d9411ed0351e71a421e1ca82795d",
   "class_tables": {
     "__ZTV13AppleKeyStore": [
       "__ZN13AppleKeyStoreD1Ev",
@@ -621,6 +627,13 @@
   "root_transports_readonly": true,
   "physical_storage_enabled": false,
   "hardware_tested": false,
+  "old_percpu_control": false,
+  "percpu_consumer": {
+    "header": "build/cph2653-qemu-store/percpu-source/osfmk/kern/percpu.h",
+    "header_sha256": "24503751379da8fc0565afaf7306cd1a60f7b25a9be1eff926f8612c05d81ba6",
+    "object": "build/cph2653-qemu-store/uipc_mbuf.patched.o",
+    "object_sha256": "dcc5116d2fdc9748867f2efba0472ffbf24d7232aa11adf17565628575f64ac4"
+  },
   "security_start_readback": {
     "normal_starts": [
       "com.apple.security.sandbox"

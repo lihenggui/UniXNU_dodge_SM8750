@@ -1,0 +1,72 @@
+{
+  "result": "NATIVE_UFS_DATA_STORE_BOUNDARIES_HOST_PASS",
+  "source_sha256": {
+    "scripts/check_native_store_host.py": "d6a4cdb1d0615cd1969a08db253e642de483295d1cd69711020507252657ee95",
+    "profiles/os/ios-16.7.16-20H392/native-store-window.json": "2726572049cb47d122a9cbe61cfb58469bae4ca2e9a7623285dee3fa5c18feb3",
+    "patches/oneplus13/0003-ios16-ufs-root.patch": "54973cdad882851a3ead0582ffd1bf217d0a8df81e6a3651dfb4f2f59823d026",
+    "patches/oneplus13/0026-ios16-native-store-window.patch": "d3f603158fdfb7377e116459b0bb186e37f243617a3578025bcb687bdebc986f",
+    "tests/DodgeNativeStoreTest.cpp": "550f5905df8205c7339f57f894ef26283a73f4d700651c1bebd785c2786f8bb3",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/NativeUfs.cpp": "b6fb207e8d89d70bc3ab22df9b9dae2bf30a1499a22b2e868999baf6114c6933",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/RootCommands.h": "3393931e2faa78fbf45622e9c028d8adebb1c2219378112884c7cae08eeb182b",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/RootQueue.h": "3a22f86e432446a3cd7267078c195cfca5b8bb1c2bd55741e67d265de97c6447",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/RootTransportLayout.h": "77699362f09e103ceda0d5f216d0be7749cdc1e88c6143ddd15ceb11dfd42e91",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/RootDiagnostics.h": "f9a8b13aba2b0a7b8ea43298689647a1261e08ff40cfad02ef09db3d41754c48",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/TransferPoll.h": "c6767cd5987407419b02531261bf2fd74bae01494600dd88f97f99f3929dbca8",
+    "sources/UniXNU-Pagani-Drivers/drivers/NativeUfs/tests/RootCommandsBridge.cpp": "16eff2943a6881aa46d2eb07ed74e807fa72006deb4b7b97dd43e12413899883"
+  },
+  "artifacts": {
+    "build/cph2653-native-store-host/NativeStore.extracted.h": "3c2332759bc78ea973620d9fc49e18d63f150c4deef6fcf2d6d56a507c5bb99b",
+    "build/cph2653-native-store-host/source/NativeUfs.cpp": "f1c43261516f2babe3de43a329ecbfa4b05df81210d527d067e2a5b3720da4e3",
+    "build/cph2653-native-store-host/native-store-0": "693df412301cc00dd823cf9e2f8e1338c76bd61e2de6bbcada9483ad62b7ada6",
+    "build/cph2653-native-store-host/run-0-0.log": "2598eda4465ea4010cfba67e2e3fc96a6340083c1e6aa6cbb18da98f844e30c0",
+    "build/cph2653-native-store-host/run-0-1.log": "322622d178f3145f9516d4e4db2aa3d8f4a1bb5b68019a11f1f916254c663ad7",
+    "build/cph2653-native-store-host/run-0-2.log": "4faf0144d0d0277c4d4551b1128a18091cfc5ab60f561b550b7a8d226bd2b122",
+    "build/cph2653-native-store-host/native-store-1": "fb7ff4168e3c7f445ce3f9576f7385ad2f968417df53a66101781e45ee8f6e45",
+    "build/cph2653-native-store-host/run-1-0.log": "b75aa993c347d43ca05f04e9a2dab50af20305e05cd719e05963a2d0a19db8bb",
+    "build/cph2653-native-store-host/run-1-1.log": "35cf8edb03470c64717a7056688cea194ab4bd96d5b4f4c374b3360a3f90cb1c",
+    "build/cph2653-native-store-host/run-1-2.log": "7cbb453c6622254b37727838b1aaf734ee2b806b704c43a072b8cba503abd0e8"
+  },
+  "variants": [
+    {
+      "read_only": 0,
+      "mode": 0,
+      "cases": 21,
+      "result": "PASS"
+    },
+    {
+      "read_only": 0,
+      "mode": 1,
+      "cases": 24,
+      "result": "PASS"
+    },
+    {
+      "read_only": 0,
+      "mode": 2,
+      "cases": 24,
+      "result": "PASS"
+    },
+    {
+      "read_only": 1,
+      "mode": 0,
+      "cases": 21,
+      "result": "PASS"
+    },
+    {
+      "read_only": 1,
+      "mode": 1,
+      "cases": 24,
+      "result": "PASS"
+    },
+    {
+      "read_only": 1,
+      "mode": 2,
+      "cases": 21,
+      "result": "PASS"
+    }
+  ],
+  "case_count": 135,
+  "hardware_tested": false,
+  "physical_storage_written": false,
+  "phone_operations": "none",
+  "scope": "Exact pinned NativeUfs store geometry/open/read/write/sync functions plus production SCSI/UPIU/DMA code. Six read-only/write-capable and disabled/probe/write-mode combinations test non-overlap, root guard, first/last writes, FUA, cache sync, invalid LUN and out-of-window/overflow/null refusals. MMIO, DMA/cache and lock operations are explicit host peers."
+}

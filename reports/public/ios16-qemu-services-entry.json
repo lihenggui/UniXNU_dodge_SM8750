@@ -1,0 +1,2994 @@
+{
+  "result": "IOS16_QEMU_ORIGINAL_SERVICES_AND_PERCPU_REGRESSION_PASS",
+  "negative": {
+    "case": "positive",
+    "RSA_calls": [
+      {
+        "callback": "original_make_public",
+        "pc": "0xfffffff0046b2668"
+      },
+      {
+        "callback": "original_verify",
+        "pc": "0xfffffff0046cf8c0"
+      },
+      {
+        "callback": "original_make_public",
+        "pc": "0xfffffff0046b2668"
+      },
+      {
+        "callback": "original_verify",
+        "pc": "0xfffffff0046cf8c0"
+      }
+    ],
+    "init_loader_entered": true,
+    "EL0_entered": true,
+    "user_instruction_executed": true,
+    "kernel_return": "0xfffffff00b2af994",
+    "kernel_return_sha256": "d6203fa49093cd12340342dff777a108d61dc48023cef1d5273ac74b7b650340",
+    "last_state": {
+      "native_owner_root_accepted": 1,
+      "native_owner_root_trust_enabled": 1,
+      "native_owner_root_apple_autherr": 80,
+      "native_owner_root_decision": 1,
+      "native_owner_root_readonly": 1,
+      "native_owner_root_mount_device": 16777225,
+      "native_owner_root_selected_device": 16777225,
+      "native_virtio_verified_devices": 2,
+      "native_virtio_integrity_failures": 0,
+      "native_verified_block_root_uuid_match": 1,
+      "native_verified_block_wrong_uuid_refused": 1,
+      "native_verified_block_root_media_matches": 1,
+      "dodge_qemu_storage_phase": 2,
+      "dodge_qemu_storage_started": 2,
+      "native_virtio_read_requests": 315,
+      "native_virtio_read_failures": 0,
+      "verified_blocks": 531,
+      "RSA_table": [
+        "0xfffffff0046b2668",
+        "0xfffffff0046cf8c0"
+      ]
+    },
+    "type_four_registration": "0xfffffff005f48ef8",
+    "decompressor": {
+      "version": 3,
+      "callbacks": {
+        "validate": "0xfffffff0056962a8",
+        "adjust_fetch": "0xfffffff0056965d8",
+        "fetch": "0xfffffff005696600",
+        "free_data": "0xfffffff005696a7c",
+        "get_flags": "0xfffffff005696a88"
+      },
+      "original_callback_instructions_match": true
+    },
+    "return_registers": {
+      "SPSR_EL1": "0x0",
+      "ELR_EL1": "0x1003e71b0"
+    },
+    "process": {
+      "pid": 1,
+      "comm": "launchd",
+      "name": "launchd",
+      "uuid": "5c15db07b3bc3df3b62f3e498b993b8e"
+    },
+    "user_entry": {
+      "pc": "0x1003e71b0",
+      "pstate": "0x0",
+      "dyld_slide": "0x1003d2000",
+      "code": "e00300911fec7c921d0080d21e0080d290faff171f00009140001fd6281440f9081400f9c0035fd600a00091a0ccff17ffc300d1fd7b02a9fd830091e20301aa",
+      "original_entry_code_matches": true
+    },
+    "after_instruction": {
+      "pc": "0x1003e71b4",
+      "pstate": "0x0",
+      "x0": "0x16fd12db8",
+      "original_sp": "0x16fd12db8"
+    },
+    "SystemOS_events": [
+      {
+        "checkpoint": "kernel-state",
+        "pc": "0xfffffff00b70ed28",
+        "pstate": "0x60400204"
+      },
+      {
+        "checkpoint": "cache-entry",
+        "pc": "0x1003e3350",
+        "pstate": "0x60000000"
+      },
+      {
+        "checkpoint": "cache-return",
+        "pc": "0x1003e361c",
+        "pstate": "0x60000000",
+        "x0": "0x1",
+        "load_address": "0x1812b4000",
+        "slide": "0x12b4000",
+        "header_sha256": "e31549b8573a08260a44ceb4a241aab1ff3931d7c8fbeb5f000aef2c0152cbce",
+        "original_header_matches": true
+      },
+      {
+        "checkpoint": "launchd-main",
+        "pc": "0x1001039b4",
+        "pstate": "0x80000800",
+        "fetch_pending": true
+      },
+      {
+        "checkpoint": "launchd-main",
+        "pc": "0x1001039b4",
+        "pstate": "0x80000800",
+        "original_entry_code_matches": true
+      }
+    ],
+    "launchd_main_entered": true,
+    "SystemOS_state": {
+      "stage": 6,
+      "status": 0,
+      "mount_status": 0,
+      "readonly": 1,
+      "authorized": 1,
+      "root_recheck": 1,
+      "native_union": 1,
+      "selected_device": 16777223,
+      "mounted_device": 16777223,
+      "actual_mount_flags": 343969825,
+      "original_root": 18446744024492622320,
+      "current_root": 18446744024492701344,
+      "actual_root_vnode": 18446744024492701344,
+      "dyld_flags": 0,
+      "verified_blocks": 579,
+      "integrity_failures": 0
+    },
+    "AES_state": {
+      "dodge_qemu_aes_phase": 2,
+      "dodge_qemu_aes_result": 0,
+      "native_aes_kat_status": 1,
+      "native_aes_interface_status": 1,
+      "native_aes_registered": 1,
+      "native_aes_completed": 14,
+      "native_aes_unsupported_key": 1,
+      "native_aes_nonce_key_uses": 11,
+      "native_aes_bytes": 368
+    },
+    "shared_cache_mapped": true,
+    "console": [
+      "com.apple.xpc.launchd|1970-01-01 00:02:03.093970 (fsck) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:06.476293 (mount-phase-1) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:08.519049 (data-protection) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:11.891283 (finish-obliteration) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:14.736597 (detect-installed-roots) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:15.073474 (commit-boot-mode) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:15.242146 (restore-datapartition) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:15.491907 (mount-phase-2) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:17.392703 (init-with-data-volume) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:17.993929 (MSUEarlyBootTask) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:21.630262 (fips) <Notice>: Doing boot task\n",
+      "FIPSPOST_USER [8945255950] fipspost_post:152: [FIPSPOST][Module-ID] Apple corecrypto Module v13.0 [Apple ARM, User, Software, SL1]\n",
+      "FIPSPOST_USER [8947714180] fipspost_post:160: PASSED: (12 ms) - fipspost_post_hmac\n",
+      "FIPSPOST_USER [8949050521] fipspost_post:164: PASSED: (10 ms) - fipspost_post_integrity\n",
+      "FIPSPOST_USER [8950311397] fipspost_post:168: PASSED: (10 ms) - fipspost_post_indicator\n",
+      "FIPSPOST_USER [8951196618] fipspost_post:169: PASSED: (0 ms) - fipspost_post_aes_ecb\n",
+      "FIPSPOST_USER [8952245799] fipspost_post:170: PASSED: (10 ms) - fipspost_post_aes_cbc\n",
+      "FIPSPOST_USER [8954917129] fipspost_post:171: PASSED: (36 ms) - fipspost_post_rsa_sig\n",
+      "FIPSPOST_USER [8958529374] fipspost_post:172: PASSED: (50 ms) - fipspost_post_ecdsa\n",
+      "FIPSPOST_USER [8959579783] fipspost_post:173: PASSED: (11 ms) - fipspost_post_ecdh\n",
+      "FIPSPOST_USER [8960789314] fipspost_post:174: PASSED: (11 ms) - fipspost_post_aes_ccm\n",
+      "FIPSPOST_USER [8961312376] fipspost_post:175: PASSED: (0 ms) - fipspost_post_aes_cmac\n",
+      "FIPSPOST_USER [8962197986] fipspost_post:176: PASSED: (2 ms) - fipspost_post_hkdf\n",
+      "FIPSPOST_USER [8965869528] fipspost_post:177: PASSED: (52 ms) - fipspost_post_pbkdf\n",
+      "FIPSPOST_USER [8966853824] fipspost_post:178: PASSED: (1 ms) - fipspost_post_drbg_hmac\n",
+      "FIPSPOST_USER [8967427598] fipspost_post:180: PASSED: (1 ms) - fipspost_post_kdf_ctr\n",
+      "FIPSPOST_USER [8968193670] fipspost_post:181: PASSED: (1 ms) - fipspost_post_aes_gcm\n",
+      "FIPSPOST_USER [8968683692] fipspost_post:182: PASSED: (0 ms) - fipspost_post_aes_xts\n",
+      "FIPSPOST_USER [8969405497] fipspost_post:183: PASSED: (0 ms) - fipspost_post_tdes_ecb\n",
+      "FIPSPOST_USER [8969928832] fipspost_post:184: PASSED: (2 ms) - fipspost_post_drbg_ctr\n",
+      "FIPSPOST_USER [8973499895] fipspost_post:186: PASSED: (46 ms) - fipspost_post_ffdh\n",
+      "FIPSPOST_USER [8976034135] fipspost_post:187: PASSED: (28 ms) - fipspost_post_rsa_enc_dec\n",
+      "FIPSPOST_USER [8976665357] fipspost_post:206: all tests PASSED (502 ms)\n",
+      "Returned from calling the FIPS_POST function in the corecrypto.dylib: result = true\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:23.675462 (keybag) <Notice>: Doing boot task\n",
+      "****** IN MKB_INIT ****\n",
+      "MKB_INIT: mount is with NO CPROTECT:0x14809000 on  (/private/var/)\n",
+      "MKB_INIT: mount point (/private/var/) does not support Data Protection\n",
+      "MKB_INIT: System Keybag loaded\n",
+      "MKB_INIT: Could not save value:e00002c7\n",
+      "****** DONE MKB_INIT ****\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:27.821411 (usermanagerd) <Notice>: Doing boot task\n",
+      "UMD_INIT: Allocated kernel persona with ID: 99, Type: 4, UID: 4294967295\n",
+      "UMD_INIT: Allocated kernel persona with ID: 199, Type: 6, UID: 4294967295\n",
+      "UMD_INIT: Allocated kernel persona with ID: 1000, Type: 5, UID: 501\n",
+      "UMD_INIT: Allocated kernel persona with ID: 100, Type: 4, UID: 501\n",
+      "UMD_INIT: Allocated kernel persona with ID: 200, Type: 6, UID: 501\n",
+      "****** DONE UMD_INIT ****\n"
+    ],
+    "KeyStore_calls": [
+      {
+        "phase": 2,
+        "result": 0,
+        "opened": 1,
+        "refused": 0,
+        "calls": 1,
+        "selector": 0,
+        "call_result": 0
+      },
+      {
+        "phase": 2,
+        "result": 0,
+        "opened": 1,
+        "refused": 0,
+        "calls": 2,
+        "selector": 14,
+        "call_result": 0
+      },
+      {
+        "phase": 2,
+        "result": 0,
+        "opened": 1,
+        "refused": 0,
+        "calls": 3,
+        "selector": 14,
+        "call_result": 0
+      }
+    ],
+    "Data_state": {
+      "phase": 2,
+      "result": 0,
+      "entered": 1,
+      "mounted": 1,
+      "verified": 1,
+      "device": 16777218,
+      "flags": 343969792,
+      "RamBlock": {
+        "ready": 1,
+        "bytes": 2147483648,
+        "reads": 67,
+        "writes": 54,
+        "failures": 0,
+        "resident_bytes": 724992,
+        "sparse": 1
+      },
+      "persistent_state": 3
+    },
+    "SystemOS_final": {
+      "stage": 6,
+      "status": 0,
+      "mount_status": 0,
+      "readonly": 1,
+      "authorized": 1,
+      "root_recheck": 1,
+      "native_union": 1,
+      "selected_device": 16777223,
+      "mounted_device": 16777223,
+      "actual_mount_flags": 343969825,
+      "original_root": 18446744024492622320,
+      "current_root": 18446744024492701344,
+      "actual_root_vnode": 18446744024492701344,
+      "dyld_flags": 1,
+      "verified_blocks": 620396,
+      "integrity_failures": 0
+    },
+    "Data_at_main": {
+      "phase": 2,
+      "result": 0,
+      "entered": 1,
+      "mounted": 1,
+      "verified": 1,
+      "device": 16777218,
+      "flags": 343969792,
+      "RamBlock": {
+        "ready": 1,
+        "bytes": 2147483648,
+        "reads": 62,
+        "writes": 0,
+        "failures": 0,
+        "resident_bytes": 724992,
+        "sparse": 1
+      },
+      "persistent_state": 3
+    },
+    "userspace_crypto_POST": [
+      "fipspost_post_hmac",
+      "fipspost_post_integrity",
+      "fipspost_post_indicator",
+      "fipspost_post_aes_ecb",
+      "fipspost_post_aes_cbc",
+      "fipspost_post_rsa_sig",
+      "fipspost_post_ecdsa",
+      "fipspost_post_ecdh",
+      "fipspost_post_aes_ccm",
+      "fipspost_post_aes_cmac",
+      "fipspost_post_hkdf",
+      "fipspost_post_pbkdf",
+      "fipspost_post_drbg_hmac",
+      "fipspost_post_kdf_ctr",
+      "fipspost_post_aes_gcm",
+      "fipspost_post_aes_xts",
+      "fipspost_post_tdes_ecb",
+      "fipspost_post_drbg_ctr",
+      "fipspost_post_ffdh",
+      "fipspost_post_rsa_enc_dec"
+    ],
+    "KeyStore_final": {
+      "phase": 2,
+      "result": 0,
+      "opened": 1,
+      "refused": 0,
+      "calls": 3,
+      "selector": 14,
+      "call_result": 0
+    },
+    "keybag_boot_task_complete": true,
+    "usermanager_early_boot_complete": true,
+    "services": {
+      "processes": {
+        "12:usermanagerd": {
+          "pid": 12,
+          "comm": "usermanagerd",
+          "uuid": "d8a861e8e0493aefaa558ce7a85bd8d2",
+          "first_syscall": 1,
+          "first_user_pc": "0x1c38ca508",
+          "syscalls": 1
+        },
+        "1:launchd": {
+          "pid": 1,
+          "comm": "launchd",
+          "uuid": "5c15db07b3bc3df3b62f3e498b993b8e",
+          "first_syscall": 340,
+          "first_user_pc": "0x1c38c7030",
+          "syscalls": 3789
+        },
+        "13:dirs_cleaner": {
+          "pid": 13,
+          "comm": "dirs_cleaner",
+          "uuid": "31206c37572a3b6d868c6903f3c40750",
+          "first_syscall": 74,
+          "first_user_pc": "0x100d6e79c",
+          "syscalls": 140
+        },
+        "14:xpcroleaccountd": {
+          "pid": 14,
+          "comm": "xpcroleaccountd",
+          "uuid": "c82bb57daef23d2ba741465e15b1cf62",
+          "first_syscall": 74,
+          "first_user_pc": "0x100a8c79c",
+          "syscalls": 154
+        },
+        "15:init_featureflag": {
+          "pid": 15,
+          "comm": "init_featureflag",
+          "uuid": "7ee5ced26bae3672a9f84338b376242a",
+          "first_syscall": 74,
+          "first_user_pc": "0x100b0279c",
+          "syscalls": 1636
+        },
+        "16:auearlyboot": {
+          "pid": 16,
+          "comm": "auearlyboot",
+          "uuid": "ef8667b627e8398dafbdf4377dd0c84e",
+          "first_syscall": 74,
+          "first_user_pc": "0x100ac079c",
+          "syscalls": 127
+        },
+        "17:tzinit": {
+          "pid": 17,
+          "comm": "tzinit",
+          "uuid": "0ba1bcf4b37e3a86b9ad98e40f9bf8ce",
+          "first_syscall": 74,
+          "first_user_pc": "0x10099a79c",
+          "syscalls": 155
+        },
+        "18:FinishRestoreFro": {
+          "pid": 18,
+          "comm": "FinishRestoreFro",
+          "uuid": "60d2e0b80e583fa9bbe2163f22b4daaf",
+          "first_syscall": 74,
+          "first_user_pc": "0x1010b879c",
+          "syscalls": 93
+        },
+        "19:finish_demo_rest": {
+          "pid": 19,
+          "comm": "finish_demo_rest",
+          "uuid": "22ffe115f158318e9eae4fd8fb015283",
+          "first_syscall": 74,
+          "first_user_pc": "0x100c4d79c",
+          "syscalls": 93
+        },
+        "20:sysstatuscheck": {
+          "pid": 20,
+          "comm": "sysstatuscheck",
+          "uuid": "b13827076bfb314499db63206bda5950",
+          "first_syscall": 74,
+          "first_user_pc": "0x1007af79c",
+          "syscalls": 92
+        },
+        "21:prng_seedctl": {
+          "pid": 21,
+          "comm": "prng_seedctl",
+          "uuid": "0c56e91e7cc33c6f9c652bff901ddeb4",
+          "first_syscall": 74,
+          "first_user_pc": "0x1010f379c",
+          "syscalls": 106
+        },
+        "22:launchd_cache_lo": {
+          "pid": 22,
+          "comm": "launchd_cache_lo",
+          "uuid": "bbb89a33b0973b4fadfd66fdf7ea85ec",
+          "first_syscall": 74,
+          "first_user_pc": "0x100cf579c",
+          "syscalls": 178
+        },
+        "23:xpcproxy": {
+          "pid": 23,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100d7379c",
+          "syscalls": 88
+        },
+        "24:xpcproxy": {
+          "pid": 24,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f6579c",
+          "syscalls": 108
+        },
+        "26:SpringBoard": {
+          "pid": 26,
+          "comm": "SpringBoard",
+          "uuid": "e1a4fe7d29ff3269b3ab50aed40c4495",
+          "first_syscall": 74,
+          "first_user_pc": "0x100b1079c",
+          "syscalls": 216
+        },
+        "28:xpcproxy": {
+          "pid": 28,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10105179c",
+          "syscalls": 109
+        },
+        "35:xpcproxy": {
+          "pid": 35,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1006e279c",
+          "syscalls": 90
+        },
+        "42:xpcproxy": {
+          "pid": 42,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100b6679c",
+          "syscalls": 91
+        },
+        "46:xpcproxy": {
+          "pid": 46,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10112079c",
+          "syscalls": 91
+        },
+        "45:xpcproxy": {
+          "pid": 45,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10093579c",
+          "syscalls": 90
+        },
+        "52:xpcproxy": {
+          "pid": 52,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100fdc79c",
+          "syscalls": 110
+        },
+        "54:xpcproxy": {
+          "pid": 54,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100e9a79c",
+          "syscalls": 90
+        },
+        "43:xpcproxy": {
+          "pid": 43,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10136b79c",
+          "syscalls": 90
+        },
+        "48:xpcproxy": {
+          "pid": 48,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1010b079c",
+          "syscalls": 108
+        },
+        "59:xpcproxy": {
+          "pid": 59,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10157079c",
+          "syscalls": 114
+        },
+        "62:xpcproxy": {
+          "pid": 62,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10099779c",
+          "syscalls": 91
+        },
+        "63:xpcproxy": {
+          "pid": 63,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10039679c",
+          "syscalls": 109
+        },
+        "56:xpcproxy": {
+          "pid": 56,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1011f079c",
+          "syscalls": 108
+        },
+        "50:xpcproxy": {
+          "pid": 50,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10148779c",
+          "syscalls": 88
+        },
+        "25:xpcproxy": {
+          "pid": 25,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1016c379c",
+          "syscalls": 7
+        },
+        "85:xpcproxy": {
+          "pid": 85,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100a9479c",
+          "syscalls": 107
+        },
+        "88:xpcproxy": {
+          "pid": 88,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f4279c",
+          "syscalls": 107
+        },
+        "67:xpcproxy": {
+          "pid": 67,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100c0879c",
+          "syscalls": 89
+        },
+        "86:xpcproxy": {
+          "pid": 86,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10099b79c",
+          "syscalls": 6
+        },
+        "89:xpcproxy": {
+          "pid": 89,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1009a479c",
+          "syscalls": 90
+        },
+        "90:xpcproxy": {
+          "pid": 90,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100ec879c",
+          "syscalls": 89
+        },
+        "87:xpcproxy": {
+          "pid": 87,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10040d79c",
+          "syscalls": 113
+        },
+        "91:xpcproxy": {
+          "pid": 91,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1012be79c",
+          "syscalls": 89
+        },
+        "82:xpcproxy": {
+          "pid": 82,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1006f479c",
+          "syscalls": 110
+        },
+        "60:xpcproxy": {
+          "pid": 60,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10129c79c",
+          "syscalls": 107
+        },
+        "51:xpcproxy": {
+          "pid": 51,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100bff79c",
+          "syscalls": 112
+        },
+        "64:xpcproxy": {
+          "pid": 64,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10076a79c",
+          "syscalls": 90
+        },
+        "91:notifyd": {
+          "pid": 91,
+          "comm": "notifyd",
+          "uuid": "37a8affddb2632f58ce2df71206fae3e",
+          "first_syscall": 74,
+          "first_user_pc": "0x1012a079c",
+          "syscalls": 493
+        },
+        "83:xpcproxy": {
+          "pid": 83,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10083279c",
+          "syscalls": 91
+        },
+        "71:xpcproxy": {
+          "pid": 71,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1007c979c",
+          "syscalls": 109
+        },
+        "74:xpcproxy": {
+          "pid": 74,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100a1d79c",
+          "syscalls": 113
+        },
+        "77:xpcproxy": {
+          "pid": 77,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10113779c",
+          "syscalls": 113
+        },
+        "84:xpcproxy": {
+          "pid": 84,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1004a079c",
+          "syscalls": 91
+        },
+        "73:xpcproxy": {
+          "pid": 73,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10084a79c",
+          "syscalls": 89
+        },
+        "70:xpcproxy": {
+          "pid": 70,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10109579c",
+          "syscalls": 108
+        },
+        "79:xpcproxy": {
+          "pid": 79,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10074e79c",
+          "syscalls": 4
+        },
+        "71:ptpd": {
+          "pid": 71,
+          "comm": "ptpd",
+          "uuid": "02fa11abe1713232b960c8d48e12bad5",
+          "first_syscall": 74,
+          "first_user_pc": "0x1015d679c",
+          "syscalls": 145
+        },
+        "68:xpcproxy": {
+          "pid": 68,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10090879c",
+          "syscalls": 4
+        },
+        "41:xpcproxy": {
+          "pid": 41,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100e1a79c",
+          "syscalls": 2
+        },
+        "31:xpcproxy": {
+          "pid": 31,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f8779c",
+          "syscalls": 4
+        },
+        "70:sleepd": {
+          "pid": 70,
+          "comm": "sleepd",
+          "uuid": "5a122acbb8b33851864e5314947ad97a",
+          "first_syscall": 74,
+          "first_user_pc": "0x10039879c",
+          "syscalls": 120
+        },
+        "29:xpcproxy": {
+          "pid": 29,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1007f279c",
+          "syscalls": 3
+        },
+        "90:IOMFB_FDR_Loader": {
+          "pid": 90,
+          "comm": "IOMFB_FDR_Loader",
+          "uuid": "b59b9016d0d0378f939c9d108914668d",
+          "first_syscall": 74,
+          "first_user_pc": "0x10125f79c",
+          "syscalls": 137
+        },
+        "87:fairplayd.H2": {
+          "pid": 87,
+          "comm": "fairplayd.H2",
+          "uuid": "306888adfbc439c4961c721c7ff230d1",
+          "first_syscall": 74,
+          "first_user_pc": "0x101e8179c",
+          "syscalls": 119
+        },
+        "35:configd": {
+          "pid": 35,
+          "comm": "configd",
+          "uuid": "93cbff7fbf73347f9509d10187706d97",
+          "first_syscall": 74,
+          "first_user_pc": "0x10158079c",
+          "syscalls": 155
+        },
+        "82:rapportd": {
+          "pid": 82,
+          "comm": "rapportd",
+          "uuid": "76cad985a45a30d99f0690d382f3e7b8",
+          "first_syscall": 74,
+          "first_user_pc": "0x10128079c",
+          "syscalls": 153
+        },
+        "36:xpcproxy": {
+          "pid": 36,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1008d279c",
+          "syscalls": 3
+        },
+        "65:xpcproxy": {
+          "pid": 65,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1002d679c",
+          "syscalls": 3
+        },
+        "45:amfid": {
+          "pid": 45,
+          "comm": "amfid",
+          "uuid": "0b4bc471bda4302089f68f19f16ab5db",
+          "first_syscall": 74,
+          "first_user_pc": "0x100ad679c",
+          "syscalls": 128
+        },
+        "61:xpcproxy": {
+          "pid": 61,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100b4479c",
+          "syscalls": 3
+        },
+        "33:xpcproxy": {
+          "pid": 33,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100b4c79c",
+          "syscalls": 3
+        },
+        "75:xpcproxy": {
+          "pid": 75,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100abb79c",
+          "syscalls": 4
+        },
+        "44:xpcproxy": {
+          "pid": 44,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10066179c",
+          "syscalls": 3
+        },
+        "40:xpcproxy": {
+          "pid": 40,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1007b079c",
+          "syscalls": 3
+        },
+        "84:usermanagerd": {
+          "pid": 84,
+          "comm": "usermanagerd",
+          "uuid": "d8a861e8e0493aefaa558ce7a85bd8d2",
+          "first_syscall": 74,
+          "first_user_pc": "0x100b3579c",
+          "syscalls": 145
+        },
+        "27:xpcproxy": {
+          "pid": 27,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10118879c",
+          "syscalls": 2
+        },
+        "38:xpcproxy": {
+          "pid": 38,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1005b179c",
+          "syscalls": 2
+        },
+        "67:driverkitd": {
+          "pid": 67,
+          "comm": "driverkitd",
+          "uuid": "1c776548338d30298b8ef86ce55175b2",
+          "first_syscall": 74,
+          "first_user_pc": "0x1015a679c",
+          "syscalls": 125
+        },
+        "24:logd": {
+          "pid": 24,
+          "comm": "logd",
+          "uuid": "0ce7008fe0bc3c0b8088c82b0b89a801",
+          "first_syscall": 74,
+          "first_user_pc": "0x100bcf79c",
+          "syscalls": 1897
+        },
+        "30:xpcproxy": {
+          "pid": 30,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100af779c",
+          "syscalls": 2
+        },
+        "42:remoted": {
+          "pid": 42,
+          "comm": "remoted",
+          "uuid": "fbf91084d7b13b93973d580faac0b829",
+          "first_syscall": 74,
+          "first_user_pc": "0x10131d79c",
+          "syscalls": 129
+        },
+        "83:mtmergeprops": {
+          "pid": 83,
+          "comm": "mtmergeprops",
+          "uuid": "2ea9357dc487382f8b36decdb4269faa",
+          "first_syscall": 74,
+          "first_user_pc": "0x10094279c",
+          "syscalls": 113
+        },
+        "28:mediaserverd": {
+          "pid": 28,
+          "comm": "mediaserverd",
+          "uuid": "a5d87fd696d936e79dab7e350c3d9a45",
+          "first_syscall": 74,
+          "first_user_pc": "0x10108679c",
+          "syscalls": 122
+        },
+        "89:fseventsd": {
+          "pid": 89,
+          "comm": "fseventsd",
+          "uuid": "25413263ee0e364aa5f4b2caac8f1b2e",
+          "first_syscall": 74,
+          "first_user_pc": "0x100a8979c",
+          "syscalls": 93
+        },
+        "43:keybagd": {
+          "pid": 43,
+          "comm": "keybagd",
+          "uuid": "3ed2c4398063326eb0c61dff17edf9a7",
+          "first_syscall": 74,
+          "first_user_pc": "0x1006ea79c",
+          "syscalls": 112
+        },
+        "48:mobiletimerd": {
+          "pid": 48,
+          "comm": "mobiletimerd",
+          "uuid": "1771e1e509a730d08bf7ae0bf8a218fe",
+          "first_syscall": 74,
+          "first_user_pc": "0x100d1479c",
+          "syscalls": 123
+        },
+        "54:thermalmonitord": {
+          "pid": 54,
+          "comm": "thermalmonitord",
+          "uuid": "1b5b4aa32ef13306a4d94088a36f52b3",
+          "first_syscall": 74,
+          "first_user_pc": "0x1009fa79c",
+          "syscalls": 133
+        },
+        "64:containermanager": {
+          "pid": 64,
+          "comm": "containermanager",
+          "uuid": "d775f729247432d8bf349d9014b5fbaf",
+          "first_syscall": 74,
+          "first_user_pc": "0x10101779c",
+          "syscalls": 104
+        },
+        "59:timed": {
+          "pid": 59,
+          "comm": "timed",
+          "uuid": "a58a39b345803eab8bfbfd2007197498",
+          "first_syscall": 74,
+          "first_user_pc": "0x100dc179c",
+          "syscalls": 91
+        },
+        "74:distnoted": {
+          "pid": 74,
+          "comm": "distnoted",
+          "uuid": "d44b7a1e322d3e2a90998e39abeb90a6",
+          "first_syscall": 74,
+          "first_user_pc": "0x10061e79c",
+          "syscalls": 104
+        },
+        "57:xpcproxy": {
+          "pid": 57,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10151979c",
+          "syscalls": 2
+        },
+        "49:xpcproxy": {
+          "pid": 49,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1013db79c",
+          "syscalls": 3
+        },
+        "37:xpcproxy": {
+          "pid": 37,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10052f79c",
+          "syscalls": 2
+        },
+        "58:xpcproxy": {
+          "pid": 58,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10082279c",
+          "syscalls": 1
+        },
+        "34:xpcproxy": {
+          "pid": 34,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10031179c",
+          "syscalls": 2
+        },
+        "39:xpcproxy": {
+          "pid": 39,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10071279c",
+          "syscalls": 2
+        },
+        "92:xpcproxy": {
+          "pid": 92,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10089e79c",
+          "syscalls": 88
+        },
+        "80:xpcproxy": {
+          "pid": 80,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100ac479c",
+          "syscalls": 1
+        },
+        "92:logd_helper": {
+          "pid": 92,
+          "comm": "logd_helper",
+          "uuid": "ead56ac90ec33d2a82266cab7d9bb292",
+          "first_syscall": 74,
+          "first_user_pc": "0x10050a79c",
+          "syscalls": 694
+        },
+        "47:xpcproxy": {
+          "pid": 47,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1004d179c",
+          "syscalls": 1
+        },
+        "72:xpcproxy": {
+          "pid": 72,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10050279c",
+          "syscalls": 1
+        }
+      },
+      "console": [
+        "com.apple.xpc.launchd|1970-01-01 00:02:50.496207 (dirs_cleaner) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1970-01-01 00:02:52.644573 (xpcroleaccountd) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1970-01-01 00:02:55.605248 (init_featureflags) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1970-01-01 00:03:24.452098 (auearlyboot) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1970-01-01 00:03:26.767330 (tzinit) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:28.813954 (finish-restore) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:30.307055 (finish-demo-restore) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:31.666586 (sysstatuscheck) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:33.163577 (prng_seedctl) <Notice>: Doing boot task\n",
+        "failed to load kernel prng seed: (-76) (2) No such file or directory\n",
+        "failed to load virtual random: (-147) (-536870212)\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:34.678252 (launchd_cache_loader) <Notice>: Doing boot task\n",
+        "Sending validated cache to launchd\n",
+        "Cache sent to launchd successfully\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:41.963857 (boot) <Notice>: Early boot complete. Continuing system boot.\n",
+        "warning: "
+      ],
+      "mbuf_entered": 1,
+      "mbuf_returned": 0,
+      "checkpoints": 16001,
+      "Data": {
+        "phase": 2,
+        "result": 0,
+        "entered": 1,
+        "mounted": 1,
+        "verified": 1,
+        "device": 16777218,
+        "flags": 343969792,
+        "RamBlock": {
+          "ready": 1,
+          "bytes": 2147483648,
+          "reads": 67,
+          "writes": 88,
+          "failures": 0,
+          "resident_bytes": 724992,
+          "sparse": 1
+        },
+        "persistent_state": 3
+      },
+      "percpu_range": {
+        "start": "0xfffffffbffffffff",
+        "end": "0x0"
+      },
+      "panic": {
+        "format": "%s at pc 0x%016llx, lr 0x%016llx (saved state: %p%s)\n\t  x0:  0x%016llx x1:  0x%016llx  x2:  0x%016llx  x3:  0x%016llx\n\t  x4:  0x%016llx x5:  0x%016llx  x6:  0x%016llx  x7:  0x%016llx\n\t  x8:  0x%016llx x9:  0x%016llx  x10: 0x%016llx  x11: 0x%016llx\n\t  x12: 0x%016llx x13: 0x%016llx  x14: 0x%016llx  x15: 0x%016llx\n\t  x16: 0x%016llx x17: 0x%016llx  x18: 0x%016llx  x19: 0x%016llx\n\t  x20: 0x%016llx x21: 0x%016llx  x22: 0x%016llx  x23: 0x%016llx\n\t  x24: 0x%016llx x25: 0x%016llx  x26: 0x%016llx  x27: 0x%016llx\n\t  x28: 0x%016llx fp:  0x%016llx  lr:  0x%016llx  sp:  0x%016llx\n\t  pc:  0x%016llx cpsr: 0x%08x         esr: 0x%08x          far: 0x%016llx\n",
+        "arguments": [
+          "0xfffffff00aef5526",
+          "0xfffffff00b612bb4",
+          "0xfffffff00b612b64",
+          "0xfffffff088397a40",
+          "0xfffffff00aec3453",
+          "0xfffffff00ba26820",
+          "0xfffffff3a3dd87d0",
+          "0x200",
+          "0x1",
+          "0xfffffff3a3dd87d0",
+          "0xfffffff088397f30",
+          "0x0",
+          "0xfffffff2bd504980",
+          "0xfffffff00b956b70",
+          "0xfffffffbffffffff",
+          "0x0",
+          "0xfffffff00afe1118",
+          "0x2f30",
+          "0x1",
+          "0xffffffec0b956b6f",
+          "0x2",
+          "0xfffffff00b934000",
+          "0xfffffff00b934000",
+          "0x0",
+          "0x1",
+          "0xfffffff00ba26820",
+          "0x1",
+          "0x0",
+          "0xfffffff3a3dd88a8",
+          "0xfffffff00b954180",
+          "0xfffffff3a3ee1f58",
+          "0x0",
+          "0xfffffff088397bcc",
+          "0x1",
+          "0xfffffff088397ed0",
+          "0xfffffff00b612b64",
+          "0xfffffff088397d90",
+          "0xfffffff00b612bb4",
+          "0x400204",
+          "0x96000005",
+          "0xffffffec0b956b6f",
+          "0xfffffff088397a40",
+          "0xfffffff3a3dd87d0",
+          "0xfffffff00afcf230",
+          "0xfffffff0a3e522e0",
+          "0xfffffff088397a40",
+          "0xfffffff088397a20",
+          "0xfffffff00b2b0940"
+        ],
+        "saved_pc": "0xfffffff00b612bb4",
+        "saved_lr": "0xfffffff00b612b64",
+        "mbuf_entry": "0xfffffff00b612b3c"
+      },
+      "old_percpu_fault_reproduced": true
+    },
+    "execution": {
+      "case": "enabled",
+      "checkpoints": [
+        "_arm_init",
+        "_bsd_init",
+        "_dodge_qemu_storage_checkpoint",
+        "_IOFindBSDRoot"
+      ],
+      "reads": [
+        {
+          "device": "0xfffffff1d7438090",
+          "physical": "0xa003c00",
+          "sectors": 5357568,
+          "first_sector_sha256": "9d8a717d6b9b3d863a255b3755b121847a9bc9c2a7294c43b9f68524f55eb8b6",
+          "requests": 1,
+          "failures": 0
+        },
+        {
+          "device": "0xfffffff1d7435ca0",
+          "physical": "0xa003e00",
+          "sectors": 11006019,
+          "first_sector_sha256": "d9ce8c44219524305dd4b829498713a4bfea0d4bc1222547d465f5cca752b1ef",
+          "requests": 2,
+          "failures": 0
+        }
+      ],
+      "storage": {
+        "phase": 2,
+        "attempted": 31,
+        "started": 2,
+        "result": 0
+      },
+      "resources": [
+        {
+          "address": "0xa000000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003e00",
+          "bytes": 512
+        }
+      ],
+      "registers": {
+        "x0": "0xfffffff00b9c7d98",
+        "x1": "0x20",
+        "x2": "0xfffffff00b9c7d80",
+        "x3": "0xfffffff088087de8",
+        "x4": "0xfffffff00b9fc738",
+        "x5": "0x0",
+        "x6": "0x0",
+        "x7": "0x9",
+        "x8": "0x1b0c7",
+        "x9": "0x0",
+        "x10": "0x1c5cd8c06cd6654e",
+        "x11": "0x0",
+        "x12": "0x44b82fa09b5a53",
+        "x13": "0x2b1ff",
+        "x14": "0x7ffffffffffffff",
+        "x15": "0x44b82fa09",
+        "x16": "0x0",
+        "x17": "0x3b9aca00",
+        "x18": "0x323c000",
+        "x19": "0xfffffff00b9c7d98",
+        "x20": "0xfffffff00b9c7d80",
+        "x21": "0xfffffff00af36889",
+        "x22": "0xfffffff00af36a7e",
+        "x23": "0xfffffff00af36acb",
+        "x24": "0xfffffff00b9c7000",
+        "x25": "0xfffffff00b2e8954",
+        "x26": "0x6000000",
+        "x27": "0x0",
+        "x28": "0xfffffff00b9afad0",
+        "x29": "0xfffffff088087ed0",
+        "x30": "0xfffffff00b571358",
+        "sp": "0xfffffff088087dc0",
+        "pc": "0xfffffff00b8083b8"
+      },
+      "policies": [
+        {
+          "name": "AppleImage4",
+          "registered": true,
+          "record": "0xfffffff005caf458",
+          "original_operations": "0xfffffff005caf4a8"
+        },
+        {
+          "name": "AMFI",
+          "registered": true,
+          "record": "0xfffffff005cb78a0",
+          "original_operations": "0xfffffff005cb6e28"
+        },
+        {
+          "name": "Sandbox",
+          "registered": true,
+          "record": "0xfffffff005ef8d38",
+          "original_operations": "0xfffffff005ef8d98"
+        }
+      ],
+      "translation_registers": {
+        "SCTLR_EL1": "0x3454593d",
+        "TTBR0_EL1": "0x48974000",
+        "TTBR1_EL1": "0x48975000",
+        "TCR_EL1": "0x22a51a251a"
+      },
+      "platform_device_count": 33,
+      "vm_stop_signal": "SIGKILL",
+      "vm_returncode": -9
+    }
+  },
+  "positive": {
+    "case": "positive",
+    "RSA_calls": [
+      {
+        "callback": "original_make_public",
+        "pc": "0xfffffff0046b2668"
+      },
+      {
+        "callback": "original_verify",
+        "pc": "0xfffffff0046cf8c0"
+      },
+      {
+        "callback": "original_make_public",
+        "pc": "0xfffffff0046b2668"
+      },
+      {
+        "callback": "original_verify",
+        "pc": "0xfffffff0046cf8c0"
+      }
+    ],
+    "init_loader_entered": true,
+    "EL0_entered": true,
+    "user_instruction_executed": true,
+    "kernel_return": "0xfffffff00b2af994",
+    "kernel_return_sha256": "d6203fa49093cd12340342dff777a108d61dc48023cef1d5273ac74b7b650340",
+    "last_state": {
+      "native_owner_root_accepted": 1,
+      "native_owner_root_trust_enabled": 1,
+      "native_owner_root_apple_autherr": 80,
+      "native_owner_root_decision": 1,
+      "native_owner_root_readonly": 1,
+      "native_owner_root_mount_device": 16777225,
+      "native_owner_root_selected_device": 16777225,
+      "native_virtio_verified_devices": 2,
+      "native_virtio_integrity_failures": 0,
+      "native_verified_block_root_uuid_match": 1,
+      "native_verified_block_wrong_uuid_refused": 1,
+      "native_verified_block_root_media_matches": 1,
+      "dodge_qemu_storage_phase": 2,
+      "dodge_qemu_storage_started": 2,
+      "native_virtio_read_requests": 315,
+      "native_virtio_read_failures": 0,
+      "verified_blocks": 531,
+      "RSA_table": [
+        "0xfffffff0046b2668",
+        "0xfffffff0046cf8c0"
+      ]
+    },
+    "type_four_registration": "0xfffffff005f48ef8",
+    "decompressor": {
+      "version": 3,
+      "callbacks": {
+        "validate": "0xfffffff0056962a8",
+        "adjust_fetch": "0xfffffff0056965d8",
+        "fetch": "0xfffffff005696600",
+        "free_data": "0xfffffff005696a7c",
+        "get_flags": "0xfffffff005696a88"
+      },
+      "original_callback_instructions_match": true
+    },
+    "return_registers": {
+      "SPSR_EL1": "0x0",
+      "ELR_EL1": "0x100fc51b0"
+    },
+    "process": {
+      "pid": 1,
+      "comm": "launchd",
+      "name": "launchd",
+      "uuid": "5c15db07b3bc3df3b62f3e498b993b8e"
+    },
+    "user_entry": {
+      "pc": "0x100fc51b0",
+      "pstate": "0x0",
+      "dyld_slide": "0x100fb0000",
+      "code": "e00300911fec7c921d0080d21e0080d290faff171f00009140001fd6281440f9081400f9c0035fd600a00091a0ccff17ffc300d1fd7b02a9fd830091e20301aa",
+      "original_entry_code_matches": true
+    },
+    "after_instruction": {
+      "pc": "0x100fc51b4",
+      "pstate": "0x0",
+      "x0": "0x16f114db8",
+      "original_sp": "0x16f114db8"
+    },
+    "SystemOS_events": [
+      {
+        "checkpoint": "kernel-state",
+        "pc": "0xfffffff00b70ed28",
+        "pstate": "0x60400204"
+      },
+      {
+        "checkpoint": "cache-entry",
+        "pc": "0x100fc1350",
+        "pstate": "0x60000000"
+      },
+      {
+        "checkpoint": "cache-return",
+        "pc": "0x100fc161c",
+        "pstate": "0x60000000",
+        "x0": "0x1",
+        "load_address": "0x1ae554000",
+        "slide": "0x2e554000",
+        "header_sha256": "e31549b8573a08260a44ceb4a241aab1ff3931d7c8fbeb5f000aef2c0152cbce",
+        "original_header_matches": true
+      },
+      {
+        "checkpoint": "launchd-main",
+        "pc": "0x100d019b4",
+        "pstate": "0x80000800",
+        "fetch_pending": true
+      },
+      {
+        "checkpoint": "launchd-main",
+        "pc": "0x100d019b4",
+        "pstate": "0x80000800",
+        "original_entry_code_matches": true
+      }
+    ],
+    "launchd_main_entered": true,
+    "SystemOS_state": {
+      "stage": 6,
+      "status": 0,
+      "mount_status": 0,
+      "readonly": 1,
+      "authorized": 1,
+      "root_recheck": 1,
+      "native_union": 1,
+      "selected_device": 16777223,
+      "mounted_device": 16777223,
+      "actual_mount_flags": 343969825,
+      "original_root": 18446744039763789952,
+      "current_root": 18446744039763804176,
+      "actual_root_vnode": 18446744039763804176,
+      "dyld_flags": 0,
+      "verified_blocks": 579,
+      "integrity_failures": 0
+    },
+    "AES_state": {
+      "dodge_qemu_aes_phase": 2,
+      "dodge_qemu_aes_result": 0,
+      "native_aes_kat_status": 1,
+      "native_aes_interface_status": 1,
+      "native_aes_registered": 1,
+      "native_aes_completed": 14,
+      "native_aes_unsupported_key": 1,
+      "native_aes_nonce_key_uses": 11,
+      "native_aes_bytes": 368
+    },
+    "shared_cache_mapped": true,
+    "console": [
+      "com.apple.xpc.launchd|1970-01-01 00:01:49.528775 (fsck) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:01:52.455558 (mount-phase-1) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:01:54.172862 (data-protection) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:01:56.970784 (finish-obliteration) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:01:59.381517 (detect-installed-roots) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:01:59.678911 (commit-boot-mode) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:01:59.825019 (restore-datapartition) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:00.032678 (mount-phase-2) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:01.671029 (init-with-data-volume) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:02.178993 (MSUEarlyBootTask) <Notice>: Doing boot task\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:05.302459 (fips) <Notice>: Doing boot task\n",
+      "FIPSPOST_USER [7912886867] fipspost_post:152: [FIPSPOST][Module-ID] Apple corecrypto Module v13.0 [Apple ARM, User, Software, SL1]\n",
+      "FIPSPOST_USER [7915350040] fipspost_post:160: PASSED: (16 ms) - fipspost_post_hmac\n",
+      "FIPSPOST_USER [7916588667] fipspost_post:164: PASSED: (13 ms) - fipspost_post_integrity\n",
+      "FIPSPOST_USER [7917658433] fipspost_post:168: PASSED: (11 ms) - fipspost_post_indicator\n",
+      "FIPSPOST_USER [7918110421] fipspost_post:169: PASSED: (0 ms) - fipspost_post_aes_ecb\n",
+      "FIPSPOST_USER [7918995113] fipspost_post:170: PASSED: (4 ms) - fipspost_post_aes_cbc\n",
+      "FIPSPOST_USER [7920974329] fipspost_post:171: PASSED: (25 ms) - fipspost_post_rsa_sig\n",
+      "FIPSPOST_USER [7924020298] fipspost_post:172: PASSED: (44 ms) - fipspost_post_ecdsa\n",
+      "FIPSPOST_USER [7924875138] fipspost_post:173: PASSED: (4 ms) - fipspost_post_ecdh\n",
+      "FIPSPOST_USER [7926026051] fipspost_post:174: PASSED: (12 ms) - fipspost_post_aes_ccm\n",
+      "FIPSPOST_USER [7926375295] fipspost_post:175: PASSED: (0 ms) - fipspost_post_aes_cmac\n",
+      "FIPSPOST_USER [7927171581] fipspost_post:176: PASSED: (6 ms) - fipspost_post_hkdf\n",
+      "FIPSPOST_USER [7930496970] fipspost_post:177: PASSED: (48 ms) - fipspost_post_pbkdf\n",
+      "FIPSPOST_USER [7930999630] fipspost_post:178: PASSED: (3 ms) - fipspost_post_drbg_hmac\n",
+      "FIPSPOST_USER [7931454384] fipspost_post:180: PASSED: (1 ms) - fipspost_post_kdf_ctr\n",
+      "FIPSPOST_USER [7932107458] fipspost_post:181: PASSED: (0 ms) - fipspost_post_aes_gcm\n",
+      "FIPSPOST_USER [7932501928] fipspost_post:182: PASSED: (0 ms) - fipspost_post_aes_xts\n",
+      "FIPSPOST_USER [7933116869] fipspost_post:183: PASSED: (0 ms) - fipspost_post_tdes_ecb\n",
+      "FIPSPOST_USER [7933609927] fipspost_post:184: PASSED: (3 ms) - fipspost_post_drbg_ctr\n",
+      "FIPSPOST_USER [7937030568] fipspost_post:186: PASSED: (48 ms) - fipspost_post_ffdh\n",
+      "FIPSPOST_USER [7939341077] fipspost_post:187: PASSED: (30 ms) - fipspost_post_rsa_enc_dec\n",
+      "FIPSPOST_USER [7939712087] fipspost_post:206: all tests PASSED (429 ms)\n",
+      "Returned from calling the FIPS_POST function in the corecrypto.dylib: result = true\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:07.078610 (keybag) <Notice>: Doing boot task\n",
+      "****** IN MKB_INIT ****\n",
+      "MKB_INIT: mount is with NO CPROTECT:0x14809000 on  (/private/var/)\n",
+      "MKB_INIT: mount point (/private/var/) does not support Data Protection\n",
+      "MKB_INIT: System Keybag loaded\n",
+      "MKB_INIT: Could not save value:e00002c7\n",
+      "****** DONE MKB_INIT ****\n",
+      "com.apple.xpc.launchd|1970-01-01 00:02:10.606531 (usermanagerd) <Notice>: Doing boot task\n",
+      "UMD_INIT: Allocated kernel persona with ID: 99, Type: 4, UID: 4294967295\n",
+      "UMD_INIT: Allocated kernel persona with ID: 199, Type: 6, UID: 4294967295\n",
+      "UMD_INIT: Allocated kernel persona with ID: 1000, Type: 5, UID: 501\n",
+      "UMD_INIT: Allocated kernel persona with ID: 100, Type: 4, UID: 501\n",
+      "UMD_INIT: Allocated kernel persona with ID: 200, Type: 6, UID: 501\n",
+      "****** DONE UMD_INIT ****\n"
+    ],
+    "KeyStore_calls": [
+      {
+        "phase": 2,
+        "result": 0,
+        "opened": 1,
+        "refused": 0,
+        "calls": 1,
+        "selector": 0,
+        "call_result": 0
+      },
+      {
+        "phase": 2,
+        "result": 0,
+        "opened": 1,
+        "refused": 0,
+        "calls": 2,
+        "selector": 14,
+        "call_result": 0
+      },
+      {
+        "phase": 2,
+        "result": 0,
+        "opened": 1,
+        "refused": 0,
+        "calls": 3,
+        "selector": 14,
+        "call_result": 0
+      }
+    ],
+    "Data_state": {
+      "phase": 2,
+      "result": 0,
+      "entered": 1,
+      "mounted": 1,
+      "verified": 1,
+      "device": 16777218,
+      "flags": 343969792,
+      "RamBlock": {
+        "ready": 1,
+        "bytes": 2147483648,
+        "reads": 67,
+        "writes": 55,
+        "failures": 0,
+        "resident_bytes": 724992,
+        "sparse": 1
+      },
+      "persistent_state": 3
+    },
+    "SystemOS_final": {
+      "stage": 6,
+      "status": 0,
+      "mount_status": 0,
+      "readonly": 1,
+      "authorized": 1,
+      "root_recheck": 1,
+      "native_union": 1,
+      "selected_device": 16777223,
+      "mounted_device": 16777223,
+      "actual_mount_flags": 343969825,
+      "original_root": 18446744039763789952,
+      "current_root": 18446744039763804176,
+      "actual_root_vnode": 18446744039763804176,
+      "dyld_flags": 1,
+      "verified_blocks": 620400,
+      "integrity_failures": 0
+    },
+    "Data_at_main": {
+      "phase": 2,
+      "result": 0,
+      "entered": 1,
+      "mounted": 1,
+      "verified": 1,
+      "device": 16777218,
+      "flags": 343969792,
+      "RamBlock": {
+        "ready": 1,
+        "bytes": 2147483648,
+        "reads": 62,
+        "writes": 0,
+        "failures": 0,
+        "resident_bytes": 724992,
+        "sparse": 1
+      },
+      "persistent_state": 3
+    },
+    "userspace_crypto_POST": [
+      "fipspost_post_hmac",
+      "fipspost_post_integrity",
+      "fipspost_post_indicator",
+      "fipspost_post_aes_ecb",
+      "fipspost_post_aes_cbc",
+      "fipspost_post_rsa_sig",
+      "fipspost_post_ecdsa",
+      "fipspost_post_ecdh",
+      "fipspost_post_aes_ccm",
+      "fipspost_post_aes_cmac",
+      "fipspost_post_hkdf",
+      "fipspost_post_pbkdf",
+      "fipspost_post_drbg_hmac",
+      "fipspost_post_kdf_ctr",
+      "fipspost_post_aes_gcm",
+      "fipspost_post_aes_xts",
+      "fipspost_post_tdes_ecb",
+      "fipspost_post_drbg_ctr",
+      "fipspost_post_ffdh",
+      "fipspost_post_rsa_enc_dec"
+    ],
+    "KeyStore_final": {
+      "phase": 2,
+      "result": 0,
+      "opened": 1,
+      "refused": 0,
+      "calls": 3,
+      "selector": 14,
+      "call_result": 0
+    },
+    "keybag_boot_task_complete": true,
+    "usermanager_early_boot_complete": true,
+    "services": {
+      "processes": {
+        "12:usermanagerd": {
+          "pid": 12,
+          "comm": "usermanagerd",
+          "uuid": "d8a861e8e0493aefaa558ce7a85bd8d2",
+          "first_syscall": 1,
+          "first_user_pc": "0x1f0b6a508",
+          "syscalls": 1
+        },
+        "1:launchd": {
+          "pid": 1,
+          "comm": "launchd",
+          "uuid": "5c15db07b3bc3df3b62f3e498b993b8e",
+          "first_syscall": 340,
+          "first_user_pc": "0x1f0b67030",
+          "syscalls": 4367
+        },
+        "13:dirs_cleaner": {
+          "pid": 13,
+          "comm": "dirs_cleaner",
+          "uuid": "31206c37572a3b6d868c6903f3c40750",
+          "first_syscall": 74,
+          "first_user_pc": "0x10126879c",
+          "syscalls": 138
+        },
+        "14:xpcroleaccountd": {
+          "pid": 14,
+          "comm": "xpcroleaccountd",
+          "uuid": "c82bb57daef23d2ba741465e15b1cf62",
+          "first_syscall": 74,
+          "first_user_pc": "0x10078179c",
+          "syscalls": 155
+        },
+        "15:init_featureflag": {
+          "pid": 15,
+          "comm": "init_featureflag",
+          "uuid": "7ee5ced26bae3672a9f84338b376242a",
+          "first_syscall": 74,
+          "first_user_pc": "0x10039d79c",
+          "syscalls": 1637
+        },
+        "16:auearlyboot": {
+          "pid": 16,
+          "comm": "auearlyboot",
+          "uuid": "ef8667b627e8398dafbdf4377dd0c84e",
+          "first_syscall": 74,
+          "first_user_pc": "0x100e9179c",
+          "syscalls": 127
+        },
+        "17:tzinit": {
+          "pid": 17,
+          "comm": "tzinit",
+          "uuid": "0ba1bcf4b37e3a86b9ad98e40f9bf8ce",
+          "first_syscall": 74,
+          "first_user_pc": "0x1007c679c",
+          "syscalls": 156
+        },
+        "18:FinishRestoreFro": {
+          "pid": 18,
+          "comm": "FinishRestoreFro",
+          "uuid": "60d2e0b80e583fa9bbe2163f22b4daaf",
+          "first_syscall": 74,
+          "first_user_pc": "0x100cd179c",
+          "syscalls": 93
+        },
+        "19:finish_demo_rest": {
+          "pid": 19,
+          "comm": "finish_demo_rest",
+          "uuid": "22ffe115f158318e9eae4fd8fb015283",
+          "first_syscall": 74,
+          "first_user_pc": "0x1008bc79c",
+          "syscalls": 93
+        },
+        "20:sysstatuscheck": {
+          "pid": 20,
+          "comm": "sysstatuscheck",
+          "uuid": "b13827076bfb314499db63206bda5950",
+          "first_syscall": 74,
+          "first_user_pc": "0x10082d79c",
+          "syscalls": 92
+        },
+        "21:prng_seedctl": {
+          "pid": 21,
+          "comm": "prng_seedctl",
+          "uuid": "0c56e91e7cc33c6f9c652bff901ddeb4",
+          "first_syscall": 74,
+          "first_user_pc": "0x100dc079c",
+          "syscalls": 105
+        },
+        "22:launchd_cache_lo": {
+          "pid": 22,
+          "comm": "launchd_cache_lo",
+          "uuid": "bbb89a33b0973b4fadfd66fdf7ea85ec",
+          "first_syscall": 74,
+          "first_user_pc": "0x100af279c",
+          "syscalls": 178
+        },
+        "23:xpcproxy": {
+          "pid": 23,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10090279c",
+          "syscalls": 88
+        },
+        "24:xpcproxy": {
+          "pid": 24,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10040a79c",
+          "syscalls": 108
+        },
+        "26:SpringBoard": {
+          "pid": 26,
+          "comm": "SpringBoard",
+          "uuid": "e1a4fe7d29ff3269b3ab50aed40c4495",
+          "first_syscall": 74,
+          "first_user_pc": "0x100d3e79c",
+          "syscalls": 255
+        },
+        "28:xpcproxy": {
+          "pid": 28,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1006b879c",
+          "syscalls": 108
+        },
+        "35:xpcproxy": {
+          "pid": 35,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10149f79c",
+          "syscalls": 90
+        },
+        "42:xpcproxy": {
+          "pid": 42,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1004a779c",
+          "syscalls": 91
+        },
+        "45:xpcproxy": {
+          "pid": 45,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100a4d79c",
+          "syscalls": 88
+        },
+        "43:xpcproxy": {
+          "pid": 43,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10033f79c",
+          "syscalls": 90
+        },
+        "46:xpcproxy": {
+          "pid": 46,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1015d979c",
+          "syscalls": 91
+        },
+        "51:xpcproxy": {
+          "pid": 51,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1010f979c",
+          "syscalls": 108
+        },
+        "50:xpcproxy": {
+          "pid": 50,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100e9479c",
+          "syscalls": 89
+        },
+        "54:xpcproxy": {
+          "pid": 54,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10059479c",
+          "syscalls": 88
+        },
+        "56:xpcproxy": {
+          "pid": 56,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100dae79c",
+          "syscalls": 108
+        },
+        "60:xpcproxy": {
+          "pid": 60,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100da679c",
+          "syscalls": 108
+        },
+        "62:xpcproxy": {
+          "pid": 62,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1014c679c",
+          "syscalls": 90
+        },
+        "63:xpcproxy": {
+          "pid": 63,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10061d79c",
+          "syscalls": 110
+        },
+        "52:xpcproxy": {
+          "pid": 52,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10132679c",
+          "syscalls": 109
+        },
+        "48:xpcproxy": {
+          "pid": 48,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10079779c",
+          "syscalls": 107
+        },
+        "59:xpcproxy": {
+          "pid": 59,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10159179c",
+          "syscalls": 114
+        },
+        "82:xpcproxy": {
+          "pid": 82,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100ad879c",
+          "syscalls": 108
+        },
+        "64:xpcproxy": {
+          "pid": 64,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10095e79c",
+          "syscalls": 89
+        },
+        "67:xpcproxy": {
+          "pid": 67,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1009e879c",
+          "syscalls": 89
+        },
+        "85:xpcproxy": {
+          "pid": 85,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1013e579c",
+          "syscalls": 110
+        },
+        "83:xpcproxy": {
+          "pid": 83,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10056179c",
+          "syscalls": 92
+        },
+        "89:xpcproxy": {
+          "pid": 89,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100e4d79c",
+          "syscalls": 90
+        },
+        "91:xpcproxy": {
+          "pid": 91,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10064079c",
+          "syscalls": 89
+        },
+        "73:xpcproxy": {
+          "pid": 73,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100c0b79c",
+          "syscalls": 89
+        },
+        "87:xpcproxy": {
+          "pid": 87,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100ecd79c",
+          "syscalls": 113
+        },
+        "77:xpcproxy": {
+          "pid": 77,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100bbc79c",
+          "syscalls": 112
+        },
+        "84:xpcproxy": {
+          "pid": 84,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1008bc79c",
+          "syscalls": 90
+        },
+        "90:xpcproxy": {
+          "pid": 90,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10122779c",
+          "syscalls": 90
+        },
+        "91:notifyd": {
+          "pid": 91,
+          "comm": "notifyd",
+          "uuid": "37a8affddb2632f58ce2df71206fae3e",
+          "first_syscall": 74,
+          "first_user_pc": "0x1009e979c",
+          "syscalls": 1064
+        },
+        "44:xpcproxy": {
+          "pid": 44,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10113379c",
+          "syscalls": 9
+        },
+        "74:xpcproxy": {
+          "pid": 74,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1008b079c",
+          "syscalls": 113
+        },
+        "71:xpcproxy": {
+          "pid": 71,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10117279c",
+          "syscalls": 109
+        },
+        "88:xpcproxy": {
+          "pid": 88,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1004ec79c",
+          "syscalls": 108
+        },
+        "55:xpcproxy": {
+          "pid": 55,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1008b479c",
+          "syscalls": 11
+        },
+        "70:xpcproxy": {
+          "pid": 70,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1015d279c",
+          "syscalls": 109
+        },
+        "49:xpcproxy": {
+          "pid": 49,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10110379c",
+          "syscalls": 9
+        },
+        "40:xpcproxy": {
+          "pid": 40,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10101179c",
+          "syscalls": 11
+        },
+        "86:xpcproxy": {
+          "pid": 86,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10158179c",
+          "syscalls": 11
+        },
+        "67:driverkitd": {
+          "pid": 67,
+          "comm": "driverkitd",
+          "uuid": "1c776548338d30298b8ef86ce55175b2",
+          "first_syscall": 74,
+          "first_user_pc": "0x10086f79c",
+          "syscalls": 1621
+        },
+        "68:xpcproxy": {
+          "pid": 68,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10049279c",
+          "syscalls": 11
+        },
+        "38:xpcproxy": {
+          "pid": 38,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100c5379c",
+          "syscalls": 89
+        },
+        "45:amfid": {
+          "pid": 45,
+          "comm": "amfid",
+          "uuid": "0b4bc471bda4302089f68f19f16ab5db",
+          "first_syscall": 74,
+          "first_user_pc": "0x10118779c",
+          "syscalls": 143
+        },
+        "42:remoted": {
+          "pid": 42,
+          "comm": "remoted",
+          "uuid": "fbf91084d7b13b93973d580faac0b829",
+          "first_syscall": 74,
+          "first_user_pc": "0x10114779c",
+          "syscalls": 155
+        },
+        "54:thermalmonitord": {
+          "pid": 54,
+          "comm": "thermalmonitord",
+          "uuid": "1b5b4aa32ef13306a4d94088a36f52b3",
+          "first_syscall": 74,
+          "first_user_pc": "0x10093579c",
+          "syscalls": 270
+        },
+        "72:xpcproxy": {
+          "pid": 72,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10088f79c",
+          "syscalls": 6
+        },
+        "35:configd": {
+          "pid": 35,
+          "comm": "configd",
+          "uuid": "93cbff7fbf73347f9509d10187706d97",
+          "first_syscall": 74,
+          "first_user_pc": "0x1011b979c",
+          "syscalls": 235
+        },
+        "43:keybagd": {
+          "pid": 43,
+          "comm": "keybagd",
+          "uuid": "3ed2c4398063326eb0c61dff17edf9a7",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f1379c",
+          "syscalls": 252
+        },
+        "24:logd": {
+          "pid": 24,
+          "comm": "logd",
+          "uuid": "0ce7008fe0bc3c0b8088c82b0b89a801",
+          "first_syscall": 74,
+          "first_user_pc": "0x10033979c",
+          "syscalls": 2203
+        },
+        "25:xpcproxy": {
+          "pid": 25,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f0379c",
+          "syscalls": 4
+        },
+        "32:xpcproxy": {
+          "pid": 32,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10060279c",
+          "syscalls": 2
+        },
+        "83:mtmergeprops": {
+          "pid": 83,
+          "comm": "mtmergeprops",
+          "uuid": "2ea9357dc487382f8b36decdb4269faa",
+          "first_syscall": 74,
+          "first_user_pc": "0x10129e79c",
+          "syscalls": 143
+        },
+        "34:xpcproxy": {
+          "pid": 34,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10044279c",
+          "syscalls": 4
+        },
+        "82:rapportd": {
+          "pid": 82,
+          "comm": "rapportd",
+          "uuid": "76cad985a45a30d99f0690d382f3e7b8",
+          "first_syscall": 74,
+          "first_user_pc": "0x1011ad79c",
+          "syscalls": 180
+        },
+        "48:mobiletimerd": {
+          "pid": 48,
+          "comm": "mobiletimerd",
+          "uuid": "1771e1e509a730d08bf7ae0bf8a218fe",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f7b79c",
+          "syscalls": 210
+        },
+        "64:containermanager": {
+          "pid": 64,
+          "comm": "containermanager",
+          "uuid": "d775f729247432d8bf349d9014b5fbaf",
+          "first_syscall": 74,
+          "first_user_pc": "0x100b8479c",
+          "syscalls": 216
+        },
+        "70:sleepd": {
+          "pid": 70,
+          "comm": "sleepd",
+          "uuid": "5a122acbb8b33851864e5314947ad97a",
+          "first_syscall": 74,
+          "first_user_pc": "0x1006f879c",
+          "syscalls": 199
+        },
+        "28:mediaserverd": {
+          "pid": 28,
+          "comm": "mediaserverd",
+          "uuid": "a5d87fd696d936e79dab7e350c3d9a45",
+          "first_syscall": 74,
+          "first_user_pc": "0x1003a179c",
+          "syscalls": 189
+        },
+        "89:fseventsd": {
+          "pid": 89,
+          "comm": "fseventsd",
+          "uuid": "25413263ee0e364aa5f4b2caac8f1b2e",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f8079c",
+          "syscalls": 184
+        },
+        "87:fairplayd.H2": {
+          "pid": 87,
+          "comm": "fairplayd.H2",
+          "uuid": "306888adfbc439c4961c721c7ff230d1",
+          "first_syscall": 74,
+          "first_user_pc": "0x1024ac79c",
+          "syscalls": 142
+        },
+        "39:xpcproxy": {
+          "pid": 39,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100bda79c",
+          "syscalls": 5
+        },
+        "71:ptpd": {
+          "pid": 71,
+          "comm": "ptpd",
+          "uuid": "02fa11abe1713232b960c8d48e12bad5",
+          "first_syscall": 74,
+          "first_user_pc": "0x1012d679c",
+          "syscalls": 179
+        },
+        "90:IOMFB_FDR_Loader": {
+          "pid": 90,
+          "comm": "IOMFB_FDR_Loader",
+          "uuid": "b59b9016d0d0378f939c9d108914668d",
+          "first_syscall": 74,
+          "first_user_pc": "0x1005f379c",
+          "syscalls": 143
+        },
+        "69:xpcproxy": {
+          "pid": 69,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f5279c",
+          "syscalls": 4
+        },
+        "84:usermanagerd": {
+          "pid": 84,
+          "comm": "usermanagerd",
+          "uuid": "d8a861e8e0493aefaa558ce7a85bd8d2",
+          "first_syscall": 74,
+          "first_user_pc": "0x10119179c",
+          "syscalls": 161
+        },
+        "59:timed": {
+          "pid": 59,
+          "comm": "timed",
+          "uuid": "a58a39b345803eab8bfbfd2007197498",
+          "first_syscall": 74,
+          "first_user_pc": "0x10035379c",
+          "syscalls": 172
+        },
+        "74:distnoted": {
+          "pid": 74,
+          "comm": "distnoted",
+          "uuid": "d44b7a1e322d3e2a90998e39abeb90a6",
+          "first_syscall": 74,
+          "first_user_pc": "0x10083779c",
+          "syscalls": 141
+        },
+        "29:xpcproxy": {
+          "pid": 29,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1009ba79c",
+          "syscalls": 8
+        },
+        "58:xpcproxy": {
+          "pid": 58,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1008c079c",
+          "syscalls": 3
+        },
+        "75:xpcproxy": {
+          "pid": 75,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f3579c",
+          "syscalls": 5
+        },
+        "41:xpcproxy": {
+          "pid": 41,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10086879c",
+          "syscalls": 3
+        },
+        "36:xpcproxy": {
+          "pid": 36,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100fb979c",
+          "syscalls": 3
+        },
+        "47:xpcproxy": {
+          "pid": 47,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1005c379c",
+          "syscalls": 3
+        },
+        "79:xpcproxy": {
+          "pid": 79,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10126379c",
+          "syscalls": 3
+        },
+        "78:xpcproxy": {
+          "pid": 78,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1005bf79c",
+          "syscalls": 3
+        },
+        "30:xpcproxy": {
+          "pid": 30,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10116579c",
+          "syscalls": 3
+        },
+        "66:xpcproxy": {
+          "pid": 66,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f3979c",
+          "syscalls": 3
+        },
+        "92:xpcproxy": {
+          "pid": 92,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100a1779c",
+          "syscalls": 88
+        },
+        "65:xpcproxy": {
+          "pid": 65,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100a7879c",
+          "syscalls": 4
+        },
+        "61:xpcproxy": {
+          "pid": 61,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10044779c",
+          "syscalls": 2
+        },
+        "92:logd_helper": {
+          "pid": 92,
+          "comm": "logd_helper",
+          "uuid": "ead56ac90ec33d2a82266cab7d9bb292",
+          "first_syscall": 74,
+          "first_user_pc": "0x100f5679c",
+          "syscalls": 6202
+        },
+        "37:xpcproxy": {
+          "pid": 37,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100e2079c",
+          "syscalls": 3
+        },
+        "27:xpcproxy": {
+          "pid": 27,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10137f79c",
+          "syscalls": 4
+        },
+        "57:xpcproxy": {
+          "pid": 57,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10054279c",
+          "syscalls": 3
+        },
+        "53:xpcproxy": {
+          "pid": 53,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10056d79c",
+          "syscalls": 6
+        },
+        "76:xpcproxy": {
+          "pid": 76,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x1013d679c",
+          "syscalls": 1
+        },
+        "31:xpcproxy": {
+          "pid": 31,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x10050279c",
+          "syscalls": 2
+        },
+        "33:xpcproxy": {
+          "pid": 33,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100c5d79c",
+          "syscalls": 2
+        },
+        "80:xpcproxy": {
+          "pid": 80,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100e8179c",
+          "syscalls": 2
+        },
+        "81:xpcproxy": {
+          "pid": 81,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100d5c79c",
+          "syscalls": 1
+        },
+        "94:xpcproxy": {
+          "pid": 94,
+          "comm": "xpcproxy",
+          "uuid": "24bf646521ba30a3a438a7534c81ee16",
+          "first_syscall": 74,
+          "first_user_pc": "0x100c8479c",
+          "syscalls": 91
+        }
+      },
+      "console": [
+        "com.apple.xpc.launchd|1970-01-01 00:02:30.516800 (dirs_cleaner) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1970-01-01 00:02:32.407658 (xpcroleaccountd) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1970-01-01 00:02:35.400806 (init_featureflags) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1970-01-01 00:03:01.279613 (auearlyboot) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1970-01-01 00:03:03.356247 (tzinit) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:05.171318 (finish-restore) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:06.563494 (finish-demo-restore) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:07.834759 (sysstatuscheck) <Notice>: Doing boot task\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:08.949391 (prng_seedctl) <Notice>: Doing boot task\n",
+        "failed to load kernel prng seed: (-76) (2) No such file or directory\n",
+        "failed to load virtual random: (-147) (-536870212)\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:10.404013 (launchd_cache_loader) <Notice>: Doing boot task\n",
+        "Sending validated cache to launchd\n",
+        "Cache sent to launchd successfully\n",
+        "com.apple.xpc.launchd|1969-12-31 16:03:17.142897 (boot) <Notice>: Early boot complete. Continuing system boot.\n",
+        "warning: ",
+        "Failed to connect to IOMFB: 0xe00002c0"
+      ],
+      "mbuf_entered": 4,
+      "mbuf_returned": 4,
+      "checkpoints": 30001,
+      "Data": {
+        "phase": 2,
+        "result": 0,
+        "entered": 1,
+        "mounted": 1,
+        "verified": 1,
+        "device": 16777218,
+        "flags": 343969792,
+        "RamBlock": {
+          "ready": 1,
+          "bytes": 2147483648,
+          "reads": 68,
+          "writes": 135,
+          "failures": 0,
+          "resident_bytes": 724992,
+          "sparse": 1
+        },
+        "persistent_state": 3
+      },
+      "percpu_range": {
+        "start": "0xfffffffbffffffff",
+        "end": "0x0"
+      },
+      "SystemOS": {
+        "stage": 6,
+        "status": 0,
+        "mount_status": 0,
+        "readonly": 1,
+        "authorized": 1,
+        "root_recheck": 1,
+        "native_union": 1,
+        "selected_device": 16777223,
+        "mounted_device": 16777223,
+        "actual_mount_flags": 343969825,
+        "original_root": 18446744039763789952,
+        "current_root": 18446744039763804176,
+        "actual_root_vnode": 18446744039763804176,
+        "dyld_flags": 1,
+        "verified_blocks": 740767,
+        "integrity_failures": 0
+      },
+      "store": {
+        "backend": {
+          "phase": 2,
+          "result": 0,
+          "error": 0,
+          "reads": 2,
+          "writes": 2571,
+          "flushes": 2573,
+          "bytes": 2147553280
+        },
+        "overlay": {
+          "state": 3,
+          "header": 1,
+          "gpt": 255,
+          "gpt_after": 255,
+          "pages": 524288,
+          "loaded": 2,
+          "writes": 25103,
+          "syncs": 135,
+          "errors": 0,
+          "present": 25037
+        }
+      },
+      "launchd_early_boot_complete": true,
+      "SpringBoard_original_process_executed": true
+    },
+    "execution": {
+      "case": "enabled",
+      "checkpoints": [
+        "_arm_init",
+        "_bsd_init",
+        "_dodge_qemu_storage_checkpoint",
+        "_IOFindBSDRoot"
+      ],
+      "reads": [
+        {
+          "device": "0xfffffff9e51cec40",
+          "physical": "0xa003c00",
+          "sectors": 5357568,
+          "first_sector_sha256": "9d8a717d6b9b3d863a255b3755b121847a9bc9c2a7294c43b9f68524f55eb8b6",
+          "requests": 1,
+          "failures": 0
+        },
+        {
+          "device": "0xfffffff9e51d01d0",
+          "physical": "0xa003e00",
+          "sectors": 11006019,
+          "first_sector_sha256": "d9ce8c44219524305dd4b829498713a4bfea0d4bc1222547d465f5cca752b1ef",
+          "requests": 2,
+          "failures": 0
+        }
+      ],
+      "storage": {
+        "phase": 2,
+        "attempted": 31,
+        "started": 2,
+        "result": 0
+      },
+      "resources": [
+        {
+          "address": "0xa000000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa000e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa001e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa002e00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003000",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003200",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003400",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003600",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003800",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003a00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003c00",
+          "bytes": 512
+        },
+        {
+          "address": "0xa003e00",
+          "bytes": 512
+        }
+      ],
+      "registers": {
+        "x0": "0xfffffff00b9c7d98",
+        "x1": "0x20",
+        "x2": "0xfffffff00b9c7d80",
+        "x3": "0xfffffff5dd177de8",
+        "x4": "0xfffffff00b9fc738",
+        "x5": "0x0",
+        "x6": "0x0",
+        "x7": "0x9",
+        "x8": "0x3471d",
+        "x9": "0x0",
+        "x10": "0x36fe07c70c74cb80",
+        "x11": "0x0",
+        "x12": "0x44b82fa09b5a53",
+        "x13": "0x2b1ff",
+        "x14": "0x6000001",
+        "x15": "0x44b82fa09",
+        "x16": "0x0",
+        "x17": "0x3b9aca00",
+        "x18": "0x323c000",
+        "x19": "0xfffffff00b9c7d98",
+        "x20": "0xfffffff00b9c7d80",
+        "x21": "0xfffffff00af36889",
+        "x22": "0xfffffff00af36a7e",
+        "x23": "0xfffffff00af36acb",
+        "x24": "0xfffffff00b9c7000",
+        "x25": "0xfffffff00b2e8954",
+        "x26": "0x6000000",
+        "x27": "0x0",
+        "x28": "0xfffffff00b9afad0",
+        "x29": "0xfffffff5dd177ed0",
+        "x30": "0xfffffff00b571358",
+        "sp": "0xfffffff5dd177dc0",
+        "pc": "0xfffffff00b8083b8"
+      },
+      "policies": [
+        {
+          "name": "AppleImage4",
+          "registered": true,
+          "record": "0xfffffff005caf458",
+          "original_operations": "0xfffffff005caf4a8"
+        },
+        {
+          "name": "AMFI",
+          "registered": true,
+          "record": "0xfffffff005cb78a0",
+          "original_operations": "0xfffffff005cb6e28"
+        },
+        {
+          "name": "Sandbox",
+          "registered": true,
+          "record": "0xfffffff005ef8d38",
+          "original_operations": "0xfffffff005ef8d98"
+        }
+      ],
+      "translation_registers": {
+        "SCTLR_EL1": "0x3454593d",
+        "TTBR0_EL1": "0x48974000",
+        "TTBR1_EL1": "0x48975000",
+        "TCR_EL1": "0x22a51a251a"
+      },
+      "platform_device_count": 33,
+      "vm_stop_signal": "SIGKILL",
+      "vm_returncode": -9
+    }
+  },
+  "source_sha256": {
+    "scripts/check_qemu_services.py": "48a59d4960d900d00a55f86d2df1906edb332fc5d39111dd37c072329b0617b7",
+    "scripts/check_qemu_data.py": "304f4784068ac5b6ecec90903852325e4d054595641845862f5a31e8e54bdb57",
+    "scripts/check_qemu_store.py": "e95a5b1dde56e424b7a315badec06bd8c741206aa88f0770eabb3be391da5d4d",
+    "scripts/check_qemu_storage.py": "6c7dc3ddf106a97e71b24b5b64d977c67b329783cb160396506e44599b804420",
+    "scripts/check_qemu_exec.py": "b86fa77cdfa986f5981476f98581e6aabe07be83cb9953e0eb387855ad49b1aa",
+    "scripts/check_qemu_systemos.py": "2eb6fdb2c65b57b1b474f2542013035893ddcb7c15345cc540760f291108609c",
+    "scripts/check_qemu_keystore.py": "be947b3f6df69d693e374588af8cc2a4be25a8cdb7597917703e21922709e9cf",
+    "scripts/check_qemu_aes.py": "893d06048dcc5f89795d290e5b3cc9bd3fceb9b47becc510eb4b2a8675453d1e",
+    "scripts/qemu_user_state.py": "047de153743a8fb46dd55ce9b87d8bbcedc5c0c5c59d0dd05b073ee1a5388b84",
+    "scripts/qemu_store_image.py": "3409cc02fd7a407b017d721e6323af2a4b59d91e1313002460d834d2cb2d0506",
+    "scripts/image4_boot_policy.py": "6072c1b9c5c0ec1f1ea524f32c369b18dc063ea48c8764d21194b04d84cde5a1",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-qemu-store-kernel-old-percpu.json": "04f2276e69781d42889a20b6ff3cc1d621ba496072eadf97c22e40bf0071be0f",
+    "reports/ios16-qemu-store-kernel.json": "0189d4ab24112f5ba5c8122619bb6a44f30a48101146088d8198e98143d77ef8",
+    "reports/ios16-qemu-exec-entry.json": "5427de2a1d38a6d17e5c4c0286b4a4a7437bf50818a5f2fb3951edb9a0a6a6a2",
+    "reports/native-a830-entry.json": "a08c304e8429237fd93b71e9f5ea458033b24f029b6131705b196f81575b1064",
+    "reports/ios16-qemu-data-image.json": "e1fef355e0a8156840d6d7ed426f118d73acf544565aecde55c093b00ec7a195",
+    "reports/ios16-qemu-root-policy.json": "20fe303594beafe3a6b30a7980f09eae59c249891429ec69eeccc310d87a364a",
+    "reports/ios16-display-cache.json": "50c9d66e5e8a3ed3e05a78fe586afc58fc0e6461b854bd40a1479b44d67454d9",
+    "reports/ios16-volumes.json": "3d9eb5dc4f8e4c1cbcb588d7b140fb185dd45d932421334c6e5b6d02657fc7e7"
+  },
+  "artifacts": {
+    "build/cph2653-qemu-services-entry/run-nzqosvys/layout/ServiceLayout.c": "9bd38abd013951f09527177efaf5a95aaf70db1c234f0fb01772fbafd71dd542",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/layout/ServiceLayout.o": "142197e0e1386381f996f0536c0624d3a8817078c88b632abf0d4a6e29a84d37",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/layout/compile-commands.json": "29a99f865d74ff7d87cce738437bd8cc2a142a07aa0741f810f9df3ca9bbe3c9",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/SpringBoard": "ea835980610a95591fb349bca077840fab7bdd663efaa11ef054d91bc2125475",
+    ".toolchains/apfs-readonly/apfs-extract": "a64fd2535cc4bbe93f128948dad4c25a9940b75b7d4643146a9a83895c599cb3",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative.store": "0f07c5e608acc41ec14a86fee3d57da847aeea6fb05bf6800c923f6cd5328b67",
+    "build/cph2653-qemu-store-old-percpu/kernel.macho": "33a135c85c5e49132988dce4f6fff974bafbba88b8360316d4b2a9a00bf20ad2",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/exec.json": "c72855f053e3c98b0d0f13cccf5f6682e1842e801e4e5792bc3b7c693d2725ca",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/serial.log": "758a9b1f6cc0a9445a1a2dd9ee469c57655d33c370a0af3ee7b2a7586919eba4",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/qemu.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/observation.json": "628fb6109cc7d613951db5bbde762e29918a4700826f7000d6562dfeeb5fd3e9",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/qemu.dtb": "f40839fce9e70d0bf21d6ae411c23447dd9d93e5e03dd446e976c0e195e67de9",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/image4-boot-policy.json": "0a5ad365c80f2ecca15129f186f57097f0fa67663cb05eae3b72b075a792da90",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho": "33a135c85c5e49132988dce4f6fff974bafbba88b8360316d4b2a9a00bf20ad2",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "523f54c5864ec4ebd3b8887fa6212784cd27bbbfee8c2b3d94f04faa6a3fa99a",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "03a25c236f211427ae21a3ba47d33e32662e17d928027df236e30889fb7bf1de",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/esp/EFI/UniXNU/Payloads/scratch-data.img": "29913e6e69222bad6e203736f44e9b06def2e228caa0b9f701e21f67c2dbdb19",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/negative/positive/enabled/esp/EFI/UniXNU/unixnu.toml": "48594c198a16bc5d7b472aa7cb3942fa6785408ac29bbd3f352cac77c6c6908d",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive.store": "162919fc3199bb9410162ed57d5b45519d5a418c3e46483c51fe37420309e89b",
+    "build/cph2653-qemu-store/kernel.macho": "cd4af4548890ac634f482de9283a471cd1c3d9411ed0351e71a421e1ca82795d",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/exec.json": "9d01ec03bcd1c2de8550632f119769ac7c65b2259127f9663cf912e6fb37d4a0",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/serial.log": "758a9b1f6cc0a9445a1a2dd9ee469c57655d33c370a0af3ee7b2a7586919eba4",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/qemu.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/observation.json": "f561b6f6f3b18d038ad12cfe3ffa3b8479ee5802548eb384949268eafd54a6e2",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/qemu.dtb": "eb609dada2e829caa8ad7c584f5cf29814c470a4230d951bff60636674fcea72",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/image4-boot-policy.json": "50f250684e69141c2a5a98793bf58beae9a84df7c5080766729c2dc1ce566198",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/esp/EFI/BOOT/BOOTAA64.EFI": "2b5ce63de3d1595daed7ff977e57a2b35ac59218b3ed18bdadd373a0f5307b94",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/esp/EFI/UniXNU/Drivers/DarwinBoot.efi": "34685a82beea0245365390d834e6bca7885ab3091a4e19ec7012ccb92807ff84",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho": "cd4af4548890ac634f482de9283a471cd1c3d9411ed0351e71a421e1ca82795d",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.adt": "5dbfbc050eccc65611cf63d99cd26807ca43dfc9fcc9218e862fcee840ed0dc4",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/esp/EFI/UniXNU/Payloads/kernel.macho.trustcache": "03a25c236f211427ae21a3ba47d33e32662e17d928027df236e30889fb7bf1de",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/esp/EFI/UniXNU/Payloads/scratch-data.img": "29913e6e69222bad6e203736f44e9b06def2e228caa0b9f701e21f67c2dbdb19",
+    "build/cph2653-qemu-services-entry/run-nzqosvys/positive/positive/enabled/esp/EFI/UniXNU/unixnu.toml": "48594c198a16bc5d7b472aa7cb3942fa6785408ac29bbd3f352cac77c6c6908d",
+    ".toolchains/qemu/usr/bin/qemu-system-aarch64": "0a63468782d096485932acf6aa0a69d358b3e3a6f68f655e960e9f5e3fc578d8",
+    ".toolchains/qemu/usr/share/AAVMF/AAVMF_CODE.fd": "a5883fa6c93a3ca3e11d908ca906620ce9e4673d17ef9db35638aa7ea82c4cdf",
+    ".toolchains/qemu/usr/share/AAVMF/AAVMF_VARS.fd": "3b6a07d0d404fab4e23b6d34bc6696a6a312dd92821332385e5af7c01c421351",
+    ".toolchains/qemu/usr/share/seabios/vgabios-ramfb.bin": "0d522dc3c5cfc16d0f6030dc14c07da82b426e0bd573f03744bfee714348f02f",
+    "build/cph2653-native-a830-bringup/readback/EFI/UniXNU/Payloads/kernel.macho.adt": "c1759856850956762db46973fa59692f07780ec543d504ebcac305664a44e251",
+    "build/qemu-owner-root-policy/OS/trusted-key.bin": "b7d46534102f87d86fb4d1a5f9393b0c4ae4639e859fc269e6cfb2a1f90c182d",
+    "build/ios16-qemu-data/data.dbr": "29913e6e69222bad6e203736f44e9b06def2e228caa0b9f701e21f67c2dbdb19",
+    "build/ios16-display-cache/dyld_shared_cache_arm64": "76874e8375252ee643011ff8063f0cce12355f05cf5f9897a34e5679667a65aa",
+    "build/ios16-volumes/OS.raw": "6e87bfcaa8eca952e00b719f333d1f1060715a63566112267ad8730e1ed98906",
+    "build/ios16-volumes/SystemOS.raw": "9cd738f3b0169055549df84ad6d8d13e50a2da39af618ce0522ca4e06df86849"
+  },
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "kernel_reports": {
+    "negative": "reports/ios16-qemu-store-kernel-old-percpu.json",
+    "positive": "reports/ios16-qemu-store-kernel.json"
+  },
+  "original_SpringBoard": {
+    "path": "/System/Library/CoreServices/SpringBoard.app/SpringBoard",
+    "sha256": "ea835980610a95591fb349bca077840fab7bdd663efaa11ef054d91bc2125475",
+    "uuid": "e1a4fe7d29ff3269b3ab50aed40c4495"
+  },
+  "Darwin22_layout": {
+    "bytes": 304,
+    "x": 8,
+    "pc": 264,
+    "cpsr": 272,
+    "x_count": 29,
+    "percpu_start": 0,
+    "percpu_end": 8
+  },
+  "hardware_tested": false,
+  "physical_storage_enabled": false,
+  "hardware_data_protection": false,
+  "full_system_booted": false,
+  "graphical_interface_tested": false,
+  "phone_operations": "none",
+  "scope": "Original signed launchd configuration completes early boot and original iPhone services execute in EL0 on persistent VM Data. The real mbuf statistics function returns across an empty secondary CPU range; compiling only that consumer with the old header reproduces its kernel data abort. Process UUID identifies original SpringBoard; no UI or hardware functionality is claimed."
+}

@@ -2,3 +2,4 @@
 0001-sm8750-topology-darwin22.patch
 0002-sm8750-disable-unimplemented-apple-kpc.patch
 0003-preserve-osmetaclass-destructor-poison.patch
+0004-percpu-unsigned-ranges.patch

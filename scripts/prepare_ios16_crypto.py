@@ -139,19 +139,27 @@ def main():
     if args.write:
         require(not FIXTURE.exists() and not HEADER.exists(), 'Refuse to replace reviewed crypto inputs')
         FIXTURE.write_text(json.dumps(actual, indent=2) + '\n'); HEADER.write_text(header(actual))
-    require(json.loads(FIXTURE.read_text()) == actual and HEADER.read_text() == header(actual), 'Original crypto contract/header changed')
+    reviewed = json.loads(FIXTURE.read_text())
+    # The reviewed file also records the first generated kernel. A new source
+    # build changes that hash; derive() still checks its packed record above.
+    current_contract = dict(actual); reviewed_contract = dict(reviewed)
+    current_contract.pop('existing_candidate_sha256'); reviewed_contract.pop('existing_candidate_sha256')
+    require(current_contract == reviewed_contract and HEADER.read_text() == header(actual), 'Original crypto contract/header changed')
     pin = json.loads((ROOT / 'upstream.lock.json').read_text())['iphone_crypto_contract']
     require(pin['path'] == str(FIXTURE.relative_to(ROOT)) and pin['sha256'] == sha(FIXTURE) and
             pin['header'] == str(HEADER.relative_to(ROOT)) and pin['header_sha256'] == sha(HEADER), 'Reviewed original crypto contract pin changed')
     sources = [Path(__file__), FIXTURE, HEADER, ROOT / 'scripts/native_driver_build.py', ROOT / 'scripts/prepare_ios16_pmgr.py']
     report = {'result': 'IOS16_ORIGINAL_CRYPTO_OWNER_AND_USED_KPI_BOUNDARIES_STATIC_PASS', 'builder_sha256': sha(Path(__file__)),
         'source_sha256': {str(p.relative_to(ROOT)): sha(p) for p in sources}, 'dependency_report_sha256': {},
-        'artifacts': {str(obj.relative_to(ROOT)): sha(obj)}, 'contract': str(FIXTURE.relative_to(ROOT)), 'contract_facts': actual,
+        'artifacts': {str(obj.relative_to(ROOT)): sha(obj), actual['existing_candidate']: actual['existing_candidate_sha256']},
+        'contract': str(FIXTURE.relative_to(ROOT)), 'contract_facts': reviewed,
+        'candidate_readback': {key: actual[key] for key in ('existing_candidate', 'existing_candidate_sha256',
+            'existing_candidate_record_rebasing_verified')},
         'source_pin': pin,
         'original_crypto_post_executed': False, 'original_crypto_runtime_qualified': False, 'all_ios_port_code_complete': False,
         'hardware_tested': False, 'ready_for_ios_boot': False,
         'scope': 'Actual Darwin 22 compiler layouts and exact original iPhone packed kmod, wrapper, registration calls and PRNG callbacks. '
-                 'Seven absolute inputs are measured and rebasing of the old candidate record is read back. '
+                 'Seven absolute inputs are measured and rebasing of the current candidate record is read back. '
                  'No initializer/POST is executed and appended digest/HMAC APIs or the complete crypto table are not qualified.'}
     (ROOT / 'reports/ios16-crypto-contract.json').write_text(json.dumps(report, indent=2) + '\n')
     print('PASS: packed 196-byte original crypto module, exact start/PRNG/table inputs and existing candidate rebasing')

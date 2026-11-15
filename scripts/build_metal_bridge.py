@@ -77,6 +77,7 @@ def main():
     runtime_input = lock['metal2vulkan_reference']['revision'] + '\n' + '\n'.join(p['sha256'] for p in lock['metal_runtime_patches'])
     if native_overlay:
         runtime_input += '\n' + native_overlay['sha256']
+        runtime_input += '\n' + lock['native_a830_metal_tile_overlay']['sha256']
     if compile_overlay:
         runtime_input += '\n' + compile_overlay['sha256']
     runtime_id = hashlib.sha256(runtime_input.encode()).hexdigest()[:32]
@@ -119,6 +120,7 @@ def main():
               'frontend_revision': lock['a830_metal_reference']['revision'],
               'runtime_patches': lock['metal_runtime_patches'], 'runtime_id': runtime_id,
               'native_surface_overlay': native_overlay,
+              'native_tile_overlay': lock['native_a830_metal_tile_overlay'] if args.native_a830 else None,
               'native_compile_overlay': compile_overlay,
               'translator_source_tree': source_tree,
               'rust_version': subprocess.check_output([rust / 'bin/rustc', '--version'], text=True).strip(),

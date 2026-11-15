@@ -1,0 +1,363 @@
+--- a/bridge/NativeMetalObjects.rs
++++ b/bridge/NativeMetalObjects.rs
+@@ -15,7 +15,7 @@
+ };
+ use metal2vulkan::pipeline::{
+     ColorAttachmentDescriptor, ComputePipelineDescriptor, LinkedFunction, LinkedFunctions, RenderPipelineDescriptor, StageSource,
+-    TessellationDescriptor, VertexAttributeDescriptor, VertexBufferLayoutDescriptor, VertexDescriptor,
++    TessellationDescriptor, TileRenderPipelineDescriptor, VertexAttributeDescriptor, VertexBufferLayoutDescriptor, VertexDescriptor,
+ };
+ use metal2vulkan_runtime::{
+     BinaryArchive, BinaryArchiveDescriptor, BlitCommandEncoder, FamilyRow, FeatureRow, GpuFamily, RowState, BlitOption, Buffer, ClearColor, CommandBuffer, CommandQueue, ComputeCommandEncoder,
+@@ -1803,6 +1803,107 @@
+         Ok(out)
+ }
+ 
++/// `MTLTileRenderPipelineDescriptor`: the tile function, the colour attachment formats (0 for none), the sample count, whether
++/// the threadgroup is the tile, the threadgroup limit (0 for the pipeline's own) and the buffers' mutability.
++#[repr(C)]
++pub struct NmbTilePipelineDescriptor {
++    pub tile: *mut NmbFunction,
++    pub formats: [u64; 8],
++    pub samples: u64,
++    pub threadgroup_matches_tile: u64,
++    pub max_threads: u64,
++    pub max_call_stack_depth: u64,
++    pub adding_binary_functions: u64,
++    pub mutability: [u64; 31],
++    pub linked: *const *mut NmbFunction,
++    pub linked_count: u64,
++    pub private_linked: *const *mut NmbFunction,
++    pub private_linked_count: u64,
++}
++
++fn tile_descriptor(descriptor: *const NmbTilePipelineDescriptor) -> Result<TileRenderPipelineDescriptor, String> {
++    let d = get(descriptor)?;
++    let mut linked = LinkedFunctions::new();
++    linked.functions = linked_list(d.linked, d.linked_count)?;
++    linked.private_functions = linked_list(d.private_linked, d.private_linked_count)?;
++    let tile = get(d.tile)?.0.function_descriptor().with_linked(linked);
++    let mut out = TileRenderPipelineDescriptor::new(StageSource::Function(tile));
++    for (index, &format) in d.formats.iter().enumerate() {
++        out.color_attachment_formats[index] = optional_format(format)?;
++    }
++    out.raster_sample_count = u32::try_from(d.samples.max(1)).map_err(e("tile sample count"))?;
++    out.threadgroup_size_matches_tile_size = d.threadgroup_matches_tile != 0;
++    out.max_total_threads_per_threadgroup = if d.max_threads == 0 { None } else { Some(u32::try_from(d.max_threads).map_err(e("tile max threads"))?) };
++    out.max_call_stack_depth = u32::try_from(d.max_call_stack_depth.max(1)).map_err(e("tile stack depth"))?;
++    out.support_adding_binary_functions = d.adding_binary_functions != 0;
++    for (index, &mutability) in d.mutability.iter().enumerate() {
++        if mutability != 0 {
++            out.buffers.insert(index as u32, raw::<metal2vulkan::metal::Mutability>(mutability, "buffer mutability")?);
++        }
++    }
++    Ok(out)
++}
++
++/// `newRenderPipelineStateWithTileDescriptor:options:reflection:error:` without reflection: a render pipeline state whose
++/// tile function a render encoder dispatches per tile.
++///
++/// # Safety
++/// `options` is null or a valid record with a counted array of live archive handles.
++#[unsafe(no_mangle)]
++pub unsafe extern "C" fn nmb_tile_pipeline_new(device: *mut NmbDevice, descriptor: *const NmbTilePipelineDescriptor,
++                                              options: *const NmbPipelineOptions) -> *mut NmbRenderPipeline {
++    guard(std::ptr::null_mut(), || {
++        let resolved = unsafe { pipeline_options(options)? };
++        let state = get(device)?.0.new_tile_render_pipeline_state(&tile_descriptor(descriptor)?, &resolved).map_err(e("tile pipeline"))?;
++        Ok(boxed(NmbRenderPipeline(state)))
++    })
++}
++
++/// `tileWidth` and `tileHeight` of the encoder's pass, into the caller's two words.
++#[unsafe(no_mangle)]
++pub extern "C" fn nmb_render_tile_size(encoder: *mut NmbEncoder, out: *mut u64) -> bool {
++    guard(false, || {
++        if out.is_null() {
++            return Err("null tile size".into());
++        }
++        let r = render(encoder)?;
++        let size = [r.tile_width().map_err(e("tile width"))?, r.tile_height().map_err(e("tile height"))?];
++        // SAFETY: the header's two words.
++        unsafe { std::slice::from_raw_parts_mut(out, 2) }.copy_from_slice(&size);
++        Ok(true)
++    })
++}
++
++/// `dispatchThreadsPerTile:`: `threads` is width, height, depth.
++#[unsafe(no_mangle)]
++pub extern "C" fn nmb_render_dispatch_threads_per_tile(encoder: *mut NmbEncoder, threads: *const u64) -> bool {
++    guard(false, || {
++        render(encoder)?.dispatch_threads_per_tile(size(threads)?).map_err(e("dispatch threads per tile"))?;
++        Ok(true)
++    })
++}
++
++/// `dispatchThreadsPerTile:inRegion:`: `region` is the header's six words.
++#[unsafe(no_mangle)]
++pub extern "C" fn nmb_render_dispatch_threads_per_tile_in_region(encoder: *mut NmbEncoder, threads: *const u64, region_words: *const u64)
++                                                                 -> bool {
++    guard(false, || {
++        render(encoder)?
++            .dispatch_threads_per_tile_in_region(size(threads)?, region(region_words)?, None)
++            .map_err(e("dispatch threads per tile in region"))?;
++        Ok(true)
++    })
++}
++
++/// `setThreadgroupMemoryLength:offset:atIndex:` of a render encoder (the tile stage's threadgroup memory).
++#[unsafe(no_mangle)]
++pub extern "C" fn nmb_render_set_threadgroup_memory_length(encoder: *mut NmbEncoder, length: u64, offset: u64, index: u32) -> bool {
++    guard(false, || {
++        render(encoder)?.set_threadgroup_memory_length(length, offset, index).map_err(e("threadgroup memory length"))?;
++        Ok(true)
++    })
++}
++
+ #[unsafe(no_mangle)]
+ pub extern "C" fn nmb_render_pipeline_release(pipeline: *mut NmbRenderPipeline) {
+     release(pipeline)
+@@ -2472,6 +2573,11 @@
+     pub array_length: u64,
+     pub samples: u64,
+     pub visibility: *const NmbBuffer,
++    /// `tileWidth`, `tileHeight`, `imageblockSampleLength` and `threadgroupMemoryLength` of the pass (0 for Metal's defaults).
++    pub tile_width: u64,
++    pub tile_height: u64,
++    pub imageblock_sample_length: u64,
++    pub threadgroup_memory_length: u64,
+ }
+ 
+ fn texture_of(a: &NmbPassAttachment) -> Result<Option<Texture>, String> {
+@@ -2527,6 +2633,10 @@
+         pass.render_target_height = d.height;
+         pass.render_target_array_length = d.array_length;
+         pass.default_raster_sample_count = d.samples;
++        pass.tile_width = d.tile_width;
++        pass.tile_height = d.tile_height;
++        pass.imageblock_sample_length = d.imageblock_sample_length;
++        pass.threadgroup_memory_length = d.threadgroup_memory_length;
+         if !d.visibility.is_null() {
+             pass.visibility_result_buffer = Some(get(d.visibility)?.0.clone());
+         }
+@@ -2586,6 +2696,8 @@
+ const COMPUTE: u32 = 0;
+ const VERTEX: u32 = 1;
+ const FRAGMENT: u32 = 2;
++/// The tile stage of a render encoder (`setTileBuffer:` and its kin).
++const TILE: u32 = 3;
+ 
+ fn bad_stage(stage: u32) -> String {
+     format!("stage {stage} does not fit this encoder")
+@@ -2599,6 +2711,7 @@
+             (NmbEncoder::Compute(c), COMPUTE) => c.set_buffer(buffer, offset, index),
+             (NmbEncoder::Render(r), VERTEX) => r.set_vertex_buffer(buffer, offset, index),
+             (NmbEncoder::Render(r), FRAGMENT) => r.set_fragment_buffer(buffer, offset, index),
++            (NmbEncoder::Render(r), TILE) => r.set_tile_buffer(buffer, offset, index),
+             _ => return Err(bad_stage(stage)),
+         }
+         .map_err(e("set buffer"))?;
+@@ -2613,6 +2726,7 @@
+             (NmbEncoder::Compute(c), COMPUTE) => c.set_buffer_offset(offset, index),
+             (NmbEncoder::Render(r), VERTEX) => r.set_vertex_buffer_offset(offset, index),
+             (NmbEncoder::Render(r), FRAGMENT) => r.set_fragment_buffer_offset(offset, index),
++            (NmbEncoder::Render(r), TILE) => r.set_tile_buffer_offset(offset, index),
+             _ => return Err(bad_stage(stage)),
+         }
+         .map_err(e("set buffer offset"))?;
+@@ -2635,6 +2749,7 @@
+             (NmbEncoder::Compute(c), COMPUTE) => c.set_bytes(bytes, index),
+             (NmbEncoder::Render(r), VERTEX) => r.set_vertex_bytes(bytes, index),
+             (NmbEncoder::Render(r), FRAGMENT) => r.set_fragment_bytes(bytes, index),
++            (NmbEncoder::Render(r), TILE) => r.set_tile_bytes(bytes, index),
+             _ => return Err(bad_stage(stage)),
+         }
+         .map_err(e("set bytes"))?;
+@@ -2650,6 +2765,7 @@
+             (NmbEncoder::Compute(c), COMPUTE) => c.set_texture(texture, index),
+             (NmbEncoder::Render(r), VERTEX) => r.set_vertex_texture(texture, index),
+             (NmbEncoder::Render(r), FRAGMENT) => r.set_fragment_texture(texture, index),
++            (NmbEncoder::Render(r), TILE) => r.set_tile_texture(texture, index),
+             _ => return Err(bad_stage(stage)),
+         }
+         .map_err(e("set texture"))?;
+@@ -2665,6 +2781,7 @@
+             (NmbEncoder::Compute(c), COMPUTE) => c.set_sampler_state(sampler, index),
+             (NmbEncoder::Render(r), VERTEX) => r.set_vertex_sampler_state(sampler, index),
+             (NmbEncoder::Render(r), FRAGMENT) => r.set_fragment_sampler_state(sampler, index),
++            (NmbEncoder::Render(r), TILE) => r.set_tile_sampler_state(sampler, index),
+             _ => return Err(bad_stage(stage)),
+         }
+         .map_err(e("set sampler"))?;
+--- a/bridge/NativeMetalObjects.h
++++ b/bridge/NativeMetalObjects.h
+@@ -289,6 +289,7 @@
+     struct NmbPassAttachment colors[8], depth, stencil;
+     uint64_t width, height, array_length, samples;
+     NmbBuffer *visibility; /* the pass's visibility result buffer, or null */
++    uint64_t tile_width, tile_height, imageblock_sample_length, threadgroup_memory_length; /* 0: Metal's defaults */
+ };
+ NmbEncoder *nmb_render_encoder_new(NmbCommandBuffer *, const struct NmbRenderPassDescriptor *);
+ bool nmb_encoder_end(NmbEncoder *);
+@@ -300,6 +301,27 @@
+ bool nmb_encoder_set_bytes(NmbEncoder *, uint32_t stage, const void *bytes, size_t length, uint32_t index);
+ bool nmb_encoder_set_texture(NmbEncoder *, uint32_t stage, NmbTexture *, uint32_t index);
+ bool nmb_encoder_set_sampler(NmbEncoder *, uint32_t stage, NmbSampler *, uint32_t index);
++// The tile stage of a render encoder is stage 3 of the nmb_encoder_set_* binders. A tile pipeline is a render pipeline state made
++// from a tile descriptor (newRenderPipelineStateWithTileDescriptor:): formats are MTLPixelFormat values, 0 for no attachment.
++typedef struct {
++ NmbFunction *tile;
++ uint64_t formats[8];
++ uint64_t samples;
++ uint64_t threadgroup_matches_tile;
++ uint64_t max_threads;
++ uint64_t max_call_stack_depth;
++ uint64_t adding_binary_functions;
++ uint64_t mutability[31];
++ NmbFunction *const *linked;
++ uint64_t linked_count;
++ NmbFunction *const *private_linked;
++ uint64_t private_linked_count;
++} NmbTilePipelineDescriptor;
++NmbRenderPipeline *nmb_tile_pipeline_new(NmbDevice *, const NmbTilePipelineDescriptor *, const struct NmbPipelineOptions *options);
++bool nmb_render_tile_size(NmbEncoder *, uint64_t *size);   // width, height
++bool nmb_render_dispatch_threads_per_tile(NmbEncoder *, const uint64_t *threads);   // width, height, depth
++bool nmb_render_dispatch_threads_per_tile_in_region(NmbEncoder *, const uint64_t *threads, const uint64_t *region);
++bool nmb_render_set_threadgroup_memory_length(NmbEncoder *, uint64_t length, uint64_t offset, uint32_t index);
+ 
+ bool nmb_compute_set_pipeline(NmbEncoder *, NmbComputePipeline *);
+ bool nmb_compute_set_threadgroup_memory(NmbEncoder *, uint32_t length, uint32_t index);
+--- a/NativeBridgeMetalFrontend.mm
++++ b/NativeBridgeMetalFrontend.mm
+@@ -2340,7 +2340,9 @@
+ - (void)memoryBarrierWithScope:(MTLBarrierScope)s {(void)s;}
+ @end
+ 
+-@interface NBRenderEncoder : NBEncoder
++@interface NBRenderEncoder : NBEncoder {
++ @public uint32_t _tileW,_tileH;
++}
+ @property(nonatomic) uint64_t passKey;   // colour 0 format | load << 16 | surface << 18 | big << 19
+ @end
+ @implementation NBRenderEncoder
+@@ -2428,14 +2430,39 @@
+ - (void)setFragmentTexture:(id<MTLTexture>)t atTextureIndex:(NSUInteger)ti samplerState:(id<MTLSamplerState>)s atSamplerIndex:(NSUInteger)si {
+  [self texture:t index:ti stage:2];[self sampler:s index:si stage:2];
+ }
+-// Tile shaders and imageblock tile memory (Apple GPU families 4 and up) are not offered: supportsTileShaders answers no, and a call that
+-// reaches one anyway fails its command buffer.
+-- (NSUInteger)tileWidth {return 0;}
+-- (NSUInteger)tileHeight {return 0;}
+-- (void)setTileTexture:(id<MTLTexture>)t atIndex:(NSUInteger)i {(void)t;(void)i;[self.commandBuffer refuse:@"tile shaders are not supported"];}
+-- (void)setTileBytes:(const void *)p length:(NSUInteger)n atIndex:(NSUInteger)i {(void)p;(void)n;(void)i;[self.commandBuffer refuse:@"tile shaders are not supported"];}
+-- (void)dispatchThreadsPerTile:(MTLSize)size {(void)size;[self.commandBuffer refuse:@"tile shaders are not supported"];}
+-- (void)dispatchThreadsPerTile:(MTLSize)size inRegion:(MTLRegion)region {(void)size;(void)region;[self.commandBuffer refuse:@"tile shaders are not supported"];}
++// Tile shaders (a render pipeline state made from a tile descriptor, dispatched per tile of the pass) go to the runtime, which runs the
++// tile function as a compute dispatch between two instances of the pass. The tile stage is stage 3 of the binders.
++// The tile size is the pass descriptor's, or 32x32 by default (32x16 at 4 samples); it is answered here
++// because the runtime's encoder is made later, on the encoding thread.
++- (NSUInteger)tileWidth {return _tileW;}
++- (NSUInteger)tileHeight {return _tileH;}
++- (void)setTileBuffer:(id<MTLBuffer>)b offset:(NSUInteger)o atIndex:(NSUInteger)i {[self buffer:b offset:o index:i stage:3];}
++- (void)setTileBufferOffset:(NSUInteger)o atIndex:(NSUInteger)i {[self offset:o index:i stage:3];}
++- (void)setTileBuffers:(const id<MTLBuffer> __unsafe_unretained [])b offsets:(const NSUInteger [])o withRange:(NSRange)r {
++ for(NSUInteger k=0;k<r.length;k++)[self buffer:b[k] offset:o[k] index:r.location+k stage:3];
++}
++- (void)setTileBytes:(const void *)p length:(NSUInteger)n atIndex:(NSUInteger)i {[self bytes:p length:n index:i stage:3];}
++- (void)setTileTexture:(id<MTLTexture>)t atIndex:(NSUInteger)i {[self texture:t index:i stage:3];}
++- (void)setTileTextures:(const id<MTLTexture> __unsafe_unretained [])t withRange:(NSRange)r {
++ for(NSUInteger k=0;k<r.length;k++)[self texture:t[k] index:r.location+k stage:3];
++}
++- (void)setTileSamplerState:(id<MTLSamplerState>)s atIndex:(NSUInteger)i {[self sampler:s index:i stage:3];}
++- (void)setTileSamplerState:(id<MTLSamplerState>)s lodMinClamp:(float)a lodMaxClamp:(float)b atIndex:(NSUInteger)i {[self sampler:s lodMin:a max:b index:i stage:3];}
++- (void)setTileSamplerStates:(const id<MTLSamplerState> __unsafe_unretained [])s withRange:(NSRange)r {
++ for(NSUInteger k=0;k<r.length;k++)[self sampler:s[k] index:r.location+k stage:3];
++}
++- (void)setThreadgroupMemoryLength:(NSUInteger)length offset:(NSUInteger)offset atIndex:(NSUInteger)index {
++ ENCODE([self check:nmb_render_set_threadgroup_memory_length(self.handle,length,offset,(uint32_t)index) what:"setThreadgroupMemoryLength"]);
++}
++- (void)dispatchThreadsPerTile:(MTLSize)size {
++ const uint64_t threads[3]={size.width,size.height,size.depth};
++ ENCODE([self check:nmb_render_dispatch_threads_per_tile(self.handle,threads) what:"dispatchThreadsPerTile"]);
++}
++- (void)dispatchThreadsPerTile:(MTLSize)size inRegion:(MTLRegion)region {
++ const uint64_t threads[3]={size.width,size.height,size.depth};
++ const uint64_t words[6]={region.origin.x,region.origin.y,region.origin.z,region.size.width,region.size.height,region.size.depth};
++ ENCODE([self check:nmb_render_dispatch_threads_per_tile_in_region(self.handle,threads,words) what:"dispatchThreadsPerTile"]);
++}
+ - (void)setStencilReferenceValue:(uint32_t)v {if(gDrawStats)[self noteState:kDSOther key:UINT32_MAX object:nullptr value:0];ENCODE([self check:nmb_render_set_stencil_reference(self.handle,v,v) what:"setStencilReferenceValue"]);}
+ - (void)setStencilFrontReferenceValue:(uint32_t)f backReferenceValue:(uint32_t)b {
+  if(gDrawStats)[self noteState:kDSOther key:UINT32_MAX object:nullptr value:0];ENCODE([self check:nmb_render_set_stencil_reference(self.handle,f,b) what:"setStencilReferenceValues"]);
+@@ -2957,6 +2984,7 @@
+  pass.depth.clear[0]=d.depthAttachment.clearDepth;pass.stencil.clear[0]=d.stencilAttachment.clearStencil;
+  pass.depth.resolve_filter=d.depthAttachment.depthResolveFilter;pass.stencil.resolve_filter=d.stencilAttachment.stencilResolveFilter;
+  pass.width=d.renderTargetWidth;pass.height=d.renderTargetHeight;pass.array_length=d.renderTargetArrayLength;pass.samples=d.defaultRasterSampleCount;
++ pass.tile_width=d.tileWidth;pass.tile_height=d.tileHeight;pass.imageblock_sample_length=d.imageblockSampleLength;pass.threadgroup_memory_length=d.threadgroupMemoryLength;
+  if(d.visibilityResultBuffer) {
+   if(![(id)d.visibilityResultBuffer isKindOfClass:[NBBuffer class]]){[self refuse:@"foreign visibility result buffer"];return nil;}
+   [_resourceOwners addObject:d.visibilityResultBuffer];
+@@ -2965,6 +2993,13 @@
+  NmbCommandBuffer *handle=_handle;
+  id<MTLRenderCommandEncoder> made=[self encoder:[NBRenderEncoder new] make:^{return nmb_render_encoder_new(handle,&pass);} what:@"renderCommandEncoder"];
+  if(made) {
++  NSUInteger tileSamples=0;
++  for(unsigned i=0;i<8 && !tileSamples;i++)tileSamples=d.colorAttachments[i].texture.sampleCount;
++  if(!tileSamples)tileSamples=d.depthAttachment.texture.sampleCount;
++  if(!tileSamples)tileSamples=d.stencilAttachment.texture.sampleCount;
++  if(!tileSamples)tileSamples=pass.samples;
++  ((NBRenderEncoder *)made)->_tileW=pass.tile_width?(uint32_t)pass.tile_width:32;
++  ((NBRenderEncoder *)made)->_tileH=pass.tile_height?(uint32_t)pass.tile_height:(tileSamples==4?16:32);
+   id<MTLTexture> t0=d.colorAttachments[0].texture;
+   const uint64_t big=t0 && (uint64_t)t0.width*t0.height>=2000000;
+   ((NBRenderEncoder *)made).passKey=(t0?(uint64_t)t0.pixelFormat:0)|((uint64_t)d.colorAttachments[0].loadAction<<16)|
+@@ -4269,6 +4304,50 @@
+ }
+ // The asynchronous forms make the pipeline on the caller's thread and call the handler before returning, as the library's
+ // newFunctionWithName:constantValues:completionHandler: does (RenderBox's pipeline loader, Core Image's bilateral solver).
++// A tile pipeline (MTLTileRenderPipelineDescriptor): the runtime compiles the tile function as a compute kernel under the descriptor's
++// colour formats; a render encoder dispatches it per tile of its pass.
++- (id<MTLRenderPipelineState>)newRenderPipelineStateWithTileDescriptor:(MTLTileRenderPipelineDescriptor *)d options:(MTLPipelineOption)options
++                                                          reflection:(MTLRenderPipelineReflection **)reflection error:(NSError **)error {
++ if(reflection)*reflection=nil;
++ NBFunction *tile=[(id)d.tileFunction isKindOfClass:[NBFunction class]]?(NBFunction *)d.tileFunction:nil;
++ if(!tile){if(error)*error=nbError(@"tile pipeline: foreign or missing tile function");return nil;}
++ NmbTilePipelineDescriptor p={};
++ p.tile=tile.handle;
++ for(unsigned i=0;i<8;i++)p.formats[i]=d.colorAttachments[i].pixelFormat;
++ p.samples=d.rasterSampleCount;
++ p.threadgroup_matches_tile=d.threadgroupSizeMatchesTileSize;
++ p.max_threads=d.maxTotalThreadsPerThreadgroup;
++ p.max_call_stack_depth=d.maxCallStackDepth;
++ p.adding_binary_functions=d.supportAddingBinaryFunctions;
++ for(unsigned i=0;i<31;i++)p.mutability[i]=d.tileBuffers[i].mutability;
++ std::vector<NmbFunction *> linkedStore,privateStore;
++ MTLLinkedFunctions *linked=d.linkedFunctions;
++ if(!linkedHandles(linked.functions,linkedStore) || !linkedHandles(linked.privateFunctions,privateStore)) {
++  if(error)*error=nbError(@"tile pipeline: foreign linked function");return nil;
++ }
++ p.linked=linkedStore.data();p.linked_count=linkedStore.size();p.private_linked=privateStore.data();p.private_linked_count=privateStore.size();
++ std::vector<NmbBinaryArchive *> archives;
++ if(!pipelineArchives(d.binaryArchives,archives,error))return nil;
++ const NmbPipelineOptions creation={(uint64_t)options,archives.data(),archives.size()};
++ const uint64_t began=nowUs();
++ NmbRenderPipeline *handle=nmb_tile_pipeline_new(gDevice,&p,&creation);gTimePipeline.add(began);
++ if(!handle) {
++  NSString *why=[NSString stringWithFormat:@"%@ | tile %@",lastError(),tile.name];
++  static std::atomic<int> told{0};
++  if(told.fetch_add(1)<64)NBLOG(@"native-metal: tile pipeline refused: %@",why);else noteProblem([@"tile pipeline: " stringByAppendingString:why]);
++  if(error)*error=nbError([@"tile pipeline: " stringByAppendingString:why]);
++  return nil;
++ }
++ NBRenderPipeline *state=[NBRenderPipeline new];state.handle=handle;state.stateFormat=(uint32_t)d.colorAttachments[0].pixelFormat;
++ gPipelines++;if(error)*error=nil;
++ return (id<MTLRenderPipelineState>)state;
++}
++- (void)newRenderPipelineStateWithTileDescriptor:(MTLTileRenderPipelineDescriptor *)d options:(MTLPipelineOption)options
++                               completionHandler:(MTLNewRenderPipelineStateWithReflectionCompletionHandler)handler {
++ NSError *error=nil;MTLRenderPipelineReflection *reflection=nil;
++ id<MTLRenderPipelineState> state=[(id<MTLDevice>)self newRenderPipelineStateWithTileDescriptor:d options:options reflection:&reflection error:&error];
++ handler(state,reflection,error);
++}
+ - (void)newRenderPipelineStateWithDescriptor:(MTLRenderPipelineDescriptor *)d completionHandler:(MTLNewRenderPipelineStateCompletionHandler)handler {
+  NSError *error=nil;id<MTLRenderPipelineState> state=[(id<MTLDevice>)self newRenderPipelineStateWithDescriptor:d error:&error];
+  handler(state,error);

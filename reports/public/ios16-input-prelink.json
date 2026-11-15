@@ -19,9 +19,9 @@
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/scripts/kernel_target.py": "f2351aebc029a69673ead76e1a0b49845fd940e285da82cd693a89084991c4bf",
     "sources/UniXNU/drivers/DarwinBoot/Test/test-kernel-parser.py": "92be15ff6060ee1cd98e7feb8a021f1ebed477189375140dfc3ac8371f9b48d7"
   },
-  "input_source_report_sha256": "6aa39de67559bc1bf9c5d98434ec27f5b5344a322420e2267d237cbb221b4151",
-  "native_source_input_sha256": "e059c64e3d1cf98bddbca17b66bae1bd8fd20162e9451e40560782e8d76dd0bd",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "input_source_report_sha256": "1a9c9b91775980c1e73f0efd32593bbff7c7f42d25e6196061a17864a8c460bc",
+  "native_source_input_sha256": "b90862fbbeb650f9b34323bb1eb076bf284492426fc7c6bee058a14d59ac9d80",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
   "components": [
     "com.apple.driver.AppleARMPlatform",
@@ -392,11 +392,11 @@
   "emission_record": "build/cph2653-input-prelink/emission.json",
   "post_record": "build/cph2653-input-prelink/kernel.macho.crypto-hmac.json",
   "sealed_post_record": "build/cph2653-input-prelink/mach.input.sealed.crypto-hmac.json",
-  "candidate_sha256": "b5381ed683e08a68c477a5f5f24db4d8dfca55f0efc55d5189f2a6c1aa0b2dee",
-  "sealed_native_sha256": "35f9742124e18f7da2c02ef852a9aeb63882bb4bc208c1393100a222397b5555",
-  "emission_record_sha256": "910ac10fb4288508736809be2469690b703ce178e0fc33223444bf2766c29556",
-  "post_record_sha256": "96c7ab042711f94450cefb2d3f6f7370e59692795737d4b025183f765e31060c",
-  "sealed_post_record_sha256": "118a5ca99162411e8ecc2995ccca7fe98faf98ba3dee171e13bfc206b6543669",
+  "candidate_sha256": "ee07624c4bc4e7eed7992448812faeeac401a897b71c2b57a49c4bb448a1eead",
+  "sealed_native_sha256": "4cd8824c0cedb9f7801d809567be910aab6eda44fdda16f85db5d481b41d872d",
+  "emission_record_sha256": "4f3929473149bfcd0f9985ab27b352dc321c744e87fb4f42aa9af4273c5b56aa",
+  "post_record_sha256": "9cd431d898b4da9bde3a93d2b6a1fbf783a3814b3f2f6a8f22f309bc243770d0",
+  "sealed_post_record_sha256": "39a21ac4f117e09de1ec00a1efd15cdf7d268ffe0a06a2421895c547765d3b83",
   "negative_controls": [
     {
       "case": "pointer",
@@ -458,15 +458,15 @@
   "source_crypto_post_verified": true,
   "strict_no_undefined": true,
   "protected_default_artifact_sha256": {
-    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
-    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "5434b91d048c7ac3e72fdace018caf3f013bea656d5cdaae989fbc7404cff854",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
     "build/cph2653-native-bringup/boot.img": "18a04d167d6515640f3a180702d6c82d4dcfb9eb853d4a38416a05235f7bdb9e",
-    "build/cph2653-display-prelink/kernel.macho": "e35d399f79ec0bec13fe9b638acf365a667da9dd639f8685064b67593386bdef",
-    "build/cph2653-display-bringup/boot.img": "e1a5241b0424bd9d4976462d9cbbe943e68ced7d337dfd5e3bac71f04cb317a9",
-    "build/cph2653-ufs-root/mach.storage": "ef30b30dd044e091dcfacbec76c27eeb30c43c771f4983e217a22906720a44d6",
-    "build/cph2653-storage-prelink/kernel.macho": "350073b7ee82f813370eb6d238f5c72107d960a661297e58fdb6e32ccce3a3b2",
-    "build/cph2653-system-bringup/boot.img": "7c8ea5ad2f6acdfa3ddccbee1a0c05eaa23748cbdd567c99762c290061919730",
-    "build/cph2653-input-native/mach.input": "e059c64e3d1cf98bddbca17b66bae1bd8fd20162e9451e40560782e8d76dd0bd"
+    "build/cph2653-display-prelink/kernel.macho": "41e9d513e7a53990ae7bec3469320afcc4a1080cac87a30b7dc8229fbaf9b9cc",
+    "build/cph2653-display-bringup/boot.img": "6052ace7c04382020943592c13887a846c317a359234733c60b02353427ca12d",
+    "build/cph2653-ufs-root/mach.storage": "6a613083d0e059826f57bfca95caf16fb5ad46963b91fc41465baee2eb57a93f",
+    "build/cph2653-storage-prelink/kernel.macho": "e5b25459ef4953fc5d1ba78451621ac3477d7f34fbe43c5d7b2df3c013f94d69",
+    "build/cph2653-system-bringup/boot.img": "2894ee46922e5da49e1794fcd7b7dbeac232b3b88c193310f8846cc76afc15e1",
+    "build/cph2653-input-native/mach.input": "b90862fbbeb650f9b34323bb1eb076bf284492426fc7c6bee058a14d59ac9d80"
   },
   "default_artifacts_unchanged": true,
   "original_hid_family_embedded": true,

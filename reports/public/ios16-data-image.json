@@ -191,7 +191,7 @@
     {
       "case": "container-checksum",
       "result": "REJECTED",
-      "reason": "Command '[PosixPath('build/ios16-data-apfs/apfs-data-verify'), PosixPath('build/ios16-data-apfs/candidate-bihs4rst/container-checksum.apfs'), PosixPath('build/ios16-data-apfs/candidate-bihs4rst/container-checksum-readback/blobs')]' returned non-zero exit status 1."
+      "reason": "Command '[PosixPath('build/ios16-data-apfs/apfs-data-verify'), PosixPath('build/ios16-data-apfs/candidate-imb6vmzg/container-checksum.apfs'), PosixPath('build/ios16-data-apfs/candidate-imb6vmzg/container-checksum-readback/blobs')]' returned non-zero exit status 1."
     },
     {
       "case": "plain-payload-byte",

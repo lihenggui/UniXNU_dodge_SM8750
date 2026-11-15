@@ -18,17 +18,17 @@
     "sources/UniXNU/drivers/DarwinBoot/Test/test-kernel-parser.py": "92be15ff6060ee1cd98e7feb8a021f1ebed477189375140dfc3ac8371f9b48d7"
   },
   "dependency_report_sha256": {
-    "reports/ios16-data-startup.json": "c515635f4d7ab7d6aea87345b3b4952bb1f2530c58140d90167ec6216347bcc9"
+    "reports/ios16-data-startup.json": "5e543c640c3b01f6c06b4f0b92bb3e81c0901227d5120ccf4bcf166b72a23d81"
   },
   "artifacts": {
-    "build/cph2653-data-startup-prelink/mach.data-startup.sealed": "d24616f7572ddf9098941fbba3c4ce62075f89d849050d9672e78a29931dd115",
-    "build/cph2653-data-startup-prelink/kernel.macho": "2dd49342fc3cc52e948c7649aa848399a901c4f7a5b4ef3a735ce99c985a3b50",
-    "build/cph2653-data-startup-prelink/emission.json": "e9214885f8e68d604466604d0ad679bdcafd584fbb581b94e41889f17da4c4d2",
-    "build/cph2653-data-startup-prelink/mach.data-startup.sealed.crypto-hmac.json": "ca7312c6e1b67253cb8c41aab50c1acd40c7d25ebef85acb64272fe6f947f5f3",
-    "build/cph2653-data-startup-prelink/kernel.macho.crypto-hmac.json": "fef14b86faceadfa20bf580eeb6373cc92db7fb9fe087d087941b76d98533c1b"
+    "build/cph2653-data-startup-prelink/mach.data-startup.sealed": "dac62d291a5a641edd78bc979696f06595cf0bf4c62ad8a0666d854bb51101e5",
+    "build/cph2653-data-startup-prelink/kernel.macho": "804a161bfc292a680153bb931fc689631da7d89bca0306c2d37568a54d4e2c67",
+    "build/cph2653-data-startup-prelink/emission.json": "1482036b358330b69eae22515b56733fb8b8dbf52e030c032d4641c38cb9dca8",
+    "build/cph2653-data-startup-prelink/mach.data-startup.sealed.crypto-hmac.json": "aff5eb8f1e9ea9c09bfccf044561dd780cb2cee9c9a854f0462cdad1bd5caa47",
+    "build/cph2653-data-startup-prelink/kernel.macho.crypto-hmac.json": "9b70d01351b0bba87cc23e6f6cd8e4897e2cd689f6933814bda8235e3083b77a"
   },
   "candidate": "build/cph2653-data-startup-prelink/kernel.macho",
-  "candidate_sha256": "2dd49342fc3cc52e948c7649aa848399a901c4f7a5b4ef3a735ce99c985a3b50",
+  "candidate_sha256": "804a161bfc292a680153bb931fc689631da7d89bca0306c2d37568a54d4e2c67",
   "components": [
     "com.apple.driver.AppleARMPlatform",
     "com.apple.driver.AppleAudioClockLibs",
@@ -372,7 +372,7 @@
   "actual_iobsd_hook_read_back": {
     "address": "0xfffffff0079a6f2c",
     "bytes": 80,
-    "sha256": "ce9157f8b3538c37316d492b7cdb5813d0efff6017462bcfe87c940d55ddbb0d",
+    "sha256": "d1add8900f401f2280a1f95a9dacd2bd7ac7068a874a68abc5c20de1a54ffcb0",
     "queue_call_order": [
       "0xfffffff0079a6f40",
       "0xfffffff0079a6f44",
@@ -401,7 +401,7 @@
   "actual_iobsd_hook": {
     "address": "0xfffffff0079a6f2c",
     "bytes": 80,
-    "sha256": "ce9157f8b3538c37316d492b7cdb5813d0efff6017462bcfe87c940d55ddbb0d",
+    "sha256": "d1add8900f401f2280a1f95a9dacd2bd7ac7068a874a68abc5c20de1a54ffcb0",
     "queue_call_order": [
       "0xfffffff0079a6f40",
       "0xfffffff0079a6f44",

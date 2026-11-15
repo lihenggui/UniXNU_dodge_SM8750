@@ -1,14 +1,14 @@
 {
   "result": "IOS16_CONCRETE_DISPLAY_FULL_NATIVE_KERNEL_LINK_PASS",
   "builder_sha256": "38d73e067352515addb7c3f5941d1d14cd9638af0cb58b4f80a030928d4f0e8c",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "dependency_report_sha256": {
-    "gpu-kernel-candidate": "11ede36c55f9e8bd60d02d7696eed748694fbb2cd3310dca697829a1a032484c",
-    "gpu-link-probe": "1acf07872954bf3b5ba58f6d2ed6493a809f134db7f022c48841c6b8a06c5499",
-    "ios16-display-service": "f02c15124a1a0f722409f79c00ec554b4e10952b358157dfff73341db50f0c97",
-    "ios16-graphics-lifecycle": "0a256f560e8f77127e09a84066e033cac91ea02d4cb30dfa8d02219172cd66a4",
-    "ios16-gop-provider": "abdcce6181e7ba3b8feb6191edcccb1f3ba7d7f4695e70ebf15f39536f408517",
-    "ios16-graphics-late": "5bba30412c84536a155845df37ea497c04815f9abf3aca808715a158d21f1f03"
+    "gpu-kernel-candidate": "259415b8f1f47ff63d3ebe7d5026f18292b9ae46ce6f0fc3ecf0516e33842311",
+    "gpu-link-probe": "9b6e05396245ee4ba34da4a905bc6dda84982356740f6f5a96d7123079d8bcdd",
+    "ios16-display-service": "3462a2e80c0dc9c5d792e6d5032829ef5144186429381da75d3059eefc02651d",
+    "ios16-graphics-lifecycle": "1f4e59d2c5586396e28fdc64fb9247177601728d159dd9048ab4f3a32d007cc1",
+    "ios16-gop-provider": "277ec44a24798e6f626de3a3a33e5238f3b9a392a71dab12a3f502168d9f3b7a",
+    "ios16-graphics-late": "249b2078122a774e4f40634f16e96b6de2283bf627b34e8b5c8262d40568f3da"
   },
   "linked_source_objects": 64,
   "objects": {
@@ -300,7 +300,7 @@
     "__Z34dodge_display_frontend_set_refreshP20DodgeDisplayFrontendb": "0xfffffff007a50bb8",
     "__Z35dodge_iphone_framebuffer_initializev": "0xfffffff007a532c0",
     "__Z35dodge_iphone_framebuffer_registeredv": "0xfffffff007a5340c",
-    "___ubsan_handle_negate_overflow_minimal": "0xfffffff007a66d5c",
+    "___ubsan_handle_negate_overflow_minimal": "0xfffffff007a66d60",
     "_dodge_adreno_display_timeline": "0xfffffff007a23638",
     "_dodge_diagnostic_console_attach": "0xfffffff007a4cd70",
     "_dodge_gop_provider_publish": "0xfffffff007a54774",
@@ -1549,7 +1549,7 @@
   "partial_object": "build/cph2653-display-kernel/DodgeDisplayCombined.o",
   "partial_object_sha256": "8567594ceadd9c09f2dea89b884c7c9f1efc8df80ee2219d0ef4f407d0ff2a85",
   "isolated_kernel": "build/cph2653-display-kernel/mach.display",
-  "isolated_kernel_sha256": "d8f7f6c03c7d1c19753c48c4988160768d52187e9502084727ce3457ce536c5c",
+  "isolated_kernel_sha256": "f755b2990bee4c2bd6bf60aec9bb76dc860346d99f3edd5ecff76ff5aba65e4f",
   "bytes": 18442408,
   "concrete_vtable": {
     "address": "0xfffffff00724be38",
@@ -2264,7 +2264,7 @@
   "actual_early_constructor_count": 99,
   "concrete_initializer_removed_from_early_table": true,
   "input_manifest": "build/cph2653-display-kernel/link-inputs.json",
-  "input_manifest_sha256": "d0fd04f3a05112d3dd5160cf5fe28ffdf5f162bde19d75fd02f3fbef7266b266",
+  "input_manifest_sha256": "7da751135639da06e6a8a774afa15f2abdbb5b2325a08ce06f30399c0e7e9a11",
   "command_manifest": "build/cph2653-display-kernel/link-commands.json",
   "command_manifest_sha256": "1ee2cf01679bdb5976bb3eccbbc80fb24f9dd775e0847d7e3c11bffacbb46cd1",
   "native_filelist": "build/cph2653-display-kernel/display-native.filelist",
@@ -2300,10 +2300,10 @@
   "opt_in_iobsd_graphics_hook_linked": true,
   "default_iobsd_source_object_and_filelist_unchanged": true,
   "protected_default_artifact_sha256": {
-    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
-    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "5434b91d048c7ac3e72fdace018caf3f013bea656d5cdaae989fbc7404cff854",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/mach.development.bcm2837.unstripped": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
+    "build/unixnu/dodge/ios-16.7.16-20H392/dodge/kernel/kernel.macho": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
     "build/cph2653-native-bringup/boot.img": "18a04d167d6515640f3a180702d6c82d4dcfb9eb853d4a38416a05235f7bdb9e",
-    "build/cph2653-gpu-link-probe/mach.gpu": "ec41460411b00cd6f4a296c709277edd648f7c7245200788250c881ffb9ad997",
+    "build/cph2653-gpu-link-probe/mach.gpu": "24b52adb0c7df2e5e6220a7846c69ceb117e951358a701fd8d731de3ec468740",
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/iokit/DEVELOPMENT/IOKitBSDInit.cpo": "17ff0b9dd0a98330fdbb4b632306d20d23e61da11aa23fc7c9916926579d234e",
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/.cache/xnu-work/iokit/bsddev/IOKitBSDInit.cpp": "1b401aa000a769a4acb3afe51ec8167b314b515ed73e9b45099058bad3d882aa",
     "build/unixnu/dodge/ios-16.7.16-20H392/dodge/tree/build/xnu/ios-obj/DEVELOPMENT_ARM64_BCM2837/link.filelist": "9cbbbda17585d888731a8d9a66f5996c4767b0c5d151d7faca27e2e6f0a73ede"

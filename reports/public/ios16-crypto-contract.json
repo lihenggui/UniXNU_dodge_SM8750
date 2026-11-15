@@ -1,8 +1,8 @@
 {
   "result": "IOS16_ORIGINAL_CRYPTO_OWNER_AND_USED_KPI_BOUNDARIES_STATIC_PASS",
-  "builder_sha256": "0e80f38244013495dacdfab9fbe93c6eed47b757d5fbdd1e86f06e17804a7a8f",
+  "builder_sha256": "587aba98a8eb316b97498954b540b15b3cf3dcf5647167c5cda0e809fd93f7fd",
   "source_sha256": {
-    "scripts/prepare_ios16_crypto.py": "0e80f38244013495dacdfab9fbe93c6eed47b757d5fbdd1e86f06e17804a7a8f",
+    "scripts/prepare_ios16_crypto.py": "587aba98a8eb316b97498954b540b15b3cf3dcf5647167c5cda0e809fd93f7fd",
     "profiles/os/ios-16.7.16-20H392/crypto-contract.json": "979b7654adf7a07e310c399a4f4b25ef8604801f115b76b6a4fc47d89cae6a9f",
     "profiles/os/ios-16.7.16-20H392/security/OriginalCryptoABI.h": "92f42b47e74bf8181453af91f982e69267cb4b6395f53cb03cadfdd47e48f957",
     "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078",
@@ -10,7 +10,8 @@
   },
   "dependency_report_sha256": {},
   "artifacts": {
-    "build/ios16-crypto-abi/CryptoLayout.o": "aae7942eade166ba395b223a4f710e69e45988e1f4f4ca91bdbe3fe8fd138df7"
+    "build/ios16-crypto-abi/CryptoLayout.o": "aae7942eade166ba395b223a4f710e69e45988e1f4f4ca91bdbe3fe8fd138df7",
+    "build/ios16-apfs-mount-prelink/kernel.macho": "31c346e7c7727477ac167658717d928fcda5f3ccc98938a15fb9dddd32516fb7"
   },
   "contract": "profiles/os/ios-16.7.16-20H392/crypto-contract.json",
   "contract_facts": {
@@ -124,6 +125,11 @@
     "appended_digest_hmac_kpis_qualified": false,
     "hardware_tested": false
   },
+  "candidate_readback": {
+    "existing_candidate": "build/ios16-apfs-mount-prelink/kernel.macho",
+    "existing_candidate_sha256": "31c346e7c7727477ac167658717d928fcda5f3ccc98938a15fb9dddd32516fb7",
+    "existing_candidate_record_rebasing_verified": true
+  },
   "source_pin": {
     "path": "profiles/os/ios-16.7.16-20H392/crypto-contract.json",
     "sha256": "979b7654adf7a07e310c399a4f4b25ef8604801f115b76b6a4fc47d89cae6a9f",
@@ -138,5 +144,5 @@
   "all_ios_port_code_complete": false,
   "hardware_tested": false,
   "ready_for_ios_boot": false,
-  "scope": "Actual Darwin 22 compiler layouts and exact original iPhone packed kmod, wrapper, registration calls and PRNG callbacks. Seven absolute inputs are measured and rebasing of the old candidate record is read back. No initializer/POST is executed and appended digest/HMAC APIs or the complete crypto table are not qualified."
+  "scope": "Actual Darwin 22 compiler layouts and exact original iPhone packed kmod, wrapper, registration calls and PRNG callbacks. Seven absolute inputs are measured and rebasing of the current candidate record is read back. No initializer/POST is executed and appended digest/HMAC APIs or the complete crypto table are not qualified."
 }

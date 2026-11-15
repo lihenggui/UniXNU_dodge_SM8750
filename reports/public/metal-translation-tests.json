@@ -1,5 +1,34 @@
 {
   "result": "PRODUCTION_METAL_TRANSLATION_HOST_CHECK_PASS",
+  "source_sha256": {
+    "scripts/check_metal_translation.py": "435d59b47190316491aefbea0d757ae27c8134eeb6b3a2ab4fab51a65d77584b",
+    "sources/AdrenoMetal-a830/tools/MetalVulkanProbe.rs": "9da882cf2c51e02ef30e13d10be9669d4bcb610afbd3dd28f26b9618472d9728",
+    "build/cph2653-metal-translation-tests/source/MetalVulkanProbe.rs": "0b5cae7c313f0329db165e8aebe58562963dc21d325fa631138cd50633aceff7",
+    "patches/adreno-metal/0002-refresh-offline-probe-api.patch": "d574e58a56e3075c7b90c18923d3165e53f7d3e4371b982ec707ec212ce6f0de",
+    "patches/adreno-metal/0003-offline-tile-pipelines.patch": "e8a06a3b68a0be2d168f5adb5e8f82f709313600f705fa887df894a25f256e6d",
+    ".cache/gpu-work/AdrenoMetal-native-a830/NativeBridgeMetalFrontend.mm": "8368dee834f9d703126ab87d8d230abe5ed4a089bdd4be982f698b7c0a4a4058",
+    "tests/DodgeMetalTilePassTest.cpp": "f8123ea636f1a041b80bab36ca2348d9bd17a9f28107f562e668d1884382bcf5",
+    ".cache/gpu-work/metal2vulkan/crates/metal2vulkan-validation/fixtures/public/kernel_imageblock_word.ll": "5109fd8017719f6af799bf1a4f790ecf06536a93dd156db1a49fe4ca77c346fa",
+    ".cache/gpu-work/metal2vulkan/crates/metal2vulkan-validation/fixtures/public/kernel_implicit_imageblock_half4.ll": "4023e6417daf1c67b12af05e546f66bfbb9c79f04a9daae56adff3fa98dab6bc"
+  },
+  "artifacts": {
+    "build/cph2653-metal-translation-tests/target/release/adreno-metal-vulkan-probe": "359ee61e8333daa1ba17f3f665005f628765e308d4a0ce3e0b2c40a1b6301ab9",
+    "build/cph2653-metal-translation-tests/turnip-declared-profile.json": "c943b78486a3683a1d8ab35a85ef5c04c49a406c0a12e55401c7fd227703fce2",
+    "build/cph2653-metal-translation-tests/color-attachments.json": "83c4b6ee90757f42be368816b7bb6453b398ffe267f406fd6b4b4c978301cf73",
+    "build/cph2653-metal-translation-tests/TilePassGeometry.inc": "a5b4942a79242c4c5742ff6c710f5dd4af196de4ac30654b992e3cc159173c2e",
+    "build/cph2653-metal-translation-tests/tile-pass-test": "1a9014ab280773bd7b547a695e3a671fdb2bbfdc887d1597cf27040c22b224f6",
+    "build/cph2653-metal-translation-tests/tile-pass-test.log": "9ddb557eab8f423763bf2f3678944fdceec4c7c2635c0c39a1b0f1d65bd41013",
+    "build/cph2653-metal-translation-tests/kernel_imageblock_word.air": "eed12f0d2339d0cbd567bafcbea97a77942c3baae3ea8cb0db13992ca0e6ef19",
+    "build/cph2653-metal-translation-tests/kernel_implicit_imageblock_half4.air": "fb1270488bef7fa055f122dd90b47106d1f45f8e1fcb28226d049b56f6689564",
+    "build/cph2653-metal-translation-tests/compute-buffer-0.spv": "857557750e7f760f991983ede41fb4627f76b63cc96702dc1cbbed5c44e57e62",
+    "build/cph2653-metal-translation-tests/compute-texture-0.spv": "b19b35e4a53468e4c8798b63636e91cf972e76d71d21dca5d44e1a828869724e",
+    "build/cph2653-metal-translation-tests/render-colored-0.spv": "77592efb2e9cee2ea59c3b8e775801e4555720f2331db2adb70d0e38c4a84c3a",
+    "build/cph2653-metal-translation-tests/render-colored-1.spv": "5a85814f27463b01f61cc1afbfccc5cf846ba23909ed13a6e54afb82fd142543",
+    "build/cph2653-metal-translation-tests/scanout-opaque-0.spv": "2936122a84652f62f287689eb32fb22aaec57a3e61d7a0254146307ca6dd15f1",
+    "build/cph2653-metal-translation-tests/scanout-half-convert-0.spv": "25e36e8bd3bb1913d4208b570d69c3afa854ad960253e24a75a2362552a1220f",
+    "build/cph2653-metal-translation-tests/tile-word-0.spv": "c6220fecbf6ce8d05e9604503705e509c145546631c8e8f5f68fe17c8be3cfe2",
+    "build/cph2653-metal-translation-tests/tile-attachment-0.spv": "7dca10541535cda11d74b7f8a70dac51048c8523ed26b72d51e67fda071a89f9"
+  },
   "translator_revision": "624bab3918de5b978e1101517abca2b4fa426565",
   "runtime_patches": [
     {
@@ -105,15 +134,33 @@
     "bytes_verified": 1750241720,
     "method": "Every blob matches HEAD plus hash-locked overlays via a private index; user index preserved"
   },
-  "consumer_source_sha256": "0b2b96211c21b600d8fade6d07660ce533c277e96bcc6eb1c396eaddb100160d",
+  "consumer_source_sha256": "0b5cae7c313f0329db165e8aebe58562963dc21d325fa631138cd50633aceff7",
   "cargo_lock_sha256": "b3d29601c2656ca778d8020bc343bfda1f27ab7ec930a3690b06ceb62f4f807e",
   "original_consumer_source_sha256": "9da882cf2c51e02ef30e13d10be9669d4bcb610afbd3dd28f26b9618472d9728",
   "consumer_api_patch": {
     "path": "patches/adreno-metal/0002-refresh-offline-probe-api.patch",
     "sha256": "d574e58a56e3075c7b90c18923d3165e53f7d3e4371b982ec707ec212ce6f0de"
   },
+  "tile_overlay": {
+    "path": "patches/adreno-metal/0003-offline-tile-pipelines.patch",
+    "sha256": "e8a06a3b68a0be2d168f5adb5e8f82f709313600f705fa887df894a25f256e6d",
+    "before_sha256": {
+      "MetalVulkanProbe.rs": "0b2b96211c21b600d8fade6d07660ce533c277e96bcc6eb1c396eaddb100160d"
+    },
+    "after_sha256": {
+      "MetalVulkanProbe.rs": "0b5cae7c313f0329db165e8aebe58562963dc21d325fa631138cd50633aceff7"
+    },
+    "support": {},
+    "scope": "Compile original public tile AIR through the pinned translator without opening a Vulkan device."
+  },
+  "tile_air_sources": {
+    ".cache/gpu-work/metal2vulkan/crates/metal2vulkan-validation/fixtures/public/kernel_imageblock_word.ll": "5109fd8017719f6af799bf1a4f790ecf06536a93dd156db1a49fe4ca77c346fa",
+    "build/cph2653-metal-translation-tests/kernel_imageblock_word.air": "eed12f0d2339d0cbd567bafcbea97a77942c3baae3ea8cb0db13992ca0e6ef19",
+    ".cache/gpu-work/metal2vulkan/crates/metal2vulkan-validation/fixtures/public/kernel_implicit_imageblock_half4.ll": "4023e6417daf1c67b12af05e546f66bfbb9c79f04a9daae56adff3fa98dab6bc",
+    "build/cph2653-metal-translation-tests/kernel_implicit_imageblock_half4.air": "fb1270488bef7fa055f122dd90b47106d1f45f8e1fcb28226d049b56f6689564"
+  },
   "host_binary": "build/cph2653-metal-translation-tests/target/release/adreno-metal-vulkan-probe",
-  "host_binary_sha256": "d15575f7f0c88d14746f8ab9e3bc8039d38ec81ad038298cfca0b7ab30ccb25b",
+  "host_binary_sha256": "359ee61e8333daa1ba17f3f665005f628765e308d4a0ce3e0b2c40a1b6301ab9",
   "profile": "build/cph2653-metal-translation-tests/turnip-declared-profile.json",
   "profile_sha256": "c943b78486a3683a1d8ab35a85ef5c04c49a406c0a12e55401c7fd227703fce2",
   "profile_scope": "Vulkan 1.2 floor plus two production Turnip-declared storage-image features; not observed A830 capabilities",
@@ -123,7 +170,7 @@
     "build/cph2653-metal-bridge/nmb_fixture_air.air": "5d377e15fffcca9108bd00d1f290e5238bbfe1ecbf65ba575ff254470ffa4de5",
     "build/cph2653-metal-bridge/nmb_scanout_air.air": "f619fe625249d358e5180b446b6f7abe4e39ccad1a9665424097fb8a5c68ac61"
   },
-  "pipelines": 5,
+  "pipelines": 7,
   "spirv_modules": [
     {
       "case": "compute-buffer",
@@ -208,6 +255,34 @@
       "validation_flags": [
         "--uniform-buffer-standard-layout"
       ]
+    },
+    {
+      "case": "tile-word",
+      "stage": "VK_SHADER_STAGE_COMPUTE_BIT",
+      "entry_point": "main",
+      "path": "build/cph2653-metal-translation-tests/tile-word-0.spv",
+      "sha256": "c6220fecbf6ce8d05e9604503705e509c145546631c8e8f5f68fe17c8be3cfe2",
+      "words": 1986,
+      "validation_environments": [
+        "vulkan1.2"
+      ],
+      "validation_flags": [
+        "--uniform-buffer-standard-layout"
+      ]
+    },
+    {
+      "case": "tile-attachment",
+      "stage": "VK_SHADER_STAGE_COMPUTE_BIT",
+      "entry_point": "main",
+      "path": "build/cph2653-metal-translation-tests/tile-attachment-0.spv",
+      "sha256": "7dca10541535cda11d74b7f8a70dac51048c8523ed26b72d51e67fda071a89f9",
+      "words": 2509,
+      "validation_environments": [
+        "vulkan1.2"
+      ],
+      "validation_flags": [
+        "--uniform-buffer-standard-layout"
+      ]
     }
   ],
   "invalid_pipeline_controls_refused": [
@@ -217,10 +292,13 @@
     "standalone-fragment",
     "wrong-fragment-stage",
     "missing-color-attachment",
-    "missing-storage-format-on-floor"
+    "missing-storage-format-on-floor",
+    "fragment-as-tile",
+    "vertex-as-tile"
   ],
+  "tile_pass_cases": 43,
   "vulkan_loader_linked": false,
   "gpu_execution": false,
   "hardware_tested": false,
-  "scope": "Actual patched translator compiles public buffer/texture/render and production scanout AIR; validates real SPIR-V. No pixels executed."
+  "scope": "Actual patched translator compiles public buffer/texture/render/tile and production scanout AIR; validates real SPIR-V. Production frontend tile geometry is checked with descriptor peers under sanitizers. No pixels executed."
 }

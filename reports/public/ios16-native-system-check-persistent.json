@@ -1,0 +1,108 @@
+{
+  "result": "IOS16_NATIVE_SYSTEM_STARTUP_AND_SEEDCTL_CPU_PASS",
+  "preparation": [
+    {
+      "case": "foreign-identity",
+      "result": "PASS",
+      "phase": 0,
+      "calls": [
+        "identity"
+      ]
+    },
+    {
+      "case": "security-failed",
+      "result": "PASS",
+      "phase": 3,
+      "calls": [
+        "identity",
+        "security"
+      ]
+    },
+    {
+      "case": "security-failed-repeat",
+      "result": "REFUSED",
+      "phase": 3
+    },
+    {
+      "case": "prepared",
+      "result": "PASS",
+      "phase": 2,
+      "calls": [
+        "identity",
+        "security"
+      ]
+    },
+    {
+      "case": "prepared-repeat",
+      "result": "REFUSED",
+      "phase": 2
+    }
+  ],
+  "IOBSD": [
+    {
+      "case": "permitted",
+      "result": "PASS",
+      "calls": [
+        "IOBSD",
+        "owner-security",
+        "storage",
+        "Data",
+        "input"
+      ],
+      "IOBSD_return": 0
+    },
+    {
+      "case": "identity-or-security-refused",
+      "result": "PASS",
+      "calls": [
+        "IOBSD",
+        "owner-security"
+      ],
+      "IOBSD_return": 5
+    },
+    {
+      "case": "unconditional-security-success-control",
+      "result": "REJECTED",
+      "unsafe_calls_observed_only_in_model_control": [
+        "IOBSD",
+        "owner-security",
+        "storage",
+        "Data",
+        "input"
+      ]
+    }
+  ],
+  "original_seedctl": [
+    {
+      "case": "original-sysctlbyname-instructions",
+      "result": "PASS",
+      "output_bytes": 8
+    },
+    {
+      "case": "original-IOConnectCallStructMethod-instructions",
+      "result": "PASS",
+      "selector": 0,
+      "output_bytes": 32
+    }
+  ],
+  "root_write_protection": {
+    "result": "PASS",
+    "write_protected": true
+  },
+  "persistent_store_capable": true,
+  "source_sha256": {
+    "scripts/check_native_system.py": "ae94585e353ed4ba6bdbc3d727d626d077abf4dc0310ee2018acc2546a66d96b",
+    "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-native-system-kernel-persistent.json": "ab79cdcf4739e3f4036f9399131d197e68348371a06033ca69795c630d9132bd",
+    "reports/ios16-native-entropy.json": "1787755fc9b086bcdfdad2462498601eb8cea764438b70e5192b337ae0f65e8d"
+  },
+  "artifacts": {
+    "build/cph2653-native-system-persistent/kernel.macho": "6962c1b56c94b402d609933c1f59b59829f22aaa268aa89463decfea94200e8d",
+    "build/cph2653-native-entropy/prng_seedctl.original": "321cbfba4b85f960cf1d153b27f9dbb35a5c14ab0044334fe78bb499e266b40b"
+  },
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Actual native kernel preparation/IOBSD instructions refuse foreign identities, preserve single-attempt failure latches and never schedule storage/Data/input after failed security. An unconditional-success model control is detected. Actual original iPhone seedctl instructions request the derived 8-byte counter and selector-0/32-byte entropy output. Registry/security/scheduler/system-call boundaries are explicit peers; no physical driver, entropy estimate or full system functionality is qualified."
+}

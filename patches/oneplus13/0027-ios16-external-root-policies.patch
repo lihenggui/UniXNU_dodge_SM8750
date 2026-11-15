@@ -1,0 +1,36 @@
+--- a/NativeUfs.cpp
++++ b/NativeUfs.cpp
+@@ -13,6 +13,9 @@
+ #if defined(NATIVE_VERIFIED_BLOCK) && NATIVE_VERIFIED_BLOCK
+ #include "verified_root.h"
+ #include "VerifiedBlockPolicy.h"
++#include "DodgeRootPolicySource.h"
++#define verified_root_policy_count (dodge_native_root_policy_count())
++#define verified_root_policies (dodge_native_root_policy_table())
+ extern "C" {
+ extern const struct vr_crypto vr_xnu_crypto;
+ extern const uint8_t verified_root_key[];
+@@ -1957,6 +1960,23 @@
+     IOFree (layout, sizeof (RootLayout));
+     return false;
+   }
++  // Policies live after the unchanged OS/SystemOS windows, outside the boot
++  // partition. The source loader pins their full container hash, then each
++  // window still verifies its owner RSA envelope through vr_open.
++  uint64_t volumeEnd = 0;
++  for (unsigned i = 0; i < layout->windows; ++i) {
++    const uint64_t end = layout->window[i].offset + layout->window[i].size;
++    if (end > volumeEnd) volumeEnd = end;
++  }
++  const DodgeRootPolicyIo policyIo = { nullptr, [](void *, uint64_t lba, uint32_t blocks, void *out) -> int {
++    return hostRead4k (0, lba, blocks, out) == kIOReturnSuccess;
++  } };
++  gRootDiagnostic.stage = "external owner root policies";
++  if (layout->windows != 2 || !dodge_native_root_policies_load (&policyIo, layout->userdataFirst, layout->imageBytes, volumeEnd)) {
++    rootDiagnosticFailure ("external owner root policies rejected");
++    IOFree (layout, sizeof (RootLayout));
++    return false;
++  }
+   gStoreGeometry = { true, layout->userdataFirst, layout->userdataLast, layout->imageBytes, layout->gptEntriesLba,
+                      layout->gptHeaderCrc, layout->gptEntriesCrc, layout->gptEntryCount };
+   const char *names[4] = {};

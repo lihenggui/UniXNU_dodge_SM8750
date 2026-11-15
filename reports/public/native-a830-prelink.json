@@ -1,7 +1,7 @@
 {
   "result": "NATIVE_A830_IPHONE_STRICT_PRELINK_PASS",
   "candidate": "build/cph2653-native-a830-prelink/kernel.macho",
-  "candidate_sha256": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
+  "candidate_sha256": "911dd28e865d14ac37de29c94f8c52a24dff0a8a6797259a9da858dd6c388d65",
   "unhooked_candidate": "build/cph2653-native-a830-prelink/kernel.unhooked.macho",
   "emission_record": "build/cph2653-native-a830-prelink/kernel.unhooked.json",
   "normal_security_starts": {
@@ -47,12 +47,12 @@
     "sources/UniXNU/drivers/DarwinBoot/Test/test-kernel-parser.py": "92be15ff6060ee1cd98e7feb8a021f1ebed477189375140dfc3ac8371f9b48d7"
   },
   "dependency_report_sha256": {
-    "reports/native-a830-kernel.json": "04388341f24b2db26f86d2876d4926f1dfc8d25a7de857abebdd8035b4ea545d"
+    "reports/native-a830-kernel.json": "89b143a9ecf8c2bcae3ed0f8df334578ee8f59475f97a0e0c7d217cd73b05d7b"
   },
   "artifacts": {
-    "build/cph2653-native-a830-prelink/kernel.macho": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702",
-    "build/cph2653-native-a830-prelink/kernel.unhooked.macho": "8e44a4f6df5699e7b9ce4bb4efd48bddd32a8f620a9a7de87af15310ec281f15",
-    "build/cph2653-native-a830-prelink/kernel.unhooked.json": "857d8184c541d44cf7ece98d0b621b0a249a37f81677eec7f7eca1ccf21edad4",
+    "build/cph2653-native-a830-prelink/kernel.macho": "911dd28e865d14ac37de29c94f8c52a24dff0a8a6797259a9da858dd6c388d65",
+    "build/cph2653-native-a830-prelink/kernel.unhooked.macho": "d650e1354316f576005a5e67cece4db40582fb320ef61c2ce02447e14c135db1",
+    "build/cph2653-native-a830-prelink/kernel.unhooked.json": "84ce130a9b9aa23627145c666b046ef27579fde7fcd1b783ca69aee70449abfe",
     "build/cph2653-native-a830-prelink/security-init.json": "54c500f04e0578dbba0b6d54ee94e565fe608de48bfbe7f6a7b8d69efdc440f8",
     "build/ios16-surface-producer-execution/SurfaceSyncProbe.o": "2362b077cd92a5c2a86eda834dbfbbd09b3b69a0e8bca7ca3b6c4a469290adb0"
   },

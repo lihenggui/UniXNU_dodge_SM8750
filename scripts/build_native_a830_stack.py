@@ -18,8 +18,10 @@ STAGES = (
     ('kernel', 'build_native_a830_kernel', (), 'native-a830-kernel'),
     ('prelink', 'build_native_a830_prelink', (), 'native-a830-prelink'),
     ('turnip', 'build_turnip_ios16', ('--native-a830',), 'native-a830-turnip'),
+    ('cache_host', 'check_native_a830_cache', (), 'native-a830-cache-host'),
     ('recovery_host', 'check_native_a830_recovery', (), 'native-a830-recovery-host'),
     ('bridge', 'build_metal_bridge', ('--native-a830',), 'native-a830-metal-bridge'),
+    ('translation_host', 'check_metal_translation', (), 'metal-translation-tests'),
     ('plugin', 'build_metal_plugin', ('--native-a830',), 'native-a830-metal-plugin'),
     ('userspace', 'check_gpu_userspace', ('--native-a830',), 'native-a830-userspace'),
     ('firmware', 'build_native_a830_firmware', (), 'native-a830-firmware'),
@@ -62,8 +64,11 @@ def collect():
     bridge, turnip, plugin = (reports[key] for key in ('bridge', 'turnip', 'plugin'))
     for row, field, key in ((bridge, 'native_surface_overlay', 'native_a830_metal_surface_overlay'),
                             (plugin, 'native_surface_overlay', 'native_a830_metal_surface_overlay'),
+                            (bridge, 'native_tile_overlay', 'native_a830_metal_tile_overlay'),
+                            (plugin, 'native_tile_overlay', 'native_a830_metal_tile_overlay'),
                             (turnip, 'native_surface_overlay', 'native_a830_mesa_surface_overlay'),
                             (turnip, 'native_recovery_overlay', 'native_a830_mesa_recovery_overlay'),
+                            (turnip, 'native_cache_overlay', 'native_a830_mesa_cache_overlay'),
                             (bridge, 'native_compile_overlay', 'native_a830_compile_overlay')):
         require(row[field] == lock[key] and sha(ROOT / lock[key]['path']) == lock[key]['sha256'],
                 'Native userspace adapter differs: ' + key)

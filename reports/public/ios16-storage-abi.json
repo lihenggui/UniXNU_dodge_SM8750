@@ -1,7 +1,7 @@
 {
   "result": "IOS16_ORIGINAL_STORAGE_CLASS_AND_PUBLIC_HEADER_ABI_STATIC_PASS",
   "builder_sha256": "d689aad158b97784bd388aa204df59a03e0cda4173f9482a982420df9970d367",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
   "public_reference": {
     "repository": "https://github.com/apple-oss-distributions/IOStorageFamily.git",

@@ -8,14 +8,14 @@
     "drivers/DodgeSecurity/DodgeCryptoOnce.h": "8c3b80943d8cf9c7891195183bc03e906ccbfa45de60dbc8b7e151660b0d3703"
   },
   "dependency_report_sha256": {
-    "reports/ios16-crypto-prelink.json": "dfcaf6e82393b60841a205babd39830b423304982693a441d44d83bd78328e62"
+    "reports/ios16-crypto-prelink.json": "9256dae188ada44ea2bb244fb6725ed8d875f93b7ae20ea171f4b4aa88439b1e"
   },
   "artifacts": {
     "build/cph2653-crypto-kernel/abi/CryptoStatusLayout.o": "6e63dc7306faaa0b06b5a9130852f3e0b6dcb9d1e453197251395dcce8b34b52",
     "build/cph2653-crypto-kernel/cpu-cases.json": "685a89ee8d7a40c43ae9c9b74497336a21f0838257c77b1554892f8f70208859"
   },
   "candidate": "build/cph2653-crypto-prelink/kernel.macho",
-  "candidate_sha256": "3315aae02eeea2b79a7340793c3cd0296fe385202de2d26ad1949707abdceee0",
+  "candidate_sha256": "06ad7621ea05f997a7e311823a22811055c7d4c798d3699dc8602bf33b5fbb11",
   "compiler_layout": {
     "status_bytes": 16,
     "phase": 0,

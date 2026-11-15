@@ -56,6 +56,14 @@ jobs:
         run: git diff --check
       - name: Check development KeyStore protocol and partial outputs with IOKit peers
         run: python3 scripts/check_keystore_host.py
+      - name: Check native owner policy, calendar and entropy source with sanitizers
+        run: python3 scripts/check_owner_system_host.py
+      - name: Check native UFS read-only and bounded persistent Data windows
+        run: python3 scripts/check_native_store_host.py
+      - name: Check external owner-policy loading, immutable snapshots and failure latches
+        run: python3 scripts/check_root_policy_source_host.py
+      - name: Check unsigned per-CPU iteration and empty secondary ranges
+        run: python3 scripts/check_percpu_iteration.py
       - name: Check native A830 startup, submission, fences and recovery with software controllers
         run: python3 scripts/check_native_a830_host.py
       - name: Check CPH2653 native A830 board, level selection and startup ownership
@@ -64,6 +72,8 @@ jobs:
         run: python3 scripts/check_native_a830_host.py --runtime
       - name: Check native A830 display admission after GPU recovery
         run: python3 scripts/check_native_a830_recovery.py --frontend-only
+      - name: Check production Turnip shader-cache sharing and buffer retirement
+        run: python3 scripts/check_native_a830_cache.py --restore-source
       - name: Check surface range and provider ownership with software IOKit peers
         run: python3 scripts/check_surface_backing_host.py
       - name: Check current-task surface identity ownership and refusal paths with software IOKit peers

@@ -105,6 +105,9 @@
     }
   ],
   "runtime_id": "2605d92132c3af3014cc6520195ade4f",
+  "native_surface_overlay": null,
+  "native_tile_overlay": null,
+  "native_compile_overlay": null,
   "translator_source_tree": {
     "git_tree": "70afeb54204b53bcd4e94cc32f377c993fb325b2",
     "files_verified": 6371,

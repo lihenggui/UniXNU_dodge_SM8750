@@ -1,6 +1,6 @@
 {
   "result": "IOS16_REQUEST_FIELDS_NATIVE_AND_ORIGINAL_BLOCKS_PASS",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
   "builder_sha256": "fc3e0de5b1e75a92f07c0bcb368c9ab0e383909c5d863b975069b2d859afd6d3",
   "contract": "profiles/os/ios-16.7.16-20H392/display-request-fields.json",

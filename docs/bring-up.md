@@ -19,7 +19,7 @@ download URL, BuildManifest identity and hashes.
 [upstream.lock.json](../upstream.lock.json) pins source revisions and patches.
 
 The [official guide](https://unixnu.com/porting/) was reviewed on 2026-11-12
-against [UniXNU `2366e33`](https://github.com/UniXNU/UniXNU/tree/2366e33e4934696424bb9f5aa7598df925fbc0c1). Follow its order:
+against [UniXNU `dff2765`](https://github.com/UniXNU/UniXNU/tree/dff276535db3ac394f628cec58a718cd46c20ac2). Follow its order:
 resolve the board and OS profile, verify memory and firmware, build platform
 services, then add storage, display, input and GPU support. Keep host results
 and device observations separate in [porting.toml](../porting.toml).
@@ -33,9 +33,55 @@ per-surface failure tracking, because this backend abandons in-flight jobs
 during recovery. Source revisions remain pinned in the lock file; this board
 embeds its four stock GPU microcode files locally.
 
-Newer mainline GPU changes add tile-pipeline handling, shader sharing across
-pipeline caches and fewer retired-buffer sweeps. Those changes are pending
-integration into this pinned A830 route.
+The native route also backports shader sharing across pipeline caches and
+buffer-cache lookup before retired-buffer collection. Its Metal frontend forwards
+tile pipeline creation, resources, pass memory and dispatch to the pinned runtime.
+Tile dimensions follow the pass's attachments and the runtime's 32x16 default
+at four samples. The existing device-family and tile-capability answers are retained.
+
+The 13T review covers [Shad0w23333 `25b1109`](https://github.com/Shad0w23333/UniXNU-Pagani_SM8750/tree/25b110978fec628cc29bf5bd1b5b5ce830156bfd)
+and [IssacL04 `a84204e`](https://github.com/IssacL04/UniXNU-Pagani_SM8750/tree/a84204eccb9b183945072e1b9b63de36c8495097).
+The native A830 driver remains at its latest `1a132105` revision. This board's
+memory reservations, touch rails, panel, GPU levels and firmware come from the
+CPH2653 capture. Peripheral work in the newer 13T integration also needs those
+board inputs and iPhone-specific interfaces.
+
+## Upstream review
+
+The 2026-11-14 review checks 32 repositories and 33 branch references against
+the selected sources. [The snapshot](../reports/public/upstream-review.json)
+records the remote revisions, commit relationships, input hashes and adaptation
+decisions. This review retains all source pins and the firmware memory patch.
+
+UniXNU main is now [`0c1bac3`](https://github.com/UniXNU/UniXNU/tree/0c1bac3d51a3009dca1708b15a5198f4b43d057a),
+16 commits beyond the previous `dff2765` review. That range changes host IPSW
+downloads, log presentation, macOS VM/account handling and device documentation.
+It does not change component gitlinks or the component catalog. The new VM
+patches belong to the macOS `xnu-12377` profile and need an independent Darwin 22
+port if selected for this target.
+
+| Source | Observed tip | Effect on this port |
+| --- | --- | --- |
+| Native Adreno 830 | `1a132105` | Current pin is still the driver tip. Both reviewed 13T reference tips are also unchanged. |
+| ArmCpu / ArmDTPlatform | `d90e457b` / `e8bd8d5d` | Calendar/clock registration and missing-RTC handling are backported to Darwin 22 in the separate native system build. Shared interrupts, idle/IPI ownership and a real board RTC still need work. |
+| DarwinBoot | `5243c68e` | Excluded/outside memory ranges and loader input records require matching kernel consumers and owner-manifest handling. |
+| ArmSmmu4K | `83969cd8` | Switched TTBR0 handling, demand page tables and live traversal change the API used by the pinned A830 fixed-pool integration. |
+| RamBlock | `00a6e5dd` | Concurrent/cached I/O and seed-memory release need the measured iPhone class, flush/durability and memory-lifetime checks. |
+| XnuPrelink | `440589b0` | The new work concerns filesets and newer OS fixtures; retain the passing legacy iPhone closure and its measured bindings. |
+| Mainline Adreno740 / AdrenoMetal | `54b41b8f` / `73d582fd` | Retain the existing A830 backports; review further fault isolation, memory and presentation changes against this backend and iPhone clients. |
+| Mesa / metal2vulkan development | `c9ce420e` / `400efe79` | New references exist; a complete Mesa or translator rebase and its API compatibility were not performed in this review. |
+
+Three Issac GPU reference defaults are one commit behind their selected pins.
+metal2vulkan's default and development branches diverge from the selected
+revision. These relationships require checking the intended source branch
+before choosing a change. The larger Mesa/translator histories are outside the
+targeted difference review. QcomGeniSpi, VirtIO block, VerifiedRoot, SoftwareAES,
+KeyStore, AdrenoPM4 and AirNir retain their observed component revisions.
+
+The newer SM8750/Pagani references also contain peripheral integration, and
+mainline includes QcomBaseband. Their network, audio and USB work still requires
+CPH2653 power/resource/firmware inputs and original iPhone interfaces. None of
+those reference-board results establishes this board's functionality.
 
 ## Host setup
 
@@ -92,6 +138,7 @@ this toolchain, the local Python environment and four jobs.
 .venv-uefi/bin/python scripts/test_source_series.py
 .venv-uefi/bin/python scripts/test_image4_boot_policy.py
 .venv-uefi/bin/python scripts/check_ios16_patches.py
+.venv-uefi/bin/python scripts/check_percpu_iteration.py
 ```
 
 Check the standard packaging entry point after fetching the sources:
@@ -101,7 +148,7 @@ PATH="$PWD/.venv-uefi/bin:$PATH" scripts/package.sh --check --no-deps --os 16 \
   --out build/unixnu -j 4
 ```
 
-This resolves the iPhone profile and its 61 patches. The full `release` build
+This resolves the iPhone profile and its 62 patches. The full `release` build
 also needs the original-component closure and image inputs described below.
 
 [The CI workflow](../.github/workflows/source-checks.yml) also runs driver tests
@@ -131,6 +178,13 @@ iPhone components:
 .venv-uefi/bin/python scripts/audit_ios16_bindings.py --try-prelink
 .venv-uefi/bin/python scripts/validate_prelinked_kernel.py
 ```
+
+The per-CPU iteration patch compares unsigned base offsets before forming a
+pointer. On a single-CPU boot, the secondary range starts at a high sentinel
+and ends at zero. Comparing those offsets as pointers made the mbuf statistics
+path enter that empty range and fault with the current compiler. The host check
+uses the actual patched macros in C and C++ at O0 through O3, including empty
+ranges, multiple CPUs, nesting, writes, break and continue.
 
 ## UEFI and boot container
 
@@ -267,6 +321,16 @@ that same surface retires. Previously captured display epochs stay invalid.
 An uncertain original completion retains its callback context and tickets.
 The host tests cover 24 native runtime cases, 11 Turnip status calls and 136
 display frontend cases, alongside the backend, board and VM suites.
+
+The cache tests run the production Turnip functions with Vulkan and kernel peers:
+19 cases cover shared references, device isolation, allocation failures and
+opportunistic retirement; eight threads perform 800 lookups. Offline translation
+also compiles public tile AIR and validates the resulting SPIR-V. To repeat them:
+
+```sh
+.venv-gpu/bin/python scripts/check_native_a830_cache.py
+.venv-gpu/bin/python scripts/check_metal_translation.py
+```
 
 The board entry reads the SoC ID from SMEM before startup and accepts 618 or
 639. An optional `dodge-gpu-soc` value must match that reading. The existing
@@ -518,8 +582,138 @@ mounting; both rejected files remain byte-for-byte unchanged. See
 
 The runner creates a new private overlay for each test under
 `build/cph2653-qemu-store-entry/`. OS and SystemOS stay read-only. This exercises
-VM-file persistence; physical UFS, hardware data protection and later system
-services still need implementation and validation.
+VM-file persistence; physical UFS, hardware data protection and the graphical
+interface still need implementation and validation.
+
+Continue through the original system services and check the per-CPU regression:
+
+```sh
+.venv-gpu/bin/python scripts/build_qemu_services.py
+.venv-gpu/bin/python scripts/build_qemu_services.py --check-only
+```
+
+This entry builds both persistent kernels and runs the original exec,
+crash/cold-resume and service checks. `--record-existing` validates completed
+stages without rerunning the VMs. Both kernels compile the actual mbuf consumer
+with an isolated copy of the pinned per-CPU header. The positive kernel applies
+the exact Darwin 22 patch; the control retains the original header. Neither
+build replaces the shared native kernel objects or its link file list.
+
+The service check follows original launchd through its signed configuration
+cache and early boot, then observes original SpringBoard, logd, notifyd and
+amfid executing in EL0. SpringBoard's process UUID must match the executable
+extracted from the pinned iPhone images. The fixed mbuf statistics function
+must return with an empty secondary CPU range; the old consumer must reproduce
+its kernel data abort. Data and both verified read-only system mounts remain
+checked throughout. Kernel state is sampled at syscall entry; user output
+checkpoints read only user memory. The bounded run finishes at a kernel
+checkpoint before reading the final storage state. The recorded run covers
+30,001 checkpoints and four successful mbuf calls, while the old consumer
+faults on its first call. The original display client still reports an unavailable
+IOMFB. The graphical interface and complete system boot remain unqualified. See
+[the service result](../reports/public/ios16-qemu-services-entry.json) and
+[the complete service stages](../reports/public/ios16-qemu-services-stack.json).
+
+## Native system packages
+
+After the native A830 prerequisites, build the native system integration with:
+
+```sh
+.venv-gpu/bin/python scripts/build_native_system_stack.py
+.venv-gpu/bin/python scripts/build_native_system_stack.py --check-only
+```
+
+The fourteen stages build two isolated kernels and local boot/root packages.
+Each kernel has 126 source/binding objects, 29 original iPhone components and
+64,635 independently checked pointer sites. OS and SystemOS use signed,
+read-only native UFS windows; the original Apple root-authentication result and
+dyld ignition path remain present. The owner policy is a separate development
+trust decision. The Data mount checks its exact seed, APFS device and mount result.
+Development AES/KeyStore load before the existing storage/Data/input schedulers.
+A rejected identity or security setup prevents those schedulers from running.
+
+| Local output | Contents |
+| --- | --- |
+| `build/cph2653-native-system-bringup/boot.img` | Android v4 container with verified native kernel, A830 addon/trust and packed 2 GiB development Data; physical writes disabled at compile time |
+| `build/cph2653-native-system-bringup/iphone-root.img` | 8,445,685,760-byte regular file containing the exact original OS/SystemOS windows and appended owner policies; no GPT |
+| `build/cph2653-native-system-bringup-persistent/boot.img` | Separate kernel allowing an explicitly opened Data-overlay write window; both root media remain read-only |
+| `build/cph2653-native-system-bringup-persistent/system-manifest.json` | Exact hashes, existing partition name, root/overlay geometry and minimum capacity; no partition creation or deployment |
+
+Each new boot image is 95,072,256 bytes, within the captured 100,663,296-byte
+`boot_a/boot_b` capacity. The FAT is 88 MiB. The large policy hash tables live in
+the root-image suffix; the kernel fixes the entire container digest and loads an
+immutable snapshot before preparing any root window. Existing owner RSA
+signatures and per-block verification remain required. The original volume bytes
+are unchanged. Format bounds pass 4,117 host cases; 13 cases execute the actual
+loader with explicit read/VM peers, including allocation/protection failures,
+changed headers/data, chunk bounds and retained immutable snapshots.
+
+The capture contains no `unixnu` root partition. These local packages describe
+the required layout without creating a partition, changing GPT or deploying an
+image. The older 160 MiB A830 development FAT remains preserved as local evidence;
+the new native system packages use the capacity-checked format above.
+
+The boot image and original root image are separate files. The persistent-capable
+variant requests an overlay at the end of the selected `unixnu` partition, clear
+of the root image, a 4 MiB guard and the existing 1 GiB end reserve. The window is
+limited to one quarter of the partition. Reversed/overflowing geometry is refused.
+Only a matching seed header resumes Data; neither package automatically resets
+an existing or foreign overlay. Physical persistence has not been qualified.
+
+The calendar backport preserves the pinned ArmDTPlatform revision. It publishes
+`IORTC` only when no RTC node exists, and uses a real registered clock when valid
+or the kernel build date minus one day as a lower bound. This supplies no
+battery-backed clock. Its parser and actual clock callback bodies pass 598
+sanitizer cases.
+
+The native entropy adapter uses the captured `qcom,trng` resource at
+`0x10c3000` and the original iPhone client's `AppleVirtIOEntropy` class search,
+selector 0 and 32-byte output. It performs no clock/configuration writes, refuses
+partial or stuck output and restricts opens to root. Its 364 host cases and the
+original client call instructions pass local checks; the hardware and entropy
+rate remain unqualified. The read-only, 8-byte `kern.prng.user_reseed_count`
+increments only after a real nonempty request completes the unchanged original
+PRNG reseed implementation. Four thousand concurrent calls and refusal controls
+pass. This counter shares the original PRNG tree rather than declaring a second
+node named `kern.prng`. The unchanged iPhone corecrypto supplies 99 scheduled
+and per-pool observations for 32 pools. Read-only `pool0` aliases connect the
+original user's `kern.prng.pool%zu.%s` queries to corecrypto's `pool_0` child
+lists, preserving both names and the actual original counters.
+
+An additional instruction check executes native early/dynamic registration,
+OID allocation, name lookup and installed handlers. All 228 diagnostic paths
+resolve, all 99 original counters are read, and 40 synthetic entropy requests
+exercise real original scheduled/pool accounting. One actual original user
+reseed increments only its counter. Output-error controls also pass. This is
+model evidence with explicit entropy/lock/copy peers; saved-seed lifecycle and
+physical persistence remain unqualified.
+
+The actual EFI handoff and all 18 original iPhone crypto POST tests pass in the
+CPU model for each package. Native startup/refusal and original entropy-client
+instruction checks also pass; MMIO, registry, scheduler and syscall boundaries
+remain explicit peers. These are local build/model results, separate from native
+boot or a working graphical system. The default payload, source pins, private
+platform seed and firmware-specific memory patch are retained.
+
+## Remaining source integration
+
+The source preparation phase still has implementation work. A local PASS does
+not turn the following gaps into hardware-only tests. Finish the relevant
+source integration and local checks before asking for device testing.
+
+| Area | Work still needed |
+| --- | --- |
+| Native system startup | The native root/SystemOS/Data source and two local packages are connected. Complete transport reset/recovery and persistent-installation/seed lifecycle policy; qualify the original filesystem/client lifetime and physical Data path. |
+| Display and Metal | Complete original display/client/IOSurface lifetime and Metal discovery integration. Derive the board's framebuffer and panel power contract; current static GOP declarations and host pipeline translation do not establish a working desktop. |
+| Input | Complete shared clock/power and reset/DMA ownership, target orientation, and the original HID EventDriver matching and lifecycle. Current source intentionally retains mappings and shared votes after hardware attempts. |
+| Power and security | Derive the SM8750 security-state mapping and implement its PMGR provider. Battery, charging, thermal management, sleep and hardware key/nonce/rollback policy are still open. |
+| User entropy | The reseed counter, native TRNG compatibility service and original scheduled/per-pool observations are connected and checked locally. Complete saved-seed lifecycle policy. Hardware entropy quality and native service dispatch remain unqualified. |
+| Other peripherals | Implement the selected network, Bluetooth, audio and cellular transports and their iPhone userspace interfaces. These areas currently have no functional board drivers. |
+
+The initial CPU path remains single-core. SMP, PSCI, interrupts, timer behavior,
+physical DMA/cache visibility, scanout and GPU output require their own device
+observations after the corresponding source work. All current development
+images and original inputs stay local; no phone operation is part of this phase.
 
 ## System and Data images
 
@@ -547,6 +741,8 @@ Dependency hashes inside a report refer to the original local reports. Earlier
 versions remain available through the previous index linked from the current one.
 Snapshots record the source and host settings of their original run; CI checks
 the current source tree.
+`retained_public_snapshot` marks older published evidence whose local candidate
+has been retired; its original digest stays in the index.
 
 Sources, firmware, backups, keys, environments and build outputs stay in ignored
 local directories. See [NOTICE.md](../NOTICE.md) for licenses and source credits.

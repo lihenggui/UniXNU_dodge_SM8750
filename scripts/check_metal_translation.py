@@ -11,6 +11,31 @@ from native_driver_build import ROOT, pinned_sources, require, sha
 from prepare_sources import patch_series_state
 from reviewed_source_tree import reviewed_tree
 
+REPORT = ROOT / 'reports/metal-translation-tests.json'
+
+
+def check_report(report):
+    require(report['result'] == 'PRODUCTION_METAL_TRANSLATION_HOST_CHECK_PASS' and report['pipelines'] == 7 and
+            len(report['spirv_modules']) == 8 and len(report['invalid_pipeline_controls_refused']) == 9 and
+            report['tile_pass_cases'] == 43 and
+            not report['gpu_execution'] and not report['hardware_tested'], 'Incomplete production tile translation report')
+    for name, digest in {**report['source_sha256'], **report['artifacts']}.items():
+        require(sha(ROOT / name) == digest, 'Production translation input changed: ' + name)
+
+
+def tile_geometry(out):
+    from native_a830_userspace import metal
+    frontend = metal()[0] / 'NativeBridgeMetalFrontend.mm';text = frontend.read_text()
+    start = text.index('  NSUInteger tileSamples=0;');end = text.index('  id<MTLTexture> t0=', start)
+    include = out / 'TilePassGeometry.inc';include.write_text(text[start:end])
+    fixture = ROOT / 'tests/DodgeMetalTilePassTest.cpp';binary = out / 'tile-pass-test';log = out / 'tile-pass-test.log'
+    compiler = shutil.which('clang++-14') or shutil.which('clang++');require(compiler, 'Install Clang for tile pass checks')
+    subprocess.run([compiler, '-std=c++17', '-O2', '-Wall', '-Wextra', '-Werror', '-fsanitize=address,undefined',
+        '-fno-sanitize-recover=all', '-fno-pie', '-no-pie', '-I', out, fixture, '-o', binary], check=True)
+    result = subprocess.run([binary], capture_output=True, text=True, timeout=30);log.write_text(result.stdout + result.stderr)
+    require(not result.returncode and json.loads(result.stdout)['cases'] == 43, 'Tile pass geometry differs from the runtime')
+    return [frontend, fixture], [include, binary, log]
+
 
 def main():
     sources = pinned_sources(('a830_metal_reference', 'metal2vulkan_reference'))
@@ -34,6 +59,8 @@ def main():
     require(sha(patch) == consumer_patch['sha256'], 'Reviewed offline consumer API patch changed')
     subprocess.run(['git', 'apply', '--check', '--directory=' + str(stage.relative_to(ROOT)), patch], cwd=ROOT, check=True)
     subprocess.run(['git', 'apply', '--directory=' + str(stage.relative_to(ROOT)), patch], cwd=ROOT, check=True)
+    from native_a830_userspace import overlay
+    _, tile_overlay = overlay(stage, stage, 'metal_translation_tile_overlay')
     dependency_spec = lock['metal_translation_dependencies']
     dependency_lock = ROOT / dependency_spec['path']
     require(sha(dependency_lock) == dependency_spec['sha256'], 'Reviewed offline translator dependencies changed')
@@ -80,11 +107,20 @@ def main():
     require(examples.exists() and scanout.exists(), 'Build the exact production AIR fixtures first')
     colors = out / 'color-attachments.json'
     colors.write_text('{"0":"BGRA8Unorm"}\n')
+    tile_inputs = []
+    for name in ('kernel_imageblock_word', 'kernel_implicit_imageblock_half4'):
+        source = work / 'crates/metal2vulkan-validation/fixtures/public' / (name + '.ll')
+        destination = out / (name + '.air')
+        subprocess.run([ROOT / '.toolchains/rust-gpu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-as',
+                        source, '-o', destination], check=True)
+        tile_inputs.append((source, destination))
     cases = [('compute-buffer', [profile, examples, 'scale_and_offset']),
              ('compute-texture', [profile, examples, 'invert_texels']),
              ('render-colored', ['--color-attachments', colors, profile, examples, 'colored_vertex', examples, 'colored_fragment']),
              ('scanout-opaque', [profile, scanout, 'scanout_opaque']),
-             ('scanout-half-convert', [profile, scanout, 'scanout_convert'])]
+             ('scanout-half-convert', [profile, scanout, 'scanout_convert']),
+             ('tile-word', ['--tile', profile, tile_inputs[0][1], 'imageblock_word']),
+             ('tile-attachment', ['--tile', '--color-attachments', colors, profile, tile_inputs[1][1], 'kernel_implicit_imageblock_half4'])]
     outputs = []
     for name, args in cases:
         result = subprocess.run([binary, *args], capture_output=True, timeout=30)
@@ -122,26 +158,38 @@ def main():
                 ('standalone-fragment', [profile, examples, 'colored_fragment']),
                 ('wrong-fragment-stage', [profile, examples, 'colored_vertex', examples, 'colored_vertex']),
                 ('missing-color-attachment', [profile, examples, 'colored_vertex', examples, 'colored_fragment']),
-                ('missing-storage-format-on-floor', [floor_profile, examples, 'invert_texels'])]
+                ('missing-storage-format-on-floor', [floor_profile, examples, 'invert_texels']),
+                ('fragment-as-tile', ['--tile', profile, examples, 'colored_fragment']),
+                ('vertex-as-tile', ['--tile', profile, examples, 'colored_vertex'])]
     for name, args in controls:
         result = subprocess.run([binary, *args], capture_output=True, text=True, timeout=20)
         require(result.returncode == 2 and not result.stdout.strip() and result.stderr.startswith('REFUSED:'),
                 'Real translator did not refuse invalid pipeline: ' + name)
+    geometry_sources, geometry_artifacts = tile_geometry(out)
     report = {'result': 'PRODUCTION_METAL_TRANSLATION_HOST_CHECK_PASS',
+              'source_sha256': {str(path.relative_to(ROOT)): sha(path) for path in
+                  (ROOT / 'scripts/check_metal_translation.py', original_consumer, consumer, patch,
+                   ROOT / tile_overlay['path'], *geometry_sources, *(pair[0] for pair in tile_inputs))},
+              'artifacts': {str(path.relative_to(ROOT)): sha(path) for path in
+                  (binary, profile, colors, *geometry_artifacts, *(pair[1] for pair in tile_inputs), *(ROOT / row['path'] for row in outputs))},
               'translator_revision': lock['metal2vulkan_reference']['revision'], 'runtime_patches': lock['metal_runtime_patches'],
               'translator_source_tree': source_tree,
               'consumer_source_sha256': sha(consumer), 'cargo_lock_sha256': sha(dependency_lock),
               'original_consumer_source_sha256': sha(original_consumer), 'consumer_api_patch': consumer_patch,
+              'tile_overlay': tile_overlay,
+              'tile_air_sources': {str(path.relative_to(ROOT)): sha(path) for pair in tile_inputs for path in pair},
               'host_binary': str(binary.relative_to(ROOT)), 'host_binary_sha256': sha(binary),
               'profile': str(profile.relative_to(ROOT)), 'profile_sha256': sha(profile),
               'profile_scope': 'Vulkan 1.2 floor plus two production Turnip-declared storage-image features; not observed A830 capabilities',
               'base_profile_sha256': sha(floor_profile), 'turnip_feature_source_sha256': sha(turnip_source),
               'air_source_sha256': {str(path.relative_to(ROOT)): sha(path) for path in (examples, scanout)},
               'pipelines': len(cases), 'spirv_modules': outputs, 'invalid_pipeline_controls_refused': [name for name, _ in controls],
+              'tile_pass_cases': 43,
               'vulkan_loader_linked': False, 'gpu_execution': False, 'hardware_tested': False,
-              'scope': 'Actual patched translator compiles public buffer/texture/render and production scanout AIR; validates real SPIR-V. No pixels executed.'}
-    (ROOT / 'reports/metal-translation-tests.json').write_text(json.dumps(report, indent=2) + '\n')
-    print(f'PASS: {len(cases)} actual AIR pipelines / {len(outputs)} SPIR-V modules validated; seven real compiler refusal controls')
+              'scope': 'Actual patched translator compiles public buffer/texture/render/tile and production scanout AIR; validates real SPIR-V. '
+                       'Production frontend tile geometry is checked with descriptor peers under sanitizers. No pixels executed.'}
+    check_report(report);REPORT.write_text(json.dumps(report, indent=2) + '\n')
+    print(f'PASS: {len(cases)} actual AIR pipelines / {len(outputs)} SPIR-V modules validated; {len(controls)} real compiler refusal controls')
 
 
 if __name__ == '__main__':

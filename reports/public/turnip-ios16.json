@@ -2,7 +2,7 @@
   "result": "IOS16_TURNIP_CROSS_BUILD_PASS",
   "target": "arm64-apple-ios16.0",
   "library": "build/cph2653-turnip-ios16/src/freedreno/vulkan/libvulkan_freedreno.dylib",
-  "library_sha256": "8e68998d9b1e67ee2bfd716a02ce20c5244822e66aeff312feb3a78136eaab45",
+  "library_sha256": "2b77fd5efb52fc8be8e9260ebb8a0ba99aea3ff6a1cc5baa8323c2118f658f3b",
   "mesa_revision": "85fda3b36405bcaea8bffc64aa4f2651dc90770d",
   "patches": [
     {
@@ -62,7 +62,7 @@
       "sha256": "89159ee0c7a24bff3c62c63f9d838711e184438ae630ff0893ec4d275fadafd8"
     }
   ],
-  "source_id": "dd5ff74cdb23861b05aaf10a56941d1f6232e8b0d07d84ed62a3ad013da34156",
+  "source_id": "abc772fcb099b7915a7084816cf5e34f4ef68b19757a438bfabc05408b8d2452",
   "build_id": "06ea7db6c3ab5efe65d24f879b9221cd89a221d7",
   "profile": {
     "mesa_revision": "85fda3b36405bcaea8bffc64aa4f2651dc90770d",
@@ -103,16 +103,19 @@
       "-Dzstd=disabled",
       "-Dbuildtype=release",
       "-Db_ndebug=true",
-      "-Dtu-builtin-source-id=dd5ff74cdb23861b05aaf10a56941d1f6232e8b0d07d84ed62a3ad013da34156",
+      "-Dtu-builtin-source-id=abc772fcb099b7915a7084816cf5e34f4ef68b19757a438bfabc05408b8d2452",
       "-Dtu-builtin-pack-header=",
       "-Dtu-build-id=06ea7db6c3ab5efe65d24f879b9221cd89a221d7"
     ],
-    "build_script_sha256": "d4b8f11950a6a7a92439175752b147bb11009572a28ff7c350e3a4443359f335",
+    "build_script_sha256": "46425a7cbc3b63d34dafde9c3b83b3a88907e20674d7d0aca455289eb3fb086e",
     "cross_file_sha256": "223e1d70adab2bcf874bc3676356be9b8ca3f78e3a094e22fac6947588455713",
     "sdk_revision": "0222fd5413cf4b9af096f37b4621afa2688572f7"
   },
   "backend": "darwin",
   "abi_header_sha256": "d1c8a27d6e61787073c2c56a779ff4d5c43d86f2d23ac0c0fba0368af8dcdeae",
+  "native_surface_overlay": null,
+  "native_recovery_overlay": null,
+  "native_cache_overlay": null,
   "hardware_tested": false,
   "scope": "Actual production Vulkan/IR3 library cross-build, not GPU shader execution."
 }

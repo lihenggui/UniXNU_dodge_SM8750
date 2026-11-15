@@ -1,0 +1,16 @@
+--- a/NativeUfs.cpp
++++ b/NativeUfs.cpp
+@@ -1113,11 +1113,12 @@
+   if (!storeMode ()) reason = "off";
+   else if (!gStoreGeometry.valid || !gHost.ready) reason = "no root layout";
+   else if (gStoreRegionBlocks) reason = "already open";
++  else if (gStoreGeometry.last < gStoreGeometry.first || gStoreGeometry.last == UINT64_MAX) reason = "invalid geometry";
+   else {
+     uint64_t partition = gStoreGeometry.last - gStoreGeometry.first + 1;
+     uint64_t imageBlocks = (gStoreGeometry.imageBytes + 4095) / 4096;
+     const uint64_t reserve = reserveBlocks ();
+-    if (!blocks || reserve >= partition || blocks > partition - reserve) reason = "size";
++    if (!blocks || reserve >= partition || blocks > partition - reserve || blocks > partition / 4) reason = "size";
+     else if (partition - blocks - reserve < imageBlocks + 1024) reason = "overlaps the root image";
+     else {
+       // The reserve at the end of the partition belongs to the diagnostic log (its last 32 MiB, with the export region below them);

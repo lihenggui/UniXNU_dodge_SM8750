@@ -40,7 +40,9 @@ def metal():
     require(subprocess.check_output(['git', '-C', base, 'rev-parse', 'HEAD'], text=True).strip() ==
             lock['a830_metal_reference']['revision'], 'Native Metal adapter has an unexpected base')
     patch_series_state(base, lock['iphone_metal_frontend_patches'], True)
-    return overlay(base, ROOT / '.cache/gpu-work/AdrenoMetal-native-a830', 'native_a830_metal_surface_overlay')
+    stage, surface = overlay(base, ROOT / '.cache/gpu-work/AdrenoMetal-native-a830', 'native_a830_metal_surface_overlay')
+    stage, _ = overlay(stage, stage, 'native_a830_metal_tile_overlay')
+    return stage, surface
 
 
 def display(stage):

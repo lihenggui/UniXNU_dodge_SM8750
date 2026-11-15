@@ -19,50 +19,50 @@
     "uefi/Mu-Silicium/Resources/Configs/dodge.toml": "f96c6e166eceea767ff0c7c2a9105b647f1f540364f70894a97eef26de752035"
   },
   "dependency_report_sha256": {
-    "reports/native-a830-prelink.json": "7e296ab9a1cc60837f5f7e0a67f0e1debc3b91fb86ba599aa80b731bae084dbb",
-    "reports/native-a830-firmware.json": "d8853e10ce0be47bb86f714294119d9cc1e518ac2fe0e7e93ee9fca9da979766",
-    "reports/native-a830-addon.json": "ec75121a76435cb5f0d69c1f3f09039f980baf4a38fa4487d82fd4fe767bee26",
-    "reports/ios16-crypto-payload.json": "1e058c5ed732bd4ea11f4253569df66a6c046322526bf4d5c0aca8f1bbea84c7",
-    "reports/ios16-boot-entropy-kernel.json": "4dac94ef2283181edb8c91da272f8dcec8aa5773d0f66d49b9984baf3bc94e7e",
-    "reports/ios16-original-crypto-kernel.json": "764d3a4a6403a9ccd0c25e420de5b2100e361932bb6dd8e2ddb38e6cbfe04465"
+    "reports/native-a830-prelink.json": "68165ea737a11d5a3c82995057de1826f57cd1a83f69c689c2814aafbf83078e",
+    "reports/native-a830-firmware.json": "814df2533a1366c44cf775333dfc95d5acf94fb13c23db38caa1e35abdbdeb52",
+    "reports/native-a830-addon.json": "e38844cd367e28d759f5392bfa4e7a5956257a091e67d60bc3b23df445270a4d",
+    "reports/ios16-crypto-payload.json": "01a9a6e6487278ac7c5f3a68ad3f9fcd6a969c15acdb459a84e44183baa77ed8",
+    "reports/ios16-boot-entropy-kernel.json": "d0109a811a6a47dc5bd1a3f0fa034a17d98f373cdcfd70a9faf7423116668096",
+    "reports/ios16-original-crypto-kernel.json": "c0070e41059bcfbf26354d22e5641279fa115f7e9f4643348bc79b995ba36ec2"
   },
   "artifacts": {
-    "build/cph2653-native-a830-bringup/payload.img": "1fe6fe2dfbfd64a4b0be00c95c97ffdf173b086d11ac8bedf65aa9ee6a721c25",
-    "build/cph2653-native-a830-bringup/boot.img": "5d78dbad60fab573d70fdee8baf58b1198e35efd21a2323e9be94d570e489daf",
-    "build/cph2653-native-a830-bringup/boot.json": "98d588f679de8139b9d40f10d6dadb8106fd23bd8efc26ac132bd7fcdbd97e77",
-    "build/cph2653-native-a830-bringup/cpu-cases.json": "467f1ca2ba9177460e82a3499129bb46dbfecd6ac77569a0d63357481dd23d07",
-    "build/cph2653-native-a830-bringup/stage/kernel.macho.adt": "2fe593e130636c2c7dee34a6c1948e0faba391eb43d26c7e3d5f8a9b6782e8b7",
+    "build/cph2653-native-a830-bringup/payload.img": "48c71e566a613dd7fda2d821488f21da7217684e27dafd11239653c79466d753",
+    "build/cph2653-native-a830-bringup/boot.img": "024b39e0e66435fa782b85feb2782d7b0b7e8ef46fbbb000eaf2a0d9a9407984",
+    "build/cph2653-native-a830-bringup/boot.json": "9cf9a8b00f86d42ca66fd70b246804e77d3f34470a7c8876f9ae6088a6892631",
+    "build/cph2653-native-a830-bringup/cpu-cases.json": "10d2d4acdcf45883d916021082325ef7a71c9411f97b6a217dff96ef74470640",
+    "build/cph2653-native-a830-bringup/stage/kernel.macho.adt": "c1759856850956762db46973fa59692f07780ec543d504ebcac305664a44e251",
     "build/cph2653-native-a830-bringup/stage/unixnu.toml": "6723d23b1c1bdc6a57993a6c08139e2d01f8fd6ee02245a3d803f7e9c1585ecb",
-    "build/cph2653-native-a830-bringup/stage/image4-boot-policy.json": "23750a4e328841f2801acb4f718f532064bbcbb079130ccdf862a7acba281b4a",
+    "build/cph2653-native-a830-bringup/stage/image4-boot-policy.json": "2f639aca8a9cf4faa5a46653e2fb6d41408cb6732ba71fab28005f48f6fe364d",
     "build/cph2653-native-a830-bringup/boot-policy-tests.log": "e7ae4e5ac3a597cc5c2c1d45046691f09aafdcb641a59928b5810069c654ccf4"
   },
   "payload": "build/cph2653-native-a830-bringup/payload.img",
-  "payload_sha256": "1fe6fe2dfbfd64a4b0be00c95c97ffdf173b086d11ac8bedf65aa9ee6a721c25",
+  "payload_sha256": "48c71e566a613dd7fda2d821488f21da7217684e27dafd11239653c79466d753",
   "payload_bytes": 167772160,
   "boot_image": "build/cph2653-native-a830-bringup/boot.img",
-  "boot_image_sha256": "5d78dbad60fab573d70fdee8baf58b1198e35efd21a2323e9be94d570e489daf",
+  "boot_image_sha256": "024b39e0e66435fa782b85feb2782d7b0b7e8ef46fbbb000eaf2a0d9a9407984",
   "boot_image_bytes": 170569728,
   "firmware": "build/cph2653-native-a830-firmware/SILICIUM_UEFI.fd",
-  "firmware_sha256": "4334a58fd1f5128266e2b27419c912cccdd16879f66b5576bbe45e47f6f41358",
+  "firmware_sha256": "9b86fdb5ba7f18ba55914d0b5b6bffbe2b17ffa60125aeb66602bc0236ddf4ce",
   "linked_source_objects": 111,
   "kernel_args": "-v serial=0 debug=0x14e cpus=1",
   "boot_header_version": 4,
   "fat_files": {
     "EFI/UniXNU/unixnu.toml": "6723d23b1c1bdc6a57993a6c08139e2d01f8fd6ee02245a3d803f7e9c1585ecb",
-    "EFI/UniXNU/Payloads/kernel.macho.trustcache": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7",
-    "EFI/UniXNU/Payloads/kernel.macho.adt": "2fe593e130636c2c7dee34a6c1948e0faba391eb43d26c7e3d5f8a9b6782e8b7",
+    "EFI/UniXNU/Payloads/kernel.macho.trustcache": "03a25c236f211427ae21a3ba47d33e32662e17d928027df236e30889fb7bf1de",
+    "EFI/UniXNU/Payloads/kernel.macho.adt": "c1759856850956762db46973fa59692f07780ec543d504ebcac305664a44e251",
     "EFI/UniXNU/Payloads/scratch-data.img": "ad4cf27e8f1be50891d5549aabff7c4b28fbf17e7daacd3fbe3f9bcb03ee9cd3",
-    "EFI/UniXNU/Payloads/kernel.macho.gpuaddon": "f60dac52b9cdefe9036f12cc76f587f5150a968ee2fce0ddb967ce1d2f8fe03c",
-    "EFI/UniXNU/Payloads/kernel.macho": "9a422f61cf9ff9dab77750fa3298e84a886551ec9a56389ea4eb100869a84702"
+    "EFI/UniXNU/Payloads/kernel.macho.gpuaddon": "889ad110d98e4d31c3c0dc71b6abde783ce5f15345203c6c7e6cd435deb2d064",
+    "EFI/UniXNU/Payloads/kernel.macho": "911dd28e865d14ac37de29c94f8c52a24dff0a8a6797259a9da858dd6c388d65"
   },
   "handoff_files": {
     "TrustCache": {
       "bytes": 67864,
-      "sha256": "2eb1068158e77ce773f9cf72b358ed69845723691569d496211994509c5fb2c7"
+      "sha256": "03a25c236f211427ae21a3ba47d33e32662e17d928027df236e30889fb7bf1de"
     },
     "GpuAddon": {
-      "bytes": 12984896,
-      "sha256": "f60dac52b9cdefe9036f12cc76f587f5150a968ee2fce0ddb967ce1d2f8fe03c"
+      "bytes": 13004776,
+      "sha256": "889ad110d98e4d31c3c0dc71b6abde783ce5f15345203c6c7e6cd435deb2d064"
     }
   },
   "image4_boot_policy": {
@@ -72,20 +72,20 @@
     "product": "iPhone10,3",
     "build": "20H392",
     "mix_n_match_prevention": true,
-    "nonce_hash": "0132108247d4475b85038d1e2e47e226225552f1aa98f231ab3e4c5b087200a3a71b3fc548566574e407df7336d35e34",
+    "nonce_hash": "2d9afc701cba5c0ac2d29bfe2940d60a831d4cfbdb6bb9112e4a3330530ed351f0b5a12f3331452b0073e618c0e6fa3f",
     "device_tree_sha384": "ecec92e1096e073a3c42eb95dc5254751f164c479d997f46e60e2f31dddf736b4c318feb078f82526f9fb452ed6ef71c",
     "components": {
       "kernel.macho": {
         "bytes": 56840192,
-        "sha384": "8e714fd64d8af7f391b8a18f827820af99b00efd1707322e617338206ee34b49c1d6e9f7becd8a28a0e697bfe5eea5fd"
+        "sha384": "436de1ccf6e84cfa992aba21d607fc14614383173015b0cd4c3a591faa53fda119dd372970b11af0ca7098e10b5d3fa8"
       },
       "kernel.macho.gpuaddon": {
-        "bytes": 12984896,
-        "sha384": "31667ffa9fc01839105f7c280c1dc9e60074058839f5e13ea0fcbb52c8078b2d0b6e97dc916e574ac83f6e49e3f33854"
+        "bytes": 13004776,
+        "sha384": "f1a1447444522a26ed35dfcb6cea46c9fbb6d85d1d8588c3bcf31b7a0ab0e4c54f0c4ca5de61df17effef374bc326c8a"
       },
       "kernel.macho.trustcache": {
         "bytes": 67864,
-        "sha384": "093f59490a990e1dd57544ac958ee455bab8d71d4da7728bb2a5b6c59dfaf9fe11fcaf25cb3f71dee868f2e60320a6f5"
+        "sha384": "522270ca8d971103e4aec2efe8e56fb4ca218c28e78dc87a31c01ed15d5c612c5ee7d379fee9af9f2c6b2456dd8a3f33"
       },
       "scratch-data.img": {
         "bytes": 721024,

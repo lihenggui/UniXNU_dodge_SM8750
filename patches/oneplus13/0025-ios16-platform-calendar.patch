@@ -1,0 +1,41 @@
+--- a/ArmDTPlatform.cpp
++++ b/ArmDTPlatform.cpp
+@@ -18,6 +18,7 @@
+ #include <libkern/c++/OSData.h>
+ #include <libkern/c++/OSIterator.h>
+ #include <pexpert/pexpert.h>
++#include "DodgeCalendar.h"
+ 
+ // Observation counters describe actual published nubs, not started drivers.
+ extern "C" {
+@@ -36,12 +37,16 @@
+   bool configure (IOService *provider) override;
+   const char *deleteList (void) override;
+   const char *excludeList (void) override;
++  long getGMTTimeOfDay (void) override;
++  void setGMTTimeOfDay (long seconds) override;
+ private:
+   bool hasNVRAMProxy (IOService *provider);
+   bool createDeviceNubs (IOService *provider);
+ };
+ 
+ OSDefineMetaClassAndStructors (ArmDTPlatform, IODTPlatformExpert)
++
++#include "DodgePlatformClock.inc"
+ 
+ // Serialized empty name lists: XNU's processTopLevel() treats a null pointer
+ // as "every entry" (remove every child), not as "nothing". An empty list
+@@ -152,6 +157,13 @@
+   if (!IODTPlatformExpert::configure (provider)) {
+     return false;
+   }
++  // No RTC nub means no driver can publish IORTC; use the calendar floor.
++  IORegistryEntry *rtc = provider->childFromPath ("arm-io/rtc", gIODTPlane);
++  if (rtc != nullptr) {
++    rtc->release ();
++  } else {
++    publishResource ("IORTC");
++  }
+   if (platformStage == 2) {
+     platformStageReset ();
+   }

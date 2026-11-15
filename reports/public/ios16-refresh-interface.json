@@ -1,7 +1,7 @@
 {
   "result": "IOS16_ORIGINAL_REFRESH_SENDER_ARM64_CHECK_PASS",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "builder_sha256": "742dc03f62c37513deec23f4ba270a650b166a01b83fa71362913565687c7f25",
   "contract": "profiles/os/ios-16.7.16-20H392/display-refresh.json",
   "contract_sha256": "75e542a6d249091ce12472527882133aeb23a7a162506380ca78dfe74b3cc298",

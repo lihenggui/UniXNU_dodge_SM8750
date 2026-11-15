@@ -6,7 +6,7 @@
     "scripts/prepare_hid_source_interface.py": "2743b8240c4140c738c32651c439fc456b189bc7927f5472aa6284505e7cea89",
     "scripts/check_ios16_swap.py": "f5d5dbf33f9e217386f1ab970f0b5ddcafa12b1aed54b7e89841d112ec1fb215"
   },
-  "interface_report_sha256": "ff9f20c4d1fd6a3b6349d83cb0281110318d79fb9bd1f61d674271b2e18d7ed5",
+  "interface_report_sha256": "bd4312cfb673edfd4110b4a23540af173d3b748efe75220d3de4648eaa9fb292",
   "case_count": 16,
   "cases": [
     {

@@ -1,7 +1,7 @@
 {
   "result": "DARWIN22_GPU_SWAP_BRIDGE_SOURCE_CANDIDATE_PASS",
   "target": "arm64-apple-ios16.0",
-  "native_kernel_sha256": "9956c7568db38e6a48c26fdc120723453d3f2e1b3a796372e600af26150195cc",
+  "native_kernel_sha256": "7149e783978fdba94d910d59878643cac9741f7e1b9bdbb6616ff760950644da",
   "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
   "builder_sha256": "8e54a0f48e4d3f581da0818b72a7a2a704b15c23560065b3e9376de693bb2108",
   "source_revision": "f5017376415268fd39dcf0b3fd68a94661cee078",
@@ -31,8 +31,8 @@
     "tests/gpu_swap_include/pexpert/pexpert.h": "3f7946e0d5108ab395d567c34fc57f7a7fff36060ba540f50652853a02267d90"
   },
   "queue_report_sha256": "ed2e8f361c09903e9096d0051c1c17155aaa812bdcc9fd0a356b715acc1d2794",
-  "completion_report_sha256": "59b1b457b4470330eaddb4022f73b1a56f965146633130b486d2cc175481a857",
-  "producer_report_sha256": "4eb711ad03991b765d056b03017341950877c7d29ddd8e030002da566f2633cf",
+  "completion_report_sha256": "4174a19c251dc2f70e2316c5de188cdaeaca29b5ec288bd0d8c41809960d8b13",
+  "producer_report_sha256": "03a55344b9daa7783623c6716f2ba3e4d45950745b849419f6b063937d0fe02e",
   "completion_binding_archive_sha256": "dfcd7b5537e9d0c77c66e42fb69aa992fd8a41d741aa443554d287e1bc0deab2",
   "objects": [
     {

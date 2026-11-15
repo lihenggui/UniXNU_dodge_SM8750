@@ -19,17 +19,17 @@
     "sources/UniXNU/drivers/DarwinBoot/Test/test-kernel-parser.py": "92be15ff6060ee1cd98e7feb8a021f1ebed477189375140dfc3ac8371f9b48d7"
   },
   "dependency_report_sha256": {
-    "reports/ios16-data-source.json": "519a5ddc73e2890214b7d097fec5e0c20c9bcac66f22ae661896eefec0a68c9e"
+    "reports/ios16-data-source.json": "3c54436edbab7aab5caacdfa54c5ee79892be281f03b6e1a7cd6a58ad31134b8"
   },
   "artifacts": {
-    "build/cph2653-data-prelink/mach.data.sealed": "9f4feded7aa21703f0a4b72e2100a5e7f3ad2c2644ee8627d29ec190a1f7e8b2",
-    "build/cph2653-data-prelink/kernel.macho": "1d125bc8cf24216c7e1fa243c279a8314f1d6accebbf7198b23742795b64de73",
-    "build/cph2653-data-prelink/emission.json": "854204f4b77c1aea2be5fd13ad97b8294823a523948f652e997509d5e44e9e72",
-    "build/cph2653-data-prelink/mach.data.sealed.crypto-hmac.json": "fb198f4e53069978c491ff7e648aadf7b9e7c3ff4eb43f5edf20e6e070e4af47",
-    "build/cph2653-data-prelink/kernel.macho.crypto-hmac.json": "a12460bbdcb3bf1ff948119817b1a32e65ed798b0883cf243d0928fb55007bee"
+    "build/cph2653-data-prelink/mach.data.sealed": "18118ea61af5b700623e6677d442257dd0bc10ec85d9cf3cb0961b40b73bf48f",
+    "build/cph2653-data-prelink/kernel.macho": "654b764fdc31642e027fa2abbcd8c7ecbb8a60ba7f29589c325f1e77f73b11e2",
+    "build/cph2653-data-prelink/emission.json": "65fc496a8a5477092a81338496a9b06e3b232645ac746b80aa91caa7d4b7493e",
+    "build/cph2653-data-prelink/mach.data.sealed.crypto-hmac.json": "dea48fbbd15a9f76f2c9a85b6077654eb01e8598278679aaf2ce5b19f2d222c6",
+    "build/cph2653-data-prelink/kernel.macho.crypto-hmac.json": "771cdbb57c6c233f49fbae1c9daadd33fa2ead62a6e02aa1d45db8ae624a74fc"
   },
   "candidate": "build/cph2653-data-prelink/kernel.macho",
-  "candidate_sha256": "1d125bc8cf24216c7e1fa243c279a8314f1d6accebbf7198b23742795b64de73",
+  "candidate_sha256": "654b764fdc31642e027fa2abbcd8c7ecbb8a60ba7f29589c325f1e77f73b11e2",
   "components": [
     "com.apple.driver.AppleARMPlatform",
     "com.apple.driver.AppleAudioClockLibs",
@@ -373,7 +373,7 @@
   "actual_iobsd_hook_read_back": {
     "address": "0xfffffff0079a6f2c",
     "bytes": 80,
-    "sha256": "635f6fba5c3b04bbacc3343a76fe2de997d08b5afad1712a7145ebca9f4fad45",
+    "sha256": "212af1463880da3f79ee366fc9c685e1d94dd6e869eab7f59e94b7c9c8ca5235",
     "queue_call_order": [
       "0xfffffff0079a6f40",
       "0xfffffff0079a6f44",
