@@ -1,0 +1,36 @@
+{
+  "result": "IOS16_SEED_CLOSE_SYNC_SOURCE_PASS",
+  "source_sha256": {
+    "scripts/build_seed_sync.py": "6736b4faf978b11994c11543c71555b0ff3d40ef8ac85fe93e8074e864fb0eab",
+    "profiles/os/ios-16.7.16-20H392/seed-close-sync.json": "cadea36cdbc367bd66bf970a701961ef6e568f9f96e7e84c0b92befd7a4711bb",
+    "patches/oneplus13/0028-ios16-seed-close-sync.patch": "fb5a706c2c09ec15d505dfac06dc439356218e58f978420c9c312ef1f8c22d9b",
+    "drivers/DodgeStorage/DodgeSeedSync.cpp": "861311834295bd1195ad9af19925197e4883b9ea2906be437a2935da338f493b",
+    "tests/DodgeSeedSyncTest.cpp": "535b3fb20405628411c36386fff5ea36d7d502bfedc4d9e9ac4e4307ff063d61",
+    "tests/seed_sync_include/SeedPeers.h": "bf6c483a937e13a8f788fd3473f79b7ba6ebed017adae1c8a19387f49fd14ec2",
+    "tests/seed_sync_include/pexpert/pexpert.h": "eb9915e5a30d0ad7b423a82767c0c97cc8d32d9f071ebb03345f9cc96c8953b8",
+    "tests/seed_sync_include/sys/errno.h": "eb9915e5a30d0ad7b423a82767c0c97cc8d32d9f071ebb03345f9cc96c8953b8",
+    "tests/seed_sync_include/sys/fcntl.h": "eb9915e5a30d0ad7b423a82767c0c97cc8d32d9f071ebb03345f9cc96c8953b8",
+    "tests/seed_sync_include/sys/mount.h": "eb9915e5a30d0ad7b423a82767c0c97cc8d32d9f071ebb03345f9cc96c8953b8",
+    "tests/seed_sync_include/sys/param.h": "eb9915e5a30d0ad7b423a82767c0c97cc8d32d9f071ebb03345f9cc96c8953b8",
+    "tests/seed_sync_include/sys/proc.h": "eb9915e5a30d0ad7b423a82767c0c97cc8d32d9f071ebb03345f9cc96c8953b8",
+    "tests/seed_sync_include/sys/sysctl.h": "26f3dd02fdfbc1a8a2457de80d1d2cc0564f9f5c1f239c4bd830537da83996d5",
+    "tests/seed_sync_include/sys/systm.h": "eb9915e5a30d0ad7b423a82767c0c97cc8d32d9f071ebb03345f9cc96c8953b8",
+    "tests/seed_sync_include/sys/vnode.h": "eb9915e5a30d0ad7b423a82767c0c97cc8d32d9f071ebb03345f9cc96c8953b8",
+    "tests/seed_sync_include/sys/vnode_if.h": "eb9915e5a30d0ad7b423a82767c0c97cc8d32d9f071ebb03345f9cc96c8953b8"
+  },
+  "artifacts": {
+    "build/cph2653-seed-sync-host/reference/bsd/vfs/vfs_vnops.c": "ec387f0a99f8cf3b22e840be47e03ea05b0ca9758a477ac5aaad195daf92afc7",
+    "build/cph2653-seed-sync-host/SeedClose.inc": "ba9ddbda256e590ad984952af6894dc3d8d9ecf7437965e504592c510665c35b",
+    "build/cph2653-seed-sync-host/seed-close-host": "a9bec4438feff28d2a423eefbdafa93e36c2a01493fc710436b3d810c6951365",
+    "build/cph2653-seed-sync-host/old-close-host": "7fb746b32c8cf07ec47f99f8157f708e0b966a2e8602d2d8fb7789809e442d27",
+    "build/cph2653-seed-sync-host/host.log": "29d56795ed86b41f9af64abd435d799a00f128a73e8f0f5451eeb6c5cfd112b6"
+  },
+  "native_compiled": false,
+  "host_cases": 56,
+  "old_close_control_rejected": true,
+  "ordinary_close_preserved": true,
+  "atomic_replacement_added": false,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Selected owner-development seed closes validate the original private 32-byte file on verified APFS Data, synchronize the file and directory, then request F_FULLFSYNC without an unsupported fallback. Actual pinned close source and synchronization code execute under sanitizers with explicit VFS peers. Ordinary close, lock release and iocount cleanup always remain, including failures. This preserves original PRNG and userspace code. It does not add atomic seed-file replacement, guarantee a prior seed survives truncation/crash, or qualify physical persistence. Fresh boot entropy remains independently required; a saved seed is additional input only."
+}

@@ -14,15 +14,23 @@ pipeline caches and connect tile pipelines to the pinned runtime.
 
 The native system source now connects owner-verified UFS OS/SystemOS, Data,
 development AES/KeyStore and the captured Qualcomm TRNG. Separate read-only and
-persistent-Data-capable kernels produce local boot/root packages. These builds
+persistent-Data-capable kernels produce local boot/root packages. The persistent
+variant also synchronizes the original private saved seed and exposes flush
+failures through read-only diagnostics. These builds
 retain the iPhone source pins and firmware memory patch; native boot, graphics
 and hardware security remain unqualified.
+
+A separate Wi-Fi transport archive adapts the captured six-rail power topology
+and PCIe PHY sequence. Its protocol and ownership checks run on the host;
+kernel networking and original iPhone wireless clients still need integration.
 
 Separate QEMU builds mount the original iPhone OS and SystemOS images, run the
 original dyld, launchd and system services, including the SpringBoard process.
 They complete the userspace crypto and keybag/persona initialization tasks.
 Data survives a forced VM stop and cold resume. The graphical interface and
 complete system boot are still being brought up.
+An isolated seed fixture also verifies that the original iPhone utility saves
+through APFS full sync and reads the same private bytes after cold resume.
 See [GPU builds](docs/bring-up.md#driver-builds) and [QEMU entry](docs/bring-up.md#qemu-entry).
 See [native system packages](docs/bring-up.md#native-system-packages) for the new
 source build and its local checks.

@@ -119,7 +119,7 @@ def main():
         OUT = OUT.with_name(OUT.name + '-persistent');REPORT = REPORT.with_name(REPORT.stem + '-persistent.json')
         KERNEL_OUT = KERNEL_OUT.with_name(KERNEL_OUT.name + '-persistent')
         KERNEL_REPORT = KERNEL_REPORT.with_name(KERNEL_REPORT.stem + '-persistent.json')
-        BOOT_ARGS += ' sheng-data-persist=2'
+        BOOT_ARGS += ' sheng-data-persist=2 dodge-seed-sync=1'
     if args.check_only:
         check_report(json.loads(REPORT.read_text()));print('PASS: native owner system local boot/root package');return
     kernel = json.loads(KERNEL_REPORT.read_text());check_kernel(kernel)

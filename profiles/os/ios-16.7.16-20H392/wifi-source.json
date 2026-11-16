@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/IssacL04/UniXNU-Pagani-Drivers.git",
+  "revision": "c888efd3ce1b817d13f28783a77cf689cb2255c9",
+  "source_directory": "drivers/PaganiWifi",
+  "patch": "patches/oneplus13/0029-dodge-wifi-six-rails.patch",
+  "patch_sha256": "6d202c3e86dc090ce67e0862081a0ab4eb87c21619b4cc79548397f084b50b70",
+  "before_sha256": {
+    "PaganiWifiTables.h": "001f808ba5dd4356b1e31efcfd9631c0a1064d71201c29f73cf55f3efb859516",
+    "Test/bringup.cpp": "5e57ca4090c4a3a319b5cea283e1ab957b281345912a4d18310334d7090995e2",
+    "Test/firmware.c": "287c3f87c3e229939c8bfbd25c73530d51d1cfc6c37384787b0e3b89f5dedf29"
+  },
+  "after_sha256": {
+    "PaganiWifiTables.h": "bbba73b89d5468e3acbdd42b721fe464291a134b65ce8e32d4ef5ba82c6314bc",
+    "Test/bringup.cpp": "bdb29faf8f38961d2b13a7ad406aa42ffba0e22a59114e7b3cc2c273ce3285c9",
+    "Test/firmware.c": "820b19d69c9426b9737054ff2ab2ad9bd681da0deda0bbd7f50617d3c8e7f46a"
+  },
+  "source_only": true,
+  "foreign_OS_binary_bindings_used": false
+}

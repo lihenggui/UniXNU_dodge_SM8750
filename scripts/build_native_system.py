@@ -20,6 +20,7 @@ from build_user_entropy import REPORT as ENTROPY_REPORT, check_report as check_e
 from build_native_entropy import REPORT as TRNG_REPORT, check_report as check_trng
 from check_native_store_host import REPORT as STORE_REPORT, CONTRACT as STORE_CONTRACT, check_report as check_store
 from prepare_native_root_policies import REPORT as EXTERNAL_REPORT, check_report as check_external
+from build_seed_sync import REPORT as SEED_REPORT, check_report as check_seed
 from build_ufs_root import concrete_methods
 from build_data_source import check_table, concrete_methods as ram_methods
 from build_crypto_source import hook_readbacks
@@ -93,7 +94,7 @@ def ufs_readback(raw, methods):
         '_vr_open', '_vr_verify_block', '_dodge_native_system_prepare', '_dodge_native_security_start',
         '_dodge_native_entropy_start', '_dodge_native_entropy_ready',
         '_dodge_native_root_policies_load', '_dodge_native_root_policy_count', '_dodge_native_root_policy_table',
-        '_write_random', '_dodge_write_random_original', '_armdt_platform_clock_register',
+        '_write_random', '_dodge_write_random_original', '_dodge_seed_close_sync', '_armdt_platform_clock_register',
         '__ZN13ArmDTPlatform15getGMTTimeOfDayEv', '__ZN13ArmDTPlatform15setGMTTimeOfDayEl')
     for name in required:
         require(names[name]['kind'] & 14 == 14 and names[name]['value'], 'Native system missing real implementation: ' + name)
@@ -123,6 +124,7 @@ def prelink(native, base, aes, key, entropy):
         '_dodge_native_system_checkpoint', '_dodge_native_security_checkpoint', '_dodge_aes_allocate', '_native_keyevents_allocate')
     functions += ('_dodge_native_entropy_start', '_dodge_native_entropy_ready', '_dodge_native_entropy_checkpoint')
     functions += ('_dodge_native_root_policies_load', '_dodge_native_root_policy_count', '_dodge_native_root_policy_table')
+    functions += ('_dodge_seed_close_sync',)
     source = {**base, 'actual_crypto_hooks': hook_readbacks(linked), 'actual_iobsd_hook': hook_readback(linked),
         'actual_init_hook': init_hook_readback(linked),
         'combined_original_bindings': {**base['combined_original_bindings'], **aes['abi']['bindings'], **entropy['original_bindings']},
@@ -194,6 +196,7 @@ def main():
     trng = json.loads(TRNG_REPORT.read_text());check_trng(trng)
     store = json.loads(STORE_REPORT.read_text());check_store(store)
     external = json.loads(EXTERNAL_REPORT.read_text());check_external(external)
+    seed_sync = json.loads(SEED_REPORT.read_text());check_seed(seed_sync)
     lock = json.loads((ROOT / 'upstream.lock.json').read_text())
     refs = pinned_sources(('pagani_reference', 'sm8750', 'verified_root_reference', 'software_aes_reference', 'apple_keystore_state_reference'))
     ufs = refs['pagani_reference'] / 'drivers/NativeUfs';verified = refs['verified_root_reference']
@@ -305,6 +308,7 @@ def main():
         str(OBJDIR / 'bsd/DEVELOPMENT/bsd_init.o'): str(root_obj),
         str(ROOT / 'build/ios16-apfs-mount-native/kern_exec.data.o'): str(exec_obj),
         str(OBJDIR / 'bsd/DEVELOPMENT/uipc_mbuf.o'): str(mbuf),
+        str(OBJDIR / 'bsd/DEVELOPMENT/vfs_vnops.o'): str(ROOT / seed_sync['vfs_object']),
         str(ROOT / 'build/cph2653-crypto-source/prng_random.crypto.o'): str(ROOT / entropy['original_object'])}
     for name in replacements:require(rows.count(name) == 1, 'Ambiguous native object: ' + name)
     filelist = OUT / 'native.filelist';filelist.write_text(''.join(replacements.get(row, row) + '\n' for row in rows))
@@ -321,7 +325,7 @@ def main():
     command[command.index(str(old_observers))] = str(observers)
     native = OUT / 'mach.native-system'
     command += ['-Wl,-force_load,' + str(owner_archive), '-Wl,-force_load,' + str(ROOT / entropy['archive']),
-        '-Wl,-force_load,' + str(ROOT / trng['archive']), '-o', str(native)]
+        '-Wl,-force_load,' + str(ROOT / trng['archive']), '-Wl,-force_load,' + str(ROOT / seed_sync['archive']), '-o', str(native)]
     run(command, OUT / 'link.log', OBJDIR)
     linked = native.read_bytes();facts = ufs_readback(linked, methods)
     aes_readback(linked, aes['concrete_methods'], aes['abi']);key_readback(linked, key['class_tables'], key['layout'])
@@ -352,7 +356,7 @@ def main():
     report = {'result': 'IOS16_NATIVE_OWNER_SYSTEM_SOURCE_AND_PRELINK_PASS', 'product': 'iPhone10,3', 'build': '20H392',
         'source_sha256': {str(path.relative_to(ROOT)): sha(path) for path in files},
         'dependency_report_sha256': {str(path.relative_to(ROOT)): sha(path) for path in
-            (BASE_REPORT, AES_REPORT, KEY_REPORT, POLICY_REPORT, DATA_REPORT, CALENDAR_REPORT, ENTROPY_REPORT, TRNG_REPORT, STORE_REPORT, EXTERNAL_REPORT, volumes_path)},
+            (BASE_REPORT, AES_REPORT, KEY_REPORT, POLICY_REPORT, DATA_REPORT, CALENDAR_REPORT, ENTROPY_REPORT, TRNG_REPORT, STORE_REPORT, EXTERNAL_REPORT, SEED_REPORT, volumes_path)},
         'artifacts': {str(path.relative_to(ROOT)): sha(path) for path in artifacts},
         'candidate': str(candidate.relative_to(ROOT)), 'candidate_sha256': sha(candidate), 'native_kernel': str(native.relative_to(ROOT)),
         'link_command': str(link_record.relative_to(ROOT)), 'components': record['components'], **checked,
@@ -367,7 +371,8 @@ def main():
         'external_root_policy_container_sha256': external['container_sha256'], 'root_policies_embedded_in_kernel': False,
         'native_store_host_cases': store['case_count'],
         'compile_settings': settings, 'ufs_verification_compiled': True, 'Apple_authentication_check_preserved': True,
-        'linked_source_and_binding_objects': base['combined_source_objects'] + len(owner_members) + 4,
+        'linked_source_and_binding_objects': base['combined_source_objects'] + len(owner_members) + 5,
+        'seed_close_sync_compiled': True, 'seed_close_sync_host_cases': seed_sync['host_cases'],
         'platform_calendar_backport': True, 'user_reseed_accounting': True, 'native_TRNG_compiled': True,
         'original_ignition_retained': True, 'host_boot_policy_cases': int(result.stdout.split()[1]),
         'percpu_header_sha256': sha(header), 'protected_previous_artifacts': protected,

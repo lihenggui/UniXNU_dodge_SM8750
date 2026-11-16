@@ -1,0 +1,253 @@
+{
+  "result": "IOS16_NATIVE_SEED_CLOSE_AND_ORIGINAL_SAVER_CPU_PASS",
+  "compiler_layout": {
+    "fg_bytes": 96,
+    "fg_flag": 16,
+    "fg_ops": 40,
+    "fg_data": 56,
+    "attr_bytes": 440,
+    "attr_supported": 0,
+    "statfs_bytes": 2164,
+    "statfs_type": 80,
+    "data_bytes": 12,
+    "data_phase": 0,
+    "data_mounted": 9,
+    "data_verified": 10,
+    "data_ready": 2,
+    "req_bytes": 80,
+    "req_oldfunc": 40,
+    "attr_uid": 68,
+    "width_uid": 4,
+    "want_uid": 128,
+    "attr_gid": 72,
+    "width_gid": 4,
+    "want_gid": 256,
+    "attr_mode": 76,
+    "width_mode": 2,
+    "want_mode": 512,
+    "attr_nlink": 24,
+    "width_nlink": 8,
+    "want_nlink": 2,
+    "attr_data_size": 48,
+    "width_data_size": 8,
+    "want_data_size": 16,
+    "FWRITE": 2,
+    "FREAD": 1,
+    "VREG": 1,
+    "VDIR": 2,
+    "MNT_WAIT": 1,
+    "F_FULLFSYNC": 51,
+    "EIO": 5,
+    "EAUTH": 80,
+    "ENOTSUP": 45,
+    "ENXIO": 6
+  },
+  "native_cases": [
+    {
+      "case": "normal",
+      "result": "PASS",
+      "errno": 0,
+      "calls": [
+        "seed-sync",
+        "directory-sync",
+        "full-sync",
+        "close"
+      ],
+      "source_sysctl_values": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "case": "foreign-owner",
+      "result": "PASS",
+      "errno": 0,
+      "calls": [
+        "close"
+      ],
+      "source_sysctl_values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "case": "readonly-close",
+      "result": "PASS",
+      "errno": 0,
+      "calls": [
+        "close"
+      ],
+      "source_sysctl_values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "case": "outside-path",
+      "result": "PASS",
+      "errno": 0,
+      "calls": [
+        "close"
+      ],
+      "source_sysctl_values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "case": "short-seed",
+      "result": "PASS",
+      "errno": 80,
+      "calls": [
+        "close"
+      ],
+      "source_sysctl_values": [
+        1,
+        0,
+        1,
+        80
+      ]
+    },
+    {
+      "case": "file-sync-error",
+      "result": "PASS",
+      "errno": 5,
+      "calls": [
+        "seed-sync",
+        "close"
+      ],
+      "source_sysctl_values": [
+        1,
+        0,
+        1,
+        5
+      ]
+    },
+    {
+      "case": "full-sync-error",
+      "result": "PASS",
+      "errno": 5,
+      "calls": [
+        "seed-sync",
+        "directory-sync",
+        "full-sync",
+        "close"
+      ],
+      "source_sysctl_values": [
+        1,
+        0,
+        1,
+        5
+      ]
+    },
+    {
+      "case": "full-sync-unsupported",
+      "result": "PASS",
+      "errno": 45,
+      "calls": [
+        "seed-sync",
+        "directory-sync",
+        "full-sync",
+        "close"
+      ],
+      "source_sysctl_values": [
+        1,
+        0,
+        1,
+        45
+      ]
+    },
+    {
+      "case": "ordinary-close-error",
+      "result": "PASS",
+      "errno": 6,
+      "calls": [
+        "seed-sync",
+        "directory-sync",
+        "full-sync",
+        "close"
+      ],
+      "source_sysctl_values": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "case": "both-errors",
+      "result": "PASS",
+      "errno": 6,
+      "calls": [
+        "seed-sync",
+        "directory-sync",
+        "full-sync",
+        "close"
+      ],
+      "source_sysctl_values": [
+        1,
+        0,
+        1,
+        5
+      ]
+    }
+  ],
+  "original_saver_cases": [
+    {
+      "case": "original-save",
+      "result": "PASS",
+      "original_return": 0,
+      "native_sync_errno": 0,
+      "partial_writes": 5,
+      "temporary_seed_cleared": true,
+      "original_ignores_close_error": false,
+      "kernel_calls": [
+        "seed-sync",
+        "directory-sync",
+        "full-sync",
+        "close"
+      ]
+    },
+    {
+      "case": "original-save-full-sync-error",
+      "result": "PASS",
+      "original_return": 0,
+      "native_sync_errno": 5,
+      "partial_writes": 5,
+      "temporary_seed_cleared": true,
+      "original_ignores_close_error": true,
+      "kernel_calls": [
+        "seed-sync",
+        "directory-sync",
+        "full-sync",
+        "close"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "scripts/check_seed_sync_kernel.py": "300aef2417cb4d7046a84ee776746583dc7797ae46682cc0d62f003d768ec917",
+    "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
+    "hardware/dodge-entropy.json": "55815c61f3663edb151886195e38703ea9ad6d46ef6aa81e2068ffefaaae887d"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-native-system-kernel.json": "6eaeb8f02a9d07f6417841fb2f8d0d8ffbb91f3e8faaaba8d6c092f8e9fbf1c7"
+  },
+  "artifacts": {
+    "build/cph2653-seed-sync-kernel/SeedSyncLayout.cpp": "15417ff7bc9479d6f2d0a547e5b95a74189f14ac3dda560adc799913bcfb7824",
+    "build/cph2653-seed-sync-kernel/SeedSyncLayout.o": "88ab08fc3f7a52e50048a39c37b31866a8f6bad3b3372d37347ff5887408a906",
+    "build/cph2653-seed-sync-kernel/compile-commands.json": "653f353d71dce910176e73228da4a8c9b76d3934ab1d9d5ca2adaf04cc62339a",
+    "build/cph2653-native-system/kernel.macho": "d0089184423c99f04bc5c59e347a3c45e5dde816b0f78c986e683c08e55f85f3",
+    "build/cph2653-native-entropy/prng_seedctl.original": "321cbfba4b85f960cf1d153b27f9dbb35a5c14ab0044334fe78bb499e266b40b"
+  },
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Actual native VFS close and source synchronization instructions run with explicit VFS/registry peers and compiler-derived layouts. The unchanged original iPhone saver executes creation, ownership, five partial writes, close and temporary clearing; close enters the native kernel model. An injected full-sync failure stays visible in the kernel even though the original utility ignores close errors and returns zero. No device flush, filesystem crash consistency or physical entropy quality is qualified."
+}

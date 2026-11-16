@@ -1,0 +1,19 @@
+--- a/bsd/vfs/vfs_vnops.c
++++ b/bsd/vfs/vfs_vnops.c
+@@ -1829,7 +1829,16 @@
+ 			(void)vnode_setlease(vp, fg, F_UNLCK, 0, ctx);
+ 		}
+ #endif
++#if XNU_DODGE_SEED_SYNC
++		extern int dodge_seed_close_sync(vnode_t, int, vfs_context_t);
++		int seed_sync_error = dodge_seed_close_sync(vp, fg->fg_flag, ctx);
++#endif
+ 		error = vn_close(vp, fg->fg_flag, ctx);
++#if XNU_DODGE_SEED_SYNC
++		if (!error) {
++			error = seed_sync_error;
++		}
++#endif
+ 		(void) vnode_put(vp);
+ 	}
+ 	return error;

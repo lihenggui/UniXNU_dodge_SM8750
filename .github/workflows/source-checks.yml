@@ -62,6 +62,12 @@ jobs:
         run: python3 scripts/check_native_store_host.py
       - name: Check external owner-policy loading, immutable snapshots and failure latches
         run: python3 scripts/check_root_policy_source_host.py
+      - name: Check original vnode close cleanup and saved-seed synchronization
+        run: python3 scripts/build_seed_sync.py --host-only
+      - name: Install regular-file FAT fixture tools
+        run: sudo apt-get update && sudo apt-get install -y mtools
+      - name: Check captured six-rail WLAN source, protocols and cache ownership
+        run: python3 scripts/build_wifi_transport.py --host-only
       - name: Check unsigned per-CPU iteration and empty secondary ranges
         run: python3 scripts/check_percpu_iteration.py
       - name: Check native A830 startup, submission, fences and recovery with software controllers

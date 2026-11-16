@@ -1,0 +1,203 @@
+--- a/PaganiWifiTables.h
++++ b/PaganiWifiTables.h
+@@ -230,11 +230,10 @@
+ constexpr Rail kRails[] = {
+     {"vdd-wlan-io",        "ldof3", "pm_v8f_l3",  0x5c3, 1800, 1800, 1800, 30, nullptr, "BT vdd18-aon; always-on", 1},
+     {"vdd-wlan-io12",      "ldof2", "pm_v8f_l2",  0x5c2, 1200, 1200, 1200, 30, nullptr, "BT vdd12-io; always-on", 2},
+-    {"vdd-wlan-ant-share", "ldob8", "pm_humu_l8", 0x1c8, 2800, 2800, 2800, 0,  nullptr, "sdhc_2 vdd-io (no SD slot)", 3},
+-    {"vdd-wlan-aon",       "smpd4", "pm_v8d_s4",  0x3a4, 876,  1036, 876,  0,  "bb",    "BT vdd-dig, wlan-aon", 4},
+-    {"vdd-wlan-dig",       "smpf5", "pm_v8f_s5",  0x5a7, 876,  1000, 876,  0,  "rf",    "BT rfa0p75/aon", 5},
+-    {"vdd-wlan-rfa1",      "smpg3", "pm_v8g_s3",  0x6a1, 1860, 2000, 1860, 0,  "rf",    "BT rfa1p8", 6},
+-    {"vdd-wlan-rfa2",      "smpi7", "pm_v8i_s7",  0x8ad, 1312, 1340, 1312, 0,  "rf",    "UFS vccq-parent! never lower or disable", 7},
++    {"vdd-wlan-aon",       "smpd4", "pm_v8d_s4",  0x3a4, 876,  1036, 876,  0,  "bb",    "BT vdd-dig, wlan-aon", 3},
++    {"vdd-wlan-dig",       "smpf5", "pm_v8f_s5",  0x5a7, 876,  1000, 876,  0,  "rf",    "BT rfa0p75/aon", 4},
++    {"vdd-wlan-rfa1",      "smpg3", "pm_v8g_s3",  0x6a1, 1860, 2000, 1860, 0,  "rf",    "BT rfa1p8", 5},
++    {"vdd-wlan-rfa2",      "smpi7", "pm_v8i_s7",  0x8ad, 1312, 1340, 1312, 0,  "rf",    "UFS vccq-parent! never lower or disable", 6},
+ };
+ // The LDOs the PCIe PHY hangs on. Neither the vendor devicetree nor this driver votes them (CESTA does on Android) and they are never
+ // written here: the sources disagree on which two they are (mainline sm8750-mtp: vdda-phy L1F, vdda-pll L3G; pagani-linux on this phone:
+--- a/Test/bringup.cpp
++++ b/Test/bringup.cpp
+@@ -288,17 +288,17 @@
+     Bringup b = fresh();
+     CHECK(linkUp(b) == 0 && b.step == kStepEndpointId && b.error == 0);
+     // rails: cnss2's order, mode 7 then the voltage then enable 1; S7I (already up at 1312 mV) gets the mode alone
+-    const char *order[] = {"ldof3", "ldof2", "ldob8", "smpd4", "smpf5", "smpg3"};
+-    const uint32_t mv[] = {1800, 1200, 2800, 876, 876, 1860};
+-    CHECK(M.votes.size() == 19);
+-    for (unsigned i = 0; i < 6; ++i) {
++    const char *order[] = {"ldof3", "ldof2", "smpd4", "smpf5", "smpg3"};
++    const uint32_t mv[] = {1800, 1200, 876, 876, 1860};
++    CHECK(M.votes.size() == 16);
++    for (unsigned i = 0; i < 5; ++i) {
+         CHECK(M.votes[3 * i].resource == order[i] && M.votes[3 * i].reg == 8 && M.votes[3 * i].value == 7);
+         CHECK(M.votes[3 * i + 1].resource == order[i] && M.votes[3 * i + 1].reg == 0 && M.votes[3 * i + 1].value == mv[i]);
+         CHECK(M.votes[3 * i + 2].resource == order[i] && M.votes[3 * i + 2].reg == 4 && M.votes[3 * i + 2].value == 1);
+     }
+-    CHECK(M.votes[18].resource == "smpi7" && M.votes[18].reg == 8 && M.votes[18].value == 7);
++    CHECK(M.votes[15].resource == "smpi7" && M.votes[15].reg == 8 && M.votes[15].value == 7);
+     for (const Vote &v : M.votes) CHECK(!(v.reg == 4 && v.value == 0) && !(v.resource == "smpi7" && v.reg != 8));
+-    CHECK(b.rails[6].skipped == 1 && railOf(0x8ad)->mode == 7);
++    CHECK(b.rails[5].skipped == 1 && railOf(0x8ad)->mode == 7);
+     for (const Vote &v : M.votes) for (const PhyRail &r : kPhyRails) CHECK(v.resource != r.resource);   // the PHY's LDOs: never voted
+     CHECK(bcmNames.size() == 1 && bcmNames[0] == "SN4 100000 800000 8");
+     CHECK(M.pdc.empty() && M.sleepClockWrites == 1);
+@@ -368,7 +368,7 @@
+     Bringup b = fresh(1);
+     CHECK(survey(b) == 0 && b.step == kStepSurveyController && M.writes.empty() && M.votes.empty());
+     CHECK((b.halts & 0xfff) == 0xfff && b.collapse == (kCollapsePcie0 | kCollapsePcie0Phy | 0x10));
+-    CHECK(b.sleepClock == 0 && b.rails[6].read && b.rails[6].millivolts == 1312 && b.rails[6].mode == 3);
++    CHECK(b.sleepClock == 0 && b.rails[5].read && b.rails[5].millivolts == 1312 && b.rails[5].mode == 3);
+     for (const RailResult &r : b.phyRails) CHECK(r.read && r.enable == 0x80 && r.millivolts == 880 && r.mode == 7);
+     // with the controller powered and clocked by a boot loader the survey also reads PARF and the DBI (still no write)
+     reset();
+@@ -444,7 +444,7 @@
+     CHECK(powerOn(b) == 0);
+     unsigned s3g = 0;
+     for (const Vote &v : M.votes) if (v.resource == "smpg3") {++s3g; CHECK(v.reg != 0);}
+-    CHECK(s3g == 2 && railOf(0x6a1)->mv == 4095 && b.rails[5].voted == 0 && b.rails[5].skipped == 1);
++    CHECK(s3g == 2 && railOf(0x6a1)->mv == 4095 && b.rails[4].voted == 0 && b.rails[4].skipped == 1);
+     // an unread ordinary rail is voted the chosen voltage (it can only be the cnss floor)
+     reset();
+     railOf(0x5a7)->readable = false;
+--- a/Test/firmware.c
++++ b/Test/firmware.c
+@@ -13,6 +13,7 @@
+ #include <string.h>
+ #include <sys/stat.h>
+ #include "../WifiFirmware.h"
++#include "DodgeWifiFirmware.h"
+ 
+ static unsigned checks;
+ #define CHECK(x) do {if (!(x)) {fprintf(stderr, "%s:%d: %s\n", __FILE__, __LINE__, #x); exit(1);} ++checks;} while (0)
+@@ -132,6 +133,7 @@
+     m.modem_a = &fat16;
+     m.seed_mounted = 1;
+     PwFwConfig c = config(1, NULL);
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     CHECK(pw_fw_get(&fw, "amss.bin", &data, &size) == PwFwOk);
+     same(data, size, "peach/amss20.bin");
+@@ -171,6 +173,7 @@
+ 
+     /* 2. the null-M3 mode and a BDF override */
+     c = config(0, "bdwlan.b0e");
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     CHECK(pw_fw_get(&fw, "m3.bin", &data, &size) == PwFwAbsent);
+     CHECK(pw_fw_get(&fw, "board.bin", &data, &size) == PwFwOk);
+@@ -186,6 +189,7 @@
+     snprintf(odm, sizeof odm, "%s/odm", m.seed);
+     c = config(1, NULL);
+     c.seed_dir = odm;
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     m.reads = 0;
+     CHECK(pw_fw_get(&fw, "board.bin", &data, &size) == PwFwOk);
+@@ -200,6 +204,7 @@
+     /* the override of the BDF's name holds in the seed too: it has no such file, so the partition's */
+     c = config(1, "bdwlan.b0e");
+     c.seed_dir = odm;
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     CHECK(pw_fw_get(&fw, "board.bin", &data, &size) == PwFwOk);
+     same(data, size, "peach/bdwlan.b0e");
+@@ -207,6 +212,7 @@
+     m.seed_mounted = 0;
+     c = config(1, NULL);
+     c.seed_dir = odm;
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     m.reads = 0;
+     CHECK(pw_fw_get(&fw, "board.bin", &data, &size) == PwFwNotYet && !pw_fw_loaded(&fw, "board.bin") && m.reads == 0);
+@@ -218,6 +224,7 @@
+     same(data, size, "seed-bdwlan.elf");
+     /* it never comes: after pw_fw_seed_gone the partition's copies, and later requests stay with what they got */
+     m.seed_mounted = 0;
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     CHECK(pw_fw_get(&fw, "regdb.bin", &data, &size) == PwFwNotYet);
+     pw_fw_seed_gone(&fw);
+@@ -227,6 +234,7 @@
+     m.seed_mounted = 1;
+     CHECK(pw_fw_get(&fw, "regdb.bin", &data, &size) == PwFwOk && pw_fw_loaded(&fw, "regdb.bin")->source == PwFwSrcFat);
+     /* a seed file that cannot be read does not cost the partition's copy */
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     m.seed_fail = 1;
+     CHECK(pw_fw_get(&fw, "regdb.bin", &data, &size) == PwFwOk);
+@@ -236,6 +244,7 @@
+     m.seed_mounted = 0;
+     const Blob *keep = m.modem_a;
+     m.modem_a = NULL;
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     pw_fw_seed_gone(&fw);
+     CHECK(pw_fw_get(&fw, "regdb.bin", &data, &size) == PwFwNotYet);
+@@ -247,24 +256,28 @@
+     /* 3. the seed before the Data volume is mounted: "not yet", nothing cached; once mounted the file is found */
+     m.seed_mounted = 0;
+     c = config(1, NULL);
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     CHECK(pw_fw_get(&fw, "join.txt", &data, &size) == PwFwNotYet && !pw_fw_loaded(&fw, "join.txt"));
+     m.seed_mounted = 1;
+     CHECK(pw_fw_get(&fw, "join.txt", &data, &size) == PwFwOk);
+     /* a seed file over 32 MiB is refused */
+     m.modem_a = NULL;
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     CHECK(pw_fw_get(&fw, "amss.bin", &data, &size) == PwFwAbsent);   /* no partition, nothing in the seed */
+     CHECK(fw.mount_rc == PwFwNoPartition);
+ 
+     /* 4. modem_a absent: modem_b (FAT32, 512-byte sectors), its amss20.bin in image/ */
+     m.modem_b = &fat32;
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     CHECK(pw_fw_get(&fw, "amss.bin", &data, &size) == PwFwOk && !strcmp(fw.partition, "modem_b"));
+     same(data, size, "fat32-amss20.bin");
+     CHECK(!strcmp(pw_fw_loaded(&fw, "amss.bin")->where, "modem_b:image/amss20.bin"));
+     /* the partition has no regdb: the seed's */
+     c.seed_dir = odm;
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     CHECK(pw_fw_get(&fw, "regdb.bin", &data, &size) == PwFwOk && pw_fw_loaded(&fw, "regdb.bin")->source == PwFwSrcSeed);
+     same(data, size, "seed-regdb.bin");
+@@ -274,11 +287,13 @@
+     /* 5. a partition that holds no FAT volume: the seed still answers; a failing disk is an I/O error and nothing is cached */
+     Blob zero = {"zero", calloc(1, 1 << 20), 1 << 20};
+     m.modem_a = &zero;
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     CHECK(pw_fw_get(&fw, "qdss_trace_config_v2.cfg", &data, &size) == PwFwOk && fw.mount_rc == PwFwNotFat);
+     same(data, size, "seed-qdss_trace_config_perf_v2.cfg");
+     m.modem_a = &fat16;
+     m.fail_reads = 1;
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &c);
+     CHECK(pw_fw_get(&fw, "amss.bin", &data, &size) == PwFwIoError && !pw_fw_loaded(&fw, "amss.bin"));
+     m.fail_reads = 0;
+@@ -289,6 +304,7 @@
+     PwFwConfig none = config(1, NULL);
+     none.partition_count = 0;
+     none.seed_dir = "";
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+     pw_fw_init(&fw, &io, &none);
+     CHECK(pw_fw_get(&fw, "amss.bin", &data, &size) == PwFwAbsent);
+     {
+@@ -299,11 +315,13 @@
+         PwFwConfig big = config(1, NULL);
+         big.partition_count = 0;
+         big.seed_dir = bigdir;
++        CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
+         pw_fw_init(&fw, &io, &big);
+         CHECK(pw_fw_get(&fw, "amss.bin", &data, &size) == PwFwTooBig);
+     }
+-    /* every byte allocated for a failed read was given back; the cached ones stay */
+-    CHECK(m.freed <= m.allocated);
++    /* All synthetic consumers are stopped before final cache teardown. */
++    CHECK(dodge_wifi_firmware_release(&fw) == PwFwOk);
++    CHECK(m.freed == m.allocated);
+     free(fat16.data); free(fat32.data); free(zero.data);
+     printf("PASS firmware sources: %u checks\n", checks);
+     return 0;

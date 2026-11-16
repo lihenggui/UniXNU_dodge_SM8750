@@ -1,0 +1,155 @@
+{
+  "result": "SCOPED_UPSTREAM_CONTINUATION_8_REFS_AND_SELECTED_SOURCE_REVIEW_PASS",
+  "review_date": "2026-11-16",
+  "target": "CPH2653 / iPhone10,3 / iOS 16.7.16 / 20H392 / Darwin 22",
+  "repository_count": 8,
+  "branch_reference_count": 8,
+  "observations": [
+    {
+      "name": "unixnu",
+      "repository": "https://github.com/UniXNU/UniXNU",
+      "branch": "refs/heads/main",
+      "remote_revision": "4a654d1f31662f18ab94391a4f0297b17b9bb2fe",
+      "previous_review_revision": "0c1bac3d51a3009dca1708b15a5198f4b43d057a",
+      "selected_pin": "3fa5ff5f409398c0555a9561d6437ce5d4c3b3b7",
+      "remote_changed_since_previous_review": true,
+      "depth": "read-only remote ref; selected source scope is described separately"
+    },
+    {
+      "name": "pagani_reference",
+      "repository": "https://github.com/IssacL04/UniXNU-Pagani-Drivers.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "c888efd3ce1b817d13f28783a77cf689cb2255c9",
+      "previous_review_revision": "c888efd3ce1b817d13f28783a77cf689cb2255c9",
+      "selected_pin": "f5017376415268fd39dcf0b3fd68a94661cee078",
+      "remote_changed_since_previous_review": false,
+      "depth": "read-only remote ref; selected source scope is described separately"
+    },
+    {
+      "name": "oneplus13t_reference",
+      "repository": "https://github.com/IssacL04/UniXNU-Pagani_SM8750.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "a84204eccb9b183945072e1b9b63de36c8495097",
+      "previous_review_revision": "a84204eccb9b183945072e1b9b63de36c8495097",
+      "selected_pin": "ad022a2a3a2e0c71c340361392d30d424c66b4d2",
+      "remote_changed_since_previous_review": false,
+      "depth": "read-only remote ref; selected source scope is described separately"
+    },
+    {
+      "name": "native_a830_reference",
+      "repository": "https://github.com/Shad0w23333/Adreno830.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "1a1321056ffc5428ae925f4680093718b46ca7c2",
+      "previous_review_revision": "1a1321056ffc5428ae925f4680093718b46ca7c2",
+      "selected_pin": "1a1321056ffc5428ae925f4680093718b46ca7c2",
+      "remote_changed_since_previous_review": false,
+      "depth": "read-only remote ref; selected source scope is described separately"
+    },
+    {
+      "name": "native_a830_smmu_reference",
+      "repository": "https://github.com/UniXNU/ArmSmmu4K.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "83969cd874503e65997ff7639f7dcf3d0a92cd17",
+      "previous_review_revision": "83969cd874503e65997ff7639f7dcf3d0a92cd17",
+      "selected_pin": "3ba92451bd44bb742d11758fbfcd3a446ecad685",
+      "remote_changed_since_previous_review": false,
+      "depth": "read-only remote ref; selected source scope is described separately"
+    },
+    {
+      "name": "sm8750",
+      "repository": "https://github.com/IssacL04/UniXNU-sm8750-common.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "feaa135df4763e3c19a155402e6b17b124a12e13",
+      "previous_review_revision": "feaa135df4763e3c19a155402e6b17b124a12e13",
+      "selected_pin": "669bceeaadc298e085f33d393c941eaca9e2c08c",
+      "remote_changed_since_previous_review": false,
+      "depth": "read-only remote ref; selected source scope is described separately"
+    },
+    {
+      "name": "Ath12kWifi",
+      "repository": "https://github.com/UniXNU/Ath12kWifi.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "fb792fb12de726f221b276e14ebbf4ed2bd26049",
+      "previous_review_revision": null,
+      "selected_pin": null,
+      "remote_changed_since_previous_review": null,
+      "depth": "read-only remote ref; selected source scope is described separately"
+    },
+    {
+      "name": "QcomBaseband",
+      "repository": "https://github.com/UniXNU/QcomBaseband.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "dd0199cf3300764ed52b23f4a47761f91fab21a2",
+      "previous_review_revision": "dd0199cf3300764ed52b23f4a47761f91fab21a2",
+      "selected_pin": null,
+      "remote_changed_since_previous_review": false,
+      "depth": "read-only remote ref; selected source scope is described separately"
+    }
+  ],
+  "core_range": {
+    "base": "0c1bac3d51a3009dca1708b15a5198f4b43d057a",
+    "tip": "4a654d1f31662f18ab94391a4f0297b17b9bb2fe",
+    "commit_count": 85,
+    "changed_file_count": 301,
+    "changed_component_gitlinks": [
+      {
+        "path": "drivers/Adreno740",
+        "before": "54b41b8f59e90a167f6f75160739c5f825945fbc",
+        "after": "1c9029bc3216a39d9e514ba41dee12e95e8f3598"
+      },
+      {
+        "path": "drivers/AdrenoMetal",
+        "before": "73d582fd4d5772b1f5fa83581a25077a16f2b6cd",
+        "after": "26d4902c588d0d0c23993cc4f32ebe9062d5c377"
+      },
+      {
+        "path": "drivers/ArmCpu",
+        "before": "d90e457b8392623853ec85c860feef546c767621",
+        "after": "acba4ee2674cfb23434431feb124871ae9b3b581"
+      },
+      {
+        "path": "drivers/RamBlock",
+        "before": "737f6dae119ef11990e77dc06bcead945098865e",
+        "after": "00a6e5dd6bb1709e817e13daec7986308cfb6d0f"
+      }
+    ]
+  },
+  "adaptation_decisions": [
+    {
+      "source": "UniXNU",
+      "decision": "Retain selected pins. Review of names, gitlinks and selected build/runtime changes finds macOS workflow/account/toolchain work, graphics/CPU/RamBlock selections, texture policy and Bluetooth discovery tracing. The full 301-file history was not line-by-line audited or rebased to Darwin 22."
+    },
+    {
+      "source": "PaganiWifi",
+      "decision": "Select public portable transport source at c888efd3ce1b817d13f28783a77cf689cb2255c9 independently of the existing driver pin. Reconcile CPH2653 six-rail supply topology, GPIOs, register windows, IOMMU selection and 128 PHY writes. Add quiesced cache clearing/release. Exclude iPad network frontend, Apple80211 binary bindings and Linux wireless runtime. Native archive and eight synthetic protocol/sequence/lifetime suites are checked separately."
+    },
+    {
+      "source": "Ath12kWifi",
+      "decision": "Reference main now integrates Linux wireless, supplicant authentication, lifecycle/ownership and packet metadata outside DMA memory. Source preparation/macOS build changes do not establish iPhone16 ABI or target DMA/MSI ownership. Runtime source not imported by this change."
+    },
+    {
+      "source": "QcomBaseband",
+      "decision": "Carrier identity/configuration, PDP/reconnect and CommCenter compatibility are available upstream. Current reference is SC7180/Coachz with newer original OS inputs; SM8750 firmware/transport and exact iPhone16 interfaces remain required. No foreign board addresses or iPad binary bindings imported."
+    },
+    {
+      "source": "Native A830 / ArmSmmu4K / sm8750 / 13T",
+      "decision": "Observed selected remote tips unchanged from the prior review. Preserve current source pins and existing reviewed backports."
+    }
+  ],
+  "source_sha256": {
+    "upstream.lock.json": "50da2f248a77f657b7e27f966dea861d1a58523fd2235ece1ade93e7b535bf4e",
+    "patches/mu-silicium/0001-cph2653-16.0.1.304-reserve-memory-holes.patch": "e1704c5fb2f9ae254d723fd0390f7fbe02e77c97fd8d1dae5ccb9c515bfa380f",
+    "profiles/os/ios-16.7.16-20H392/wifi-source.json": "2f14f4dd2b55dff444c98b31d1989c533b61792dc7624abef61e67fb595d3df2",
+    "reports/upstream-review.json": "4b170e6644dc5dbf45fd3430f5aa20c877727a62774c93913492595019d837af"
+  },
+  "artifacts": {
+    ".cache/upstream-review-2026-11-16/selected-heads.json": "b59d94ef53d7d477510336da63bcd8eb4009676049fac68f0bdbb58b5040db99",
+    ".cache/upstream-review-2026-11-16/core-range.json": "1026b8c22dcd5b0061f6b42ad49896af71694869cd97005a65db40511b6ffb45"
+  },
+  "source_pins_changed": false,
+  "new_portable_wifi_reference_added": true,
+  "firmware_memory_patch_retained": true,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Eight selected branch references checked by git ls-remote and selected source reviewed from immutable fetched objects in ignored review repositories. This scoped follow-up supplements the earlier 32-repository report; it does not refresh all 32 repositories or claim complete source migration."
+}

@@ -53,7 +53,7 @@ the selected sources. [The snapshot](../reports/public/upstream-review.json)
 records the remote revisions, commit relationships, input hashes and adaptation
 decisions. This review retains all source pins and the firmware memory patch.
 
-UniXNU main is now [`0c1bac3`](https://github.com/UniXNU/UniXNU/tree/0c1bac3d51a3009dca1708b15a5198f4b43d057a),
+At that review UniXNU main was [`0c1bac3`](https://github.com/UniXNU/UniXNU/tree/0c1bac3d51a3009dca1708b15a5198f4b43d057a),
 16 commits beyond the previous `dff2765` review. That range changes host IPSW
 downloads, log presentation, macOS VM/account handling and device documentation.
 It does not change component gitlinks or the component catalog. The new VM
@@ -82,6 +82,19 @@ The newer SM8750/Pagani references also contain peripheral integration, and
 mainline includes QcomBaseband. Their network, audio and USB work still requires
 CPH2653 power/resource/firmware inputs and original iPhone interfaces. None of
 those reference-board results establishes this board's functionality.
+
+The [2026-11-16 follow-up](../reports/public/upstream-continuation-2026-11-16.json)
+rechecks eight selected references. UniXNU main is
+[`4a654d1`](https://github.com/UniXNU/UniXNU/tree/4a654d1f31662f18ab94391a4f0297b17b9bb2fe),
+85 commits and 301 changed files beyond `0c1bac3`. That range changes macOS
+workflows and toolchains, graphics/CPU/RamBlock selections, texture policy and
+Bluetooth discovery tracing. It has not been fully rebased or audited line by
+line for Darwin 22. The native A830, ArmSmmu4K, SM8750 common and reviewed 13T
+tips remain unchanged. Ath12kWifi now integrates the Linux wireless runtime and
+supplicant; QcomBaseband exposes carrier/PDP/CommCenter work for its reference
+board and newer OS. Those references still need CPH2653 resources and original
+iPhone interfaces. This scoped follow-up supplements the earlier 32-repository
+review; it does not refresh every earlier reference.
 
 ## Host setup
 
@@ -623,8 +636,8 @@ After the native A830 prerequisites, build the native system integration with:
 .venv-gpu/bin/python scripts/build_native_system_stack.py --check-only
 ```
 
-The fourteen stages build two isolated kernels and local boot/root packages.
-Each kernel has 126 source/binding objects, 29 original iPhone components and
+The sixteen stages build two isolated kernels and local boot/root packages.
+Each kernel has 127 source/binding objects, 29 original iPhone components and
 64,635 independently checked pointer sites. OS and SystemOS use signed,
 read-only native UFS windows; the original Apple root-authentication result and
 dyld ignition path remain present. The owner policy is a separate development
@@ -688,12 +701,87 @@ reseed increments only its counter. Output-error controls also pass. This is
 model evidence with explicit entropy/lock/copy peers; saved-seed lifecycle and
 physical persistence remain unqualified.
 
+The persistent-capable package explicitly selects `dodge-seed-sync=1`. On close,
+the native VFS hook checks the exact original seed path, verified writable APFS
+Data mount, root ownership, mode 0600, one link and 32-byte length. It requests
+file fsync, directory fsync and `F_FULLFSYNC`; unsupported flushes and I/O errors
+remain failures. Ordinary close, lock release and vnode cleanup still run. The
+unchanged original program ignores close errors, so four read-only, 4-byte
+diagnostics retain the selected attempt/completed/failed counts and last errno:
+`kern.dodge_seed_sync_attempts`, `kern.dodge_seed_sync_completed`,
+`kern.dodge_seed_sync_failed` and `kern.dodge_seed_sync_last_error`.
+Completed means the filesystem accepted full synchronization. The hook passes
+56 sanitizer cases and ten actual native close/diagnostic instruction cases.
+Two complete original saver instruction runs include partial writes, temporary
+clearing and a failing full-sync case. VFS and syscall peers remain explicit.
+The original program still truncates before writing; this change adds no atomic
+replacement or guarantee that an old seed survives a crash during the save.
+Fresh boot entropy remains independently required; saved seeds add input.
+
 The actual EFI handoff and all 18 original iPhone crypto POST tests pass in the
 CPU model for each package. Native startup/refusal and original entropy-client
 instruction checks also pass; MMIO, registry, scheduler and syscall boundaries
 remain explicit peers. These are local build/model results, separate from native
 boot or a working graphical system. The default payload, source pins, private
 platform seed and firmware-specific memory patch are retained.
+
+After the persistent QEMU prerequisites, check the saved-seed filesystem path:
+
+```sh
+.venv-gpu/bin/python scripts/build_qemu_seed_sync.py
+.venv-gpu/bin/python scripts/check_qemu_seed_sync.py
+.venv-gpu/bin/python scripts/check_qemu_seed_sync.py --check-only
+```
+
+This isolated VM kernel uses the same close hook with a separately selected
+guard requiring the existing QEMU software AES/KeyStore readiness and virtual
+development identity. The native owner guard and both native packages remain
+unchanged. Original iPhone `prng_seedctl` executes file/directory fsync and
+`F_FULLFSYNC` through actual APFS, VFS and the VirtIO-backed Data overlay.
+Both observed boots complete one synchronization with no error. After actual
+SIGKILL, an independent APFS reader finds the private 32-byte file. The cold VM
+resumes without reset; the original utility's real read returns those exact
+bytes, compared in memory only. Compiler-derived saved-state layout and the
+caller's stack distinguish its shared-cache read return. Seed contents and
+seed digests stay out of the public report. See
+[the VM result](../reports/public/ios16-qemu-seed-sync-entry.json).
+This checks the saved-file path; entropy-provider/diagnostic compatibility and
+the utility's overall exit status are separate. It does not test a crash during
+the original truncation/write, physical UFS durability or hardware data protection.
+
+## Wi-Fi transport source
+
+```sh
+.venv-gpu/bin/python scripts/prepare_dodge_wifi.py
+.venv-gpu/bin/python scripts/build_wifi_transport.py
+.venv-gpu/bin/python scripts/build_wifi_transport.py --check-only
+```
+
+The first command checks facts from the existing capture without contacting a
+phone. A separate source reference selects the public portable PaganiWifi
+protocol implementation at `c888efd3`; existing source pins stay unchanged.
+The board adaptation removes the donor's seventh antenna-share supply:
+CPH2653 has six WLAN supplies and no `vdd-wlan-ant-share`. Its eight selected
+pins, including CLKREQ from the active pinctrl group, seven PCIe0 register windows,
+endpoint stream selection and all 128 PHY writes match the captured tree. Shared UFS rail S7I is never lowered or disabled.
+Only explicit survey, power and Gen1/Gen2 link stages are admitted; Gen3 requires
+additional voltage votes that this integration does not own.
+
+Eight ASan/UBSan suites execute the actual MHI, firmware loader, DMA allocator,
+PMIC, RDDM, FAT and startup sources with synthetic files and controller peers.
+The firmware checks cover 407 cases; the board/startup fixture covers 21,133.
+An explicit cache teardown validates the whole batch, clears allocated bytes
+and frees ownership after all borrowers stop. Fixture caches are released before
+reinitialization and exit; leak detection remains enabled. The native build
+produces ten arm64/iOS16 objects in `libDodgeWifiTransport.a`.
+See [the source result](../reports/public/ios16-wifi-transport.json).
+
+This archive is separate from the kernel. Kernel registration/worker scheduling,
+DMA/SMMU ownership, MSI, real firmware and the iPhone wireless-framework ABI still
+need integration. No iPad wireless frontend, foreign binary binding or Linux
+wireless runtime is imported. The host-only CI command is
+`scripts/build_wifi_transport.py --host-only`; it needs Clang sanitizers and
+mtools, without captured firmware or a native SDK.
 
 ## Remaining source integration
 
@@ -707,8 +795,8 @@ source integration and local checks before asking for device testing.
 | Display and Metal | Complete original display/client/IOSurface lifetime and Metal discovery integration. Derive the board's framebuffer and panel power contract; current static GOP declarations and host pipeline translation do not establish a working desktop. |
 | Input | Complete shared clock/power and reset/DMA ownership, target orientation, and the original HID EventDriver matching and lifecycle. Current source intentionally retains mappings and shared votes after hardware attempts. |
 | Power and security | Derive the SM8750 security-state mapping and implement its PMGR provider. Battery, charging, thermal management, sleep and hardware key/nonce/rollback policy are still open. |
-| User entropy | The reseed counter, native TRNG compatibility service and original scheduled/per-pool observations are connected and checked locally. Complete saved-seed lifecycle policy. Hardware entropy quality and native service dispatch remain unqualified. |
-| Other peripherals | Implement the selected network, Bluetooth, audio and cellular transports and their iPhone userspace interfaces. These areas currently have no functional board drivers. |
+| User entropy | Reseed accounting, original pool observations and selected saved-seed full synchronization are connected locally. Complete crash/replacement and installation policy; qualify hardware entropy, native service dispatch and physical persistence. |
+| Other peripherals | Wi-Fi portable power/link/protocol source is adapted separately. Complete its kernel worker, DMA/MSI/firmware and iPhone interfaces, plus Bluetooth, audio and cellular transports. These areas still have no functional board drivers. |
 
 The initial CPU path remains single-core. SMP, PSCI, interrupts, timer behavior,
 physical DMA/cache visibility, scanout and GPU output require their own device

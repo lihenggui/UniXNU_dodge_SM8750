@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "device": "OnePlus 13 CPH2653 / dodge / SM8750",
+  "captured_dtb_sha256": "f961f2596c31c51b8db5be7b9e680aa35c86b71694820a7b5844f9829a3e7d11",
+  "wlan_node": "/soc/qcom,cnss-peach@b0000000",
+  "pcie_node": "/soc/pcie@1c00000",
+  "compatible": "qcom,cnss-peach",
+  "supported_pci_device": "17cb:110e",
+  "pci_identity_observed_on_hardware": false,
+  "controller": 0,
+  "gpio": {
+    "wlan_en": 16,
+    "sw_ctrl": 18,
+    "wlan_sw_ctrl": 19,
+    "host_sol": 202,
+    "dev_sol": 203,
+    "perst": 102,
+    "wake": 104,
+    "clkreq": 103
+  },
+  "registers": [
+    {
+      "name": "parf",
+      "physical": "0x1c00000",
+      "bytes": 12288
+    },
+    {
+      "name": "phy",
+      "physical": "0x1c06000",
+      "bytes": 8192
+    },
+    {
+      "name": "dm_core",
+      "physical": "0x40000000",
+      "bytes": 3869
+    },
+    {
+      "name": "elbi",
+      "physical": "0x40000f20",
+      "bytes": 168
+    },
+    {
+      "name": "iatu",
+      "physical": "0x40001000",
+      "bytes": 4096
+    },
+    {
+      "name": "conf",
+      "physical": "0x40100000",
+      "bytes": 1048576
+    },
+    {
+      "name": "pcie_sm",
+      "physical": "0x1d07000",
+      "bytes": 28672
+    }
+  ],
+  "iommu_streams": {
+    "root": "0x1400",
+    "endpoint": "0x1401"
+  },
+  "phy_writes": 128,
+  "phy_sequence_sha256": "b811ff1728d6efb85f3a40aaf91a47c3cfc4cd401245d8161ba8cf3557c377e6",
+  "rails": [
+    {
+      "supply": "vdd-wlan-io",
+      "resource": "ldof3",
+      "regulator": "pm_v8f_l3",
+      "minimum_mv": 1800,
+      "maximum_mv": 1800,
+      "load_ma": 30
+    },
+    {
+      "supply": "vdd-wlan-io12",
+      "resource": "ldof2",
+      "regulator": "pm_v8f_l2",
+      "minimum_mv": 1200,
+      "maximum_mv": 1200,
+      "load_ma": 30
+    },
+    {
+      "supply": "vdd-wlan-aon",
+      "resource": "smpd4",
+      "regulator": "pm_v8d_s4",
+      "minimum_mv": 876,
+      "maximum_mv": 1036,
+      "load_ma": 0
+    },
+    {
+      "supply": "vdd-wlan-dig",
+      "resource": "smpf5",
+      "regulator": "pm_v8f_s5",
+      "minimum_mv": 876,
+      "maximum_mv": 1000,
+      "load_ma": 0
+    },
+    {
+      "supply": "vdd-wlan-rfa1",
+      "resource": "smpg3",
+      "regulator": "pm_v8g_s3",
+      "minimum_mv": 1860,
+      "maximum_mv": 2000,
+      "load_ma": 0
+    },
+    {
+      "supply": "vdd-wlan-rfa2",
+      "resource": "smpi7",
+      "regulator": "pm_v8i_s7",
+      "minimum_mv": 1312,
+      "maximum_mv": 1340,
+      "load_ma": 0
+    }
+  ],
+  "antenna_share_supply_present": false,
+  "hardware_tested": false,
+  "scope": "Offline captured board facts. PCI identity is the supported DT selection, not a live enumeration. No MSI delivery, firmware, DMA ownership, interface ABI or working radio is established."
+}

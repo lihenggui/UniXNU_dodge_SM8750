@@ -3,7 +3,7 @@
   "product": "iPhone10,3",
   "build": "20H392",
   "source_sha256": {
-    "scripts/build_native_system_stack.py": "d319c17c35a048339aa4b4b4a359b0ee0e6e51a3f6025e94fdf3d8f9605c02ea"
+    "scripts/build_native_system_stack.py": "94462021a065b9a5dc05c65b0d568f5454b9f47f11cd514c4f741d5e42501616"
   },
   "stages": {
     "portable": {
@@ -55,39 +55,53 @@
       "builder_sha256": "c47a93e91bb36a000198d54c4f098c5f765f6b55a2bfba6986de447dca0b2a95",
       "arguments": []
     },
+    "seed_sync": {
+      "report": "reports/ios16-seed-close-sync.json",
+      "sha256": "d8f80a6a9af4c1c680e0d6cca25c12e6de88956d2947d4ba496732dd3d324756",
+      "builder": "scripts/build_seed_sync.py",
+      "builder_sha256": "6736b4faf978b11994c11543c71555b0ff3d40ef8ac85fe93e8074e864fb0eab",
+      "arguments": []
+    },
     "kernel": {
       "report": "reports/ios16-native-system-kernel.json",
-      "sha256": "8f3a19a23d82d1d41e2e81dab36a0378f2b24166810e313c34552bc610937a17",
+      "sha256": "6eaeb8f02a9d07f6417841fb2f8d0d8ffbb91f3e8faaaba8d6c092f8e9fbf1c7",
       "builder": "scripts/build_native_system.py",
-      "builder_sha256": "45da639e478cfdaeb279dd2b806230600b3991a9243a8de9540fc12627a79f61",
+      "builder_sha256": "dadadf66009bd327fe5fa981bcded5976be3a52c4f14eb04746a52b6f345596e",
       "arguments": []
     },
     "persistent_kernel": {
       "report": "reports/ios16-native-system-kernel-persistent.json",
-      "sha256": "ab79cdcf4739e3f4036f9399131d197e68348371a06033ca69795c630d9132bd",
+      "sha256": "27c998fc5ba0df0708f2129e0f796384c33ca1607ea61014b6c4f9e374565177",
       "builder": "scripts/build_native_system.py",
-      "builder_sha256": "45da639e478cfdaeb279dd2b806230600b3991a9243a8de9540fc12627a79f61",
+      "builder_sha256": "dadadf66009bd327fe5fa981bcded5976be3a52c4f14eb04746a52b6f345596e",
       "arguments": [
         "--persistent-data"
       ]
     },
+    "seed_lifecycle": {
+      "report": "reports/ios16-seed-close-kernel.json",
+      "sha256": "b8dd51f82242412a8b8599bad0d25b662a2d88577d58b437fc03ff7a46a6df32",
+      "builder": "scripts/check_seed_sync_kernel.py",
+      "builder_sha256": "300aef2417cb4d7046a84ee776746583dc7797ae46682cc0d62f003d768ec917",
+      "arguments": []
+    },
     "original_prng": {
       "report": "reports/ios16-native-prng-check.json",
-      "sha256": "19f817d4a3b5cad4d62d765992fc56c659d3e8c9948f7d0b2e4237a41b2a05d5",
+      "sha256": "cbb867619a17fe46e6531d96ee7ec0d54e689856281e58986b3f8104b2673aec",
       "builder": "scripts/check_native_prng.py",
       "builder_sha256": "811cbe8aac62ef2e29b41dfee73ddbd72598ccfd81ef7db835ea20f638e3472d",
       "arguments": []
     },
     "startup": {
       "report": "reports/ios16-native-system-check.json",
-      "sha256": "5486c77625180be4303a92a3e16d0fd649de0b22263a171a9c71ddccacbafa6c",
+      "sha256": "6301fcbff26b061521ae0aa665febd8fb2ce00d10225067553a2cad298e31c94",
       "builder": "scripts/check_native_system.py",
       "builder_sha256": "ae94585e353ed4ba6bdbc3d727d626d077abf4dc0310ee2018acc2546a66d96b",
       "arguments": []
     },
     "persistent_startup": {
       "report": "reports/ios16-native-system-check-persistent.json",
-      "sha256": "04ff9628cdf15e4dd3c55c7ed28b9fee4603668b20dfb5e6b67c2ddd70623124",
+      "sha256": "150fa25183b2bc599dfd140913d48da88252fe519d00143ec9620c1284c4fe09",
       "builder": "scripts/check_native_system.py",
       "builder_sha256": "ae94585e353ed4ba6bdbc3d727d626d077abf4dc0310ee2018acc2546a66d96b",
       "arguments": [
@@ -96,22 +110,22 @@
     },
     "payload": {
       "report": "reports/ios16-native-system-payload.json",
-      "sha256": "2592f248b42d12cc1a99ac1dd82f8577448c404815d358507fdd55f0d2072b73",
+      "sha256": "454d1657f7be7fd5f64da9f7bf0bb178d7be00c8458eb63887c3a4d3f10f1dd2",
       "builder": "scripts/build_native_system_payload.py",
-      "builder_sha256": "a04313efbfe9baa472abfaf04153703748ef28ee6c9616abf1f3387658fe3ece",
+      "builder_sha256": "fa92c4504de8652595db40e958fb43a3aaf06dc6c698053b422e5fee03795803",
       "arguments": []
     },
     "persistent_payload": {
       "report": "reports/ios16-native-system-payload-persistent.json",
-      "sha256": "2419584826c64f39bc321cbfe295996231987de3b42e6d2b3055e95b10f89648",
+      "sha256": "4da95d93fabc136152cc2383a2607289d7ad8326731cee2f362e14c2e00f3d9b",
       "builder": "scripts/build_native_system_payload.py",
-      "builder_sha256": "a04313efbfe9baa472abfaf04153703748ef28ee6c9616abf1f3387658fe3ece",
+      "builder_sha256": "fa92c4504de8652595db40e958fb43a3aaf06dc6c698053b422e5fee03795803",
       "arguments": [
         "--persistent-data"
       ]
     }
   },
-  "linked_source_and_binding_objects": 126,
+  "linked_source_and_binding_objects": 127,
   "original_components": 29,
   "pointer_sites_read_back": 64635,
   "native_store_host_cases": 135,
@@ -120,6 +134,9 @@
   "user_reseed_host_requests": 4000,
   "original_PRNG_counter_reads": 99,
   "original_PRNG_paths_resolved": 228,
+  "seed_close_sync_host_cases": 56,
+  "seed_close_native_cases": 10,
+  "original_seed_save_cases": 2,
   "external_policy_host_cases": 4117,
   "external_policy_loader_host_cases": 13,
   "boot_partition_bytes": 100663296,
@@ -142,8 +159,8 @@
   "remaining_source": [
     "SM8750 security-state/PMGR mapping and battery/charging/thermal/sleep",
     "complete original graphics/Metal/client and HID lifetime integration",
-    "saved PRNG-seed lifecycle and persistent-installation policy",
+    "saved PRNG-seed crash/replacement and persistent-installation policy",
     "network/Bluetooth/audio/cellular board transports and iPhone clients"
   ],
-  "scope": "Fourteen local source/check/package stages for native SM8750 owner-development iPhone boot. Both kernels retain signed read-only OS/SystemOS windows, original iPhone components and the exact firmware memory patch. The persistent-capable variant confines writes to an explicitly opened bounded Data overlay; neither package resets existing Data. Actual EFI/native/original crypto POST and startup/refusal/client instruction models pass. Source preparation remains incomplete for the listed subsystems; host results do not qualify native hardware or a working graphical system."
+  "scope": "Sixteen local source/check/package stages for native SM8750 owner-development iPhone boot. Both kernels retain signed read-only OS/SystemOS windows, original iPhone components and the exact firmware memory patch. The persistent-capable variant confines writes to an explicitly opened bounded Data overlay; neither package resets existing Data. Actual EFI/native/original crypto POST and startup/refusal/client instruction models pass. Source preparation remains incomplete for the listed subsystems; host results do not qualify native hardware or a working graphical system."
 }

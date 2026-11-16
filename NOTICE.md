@@ -79,6 +79,14 @@ and the captured CPH2653 device tree. No Linux RNG implementation is linked.
 The exact references and original iPhone `prng_seedctl` interface are recorded
 in [the entropy contract](hardware/dodge-entropy.json).
 
+The saved-seed close overlay uses the pinned Darwin 22 XNU VFS source under its
+Apple notice. The local synchronization helper preserves the original iPhone
+utility and PRNG. The separate WLAN transport build fetches public
+BSD-2-Clause-Patent PaganiWifi protocol sources at the exact reference recorded
+in [wifi-source.json](profiles/os/ios-16.7.16-20H392/wifi-source.json).
+The six-supply adaptation uses captured CPH2653 board facts. The iPad wireless
+frontend and Linux wireless implementation are excluded from this archive.
+
 ## Firmware and system inputs
 
 Apple system contents, OnePlus firmware, microcode and SDK files are obtained

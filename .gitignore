@@ -42,6 +42,7 @@
 !/drivers/DodgeSecurity/
 !/drivers/DodgeGpu/
 !/drivers/DodgePlatform/
+!/drivers/DodgeWifi/
 !/tests/
 /tests/*
 !/tests/DodgeSurfaceLayoutTest.cpp
@@ -83,6 +84,10 @@
 !/tests/DodgeNativeStoreTest.cpp
 !/tests/DodgeRootPolicyFormatTest.cpp
 !/tests/DodgeRootPolicySourceTest.cpp
+!/tests/DodgeSeedSyncTest.cpp
+!/tests/DodgeWifiTransportTest.cpp
+!/tests/DodgeWifiFirmwareTest.c
+!/tests/seed_sync_include/
 !/tests/root_policy_include/
 !/tests/entropy_include/
 !/tests/DodgeUfsProbeTest.cpp

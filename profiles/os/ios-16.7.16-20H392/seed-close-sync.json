@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "source_revision": "1b191cb58250d0705d8a51287127505aa4bc0789",
+  "target": "bsd/vfs/vfs_vnops.c",
+  "patch": "patches/oneplus13/0028-ios16-seed-close-sync.patch",
+  "patch_sha256": "fb5a706c2c09ec15d505dfac06dc439356218e58f978420c9c312ef1f8c22d9b",
+  "before_sha256": "4a91ef466df3efa340b433ecf462a9fbc9afc6c31efa79c24bcf0c6bdc657a94",
+  "after_sha256": "ec387f0a99f8cf3b22e840be47e03ea05b0ca9758a477ac5aaad195daf92afc7",
+  "seed_path": "/private/var/db/prng.seed",
+  "seed_bytes": 32,
+  "selected_build_only": true,
+  "hardware_tested": false
+}

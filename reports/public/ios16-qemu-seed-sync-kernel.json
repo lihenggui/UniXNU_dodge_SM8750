@@ -1,0 +1,200 @@
+{
+  "result": "IOS16_QEMU_SEED_SYNC_KERNEL_PASS",
+  "source_sha256": {
+    "scripts/build_qemu_seed_sync.py": "f3f97b73037252df97c718a50cf793914ee77682b3667ac70c3b19a362af8d67",
+    "drivers/DodgeStorage/DodgeSeedSync.cpp": "861311834295bd1195ad9af19925197e4883b9ea2906be437a2935da338f493b",
+    "drivers/DodgeSecurity/DodgeQemuSeedPolicy.cpp": "1948802a55d4d3b861bc4ff85bf5951484feb339c2ece14a6af455ff0e16fc47",
+    "scripts/build_qemu_data.py": "1eda229330d4cc5ee86757c93124fda019644b46d08e867f34a268643c1a7a95",
+    "scripts/native_driver_build.py": "6666d291974023d384e4ff513017b43753541db4a4bda1a15d2b48a386d7e078"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-qemu-store-kernel.json": "0189d4ab24112f5ba5c8122619bb6a44f30a48101146088d8198e98143d77ef8",
+    "reports/ios16-seed-close-sync.json": "d8f80a6a9af4c1c680e0d6cca25c12e6de88956d2947d4ba496732dd3d324756",
+    "reports/native-a830-kernel.json": "89b143a9ecf8c2bcae3ed0f8df334578ee8f59475f97a0e0c7d217cd73b05d7b"
+  },
+  "artifacts": {
+    "build/cph2653-qemu-seed-sync/native.filelist": "b902f359702daec109f62c996c879a75e30ddd0152a20603f6d1ba59be57f1ec",
+    "build/cph2653-qemu-seed-sync/driver/DodgeSeedSync.o": "a2659a6d2c7697f1fba221a2a0774ec5c2981a4220c105addc36387ace71e1c1",
+    "build/cph2653-qemu-seed-sync/driver/DodgeQemuSeedPolicy.o": "41b4bd6bea3805c24bcb7dc7c27111a26aa3411e585eb7a8214e8cd9b4338170",
+    "build/cph2653-qemu-seed-sync/libDodgeQemuSeedSync.a": "42f008adad1270897b2ac0bf30fffde99910c8f62c405619e643b6f6ccdc411d",
+    "build/cph2653-qemu-seed-sync/mach.qemu-seed-sync": "529e49000138d5f11c220c89159dc2164af09d6a554e1f2ccb0508875989a421",
+    "build/cph2653-qemu-seed-sync/kernel.macho": "4f3a6b8052019010ef42c6763704945487bf6b11bc82012cecf3d6e265c127ec",
+    "build/cph2653-qemu-seed-sync/emission.json": "6728203f32639deb0715eef53964ca177d17ead589c74e183e2ffef485b5f244",
+    "build/cph2653-qemu-seed-sync/security-init.json": "54c500f04e0578dbba0b6d54ee94e565fe608de48bfbe7f6a7b8d69efdc440f8",
+    "build/cph2653-qemu-seed-sync/link-command.json": "4233698f2fc2ba43692ff4c58e0c6cdd8d4c0db0277553f872703e4d2ae1f98a",
+    "build/cph2653-qemu-seed-sync/driver/compile-commands.json": "2db8210374f90f11ae3dde38886ee80c52781d54e41297f327da8556a2349589"
+  },
+  "candidate": "build/cph2653-qemu-seed-sync/kernel.macho",
+  "candidate_sha256": "4f3a6b8052019010ef42c6763704945487bf6b11bc82012cecf3d6e265c127ec",
+  "native_owner_guard_preserved": true,
+  "root_transports_readonly": true,
+  "physical_storage_enabled": false,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "security_start_readback": {
+    "normal_starts": [
+      "com.apple.security.sandbox"
+    ],
+    "explicit_initializers": [
+      "com.apple.driver.AppleMobileFileIntegrity"
+    ],
+    "original_wrappers_preserved": true
+  },
+  "pointer_sites_read_back": 64635,
+  "original_executable_segments": [
+    {
+      "module": "com.apple.driver.AppleARMPlatform",
+      "sha256": "247b8b77815f8c87b43290e52a6b3888053cb3763a60bf21a004cd65b341388b",
+      "bytes": 230100
+    },
+    {
+      "module": "com.apple.driver.AppleAudioClockLibs",
+      "sha256": "bdafd9a2ed24d3151f1119859cd74bf5d99fd4af7afd4e74610985bc11c57008",
+      "bytes": 1752
+    },
+    {
+      "module": "com.apple.driver.AppleEffaceableStorage",
+      "sha256": "2e7b3402cdb22319fa82544ab66a9a211799f3e970c5a66f53d3867270ae0d57",
+      "bytes": 17360
+    },
+    {
+      "module": "com.apple.driver.AppleIISController",
+      "sha256": "20a95cd71e2c81feb6d48230a83cdd7fe382a1396db6a02f14c5deb293f12fab",
+      "bytes": 20644
+    },
+    {
+      "module": "com.apple.driver.AppleM2ScalerCSCDriver",
+      "sha256": "617686e11f04636afa2989519498bef94349d6d2ed4e2b693a74994b4cecff62",
+      "bytes": 398888
+    },
+    {
+      "module": "com.apple.driver.AppleMobileFileIntegrity",
+      "sha256": "6cbea28deab02a2b848dfac28f11c3c00745b55e7b2a896bac3cf9a600a4c7b1",
+      "bytes": 120712
+    },
+    {
+      "module": "com.apple.driver.ApplePMGR",
+      "sha256": "74ac53a277da51806f323e8c7d765d4ce9baa443adf4e513be2cff52a245db0e",
+      "bytes": 232428
+    },
+    {
+      "module": "com.apple.driver.IODARTFamily",
+      "sha256": "8cc7ebf550bd7735985b5de8890e3079816842d2ec29d95646f20d553d6ad021",
+      "bytes": 66696
+    },
+    {
+      "module": "com.apple.filesystems.apfs",
+      "sha256": "ebc47d686c6917c7fb154a0b2e2ed19e3d6a277d994d1395b02d3214142577cc",
+      "bytes": 1050376
+    },
+    {
+      "module": "com.apple.iokit.CoreAnalyticsFamily",
+      "sha256": "29d73b6c2a37d9eb40712b9413db0790e7fe0122f202341852f7725e24b9ee1f",
+      "bytes": 25108
+    },
+    {
+      "module": "com.apple.iokit.IOAVFamily",
+      "sha256": "e80383975371f1552b9abab64476c4e530c49f1e43c187944b3728c3e7d9d506",
+      "bytes": 381580
+    },
+    {
+      "module": "com.apple.iokit.IOAudio2Family",
+      "sha256": "eed290eec9f3d05a362826ad559ba494ab71e48baf746a85d5586267822a7fd4",
+      "bytes": 16788
+    },
+    {
+      "module": "com.apple.iokit.IOCECFamily",
+      "sha256": "f440e646781cc39a6f6f21cfaec088cfb030a38af19e37e6c69c99860eb6f0f8",
+      "bytes": 6364
+    },
+    {
+      "module": "com.apple.iokit.IOCryptoAcceleratorFamily",
+      "sha256": "87758ce6148f662f31e20fb7a2ec645f90f3697084db0b04331f6b44036a06fb",
+      "bytes": 10852
+    },
+    {
+      "module": "com.apple.iokit.IOGPUFamily",
+      "sha256": "34aea2cba7f617ae031c37411027b34380c68bbe1e1a17d6abbf3bbabcc777cf",
+      "bytes": 153788
+    },
+    {
+      "module": "com.apple.iokit.IOHDCPFamily",
+      "sha256": "cce46cc1281541a02de180e05e53f03b5b927c6f4688dc7078624e26b7da1800",
+      "bytes": 48448
+    },
+    {
+      "module": "com.apple.iokit.IOHIDFamily",
+      "sha256": "bb044497e1fe4153f33094011868beb000378a744109c890af9a8d63fa7d3145",
+      "bytes": 276644
+    },
+    {
+      "module": "com.apple.iokit.IOMobileGraphicsFamily",
+      "sha256": "03e4c4d80e4f9c78d4ad03366cd3f1d5894d054ae53cdf06b1a43c81a2eab1cd",
+      "bytes": 214340
+    },
+    {
+      "module": "com.apple.iokit.IOReportFamily",
+      "sha256": "6dc8734b81f576c22bd9fd78a686b29b46ba5cac4bff0957a489c001ffbc08d1",
+      "bytes": 8496
+    },
+    {
+      "module": "com.apple.iokit.IOSlowAdaptiveClockingFamily",
+      "sha256": "e9c3a7337345297aa9282bdd5bda52c0a3ac39a997fb2c9de5ff0952cc39294b",
+      "bytes": 8972
+    },
+    {
+      "module": "com.apple.iokit.IOStorageFamily",
+      "sha256": "4c9e7e8f12306986dc124e9e2cd4f9126fa7dc61e89155d973767b88a0d5ce6f",
+      "bytes": 83976
+    },
+    {
+      "module": "com.apple.iokit.IOSurface",
+      "sha256": "201b4452233e5471fe88fb7a69e0e3c37a17df3d8eead51e2698ca663ef09bae",
+      "bytes": 145604
+    },
+    {
+      "module": "com.apple.kec.Libm",
+      "sha256": "4d56a6e6b3faf6d5a745cabc904ed6eea6f8872c80040c7e4074c15601f5151a",
+      "bytes": 14820
+    },
+    {
+      "module": "com.apple.kec.corecrypto",
+      "sha256": "0da4ca3127ef4ef272b776b932e8bb97855878845034ea1a2d58bb1f5fd6ddd9",
+      "bytes": 297788
+    },
+    {
+      "module": "com.apple.kext.AppleMatch",
+      "sha256": "11eb44b13b917ca2fe80984cc6309e819b8ef597cc9ef9601e96473af0d7fbd4",
+      "bytes": 7928
+    },
+    {
+      "module": "com.apple.kext.CoreTrust",
+      "sha256": "ffc005c8163fc83206f3b87720b512a3c7b438d64fa37fece7f437429fdaaa51",
+      "bytes": 31736
+    },
+    {
+      "module": "com.apple.security.AppleImage4",
+      "sha256": "1ad058c1e525926c1e5f99b80ee59a05e2ec96c5a9c4663f3e5196f43656099b",
+      "bytes": 90524
+    },
+    {
+      "module": "com.apple.security.sandbox",
+      "sha256": "ded8921e103c6597598c3d6b9d505748e096fb77936625d84f5dddde8ead47ca",
+      "bytes": 177728
+    }
+  ],
+  "native_source_entries_preserved": 148,
+  "original_aliases_preserved": 359,
+  "original_crypto_entry_identity_preserved": true,
+  "independent_source_provider_and_its_post_field_absent": true,
+  "original_crypto_post_executed": false,
+  "added_pointer_sites": 746,
+  "original_decompressor_segments": [
+    {
+      "address": "0xfffffff00568c000",
+      "bytes": 46848,
+      "sha256": "74de14b497448628cc801505b7c989ef6da13e5f1f681077a1605a4a0bc54325"
+    }
+  ],
+  "scope": "Separate VM fixture reuses the checked persistent Data transport and exact pinned VFS close hook. The selected guard requires real QEMU AES/KeyStore readiness and the existing virtual-bus/development-identity check. Native source, owner guard, both native packages and baseline VM artifacts stay unchanged. Actual filesystem behavior is checked separately; no physical storage or hardware security is supplied."
+}
