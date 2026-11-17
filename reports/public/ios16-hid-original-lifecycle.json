@@ -1,0 +1,247 @@
+{
+  "result": "IOS16_ORIGINAL_EVENT_DRIVER_INIT_STOP_FREE_CPU_PASS",
+  "compiler_layout": {
+    "instance_bytes": 560,
+    "edges": 264,
+    "loop": 528,
+    "providerPin": 536,
+    "initAttempted": 544,
+    "initSucceeded": 545,
+    "startAttempted": 546,
+    "ready": 547,
+    "starting": 548,
+    "parentCleanupPending": 549,
+    "parentStopping": 550,
+    "stopRequested": 551,
+    "dispatches": 552,
+    "kt_size_offset": 44,
+    "kt_size_mask": 16777215,
+    "digitizer_type": 32,
+    "video_bytes": 144,
+    "video_width": 16,
+    "video_height": 24,
+    "video_rotate": 128,
+    "video_width_bytes": 8,
+    "video_height_bytes": 8
+  },
+  "cases": [
+    {
+      "case": "normal",
+      "result": "PASS",
+      "initialized": true,
+      "original_instructions": 307,
+      "original_stop_calls": 1,
+      "native_parent_stop_calls": 1,
+      "typed_expansion_bytes": [
+        512,
+        376
+      ],
+      "released_object_fields": 1,
+      "canceled_timers": 0,
+      "removed_event_sources": 0
+    },
+    {
+      "case": "init-parent-failure",
+      "result": "PASS",
+      "initialized": false,
+      "quarantined_expansions": [],
+      "original_instructions": 24,
+      "allocator_failure_is_explicit_injection": false
+    },
+    {
+      "case": "init-service-allocation-failure",
+      "result": "PASS",
+      "initialized": false,
+      "quarantined_expansions": [],
+      "original_instructions": 29,
+      "allocator_failure_is_explicit_injection": true
+    },
+    {
+      "case": "init-driver-allocation-failure",
+      "result": "PASS",
+      "initialized": false,
+      "quarantined_expansions": [
+        376
+      ],
+      "original_instructions": 47,
+      "allocator_failure_is_explicit_injection": true
+    },
+    {
+      "case": "init-dictionary-failure",
+      "result": "PASS",
+      "initialized": false,
+      "quarantined_expansions": [
+        376
+      ],
+      "original_instructions": 42,
+      "allocator_failure_is_explicit_injection": false
+    },
+    {
+      "case": "timers",
+      "result": "PASS",
+      "initialized": true,
+      "original_instructions": 363,
+      "original_stop_calls": 1,
+      "native_parent_stop_calls": 1,
+      "typed_expansion_bytes": [
+        512,
+        376
+      ],
+      "released_object_fields": 4,
+      "canceled_timers": 3,
+      "removed_event_sources": 3
+    },
+    {
+      "case": "timers-no-loop",
+      "result": "PASS",
+      "initialized": true,
+      "original_instructions": 343,
+      "original_stop_calls": 1,
+      "native_parent_stop_calls": 1,
+      "typed_expansion_bytes": [
+        512,
+        376
+      ],
+      "released_object_fields": 4,
+      "canceled_timers": 3,
+      "removed_event_sources": 0
+    },
+    {
+      "case": "driver-owned-fields",
+      "result": "PASS",
+      "initialized": true,
+      "original_instructions": 455,
+      "original_stop_calls": 1,
+      "native_parent_stop_calls": 1,
+      "typed_expansion_bytes": [
+        512,
+        376
+      ],
+      "released_object_fields": 38,
+      "canceled_timers": 0,
+      "removed_event_sources": 0
+    },
+    {
+      "case": "service-owned-fields",
+      "result": "PASS",
+      "initialized": true,
+      "original_instructions": 320,
+      "original_stop_calls": 1,
+      "native_parent_stop_calls": 1,
+      "typed_expansion_bytes": [
+        512,
+        376
+      ],
+      "released_object_fields": 3,
+      "canceled_timers": 0,
+      "removed_event_sources": 0
+    },
+    {
+      "case": "gates-and-loops",
+      "result": "PASS",
+      "initialized": true,
+      "original_instructions": 393,
+      "original_stop_calls": 1,
+      "native_parent_stop_calls": 1,
+      "typed_expansion_bytes": [
+        512,
+        376
+      ],
+      "released_object_fields": 6,
+      "canceled_timers": 3,
+      "removed_event_sources": 5
+    }
+  ],
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "original_function_blocks": {
+    "driver-init": {
+      "address": "0xfffffff00573e1c0",
+      "bytes": 80,
+      "sha256": "684b99f7e87f6a2ecc11de9d289842a73348091705bef823d9dfc6cdd26320d9"
+    },
+    "service-init": {
+      "address": "0xfffffff005738614",
+      "bytes": 120,
+      "sha256": "4e261c7d0af9959e9515cb1c791aa3f67da84390747a2152701bcee397463a10"
+    },
+    "driver-free": {
+      "address": "0xfffffff00573e210",
+      "bytes": 1192,
+      "sha256": "d5524ac68319f0c521eb0d28826b6ed6d747560d766af8dafe0640447f7a67e3"
+    },
+    "service-free": {
+      "address": "0xfffffff00573a094",
+      "bytes": 572,
+      "sha256": "900d3070c055ecd92ab4c5850da17fd92f769b998444b16b5e1de89bb9e94e9a"
+    },
+    "service-stop": {
+      "address": "0xfffffff005739988",
+      "bytes": 420,
+      "sha256": "c94163e50719b8a4bf1c844aafe78c42571abecc5ced6329b1c952ba84a44dfc"
+    }
+  },
+  "driver_resource_offsets_cleared": [
+    8,
+    16,
+    24,
+    40,
+    48,
+    64,
+    72,
+    80,
+    88,
+    96,
+    120,
+    128,
+    136,
+    144,
+    152,
+    208,
+    216,
+    224,
+    240,
+    344,
+    352,
+    360,
+    368,
+    376,
+    384,
+    392,
+    400,
+    408,
+    416,
+    424,
+    432,
+    440,
+    448,
+    456,
+    464,
+    480,
+    496,
+    504
+  ],
+  "source_sha256": {
+    "scripts/check_hid_original_lifecycle.py": "4876a8acbf5e46743c27c713e94978d7d63a897e40116e28e05863296d00fdd0",
+    "scripts/hid_lifecycle_model.py": "f5335f659161fab917112639dd492a56b502248817d4771b186521df6e84173f",
+    "scripts/hid_lifecycle_layout.py": "cae6319a65f221ca1165310f1c260cfd1d78da8900f87c69f332fc96ea6222b1",
+    "scripts/check_hid_parser.py": "ebd5f2cc7f91132554badc1b722d08d6a4db8db4db100edebe7a8a079536d779",
+    "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
+    "profiles/os/ios-16.7.16-20H392/hid-event-interface.json": "cc64aba4b3b000a0db9e8dbbf8c1327c24ab216d61942f6e17e45edf79de6198"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-hid-lifecycle-source.json": "df07e4f19fca52266a4b2c4422fb670beccfe7ce9b1ca9d072f6a7e7f41b2d19"
+  },
+  "artifacts": {
+    "build/ios16-hid-original-lifecycle/abi/DodgeHidEventDriver.cpp": "f16449ace1e8619df5d47dda505fc0d8468c4aca1ddf7ed18966a7bd29e6dc97",
+    "build/ios16-hid-original-lifecycle/abi/DodgeHidEventDriver.o": "4b5c63a343902d289ec594d6f047129b3733b3160eab7901378b6d09dd17ae2b",
+    "build/ios16-hid-original-lifecycle/abi/compile-commands.json": "1eaf5b9ff80154fa2c785648fd1bad0981a77e43e56bf1e02b2328241b434d01"
+  },
+  "unsafe_partial_free_control": {
+    "result": "REJECTED",
+    "state": "deliberately injected null driver expansion"
+  },
+  "no_original_lifecycle_body_peers": true,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Complete unchanged original EventDriver/EventService init, stop and free bodies execute, including typed 376/512-byte expansion metadata, three timer branches, observed owned fields and gate/workloop cleanup. Public allocator/lock/dictionary/refcount/registry/log/native-IOService peers are explicit; full original startup, matching, clients and physical input are not qualified. Failure cases inject unavailable allocations and do not claim the original no-fail allocator actually fails. Production retains partial-init quarantine."
+}

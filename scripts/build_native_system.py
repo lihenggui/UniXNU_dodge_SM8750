@@ -21,6 +21,7 @@ from build_native_entropy import REPORT as TRNG_REPORT, check_report as check_tr
 from check_native_store_host import REPORT as STORE_REPORT, CONTRACT as STORE_CONTRACT, check_report as check_store
 from prepare_native_root_policies import REPORT as EXTERNAL_REPORT, check_report as check_external
 from build_seed_sync import REPORT as SEED_REPORT, check_report as check_seed
+from build_hid_lifecycle import REPORT as HID_REPORT, check_report as check_hid
 from build_ufs_root import concrete_methods
 from build_data_source import check_table, concrete_methods as ram_methods
 from build_crypto_source import hook_readbacks
@@ -84,6 +85,26 @@ def emit_policies(policy):
     return assemble(OUT, 'root-policies', assembly), anchor
 
 
+def hid_readback(raw):
+    selected = json.loads(HID_REPORT.read_text());image = macho(raw)
+    names = {row['name']: row for row in symbols(raw) if not row['kind'] & 0xe0}
+    at = backed_offset(image['segments'], names['__ZTV19DodgeHidEventDriver']['value'] + 16, 219 * 8, len(raw))
+    require(struct.unpack_from('<219Q', raw, at) == tuple(names[name]['value'] for name in selected['concrete_methods']),
+        'Selected HID lifecycle vtable differs')
+    source = (ROOT / selected['object']).read_bytes();metadata = inspect_object(source)
+    function = '_dodge_hid_edge_driver_bytes'
+    original, = [row for row in symbols(source) if row['name'] == function]
+    section = next(s for segment in metadata['segments'] for s in segment['sections']
+        if s['va'] <= original['value'] < s['va'] + s['size'])
+    offset = section['fileoff'] + original['value'] - section['va'];expected = source[offset:offset + 8]
+    word, tail = struct.unpack('<2I', expected)
+    require(word & 0xffe0001f == 0x52800000 and tail == 0xd65f03c0, 'HID extent query gained nonconstant code')
+    extent = (word >> 5) & 65535;require(264 < extent <= 1024, 'Unexpected selected HID allocation extent')
+    at = backed_offset(image['segments'], names[function]['value'], 8, len(raw))
+    require(raw[at:at + 8] == expected, 'Kernel retained another HID allocation extent')
+    return {'concrete_slots': 219, 'instance_bytes': extent, 'original_parent_bytes': 264}
+
+
 def ufs_readback(raw, methods):
     image = macho(raw);names = {row['name']: row for row in symbols(raw) if not row['kind'] & 0xe0}
     require(image['kind'] == 2 and not any(row['kind'] == 1 for row in names.values()), 'Native system has undefined symbols')
@@ -112,7 +133,8 @@ def ufs_readback(raw, methods):
         '_dodge_native_system_prepare', '_dodge_system_schedule', '_dodge_data_schedule', '_dodge_input_schedule')]
     require(calls[:5] == expected, 'Native owner security is not checked before the existing storage/Data/input schedulers')
     return {'storage_parent_bytes': 144, 'storage_slots': 190, 'verified_functions': list(required),
-        'IOBSD_call_targets': [hex(value) for value in expected], 'virtual_storage_absent': True}
+        'IOBSD_call_targets': [hex(value) for value in expected], 'virtual_storage_absent': True,
+        'selected_HID_lifecycle': hid_readback(raw)}
 
 
 def prelink(native, base, aes, key, entropy):
@@ -197,6 +219,7 @@ def main():
     store = json.loads(STORE_REPORT.read_text());check_store(store)
     external = json.loads(EXTERNAL_REPORT.read_text());check_external(external)
     seed_sync = json.loads(SEED_REPORT.read_text());check_seed(seed_sync)
+    hid = json.loads(HID_REPORT.read_text());check_hid(hid);require(hid['native_compiled'], 'Need native HID lifecycle source')
     lock = json.loads((ROOT / 'upstream.lock.json').read_text())
     refs = pinned_sources(('pagani_reference', 'sm8750', 'verified_root_reference', 'software_aes_reference', 'apple_keystore_state_reference'))
     ufs = refs['pagani_reference'] / 'drivers/NativeUfs';verified = refs['verified_root_reference']
@@ -314,6 +337,7 @@ def main():
     filelist = OUT / 'native.filelist';filelist.write_text(''.join(replacements.get(row, row) + '\n' for row in rows))
     command[command.index(old_list)] = '-Wl,-filelist,' + str(filelist)
     for old, new in ((previous_ufs, ufs_archive), (original_mount, mount_archive),
+        (ROOT / 'build/cph2653-input-native/libDodgeInput.a', ROOT / hid['archive']),
         (TREE / 'build/armdt-platform/libArmDTPlatform.a', ROOT / calendar['archive'])):
         argument = '-Wl,-force_load,' + str(old);require(command.count(argument) == 1, 'Ambiguous native archive')
         command[command.index(argument)] = '-Wl,-force_load,' + str(new)
@@ -356,7 +380,7 @@ def main():
     report = {'result': 'IOS16_NATIVE_OWNER_SYSTEM_SOURCE_AND_PRELINK_PASS', 'product': 'iPhone10,3', 'build': '20H392',
         'source_sha256': {str(path.relative_to(ROOT)): sha(path) for path in files},
         'dependency_report_sha256': {str(path.relative_to(ROOT)): sha(path) for path in
-            (BASE_REPORT, AES_REPORT, KEY_REPORT, POLICY_REPORT, DATA_REPORT, CALENDAR_REPORT, ENTROPY_REPORT, TRNG_REPORT, STORE_REPORT, EXTERNAL_REPORT, SEED_REPORT, volumes_path)},
+            (BASE_REPORT, AES_REPORT, KEY_REPORT, POLICY_REPORT, DATA_REPORT, CALENDAR_REPORT, ENTROPY_REPORT, TRNG_REPORT, STORE_REPORT, EXTERNAL_REPORT, SEED_REPORT, HID_REPORT, volumes_path)},
         'artifacts': {str(path.relative_to(ROOT)): sha(path) for path in artifacts},
         'candidate': str(candidate.relative_to(ROOT)), 'candidate_sha256': sha(candidate), 'native_kernel': str(native.relative_to(ROOT)),
         'link_command': str(link_record.relative_to(ROOT)), 'components': record['components'], **checked,
@@ -373,6 +397,7 @@ def main():
         'compile_settings': settings, 'ufs_verification_compiled': True, 'Apple_authentication_check_preserved': True,
         'linked_source_and_binding_objects': base['combined_source_objects'] + len(owner_members) + 5,
         'seed_close_sync_compiled': True, 'seed_close_sync_host_cases': seed_sync['host_cases'],
+        'HID_lifecycle_serialization_compiled': True, 'HID_lifecycle_host_cases': len(hid['host_cases']),
         'platform_calendar_backport': True, 'user_reseed_accounting': True, 'native_TRNG_compiled': True,
         'original_ignition_retained': True, 'host_boot_policy_cases': int(result.stdout.split()[1]),
         'percpu_header_sha256': sha(header), 'protected_previous_artifacts': protected,

@@ -85,6 +85,8 @@
 !/tests/DodgeRootPolicyFormatTest.cpp
 !/tests/DodgeRootPolicySourceTest.cpp
 !/tests/DodgeSeedSyncTest.cpp
+!/tests/DodgeHidLifecycleTest.cpp
+!/tests/hid_lifecycle_include/
 !/tests/DodgeWifiTransportTest.cpp
 !/tests/DodgeWifiFirmwareTest.c
 !/tests/seed_sync_include/

@@ -96,6 +96,19 @@ board and newer OS. Those references still need CPH2653 resources and original
 iPhone interfaces. This scoped follow-up supplements the earlier 32-repository
 review; it does not refresh every earlier reference.
 
+The [HID follow-up](../reports/public/upstream-hid-lifecycle-review.json)
+rechecks four references: UniXNU, Pagani drivers, GopFramebuffer and QcomGeniSpi.
+At observation, UniXNU main is
+[`b6ac063`](https://github.com/UniXNU/UniXNU/tree/b6ac0630ed55feb926ccf2961523fca08bf2464e),
+89 commits and 144 changed files beyond `4a654d1`. Selected build changes
+propagate OS-profile/toolchain inputs and preserve cached source timestamps
+with preparation rollback. The local native route already uses recorded
+Darwin 22 recipes and isolated exact overlays. The range also changes Metal
+runtime selection and graphics inspection/telemetry; that full history has not
+been audited or rebased for this iPhone target. The other three observed tips
+are unchanged. Existing pins and the memory patch remain in place; the earlier
+32-repository and eight-reference reviews remain separate snapshots.
+
 ## Host setup
 
 The existing builds used Ubuntu 22.04 / WSL and Python 3.12. CI runs on
@@ -636,7 +649,7 @@ After the native A830 prerequisites, build the native system integration with:
 .venv-gpu/bin/python scripts/build_native_system_stack.py --check-only
 ```
 
-The sixteen stages build two isolated kernels and local boot/root packages.
+The nineteen stages build two isolated kernels and local boot/root packages.
 Each kernel has 127 source/binding objects, 29 original iPhone components and
 64,635 independently checked pointer sites. OS and SystemOS use signed,
 read-only native UFS windows; the original Apple root-authentication result and
@@ -672,6 +685,35 @@ of the root image, a 4 MiB guard and the existing 1 GiB end reserve. The window 
 limited to one quarter of the partition. Reversed/overflowing geometry is refused.
 Only a matching seed header resumes Data; neither package automatically resets
 an existing or foreign overlay. Physical persistence has not been qualified.
+
+Both kernels select
+[`0030-ios16-hid-event-lifecycle.patch`](../patches/oneplus13/0030-ios16-hid-event-lifecycle.patch)
+through `scripts/build_hid_lifecycle.py`. It replaces only the EventDriver
+object in an isolated input archive, preserving the original input, A830 and
+QEMU baselines. The linked class has a compiler-derived 560-byte instance,
+the measured 264-byte original parent and the same 219 virtual slots. Both
+linked and prelinked kernels read back that table and allocation extent.
+
+The overlay serializes startup, event dispatch and stop on the provider
+workloop. Stop closes admission before waiting for the gate. Reentrant stop
+defers the single original parent cleanup until the source startup/dispatch
+frames return; failed original initialization cannot start. Thirty ASan/UBSan
+source cases include concurrent starts, concurrent stop/dispatch and recursive
+callbacks. Twenty-five native instruction cases execute the original full
+EventDriver/EventService init/stop and the used event accessors/default dispatch.
+Both host and native controls reproduce the old direct-stop overlap.
+See [the source result](../reports/public/ios16-hid-lifecycle-source.json) and
+[the native result](../reports/public/ios16-hid-lifecycle-kernel.json).
+
+Ten separate instruction cases execute the complete original init, stop and
+free bodies, including the typed 376/512-byte private expansions, three timers
+and observed owned-field/gate/workloop cleanup. An injected null-expansion
+failure still faults in original free, so the production initialization,
+provider and workloop pins remain. These checks use explicit public IOKit and
+native IOService peers. Full original startup and final event delivery remain
+peers in the selected-driver check. Draining the source frames does not qualify
+the original producer callback, matching/client/async lifetime, restart or final
+release. See [the original-body result](../reports/public/ios16-hid-original-lifecycle.json).
 
 The calendar backport preserves the pinned ArmDTPlatform revision. It publishes
 `IORTC` only when no RTC node exists, and uses a real registered clock when valid
@@ -793,7 +835,7 @@ source integration and local checks before asking for device testing.
 | --- | --- |
 | Native system startup | The native root/SystemOS/Data source and two local packages are connected. Complete transport reset/recovery and persistent-installation/seed lifecycle policy; qualify the original filesystem/client lifetime and physical Data path. |
 | Display and Metal | Complete original display/client/IOSurface lifetime and Metal discovery integration. Derive the board's framebuffer and panel power contract; current static GOP declarations and host pipeline translation do not establish a working desktop. |
-| Input | Complete shared clock/power and reset/DMA ownership, target orientation, and the original HID EventDriver matching and lifecycle. Current source intentionally retains mappings and shared votes after hardware attempts. |
+| Input | The selected native EventDriver now serializes source startup/dispatch/stop. Complete shared clock/power and reset/DMA ownership, target orientation, full original startup/producer/client/matching lifetime and final release. Current source intentionally retains lifecycle pins, mappings and shared votes after hardware attempts. |
 | Power and security | Derive the SM8750 security-state mapping and implement its PMGR provider. Battery, charging, thermal management, sleep and hardware key/nonce/rollback policy are still open. |
 | User entropy | Reseed accounting, original pool observations and selected saved-seed full synchronization are connected locally. Complete crash/replacement and installation policy; qualify hardware entropy, native service dispatch and physical persistence. |
 | Other peripherals | Wi-Fi portable power/link/protocol source is adapted separately. Complete its kernel worker, DMA/MSI/firmware and iPhone interfaces, plus Bluetooth, audio and cellular transports. These areas still have no functional board drivers. |

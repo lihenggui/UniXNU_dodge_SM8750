@@ -20,6 +20,11 @@ failures through read-only diagnostics. These builds
 retain the iPhone source pins and firmware memory patch; native boot, graphics
 and hardware security remain unqualified.
 
+Both native kernels also select an HID EventDriver lifecycle overlay. It
+serializes startup, dispatch and stop, closes admission before waiting, and
+defers reentrant cleanup until the source callbacks return. The original
+matching, producer/client lifetime and final release still need integration.
+
 A separate Wi-Fi transport archive adapts the captured six-rail power topology
 and PCIe PHY sequence. Its protocol and ownership checks run on the host;
 kernel networking and original iPhone wireless clients still need integration.

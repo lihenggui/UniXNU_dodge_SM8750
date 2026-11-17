@@ -1,0 +1,56 @@
+{
+  "result": "HID_LIFECYCLE_SCOPED_UPSTREAM_4_REFS_PASS",
+  "observed_at_utc": "2026-11-17T02:19:16.130770+00:00",
+  "target": "iPhone10,3 / iOS 16.7.16 / 20H392 / Darwin 22",
+  "repository_count": 4,
+  "repositories": [
+    {
+      "name": "UniXNU",
+      "repository": "https://github.com/UniXNU/UniXNU.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "b6ac0630ed55feb926ccf2961523fca08bf2464e"
+    },
+    {
+      "name": "Pagani drivers",
+      "repository": "https://github.com/IssacL04/UniXNU-Pagani-Drivers.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "c888efd3ce1b817d13f28783a77cf689cb2255c9"
+    },
+    {
+      "name": "GopFramebuffer",
+      "repository": "https://github.com/UniXNU/GopFramebuffer.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "b0d812d578efa2acb005b66f73168891719af09a"
+    },
+    {
+      "name": "QcomGeniSpi",
+      "repository": "https://github.com/UniXNU/QcomGeniSpi.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "eac47baefe6a5d2368a70351e6ad1b6361bedbe2"
+    }
+  ],
+  "core_range": {
+    "base": "4a654d1f31662f18ab94391a4f0297b17b9bb2fe",
+    "tip": "b6ac0630ed55feb926ccf2961523fca08bf2464e",
+    "commits": 89,
+    "changed_files": 144
+  },
+  "decisions": [
+    "Retain existing source pins. The new main range selects another Metal runtime and adds graphics inspection/telemetry, fork inventory and macOS tools. The full 144-file range and selected Metal history were not fully audited or rebased to iPhone Darwin 22.",
+    "Selected build differences propagate the OS profile/toolchain inputs and preserve unchanged cached XNU source timestamps with rollback on preparation failure. The local selected native route already compiles recorded Darwin 22/iOS16 recipes, stages exact overlays separately and preserves the cached baseline. No generic build-driver upgrade is imported by this change.",
+    "Pagani peripheral, GopFramebuffer and QcomGeniSpi observed tips remain unchanged. The HID fix is derived from this board source and original pinned iPhone lifetime bodies, not a foreign OS binary binding."
+  ],
+  "source_sha256": {
+    "upstream.lock.json": "50da2f248a77f657b7e27f966dea861d1a58523fd2235ece1ade93e7b535bf4e",
+    "patches/mu-silicium/0001-cph2653-16.0.1.304-reserve-memory-holes.patch": "e1704c5fb2f9ae254d723fd0390f7fbe02e77c97fd8d1dae5ccb9c515bfa380f",
+    "reports/upstream-continuation-2026-11-16.json": "4c71e6ea3bfafccd43e03a8a92e993a419ec9f1917428119f495a3920addc822"
+  },
+  "artifacts": {
+    ".cache/upstream-review-2026-11-16/hid-source-review.json": "bfe0df389fcba3eaf52a130ace35ed093800e3beb66849675298f0712c64b20f"
+  },
+  "source_pins_changed": false,
+  "firmware_memory_patch_retained": true,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Four selected remote references and targeted build-source differences. Supplements prior reviews without claiming a fresh audit of all repositories or the entire new Metal runtime."
+}

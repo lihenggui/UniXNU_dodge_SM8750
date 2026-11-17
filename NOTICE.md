@@ -87,6 +87,11 @@ in [wifi-source.json](profiles/os/ios-16.7.16-20H392/wifi-source.json).
 The six-supply adaptation uses captured CPH2653 board facts. The iPad wireless
 frontend and Linux wireless implementation are excluded from this archive.
 
+The selected HID lifecycle overlay patches the local BSD-2-Clause-Patent
+EventDriver source. Its bounded ABI and instruction checks derive original
+component inputs locally from the pinned iPhone kernelcache. Original Apple
+component code is not included in the public source or reports.
+
 ## Firmware and system inputs
 
 Apple system contents, OnePlus firmware, microcode and SDK files are obtained

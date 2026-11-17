@@ -1,0 +1,309 @@
+{
+  "result": "IOS16_SELECTED_HID_ORIGINAL_INIT_STOP_AND_DRAIN_CPU_PASS",
+  "compiler_layout": {
+    "instance_bytes": 560,
+    "edges": 264,
+    "loop": 528,
+    "providerPin": 536,
+    "initAttempted": 544,
+    "initSucceeded": 545,
+    "startAttempted": 546,
+    "ready": 547,
+    "starting": 548,
+    "parentCleanupPending": 549,
+    "parentStopping": 550,
+    "stopRequested": 551,
+    "dispatches": 552,
+    "kt_size_offset": 44,
+    "kt_size_mask": 16777215,
+    "digitizer_type": 32,
+    "video_bytes": 144,
+    "video_width": 16,
+    "video_height": 24,
+    "video_rotate": 128,
+    "video_width_bytes": 8,
+    "video_height_bytes": 8
+  },
+  "cases": [
+    {
+      "case": "normal",
+      "result": "PASS",
+      "original_instructions_executed": 304,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 1,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "init-parent-failure",
+      "result": "PASS",
+      "original_instructions_executed": 43,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 0
+    },
+    {
+      "case": "init-service-allocation-failure",
+      "result": "PASS",
+      "original_instructions_executed": 48,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 0
+    },
+    {
+      "case": "init-driver-allocation-failure",
+      "result": "PASS",
+      "original_instructions_executed": 66,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 0
+    },
+    {
+      "case": "init-dictionary-failure",
+      "result": "PASS",
+      "original_instructions_executed": 61,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 0
+    },
+    {
+      "case": "free-untouched",
+      "result": "PASS",
+      "original_instructions_executed": 19,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 0,
+      "retained_provider_references": 0
+    },
+    {
+      "case": "stop-before-start",
+      "result": "PASS",
+      "original_instructions_executed": 69,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 0
+    },
+    {
+      "case": "null-provider",
+      "result": "PASS",
+      "original_instructions_executed": 69,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 0
+    },
+    {
+      "case": "wrong-provider",
+      "result": "PASS",
+      "original_instructions_executed": 69,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 0
+    },
+    {
+      "case": "no-loop",
+      "result": "PASS",
+      "original_instructions_executed": 69,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "bad-geometry",
+      "result": "PASS",
+      "original_instructions_executed": 69,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "rotated",
+      "result": "PASS",
+      "original_instructions_executed": 69,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "video-error",
+      "result": "PASS",
+      "original_instructions_executed": 69,
+      "parent_start_peers": 0,
+      "original_parent_stop_calls": 0,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "start-parent-failure",
+      "result": "PASS",
+      "original_instructions_executed": 124,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "start-reentrant-stop",
+      "result": "PASS",
+      "original_instructions_executed": 124,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "start-reentrant-stop-twice",
+      "result": "PASS",
+      "original_instructions_executed": 124,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "start-failure-reentrant-stop",
+      "result": "PASS",
+      "original_instructions_executed": 124,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "start-event-stop",
+      "result": "PASS",
+      "original_instructions_executed": 304,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 1,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "dispatch-reentrant-stop",
+      "result": "PASS",
+      "original_instructions_executed": 304,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 1,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "dispatch-reentrant-stop-twice",
+      "result": "PASS",
+      "original_instructions_executed": 304,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 1,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "nested-dispatch-stop",
+      "result": "PASS",
+      "original_instructions_executed": 304,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 2,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "queued-dispatch-stop",
+      "result": "PASS",
+      "original_instructions_executed": 124,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "stop-parent-reentry",
+      "result": "PASS",
+      "original_instructions_executed": 304,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 1,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "foreign-stop",
+      "result": "PASS",
+      "original_instructions_executed": 304,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 1,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    },
+    {
+      "case": "inactive",
+      "result": "PASS",
+      "original_instructions_executed": 124,
+      "parent_start_peers": 1,
+      "original_parent_stop_calls": 1,
+      "forwarded_events": 0,
+      "retained_init_references": 1,
+      "retained_provider_references": 1
+    }
+  ],
+  "old_direct_stop_control": {
+    "result": "REJECTED",
+    "check": "Original parent stop overlapped admitted work"
+  },
+  "source_sha256": {
+    "scripts/check_hid_lifecycle_kernel.py": "02a77d520966c963bd33e8d9bb0b48c6ca8d4bc1804d0324528d02746c2ac44d",
+    "scripts/hid_lifecycle_layout.py": "cae6319a65f221ca1165310f1c260cfd1d78da8900f87c69f332fc96ea6222b1",
+    "scripts/hid_lifecycle_model.py": "f5335f659161fab917112639dd492a56b502248817d4771b186521df6e84173f",
+    "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
+    "scripts/check_hid_parser.py": "ebd5f2cc7f91132554badc1b722d08d6a4db8db4db100edebe7a8a079536d779"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-native-system-kernel.json": "3422257d5f87c3445dcdcf04c8e4dcd5cb7ac9070c434ffc7178c08e0db7032c",
+    "reports/ios16-hid-lifecycle-source.json": "df07e4f19fca52266a4b2c4422fb670beccfe7ce9b1ca9d072f6a7e7f41b2d19",
+    "reports/ios16-hid-original-lifecycle.json": "9b8d435cbfdcf0e122d8ba664a056fb0bf4c98b5a852beaee97bcb5bd7cfe46b",
+    "reports/ios16-input-prelink.json": "9b351a088d399a12ce4eb90dc9169241b37231ba98bd1bbb61006b4ee73eefec",
+    "reports/ios16-hid-edge-kernel.json": "eaf78771a2d1a1c37f677c429cbe6faaaf0d87ee255bc08fdfe1ce9db1a6a773"
+  },
+  "artifacts": {
+    "build/cph2653-native-system/kernel.macho": "e3c033b82d9f952cf5d7084a737051e1e53688a4b2a209886df8e3be86f73cce",
+    "build/cph2653-input-prelink/kernel.macho": "ee07624c4bc4e7eed7992448812faeeac401a897b71c2b57a49c4bb448a1eead",
+    "build/ios16-hid-lifecycle-kernel/abi/DodgeHidEventDriver.cpp": "f16449ace1e8619df5d47dda505fc0d8468c4aca1ddf7ed18966a7bd29e6dc97",
+    "build/ios16-hid-lifecycle-kernel/abi/DodgeHidEventDriver.o": "cfcae56417b8e1af4adc5d1209ab3449d7f1cc5010c0c9cab570a7ed69256723",
+    "build/ios16-hid-lifecycle-kernel/abi/compile-commands.json": "7a0b4b9830a4ffd430257f51151e53d4130dd92abd4f041e1a1ed8f50a386795"
+  },
+  "original_parent_init_and_stop_are_not_peers": true,
+  "full_original_parent_startup_remains_peer_bound": true,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Actual selected native constructor/init/start/dispatch/stop/free instructions, unchanged original full EventDriver/EventService init/stop and event access/default dispatch bodies execute. Reentrant/queued stop cannot overlap admitted work or repeat parent cleanup. The old compiled source reproduces overlap. Public IOKit allocation/lock/gate/registry/refcount/video primitives, original full startup and final event service delivery are explicit peers. This drain covers the source start/dispatch frames; full original producer callback, matching/client/final-free and physical input lifetime remain unqualified."
+}

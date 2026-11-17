@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "product": "iPhone10,3",
+  "build": "20H392",
+  "source_revision": "1b191cb58250d0705d8a51287127505aa4bc0789",
+  "source": "drivers/DodgeInput/DodgeHidEventDriver.cpp",
+  "patch": "patches/oneplus13/0030-ios16-hid-event-lifecycle.patch",
+  "patch_sha256": "20e0e1a9ecf3a7afe3f213d810ee5a27ddc1a542f7f6a595cec1fdbebf76a185",
+  "before_sha256": "43d44bb262e21692698451cef86354fa3f8dc8cca163bdb0f06c1f3a9d4c37a2",
+  "after_sha256": "2a7984a01fa5d35ca1615e603c990778784265792a55ad14669b6e86f6343181",
+  "selected_native_build_only": true,
+  "original_parent_bytes": 264,
+  "original_slots": 219,
+  "failed_initialization_remains_pinned": true,
+  "hardware_tested": false
+}

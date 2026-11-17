@@ -64,6 +64,8 @@ jobs:
         run: python3 scripts/check_root_policy_source_host.py
       - name: Check original vnode close cleanup and saved-seed synchronization
         run: python3 scripts/build_seed_sync.py --host-only
+      - name: Check selected HID startup, reentrant stop and concurrent admission
+        run: python3 scripts/build_hid_lifecycle.py --host-only
       - name: Install regular-file FAT fixture tools
         run: sudo apt-get update && sudo apt-get install -y mtools
       - name: Check captured six-rail WLAN source, protocols and cache ownership
