@@ -1,14 +1,16 @@
 {
   "result": "IOS16_SELECTED_HID_LIFECYCLE_SOURCE_PASS",
   "source_sha256": {
-    "scripts/build_hid_lifecycle.py": "a4daf8e15599c9a4f34ad7f3efa4b842db42016ca34662b5abf76ca6ccf157b5",
-    "profiles/os/ios-16.7.16-20H392/hid-lifecycle.json": "0a693c742da18a29db49fd40d537e908ce2d92f95adebb9ce89df47112ed4aa5",
+    "scripts/build_hid_lifecycle.py": "b8e5993e68d7bdd70c9219077a96de44f1f1451ef9e51c14b3a4bf9ac0eb5ede",
+    "profiles/os/ios-16.7.16-20H392/hid-lifecycle.json": "52ea2de667e6b322bb418f992eb72da7eca10f7d0133f1a3782f5aabe8d6c3f5",
     "profiles/os/ios-16.7.16-20H392/input/OriginalHidEventABI.h": "956fa7b0d4a5be2ab443b99995b3e34fe938a1d360283a93661533b694e3dfaf",
     "drivers/DodgeInput/DodgeHidEventDriver.cpp": "43d44bb262e21692698451cef86354fa3f8dc8cca163bdb0f06c1f3a9d4c37a2",
     "patches/oneplus13/0030-ios16-hid-event-lifecycle.patch": "20e0e1a9ecf3a7afe3f213d810ee5a27ddc1a542f7f6a595cec1fdbebf76a185",
-    "tests/DodgeHidLifecycleTest.cpp": "b43f26c314892500da5e57a989ed2eb6505042fe3c94b26f4520b7fe831c3dad",
+    "patches/oneplus13/0031-ios16-hid-producer-drain.patch": "c5da63f0333f4a7ed21a5f7c2d0ca2f34ea257df53eb883077aed4e1070725d5",
+    "tests/DodgeHidLifecycleTest.cpp": "bf13e325662365f1753d8e7ad45a2cf2ac32bff46d07c501853a3db70a3a609c",
     "tests/hid_lifecycle_include/OriginalHidEventABI.h": "af2111a94ad53a9a4a0278d1560e8bc0709cfdb42c59c2dab48ef3d4a8e5aed5",
-    "tests/hid_lifecycle_include/HidPeers.h": "cc92ec0cfe387b3b1238d1ea6f630108f318d21eea51cfcfca04ee95b161b42f",
+    "tests/hid_lifecycle_include/HidPeers.h": "bfe04db14b4d1d74c1e8e8f9fdee5a939be1867a48a514790a502c66c9e2a249",
+    "tests/hid_lifecycle_include/IOKit/IOInterruptEventSource.h": "af2111a94ad53a9a4a0278d1560e8bc0709cfdb42c59c2dab48ef3d4a8e5aed5",
     "tests/hid_lifecycle_include/IOKit/IOTypes.h": "af2111a94ad53a9a4a0278d1560e8bc0709cfdb42c59c2dab48ef3d4a8e5aed5",
     "tests/hid_lifecycle_include/IOKit/IOWorkLoop.h": "af2111a94ad53a9a4a0278d1560e8bc0709cfdb42c59c2dab48ef3d4a8e5aed5",
     "tests/hid_lifecycle_include/mach/kmod.h": "af2111a94ad53a9a4a0278d1560e8bc0709cfdb42c59c2dab48ef3d4a8e5aed5",
@@ -21,14 +23,16 @@
     "drivers/DodgeInput/DodgeHidEdgePolicy.h": "09c3b17fc2c696621017d8201d009535824cf137a820871a856937e628d888c0"
   },
   "artifacts": {
-    "build/ios16-hid-lifecycle/source/DodgeHidEventDriver.cpp": "2a7984a01fa5d35ca1615e603c990778784265792a55ad14669b6e86f6343181",
-    "build/ios16-hid-lifecycle/host/selected/HidDriverSource.inc": "2a7984a01fa5d35ca1615e603c990778784265792a55ad14669b6e86f6343181",
+    "build/ios16-hid-lifecycle/source/DodgeHidEventDriver.cpp": "dc9fda24c9a53771d8e92a8ca9dc3f2d960b982dd8ae7ab0855e65e93c046b81",
+    "build/ios16-hid-lifecycle/host/selected/HidDriverSource.inc": "dc9fda24c9a53771d8e92a8ca9dc3f2d960b982dd8ae7ab0855e65e93c046b81",
     "build/ios16-hid-lifecycle/host/control/HidDriverSource.inc": "43d44bb262e21692698451cef86354fa3f8dc8cca163bdb0f06c1f3a9d4c37a2",
-    "build/ios16-hid-lifecycle/host/selected/hid-lifecycle": "1dfd30ad37f3a52ddf0b04aa8dc657631f63d60e339d0dc3b8fb8c4498afd173",
-    "build/ios16-hid-lifecycle/host/control/hid-lifecycle": "3985e312f24b7106e98207b2ece993ecac42f0ed658388cfb184134c859a7762",
-    "build/ios16-hid-lifecycle/native/DodgeHidEventDriver.o": "8115ef2ddaf262afae91ff2455b6b5dd42d3f3ae36679236fd93f19bd630a79f",
-    "build/ios16-hid-lifecycle/DodgeHidEventDriver.late.o": "077352093ecc4261d31cdc315b4df51db57c1922efd999fa4d2c3e0da753da2c",
-    "build/ios16-hid-lifecycle/libDodgeInputLifecycle.a": "e409ba6052f60f365b0ed5bea548234f68d0ade236c2d43eea3920c50c261c8c",
+    "build/ios16-hid-lifecycle/host/previous/HidDriverSource.inc": "2a7984a01fa5d35ca1615e603c990778784265792a55ad14669b6e86f6343181",
+    "build/ios16-hid-lifecycle/host/selected/hid-lifecycle": "43aec6f20e7d88b10b154169828cdb01cd0e4a8e231b89f15896d33aa43fba99",
+    "build/ios16-hid-lifecycle/host/control/hid-lifecycle": "051552c1f393268e5566c0507946e3ac10f4f48e6a290b6a3abfad96207aa698",
+    "build/ios16-hid-lifecycle/host/previous/hid-lifecycle": "a458b8e2acc9bdda3b4218dd704a556c8a9a0c3373b84cf8a7be8f2c551320c7",
+    "build/ios16-hid-lifecycle/native/DodgeHidEventDriver.o": "34b5d35db6e5dd9a1c7eade9c8864511bc74749496d950e1ad39c40c0e1fce05",
+    "build/ios16-hid-lifecycle/DodgeHidEventDriver.late.o": "7f80eb363855d23f56a8f45f405d4433063289346c2cc208e32680cbb04822c7",
+    "build/ios16-hid-lifecycle/libDodgeInputLifecycle.a": "a664c76d332b4f4ba1560214321624ceba9d6575ddc43d05a7e288e315a7db8f",
     "build/ios16-hid-lifecycle/members/DodgeInput.late.o": "84053b43cea00e0ca05d24ffef5c66a6e2bb2932da768099521d7a050b3749b5",
     "build/ios16-hid-lifecycle/members/S3910.o": "a74f9264f13fd60eb20142661b37e4e2b498c80f7efd29610474d745dad455cd",
     "build/ios16-hid-lifecycle/members/GeniSpi.o": "3271182e4302abf05be43212cea877345dd7f6a736abcc8d4b42c51c19fd99ed",
@@ -39,7 +43,7 @@
     "build/ios16-hid-lifecycle/members/DodgeTouchClock.o": "44c9eb2e8f45ad9fac085dc0ac586a704de657a7b56e9f235c382a2d23aad0c9",
     "build/ios16-hid-lifecycle/members/DodgeGeniTransfer.o": "3c5d88ec2b16ffebf177b6f99ae2c948829f0df1a4196c689785103733906265",
     "build/ios16-hid-lifecycle/members/stock-touch-firmware.o": "bc9e19027eac3d7d21046a7f70b3f1a40b401621105178a222cce7ee7cdb358e",
-    "build/ios16-hid-lifecycle/members/DodgeHidEventDriver.late.o": "077352093ecc4261d31cdc315b4df51db57c1922efd999fa4d2c3e0da753da2c",
+    "build/ios16-hid-lifecycle/members/DodgeHidEventDriver.late.o": "7f80eb363855d23f56a8f45f405d4433063289346c2cc208e32680cbb04822c7",
     "build/ios16-hid-lifecycle/members/original-hid-event-bindings.o": "74bd461fe1b0602ccd0164d1a3f952a543de18689fea078e5eac14e15fb3a059",
     "build/ios16-hid-lifecycle/members/original-hid-bindings.o": "b4a14c89d5bbac5a6854e702cdf71fea16b14e6b16356c71984371a2e6593bc2",
     "build/ios16-hid-lifecycle/native/compile-commands.json": "fc9b37e7f9b12ff8e06ce5f8858cef51be87c9fa6dc5e289536b7a4125498322"
@@ -167,12 +171,48 @@
     {
       "case": "original-control",
       "result": "PASS"
+    },
+    {
+      "case": "cleanup-allocation-failure",
+      "result": "PASS"
+    },
+    {
+      "case": "cleanup-attach-failure",
+      "result": "PASS"
+    },
+    {
+      "case": "producer-reentrant-stop",
+      "result": "PASS"
+    },
+    {
+      "case": "producer-stop-tail",
+      "result": "PASS"
+    },
+    {
+      "case": "producer-start-stop",
+      "result": "PASS"
+    },
+    {
+      "case": "producer-nested-dispatch",
+      "result": "PASS"
+    },
+    {
+      "case": "producer-external-stop",
+      "result": "PASS"
+    },
+    {
+      "case": "producer-start-failure",
+      "result": "PASS"
     }
   ],
   "old_stop_control": {
     "case": "old-direct-stop-during-parent-dispatch",
     "result": "REJECTED",
     "check": "parent stop overlapped admitted work"
+  },
+  "previous_producer_control": {
+    "result": "REJECTED",
+    "check": "parent stop overlapped original producer"
   },
   "archive": "build/ios16-hid-lifecycle/libDodgeInputLifecycle.a",
   "object": "build/ios16-hid-lifecycle/native/DodgeHidEventDriver.o",
@@ -419,5 +459,5 @@
   "source_base_and_baseline_artifacts_preserved": true,
   "hardware_tested": false,
   "phone_operations": "none",
-  "scope": "Selected source serializes start, stop and dispatch on the provider workloop. Stop closes admission before waiting; reentrant stop drains admitted dispatch/start calls before exactly one original parent stop. Failed init cannot start, duplicate/foreign stops cannot repeat cleanup, and existing partial-init instance/provider/loop pins remain. Actual patched production source runs with sanitizer IOKit peers and concurrent threads; the old source reproduces overlapping parent stop. This does not qualify full original parent startup, producer callback/client lifetime, matching, final free, physical input or graphical UI."
+  "scope": "Selected source serializes start, stop and dispatch on the provider workloop. Stop closes admission before waiting; gate-held stop queues a software interrupt source so parent cleanup runs after the outer gate action. External stop can complete cleanup first; a stale queued callback cannot repeat it. Source and gated producer frames are covered, while original callbacks which leave/reenter the gate remain unqualified. Failed init cannot start, duplicate/foreign stops cannot repeat cleanup, and existing partial-init instance/provider/loop pins remain. Actual patched production source runs with sanitizer IOKit peers and concurrent threads; the old source reproduces overlapping parent stop. This does not qualify full original parent startup, producer callback/client lifetime, matching, final free, physical input or graphical UI."
 }

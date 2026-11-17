@@ -37,6 +37,7 @@ class HidModel(Model):
         self.contract=json.loads(CONTRACT.read_text());self.events=[];self.allocations={};self.freed=[];self.locks={}
         self.next_heap=self.heap+0x10000;self.typed_calls=0;self.source=source;self.original_visits=set()
         self.original_stop_calls=self.native_stops=self.native_frees=0;self.active_start=self.active_dispatch=0
+        self.active_producer=0
         self.continuations=0;self.gate=0;self.on_native_stop=None
         self.obj,self.provider,self.loop,self.event=[self.heap+x for x in (0x1000,0x2000,0x3000,0x5000)]
         self.refs={self.obj:1,self.provider:1,self.loop:1,self.event:1};self.initial_refs=dict(self.refs)
@@ -104,6 +105,7 @@ class HidModel(Model):
     def track(self,cpu,pc,size,ignored):
         if pc==SERVICE_STOP+self.shift:
             require(not self.active_start and not self.active_dispatch,'Original parent stop overlapped admitted work')
+            require(not self.active_producer,'Original parent stop overlapped original producer')
             self.original_stop_calls+=1
         if pc not in self.peers and any(s['va']+self.shift<=pc<s['va']+self.shift+s['size'] for s in self.module['segments'] if s['initprot']&4):
             require(self.read(pc,size)==self.original_read(pc-self.shift,size),'Original HID lifetime instruction changed')

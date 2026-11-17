@@ -8,7 +8,7 @@ from native_driver_build import ROOT, build_objects, inspect_object, require, sy
 from prepare_hid_event_abi import HEADER
 
 FIELDS=('edges','loop','providerPin','initAttempted','initSucceeded','startAttempted','ready','starting',
-    'parentCleanupPending','parentStopping','stopRequested','dispatches')
+    'parentCleanupPending','parentStopping','stopRequested','dispatches','cleanupSource','cleanupDeferred','cleanupQueued')
 
 
 def compile_layout(directory):

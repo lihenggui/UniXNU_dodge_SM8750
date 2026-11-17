@@ -5,6 +5,10 @@
   "scope": "Build, model-test and QEMU snapshots. Artifact and dependency hashes identify their recorded run. Use previous_indexes to resolve earlier report versions.",
   "previous_indexes": [
     {
+      "revision": "afc28dac1dd1ff7229ba310a6a61f41178479ae1",
+      "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/afc28dac1dd1ff7229ba310a6a61f41178479ae1/reports/public/index.json"
+    },
+    {
       "revision": "c96843eebc0eca4f2f7e1d22bd4906be8a8f7d8b",
       "url": "https://raw.githubusercontent.com/lihenggui/UniXNU_dodge_SM8750/c96843eebc0eca4f2f7e1d22bd4906be8a8f7d8b/reports/public/index.json"
     },
@@ -593,20 +597,20 @@
     },
     "ios16-hid-lifecycle-kernel.json": {
       "local_report": "reports/ios16-hid-lifecycle-kernel.json",
-      "original_sha256": "faab030f4d2a680e5c7ea992248cf634db33bf98ea90db4f52224d7b7330e6a4",
-      "snapshot_sha256": "faab030f4d2a680e5c7ea992248cf634db33bf98ea90db4f52224d7b7330e6a4",
+      "original_sha256": "a533023a6392de12c0b06459cc070debda4437119a4a6f9db44bcc5b032d8121",
+      "snapshot_sha256": "a533023a6392de12c0b06459cc070debda4437119a4a6f9db44bcc5b032d8121",
       "paths_normalized": false
     },
     "ios16-hid-lifecycle-source-host.json": {
       "local_report": "reports/ios16-hid-lifecycle-source-host.json",
-      "original_sha256": "0803e2315def163f9134fba4705d65cb6f7a1248fc3de3b0506701ed7f88c7ff",
-      "snapshot_sha256": "0803e2315def163f9134fba4705d65cb6f7a1248fc3de3b0506701ed7f88c7ff",
+      "original_sha256": "ff9e17b74a952045d6d06e55ea052f60f1d2837dd453c2e8fcc51c1f30412d5a",
+      "snapshot_sha256": "ff9e17b74a952045d6d06e55ea052f60f1d2837dd453c2e8fcc51c1f30412d5a",
       "paths_normalized": false
     },
     "ios16-hid-lifecycle-source.json": {
       "local_report": "reports/ios16-hid-lifecycle-source.json",
-      "original_sha256": "df07e4f19fca52266a4b2c4422fb670beccfe7ce9b1ca9d072f6a7e7f41b2d19",
-      "snapshot_sha256": "df07e4f19fca52266a4b2c4422fb670beccfe7ce9b1ca9d072f6a7e7f41b2d19",
+      "original_sha256": "dbdee8cc15c8d72d4f0464776dd8321e955fdf2cc3924086998a4b20217aab3e",
+      "snapshot_sha256": "dbdee8cc15c8d72d4f0464776dd8321e955fdf2cc3924086998a4b20217aab3e",
       "paths_normalized": false
     },
     "ios16-hid-object-lifetime.json": {
@@ -617,8 +621,8 @@
     },
     "ios16-hid-original-lifecycle.json": {
       "local_report": "reports/ios16-hid-original-lifecycle.json",
-      "original_sha256": "9b8d435cbfdcf0e122d8ba664a056fb0bf4c98b5a852beaee97bcb5bd7cfe46b",
-      "snapshot_sha256": "9b8d435cbfdcf0e122d8ba664a056fb0bf4c98b5a852beaee97bcb5bd7cfe46b",
+      "original_sha256": "5f659daa6362a45c58931d1e985d7dd0aa4b8954fc7254e932c856ef448b8cdd",
+      "snapshot_sha256": "5f659daa6362a45c58931d1e985d7dd0aa4b8954fc7254e932c856ef448b8cdd",
       "paths_normalized": false
     },
     "ios16-hid-source-calls.json": {
@@ -755,8 +759,8 @@
     },
     "ios16-native-prng-check.json": {
       "local_report": "reports/ios16-native-prng-check.json",
-      "original_sha256": "7b51dfef07b1761690d118d26b402e9e0abd3b5265bfac76dcea50981c8ae3be",
-      "snapshot_sha256": "7b51dfef07b1761690d118d26b402e9e0abd3b5265bfac76dcea50981c8ae3be",
+      "original_sha256": "cbefce807d3273eb612859cce099cd2db5887f720fd7d6d85923d4bad14d375b",
+      "snapshot_sha256": "cbefce807d3273eb612859cce099cd2db5887f720fd7d6d85923d4bad14d375b",
       "paths_normalized": false
     },
     "ios16-native-root-policies.json": {
@@ -773,44 +777,44 @@
     },
     "ios16-native-system-check-persistent.json": {
       "local_report": "reports/ios16-native-system-check-persistent.json",
-      "original_sha256": "6462e4fe6edcda1f9a8037c2d5cd7ff21f8a0d08087eb35d069fb0508f79e4e9",
-      "snapshot_sha256": "6462e4fe6edcda1f9a8037c2d5cd7ff21f8a0d08087eb35d069fb0508f79e4e9",
+      "original_sha256": "2c2614f23e1c95d77a616b20ed09866cdc6140307063b56792208a55362ef512",
+      "snapshot_sha256": "2c2614f23e1c95d77a616b20ed09866cdc6140307063b56792208a55362ef512",
       "paths_normalized": false
     },
     "ios16-native-system-check.json": {
       "local_report": "reports/ios16-native-system-check.json",
-      "original_sha256": "559d0f4bc92302ca00fcd0fcb6a35b1b4058d8fa59e1de2869efc69f36c8e57d",
-      "snapshot_sha256": "559d0f4bc92302ca00fcd0fcb6a35b1b4058d8fa59e1de2869efc69f36c8e57d",
+      "original_sha256": "caa62ff8fbd3b4cce28a8be936200f0604a0e83f12b653d74d339cddc3a3bdc6",
+      "snapshot_sha256": "caa62ff8fbd3b4cce28a8be936200f0604a0e83f12b653d74d339cddc3a3bdc6",
       "paths_normalized": false
     },
     "ios16-native-system-kernel-persistent.json": {
       "local_report": "reports/ios16-native-system-kernel-persistent.json",
-      "original_sha256": "90b541bc294aa3f9aa213504e04674badf5c6221925b1cd8ec087551fb8adbca",
-      "snapshot_sha256": "90b541bc294aa3f9aa213504e04674badf5c6221925b1cd8ec087551fb8adbca",
+      "original_sha256": "8d02b88cca2404790b5d6954f4913403e38c4f40df5285520f0cd1c8b2e05c00",
+      "snapshot_sha256": "8d02b88cca2404790b5d6954f4913403e38c4f40df5285520f0cd1c8b2e05c00",
       "paths_normalized": false
     },
     "ios16-native-system-kernel.json": {
       "local_report": "reports/ios16-native-system-kernel.json",
-      "original_sha256": "3422257d5f87c3445dcdcf04c8e4dcd5cb7ac9070c434ffc7178c08e0db7032c",
-      "snapshot_sha256": "3422257d5f87c3445dcdcf04c8e4dcd5cb7ac9070c434ffc7178c08e0db7032c",
+      "original_sha256": "b2f8aae78291276910640f89211328e3caab3dde40603f61e63b5dcdef46500d",
+      "snapshot_sha256": "b2f8aae78291276910640f89211328e3caab3dde40603f61e63b5dcdef46500d",
       "paths_normalized": false
     },
     "ios16-native-system-payload-persistent.json": {
       "local_report": "reports/ios16-native-system-payload-persistent.json",
-      "original_sha256": "810974ab9034b53a2a2353e6cc99391faba813a21811880c035650b1325acf74",
-      "snapshot_sha256": "810974ab9034b53a2a2353e6cc99391faba813a21811880c035650b1325acf74",
+      "original_sha256": "f78b38a0a01c59ef221bb1f5f3836ae8969e69c1815c065e91aaf79685096b62",
+      "snapshot_sha256": "f78b38a0a01c59ef221bb1f5f3836ae8969e69c1815c065e91aaf79685096b62",
       "paths_normalized": false
     },
     "ios16-native-system-payload.json": {
       "local_report": "reports/ios16-native-system-payload.json",
-      "original_sha256": "0d9625b0f0db44bdec07ac584ed4fa4e4e64295e2f7717c54d51809b1d7d97d6",
-      "snapshot_sha256": "0d9625b0f0db44bdec07ac584ed4fa4e4e64295e2f7717c54d51809b1d7d97d6",
+      "original_sha256": "c5be49def434c1d885ecfef62fa7cac3c92839000a943df35c9229b5a81c23cf",
+      "snapshot_sha256": "c5be49def434c1d885ecfef62fa7cac3c92839000a943df35c9229b5a81c23cf",
       "paths_normalized": false
     },
     "ios16-native-system-stack.json": {
       "local_report": "reports/ios16-native-system-stack.json",
-      "original_sha256": "ad705c449f274dbd247836943320493cc4ad96a781b05f0c16e4b6b2ce5d01f2",
-      "snapshot_sha256": "ad705c449f274dbd247836943320493cc4ad96a781b05f0c16e4b6b2ce5d01f2",
+      "original_sha256": "84e08fadde9899558712537e6ca82ac3d360837704e719af03dc9639c681e373",
+      "snapshot_sha256": "84e08fadde9899558712537e6ca82ac3d360837704e719af03dc9639c681e373",
       "paths_normalized": false
     },
     "ios16-original-components.json": {
@@ -1097,8 +1101,8 @@
     },
     "ios16-seed-close-kernel.json": {
       "local_report": "reports/ios16-seed-close-kernel.json",
-      "original_sha256": "9ae8cd6df7f1c82b75689ee0547e42853235fd73516f8a09e8b4b08791afead7",
-      "snapshot_sha256": "9ae8cd6df7f1c82b75689ee0547e42853235fd73516f8a09e8b4b08791afead7",
+      "original_sha256": "3e11c21796078858bfe623610d4bae77c91b8b773f9622bc65556a473b00d44d",
+      "snapshot_sha256": "3e11c21796078858bfe623610d4bae77c91b8b773f9622bc65556a473b00d44d",
       "paths_normalized": false
     },
     "ios16-seed-close-sync-host.json": {
@@ -1525,6 +1529,12 @@
       "local_report": "reports/upstream-hid-lifecycle-review.json",
       "original_sha256": "8c6c00502da4a4bde42c673a6d9d471d95850977c51a6fc00828a73d8867cb4a",
       "snapshot_sha256": "8c6c00502da4a4bde42c673a6d9d471d95850977c51a6fc00828a73d8867cb4a",
+      "paths_normalized": false
+    },
+    "upstream-hid-producer-review.json": {
+      "local_report": "reports/upstream-hid-producer-review.json",
+      "original_sha256": "f33b417aec583aa8110eeccbc8e0bd88bb3a4f541f542a46fab63a3674e19e79",
+      "snapshot_sha256": "f33b417aec583aa8110eeccbc8e0bd88bb3a4f541f542a46fab63a3674e19e79",
       "paths_normalized": false
     },
     "upstream-review.json": {

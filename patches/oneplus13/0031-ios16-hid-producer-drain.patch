@@ -1,0 +1,88 @@
+--- a/DodgeHidEventDriver.cpp
++++ b/DodgeHidEventDriver.cpp
+@@ -3,6 +3,7 @@
+ #include "DodgeHidEventDriver.h"
+ #include "DodgeHidEdgePolicy.h"
+ #include <IOKit/IOWorkLoop.h>
++#include <IOKit/IOInterruptEventSource.h>
+ #include <libkern/c++/OSArray.h>
+ #include <libkern/c++/OSKext.h>
+ #include <libkern/c++/OSMetaClass.h>
+@@ -35,18 +36,36 @@
+     bool initAttempted=false,initSucceeded=false,startAttempted=false,ready=false;
+     bool starting=false,parentCleanupPending=false,parentStopping=false,stopRequested=false;
+     unsigned dispatches=0;
++    IOInterruptEventSource *cleanupSource=nullptr;
++    bool cleanupDeferred=false,cleanupQueued=false;
+     // The provider and loop remain pinned after an attempt, including a
+     // failed original init/start. Only the validated gate owns these fields.
+     void finishStop() {
+         if (!__atomic_load_n(&stopRequested,__ATOMIC_ACQUIRE) || starting || dispatches ||
+             parentStopping || !parentCleanupPending) return;
++        if (cleanupDeferred) {
++            if (!cleanupQueued && cleanupSource) {
++                cleanupQueued=true;cleanupSource->interruptOccurred(nullptr,nullptr,0);
++            }
++            return;
++        }
+         parentCleanupPending=false;parentStopping=true;
+         IOHIDEventDriver::stop(providerPin);
+         parentStopping=false;edges={};
+     }
+-    static IOReturn stopAction(OSObject *owner,void *argument,void *,void *,void *) {
++    static void cleanupAction(OSObject *owner,IOInterruptEventSource *source,int count) {
++        auto *self=static_cast<DodgeHidEventDriver *>(owner);
++        if (source!=self->cleanupSource || count<=0 || !self->loop || !self->loop->inGate()) return;
++        self->cleanupQueued=false;
++        if (self->starting || self->dispatches) return;
++        self->cleanupDeferred=false;self->finishStop();
++    }
++    static IOReturn stopAction(OSObject *owner,void *argument,void *deferred,void *,void *) {
+         auto *self=static_cast<DodgeHidEventDriver *>(owner);
+         if (!self->loop || !self->loop->inGate() || argument!=self->providerPin) return kIOReturnBadArgument;
++        // A gate-held caller may be an original producer above our dispatch
++        // frame. The workloop event runs after that outer gate action exits.
++        self->cleanupDeferred=deferred==self;
+         self->finishStop();return kIOReturnSuccess;
+     }
+     static IOReturn startAction(OSObject *owner,void *argument,void *,void *,void *) {
+@@ -54,8 +73,11 @@
+         if (!self->loop || !self->loop->inGate() || argument!=self->providerPin ||
+             __atomic_load_n(&self->stopRequested,__ATOMIC_ACQUIRE)) return kIOReturnNotReady;
+         self->starting=true;
++        self->cleanupSource=IOInterruptEventSource::interruptEventSource(self,cleanupAction);
++        bool ok=self->cleanupSource && self->loop->addEventSource(self->cleanupSource)==kIOReturnSuccess;
++        if (!ok && self->cleanupSource) {self->cleanupSource->release();self->cleanupSource=nullptr;}
+         PE_Video video={};
+-        bool ok=!PE_current_console(&video) && !video.v_rotate && video.v_width<=UINT32_MAX && video.v_height<=UINT32_MAX &&
++        ok=ok && !PE_current_console(&video) && !video.v_rotate && video.v_width<=UINT32_MAX && video.v_height<=UINT32_MAX &&
+             dodge_hid_edge_configure(&self->edges,(uint32_t)video.v_width,(uint32_t)video.v_height,48);
+         if (ok && !__atomic_load_n(&self->stopRequested,__ATOMIC_ACQUIRE)) {
+             // Preserve original start-time event delivery, while external
+@@ -69,6 +91,8 @@
+         if (!ok || __atomic_load_n(&self->stopRequested,__ATOMIC_ACQUIRE)) {
+             __atomic_store_n(&self->stopRequested,true,__ATOMIC_RELEASE);
+             __atomic_store_n(&self->ready,false,__ATOMIC_RELEASE);
++            // Startup itself can be nested in an original gated producer.
++            self->cleanupDeferred=true;
+             self->finishStop();return kIOReturnNotReady;
+         }
+         return kIOReturnSuccess;
+@@ -153,13 +177,13 @@
+         if (!provider) return;
+         auto *workLoop=__atomic_load_n(&loop,__ATOMIC_ACQUIRE);
+         if (workLoop && provider!=providerPin) return;
+-        // Admission closes before waiting on the gate. Recursive gate entry
+-        // only requests a stop; the outer start/dispatch performs cleanup
+-        // after the original parent call has returned.
++        // Close admission before even querying gate ownership. Reentrant
++        // stop must also outlive an original producer above our source frame.
+         __atomic_store_n(&stopRequested,true,__ATOMIC_RELEASE);
+         __atomic_store_n(&ready,false,__ATOMIC_RELEASE);
+         if (!workLoop) return;
+-        workLoop->retain();workLoop->runAction(stopAction,this,provider);workLoop->release();
++        workLoop->retain();const bool deferred=workLoop->inGate();
++        workLoop->runAction(stopAction,this,provider,deferred?this:nullptr);workLoop->release();
+     }
+     void free() override {
+         if (initAttempted) return;

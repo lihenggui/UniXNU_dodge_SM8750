@@ -12,7 +12,7 @@
     "scripts/check_boot_entropy_kernel.py": "e99b357d4031e99c4a8783d454564e0fc8c64d439396959ad5fccdb94d1576c1"
   },
   "dependency_report_sha256": {
-    "reports/ios16-native-system-kernel-persistent.json": "90b541bc294aa3f9aa213504e04674badf5c6221925b1cd8ec087551fb8adbca",
+    "reports/ios16-native-system-kernel-persistent.json": "8d02b88cca2404790b5d6954f4913403e38c4f40df5285520f0cd1c8b2e05c00",
     "reports/native-a830-payload.json": "c656ee12670937b15821d2efb8c05315502763de078e6c0d8a2ff9870462db5b",
     "reports/native-a830-firmware.json": "814df2533a1366c44cf775333dfc95d5acf94fb13c23db38caa1e35abdbdeb52",
     "reports/native-a830-addon.json": "e38844cd367e28d759f5392bfa4e7a5956257a091e67d60bc3b23df445270a4d",
@@ -20,33 +20,33 @@
     "reports/ios16-boot-entropy-kernel.json": "d0109a811a6a47dc5bd1a3f0fa034a17d98f373cdcfd70a9faf7423116668096"
   },
   "artifacts": {
-    "build/cph2653-native-system-bringup-persistent/payload.img": "a1d5cd01d959e65563badb63ee1ecebe18e61b656d974eef74ab0372a2149c5c",
-    "build/cph2653-native-system-bringup-persistent/boot.img": "caa84cbd908409d5514d2f0006224e9176b2d959b2beacaa371de1533be12756",
-    "build/cph2653-native-system-bringup-persistent/boot.json": "51d213e6b22bcac3e889f6948904cc4d59b0d7b54c4d8216483e4a9f3d1a84a9",
+    "build/cph2653-native-system-bringup-persistent/payload.img": "67015fe16a108b53bc26d118a9f704e5d222a4e02da287d8984b157faf01f72b",
+    "build/cph2653-native-system-bringup-persistent/boot.img": "62ae49b355798f37d7b594b8958810da4e1ac64f795d51154b783b6d7a28a4bd",
+    "build/cph2653-native-system-bringup-persistent/boot.json": "6bddc4c70d2758fbdff2233e25a37fb77835a4bcb09fd5429c07d3894351fe55",
     "build/cph2653-native-system-bringup-persistent/iphone-root.img": "f7971599d49cabc79bcbfcd62dfb5f33c88cdbb4dbbf3b51267ad5e34365dd84",
-    "build/cph2653-native-system-bringup-persistent/system-manifest.json": "0b5a693e5ac322a7dae583a35041931c1deee72ceeeb1ddbc85378cc01d9002c",
-    "build/cph2653-native-system-bringup-persistent/stage/kernel.macho.adt": "e0b5e28a1ee7995bec584712f82ab2d9560bffbee9c51141f029b7837c72b437",
-    "build/cph2653-native-system-bringup-persistent/stage/image4-boot-policy.json": "889738e8c29b63c9ea527c98afb2561ba936074a584c67af233b765c190c9b6e",
+    "build/cph2653-native-system-bringup-persistent/system-manifest.json": "d5e71604c89a30fe43eaa595613cd2973d30161b7981423d10b5f0f617e2c578",
+    "build/cph2653-native-system-bringup-persistent/stage/kernel.macho.adt": "653e0d64b1c0647f2da7199d8a408b0dae6461ec4d98984901c6bd14936a4d98",
+    "build/cph2653-native-system-bringup-persistent/stage/image4-boot-policy.json": "4f808487cc4c7620689bec881d4580255af4e0658a0982c0b584686e47e2e5ab",
     "build/cph2653-native-system-bringup-persistent/stage/unixnu.toml": "517a5b0d9d2141e9bf0eac401feb7d6e7bd929a4fd3b711e71be3391f3edfe9c",
     "build/cph2653-native-system-bringup-persistent/efi-cpu-readback.json": "016d2205a555d8fba27f4afb1ec474568b3edd7c0720478082a4e72befc5ce25",
     "build/cph2653-native-system-bringup-persistent/OwnerPolicyProbe.cpp": "054f0595f9d04d0f456f72611422f1a09e327bf82ba585178be66421104f2d6e",
     "build/cph2653-native-system-bringup-persistent/owner-policy-probe.so": "759c73d00cafbba4d8d0a7a5727111a2df51c93874016de43d079bcc8c83e311"
   },
   "boot_image": "build/cph2653-native-system-bringup-persistent/boot.img",
-  "boot_image_sha256": "caa84cbd908409d5514d2f0006224e9176b2d959b2beacaa371de1533be12756",
+  "boot_image_sha256": "62ae49b355798f37d7b594b8958810da4e1ac64f795d51154b783b6d7a28a4bd",
   "boot_header_version": 4,
   "boot_image_bytes": 95072256,
   "captured_boot_partition_bytes": 100663296,
   "payload": "build/cph2653-native-system-bringup-persistent/payload.img",
-  "payload_sha256": "a1d5cd01d959e65563badb63ee1ecebe18e61b656d974eef74ab0372a2149c5c",
+  "payload_sha256": "67015fe16a108b53bc26d118a9f704e5d222a4e02da287d8984b157faf01f72b",
   "payload_bytes": 92274688,
   "fat_files": {
     "EFI/UniXNU/unixnu.toml": "517a5b0d9d2141e9bf0eac401feb7d6e7bd929a4fd3b711e71be3391f3edfe9c",
     "EFI/UniXNU/Payloads/kernel.macho.trustcache": "03a25c236f211427ae21a3ba47d33e32662e17d928027df236e30889fb7bf1de",
-    "EFI/UniXNU/Payloads/kernel.macho.adt": "e0b5e28a1ee7995bec584712f82ab2d9560bffbee9c51141f029b7837c72b437",
+    "EFI/UniXNU/Payloads/kernel.macho.adt": "653e0d64b1c0647f2da7199d8a408b0dae6461ec4d98984901c6bd14936a4d98",
     "EFI/UniXNU/Payloads/scratch-data.img": "29913e6e69222bad6e203736f44e9b06def2e228caa0b9f701e21f67c2dbdb19",
     "EFI/UniXNU/Payloads/kernel.macho.gpuaddon": "889ad110d98e4d31c3c0dc71b6abde783ce5f15345203c6c7e6cd435deb2d064",
-    "EFI/UniXNU/Payloads/kernel.macho": "0bcbf2906de83555e4d6a053d6d12c5f659546dd3cdbdd2b0647cd2b8da243c2"
+    "EFI/UniXNU/Payloads/kernel.macho": "9db8c45db41421aef594f10ba3bffe1afac3de31ba0cfb4dc03b6f5795eadd31"
   },
   "root_image": "build/cph2653-native-system-bringup-persistent/iphone-root.img",
   "root_image_sha256": "f7971599d49cabc79bcbfcd62dfb5f33c88cdbb4dbbf3b51267ad5e34365dd84",
@@ -78,12 +78,12 @@
     "product": "iPhone10,3",
     "build": "20H392",
     "mix_n_match_prevention": true,
-    "nonce_hash": "f131e46d776cc01372aa63b66b2b4be9efb15c99f642db1ec9adf03fb05462a714dc176bd508003d6a29eaf3b119777a",
+    "nonce_hash": "a075d6870dedbff90fcb66b9db8c52dfcfcdc8615dea042155bd440e192d3650dca422474fc651cf692f4076ec1a6a94",
     "device_tree_sha384": "e127522b7fc3cc93c6af391e06398fdb8bcc6a0764097f4453378cfdaa3a96266c7ca2f372439c4ca8e3eb38e6483083",
     "components": {
       "kernel.macho": {
         "bytes": 56975360,
-        "sha384": "1c253cce425dec8adec4df7cd7dc1badb55ff5b9da7c716191ccd5d3b19e41a4760e8de3d0f9bc745246132eab58aa9b"
+        "sha384": "960ac5ca6ff48da1a8dfe2035505029478cf8f4e9f607396fd343765eede572a169e8476a54c05d9acf6450551ca1e08"
       },
       "kernel.macho.gpuaddon": {
         "bytes": 13004776,

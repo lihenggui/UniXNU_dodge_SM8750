@@ -4,12 +4,13 @@ import argparse
 import gc
 import json
 from pathlib import Path
+import struct
 
 from build_native_system import REPORT as KERNEL_REPORT, check_report as check_kernel
-from build_hid_lifecycle import REPORT as SOURCE_REPORT, check_report as check_source
+from build_hid_lifecycle import REPORT as SOURCE_REPORT, CONTRACT, check_report as check_source
 from check_hid_original_lifecycle import REPORT as ORIGINAL_REPORT, check_report as check_original
 from hid_lifecycle_layout import compile_layout
-from hid_lifecycle_model import HidModel, SERVICE_STOP
+from hid_lifecycle_model import HidModel, SERVICE_STOP, branch
 from check_hid_parser import SLIDE
 from native_driver_build import ROOT, require, sha
 
@@ -22,18 +23,26 @@ CASES=('normal','init-parent-failure','init-service-allocation-failure','init-dr
     'init-dictionary-failure','free-untouched','stop-before-start','null-provider','wrong-provider','no-loop',
     'bad-geometry','rotated','video-error','start-parent-failure','start-reentrant-stop','start-reentrant-stop-twice',
     'start-failure-reentrant-stop','start-event-stop','dispatch-reentrant-stop','dispatch-reentrant-stop-twice',
-    'nested-dispatch-stop','queued-dispatch-stop','stop-parent-reentry','foreign-stop','inactive')
+    'nested-dispatch-stop','queued-dispatch-stop','stop-parent-reentry','foreign-stop','inactive',
+    'cleanup-allocation-failure','cleanup-attach-failure','producer-reentrant-stop','producer-stop-tail',
+    'producer-start-stop','producer-nested-dispatch','producer-external-stop','original-producer-stop',
+    'original-producer-stop-twice','original-producer-external-stop','original-producer-not-ready','original-producer-wrong-type',
+    'original-producer-tail-stop','producer-start-failure')
 
 
 class SourceModel(HidModel):
     def __init__(self,raw,facts,case,*,old=False):
         super().__init__(raw,facts,shift=SLIDE,source=True,case=case)
         self.old=old;self.starts=self.forwards=0;self.triggered=False;self.queued=False
+        self.cleanup_source=self.cleanup_action=self.cleanup_pending=self.cleanup_signals=self.cleanup_callbacks=0
         self.putq(self.provider,self.parent_vptr);self.putq(self.loop,self.names['__ZTV10IOWorkLoop']+16)
         run='__ZN10IOWorkLoop9runActionEPFiP8OSObjectPvS2_S2_S2_ES1_S2_S2_S2_S2_'
         self.bind(run,self.run_action)
         self.bind('__ZNK10IOWorkLoop6inGateEv',lambda args:self.returned(args[0]==self.loop and bool(self.gate)))
         self.bind('__ZN10IOWorkLoop17removeEventSourceEP13IOEventSource',self.remove_source)
+        self.bind('__ZN10IOWorkLoop14addEventSourceEP13IOEventSource',self.add_cleanup)
+        self.bind('__ZN22IOInterruptEventSource20interruptEventSourceEP8OSObjectPFvS1_PS_iEP9IOServicei',self.create_cleanup)
+        self.bind('__ZN22IOInterruptEventSource17interruptOccurredEPvP9IOServicei',self.signal_cleanup)
         self.bind('__ZN8OSObject4freeEv',self.untouched_free)
         start=int(self.contract['classes']['IOHIDEventDriver']['methods'][86]['address'],16)+SLIDE
         self.peers[start]=('original-parent-start-peer',self.parent_start)
@@ -47,6 +56,57 @@ class SourceModel(HidModel):
         require(self.call('_dodge_hid_edge_driver_bytes')==facts['instance_bytes'],'Selected HID allocation extent differs')
 
     def source_call(self,method,*args):return self.call(METHODS[method],list(args))
+    def create_cleanup(self,args):
+        require(args[0]==self.obj and args[2:4]==[0,0] and self.gate,'HID cleanup source is not a software event')
+        self.cleanup_action=args[1]
+        if self.case=='cleanup-allocation-failure':self.returned();return
+        self.cleanup_source=self.resource('source-cleanup-event')
+        self.putq(self.cleanup_source,self.names['__ZTV22IOInterruptEventSource']+16);self.returned(self.cleanup_source)
+    def add_cleanup(self,args):
+        require(args[:2]==[self.loop,self.cleanup_source] and self.gate,'HID cleanup source escaped its loop')
+        if self.case=='cleanup-attach-failure':self.returned(0xe00002bd);return
+        self.refs[self.cleanup_source]+=1;self.returned()
+    def signal_cleanup(self,args):
+        require(args[:4]==[self.cleanup_source,0,0,0] and self.gate,'HID cleanup signal changed')
+        self.cleanup_signals+=1;self.cleanup_pending+=1;self.returned()
+    def drain_cleanup(self):
+        require(not self.gate and not self.active_producer,'HID cleanup entered an active producer action')
+        if not self.cleanup_pending:return
+        count=self.cleanup_pending;self.cleanup_pending=0;self.cleanup_callbacks+=1
+        self.names['_cleanup_callback']=self.cleanup_action;self.gate+=1
+        self.call('_cleanup_callback',[self.obj,self.cleanup_source,count]);self.gate-=1
+    def producer(self,method='dispatch'):
+        self.gate+=1;self.active_producer+=1
+        if method=='start':result=self.source_call('start',self.obj,self.provider);require(not result,'Reentrant startup stop was accepted')
+        else:self.source_call('dispatch',self.obj,self.event,0x80000001)
+        if self.case=='producer-stop-tail':self.source_call('stop',self.obj,self.provider)
+        require(not self.original_stop_calls,'Parent stop ran before original producer returned')
+        self.source_call('stop',self.obj,self.provider)
+        require(not self.original_stop_calls,'Repeated stop ran inside original producer')
+        self.active_producer-=1;self.gate-=1
+    def original_producer(self):
+        entry=int(self.contract['classes']['IOHIDEventDriver']['methods'][218]['address'],16)
+        require(entry==0xfffffff0057444e8,'Original interrupt-report entry changed')
+        ready=branch(self.original_read,entry+0x28)
+        load,ret=struct.unpack('<2I',self.original_read(ready,8))
+        require(load&0xffc003ff==0x39400000 and ret==0xd65f03c0,'Original report admission no longer loads its own byte')
+        ready_offset=(load>>10)&4095
+        self.put(self.obj+ready_offset,bytes([self.case!='original-producer-not-ready']))
+        clock=branch(self.original_read,entry+0x34)+SLIDE
+        def clock_peer(args):
+            self.triggered=True
+            calls=[('dispatch',[self.obj,self.event,0x80000001])]
+            if self.case=='original-producer-tail-stop':calls.append(('stop',[self.obj,self.provider]))
+            self.sequence(calls,lambda:self.returned(0x12345678))
+        self.peers[clock]=('public-continuous-clock-reentrant-stop',clock_peer)
+        self.names['_original_report_callback']=entry+SLIDE
+        require(entry+SLIDE not in self.peers and ready+SLIDE not in self.peers,'Original producer body or readiness is a peer')
+        self.gate+=1;self.active_producer+=1
+        self.call('_original_report_callback',[self.obj,0x12345678,self.event,1 if self.case=='original-producer-wrong-type' else 0,1])
+        require(not self.original_stop_calls,'Parent stop ran inside unchanged original report callback')
+        self.active_producer-=1;self.gate-=1
+        return {'address':hex(entry),'bytes':0x1d8,'ready_offset':ready_offset,
+            'clock_boundary_reentered_source':self.triggered,'original_body_and_subhandlers_are_not_peers':True}
     def sequence(self,calls,done):
         if not calls:done();return
         name,args=calls[0];self.invoke(self.names[METHODS[name]],args,lambda rc:self.sequence(calls[1:],done))
@@ -62,19 +122,20 @@ class SourceModel(HidModel):
     def parent_start(self,args):
         require(args[:2]==[self.obj,self.provider] and (self.old or self.gate),'Selected HID parent start escaped its gate')
         self.starts+=1;self.active_start+=1;calls=[]
-        if self.case in ('start-reentrant-stop','start-failure-reentrant-stop','start-reentrant-stop-twice'):
+        if self.case in ('start-reentrant-stop','start-failure-reentrant-stop','start-reentrant-stop-twice','producer-start-stop'):
             calls=[('stop',[self.obj,self.provider])]*(2 if self.case=='start-reentrant-stop-twice' else 1)
         if self.case=='start-event-stop':calls=[('dispatch',[self.obj,self.event,0x80000001])]
         def done():
-            self.active_start-=1;self.returned(self.case not in ('start-parent-failure','start-failure-reentrant-stop'))
+            self.active_start-=1;self.returned(self.case not in ('start-parent-failure','start-failure-reentrant-stop','producer-start-failure'))
         self.sequence(calls,done)
     def forward(self,args):
         require(args[:3]==[self.obj,self.event,0x80000001] and self.gate,'Original event forwarding ABI/gate changed')
         self.forwards+=1;self.active_dispatch+=1;calls=[]
-        if self.case=='nested-dispatch-stop':
+        if self.case in ('nested-dispatch-stop','producer-nested-dispatch'):
             calls=[('dispatch',[self.obj,self.event,0x80000001])] if self.forwards==1 else [('stop',[self.obj,self.provider])]
-        elif self.case in ('dispatch-reentrant-stop','dispatch-reentrant-stop-twice','start-event-stop'):
-            calls=[('stop',[self.obj,self.provider])]*(2 if self.case=='dispatch-reentrant-stop-twice' else 1)
+        elif self.case in ('dispatch-reentrant-stop','dispatch-reentrant-stop-twice','start-event-stop','producer-reentrant-stop','producer-external-stop',
+            'original-producer-stop','original-producer-stop-twice','original-producer-external-stop'):
+            calls=[('stop',[self.obj,self.provider])]*(2 if self.case in ('dispatch-reentrant-stop-twice','original-producer-stop-twice') else 1)
             calls.append(('dispatch',[self.obj,self.event,0x80000001]))
         def done():self.active_dispatch-=1;self.returned()
         self.sequence(calls,done)
@@ -83,7 +144,31 @@ class SourceModel(HidModel):
         self.native_frees+=1;self.returned()
 
 
+def execute_producer(raw,facts,case,*,legacy=False):
+    m=SourceModel(raw,facts,case,old=legacy)
+    require(m.source_call('init',m.obj,0)==1,'Producer fixture original init failed')
+    callback={}
+    if case in ('producer-start-stop','producer-start-failure'):m.producer('start')
+    else:
+        require(m.source_call('start',m.obj,m.provider)==1,'Producer fixture source did not start')
+        if case.startswith('original-'):callback=m.original_producer()
+        else:m.producer()
+    if case in ('producer-external-stop','original-producer-external-stop','original-producer-not-ready','original-producer-wrong-type'):
+        m.source_call('stop',m.obj,m.provider);require(m.original_stop_calls==1,'External stop did not finish pending cleanup')
+    m.drain_cleanup();require(m.original_stop_calls==m.native_stops==1,'Deferred producer cleanup skipped/repeated parent stop')
+    for _ in range(2):m.source_call('stop',m.obj,m.provider);m.drain_cleanup()
+    count=m.forwards;m.source_call('dispatch',m.obj,m.event,0x80000001)
+    require(count==m.forwards and not m.gate and not m.active_producer,'Source admitted work after producer stop')
+    m.source_call('free',m.obj);m.canaries();require(not m.native_frees,'Producer drain removed final-free quarantine')
+    queued=case not in ('original-producer-not-ready','original-producer-wrong-type')
+    require(m.cleanup_signals==m.cleanup_callbacks==int(queued),'Producer cleanup did not coalesce into one software event')
+    return {'case':case,'result':'PASS','original_instructions_executed':len(m.original_visits),
+        'original_parent_stop_calls':m.original_stop_calls,'software_cleanup_signals':m.cleanup_signals,
+        'software_cleanup_callbacks':m.cleanup_callbacks,'forwarded_events':m.forwards,**({'original_report_callback':callback} if callback else {})}
+
+
 def execute_case(raw,facts,case):
+    if case.startswith(('producer-','original-producer-')):return execute_producer(raw,facts,case)
     m=SourceModel(raw,facts,case)
     if case=='free-untouched':
         m.source_call('free',m.obj);require(m.native_frees==1 and not m.typed_calls,'Untouched free entered original private lifecycle')
@@ -92,8 +177,10 @@ def execute_case(raw,facts,case):
         require(initialized==int(not failed) and m.refs[m.obj]==2,'Selected HID init/result pin differs')
         if case=='stop-before-start':m.source_call('stop',m.obj,m.provider)
         started=m.source_call('start',m.obj,0 if case=='null-provider' else m.provider)
+        m.drain_cleanup()
         allowed=not failed and case not in ('stop-before-start','null-provider','wrong-provider','no-loop','bad-geometry','rotated',
-            'video-error','start-parent-failure','start-reentrant-stop','start-reentrant-stop-twice','start-failure-reentrant-stop','start-event-stop')
+            'video-error','start-parent-failure','start-reentrant-stop','start-reentrant-stop-twice','start-failure-reentrant-stop','start-event-stop',
+            'cleanup-allocation-failure','cleanup-attach-failure','producer-start-stop')
         require(started==int(allowed),'Selected HID start result differs: '+case)
         if allowed:
             if case=='foreign-stop':
@@ -101,6 +188,7 @@ def execute_case(raw,facts,case):
                 m.source_call('stop',m.obj,foreign);require(not m.value('stopRequested'),'Foreign provider stopped selected HID')
             m.source_call('dispatch',m.obj,m.event,0x80000001)
         for _ in range(2):m.source_call('stop',m.obj,m.provider)
+        m.drain_cleanup()
         before=m.forwards;m.source_call('dispatch',m.obj,m.event,0x80000001)
         require(m.forwards==before and not m.gate and not m.active_start and not m.active_dispatch,'HID dispatch survived stop or left admitted work')
         require(m.original_stop_calls==m.native_stops==int(bool(m.starts)),'Original HID parent stop was skipped/repeated')
@@ -123,7 +211,8 @@ def execute_case(raw,facts,case):
 
 def check_report(report):
     require(report['result']=='IOS16_SELECTED_HID_ORIGINAL_INIT_STOP_AND_DRAIN_CPU_PASS' and len(report['cases'])==len(CASES) and
-        report['old_direct_stop_control']['result']=='REJECTED' and not report['hardware_tested'],'Incomplete selected HID CPU evidence')
+        report['old_direct_stop_control']['result']=='REJECTED' and report['old_producer_control']['result']=='REJECTED' and
+        not report['hardware_tested'],'Incomplete selected HID CPU evidence')
     for name,digest in {**report['source_sha256'],**report['dependency_report_sha256'],**report['artifacts']}.items():
         require(sha(ROOT/name)==digest,'Selected HID CPU input changed: '+name)
 
@@ -150,10 +239,16 @@ def main():
     except ValueError as error:
         require(str(error)=='Original parent stop overlapped admitted work','Old HID control failed for another reason: '+str(error))
     else:raise ValueError('Old HID direct stop was accepted during dispatch')
+    try:execute_producer(old_candidate.read_bytes(),old_facts,'original-producer-tail-stop',legacy=True)
+    except ValueError as error:
+        require(str(error)=='Original parent stop overlapped original producer','Old producer control failed for another reason: '+str(error))
+    else:raise ValueError('Old direct stop was accepted inside original producer')
     files=[Path(__file__),ROOT/'scripts/hid_lifecycle_layout.py',ROOT/'scripts/hid_lifecycle_model.py',
         ROOT/'scripts/check_data_mount_kernel.py',ROOT/'scripts/check_hid_parser.py']
     report={'result':'IOS16_SELECTED_HID_ORIGINAL_INIT_STOP_AND_DRAIN_CPU_PASS','compiler_layout':facts,'cases':cases,
         'old_direct_stop_control':{'result':'REJECTED','check':'Original parent stop overlapped admitted work'},
+        'old_producer_control':{'result':'REJECTED','check':'Original parent stop overlapped original producer',
+            'image':'existing frozen input baseline','startup_gate_check_disabled_only_for_legacy_control':True},
         'source_sha256':{str(p.relative_to(ROOT)):sha(p) for p in files},
         'dependency_report_sha256':{str(p.relative_to(ROOT)):sha(p) for p in
             (KERNEL_REPORT,SOURCE_REPORT,ORIGINAL_REPORT,old_report,old_layout_report)},
@@ -164,10 +259,13 @@ def main():
         'EventDriver/EventService init/stop and event access/default dispatch bodies execute. Reentrant/queued stop '
         'cannot overlap admitted work or repeat parent cleanup. The old compiled source reproduces overlap. '
         'Public IOKit allocation/lock/gate/registry/refcount/video primitives, original full startup and final event '
-        'service delivery are explicit peers. This drain covers the source start/dispatch frames; full original producer '
-        'callback, matching/client/final-free and physical input lifetime remain unqualified.'}
+        'service delivery and software-event scheduling are explicit peers. Six additional cases execute unchanged original '
+        'report readiness/callback and subhandlers on an empty-element fixture; a public clock boundary reenters actual source '
+        'dispatch/stop. Gate-held original producers return before queued cleanup; an external stop may finish first without '
+        'duplicate cleanup. Original producers which drop/reenter the workloop gate, complete startup/element/client/matching '
+        'and final-free/hardware lifetime remain unqualified.'}
     check_report(report);REPORT.write_text(json.dumps(report,indent=2)+'\n')
-    print('PASS: 25 actual native HID admission/drain paths, full original init/stop and old direct-stop rejection')
+    print(f'PASS: {len(CASES)} actual native HID paths, unchanged original producer body and both old overlap controls rejected')
 
 
 if __name__=='__main__':main()

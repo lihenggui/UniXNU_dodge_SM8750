@@ -109,6 +109,17 @@ been audited or rebased for this iPhone target. The other three observed tips
 are unchanged. Existing pins and the memory patch remain in place; the earlier
 32-repository and eight-reference reviews remain separate snapshots.
 
+The [producer-drain follow-up](../reports/public/upstream-hid-producer-review.json)
+observes UniXNU
+[`41e3908`](https://github.com/UniXNU/UniXNU/tree/41e390884e1dde0a4b93ea375c2b5ba0d0955cf8),
+ten commits and five changed files beyond `b6ac063`. It selects AdrenoMetal
+`2ab9328` and translator `33186454`. The four selected Metal commits add a tiling
+probe and driver-condition audit, plus generated patches for compute reuse,
+constant views and region copies. Direct bridge/audit differences were reviewed;
+the full translator patches and their runtime compatibility have not been
+ported. The same three peripheral references remain unchanged. Existing pins
+and the exact firmware memory patch remain selected.
+
 ## Host setup
 
 The existing builds used Ubuntu 22.04 / WSL and Python 3.12. CI runs on
@@ -688,20 +699,27 @@ an existing or foreign overlay. Physical persistence has not been qualified.
 
 Both kernels select
 [`0030-ios16-hid-event-lifecycle.patch`](../patches/oneplus13/0030-ios16-hid-event-lifecycle.patch)
+and [`0031-ios16-hid-producer-drain.patch`](../patches/oneplus13/0031-ios16-hid-producer-drain.patch)
 through `scripts/build_hid_lifecycle.py`. It replaces only the EventDriver
 object in an isolated input archive, preserving the original input, A830 and
-QEMU baselines. The linked class has a compiler-derived 560-byte instance,
+QEMU baselines. The linked class has a compiler-derived 576-byte instance,
 the measured 264-byte original parent and the same 219 virtual slots. Both
 linked and prelinked kernels read back that table and allocation extent.
 
 The overlay serializes startup, event dispatch and stop on the provider
 workloop. Stop closes admission before waiting for the gate. Reentrant stop
-defers the single original parent cleanup until the source startup/dispatch
-frames return; failed original initialization cannot start. Thirty ASan/UBSan
-source cases include concurrent starts, concurrent stop/dispatch and recursive
-callbacks. Twenty-five native instruction cases execute the original full
-EventDriver/EventService init/stop and the used event accessors/default dispatch.
-Both host and native controls reproduce the old direct-stop overlap.
+queues the single original parent cleanup through a software interrupt source,
+after the enclosing workloop action exits. Failed startup uses the same deferred
+cleanup; failed original initialization cannot start. An external stop can finish
+first, and the stale queued callback cannot repeat cleanup. Thirty-eight
+ASan/UBSan source cases include allocation/attachment failures, concurrent starts,
+stop/dispatch, recursive callbacks and outer producer frames. Thirty-nine native
+instruction cases execute the original full EventDriver/EventService init/stop
+and the used event accessors/default dispatch. Six cases execute the unchanged
+original report callback/readiness and subhandlers with empty element lists,
+including a public clock boundary that reenters source dispatch/stop. Host controls
+reproduce both the old direct stop and the previous source-frame-only drain;
+the frozen native baseline reproduces stop inside the original report callback.
 See [the source result](../reports/public/ios16-hid-lifecycle-source.json) and
 [the native result](../reports/public/ios16-hid-lifecycle-kernel.json).
 
@@ -711,9 +729,12 @@ and observed owned-field/gate/workloop cleanup. An injected null-expansion
 failure still faults in original free, so the production initialization,
 provider and workloop pins remain. These checks use explicit public IOKit and
 native IOService peers. Full original startup and final event delivery remain
-peers in the selected-driver check. Draining the source frames does not qualify
-the original producer callback, matching/client/async lifetime, restart or final
-release. See [the original-body result](../reports/public/ios16-hid-original-lifecycle.json).
+peers in the selected-driver check, together with software-event scheduling.
+The added empty-element callback checks cover a producer holding the shared gate.
+Callbacks that leave/reenter the gate, full element/client/matching/async lifetime,
+restart and final release remain unqualified. The registered cleanup source also
+stays pinned with the existing per-boot instance/provider/workloop quarantine.
+See [the original-body result](../reports/public/ios16-hid-original-lifecycle.json).
 
 The calendar backport preserves the pinned ArmDTPlatform revision. It publishes
 `IORTC` only when no RTC node exists, and uses a real registered clock when valid
@@ -835,7 +856,7 @@ source integration and local checks before asking for device testing.
 | --- | --- |
 | Native system startup | The native root/SystemOS/Data source and two local packages are connected. Complete transport reset/recovery and persistent-installation/seed lifecycle policy; qualify the original filesystem/client lifetime and physical Data path. |
 | Display and Metal | Complete original display/client/IOSurface lifetime and Metal discovery integration. Derive the board's framebuffer and panel power contract; current static GOP declarations and host pipeline translation do not establish a working desktop. |
-| Input | The selected native EventDriver now serializes source startup/dispatch/stop. Complete shared clock/power and reset/DMA ownership, target orientation, full original startup/producer/client/matching lifetime and final release. Current source intentionally retains lifecycle pins, mappings and shared votes after hardware attempts. |
+| Input | The selected native EventDriver serializes source startup/dispatch/stop and defers cleanup beyond an enclosing gate-held producer. Complete shared clock/power and reset/DMA ownership, target orientation, full original startup/element/client/matching lifetime, callbacks that leave/reenter the gate and final release. Current source intentionally retains lifecycle pins, mappings and shared votes after hardware attempts. |
 | Power and security | Derive the SM8750 security-state mapping and implement its PMGR provider. Battery, charging, thermal management, sleep and hardware key/nonce/rollback policy are still open. |
 | User entropy | Reseed accounting, original pool observations and selected saved-seed full synchronization are connected locally. Complete crash/replacement and installation policy; qualify hardware entropy, native service dispatch and physical persistence. |
 | Other peripherals | Wi-Fi portable power/link/protocol source is adapted separately. Complete its kernel worker, DMA/MSI/firmware and iPhone interfaces, plus Bluetooth, audio and cellular transports. These areas still have no functional board drivers. |

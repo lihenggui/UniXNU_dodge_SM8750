@@ -12,5 +12,12 @@
   "original_parent_bytes": 264,
   "original_slots": 219,
   "failed_initialization_remains_pinned": true,
-  "hardware_tested": false
+  "hardware_tested": false,
+  "followup": {
+    "patch": "patches/oneplus13/0031-ios16-hid-producer-drain.patch",
+    "patch_sha256": "c5da63f0333f4a7ed21a5f7c2d0ca2f34ea257df53eb883077aed4e1070725d5",
+    "before_sha256": "2a7984a01fa5d35ca1615e603c990778784265792a55ad14669b6e86f6343181",
+    "after_sha256": "dc9fda24c9a53771d8e92a8ca9dc3f2d960b982dd8ae7ab0855e65e93c046b81",
+    "deferred_workloop_cleanup": true
+  }
 }

@@ -17,7 +17,9 @@ CASES=('normal','init-failure','init-repeat','free-untouched','stop-before-start
     'bad-geometry','rotated','video-error','start-parent-failure','stop-during-video','start-reentrant-stop',
     'start-reentrant-stop-twice','start-failure-reentrant-stop','start-event-stop','stop-parent-reentry',
     'concurrent-dispatch-stop','concurrent-stops','dispatch-reentrant-stop','dispatch-reentrant-stop-twice',
-    'nested-dispatch-stop','foreign-stop','null-stop','inactive','null-event','concurrent-starts','concurrent-start-stop','original-control')
+    'nested-dispatch-stop','foreign-stop','null-stop','inactive','null-event','concurrent-starts','concurrent-start-stop','original-control',
+    'cleanup-allocation-failure','cleanup-attach-failure','producer-reentrant-stop','producer-stop-tail',
+    'producer-start-stop','producer-nested-dispatch','producer-external-stop','producer-start-failure')
 
 
 def stage(directory):
@@ -27,7 +29,14 @@ def stage(directory):
     result=subprocess.run(['patch','--batch','--fuzz=0','-p1','-i',patch],cwd=directory,capture_output=True,text=True)
     require(not result.returncode and 'offset' not in result.stdout.lower() and sha(staged)==facts['after_sha256'],
         'Selected HID lifecycle patch is not exact')
-    return staged,source,patch
+    previous=directory/'DodgeHidEventDriver.previous.cpp';previous.write_bytes(staged.read_bytes())
+    followup=facts['followup'];next_patch=ROOT/followup['patch']
+    require(sha(staged)==followup['before_sha256'] and sha(next_patch)==followup['patch_sha256'],
+        'HID producer-drain base/patch changed')
+    result=subprocess.run(['patch','--batch','--fuzz=0','-p1','-i',next_patch],cwd=directory,capture_output=True,text=True)
+    require(not result.returncode and 'offset' not in result.stdout.lower() and sha(staged)==followup['after_sha256'],
+        'Selected HID producer-drain patch is not exact')
+    return staged,source,[patch,next_patch]
 
 
 def host_checks(staged,before,directory):
@@ -35,12 +44,14 @@ def host_checks(staged,before,directory):
     selected.mkdir(exist_ok=True);control.mkdir(exist_ok=True)
     include=selected/'HidDriverSource.inc';include.write_bytes(staged.read_bytes())
     old=control/'HidDriverSource.inc';old.write_bytes(before.read_bytes())
+    previous=directory/'previous';previous.mkdir(exist_ok=True)
+    previous_source=previous/'HidDriverSource.inc';previous_source.write_bytes((staged.parent/'DodgeHidEventDriver.previous.cpp').read_bytes())
     compiler=shutil.which('clang++-14') or shutil.which('clang++');require(compiler,'Need Clang sanitizers')
     peers=ROOT/'tests/hid_lifecycle_include';test=ROOT/'tests/DodgeHidLifecycleTest.cpp'
     flags=[compiler,'-std=c++17','-O1','-g','-Wall','-Wextra','-Werror','-pthread','-fsanitize=address,undefined',
         '-fno-sanitize-recover=all','-fno-omit-frame-pointer','-fno-pie','-no-pie','-I',peers,'-I',before.parent]
     binaries=[]
-    for path in (selected,control):
+    for path in (selected,control,previous):
         binary=path/'hid-lifecycle';run([*flags,'-I',path,test,'-o',binary],path/'compile.log');binaries.append(binary)
     results=[]
     for case in CASES:
@@ -52,13 +63,18 @@ def host_checks(staged,before,directory):
     (control/'old-stop.log').write_text(bad.stdout+bad.stderr)
     require(bad.returncode!=0 and 'parent stop overlapped admitted work' in bad.stderr,
         'Old direct-stop control did not reproduce the dispatch/stop overlap')
-    return results,[include,old,*binaries],{'case':'old-direct-stop-during-parent-dispatch','result':'REJECTED',
-        'check':'parent stop overlapped admitted work'}
+    producer=subprocess.run([binaries[2],'producer-reentrant-stop'],capture_output=True,text=True,timeout=15)
+    (previous/'producer-stop.log').write_text(producer.stdout+producer.stderr)
+    require(producer.returncode!=0 and 'parent stop overlapped original producer' in producer.stderr,
+        'Previous source did not reproduce stop inside the outer producer')
+    return results,[include,old,previous_source,*binaries],{'case':'old-direct-stop-during-parent-dispatch','result':'REJECTED',
+        'check':'parent stop overlapped admitted work'}, {'result':'REJECTED','check':'parent stop overlapped original producer'}
 
 
 def check_report(report):
     require(report['result']=='IOS16_SELECTED_HID_LIFECYCLE_SOURCE_PASS' and len(report['host_cases'])==len(CASES) and
-        report['old_stop_control']['result']=='REJECTED' and report['failed_original_initialization_remains_pinned'] and
+        report['old_stop_control']['result']=='REJECTED' and report['previous_producer_control']['result']=='REJECTED' and
+        report['failed_original_initialization_remains_pinned'] and
         not report['hardware_tested'],'Incomplete selected HID lifecycle checks')
     for name,digest in {**report['source_sha256'],**report['artifacts'],**report['dependency_report_sha256']}.items():
         require(sha(ROOT/name)==digest,'Selected HID lifecycle input changed: '+name)
@@ -71,8 +87,8 @@ def main():
     if args.host_only:OUT=OUT.with_name(OUT.name+'-host');REPORT=REPORT.with_name(REPORT.stem+'-host.json')
     if args.check_only:
         check_report(json.loads(REPORT.read_text()));print('PASS: selected HID gate, reentrant drain and old stop control');return
-    OUT.mkdir(parents=True,exist_ok=True);staged,before,patch=stage(OUT/'source')
-    cases,artifacts,control=host_checks(staged,before,OUT/'host');native={};dependencies={}
+    OUT.mkdir(parents=True,exist_ok=True);staged,before,patches=stage(OUT/'source')
+    cases,artifacts,control,producer_control=host_checks(staged,before,OUT/'host');native={};dependencies={}
     if not args.host_only:
         obj,=build_objects([staged],OUT/'native',[HEADER.parent,before.parent])
         objcopy=ROOT/'.toolchains/rust-gpu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objcopy'
@@ -104,23 +120,25 @@ def main():
             'concrete_vtable_entries':219,'original_parent_instance_bytes':264}
         artifacts += [obj,late,archive,*paths,OUT/'native/compile-commands.json']
         dependencies={'reports/ios16-input-native.json':sha(ROOT/'reports/ios16-input-native.json')}
-    files=[Path(__file__),CONTRACT,HEADER,before,patch,ROOT/'tests/DodgeHidLifecycleTest.cpp',
+    files=[Path(__file__),CONTRACT,HEADER,before,*patches,ROOT/'tests/DodgeHidLifecycleTest.cpp',
         *[p for p in (ROOT/'tests/hid_lifecycle_include').rglob('*.h')],before.with_suffix('.h'),before.parent/'DodgeHidEdgePolicy.h']
     report={'result':'IOS16_SELECTED_HID_LIFECYCLE_SOURCE_PASS',
         'source_sha256':{str(p.relative_to(ROOT)):sha(p) for p in files},
         'artifacts':{str(p.relative_to(ROOT)):sha(p) for p in [staged,*artifacts]},'dependency_report_sha256':dependencies,
-        'host_cases':cases,'old_stop_control':control,**native,'native_compiled':not args.host_only,
+        'host_cases':cases,'old_stop_control':control,'previous_producer_control':producer_control,**native,'native_compiled':not args.host_only,
         'failed_original_initialization_remains_pinned':True,'source_base_and_baseline_artifacts_preserved':True,
         'hardware_tested':False,'phone_operations':'none',
         'scope':'Selected source serializes start, stop and dispatch on the provider workloop. Stop closes admission before '
-        'waiting; reentrant stop drains admitted dispatch/start calls before exactly one original parent stop. Failed init '
+        'waiting; gate-held stop queues a software interrupt source so parent cleanup runs after the outer gate action. '
+        'External stop can complete cleanup first; a stale queued callback cannot repeat it. Source and gated producer '
+        'frames are covered, while original callbacks which leave/reenter the gate remain unqualified. Failed init '
         'cannot start, duplicate/foreign stops cannot repeat cleanup, and existing partial-init instance/provider/loop pins '
         'remain. Actual patched production source runs with sanitizer IOKit peers and concurrent threads; the old source '
         'reproduces overlapping parent stop. This does not qualify full original parent startup, producer callback/client '
         'lifetime, matching, final free, '
         'physical input or graphical UI.'}
     check_report(report);REPORT.write_text(json.dumps(report,indent=2)+'\n')
-    print('PASS: 30 selected HID lifecycle source cases and rejected old direct-stop overlap')
+    print(f'PASS: {len(CASES)} selected HID lifecycle source cases and both old stop-overlap controls rejected')
 
 
 if __name__=='__main__':main()

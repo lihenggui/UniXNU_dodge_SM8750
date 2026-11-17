@@ -1,7 +1,7 @@
 {
   "result": "IOS16_ORIGINAL_EVENT_DRIVER_INIT_STOP_FREE_CPU_PASS",
   "compiler_layout": {
-    "instance_bytes": 560,
+    "instance_bytes": 576,
     "edges": 264,
     "loop": 528,
     "providerPin": 536,
@@ -14,6 +14,9 @@
     "parentStopping": 550,
     "stopRequested": 551,
     "dispatches": 552,
+    "cleanupSource": 560,
+    "cleanupDeferred": 568,
+    "cleanupQueued": 569,
     "kt_size_offset": 44,
     "kt_size_mask": 16777215,
     "digitizer_type": 32,
@@ -222,18 +225,18 @@
   ],
   "source_sha256": {
     "scripts/check_hid_original_lifecycle.py": "4876a8acbf5e46743c27c713e94978d7d63a897e40116e28e05863296d00fdd0",
-    "scripts/hid_lifecycle_model.py": "f5335f659161fab917112639dd492a56b502248817d4771b186521df6e84173f",
-    "scripts/hid_lifecycle_layout.py": "cae6319a65f221ca1165310f1c260cfd1d78da8900f87c69f332fc96ea6222b1",
+    "scripts/hid_lifecycle_model.py": "457b216fd213c6ceb554a89fe3054c3a1677f87d24063d158871ff34a0798957",
+    "scripts/hid_lifecycle_layout.py": "05f6fad605320b545870fe0fde167c6cf124e4fea485aa61bcced42d9002ad2f",
     "scripts/check_hid_parser.py": "ebd5f2cc7f91132554badc1b722d08d6a4db8db4db100edebe7a8a079536d779",
     "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
     "profiles/os/ios-16.7.16-20H392/hid-event-interface.json": "cc64aba4b3b000a0db9e8dbbf8c1327c24ab216d61942f6e17e45edf79de6198"
   },
   "dependency_report_sha256": {
-    "reports/ios16-hid-lifecycle-source.json": "df07e4f19fca52266a4b2c4422fb670beccfe7ce9b1ca9d072f6a7e7f41b2d19"
+    "reports/ios16-hid-lifecycle-source.json": "dbdee8cc15c8d72d4f0464776dd8321e955fdf2cc3924086998a4b20217aab3e"
   },
   "artifacts": {
-    "build/ios16-hid-original-lifecycle/abi/DodgeHidEventDriver.cpp": "f16449ace1e8619df5d47dda505fc0d8468c4aca1ddf7ed18966a7bd29e6dc97",
-    "build/ios16-hid-original-lifecycle/abi/DodgeHidEventDriver.o": "4b5c63a343902d289ec594d6f047129b3733b3160eab7901378b6d09dd17ae2b",
+    "build/ios16-hid-original-lifecycle/abi/DodgeHidEventDriver.cpp": "ecd6a5467ba397e035641a5a657fb537efef7b79332c024be54efea4c62e6f99",
+    "build/ios16-hid-original-lifecycle/abi/DodgeHidEventDriver.o": "bd82d5bd25dd75f0ba2a33300b882c63be0b39221db5b65ecd237df283c60435",
     "build/ios16-hid-original-lifecycle/abi/compile-commands.json": "1eaf5b9ff80154fa2c785648fd1bad0981a77e43e56bf1e02b2328241b434d01"
   },
   "unsafe_partial_free_control": {

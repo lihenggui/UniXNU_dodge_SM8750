@@ -5,21 +5,25 @@
 #include <cstdint>
 #include <cstring>
 #include <functional>
+#include <memory>
 #include <mutex>
 #include <thread>
+#include <vector>
 using IOReturn=int;
 using IOOptionBits=unsigned;
 using IOFixed=int32_t;
 constexpr IOReturn kIOReturnSuccess=0,kIOReturnBadArgument=-1,kIOReturnNotReady=-2,kIOReturnBusy=-3,
     kIOReturnNoMemory=-4,kIOReturnUnsupported=-5;
 constexpr unsigned kOSKextExcludeNone=0;
-class OSObject;class IOService;class IOHIDEvent;class IOWorkLoop;
+class OSObject;class IOService;class IOHIDEvent;class IOWorkLoop;class IOInterruptEventSource;
 struct PE_Video {uint64_t v_width=1440,v_height=3168,v_rotate=0;};
 namespace hid_peer {
 struct Control {
     IOWorkLoop *loop=nullptr;
     bool initOk=true,startOk=true,videoOk=true,validProvider=true,requireStartGate=true;
+    bool cleanupOk=true,addOk=true;
     std::atomic<unsigned> inits{0},starts{0},stops{0},forwards{0},nativeFrees{0},activeStart{0},activeDispatch{0};
+    std::atomic<unsigned> activeProducer{0},cleanupSignals{0},cleanupCallbacks{0};
     PE_Video video;
     std::function<void(IOService *)> onStart,onStop,onVideo;
     std::function<void()> beforeGate;
@@ -58,18 +62,49 @@ public:
 };
 class IOWorkLoop:public OSObject {
     std::recursive_mutex mutex;
-    unsigned depth=0;
-    std::thread::id owner;
+    inline static thread_local IOWorkLoop *current=nullptr;
+    std::vector<IOInterruptEventSource *> sources;
 public:
     using Action=IOReturn (*)(OSObject *,void *,void *,void *,void *);
     IOReturn runAction(Action action,OSObject *target,void *a=nullptr,void *b=nullptr,void *c=nullptr,void *d=nullptr){
         if(hid_peer::state.beforeGate)hid_peer::state.beforeGate();
         std::lock_guard<std::recursive_mutex> lock(mutex);
-        if (!depth) owner=std::this_thread::get_id();
-        ++depth;const auto result=action(target,a,b,c,d);--depth;return result;
+        auto *previous=current;current=this;const auto result=action(target,a,b,c,d);current=previous;return result;
     }
-    bool inGate(){std::lock_guard<std::recursive_mutex> lock(mutex);return depth && owner==std::this_thread::get_id();}
+    bool inGate(){return current==this;}
+    IOReturn addEventSource(IOInterruptEventSource *source);
+    void drain();
 };
+class IOInterruptEventSource:public OSObject {
+public:
+    using Action=void (*)(OSObject *,IOInterruptEventSource *,int);
+    OSObject *owner;Action action;IOWorkLoop *loop=nullptr;unsigned pending=0;
+    IOInterruptEventSource(OSObject *target,Action callback):owner(target),action(callback){}
+    static IOInterruptEventSource *interruptEventSource(OSObject *owner,Action action);
+    virtual void interruptOccurred(void *,IOService *,int){assert(loop && loop->inGate());++pending;++hid_peer::state.cleanupSignals;}
+};
+namespace hid_peer {inline std::vector<std::unique_ptr<OSObject>> allocations;}
+inline IOInterruptEventSource *IOInterruptEventSource::interruptEventSource(OSObject *owner,Action action){
+    if(!hid_peer::state.cleanupOk)return nullptr;
+    auto value=std::make_unique<IOInterruptEventSource>(owner,action);auto *result=value.get();
+    hid_peer::allocations.emplace_back(std::move(value));return result;
+}
+inline IOReturn IOWorkLoop::addEventSource(IOInterruptEventSource *source){
+    assert(inGate() && source);
+    if(!hid_peer::state.addOk)return kIOReturnNoMemory;
+    source->loop=this;source->retain();sources.push_back(source);return kIOReturnSuccess;
+}
+inline void IOWorkLoop::drain(){
+    assert(!inGate());
+    runAction([](OSObject *owner,void *,void *,void *,void *){
+        auto *self=static_cast<IOWorkLoop *>(owner);assert(!hid_peer::state.activeProducer);
+        for(auto *source:self->sources)if(source->pending){
+            const auto count=source->pending;source->pending=0;++hid_peer::state.cleanupCallbacks;
+            source->action(source->owner,source,count);
+        }
+        return kIOReturnSuccess;
+    },this);
+}
 class IOService:public OSObject {
 public:
     bool inactive=false;
@@ -100,6 +135,7 @@ public:
     void stop(IOService *)override{
         auto &h=hid_peer::state;
         assert(!h.activeStart && !h.activeDispatch && "parent stop overlapped admitted work");
+        assert(!h.activeProducer && "parent stop overlapped original producer");
         assert(h.loop && h.loop->inGate() && "parent stop escaped gate");
         ++h.stops;if(h.onStop)h.onStop(this);
     }

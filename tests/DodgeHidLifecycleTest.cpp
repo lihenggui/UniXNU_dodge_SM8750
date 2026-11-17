@@ -22,7 +22,7 @@ int main(int argc,char **argv){
     auto driver=std::make_unique<DodgeHidEventDriver>();
     auto dispatch=[&]{driver->dispatchEvent(&event,0x80000001);};
     auto stop=[&]{driver->stop(&provider);};
-    auto start=[&]{return driver->start(&provider);};
+    auto start=[&]{const bool ok=driver->start(&provider);loop.drain();return ok;};
     if(name=="init-failure")h.initOk=false;
     if(name=="free-untouched"){
         driver->free();assert(h.nativeFrees==1 && !h.inits);
@@ -42,6 +42,33 @@ int main(int argc,char **argv){
             h.validProvider=false;assert(!start() && !h.starts && provider.retainCount()==1);
         }else if(name=="no-loop"){
             h.loop=nullptr;assert(!start() && !h.starts);stop();assert(!h.stops);
+        }else if(name=="cleanup-allocation-failure" || name=="cleanup-attach-failure"){
+            h.cleanupOk=name!="cleanup-allocation-failure";h.addOk=name!="cleanup-attach-failure";
+            assert(!start() && !h.starts);stop();dispatch();assert(!h.stops && !h.forwards && !h.cleanupSignals);
+            for(auto &allocation:hid_peer::allocations)assert(allocation->retainCount()==0);
+        }else if(name.rfind("producer-",0)==0){
+            const bool duringStart=name=="producer-start-stop" || name=="producer-start-failure";
+            if(name=="producer-start-stop")h.onStart=[&](IOService *){stop();};
+            if(name=="producer-start-failure")h.startOk=false;
+            if(!duringStart)assert(start());
+            if(name=="producer-reentrant-stop" || name=="producer-external-stop")
+                h.onDispatch=[&](IOService *,IOHIDEvent *,unsigned){stop();};
+            if(name=="producer-nested-dispatch")
+                h.onDispatch=[&,nested=0u](IOService *,IOHIDEvent *,unsigned)mutable{if(!nested++)dispatch();else stop();};
+            std::function<void()> callback=[&]{
+                ++h.activeProducer;
+                if(duringStart)assert(!driver->start(&provider));else dispatch();
+                if(name=="producer-stop-tail")stop();
+                assert(!h.stops);stop();assert(!h.stops);dispatch();
+                --h.activeProducer;
+            };
+            loop.runAction([](OSObject *,void *argument,void *,void *,void *){
+                (*static_cast<std::function<void()> *>(argument))();return kIOReturnSuccess;
+            },driver.get(),&callback);
+            assert(!h.stops && h.cleanupSignals==1);
+            if(name=="producer-external-stop"){stop();assert(h.stops==1);}
+            loop.drain();assert(h.stops==1 && h.cleanupCallbacks==1);
+            stop();dispatch();loop.drain();assert(h.stops==1 && h.cleanupSignals==1);
         }else if(name=="concurrent-starts"){
             std::atomic<unsigned> successes{0};std::vector<std::thread> starters;
             for(unsigned i=0;i<4;++i)starters.emplace_back([&]{if(start())++successes;});

@@ -1,0 +1,70 @@
+{
+  "result": "HID_PRODUCER_SCOPED_UPSTREAM_4_REFS_PASS",
+  "observed_at_utc": "2026-11-17T04:46:58.260467+00:00",
+  "target": "iPhone10,3 / iOS16.7.16 / 20H392 / Darwin22",
+  "repository_count": 4,
+  "repositories": [
+    {
+      "name": "UniXNU",
+      "repository": "https://github.com/UniXNU/UniXNU.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "41e390884e1dde0a4b93ea375c2b5ba0d0955cf8"
+    },
+    {
+      "name": "Pagani drivers",
+      "repository": "https://github.com/IssacL04/UniXNU-Pagani-Drivers.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "c888efd3ce1b817d13f28783a77cf689cb2255c9"
+    },
+    {
+      "name": "GopFramebuffer",
+      "repository": "https://github.com/UniXNU/GopFramebuffer.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "b0d812d578efa2acb005b66f73168891719af09a"
+    },
+    {
+      "name": "QcomGeniSpi",
+      "repository": "https://github.com/UniXNU/QcomGeniSpi.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "eac47baefe6a5d2368a70351e6ad1b6361bedbe2"
+    }
+  ],
+  "core_range": {
+    "base": "b6ac0630ed55feb926ccf2961523fca08bf2464e",
+    "tip": "41e390884e1dde0a4b93ea375c2b5ba0d0955cf8",
+    "commits": 10,
+    "changed_files": 5
+  },
+  "selected_Metal_range": {
+    "base": "a4590c23b319a1ae14332d71c0a4a2fabf729aaa",
+    "tip": "2ab9328eb8a220c98c2aef997fa5f4633e7f672a",
+    "commits": 4,
+    "changed_files": 5,
+    "reviewed_direct_source_files": [
+      "bridge/NativeMetalObjects.rs",
+      "tools/audit-runtime-fast-paths.py"
+    ],
+    "full_translator_patch_history_audited": false
+  },
+  "decisions": [
+    "Retain all existing source pins and the exact firmware memory patch. The core range selects another Metal/translator runtime and consumer optimization patch, without HID/GENI/GOP source changes.",
+    "The selected Metal source adds an opt-in three-second tiling-cost probe and policy diagnostics plus a driver-condition source audit. Generated consumer patches also carry compute reuse, constant-view and texture region-copy work. Their full translator history and runtime API compatibility are not rebased or qualified for the pinned iPhone frontend.",
+    "Pagani drivers, GopFramebuffer and QcomGeniSpi observed tips remain unchanged. The local HID follow-up uses pinned Darwin22 software-event APIs; no newer OS binary bindings are selected."
+  ],
+  "source_sha256": {
+    "upstream.lock.json": "50da2f248a77f657b7e27f966dea861d1a58523fd2235ece1ade93e7b535bf4e",
+    "unixnu.lock": "6c6fd4ae3d1d1e05a952bdf0d78bb461c1029b2800657114e7e0de37777cc945",
+    "patches/mu-silicium/0001-cph2653-16.0.1.304-reserve-memory-holes.patch": "e1704c5fb2f9ae254d723fd0390f7fbe02e77c97fd8d1dae5ccb9c515bfa380f",
+    "reports/upstream-hid-lifecycle-review.json": "8c6c00502da4a4bde42c673a6d9d471d95850977c51a6fc00828a73d8867cb4a"
+  },
+  "artifacts": {
+    ".cache/upstream-review-2026-11-16/hid-producer-core-review.json": "ef4e46d98e56a8217cf464ed329fa5abc637ff2538a09bf403649abb63fb0bf3",
+    ".cache/upstream-review-2026-11-16/hid-producer-metal-review.json": "549db217f8052af2a23a715831d3803a087f2efd861e012207ac457bd428b8b7",
+    ".cache/upstream-review-2026-11-16/hid-producer-refs.json": "8ce5c769a85d6644cb96112991cb4391284938d4194f26f36d53e8d0395f6446"
+  },
+  "source_pins_changed": false,
+  "firmware_memory_patch_retained": true,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Four remote references, ten new core commits and the direct source diff in its four-commit selected Metal range. Earlier repository audits remain separate snapshots; full translator patches and other repositories are not refreshed."
+}
