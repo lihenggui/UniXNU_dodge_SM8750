@@ -120,6 +120,20 @@ the full translator patches and their runtime compatibility have not been
 ported. The same three peripheral references remain unchanged. Existing pins
 and the exact firmware memory patch remain selected.
 
+The [interface/termination follow-up](../reports/public/upstream-hid-interface-review.json)
+rechecks six references and observes UniXNU
+[`429d337`](https://github.com/UniXNU/UniXNU/tree/429d337ca53c8f88759710c4daf35bd6ff502f5f).
+Its tree differs from `41e3908` in 82 files. The local history is shallow, so
+visible left/right commit counts are not treated as a linear update. Selected
+ArmCpu `5f370269` adds platform sleep/PSCI and board callbacks; selected Metal
+`8c7f9502` advances the runtime. Their comparisons with the earlier selections
+are diverged. Full rebases were not performed. The new archive/toolchain/root-policy
+preflight and incomplete-build packaging guards were reviewed; the separate
+native route retains its exact dependency/artifact and signed-root checks.
+Pagani, GOP, GENI and native A830 tips are unchanged. ArmSmmu4K main remains at
+the earlier observed `83969cd8`; this build retains the matched A830/SMMU pins.
+CPH2653 PMGR, wake/resource ownership and a Darwin 22 sleep hook still need work.
+
 ## Host setup
 
 The existing builds used Ubuntu 22.04 / WSL and Python 3.12. CI runs on
@@ -660,7 +674,7 @@ After the native A830 prerequisites, build the native system integration with:
 .venv-gpu/bin/python scripts/build_native_system_stack.py --check-only
 ```
 
-The nineteen stages build two isolated kernels and local boot/root packages.
+The twenty stages build two isolated kernels and local boot/root packages.
 Each kernel has 127 source/binding objects, 29 original iPhone components and
 64,635 independently checked pointer sites. OS and SystemOS use signed,
 read-only native UFS windows; the original Apple root-authentication result and
@@ -700,6 +714,7 @@ an existing or foreign overlay. Physical persistence has not been qualified.
 Both kernels select
 [`0030-ios16-hid-event-lifecycle.patch`](../patches/oneplus13/0030-ios16-hid-event-lifecycle.patch)
 and [`0031-ios16-hid-producer-drain.patch`](../patches/oneplus13/0031-ios16-hid-producer-drain.patch)
+plus [`0032-ios16-hid-interface-termination.patch`](../patches/oneplus13/0032-ios16-hid-interface-termination.patch)
 through `scripts/build_hid_lifecycle.py`. It replaces only the EventDriver
 object in an isolated input archive, preserving the original input, A830 and
 QEMU baselines. The linked class has a compiler-derived 576-byte instance,
@@ -711,17 +726,37 @@ workloop. Stop closes admission before waiting for the gate. Reentrant stop
 queues the single original parent cleanup through a software interrupt source,
 after the enclosing workloop action exits. Failed startup uses the same deferred
 cleanup; failed original initialization cannot start. An external stop can finish
-first, and the stale queued callback cannot repeat cleanup. Thirty-eight
-ASan/UBSan source cases include allocation/attachment failures, concurrent starts,
-stop/dispatch, recursive callbacks and outer producer frames. Thirty-nine native
-instruction cases execute the original full EventDriver/EventService init/stop
-and the used event accessors/default dispatch. Six cases execute the unchanged
-original report callback/readiness and subhandlers with empty element lists,
-including a public clock boundary that reenters source dispatch/stop. Host controls
-reproduce both the old direct stop and the previous source-frame-only drain;
-the frozen native baseline reproduces stop inside the original report callback.
+first, and the stale queued callback cannot repeat cleanup. Automatic drain
+defaults to deferred while an external stop is still waiting for the gate.
+Sixty-one ASan/UBSan source cases and 64 native instruction cases cover startup,
+stop/dispatch, interface ownership and termination. Nine native cases exercise
+the original interface report forwarding and original driver callback/readiness,
+including empty-element handlers, a reentrant public clock boundary, and a blocked
+guest stop while the original producer still holds the gate. A real-thread host
+case covers the same admission-before-gate race. Old source/native controls
+reproduce premature stop, retained callbacks and termination-time event admission.
 See [the source result](../reports/public/ios16-hid-lifecycle-source.json) and
 [the native result](../reports/public/ios16-hid-lifecycle-kernel.json).
+
+Before entering original startup, the adapter refuses an already-open interface.
+Stopping closes only its own client before the original parent removes timers.
+`willTerminate` closes admission before native notification. `didTerminate`
+copies options and finishes on the workloop with a local output variable;
+the caller's `defer` pointer is never stored. An open connection supplies the
+termination hold; when no connection holds pending completion, the adapter sets
+`defer` and later calls the native completion as required by Darwin 22.
+Pending requests coalesce, and later notifications preserve the native callback.
+An already-closed or foreign-owned interface uses the native base notification,
+preserving the original weak pointer under the existing per-boot quarantine.
+This prevents the original unconditional close from destroying another client.
+
+Fourteen separate original-body cases execute the interface constructor/init,
+open/close, actual close block and EventDriver termination. They derive a
+264-byte/187-slot interface and 64-byte typed expansion from the exact iPhone
+image. A native public-header probe checks the open/close/report prototypes and
+argument widths. Allocation failures are injected; public IOService arbitration,
+notification, scheduling, pool/reference and command-gate boundaries remain peers.
+See [the interface result](../reports/public/ios16-hid-interface-kernel.json).
 
 Ten separate instruction cases execute the complete original init, stop and
 free bodies, including the typed 376/512-byte private expansions, three timers
@@ -856,7 +891,7 @@ source integration and local checks before asking for device testing.
 | --- | --- |
 | Native system startup | The native root/SystemOS/Data source and two local packages are connected. Complete transport reset/recovery and persistent-installation/seed lifecycle policy; qualify the original filesystem/client lifetime and physical Data path. |
 | Display and Metal | Complete original display/client/IOSurface lifetime and Metal discovery integration. Derive the board's framebuffer and panel power contract; current static GOP declarations and host pipeline translation do not establish a working desktop. |
-| Input | The selected native EventDriver serializes source startup/dispatch/stop and defers cleanup beyond an enclosing gate-held producer. Complete shared clock/power and reset/DMA ownership, target orientation, full original startup/element/client/matching lifetime, callbacks that leave/reenter the gate and final release. Current source intentionally retains lifecycle pins, mappings and shared votes after hardware attempts. |
+| Input | The selected EventDriver now closes owned interfaces and adapts termination alongside source admission/drain. Complete shared clock/power and reset/DMA ownership, target orientation, full original startup/element/client/matching and concurrent-open policy, callbacks that leave/reenter the gate, DriverKit/scheduler integration and final release. Current source intentionally retains lifecycle pins, mappings and shared votes after hardware attempts. |
 | Power and security | Derive the SM8750 security-state mapping and implement its PMGR provider. Battery, charging, thermal management, sleep and hardware key/nonce/rollback policy are still open. |
 | User entropy | Reseed accounting, original pool observations and selected saved-seed full synchronization are connected locally. Complete crash/replacement and installation policy; qualify hardware entropy, native service dispatch and physical persistence. |
 | Other peripherals | Wi-Fi portable power/link/protocol source is adapted separately. Complete its kernel worker, DMA/MSI/firmware and iPhone interfaces, plus Bluetooth, audio and cellular transports. These areas still have no functional board drivers. |

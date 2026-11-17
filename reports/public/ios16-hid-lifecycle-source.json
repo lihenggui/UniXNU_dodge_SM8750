@@ -1,15 +1,16 @@
 {
   "result": "IOS16_SELECTED_HID_LIFECYCLE_SOURCE_PASS",
   "source_sha256": {
-    "scripts/build_hid_lifecycle.py": "b8e5993e68d7bdd70c9219077a96de44f1f1451ef9e51c14b3a4bf9ac0eb5ede",
-    "profiles/os/ios-16.7.16-20H392/hid-lifecycle.json": "52ea2de667e6b322bb418f992eb72da7eca10f7d0133f1a3782f5aabe8d6c3f5",
+    "scripts/build_hid_lifecycle.py": "c84d9c5d526ff019beeee8a1174382d0cee3a843383b9d3a19b5abdced8b097c",
+    "profiles/os/ios-16.7.16-20H392/hid-lifecycle.json": "fcb557f4f14dd4712e5ffb5079b13b28724d6080e3fa7094a022f6d2ca4135d8",
     "profiles/os/ios-16.7.16-20H392/input/OriginalHidEventABI.h": "956fa7b0d4a5be2ab443b99995b3e34fe938a1d360283a93661533b694e3dfaf",
     "drivers/DodgeInput/DodgeHidEventDriver.cpp": "43d44bb262e21692698451cef86354fa3f8dc8cca163bdb0f06c1f3a9d4c37a2",
     "patches/oneplus13/0030-ios16-hid-event-lifecycle.patch": "20e0e1a9ecf3a7afe3f213d810ee5a27ddc1a542f7f6a595cec1fdbebf76a185",
     "patches/oneplus13/0031-ios16-hid-producer-drain.patch": "c5da63f0333f4a7ed21a5f7c2d0ca2f34ea257df53eb883077aed4e1070725d5",
-    "tests/DodgeHidLifecycleTest.cpp": "bf13e325662365f1753d8e7ad45a2cf2ac32bff46d07c501853a3db70a3a609c",
+    "patches/oneplus13/0032-ios16-hid-interface-termination.patch": "cb609f18b19f1aabe057d56d5f1683d4baf86af28b72583c4de21b240e8aa883",
+    "tests/DodgeHidLifecycleTest.cpp": "e7790cd6443853382584d4fb00634b6209a831888e89dabbaad6e660c1b7774e",
     "tests/hid_lifecycle_include/OriginalHidEventABI.h": "af2111a94ad53a9a4a0278d1560e8bc0709cfdb42c59c2dab48ef3d4a8e5aed5",
-    "tests/hid_lifecycle_include/HidPeers.h": "bfe04db14b4d1d74c1e8e8f9fdee5a939be1867a48a514790a502c66c9e2a249",
+    "tests/hid_lifecycle_include/HidPeers.h": "e0245bb380e4d26f40381772794f7595580362d964ac1702213553b02563d2d8",
     "tests/hid_lifecycle_include/IOKit/IOInterruptEventSource.h": "af2111a94ad53a9a4a0278d1560e8bc0709cfdb42c59c2dab48ef3d4a8e5aed5",
     "tests/hid_lifecycle_include/IOKit/IOTypes.h": "af2111a94ad53a9a4a0278d1560e8bc0709cfdb42c59c2dab48ef3d4a8e5aed5",
     "tests/hid_lifecycle_include/IOKit/IOWorkLoop.h": "af2111a94ad53a9a4a0278d1560e8bc0709cfdb42c59c2dab48ef3d4a8e5aed5",
@@ -23,16 +24,18 @@
     "drivers/DodgeInput/DodgeHidEdgePolicy.h": "09c3b17fc2c696621017d8201d009535824cf137a820871a856937e628d888c0"
   },
   "artifacts": {
-    "build/ios16-hid-lifecycle/source/DodgeHidEventDriver.cpp": "dc9fda24c9a53771d8e92a8ca9dc3f2d960b982dd8ae7ab0855e65e93c046b81",
-    "build/ios16-hid-lifecycle/host/selected/HidDriverSource.inc": "dc9fda24c9a53771d8e92a8ca9dc3f2d960b982dd8ae7ab0855e65e93c046b81",
+    "build/ios16-hid-lifecycle/source/DodgeHidEventDriver.cpp": "f138b491c72708e866ad724bc1333b317e11e8d307b0d761d40638ccf33c01ec",
+    "build/ios16-hid-lifecycle/host/selected/HidDriverSource.inc": "f138b491c72708e866ad724bc1333b317e11e8d307b0d761d40638ccf33c01ec",
     "build/ios16-hid-lifecycle/host/control/HidDriverSource.inc": "43d44bb262e21692698451cef86354fa3f8dc8cca163bdb0f06c1f3a9d4c37a2",
     "build/ios16-hid-lifecycle/host/previous/HidDriverSource.inc": "2a7984a01fa5d35ca1615e603c990778784265792a55ad14669b6e86f6343181",
-    "build/ios16-hid-lifecycle/host/selected/hid-lifecycle": "43aec6f20e7d88b10b154169828cdb01cd0e4a8e231b89f15896d33aa43fba99",
-    "build/ios16-hid-lifecycle/host/control/hid-lifecycle": "051552c1f393268e5566c0507946e3ac10f4f48e6a290b6a3abfad96207aa698",
-    "build/ios16-hid-lifecycle/host/previous/hid-lifecycle": "a458b8e2acc9bdda3b4218dd704a556c8a9a0c3373b84cf8a7be8f2c551320c7",
-    "build/ios16-hid-lifecycle/native/DodgeHidEventDriver.o": "34b5d35db6e5dd9a1c7eade9c8864511bc74749496d950e1ad39c40c0e1fce05",
-    "build/ios16-hid-lifecycle/DodgeHidEventDriver.late.o": "7f80eb363855d23f56a8f45f405d4433063289346c2cc208e32680cbb04822c7",
-    "build/ios16-hid-lifecycle/libDodgeInputLifecycle.a": "a664c76d332b4f4ba1560214321624ceba9d6575ddc43d05a7e288e315a7db8f",
+    "build/ios16-hid-lifecycle/host/interface-control/HidDriverSource.inc": "dc9fda24c9a53771d8e92a8ca9dc3f2d960b982dd8ae7ab0855e65e93c046b81",
+    "build/ios16-hid-lifecycle/host/selected/hid-lifecycle": "50fc3bbf015a4205fb5a16768ad1df0637f29ef6bcd8421aad62dc750dd51c25",
+    "build/ios16-hid-lifecycle/host/control/hid-lifecycle": "7be1ea4d6ce0ca4477ba13b62626badd0687ae067768c52b8006890eab15d07e",
+    "build/ios16-hid-lifecycle/host/previous/hid-lifecycle": "cdddd5edd6804fd8697086ea41f113cc18622956572ab97688ae45cde9c6cce9",
+    "build/ios16-hid-lifecycle/host/interface-control/hid-lifecycle": "6eed44b62976c9267742f26362e824780b255498a9615998dba2937e0afa6d1d",
+    "build/ios16-hid-lifecycle/native/DodgeHidEventDriver.o": "d4b0594eb3ed6903d6dbf79b9b3c7d6c81719e51b8b52a66a2dd4703d066a3c2",
+    "build/ios16-hid-lifecycle/DodgeHidEventDriver.late.o": "ae959dd64dbd6d961f2d060b39b98d22b2bfda75996703f20374fac773c869b8",
+    "build/ios16-hid-lifecycle/libDodgeInputLifecycle.a": "2cc10d9fd191037a15eb965607ae64f621653caf1929c313fe34166b76d08952",
     "build/ios16-hid-lifecycle/members/DodgeInput.late.o": "84053b43cea00e0ca05d24ffef5c66a6e2bb2932da768099521d7a050b3749b5",
     "build/ios16-hid-lifecycle/members/S3910.o": "a74f9264f13fd60eb20142661b37e4e2b498c80f7efd29610474d745dad455cd",
     "build/ios16-hid-lifecycle/members/GeniSpi.o": "3271182e4302abf05be43212cea877345dd7f6a736abcc8d4b42c51c19fd99ed",
@@ -43,7 +46,7 @@
     "build/ios16-hid-lifecycle/members/DodgeTouchClock.o": "44c9eb2e8f45ad9fac085dc0ac586a704de657a7b56e9f235c382a2d23aad0c9",
     "build/ios16-hid-lifecycle/members/DodgeGeniTransfer.o": "3c5d88ec2b16ffebf177b6f99ae2c948829f0df1a4196c689785103733906265",
     "build/ios16-hid-lifecycle/members/stock-touch-firmware.o": "bc9e19027eac3d7d21046a7f70b3f1a40b401621105178a222cce7ee7cdb358e",
-    "build/ios16-hid-lifecycle/members/DodgeHidEventDriver.late.o": "7f80eb363855d23f56a8f45f405d4433063289346c2cc208e32680cbb04822c7",
+    "build/ios16-hid-lifecycle/members/DodgeHidEventDriver.late.o": "ae959dd64dbd6d961f2d060b39b98d22b2bfda75996703f20374fac773c869b8",
     "build/ios16-hid-lifecycle/members/original-hid-event-bindings.o": "74bd461fe1b0602ccd0164d1a3f952a543de18689fea078e5eac14e15fb3a059",
     "build/ios16-hid-lifecycle/members/original-hid-bindings.o": "b4a14c89d5bbac5a6854e702cdf71fea16b14e6b16356c71984371a2e6593bc2",
     "build/ios16-hid-lifecycle/native/compile-commands.json": "fc9b37e7f9b12ff8e06ce5f8858cef51be87c9fa6dc5e289536b7a4125498322"
@@ -203,6 +206,98 @@
     {
       "case": "producer-start-failure",
       "result": "PASS"
+    },
+    {
+      "case": "interface-stop-control",
+      "result": "PASS"
+    },
+    {
+      "case": "interface-close-reentry",
+      "result": "PASS"
+    },
+    {
+      "case": "interface-foreign-client",
+      "result": "PASS"
+    },
+    {
+      "case": "will-before-start",
+      "result": "PASS"
+    },
+    {
+      "case": "will-dispatch",
+      "result": "PASS"
+    },
+    {
+      "case": "will-start",
+      "result": "PASS"
+    },
+    {
+      "case": "will-parent-failure",
+      "result": "PASS"
+    },
+    {
+      "case": "will-foreign",
+      "result": "PASS"
+    },
+    {
+      "case": "did-normal",
+      "result": "PASS"
+    },
+    {
+      "case": "did-repeat",
+      "result": "PASS"
+    },
+    {
+      "case": "did-after-stop",
+      "result": "PASS"
+    },
+    {
+      "case": "did-foreign",
+      "result": "PASS"
+    },
+    {
+      "case": "did-null-output",
+      "result": "PASS"
+    },
+    {
+      "case": "did-no-loop",
+      "result": "PASS"
+    },
+    {
+      "case": "did-cleanup-failure",
+      "result": "PASS"
+    },
+    {
+      "case": "did-start",
+      "result": "PASS"
+    },
+    {
+      "case": "did-producer",
+      "result": "PASS"
+    },
+    {
+      "case": "did-reentrant-notify",
+      "result": "PASS"
+    },
+    {
+      "case": "did-during-stop",
+      "result": "PASS"
+    },
+    {
+      "case": "did-caller-lifetime",
+      "result": "PASS"
+    },
+    {
+      "case": "producer-concurrent-stop",
+      "result": "PASS"
+    },
+    {
+      "case": "did-during-close",
+      "result": "PASS"
+    },
+    {
+      "case": "start-busy-interface",
+      "result": "PASS"
     }
   ],
   "old_stop_control": {
@@ -308,8 +403,8 @@
     "__ZN15IORegistryEntry13childFromPathEPKcPK15IORegistryPlanePcPi",
     "__ZN9IOService4initEP15IORegistryEntryPK15IORegistryPlane",
     "__ZN9IOService16requestTerminateEPS_j",
-    "__ZN9IOService13willTerminateEPS_j",
-    "__ZN16IOHIDEventDriver12didTerminateEP9IOServicejPb",
+    "__ZN19DodgeHidEventDriver13willTerminateEP9IOServicej",
+    "__ZN19DodgeHidEventDriver12didTerminateEP9IOServicejPb",
     "__ZN9IOService15nextIdleTimeoutEyyj",
     "__ZN9IOService18systemWillShutdownEj",
     "__ZN9IOService22copyClientWithCategoryEPK8OSSymbol",
@@ -455,9 +550,26 @@
   "concrete_vtable_entries": 219,
   "original_parent_instance_bytes": 264,
   "native_compiled": true,
+  "interface_controls": [
+    {
+      "case": "interface-stop-control",
+      "result": "REJECTED",
+      "check": "parent stop retained interface callback"
+    },
+    {
+      "case": "will-dispatch",
+      "result": "REJECTED",
+      "check": "termination admitted event dispatch"
+    },
+    {
+      "case": "producer-concurrent-stop",
+      "result": "REJECTED",
+      "check": "parent stop overlapped original producer"
+    }
+  ],
   "failed_original_initialization_remains_pinned": true,
   "source_base_and_baseline_artifacts_preserved": true,
   "hardware_tested": false,
   "phone_operations": "none",
-  "scope": "Selected source serializes start, stop and dispatch on the provider workloop. Stop closes admission before waiting; gate-held stop queues a software interrupt source so parent cleanup runs after the outer gate action. External stop can complete cleanup first; a stale queued callback cannot repeat it. Source and gated producer frames are covered, while original callbacks which leave/reenter the gate remain unqualified. Failed init cannot start, duplicate/foreign stops cannot repeat cleanup, and existing partial-init instance/provider/loop pins remain. Actual patched production source runs with sanitizer IOKit peers and concurrent threads; the old source reproduces overlapping parent stop. This does not qualify full original parent startup, producer callback/client lifetime, matching, final free, physical input or graphical UI."
+  "scope": "Selected source serializes start, stop and dispatch on the provider workloop. Stop closes admission before waiting; gate-held stop queues a software interrupt source so parent cleanup runs after the outer gate action. External stop can complete cleanup first; a stale queued callback cannot repeat it. Source and gated producer drains defer by default while external stop waits for the gate. willTerminate closes admission before the native notification; didTerminate copies options, queues completion and never retains caller output pointers. Owned interfaces close before parent stop; already-closed/foreign ownership delegates termination to the native base without reentering the original unconditional close. The weak parent interface remains pinned in that path. frames are covered, while original callbacks which leave/reenter the gate remain unqualified. Failed init cannot start, duplicate/foreign stops cannot repeat cleanup, and existing partial-init instance/provider/loop pins remain. Actual patched production source runs with sanitizer IOKit peers and concurrent threads; the old source reproduces overlapping parent stop. This does not qualify full original parent startup, producer callback/client lifetime, matching, final free, physical input or graphical UI."
 }

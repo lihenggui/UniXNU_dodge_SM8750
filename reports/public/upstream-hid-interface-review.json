@@ -1,0 +1,98 @@
+{
+  "result": "HID_INTERFACE_SCOPED_UPSTREAM_6_REFS_PASS",
+  "observed_at_utc": "2026-11-17T15:29:26.286326+00:00",
+  "target": "iPhone10,3 / iOS16.7.16 /20H392 /Darwin22",
+  "repository_count": 6,
+  "repositories": [
+    {
+      "name": "UniXNU",
+      "repository": "https://github.com/UniXNU/UniXNU.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "429d337ca53c8f88759710c4daf35bd6ff502f5f"
+    },
+    {
+      "name": "Pagani drivers",
+      "repository": "https://github.com/IssacL04/UniXNU-Pagani-Drivers.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "c888efd3ce1b817d13f28783a77cf689cb2255c9"
+    },
+    {
+      "name": "GopFramebuffer",
+      "repository": "https://github.com/UniXNU/GopFramebuffer.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "b0d812d578efa2acb005b66f73168891719af09a"
+    },
+    {
+      "name": "QcomGeniSpi",
+      "repository": "https://github.com/UniXNU/QcomGeniSpi.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "eac47baefe6a5d2368a70351e6ad1b6361bedbe2"
+    },
+    {
+      "name": "Native Adreno830",
+      "repository": "https://github.com/Shad0w23333/Adreno830.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "1a1321056ffc5428ae925f4680093718b46ca7c2"
+    },
+    {
+      "name": "ArmSmmu4K",
+      "repository": "https://github.com/UniXNU/ArmSmmu4K.git",
+      "branch": "refs/heads/main",
+      "remote_revision": "83969cd874503e65997ff7639f7dcf3d0a92cd17"
+    }
+  ],
+  "core_tree_comparison": {
+    "base": "41e390884e1dde0a4b93ea375c2b5ba0d0955cf8",
+    "tip": "429d337ca53c8f88759710c4daf35bd6ff502f5f",
+    "changed_files": 82,
+    "cached_history_is_shallow": true,
+    "visible_left_right_commits": [
+      315,
+      1054
+    ],
+    "complete_ancestry_not_established": true,
+    "visible_counts_are_not_new_commit_counts": true
+  },
+  "selected_components": {
+    "ArmCpu": {
+      "comparison_base": "acba4ee2674cfb23434431feb124871ae9b3b581",
+      "selected_tip": "5f3702697ed80fd2e98594de1af7e32b4b77b08b",
+      "status": "diverged",
+      "API_reported_commits_on_selected_side": 8,
+      "API_changed_files": 6,
+      "comparison_base_kind": "previously observed upstream selection; not the build pin"
+    },
+    "AdrenoMetal": {
+      "comparison_base": "2ab9328eb8a220c98c2aef997fa5f4633e7f672a",
+      "selected_tip": "8c7f9502de593c04a1003690f4a9441fe88551e8",
+      "status": "diverged",
+      "API_reported_commits_on_selected_side": 164,
+      "API_changed_files": 91,
+      "comparison_base_kind": "previously observed upstream selection; not the build pin"
+    }
+  },
+  "decisions": [
+    "Keep all source pins and the exact firmware memory patch. Both component API comparisons are diverged; the shallow core cache cannot establish a complete ancestry relation. Exact tree changes and selected direct source differences were inspected without reporting visible history as a linear update.",
+    "Core changes include firmware/toolchain and archive-provider preflight, local verified-root policy validation, failed-rebuild packaging refusal, macOS Shader Cache application registration and another Metal runtime. The selected native route already checks exact dependency/artifact hashes and signed root inputs. No broad generic build-driver upgrade or macOS addon is imported.",
+    "Selected ArmCpu sleep support adds a weak platform-sleep hook, PSCI conduit/core-off handling, GIC/timer handling and board prepare/restore callbacks. It still requires a Darwin22 hook and CPH2653 PMGR/wake/resource ownership adaptation; the current single-core/no-sleep policy remains.",
+    "The selected Metal comparison spans 164 commits/91 files with diverged history. Its bridge and runtime/capture source was sampled, not fully audited or rebased against the pinned iPhone frontend/runtime ABI.",
+    "Pagani drivers, GOP, GENI and native A830 observed tips remain unchanged. ArmSmmu4K main remains at the previously observed 83969cd8, while the matched A830/SMMU build pins stay at 1a132105/3ba92451. No unmatched API update is selected."
+  ],
+  "source_sha256": {
+    "upstream.lock.json": "50da2f248a77f657b7e27f966dea861d1a58523fd2235ece1ade93e7b535bf4e",
+    "unixnu.lock": "6c6fd4ae3d1d1e05a952bdf0d78bb461c1029b2800657114e7e0de37777cc945",
+    "patches/mu-silicium/0001-cph2653-16.0.1.304-reserve-memory-holes.patch": "e1704c5fb2f9ae254d723fd0390f7fbe02e77c97fd8d1dae5ccb9c515bfa380f",
+    "reports/upstream-hid-producer-review.json": "f33b417aec583aa8110eeccbc8e0bd88bb3a4f541f542a46fab63a3674e19e79"
+  },
+  "artifacts": {
+    ".cache/upstream-review-2026-11-16/hid-interface-core-review.json": "f05a082fb5c29ebfcb319e7aec4b4abc50fee92b691051e54427a495fbdcc7a9",
+    ".cache/upstream-review-2026-11-16/hid-interface-refs.json": "69d1a4fec9171a58068c10455777a60bc55915feae6017c2311aa78364e6009e",
+    ".cache/upstream-review-2026-11-16/hid-interface-ArmCpu-review.json": "a9e90eae58468aa3873942edb81eb2584334a97af821b0fb36f59eb567d11755",
+    ".cache/upstream-review-2026-11-16/hid-interface-AdrenoMetal-review.json": "a00e9cfd07c87ce54ec135cb510aad18cacb7136627b627f4e13a76ae10fd4eb"
+  },
+  "source_pins_changed": false,
+  "firmware_memory_patch_retained": true,
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Six remote references and targeted source/tree comparisons supplement earlier snapshots. The complete component histories, all older repositories and hardware behavior are not qualified."
+}

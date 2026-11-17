@@ -17,6 +17,9 @@
     "cleanupSource": 560,
     "cleanupDeferred": 568,
     "cleanupQueued": 569,
+    "terminationPending": 570,
+    "notifyingTermination": 571,
+    "terminationOptions": 572,
     "kt_size_offset": 44,
     "kt_size_mask": 16777215,
     "digitizer_type": 32,
@@ -226,17 +229,17 @@
   "source_sha256": {
     "scripts/check_hid_original_lifecycle.py": "4876a8acbf5e46743c27c713e94978d7d63a897e40116e28e05863296d00fdd0",
     "scripts/hid_lifecycle_model.py": "457b216fd213c6ceb554a89fe3054c3a1677f87d24063d158871ff34a0798957",
-    "scripts/hid_lifecycle_layout.py": "05f6fad605320b545870fe0fde167c6cf124e4fea485aa61bcced42d9002ad2f",
+    "scripts/hid_lifecycle_layout.py": "c8691a4febde35ff3c0cfd69a38dfd4ef01233d29853407f14d0f9a7338cd7d4",
     "scripts/check_hid_parser.py": "ebd5f2cc7f91132554badc1b722d08d6a4db8db4db100edebe7a8a079536d779",
     "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
     "profiles/os/ios-16.7.16-20H392/hid-event-interface.json": "cc64aba4b3b000a0db9e8dbbf8c1327c24ab216d61942f6e17e45edf79de6198"
   },
   "dependency_report_sha256": {
-    "reports/ios16-hid-lifecycle-source.json": "dbdee8cc15c8d72d4f0464776dd8321e955fdf2cc3924086998a4b20217aab3e"
+    "reports/ios16-hid-lifecycle-source.json": "a3b2d6529376d5e66c713dc48d751d825b1f846db39e66ec91283594653d399c"
   },
   "artifacts": {
-    "build/ios16-hid-original-lifecycle/abi/DodgeHidEventDriver.cpp": "ecd6a5467ba397e035641a5a657fb537efef7b79332c024be54efea4c62e6f99",
-    "build/ios16-hid-original-lifecycle/abi/DodgeHidEventDriver.o": "bd82d5bd25dd75f0ba2a33300b882c63be0b39221db5b65ecd237df283c60435",
+    "build/ios16-hid-original-lifecycle/abi/DodgeHidEventDriver.cpp": "831ea5c064725b2b343e25c2980d1557973e6cd4cf96439197ab02111c522994",
+    "build/ios16-hid-original-lifecycle/abi/DodgeHidEventDriver.o": "bbaa774154346ed24fbb6529a24118760a669928ba619e6cf2917260f8f3853e",
     "build/ios16-hid-original-lifecycle/abi/compile-commands.json": "1eaf5b9ff80154fa2c785648fd1bad0981a77e43e56bf1e02b2328241b434d01"
   },
   "unsafe_partial_free_control": {

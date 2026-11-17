@@ -15,6 +15,12 @@ void hid_test_initializer(){}
 }
 using namespace std::chrono_literals;
 
+__attribute__((noinline)) static bool requestTermination(DodgeHidEventDriver *driver,IOService *provider,unsigned options){
+    const bool opened=provider->isOpen(driver);bool deferred=false;
+    assert(driver->didTerminate(provider,options,&deferred));
+    assert(!opened || !deferred);return opened || deferred;
+}
+
 int main(int argc,char **argv){
     assert(argc==2);const std::string name=argv[1];auto &h=hid_peer::state;
     IOWorkLoop loop;IOService provider,foreign;IOHIDEvent event;
@@ -42,10 +48,108 @@ int main(int argc,char **argv){
             h.validProvider=false;assert(!start() && !h.starts && provider.retainCount()==1);
         }else if(name=="no-loop"){
             h.loop=nullptr;assert(!start() && !h.starts);stop();assert(!h.stops);
+        }else if(name=="start-busy-interface"){
+            provider.openedClient=&foreign;
+            assert(!start() && !h.starts && "busy interface was started");
+            stop();assert(requestTermination(driver.get(),&provider,0xa5000012));loop.drain();
+            assert(provider.isOpen(&foreign) && !h.interfaceCloses && !h.originalDidCalls && !h.stops && h.nativeDidCalls==1);
         }else if(name=="cleanup-allocation-failure" || name=="cleanup-attach-failure"){
             h.cleanupOk=name!="cleanup-allocation-failure";h.addOk=name!="cleanup-attach-failure";
             assert(!start() && !h.starts);stop();dispatch();assert(!h.stops && !h.forwards && !h.cleanupSignals);
             for(auto &allocation:hid_peer::allocations)assert(allocation->retainCount()==0);
+        }else if(name=="producer-concurrent-stop"){
+            assert(start());std::mutex mutex;std::condition_variable condition;bool entered=false,waiting=false,resume=false;
+            h.onDispatch=[&](IOService *,IOHIDEvent *,unsigned){
+                std::unique_lock<std::mutex> lock(mutex);entered=true;condition.notify_all();
+                assert(condition.wait_for(lock,2s,[&]{return resume;}));
+            };
+            std::function<void()> callback=[&]{++h.activeProducer;dispatch();assert(!h.stops && !h.interfaceCloses);--h.activeProducer;};
+            std::thread producer([&]{loop.runAction([](OSObject *,void *argument,void *,void *,void *){
+                (*static_cast<std::function<void()> *>(argument))();return kIOReturnSuccess;
+            },driver.get(),&callback);});
+            {std::unique_lock<std::mutex> lock(mutex);assert(condition.wait_for(lock,2s,[&]{return entered;}));}
+            h.beforeGate=[&]{std::lock_guard<std::mutex> lock(mutex);waiting=true;condition.notify_all();};
+            std::thread stopper(stop);
+            {std::unique_lock<std::mutex> lock(mutex);assert(condition.wait_for(lock,2s,[&]{return waiting;}));resume=true;condition.notify_all();}
+            producer.join();stopper.join();h.beforeGate={};h.onDispatch={};loop.drain();
+            assert(h.stops==1 && h.interfaceCloses==1 && h.cleanupSignals==1 && h.cleanupCallbacks==1);
+        }else if(name=="interface-close-reentry" || name=="interface-foreign-client"){
+            assert(start());
+            if(name=="interface-close-reentry")h.onClose=[&]{stop();dispatch();};
+            else{
+                std::function<void()> close=[&]{provider.close(driver.get());provider.openedClient=&foreign;};
+                loop.runAction([](OSObject *,void *argument,void *,void *,void *){
+                    (*static_cast<std::function<void()> *>(argument))();return kIOReturnSuccess;
+                },driver.get(),&close);
+            }
+            stop();loop.drain();assert(h.stops==1 && h.interfaceCloses==1);
+            if(name=="interface-foreign-client"){
+                assert(provider.isOpen(&foreign));assert(requestTermination(driver.get(),&provider,0xa5000011));
+                loop.drain();assert(provider.isOpen(&foreign) && h.interfaceCloses==1 && !h.originalDidCalls && h.nativeDidCalls==1);
+            }
+        }else if(name.rfind("will-",0)==0){
+            constexpr unsigned options=0xa5000001;
+            if(name=="will-before-start"){
+                assert(driver->willTerminate(&provider,options));assert(!start() && h.nativeWillCalls==1 && !h.starts && !h.stops);
+            }else{
+                h.willOk=name!="will-parent-failure";
+                if(name=="will-start")h.onStart=[&](IOService *){assert(driver->willTerminate(&provider,options));};
+                assert(start()==(name!="will-start"));
+                if(name=="will-dispatch"){
+                    h.onWill=dispatch;h.onDispatch=[&,requested=false](IOService *,IOHIDEvent *,unsigned)mutable{
+                        if(!requested){requested=true;assert(driver->willTerminate(&provider,options));}
+                        assert(h.forwards==1 && "termination admitted event dispatch");
+                    };dispatch();
+                }else if(name!="will-start"){
+                    const bool result=driver->willTerminate(name=="will-foreign"?&foreign:&provider,options);
+                    assert(result==(name!="will-foreign" && name!="will-parent-failure"));
+                }
+                if(name=="will-foreign"){dispatch();assert(h.forwards==1 && !h.nativeWillCalls);}
+                else{dispatch();assert(h.forwards==(name=="will-dispatch"?1u:0u) && h.nativeWillCalls==1);}
+                stop();loop.drain();assert(h.stops==1 && h.interfaceCloses==1);
+            }
+        }else if(name.rfind("did-",0)==0){
+            constexpr unsigned options=0xa5000002;
+            if(name=="did-no-loop"){
+                assert(!requestTermination(driver.get(),&provider,options));assert(!start() && h.nativeDidCalls==1 && !h.starts);
+            }else{
+                if(name=="did-cleanup-failure")h.cleanupOk=false;
+                if(name=="did-start")h.onStart=[&](IOService *){assert(requestTermination(driver.get(),&provider,options));};
+                assert(start()==(name!="did-start" && name!="did-cleanup-failure"));
+                if(name=="did-foreign" || name=="did-null-output"){
+                    bool deferred=false;
+                    assert(!driver->didTerminate(name=="did-foreign"?&foreign:&provider,options,name=="did-null-output"?nullptr:&deferred));
+                    assert(!deferred && !h.nativeDidCalls);dispatch();assert(h.forwards==1);stop();
+                }else if(name=="did-start"){
+                    assert(h.nativeDidCalls==1 && h.originalDidCalls==1 && h.stops==1);
+                }else{
+                    if(name=="did-after-stop")stop();
+                    if(name=="did-reentrant-notify")h.onDid=[&]{assert(requestTermination(driver.get(),&provider,0xffffffff));};
+                    if(name=="did-during-stop" || name=="did-during-close"){
+                        auto request=[&]{assert(requestTermination(driver.get(),&provider,options));};
+                        if(name=="did-during-stop")h.onStop=[request](IOService *){request();};else h.onClose=request;
+                        stop();
+                    }else if(name=="did-producer"){
+                        h.onDispatch=[&](IOService *,IOHIDEvent *,unsigned){assert(requestTermination(driver.get(),&provider,options));};
+                        std::function<void()> callback=[&]{++h.activeProducer;dispatch();assert(!h.nativeDidCalls && !h.stops);--h.activeProducer;};
+                        loop.runAction([](OSObject *,void *argument,void *,void *,void *){
+                            (*static_cast<std::function<void()> *>(argument))();return kIOReturnSuccess;
+                        },driver.get(),&callback);
+                    }else{
+                        const bool expected=name!="did-cleanup-failure";
+                        assert(requestTermination(driver.get(),&provider,options)==expected);
+                        if(name=="did-repeat")assert(requestTermination(driver.get(),&provider,0xa5000003));
+                    }
+                    loop.drain();assert(h.nativeDidCalls==1 && h.didOptions[0]==options && !h.didDeferred[0]);
+                    if(name!="did-cleanup-failure")assert(h.stops==1 && h.interfaceCloses==1);
+                    if(name=="did-after-stop" || name=="did-during-stop" || name=="did-during-close" || name=="did-cleanup-failure")assert(!h.originalDidCalls);
+                    if(name=="did-repeat"){
+                        assert(requestTermination(driver.get(),&provider,0xa5000004));loop.drain();
+                        assert(h.nativeDidCalls==2 && h.originalDidCalls==1 && h.interfaceCloses==1 && h.stops==1);
+                    }
+                }
+                const unsigned before=h.forwards;dispatch();loop.drain();assert(h.forwards==before);
+            }
         }else if(name.rfind("producer-",0)==0){
             const bool duringStart=name=="producer-start-stop" || name=="producer-start-failure";
             if(name=="producer-start-stop")h.onStart=[&](IOService *){stop();};

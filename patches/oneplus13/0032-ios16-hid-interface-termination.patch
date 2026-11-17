@@ -1,0 +1,105 @@
+--- a/DodgeHidEventDriver.cpp
++++ b/DodgeHidEventDriver.cpp
+@@ -37,21 +37,37 @@
+     bool starting=false,parentCleanupPending=false,parentStopping=false,stopRequested=false;
+     unsigned dispatches=0;
+     IOInterruptEventSource *cleanupSource=nullptr;
+-    bool cleanupDeferred=false,cleanupQueued=false;
++    // Closing admission can race a gate-held producer before stopAction gets
++    // the gate. Such an automatic drain must be deferred by default.
++    bool cleanupDeferred=true,cleanupQueued=false;
++    bool terminationPending=false,notifyingTermination=false;
++    IOOptionBits terminationOptions=0;
+     // The provider and loop remain pinned after an attempt, including a
+     // failed original init/start. Only the validated gate owns these fields.
+     void finishStop() {
+         if (!__atomic_load_n(&stopRequested,__ATOMIC_ACQUIRE) || starting || dispatches ||
+-            parentStopping || !parentCleanupPending) return;
++            parentStopping || (!parentCleanupPending && !terminationPending)) return;
+         if (cleanupDeferred) {
+             if (!cleanupQueued && cleanupSource) {
+                 cleanupQueued=true;cleanupSource->interruptOccurred(nullptr,nullptr,0);
+             }
+             return;
+         }
++        const bool stopParent=parentCleanupPending;
+         parentCleanupPending=false;parentStopping=true;
+-        IOHIDEventDriver::stop(providerPin);
++        if (terminationPending) {
++            const auto options=terminationOptions;terminationPending=false;notifyingTermination=true;
++            bool deferred=false;
++            // The original method closes its weak interface unconditionally.
++            // If our client has already closed, preserve that pinned weak
++            // pointer and notify the native base without closing a new client.
++            if (providerPin->isOpen(this)) IOHIDEventDriver::didTerminate(providerPin,options,&deferred);
++            else IOService::didTerminate(providerPin,options,&deferred);
++            notifyingTermination=false;
++        } else if (providerPin->isOpen(this)) providerPin->close(this);
++        if (stopParent) IOHIDEventDriver::stop(providerPin);
+         parentStopping=false;edges={};
++        if (terminationPending) {cleanupDeferred=true;finishStop();}
+     }
+     static void cleanupAction(OSObject *owner,IOInterruptEventSource *source,int count) {
+         auto *self=static_cast<DodgeHidEventDriver *>(owner);
+@@ -66,6 +82,27 @@
+         // A gate-held caller may be an original producer above our dispatch
+         // frame. The workloop event runs after that outer gate action exits.
+         self->cleanupDeferred=deferred==self;
++        self->finishStop();return kIOReturnSuccess;
++    }
++    struct TerminationCall {IOService *provider;IOOptionBits options;bool deferred,result;};
++    static IOReturn terminateAction(OSObject *owner,void *argument,void *,void *,void *) {
++        auto *self=static_cast<DodgeHidEventDriver *>(owner);auto *call=static_cast<TerminationCall *>(argument);
++        if (!call || !self->loop || !self->loop->inGate() || call->provider!=self->providerPin) return kIOReturnBadArgument;
++        if (self->notifyingTermination) {
++            call->deferred=!self->providerPin->isOpen(self);call->result=true;return kIOReturnSuccess;
++        }
++        if (!self->cleanupSource) {
++            // No original startup was entered without the cleanup source.
++            call->result=self->IOService::didTerminate(call->provider,call->options,&call->deferred);
++            return kIOReturnSuccess;
++        }
++        if (!self->terminationPending) {self->terminationOptions=call->options;self->terminationPending=true;}
++        // Copy options only. The caller's defer pointer never survives this
++        // synchronous runAction. Completion calls didTerminate with a local
++        // output, as required by the Darwin 22 IOService deferral contract.
++        // An open connection already holds termination. The extra defer flag
++        // is needed only when no connection holds our pending completion.
++        call->deferred=!self->providerPin->isOpen(self);call->result=true;self->cleanupDeferred=true;
+         self->finishStop();return kIOReturnSuccess;
+     }
+     static IOReturn startAction(OSObject *owner,void *argument,void *,void *,void *) {
+@@ -79,7 +116,7 @@
+         PE_Video video={};
+         ok=ok && !PE_current_console(&video) && !video.v_rotate && video.v_width<=UINT32_MAX && video.v_height<=UINT32_MAX &&
+             dodge_hid_edge_configure(&self->edges,(uint32_t)video.v_width,(uint32_t)video.v_height,48);
+-        if (ok && !__atomic_load_n(&self->stopRequested,__ATOMIC_ACQUIRE)) {
++        if (ok && !__atomic_load_n(&self->stopRequested,__ATOMIC_ACQUIRE) && !self->providerPin->isOpen()) {
+             // Preserve original start-time event delivery, while external
+             // callers wait on this gate. Latch cleanup before entering the
+             // parent, which may reenter our stop from a callback.
+@@ -184,6 +221,24 @@
+         if (!workLoop) return;
+         workLoop->retain();const bool deferred=workLoop->inGate();
+         workLoop->runAction(stopAction,this,provider,deferred?this:nullptr);workLoop->release();
++    }
++    bool willTerminate(IOService *provider,IOOptionBits options) override {
++        if (!provider || !__atomic_load_n(&initSucceeded,__ATOMIC_ACQUIRE)) return false;
++        auto *workLoop=__atomic_load_n(&loop,__ATOMIC_ACQUIRE);
++        if ((workLoop && provider!=providerPin) || (!workLoop && !provider->metaCast("IOHIDInterface"))) return false;
++        __atomic_store_n(&stopRequested,true,__ATOMIC_RELEASE);__atomic_store_n(&ready,false,__ATOMIC_RELEASE);
++        return IOService::willTerminate(provider,options);
++    }
++    bool didTerminate(IOService *provider,IOOptionBits options,bool *defer) override {
++        if (!provider || !defer || !__atomic_load_n(&initSucceeded,__ATOMIC_ACQUIRE)) return false;
++        auto *workLoop=__atomic_load_n(&loop,__ATOMIC_ACQUIRE);
++        if ((workLoop && provider!=providerPin) || (!workLoop && !provider->metaCast("IOHIDInterface"))) return false;
++        __atomic_store_n(&stopRequested,true,__ATOMIC_RELEASE);__atomic_store_n(&ready,false,__ATOMIC_RELEASE);
++        if (!workLoop) return IOHIDEventDriver::didTerminate(provider,options,defer);
++        TerminationCall call={provider,options,*defer,false};workLoop->retain();
++        const auto result=workLoop->runAction(terminateAction,this,&call);workLoop->release();
++        if (result!=kIOReturnSuccess) return false;
++        *defer=call.deferred;return call.result;
+     }
+     void free() override {
+         if (initAttempted) return;

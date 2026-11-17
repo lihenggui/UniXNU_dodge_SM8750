@@ -22,8 +22,13 @@ struct Control {
     IOWorkLoop *loop=nullptr;
     bool initOk=true,startOk=true,videoOk=true,validProvider=true,requireStartGate=true;
     bool cleanupOk=true,addOk=true;
+    bool willOk=true;
     std::atomic<unsigned> inits{0},starts{0},stops{0},forwards{0},nativeFrees{0},activeStart{0},activeDispatch{0};
     std::atomic<unsigned> activeProducer{0},cleanupSignals{0},cleanupCallbacks{0};
+    std::atomic<unsigned> interfaceCloses{0},nativeWillCalls{0},nativeDidCalls{0},originalDidCalls{0};
+    std::vector<IOOptionBits> didOptions;
+    std::vector<bool> didDeferred;
+    std::function<void()> onClose,onWill,onDid;
     PE_Video video;
     std::function<void(IOService *)> onStart,onStop,onVideo;
     std::function<void()> beforeGate;
@@ -108,9 +113,24 @@ inline void IOWorkLoop::drain(){
 class IOService:public OSObject {
 public:
     bool inactive=false;
+    IOService *openedClient=nullptr;
     virtual bool init(OSDictionary * =nullptr){return true;}
     virtual bool start(IOService *){return true;}
     virtual void stop(IOService *){}
+    virtual bool isOpen(const IOService *client=nullptr)const{return client?openedClient==client:openedClient!=nullptr;}
+    virtual void close(IOService *client,IOOptionBits=0){
+        auto &h=hid_peer::state;assert(!h.activeProducer && !h.activeStart && !h.activeDispatch);
+        assert(h.loop && h.loop->inGate());
+        assert((!openedClient || openedClient==client) && "interface close targeted another client");
+        openedClient=nullptr;++h.interfaceCloses;if(h.onClose)h.onClose();
+    }
+    virtual bool willTerminate(IOService *,IOOptionBits){
+        auto &h=hid_peer::state;++h.nativeWillCalls;if(h.onWill)h.onWill();return h.willOk;
+    }
+    virtual bool didTerminate(IOService *,IOOptionBits options,bool *defer){
+        auto &h=hid_peer::state;assert(defer);++h.nativeDidCalls;h.didOptions.push_back(options);h.didDeferred.push_back(*defer);
+        if(h.onDid)h.onDid();return true;
+    }
     bool isInactive()const{return inactive;}
     void *metaCast(const char *name)const{return hid_peer::state.validProvider && !strcmp(name,"IOHIDInterface") ? const_cast<IOService *>(this):nullptr;}
     IOWorkLoop *getWorkLoop()const{return hid_peer::state.loop;}
@@ -124,20 +144,28 @@ public:
     virtual IOFixed getFixedValue(unsigned,unsigned){return 0;}
 };
 class IOHIDEventDriver:public IOService {
+    IOService *originalInterface=nullptr;
 public:
     inline static OSMetaClass gMetaClass{264};
     bool init(OSDictionary *)override{++hid_peer::state.inits;return hid_peer::state.initOk;}
-    bool start(IOService *)override{
+    bool start(IOService *provider)override{
         auto &h=hid_peer::state;
         assert(!h.requireStartGate || (h.loop && h.loop->inGate()));
+        originalInterface=provider;provider->openedClient=this;
         ++h.starts;++h.activeStart;if(h.onStart)h.onStart(this);--h.activeStart;return h.startOk;
     }
-    void stop(IOService *)override{
+    void stop(IOService *provider)override{
         auto &h=hid_peer::state;
         assert(!h.activeStart && !h.activeDispatch && "parent stop overlapped admitted work");
         assert(!h.activeProducer && "parent stop overlapped original producer");
         assert(h.loop && h.loop->inGate() && "parent stop escaped gate");
+        assert(!provider->isOpen(this) && "parent stop retained interface callback");
         ++h.stops;if(h.onStop)h.onStop(this);
+    }
+    bool didTerminate(IOService *provider,IOOptionBits options,bool *defer)override{
+        ++hid_peer::state.originalDidCalls;
+        if(originalInterface)originalInterface->close(this);
+        originalInterface=nullptr;return IOService::didTerminate(provider,options,defer);
     }
     virtual void dispatchEvent(IOHIDEvent *event,IOOptionBits options){
         auto &h=hid_peer::state;assert(h.loop && h.loop->inGate());

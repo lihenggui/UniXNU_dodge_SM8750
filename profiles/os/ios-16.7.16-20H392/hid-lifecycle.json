@@ -19,5 +19,15 @@
     "before_sha256": "2a7984a01fa5d35ca1615e603c990778784265792a55ad14669b6e86f6343181",
     "after_sha256": "dc9fda24c9a53771d8e92a8ca9dc3f2d960b982dd8ae7ab0855e65e93c046b81",
     "deferred_workloop_cleanup": true
+  },
+  "interface_lifecycle": {
+    "patch": "patches/oneplus13/0032-ios16-hid-interface-termination.patch",
+    "patch_sha256": "cb609f18b19f1aabe057d56d5f1683d4baf86af28b72583c4de21b240e8aa883",
+    "before_sha256": "dc9fda24c9a53771d8e92a8ca9dc3f2d960b982dd8ae7ab0855e65e93c046b81",
+    "after_sha256": "f138b491c72708e866ad724bc1333b317e11e8d307b0d761d40638ccf33c01ec",
+    "will_terminate_slot": 76,
+    "did_terminate_slot": 77,
+    "deferred_caller_pointer_retained": false,
+    "unowned_original_weak_interface_remains_pinned": true
   }
 }

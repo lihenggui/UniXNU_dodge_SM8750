@@ -19,7 +19,11 @@ CASES=('normal','init-failure','init-repeat','free-untouched','stop-before-start
     'concurrent-dispatch-stop','concurrent-stops','dispatch-reentrant-stop','dispatch-reentrant-stop-twice',
     'nested-dispatch-stop','foreign-stop','null-stop','inactive','null-event','concurrent-starts','concurrent-start-stop','original-control',
     'cleanup-allocation-failure','cleanup-attach-failure','producer-reentrant-stop','producer-stop-tail',
-    'producer-start-stop','producer-nested-dispatch','producer-external-stop','producer-start-failure')
+    'producer-start-stop','producer-nested-dispatch','producer-external-stop','producer-start-failure',
+    'interface-stop-control','interface-close-reentry','interface-foreign-client','will-before-start','will-dispatch',
+    'will-start','will-parent-failure','will-foreign','did-normal','did-repeat','did-after-stop','did-foreign',
+    'did-null-output','did-no-loop','did-cleanup-failure','did-start','did-producer','did-reentrant-notify',
+    'did-during-stop','did-caller-lifetime','producer-concurrent-stop','did-during-close','start-busy-interface')
 
 
 def stage(directory):
@@ -36,7 +40,14 @@ def stage(directory):
     result=subprocess.run(['patch','--batch','--fuzz=0','-p1','-i',next_patch],cwd=directory,capture_output=True,text=True)
     require(not result.returncode and 'offset' not in result.stdout.lower() and sha(staged)==followup['after_sha256'],
         'Selected HID producer-drain patch is not exact')
-    return staged,source,[patch,next_patch]
+    interface_before=directory/'DodgeHidEventDriver.interface-before.cpp';interface_before.write_bytes(staged.read_bytes())
+    terminal=facts['interface_lifecycle'];last_patch=ROOT/terminal['patch']
+    require(sha(staged)==terminal['before_sha256'] and sha(last_patch)==terminal['patch_sha256'],
+        'HID interface/termination base changed')
+    result=subprocess.run(['patch','--batch','--fuzz=0','-p1','-i',last_patch],cwd=directory,capture_output=True,text=True)
+    require(not result.returncode and 'offset' not in result.stdout.lower() and sha(staged)==terminal['after_sha256'],
+        'HID interface/termination patch is not exact')
+    return staged,source,[patch,next_patch,last_patch]
 
 
 def host_checks(staged,before,directory):
@@ -46,12 +57,14 @@ def host_checks(staged,before,directory):
     old=control/'HidDriverSource.inc';old.write_bytes(before.read_bytes())
     previous=directory/'previous';previous.mkdir(exist_ok=True)
     previous_source=previous/'HidDriverSource.inc';previous_source.write_bytes((staged.parent/'DodgeHidEventDriver.previous.cpp').read_bytes())
+    interface=directory/'interface-control';interface.mkdir(exist_ok=True)
+    interface_source=interface/'HidDriverSource.inc';interface_source.write_bytes((staged.parent/'DodgeHidEventDriver.interface-before.cpp').read_bytes())
     compiler=shutil.which('clang++-14') or shutil.which('clang++');require(compiler,'Need Clang sanitizers')
     peers=ROOT/'tests/hid_lifecycle_include';test=ROOT/'tests/DodgeHidLifecycleTest.cpp'
     flags=[compiler,'-std=c++17','-O1','-g','-Wall','-Wextra','-Werror','-pthread','-fsanitize=address,undefined',
         '-fno-sanitize-recover=all','-fno-omit-frame-pointer','-fno-pie','-no-pie','-I',peers,'-I',before.parent]
     binaries=[]
-    for path in (selected,control,previous):
+    for path in (selected,control,previous,interface):
         binary=path/'hid-lifecycle';run([*flags,'-I',path,test,'-o',binary],path/'compile.log');binaries.append(binary)
     results=[]
     for case in CASES:
@@ -67,13 +80,21 @@ def host_checks(staged,before,directory):
     (previous/'producer-stop.log').write_text(producer.stdout+producer.stderr)
     require(producer.returncode!=0 and 'parent stop overlapped original producer' in producer.stderr,
         'Previous source did not reproduce stop inside the outer producer')
-    return results,[include,old,previous_source,*binaries],{'case':'old-direct-stop-during-parent-dispatch','result':'REJECTED',
-        'check':'parent stop overlapped admitted work'}, {'result':'REJECTED','check':'parent stop overlapped original producer'}
+    terminal_controls=[]
+    for case,reason in [('interface-stop-control','parent stop retained interface callback'),
+        ('will-dispatch','termination admitted event dispatch'),('producer-concurrent-stop','parent stop overlapped original producer')]:
+        result=subprocess.run([binaries[3],case],capture_output=True,text=True,timeout=15)
+        (interface/(case+'.log')).write_text(result.stdout+result.stderr)
+        require(result.returncode!=0 and reason in result.stderr,'Old interface control failed for another reason: '+case)
+        terminal_controls.append({'case':case,'result':'REJECTED','check':reason})
+    return results,[include,old,previous_source,interface_source,*binaries],{'case':'old-direct-stop-during-parent-dispatch','result':'REJECTED',
+        'check':'parent stop overlapped admitted work'}, {'result':'REJECTED','check':'parent stop overlapped original producer'},terminal_controls
 
 
 def check_report(report):
     require(report['result']=='IOS16_SELECTED_HID_LIFECYCLE_SOURCE_PASS' and len(report['host_cases'])==len(CASES) and
         report['old_stop_control']['result']=='REJECTED' and report['previous_producer_control']['result']=='REJECTED' and
+        len(report['interface_controls'])==3 and all(c['result']=='REJECTED' for c in report['interface_controls']) and
         report['failed_original_initialization_remains_pinned'] and
         not report['hardware_tested'],'Incomplete selected HID lifecycle checks')
     for name,digest in {**report['source_sha256'],**report['artifacts'],**report['dependency_report_sha256']}.items():
@@ -88,7 +109,7 @@ def main():
     if args.check_only:
         check_report(json.loads(REPORT.read_text()));print('PASS: selected HID gate, reentrant drain and old stop control');return
     OUT.mkdir(parents=True,exist_ok=True);staged,before,patches=stage(OUT/'source')
-    cases,artifacts,control,producer_control=host_checks(staged,before,OUT/'host');native={};dependencies={}
+    cases,artifacts,control,producer_control,interface_controls=host_checks(staged,before,OUT/'host');native={};dependencies={}
     if not args.host_only:
         obj,=build_objects([staged],OUT/'native',[HEADER.parent,before.parent])
         objcopy=ROOT/'.toolchains/rust-gpu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objcopy'
@@ -100,7 +121,7 @@ def main():
             return data[section['fileoff']:section['fileoff']+section['size']]
         require(text(obj)==text(late),'HID lifecycle deferral changed source instructions')
         table=methods(late,'DodgeHidEventDriver',219)
-        require([i for i,n in enumerate(table) if '19DodgeHidEventDriver' in n]==[0,1,7,14,21,86,87,198],
+        require([i for i,n in enumerate(table) if '19DodgeHidEventDriver' in n]==[0,1,7,14,21,76,77,86,87,198],
             'Selected HID lifecycle changed the original virtual interface')
         original=ROOT/'build/cph2653-input-native/libDodgeInput.a';digest=sha(original)
         members=subprocess.check_output(['/usr/bin/llvm-ar-14','t',original],text=True).splitlines()
@@ -126,11 +147,16 @@ def main():
         'source_sha256':{str(p.relative_to(ROOT)):sha(p) for p in files},
         'artifacts':{str(p.relative_to(ROOT)):sha(p) for p in [staged,*artifacts]},'dependency_report_sha256':dependencies,
         'host_cases':cases,'old_stop_control':control,'previous_producer_control':producer_control,**native,'native_compiled':not args.host_only,
+        'interface_controls':interface_controls,
         'failed_original_initialization_remains_pinned':True,'source_base_and_baseline_artifacts_preserved':True,
         'hardware_tested':False,'phone_operations':'none',
         'scope':'Selected source serializes start, stop and dispatch on the provider workloop. Stop closes admission before '
         'waiting; gate-held stop queues a software interrupt source so parent cleanup runs after the outer gate action. '
         'External stop can complete cleanup first; a stale queued callback cannot repeat it. Source and gated producer '
+        'drains defer by default while external stop waits for the gate. willTerminate closes admission before the native '
+        'notification; didTerminate copies options, queues completion and never retains caller output pointers. Owned '
+        'interfaces close before parent stop; already-closed/foreign ownership delegates termination to the native base '
+        'without reentering the original unconditional close. The weak parent interface remains pinned in that path. '
         'frames are covered, while original callbacks which leave/reenter the gate remain unqualified. Failed init '
         'cannot start, duplicate/foreign stops cannot repeat cleanup, and existing partial-init instance/provider/loop pins '
         'remain. Actual patched production source runs with sanitizer IOKit peers and concurrent threads; the old source '
@@ -138,7 +164,7 @@ def main():
         'lifetime, matching, final free, '
         'physical input or graphical UI.'}
     check_report(report);REPORT.write_text(json.dumps(report,indent=2)+'\n')
-    print(f'PASS: {len(CASES)} selected HID lifecycle source cases and both old stop-overlap controls rejected')
+    print(f'PASS: {len(CASES)} HID source cases; old producer/interface/termination controls rejected')
 
 
 if __name__=='__main__':main()

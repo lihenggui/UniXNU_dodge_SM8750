@@ -17,6 +17,9 @@
     "cleanupSource": 560,
     "cleanupDeferred": 568,
     "cleanupQueued": 569,
+    "terminationPending": 570,
+    "notifyingTermination": 571,
+    "terminationOptions": 572,
     "kt_size_offset": 44,
     "kt_size_mask": 16777215,
     "digitizer_type": 32,
@@ -31,7 +34,7 @@
     {
       "case": "normal",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 1,
@@ -161,7 +164,7 @@
     {
       "case": "start-parent-failure",
       "result": "PASS",
-      "original_instructions_executed": 124,
+      "original_instructions_executed": 219,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 0,
@@ -171,7 +174,7 @@
     {
       "case": "start-reentrant-stop",
       "result": "PASS",
-      "original_instructions_executed": 124,
+      "original_instructions_executed": 219,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 0,
@@ -181,7 +184,7 @@
     {
       "case": "start-reentrant-stop-twice",
       "result": "PASS",
-      "original_instructions_executed": 124,
+      "original_instructions_executed": 219,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 0,
@@ -191,7 +194,7 @@
     {
       "case": "start-failure-reentrant-stop",
       "result": "PASS",
-      "original_instructions_executed": 124,
+      "original_instructions_executed": 219,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 0,
@@ -201,7 +204,7 @@
     {
       "case": "start-event-stop",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 1,
@@ -211,7 +214,7 @@
     {
       "case": "dispatch-reentrant-stop",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 1,
@@ -221,7 +224,7 @@
     {
       "case": "dispatch-reentrant-stop-twice",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 1,
@@ -231,7 +234,7 @@
     {
       "case": "nested-dispatch-stop",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 2,
@@ -241,7 +244,7 @@
     {
       "case": "queued-dispatch-stop",
       "result": "PASS",
-      "original_instructions_executed": 124,
+      "original_instructions_executed": 219,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 0,
@@ -251,7 +254,7 @@
     {
       "case": "stop-parent-reentry",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 1,
@@ -261,7 +264,7 @@
     {
       "case": "foreign-stop",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 1,
@@ -271,7 +274,7 @@
     {
       "case": "inactive",
       "result": "PASS",
-      "original_instructions_executed": 124,
+      "original_instructions_executed": 219,
       "parent_start_peers": 1,
       "original_parent_stop_calls": 1,
       "forwarded_events": 0,
@@ -301,7 +304,7 @@
     {
       "case": "producer-reentrant-stop",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 1,
       "software_cleanup_callbacks": 1,
@@ -310,7 +313,7 @@
     {
       "case": "producer-stop-tail",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 1,
       "software_cleanup_callbacks": 1,
@@ -319,7 +322,7 @@
     {
       "case": "producer-start-stop",
       "result": "PASS",
-      "original_instructions_executed": 124,
+      "original_instructions_executed": 219,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 1,
       "software_cleanup_callbacks": 1,
@@ -328,7 +331,7 @@
     {
       "case": "producer-nested-dispatch",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 1,
       "software_cleanup_callbacks": 1,
@@ -337,7 +340,7 @@
     {
       "case": "producer-external-stop",
       "result": "PASS",
-      "original_instructions_executed": 304,
+      "original_instructions_executed": 399,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 1,
       "software_cleanup_callbacks": 1,
@@ -346,7 +349,7 @@
     {
       "case": "original-producer-stop",
       "result": "PASS",
-      "original_instructions_executed": 752,
+      "original_instructions_executed": 856,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 1,
       "software_cleanup_callbacks": 1,
@@ -354,6 +357,8 @@
       "original_report_callback": {
         "address": "0xfffffff0057444e8",
         "bytes": 472,
+        "interface_report_entry": "0xfffffff005737340",
+        "callback_entered": true,
         "ready_offset": 184,
         "clock_boundary_reentered_source": true,
         "original_body_and_subhandlers_are_not_peers": true
@@ -362,7 +367,7 @@
     {
       "case": "original-producer-stop-twice",
       "result": "PASS",
-      "original_instructions_executed": 752,
+      "original_instructions_executed": 856,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 1,
       "software_cleanup_callbacks": 1,
@@ -370,6 +375,8 @@
       "original_report_callback": {
         "address": "0xfffffff0057444e8",
         "bytes": 472,
+        "interface_report_entry": "0xfffffff005737340",
+        "callback_entered": true,
         "ready_offset": 184,
         "clock_boundary_reentered_source": true,
         "original_body_and_subhandlers_are_not_peers": true
@@ -378,7 +385,7 @@
     {
       "case": "original-producer-external-stop",
       "result": "PASS",
-      "original_instructions_executed": 752,
+      "original_instructions_executed": 856,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 1,
       "software_cleanup_callbacks": 1,
@@ -386,6 +393,8 @@
       "original_report_callback": {
         "address": "0xfffffff0057444e8",
         "bytes": 472,
+        "interface_report_entry": "0xfffffff005737340",
+        "callback_entered": true,
         "ready_offset": 184,
         "clock_boundary_reentered_source": true,
         "original_body_and_subhandlers_are_not_peers": true
@@ -394,7 +403,7 @@
     {
       "case": "original-producer-not-ready",
       "result": "PASS",
-      "original_instructions_executed": 144,
+      "original_instructions_executed": 248,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 0,
       "software_cleanup_callbacks": 0,
@@ -402,6 +411,8 @@
       "original_report_callback": {
         "address": "0xfffffff0057444e8",
         "bytes": 472,
+        "interface_report_entry": "0xfffffff005737340",
+        "callback_entered": true,
         "ready_offset": 184,
         "clock_boundary_reentered_source": false,
         "original_body_and_subhandlers_are_not_peers": true
@@ -410,7 +421,7 @@
     {
       "case": "original-producer-wrong-type",
       "result": "PASS",
-      "original_instructions_executed": 143,
+      "original_instructions_executed": 247,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 0,
       "software_cleanup_callbacks": 0,
@@ -418,6 +429,8 @@
       "original_report_callback": {
         "address": "0xfffffff0057444e8",
         "bytes": 472,
+        "interface_report_entry": "0xfffffff005737340",
+        "callback_entered": true,
         "ready_offset": 184,
         "clock_boundary_reentered_source": false,
         "original_body_and_subhandlers_are_not_peers": true
@@ -426,7 +439,7 @@
     {
       "case": "original-producer-tail-stop",
       "result": "PASS",
-      "original_instructions_executed": 752,
+      "original_instructions_executed": 856,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 1,
       "software_cleanup_callbacks": 1,
@@ -434,6 +447,8 @@
       "original_report_callback": {
         "address": "0xfffffff0057444e8",
         "bytes": 472,
+        "interface_report_entry": "0xfffffff005737340",
+        "callback_entered": true,
         "ready_offset": 184,
         "clock_boundary_reentered_source": true,
         "original_body_and_subhandlers_are_not_peers": true
@@ -442,11 +457,287 @@
     {
       "case": "producer-start-failure",
       "result": "PASS",
-      "original_instructions_executed": 124,
+      "original_instructions_executed": 219,
       "original_parent_stop_calls": 1,
       "software_cleanup_signals": 1,
       "software_cleanup_callbacks": 1,
       "forwarded_events": 0
+    },
+    {
+      "case": "interface-close-reentry",
+      "result": "PASS",
+      "original_instructions_executed": 219,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 0,
+      "software_cleanup_signals": 0
+    },
+    {
+      "case": "interface-foreign-client",
+      "result": "PASS",
+      "original_instructions_executed": 219,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "interface-owner-failure",
+      "result": "PASS",
+      "original_instructions_executed": 160,
+      "original_interface_close_calls": 0,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 0,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "will-before-start",
+      "result": "PASS",
+      "original_instructions_executed": 69,
+      "original_interface_close_calls": 0,
+      "original_parent_stop_calls": 0,
+      "native_will_notifications": 1,
+      "native_did_notifications": 0,
+      "software_cleanup_signals": 0
+    },
+    {
+      "case": "will-start",
+      "result": "PASS",
+      "original_instructions_executed": 219,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 1,
+      "native_did_notifications": 0,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "will-dispatch",
+      "result": "PASS",
+      "original_instructions_executed": 399,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 1,
+      "native_did_notifications": 0,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "will-parent-failure",
+      "result": "PASS",
+      "original_instructions_executed": 219,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 1,
+      "native_did_notifications": 0,
+      "software_cleanup_signals": 0
+    },
+    {
+      "case": "will-foreign",
+      "result": "PASS",
+      "original_instructions_executed": 399,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 0,
+      "software_cleanup_signals": 0
+    },
+    {
+      "case": "did-normal",
+      "result": "PASS",
+      "original_instructions_executed": 246,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "did-repeat",
+      "result": "PASS",
+      "original_instructions_executed": 246,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 2,
+      "software_cleanup_signals": 2
+    },
+    {
+      "case": "did-after-stop",
+      "result": "PASS",
+      "original_instructions_executed": 219,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "did-foreign",
+      "result": "PASS",
+      "original_instructions_executed": 399,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 0,
+      "software_cleanup_signals": 0
+    },
+    {
+      "case": "did-null-output",
+      "result": "PASS",
+      "original_instructions_executed": 399,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 0,
+      "software_cleanup_signals": 0
+    },
+    {
+      "case": "did-no-loop",
+      "result": "PASS",
+      "original_instructions_executed": 91,
+      "original_interface_close_calls": 0,
+      "original_parent_stop_calls": 0,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 0
+    },
+    {
+      "case": "did-cleanup-failure",
+      "result": "PASS",
+      "original_instructions_executed": 69,
+      "original_interface_close_calls": 0,
+      "original_parent_stop_calls": 0,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 0
+    },
+    {
+      "case": "did-start",
+      "result": "PASS",
+      "original_instructions_executed": 246,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "did-producer",
+      "result": "PASS",
+      "original_instructions_executed": 426,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "did-reentrant-notify",
+      "result": "PASS",
+      "original_instructions_executed": 246,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "did-during-stop",
+      "result": "PASS",
+      "original_instructions_executed": 219,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "did-during-close",
+      "result": "PASS",
+      "original_instructions_executed": 219,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "did-caller-output",
+      "result": "PASS",
+      "original_instructions_executed": 246,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1
+    },
+    {
+      "case": "did-original-producer",
+      "result": "PASS",
+      "original_instructions_executed": 883,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1,
+      "original_report_callback": {
+        "address": "0xfffffff0057444e8",
+        "bytes": 472,
+        "interface_report_entry": "0xfffffff005737340",
+        "callback_entered": true,
+        "ready_offset": 184,
+        "clock_boundary_reentered_source": true,
+        "original_body_and_subhandlers_are_not_peers": true
+      }
+    },
+    {
+      "case": "did-original-after-stop",
+      "result": "PASS",
+      "original_instructions_executed": 222,
+      "original_interface_close_calls": 1,
+      "original_parent_stop_calls": 1,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1,
+      "original_report_callback": {
+        "address": "0xfffffff0057444e8",
+        "bytes": 472,
+        "interface_report_entry": "0xfffffff005737340",
+        "callback_entered": false,
+        "ready_offset": 184,
+        "clock_boundary_reentered_source": false,
+        "original_body_and_subhandlers_are_not_peers": true
+      }
+    },
+    {
+      "case": "producer-concurrent-stop",
+      "result": "PASS",
+      "original_instructions_executed": 856,
+      "original_parent_stop_calls": 1,
+      "software_cleanup_signals": 1,
+      "software_cleanup_callbacks": 1,
+      "forwarded_events": 1,
+      "original_report_callback": {
+        "address": "0xfffffff0057444e8",
+        "bytes": 472,
+        "interface_report_entry": "0xfffffff005737340",
+        "callback_entered": true,
+        "ready_offset": 184,
+        "clock_boundary_reentered_source": true,
+        "original_body_and_subhandlers_are_not_peers": true
+      }
+    },
+    {
+      "case": "start-busy-interface",
+      "result": "PASS",
+      "original_instructions_executed": 103,
+      "original_interface_close_calls": 0,
+      "original_parent_stop_calls": 0,
+      "native_will_notifications": 0,
+      "native_did_notifications": 1,
+      "software_cleanup_signals": 1
     }
   ],
   "old_direct_stop_control": {
@@ -459,30 +750,51 @@
     "image": "existing frozen input baseline",
     "startup_gate_check_disabled_only_for_legacy_control": true
   },
+  "old_interface_controls": [
+    {
+      "case": "interface-close-reentry",
+      "result": "REJECTED",
+      "check": "Original interface remained open during parent stop"
+    },
+    {
+      "case": "did-original-producer",
+      "result": "REJECTED",
+      "check": "Interface close overlapped an admitted producer"
+    },
+    {
+      "case": "will-dispatch",
+      "result": "REJECTED",
+      "check": "willTerminate admitted event dispatch or stopped a foreign provider"
+    }
+  ],
+  "original_interface_bodies_are_not_peers": true,
+  "deferred_termination_retains_caller_output_pointer": false,
   "source_sha256": {
-    "scripts/check_hid_lifecycle_kernel.py": "05e1099adfd09bf226872ac1abcfa2042e5ae4cfdd06716ca806be2ce2494fbc",
-    "scripts/hid_lifecycle_layout.py": "05f6fad605320b545870fe0fde167c6cf124e4fea485aa61bcced42d9002ad2f",
+    "scripts/check_hid_lifecycle_kernel.py": "2af964164445f5db6cebcb11b3482a61ac58d867e7d889cc6230e7a132e5d3f2",
+    "scripts/hid_lifecycle_layout.py": "c8691a4febde35ff3c0cfd69a38dfd4ef01233d29853407f14d0f9a7338cd7d4",
     "scripts/hid_lifecycle_model.py": "457b216fd213c6ceb554a89fe3054c3a1677f87d24063d158871ff34a0798957",
     "scripts/check_data_mount_kernel.py": "f64c5362e6c94418039cc5b0531ac403af82559dc25807835b1d5bbe8062b8d8",
-    "scripts/check_hid_parser.py": "ebd5f2cc7f91132554badc1b722d08d6a4db8db4db100edebe7a8a079536d779"
+    "scripts/check_hid_parser.py": "ebd5f2cc7f91132554badc1b722d08d6a4db8db4db100edebe7a8a079536d779",
+    "scripts/hid_interface_model.py": "de660cda9e2ae7aad22270b9914fbe316db49381ed299455ac76befe5ec46aab"
   },
   "dependency_report_sha256": {
-    "reports/ios16-native-system-kernel.json": "b2f8aae78291276910640f89211328e3caab3dde40603f61e63b5dcdef46500d",
-    "reports/ios16-hid-lifecycle-source.json": "dbdee8cc15c8d72d4f0464776dd8321e955fdf2cc3924086998a4b20217aab3e",
-    "reports/ios16-hid-original-lifecycle.json": "5f659daa6362a45c58931d1e985d7dd0aa4b8954fc7254e932c856ef448b8cdd",
+    "reports/ios16-native-system-kernel.json": "3b771cb3bc78930a4e747b44a29f4b87ad7589e50d6b385ecda815490d6cc1cc",
+    "reports/ios16-hid-lifecycle-source.json": "a3b2d6529376d5e66c713dc48d751d825b1f846db39e66ec91283594653d399c",
+    "reports/ios16-hid-original-lifecycle.json": "e1c5e8f621fddcef065cbd69d5706d954733662ed7ffc3e29c47176a06271547",
+    "reports/ios16-hid-interface-kernel.json": "cb4dc5d7fee24f2fc8e4dbc0565ca1ef156554a79da62a94eae11f816a697742",
     "reports/ios16-input-prelink.json": "9b351a088d399a12ce4eb90dc9169241b37231ba98bd1bbb61006b4ee73eefec",
     "reports/ios16-hid-edge-kernel.json": "eaf78771a2d1a1c37f677c429cbe6faaaf0d87ee255bc08fdfe1ce9db1a6a773"
   },
   "artifacts": {
-    "build/cph2653-native-system/kernel.macho": "8594b344407d2024f61fa340139b13ee451c68642df5c62bb5ecc5bd03897be4",
+    "build/cph2653-native-system/kernel.macho": "6b06a16866c5a666fc6fd120760a546aaa12dd8d1b57cde6224b9ac07ea4773d",
     "build/cph2653-input-prelink/kernel.macho": "ee07624c4bc4e7eed7992448812faeeac401a897b71c2b57a49c4bb448a1eead",
-    "build/ios16-hid-lifecycle-kernel/abi/DodgeHidEventDriver.cpp": "ecd6a5467ba397e035641a5a657fb537efef7b79332c024be54efea4c62e6f99",
-    "build/ios16-hid-lifecycle-kernel/abi/DodgeHidEventDriver.o": "a84dd293b38c74c0b81def365b199eae189ebb752e4790cfcd0dff1c1f57655c",
+    "build/ios16-hid-lifecycle-kernel/abi/DodgeHidEventDriver.cpp": "831ea5c064725b2b343e25c2980d1557973e6cd4cf96439197ab02111c522994",
+    "build/ios16-hid-lifecycle-kernel/abi/DodgeHidEventDriver.o": "5175dbf98ad1dbf72f630adad8ff40d9cb2665344874805bc23b830e22b5c9d7",
     "build/ios16-hid-lifecycle-kernel/abi/compile-commands.json": "7a0b4b9830a4ffd430257f51151e53d4130dd92abd4f041e1a1ed8f50a386795"
   },
   "original_parent_init_and_stop_are_not_peers": true,
   "full_original_parent_startup_remains_peer_bound": true,
   "hardware_tested": false,
   "phone_operations": "none",
-  "scope": "Actual selected native constructor/init/start/dispatch/stop/free instructions, unchanged original full EventDriver/EventService init/stop and event access/default dispatch bodies execute. Reentrant/queued stop cannot overlap admitted work or repeat parent cleanup. The old compiled source reproduces overlap. Public IOKit allocation/lock/gate/registry/refcount/video primitives, original full startup and final event service delivery and software-event scheduling are explicit peers. Six additional cases execute unchanged original report readiness/callback and subhandlers on an empty-element fixture; a public clock boundary reenters actual source dispatch/stop. Gate-held original producers return before queued cleanup; an external stop may finish first without duplicate cleanup. Original producers which drop/reenter the workloop gate, complete startup/element/client/matching and final-free/hardware lifetime remain unqualified."
+  "scope": "Actual selected native constructor/init/start/dispatch/stop/free instructions, unchanged original full EventDriver/EventService init/stop and event access/default dispatch bodies execute. Reentrant/queued stop cannot overlap admitted work or repeat parent cleanup. The old compiled source reproduces overlap. Public IOKit allocation/lock/gate/registry/refcount/video primitives, original full startup and final event service delivery, IOService arbitration/termination notification and software-event scheduling are explicit peers. Original interface open/close/block/handleReport and Driver didTerminate bodies execute. Only an owned interface is closed; already-closed/foreign ownership notifies the native base with the weak original pointer kept pinned. Termination defers copied options without retaining caller output. Both blocked guest stop and a real-thread host control cover the admission-before-gate window. Additional cases execute unchanged original report readiness/callback and subhandlers on an empty-element fixture; a public clock boundary reenters actual source dispatch/stop. Gate-held original producers return before queued cleanup; an external stop may finish first without duplicate cleanup. Original producers which drop/reenter the workloop gate, complete startup/element/client/matching and final-free/hardware lifetime remain unqualified."
 }

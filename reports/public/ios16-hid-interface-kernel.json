@@ -1,0 +1,233 @@
+{
+  "result": "IOS16_ORIGINAL_HID_INTERFACE_OWNERSHIP_AND_TERMINATION_CPU_PASS",
+  "cases": [
+    {
+      "case": "normal",
+      "result": "PASS",
+      "original_instructions_executed": 131,
+      "native_open_attempts": 2,
+      "original_interface_close_calls": 1,
+      "original_close_block_calls": 1,
+      "pool_flushes": 0,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "init-parent-failure",
+      "result": "PASS",
+      "original_instructions_executed": 23,
+      "native_open_attempts": 0,
+      "original_interface_close_calls": 0,
+      "original_close_block_calls": 0,
+      "pool_flushes": 0,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "init-allocation-failure",
+      "result": "PASS",
+      "original_instructions_executed": 28,
+      "native_open_attempts": 0,
+      "original_interface_close_calls": 0,
+      "original_close_block_calls": 0,
+      "pool_flushes": 0,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "interface-open-failure",
+      "result": "PASS",
+      "original_instructions_executed": 59,
+      "native_open_attempts": 1,
+      "original_interface_close_calls": 0,
+      "original_close_block_calls": 0,
+      "pool_flushes": 0,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "owner-open-failure",
+      "result": "PASS",
+      "original_instructions_executed": 72,
+      "native_open_attempts": 2,
+      "original_interface_close_calls": 0,
+      "original_close_block_calls": 0,
+      "pool_flushes": 0,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "no-owner",
+      "result": "PASS",
+      "original_instructions_executed": 67,
+      "native_open_attempts": 1,
+      "original_interface_close_calls": 0,
+      "original_close_block_calls": 0,
+      "pool_flushes": 0,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "with-pool",
+      "result": "PASS",
+      "original_instructions_executed": 135,
+      "native_open_attempts": 2,
+      "original_interface_close_calls": 1,
+      "original_close_block_calls": 1,
+      "pool_flushes": 1,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "with-report-action",
+      "result": "PASS",
+      "original_instructions_executed": 135,
+      "native_open_attempts": 2,
+      "original_interface_close_calls": 1,
+      "original_close_block_calls": 1,
+      "pool_flushes": 0,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "with-pool-and-action",
+      "result": "PASS",
+      "original_instructions_executed": 139,
+      "native_open_attempts": 2,
+      "original_interface_close_calls": 1,
+      "original_close_block_calls": 1,
+      "pool_flushes": 1,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "close-twice",
+      "result": "PASS",
+      "original_instructions_executed": 131,
+      "native_open_attempts": 2,
+      "original_interface_close_calls": 2,
+      "original_close_block_calls": 2,
+      "pool_flushes": 0,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "reopen",
+      "result": "PASS",
+      "original_instructions_executed": 131,
+      "native_open_attempts": 4,
+      "original_interface_close_calls": 2,
+      "original_close_block_calls": 2,
+      "pool_flushes": 0,
+      "native_termination_notifications": 0
+    },
+    {
+      "case": "driver-terminate",
+      "result": "PASS",
+      "original_instructions_executed": 158,
+      "native_open_attempts": 2,
+      "original_interface_close_calls": 1,
+      "original_close_block_calls": 1,
+      "pool_flushes": 0,
+      "native_termination_notifications": 1
+    },
+    {
+      "case": "driver-terminate-no-interface",
+      "result": "PASS",
+      "original_instructions_executed": 58,
+      "native_open_attempts": 0,
+      "original_interface_close_calls": 0,
+      "original_close_block_calls": 0,
+      "pool_flushes": 0,
+      "native_termination_notifications": 1
+    },
+    {
+      "case": "driver-terminate-defer",
+      "result": "PASS",
+      "original_instructions_executed": 158,
+      "native_open_attempts": 2,
+      "original_interface_close_calls": 1,
+      "original_close_block_calls": 1,
+      "pool_flushes": 0,
+      "native_termination_notifications": 1
+    }
+  ],
+  "original_interface": {
+    "instance_bytes": 264,
+    "vptr": 18446744005104104440,
+    "meta": 18446744005118077352,
+    "meta_pointer": 18446744005104104408,
+    "constructor": 18446744005081521928,
+    "init": 18446744005081522756,
+    "open": 18446744005081526192,
+    "close": 18446744005081526352,
+    "close_block": 18446744005081526532,
+    "run_block_stub": 18446744005081678812,
+    "driver_did_terminate": 18446744005081561804,
+    "reserved": 256,
+    "owner": 136,
+    "gate": 24,
+    "opened": 48,
+    "expansion_bytes": 64,
+    "callback": 152,
+    "refcon": 160,
+    "target": 168,
+    "pool": 40,
+    "report_action": 8,
+    "driver_interface": 200,
+    "handle_report": 18446744005081527104,
+    "vtable_entries": 187
+  },
+  "original_kernelcache_sha256": "2ec297bac95bcba01046fd0148e97e7e5885c05a6c18827f39f534ba375c1221",
+  "original_function_blocks": {
+    "constructor": {
+      "address": "0xfffffff005735f08",
+      "bytes": 32,
+      "sha256": "620c4498469365b829c90c5e72451ecf036ee87b78f8c2d7659f0b87d743bc2a"
+    },
+    "init": {
+      "address": "0xfffffff005736244",
+      "bytes": 88,
+      "sha256": "c7432b8754b66a6dbd84d91e15753bbb7bc5edb3a6f76b00b6c15e8735c7f8f3"
+    },
+    "open": {
+      "address": "0xfffffff005736fb0",
+      "bytes": 160,
+      "sha256": "8c77d5b71cd8b53df5acc6bfd278c23b5e3e140c0c5c47a30176dcccd84a548b"
+    },
+    "close": {
+      "address": "0xfffffff005737050",
+      "bytes": 180,
+      "sha256": "f29172e93c955041ae3ac20fb00da33f0893dffe5b9ae3c38a73ab6a7331cdc6"
+    },
+    "close_block": {
+      "address": "0xfffffff005737104",
+      "bytes": 96,
+      "sha256": "42c5443d1e726531abd8b6883fcd62d4fe1127353226659ae60dbe39440ace18"
+    },
+    "driver_did_terminate": {
+      "address": "0xfffffff00573facc",
+      "bytes": 108,
+      "sha256": "eeff11f9efc06c5481b87fba553cdffb3160718fb72c914cd5743766933548e2"
+    },
+    "handle_report": {
+      "address": "0xfffffff005737340",
+      "bytes": 48,
+      "sha256": "d2e73f359f03a6e2684b6d510a6fbbb653ae878852f84dde3b3c7c7717479a46"
+    }
+  },
+  "source_sha256": {
+    "scripts/check_hid_interface_kernel.py": "48c28566dd2ebde93e36dc5115ed40d9cf7fc500daef152f1e1afbc9bd959f83",
+    "scripts/hid_interface_model.py": "de660cda9e2ae7aad22270b9914fbe316db49381ed299455ac76befe5ec46aab",
+    "scripts/hid_lifecycle_model.py": "457b216fd213c6ceb554a89fe3054c3a1677f87d24063d158871ff34a0798957",
+    "scripts/hid_lifecycle_layout.py": "c8691a4febde35ff3c0cfd69a38dfd4ef01233d29853407f14d0f9a7338cd7d4",
+    "scripts/check_hid_parser.py": "ebd5f2cc7f91132554badc1b722d08d6a4db8db4db100edebe7a8a079536d779",
+    "profiles/os/ios-16.7.16-20H392/hid-event-interface.json": "cc64aba4b3b000a0db9e8dbbf8c1327c24ab216d61942f6e17e45edf79de6198",
+    "sources/IOHIDFamily-ios16/IOHIDFamily/IOHIDInterface.h": "d5a035fd1607fbfe5cc648953a54992d1ac3334f1131a6b6877b00862aeb9271",
+    "sources/iphoneos-sdk/iPhoneOS16.5.sdk/usr/include/TargetConditionals.h": "5696695811408ae61b2a98527480d4e0db74a685ff99c60b467cf12fc37d7f6b"
+  },
+  "dependency_report_sha256": {
+    "reports/ios16-hid-lifecycle-source.json": "a3b2d6529376d5e66c713dc48d751d825b1f846db39e66ec91283594653d399c"
+  },
+  "artifacts": {
+    "build/ios16-hid-interface-kernel/abi/DodgeHidEventDriver.cpp": "831ea5c064725b2b343e25c2980d1557973e6cd4cf96439197ab02111c522994",
+    "build/ios16-hid-interface-kernel/abi/DodgeHidEventDriver.o": "7744b10b0eb1e6788bcc1f97aff791e8e9848c8cf9d18fed637ed1eec315c734",
+    "build/ios16-hid-interface-kernel/abi/compile-commands.json": "8d2cbff47f0864cd18734e16f8ac2e1ec9c69b8da1bee4ee2e5fb38a4c7fdcc7",
+    "build/ios16-hid-interface-kernel/InterfaceHeaderReference.cpp": "69b1706bb6b3cc9b6db4e89932b615adeea0276e8332440cdbf36f95b3684ce4",
+    "build/ios16-hid-interface-kernel/reference/InterfaceHeaderReference.o": "ee826ff6ec99f970a3642668e93efae168101620b0830aa6a9cf51e2837da316",
+    "build/ios16-hid-interface-kernel/reference/compile-commands.json": "69c073710dae894d4e91f12fdc8f63c31f3b579951d0a3b628ea4437e0f50a62"
+  },
+  "hardware_tested": false,
+  "phone_operations": "none",
+  "scope": "Unchanged original interface constructor/init/open/close and close-block bodies execute, plus original EventDriver didTerminate. The 264-byte object, 64-byte typed expansion and callback/owner/gate fields are derived from pinned iPhone instructions and public compiler metadata. Public native IOService arbitration/open/close/termination, command-gate execution, pool flush and reference primitives are explicit peers. Full interface startup/matching/free, elements, IOService scheduler/DriverKit clients and physical input lifetime remain unqualified."
+}

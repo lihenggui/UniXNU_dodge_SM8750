@@ -22,9 +22,10 @@ and hardware security remain unqualified.
 
 Both native kernels also select an HID EventDriver lifecycle overlay. It
 serializes startup, dispatch and stop, closes admission before waiting, and
-defers gate-held cleanup through a software event after the enclosing workloop
-action returns. The original
-matching, producer/client lifetime and final release still need integration.
+defers cleanup through a software event after the enclosing workloop action
+returns. It closes its own report interface before parent cleanup and completes
+termination notifications without retaining caller output pointers. Full original
+startup, matching, producer/client lifetime and final release still need work.
 
 A separate Wi-Fi transport archive adapts the captured six-rail power topology
 and PCIe PHY sequence. Its protocol and ownership checks run on the host;

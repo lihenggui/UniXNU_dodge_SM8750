@@ -21,6 +21,7 @@ STAGES = (
     ('seed_sync', 'build_seed_sync', (), 'ios16-seed-close-sync'),
     ('hid_lifecycle_source', 'build_hid_lifecycle', (), 'ios16-hid-lifecycle-source'),
     ('original_hid_lifetime', 'check_hid_original_lifecycle', (), 'ios16-hid-original-lifecycle'),
+    ('original_hid_interface', 'check_hid_interface_kernel', (), 'ios16-hid-interface-kernel'),
     ('kernel', 'build_native_system', (), 'ios16-native-system-kernel'),
     ('persistent_kernel', 'build_native_system', ('--persistent-data',), 'ios16-native-system-kernel-persistent'),
     ('hid_lifecycle', 'check_hid_lifecycle_kernel', (), 'ios16-hid-lifecycle-kernel'),
@@ -66,6 +67,7 @@ def collect():
         'HID_lifecycle_host_cases': len(reports['hid_lifecycle_source']['host_cases']),
         'HID_lifecycle_native_cases': len(reports['hid_lifecycle']['cases']),
         'original_HID_lifetime_cases': len(reports['original_hid_lifetime']['cases']),
+        'original_HID_interface_cases': len(reports['original_hid_interface']['cases']),
         'external_policy_host_cases': reports['root_policies']['host_cases'],
         'external_policy_loader_host_cases': reports['root_policy_loader']['case_count'],
         'boot_partition_bytes': reports['payload']['captured_boot_partition_bytes'],
@@ -80,7 +82,7 @@ def collect():
             'complete original graphics/Metal/client and HID lifetime integration',
             'saved PRNG-seed crash/replacement and persistent-installation policy',
             'network/Bluetooth/audio/cellular board transports and iPhone clients'],
-        'scope': 'Nineteen local source/check/package stages for native SM8750 owner-development iPhone boot. '
+        'scope': 'Twenty local source/check/package stages for native SM8750 owner-development iPhone boot. '
         'Both kernels retain signed read-only OS/SystemOS windows, original iPhone components and the exact firmware memory patch. '
         'The persistent-capable variant confines writes to an explicitly opened bounded Data overlay; neither package resets existing Data. '
         'Actual EFI/native/original crypto POST and startup/refusal/client instruction models pass. Source preparation remains incomplete '
@@ -97,7 +99,7 @@ def main():
     report = collect()
     if args.check_only:require(json.loads(REPORT.read_text()) == report, 'Native system stack record is stale')
     else:REPORT.write_text(json.dumps(report, indent=2) + '\n')
-    print('PASS: native system source, nineteen stages and two local iPhone boot/root packages within captured boot capacity')
+    print('PASS: native system source, twenty stages and two local iPhone boot/root packages within captured boot capacity')
 
 
 if __name__ == '__main__':main()
